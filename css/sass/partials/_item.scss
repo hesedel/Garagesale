@@ -6,21 +6,22 @@
 	}
 
 	div.price {
-		max-width: 195px;
-		padding-left: 24px;
+		max-width: 175px;
+		padding-left: 44px;
 
 		span.prepend {
 			color: $olivedrab;
-			font: {
-				family: ProximaNovaSemibold;
-				size: $h4;
-			}
+			font-family: ProximaNovaSemibold;
+			font-size: $h4;
 			text-align: center;
 			position: absolute;
 				left: 9px;
-			width: 10px;
 			height: 26px;
 				line-height: 26px;
+		}
+
+		span.placeholder {
+			left: 45px;
 		}
 
 	}

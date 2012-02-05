@@ -202,22 +202,30 @@
 		});
 		
 		$('textarea')
-		.css( {
-			resize: 'none'
-		})
-		.TextAreaExpander(36, 216);
+			.css( {
+				resize: 'none'
+			})
+			.TextAreaExpander(36, 216);
 		$('div.input-text, div.textarea').click(function() {
 			$('input[type=text], textarea', $(this)).focus();
 		});
 		$('input[type=text], textarea', 'div.input-text, div.textarea')
-		.bind('keydown keyup', function() {
-			if($(this).val().length > 0) {
-				$('span.placeholder', $(this).parent()).hide();
-			} else {
-				$('span.placeholder', $(this).parent()).show();
-			}
-		})
-		.keydown();
+			.bind('keydown keyup', function() {
+				if($(this).val().length > 0) {
+					$('span.placeholder', $(this).parent()).hide();
+				} else {
+					$('span.placeholder', $(this).parent()).show();
+				}
+			})
+			.bind( {
+				focus: function() {
+					$(this).parent().addClass('focus');
+				},
+				blur: function() {
+					$(this).parent().removeClass('focus');
+				}
+			})
+			.keydown();
 		
 		$('a', '#filters').click(function() {
 			if(!$(this).hasClass('click')) {
@@ -228,15 +236,6 @@
 				$('.filters', '#table').addClass('hide');
 			}
 			return false;
-		});
-		
-		$('input[type=text]', '#search').bind( {
-			focus: function() {
-				$('div.input-text', '#search').addClass('focus');
-			},
-			blur: function() {
-				$('div.input-text', '#search').removeClass('focus');
-			}
 		});
 		",
 		CClientScript::POS_READY
