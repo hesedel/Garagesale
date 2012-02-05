@@ -1,0 +1,258 @@
+a {
+	outline: none;
+	color: blacken($dodgerblue, 25%);
+
+	&:hover {
+		color: blacken($dodgerblue, 25%, 2);
+	}
+
+}
+
+em {
+	font: {
+		family: ProximaNovaRegularItalic;
+		style: normal;
+	}
+}
+
+strong {
+	font: {
+		family: ProximaNovaSemibold;
+		weight: normal;
+	}
+}
+
+label, th {
+	font: {
+		family: ProximaNovaRegular;
+		weight: normal;
+	}
+}
+
+.g-button {
+	cursor: pointer;
+	color: blacken($beige, 25%, 4);
+	font-size: 1em;
+	text-decoration: none;
+	@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+	background-color: $whitesmoke;
+	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .1)));
+	border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 6), 25%);
+	border-bottom-color: blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2);
+	@include border-radius(2px);
+	@include box-shadow(
+		rgba(255, 255, 255, 1) 0 1px 1px inset,
+		rgba(0, 0, 0, .05) 0 1px 0
+	);
+	line-height: 1em;
+	padding: 7px 9px;
+
+	&:hover {
+		color: blacken($beige, 25%, 5);
+		background-color: whiten($whitesmoke, 25%);
+		border-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%), 5%);
+		border-bottom-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2), 5%);
+	}
+
+	&.orangered {
+		color: white;
+		font-family: ProximaNovaSemibold;
+		@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+		background-color: whiten(blacken($orangered, 25%), 25%, 2);
+		border-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%);
+		border-bottom-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2);
+		@include box-shadow(
+			rgba(255, 255, 255, .25) 0 1px 1px inset,
+			rgba(0, 0, 0, .05) 0 1px 0
+		);
+
+		&:hover {
+			background-color: whiten(whiten(blacken($orangered, 25%), 25%, 2), 5%);
+			border-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%), 5%);
+			border-bottom-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2), 5%);
+		}
+
+	}
+
+}
+
+div.g-items {
+	position: relative;
+	padding-top: 45px;
+
+	div.toolbox {
+		position: absolute;
+			top: 0;
+			right: 0;
+		height: 36px;
+			line-height: 36px;
+	}
+
+	div.list-view {
+		margin: {
+			top: -19px;
+			bottom: -1px;
+			left: -1px;
+		}
+
+		div.summary {
+			display: none;
+		}
+
+		div.items {
+			@include clearfix;
+			width: 750px;
+			padding: {
+				top: 10px;
+				bottom: 19px;
+				left: 1px;
+			}
+
+			div.view {
+				@include float-left;
+				background-color: whiten($whitesmoke, 25%, 4);
+				border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
+				width: 220px;
+				margin: {
+					top: 9px;
+					right: 10px;
+				}
+				padding: 8px 9px;
+
+				a.img {
+					display: block;
+					height: 135px;
+					margin-bottom: 9px;
+
+					img {
+						background-color: whiten(blacken($beige, 25%), 25%, 4);
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+
+				}
+
+				strong {
+					@include h4;
+					font-family: ProximaNovaRegular;
+					@include ellipsis;
+					display: block;
+					margin-bottom: 0;
+
+					a {
+						color: black;
+						text-decoration: none;
+
+						&:hover {
+							color: blacken($dodgerblue, 25%);
+						}
+
+					}
+
+				}
+
+				span.category {
+					@include float-left;
+					color: blacken($beige, 25%, 4);
+				}
+
+				span.price {
+					@include float-right;
+					color: $olivedrab;
+				}
+
+				span.location {
+					@include float-left;
+					color: blacken($beige, 25%, 2);
+					display: none;
+				}
+
+				span.condition {
+					@include float-right;
+					color: white;
+					@include text-shadow(rgba(0, 0, 0, .05), 0, -1px, 0);
+					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+					@include border-radius(2px);
+					display: none;
+					line-height: 14px;
+					margin: {
+						top: 2px;
+						bottom: 2px;
+					}
+					padding: {
+						right: 5px;
+						left: 5px;
+					}
+
+					&.new {
+						background-color: whiten(blacken($olivedrab, 25%), 25%);
+					}
+
+					&.old {
+						background-color: whiten(blacken($orangered, 25%), 25%, 2);
+					}
+
+				}
+
+				&:hover {
+					background-color: white;
+					border-color: whiten(blacken($dodgerblue, 25%), 25%, 4);
+					@include box-shadow(rgba(0, 0, 0, .25), 0, 0, 1px);
+					position: relative;
+					margin-bottom: -18px;
+
+					span.location,
+					span.condition {
+						display: inline;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+.g-scrollPane {
+	overflow-y: scroll;
+
+	&.jspScrollable div.jspPane {
+		width: auto !important;
+		right: 0;
+		left: 0;
+	}
+
+	div.jspVerticalBar {
+		background-color: transparent;
+		width: 15px;
+
+		a.jspArrow {
+			background-color: transparent;
+			height: 9px;
+		}
+
+		div.jspTrack {
+			background-color: transparent;
+			padding-left: 5px;
+
+			div.jspDrag {
+				background-color: black;
+				@include border-radius(3px);
+				width: 5px;
+				@include opacity(.05);
+
+				&.jspHover {
+					@include opacity(.25);
+				}
+
+			}
+
+		}
+
+	}
+
+}

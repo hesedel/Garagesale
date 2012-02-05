@@ -1,0 +1,18 @@
+NOTE
+
+Requires Yii Framework.
+
+For development environment specific settings to apply,
+	make sure your url starts with 'localhost.'.
+
+	ex:
+		http://localhost.familylifephil.com/
+
+
+INSTRUCTIONS
+
+1. Duplicate '/protected/config/local.php.sample' to '/protected/config/local.php'
+	then edit it to match your local environment configurations.
+
+2. FOR MAC USERS:
+	Run '$ bash mac'.

@@ -1,0 +1,243 @@
+-header('Content-Type: '.(stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'))
+-if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+-else:
+	!!! Strict
+-endif
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"<?php echo preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"' : ''; ?>>
+	%head
+		-if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
+			%meta(http-equiv="X-UA-Compatible" content="IE=edge, chrome=1")
+		-endif
+		%meta(http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8")
+		%meta(http-equiv="Content-Style-Type" content="text/css")
+		%meta(name="language" content="en")
+
+		//%meta(name="google-site-verification" content="xz6nEFUd9AeZUVQdrA50CyXZPvAxVGRmQlwLdz36C4Y")
+
+		//-if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
+		//	=!empty($this->facebookOG) ? $this->facebookOG : ''
+		//	%meta(property="fb:admins" content="1145688012")
+		//	%meta(property="fb:app_id" content="185025491523487")
+		//-endif
+
+		//blueprint CSS framework
+		//%link(rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection")
+		%link(rel="stylesheet" type="text/css" href="/css/print.css" media="print")
+		/[if lt IE 8]
+			%link(rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection")
+
+		//%link(rel="stylesheet" type="text/css" href="/css/main.css")
+		//%link(rel="stylesheet" type="text/css" href="/css/form.css")
+		//%link(rel="stylesheet" type="text/css" href="/css/global.css")
+		-Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/all.css'))
+
+		-Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/jScrollPane/jquery.jscrollpane.css'))
+		-Yii::app()->clientScript->registerCoreScript('jquery')
+		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jquery.textarea-expander.js'))
+		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/mwheelIntent.js'))
+		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.mousewheel.js'))
+		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.jscrollpane.min.js'))
+
+		//%link(rel="shortcut icon" type="image/x-icon" href="/favicon.#{preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? 'ico' : 'png'}")
+
+		//%link(rel="alternate" type="application/rss+xml" title="Pajaron Creative / Work" href="/work-rss.xml")
+
+		%title =CHtml::encode($this->pageTitle)
+
+		//-if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
+		//	:javascript
+		//		var _gaq = _gaq || [];
+		//		_gaq.push(['_setAccount', 'UA-12976665-1']);
+		//		_gaq.push(['_trackPageview']);
+		//		(function() {
+		//			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		//			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		//			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		//		})();
+		//-endif
+	<!--[if lt IE 7]><body class="no-js ie6"><![endif]-->
+	<!--[if IE 7]><body class="no-js ie7"><![endif]-->
+	<!--[if IE 8]><body class="no-js ie8"><![endif]-->
+	<!--[if IE 9]><body class="no-js ie9"><![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!--><body class="no-js"><!--<![endif]-->
+		#body
+			#body-top
+			#page
+				//#updates \\&#60; Updates Here &#62;
+				<!--[if (gt IE 7)|!(IE)]><!-->
+				#table
+					.tr
+						%h1.td#header
+							:php
+								echo CHtml::link(
+									Yii::app()->name,
+									//CHtml::image('/images/transparent.gif', Yii::app()->name),
+									'/',
+									array('id'=>'logo')
+								);
+						.td#register
+							%a(href="#") Register
+						-if(Yii::app()->user->isGuest):
+							.td#login =CHtml::link('Login', array('/site/login'))
+						-else:
+							.td#logout =CHtml::link('Logout', array('/site/logout'))
+						-endif
+						.td#filters
+							%a(href="#")
+								Filters
+								%span
+						.td#search
+							.table
+								.tr
+									.td.left
+										.input-text
+											%input(title="Search" type="text")
+											%span.placeholder Search
+									.td.right
+										%input(type="submit" value="Search")
+					.tr.filters.hide
+						.td \\&#160;
+						.td \\&#160;
+						.td \\&#160;
+						.td.filters-left
+							%div \\&#160;
+						.td.filters-right
+							%div \\&#60; Filters Here &#62;
+				<!--<![endif]-->
+				/[if lt IE 8]
+					%table#table(cellspacing="")
+						%tr.tr#row
+							%td.td#header
+								:php
+									echo CHtml::link(
+										Yii::app()->name,
+										//CHtml::image('/images/transparent.gif', Yii::app()->name),
+										'/',
+										array('id'=>'logo')
+									);
+							%td.td#register
+								%a(href="#") Register
+							-if(Yii::app()->user->isGuest):
+								%td.td#login =CHtml::link('Login', array('/site/login'))
+							-else:
+								%td.td#logout =CHtml::link('Logout', array('/site/logout'))
+							-endif
+							%td.td#filters
+								%a(href="#")
+									Filters
+									%span
+							%td.td#search
+								%table.table(cellspacing="")
+									%tr.tr
+										%td.td.left
+											.input-text
+												%input(title="Search" type="text")
+												%span.placeholder Search
+										%td.td.right
+											%input(type="submit" value="Search")
+						%tr.tr.filters.hide
+							%td.td(colspan="3") \\&#160;
+							%td.td.filters-left
+								%div \\&#160;
+							%td.td.filters-right
+								%div \\&#60; Filters Here &#62;
+				//#mainmenu
+				//	:php
+				//		$this->widget('zii.widgets.CMenu',array(
+				//			'items'=>array(
+				//				array('label'=>'Home', 'url'=>array('/site/index')),
+				//				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+				//				array('label'=>'Homebuilders', 'url'=>array('/site/page', 'view'=>'about')),
+				//				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				//				array('label'=>'Donate', 'url'=>array('/site/page', 'view'=>'about'), 'itemOptions'=>array('class'=>'donate')),
+				//				/*
+				//				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				//				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				//				*/
+				//			),
+				//		));
+				=$content
+		#footer
+			//#footermenu
+			//	:php
+			//		$this->widget('zii.widgets.CMenu',array(
+			//			'items'=>array(
+			//				array('label'=>'Home', 'url'=>array('/site/index')),
+			//				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+			//				array('label'=>'Homebuilders', 'url'=>array('/site/page', 'view'=>'about')),
+			//				array('label'=>'Contact', 'url'=>array('/site/contact')),
+			//				array('label'=>'Donate', 'url'=>array('/site/page', 'view'=>'about'), 'itemOptions'=>array('class'=>'donate')),
+			//				/*
+			//				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+			//				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+			//				*/
+			//			),
+			//		));
+			//#copyright
+			//	#{CHtml::link('FamilyLife Global', 'http://www.familylife.com/', array('rel'=>'nofollow'));} &#160;&#160;|&#160;&#160; Copyright &#169; #{date('Y')} by #{CHtml::link('FamilyLife Philippines', '/')}. All Rights Reserved.
+			//	:php
+			//		echo CHtml::link(
+			//			CHtml::image(
+			//				'http://'.(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? '' : 'localhost.').'pajaroncreative.com/favicon-beige.png',
+			//				'Pajaron Creative Design'
+			//			),
+			//			'http://pajaroncreative.com/',
+			//			array(
+			//				'class'=>'pajaroncreative',
+			//				'title'=>'Pajaron Creative Design'
+			//			)
+			//		);
+	</body>
+</html>
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'main',
+		"
+		$('body').removeClass('no-js');
+		// IE7 fix
+		$('a', '.ie7').click(function() {
+			$(this).blur();
+		});
+		
+		$('textarea')
+		.css( {
+			resize: 'none'
+		})
+		.TextAreaExpander(36, 216);
+		$('div.input-text, div.textarea').click(function() {
+			$('input[type=text], textarea', $(this)).focus();
+		});
+		$('input[type=text], textarea', 'div.input-text, div.textarea')
+		.bind('keydown keyup', function() {
+			if($(this).val().length > 0) {
+				$('span.placeholder', $(this).parent()).hide();
+			} else {
+				$('span.placeholder', $(this).parent()).show();
+			}
+		})
+		.keydown();
+		
+		$('a', '#filters').click(function() {
+			if(!$(this).hasClass('click')) {
+				$(this).addClass('click');
+				$('.filters', '#table').removeClass('hide');
+			} else {
+				$(this).removeClass('click');
+				$('.filters', '#table').addClass('hide');
+			}
+			return false;
+		});
+		
+		$('input[type=text]', '#search').bind( {
+			focus: function() {
+				$('div.input-text', '#search').addClass('focus');
+			},
+			blur: function() {
+				$('div.input-text', '#search').removeClass('focus');
+			}
+		});
+		",
+		CClientScript::POS_READY
+	);

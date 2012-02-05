@@ -1,0 +1,12 @@
+/assets/*
+!/assets/.empty
+/css/.sass-cache/
+/images/imagecache/*
+!/images/imagecache/.empty
+/images/uploads/*
+!/images/uploads/.empty
+!/images/uploads/items/.empty
+/protected/config/local.php
+/protected/runtime/*
+!/protected/runtime/.empty
+/update.php

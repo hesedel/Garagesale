@@ -1,0 +1,28 @@
+#item_create,
+#item_update {
+
+	h2 {
+		margin-bottom: 9px;
+	}
+
+	div.price {
+		max-width: 195px;
+		padding-left: 24px;
+
+		span.prepend {
+			color: $olivedrab;
+			font: {
+				family: ProximaNovaSemibold;
+				size: $h4;
+			}
+			text-align: center;
+			position: absolute;
+				left: 9px;
+			width: 10px;
+			height: 26px;
+				line-height: 26px;
+		}
+
+	}
+
+}

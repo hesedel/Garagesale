@@ -1,0 +1,72 @@
+.form
+
+	:php
+		$form=$this->beginWidget('CActiveForm', array(
+			'id'=>'item-form',
+			'enableAjaxValidation'=>true,
+			'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+		));
+
+	//=$form->errorSummary($model)
+
+	%table.form(summary="Post a New Item")
+		%caption.hide Item
+
+		%tfoot
+
+			%tr
+				%td \\&#160;
+				%td =CHtml::submitButton($model->isNewRecord ? 'Post' : 'Update')
+
+		%tbody
+
+			%tr
+				%th =$form->labelEx($model,'title')
+				%td
+					.input-text
+						=$form->textField($model,'title',array('size'=>60,'maxlength'=>64))
+						%span.placeholder Whare are you selling?
+					=$form->error($model,'title')
+
+			%tr
+				%th =$form->labelEx($model,'price')
+				%td
+					.price.input-text
+						%span.prepend
+							P
+						=$form->textField($model,'price')
+						%span.placeholder How much does it cost?
+					= $form->error($model,'price')
+
+			%tr
+				%th Condition
+				%td
+					%fieldset
+						%legend Condition	
+						:php
+							echo $form->radioButtonList($model,'condition_id',array(''=>'N/A','0'=>'Brand New','1'=>'Used'),array('separator'=>' &#160; '));
+							echo $form->error($model,'condition_id');
+
+			%tr
+				%th =$form->labelEx($model,'description')
+				%td
+					.textarea
+						=$form->textArea($model,'description',array('rows'=>6, 'cols'=>50))
+						%span.placeholder Description
+					=$form->error($model,'description');
+
+			%tr
+				%th Image(s)
+				%td
+					:php
+						$this->widget('CMultiFileUpload',array(
+							'model'=>$model,
+							'attribute'=>'images',
+							'accept'=>'gif|jpg|jpeg|png',
+							'max'=>5,
+							'remove'=>'[ remove ]',
+						));
+					=$form->error($model,'images')
+
+	:php
+		$this->endWidget()

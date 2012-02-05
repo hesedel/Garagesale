@@ -1,0 +1,28 @@
+.view
+	:php
+		echo CHtml::link(
+			CHtml::image(
+				'/images/transparent.gif',
+				CHtml::encode($data->title)
+			),
+			array('/item/view', 'id'=>$data->id),
+			array('class'=>'img')
+		);
+	%strong =CHtml::link(CHtml::encode($data->title), array('/item/view', 'id'=>$data->id))
+	%span.category Category
+	%span.price P #{number_format(CHtml::encode($data->price))}
+	.clear
+	%span.location Location
+	:php
+		if($data->condition_id != null) {
+			$condition = '';
+			switch($data->condition_id) {
+				case 1:
+					$condition = 'old';
+					break;
+				default:
+					$condition = 'new';
+			}
+	%span.condition.#{$condition} =CHtml::encode($data->condition->title)
+	:php
+		}

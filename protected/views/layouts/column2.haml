@@ -1,0 +1,24 @@
+-$this->beginContent('//layouts/main')
+#column2
+	#content
+		-if(isset($this->breadcrumbs)):
+			:php
+				$this->widget('zii.widgets.CBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+					'separator'=>' &#160; / &#160; ',
+				));
+		-endif
+		=$content
+	#sidebar
+		=$this->clips['sidebar']
+		:php
+			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'Operations',
+			));
+			$this->widget('zii.widgets.CMenu', array(
+				'items'=>$this->menu,
+				'htmlOptions'=>array('class'=>'operations'),
+			));
+			$this->endWidget();
+	.clear
+-$this->endContent()

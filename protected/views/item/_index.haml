@@ -1,0 +1,15 @@
+.g-items
+	.toolbox
+		%a.g-button(href="#") \\&#60; GV &#62;
+		%a.g-button(href="#") \\&#60; LV &#62;
+		\\&#160;
+		%a.g-button(href="#") \\&#60; Sort by Price &#62;
+		\\&#160;
+		=CHtml::link('Post a Free Ad', array('/item/create'), array('class'=>'g-button orangered'))
+	.clear
+	:php
+		$this->widget('zii.widgets.CListView', array(
+			'dataProvider'=>$dataProvider,
+			'itemView'=>'/item/_view',
+			'summaryText'=>'',
+		));

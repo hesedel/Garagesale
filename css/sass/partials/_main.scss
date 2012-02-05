@@ -1,0 +1,478 @@
+html {
+	cursor: default;
+	overflow-y: scroll;
+}
+
+body {
+	font-family: ProximaNovaRegular;
+	text-align: left;
+	background-color: blacken(whiten($beige, 25%, 4), 25%);
+	@include min-width(970px);
+}
+
+#body {
+	@include clearfix;
+	background-color: white;
+	@include box-shadow(rgba(0, 0, 0, .05), 0, 1px, 0);
+	position: relative;
+	padding-top: 18px;
+}
+
+#body-top {
+	background-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
+	position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+	height: 3px;
+}
+
+#page {
+	@include container;
+	position: relative;
+	overflow: visible;
+}
+
+#updates {
+	background-color: whiten($orange, 25%, 4);
+	border: 1px dashed whiten($orange, 25%, 2);
+	@include border-radius(2px);
+	margin-bottom: 18px;
+	padding: 8px 9px;
+}
+
+#table {
+	border: {
+		collapse: collapse;
+		spacing: 0;
+	}
+	display: table;
+	width: 100%;
+	margin-bottom: 18px;
+
+	.tr {
+		display: table-row;
+
+		&.hide {
+			display: none;
+		}
+
+		.td {
+			display: table-cell;
+				vertical-align: top;
+			padding: 0;
+
+			&.filters-left,
+			&.filters-right {
+
+				div {
+					background-color: whiten(blacken($beige, 25%), 25%, 5);
+				}
+
+			}
+
+			&.filters-left {
+				padding-left: 5px;
+
+				div {
+					@include border-bottom-left-radius(2px);
+					padding: {
+						top: 9px;
+						bottom: 18px;
+					}
+				}
+
+			}
+
+			&.filters-right {
+				padding-top: 1px;
+
+				div {
+					@include border-right-radius(2px);
+					padding: {
+						top: 8px;
+						bottom: 18px;
+						left: 10px;
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+#header {
+	font-size: 1em;
+	margin-bottom: 0;
+}
+
+#logo {
+	color: white;
+	font: {
+		family: ProximaNovaSemibold;
+		size: $h3;
+	}
+	text-decoration: none;
+	@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+	background-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
+	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+	@include border-radius(2px);
+	@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+	display: block;
+	height: 54px;
+		line-height: 54px;
+	padding: {
+		right: 20px;
+		left: 20px;
+	}
+
+	&:hover {
+		background-color: whiten(blacken($dodgerblue, 25%), 25%, 3);
+	}
+
+}
+
+#register,
+#login,
+#logout,
+#filters {
+
+	a {
+		font-size: $h4;
+		text-decoration: none;
+		@include text-shadow(rgba(255, 255, 255, .25), 0, 1px, 0);
+		white-space: nowrap;
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+		@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+		display: block;
+		height: 54px;
+			line-height: 54px;
+		padding: {
+			right: 20px;
+			left: 20px;
+		}
+
+		&:hover {
+			background-color: whiten(blacken($beige, 25%), 25%, 5);
+		}
+
+	}
+
+}
+
+#register {
+	padding-left: 5px !important;
+
+	a {
+		@include border-left-radius(2px);
+	}
+
+}
+
+#login,
+#logout {
+	padding-left: 1px !important;
+
+	a {
+		@include border-right-radius(2px);
+	}
+
+}
+
+#filters {
+	padding-left: 5px !important;
+
+	a {
+		color: blacken($dodgerblue, 25%);
+		@include border-left-radius(2px);
+		position: relative;
+		padding-right: 30px;
+
+		span {
+			@include _16x16-sprite(_filters_a_span);
+			cursor: pointer;
+			position: absolute;
+				top: 18px;
+				right: 10px;
+			width: 16px;
+			height: 16px;
+		}
+
+		&:hover {
+			color: blacken($dodgerblue, 25%, 2);
+
+			span {
+				@include _16x16-sprite(_filters_a-hover_span);
+			}
+
+		}
+
+		&.click {
+			color: blacken($dodgerblue, 25%, 2);
+			background-color: whiten(blacken($beige, 25%), 25%, 5) !important;
+			@include background-image(none);
+			@include border-bottom-left-radius(0);
+			@include box-shadow(none);
+
+			span {
+				@include _16x16-sprite(_filters_a-click_span);
+			}
+
+		}
+
+	}
+
+}
+
+#search {
+	width: 100%;
+	padding-left: 1px !important;
+
+	.table {
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+		@include border-right-radius(2px);
+		@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+		display: table;
+		margin-bottom: 0;
+
+		.td {
+			height: 30px;
+			padding: {
+				top: 12px;
+				bottom: 12px;
+			}
+
+			&.left {
+				width: 100%;
+				padding-left: 10px;
+			}
+
+			&.right {
+				padding: {
+					right: 10px;
+					left: 5px;
+				}
+			}
+
+			div.input-text {
+				background-color: white;
+				border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 4), 5%);
+				border: {
+					top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
+					left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
+				}
+				height: 28px;
+				padding: {
+					right: 9px;
+					left: 9px;
+				}
+
+				&:hover,
+				&.focus {
+					border-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
+				}
+
+				input {
+					height: 28px;
+						line-height: 28px;
+				}
+
+				span.placeholder {
+					color: blacken($beige, 25%);
+					font-size: $h4;
+					line-height: 28px;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+#column1 {
+	@include reset-float;
+	padding-top: 36px;
+	padding-bottom: 54px;
+}
+
+#column2 {
+	padding-bottom: 54px;
+
+	#content {
+		@include column(19);
+		@include float-right;
+		width: 740px;
+		margin-right: 0;
+		margin-bottom: 0;
+		padding-left: 10px;
+	}
+
+	#sidebar {
+		@include column(5);
+		margin-bottom: 0;
+	}
+
+}
+
+.ie7 #column2 {
+	padding-bottom: 36px;
+}
+
+div.breadcrumbs a {
+	color: $deeppink;
+	text-decoration: none;
+
+	&:hover {
+		color: whiten($deeppink, 25%);
+		text-decoration: underline;
+	}
+
+}
+
+#footer {
+	@include container;
+}
+
+#footermenu {
+	@include float-left;
+	height: 54px;
+		line-height: 54px;
+
+	ul {
+		list-style: none;
+		margin: {
+			right: 0;
+			bottom: 0;
+		}
+		padding-left: 0;
+
+		li {
+			@include float-left;
+			padding-right: 30px;
+
+			a {
+				color: $beige;
+				text-decoration: none;
+				@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+
+				&:hover {
+					color: white;
+				}
+
+			}
+
+			&.active a {
+				color: white;
+				font-family: ProximaNovaSemibold;
+			}
+
+			&.donate a {
+				color: black;
+				@include text-shadow(rgba(255, 255, 255, .25), 0, 1px, 0);
+				background-color: $gold;
+				@include border-radius(2px);
+				@include box-shadow(
+					rgba(255, 255, 255, 1) 0 0 1px inset,
+					rgba(0, 0, 0, .25) 0 0 1px
+				);
+				padding: {
+					right: 4px;
+					left: 4px;
+				}
+
+				&:hover {
+					background-color: whiten($gold, 25%);
+					@include box-shadow(
+						rgba(255, 255, 255, 1) 0 0 1px inset,
+						rgba(0, 0, 0, .25) 0 0 2px
+					);
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+#copyright {
+	@include float-right;
+	color: beige;
+	font: {
+		family: ProximaNovaLight;
+		size: $small;
+	}
+	@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+	position: relative;
+	height: 54px;
+		line-height: 54px;
+	padding-right: 26px;
+
+	a {
+		color: gold;
+		font-family: ProximaNovaRegular;
+		text-decoration: none;
+
+		&:hover {
+			color: whiten($gold, 25%);
+		}
+
+		&.pajaroncreative {
+			@include inline-block;
+			position: absolute;
+				top: 19px;
+				right: 0;
+			@include opacity(.25);
+
+			img {
+				display: block;
+			}
+
+			&:hover {
+				@include opacity(1);
+			}
+
+		}
+
+	}
+
+}
+
+.no-js {
+
+	#table {
+
+		#filters a {
+			cursor: default;
+			color: blacken($dodgerblue, 25%, 2);
+			background-color: whiten(blacken($beige, 25%), 25%, 5);
+			@include background-image(none);
+			@include border-bottom-left-radius(0);
+			@include box-shadow(none);
+			padding-right: 20px;
+
+			span {
+				display: none;
+			}
+
+		}
+
+		div.tr.filters {
+			display: table-row;
+		}
+
+		tr.tr.filters {
+			display: block;
+		}
+
+	}
+
+}

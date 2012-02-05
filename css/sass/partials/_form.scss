@@ -1,0 +1,337 @@
+fieldset {
+	border: none;
+	margin-bottom: 0;
+	padding: 0;
+
+	legend {
+		display: none;
+	}
+
+}
+
+input[type=submit] {
+	cursor: pointer;
+	color: blacken($beige, 25%, 4);
+	font: {
+		family: ProximaNovaRegular;
+		size: 1em;
+	}
+	@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+	background-color: $whitesmoke;
+	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .1)));
+	border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 6), 25%);
+	border-bottom-color: blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2);
+	@include border-radius(2px);
+	@include box-shadow(
+		rgba(255, 255, 255, 1) 0 1px 1px inset,
+		rgba(0, 0, 0, .05) 0 1px 0
+	);
+	height: 30px;
+
+	&:hover {
+		color: blacken($beige, 25%, 5);
+		background-color: whiten($whitesmoke, 25%);
+		border-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%), 5%);
+		border-bottom-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2), 5%);
+	}
+
+}
+
+input[type=text], textarea {
+	font: {
+		family: ProximaNovaRegular;
+		size: $h4;
+	}
+	outline: none;
+}
+
+textarea {
+	line-height: 18px;
+}
+
+div.input-text,
+div.textarea {
+	cursor: text;
+	position: relative;
+
+	input, textarea {
+		border: none;
+		display: block;
+		width: 100%;
+		margin: {
+			top: 0;
+			bottom: 0;
+		}
+		padding: 0;
+	}
+
+	span.placeholder {
+		cursor: text;
+		position: absolute;
+	}
+
+}
+
+.no-js {
+
+	div.input-text,
+	div.textarea {
+
+		span.placeholder {
+			display: none;
+		}
+
+	}
+
+}
+
+div.input-text span.placeholder {
+	top: 0;
+}
+
+.ie7 div.input-text input {
+	margin: {
+		top: -1px;
+		bottom: -1px;
+	}
+}
+
+table.form {
+	background-color: whiten(blacken($beige, 25%), 25%, 6);
+	border: {
+		collapse: collapse;
+		color: whiten(blacken($beige, 25%), 25%, 6);
+		spacing: 0;
+		style: solid;
+		top-width: 18px;
+		right-width: 20px;
+		bottom-width: 18px;
+		left-width: 20px;
+	}
+	@include border-radius(2px);
+
+	th, td {
+		border-top: 1px dotted blacken(whiten(blacken($beige, 25%), 25%, 8), 5%, 2);
+		padding: {
+			top: 8px;
+			bottom: 9px;
+		}
+	}
+
+	th {
+		vertical-align: top;
+	}
+
+	tfoot td {
+		text-align: right;
+		padding: {
+			right: 0;
+			left: 0;
+		}
+
+		input[type=submit] {
+			color: white;
+			font-family: ProximaNovaSemibold;
+			@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+			background-color: whiten(blacken($orangered, 25%), 25%, 2);
+			border-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%);
+			border-bottom-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2);
+			@include box-shadow(
+				rgba(255, 255, 255, .25) 0 1px 1px inset,
+				rgba(0, 0, 0, .05) 0 1px 0
+			);
+			height: 36px;
+			padding: {
+				right: 20px;
+				left: 20px;
+			}
+
+			&:hover {
+				background-color: whiten(whiten(blacken($orangered, 25%), 25%, 2), 5%);
+				border-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%), 5%);
+				border-bottom-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2), 5%);
+			}
+
+		}
+
+	}
+
+	tbody {
+
+		tr {
+
+			th {
+				color: blacken($beige, 25%, 4);
+				@include h4;
+				white-space: nowrap;
+				line-height: 36px;
+				padding: {
+					right: 10px;
+					left: 0;
+				}
+
+				label {
+
+					span.required {
+						color: blacken($orangered, 25%);
+					}
+
+					&.error {
+						color: blacken($beige, 25%, 4);
+						background-color: transparent;
+						border: none;
+						padding: 0;
+					}
+
+				}
+
+			}
+
+			td {
+				width: 100%;
+				padding: {
+					right: 0;
+					left: 10px;
+				}
+
+				div.input-text,
+				div.textarea {
+					background-color: white;
+					border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 8), 5%);
+					border: {
+						top-color: blacken(whiten(blacken($beige, 25%), 25%, 8), 5%, 3);
+						left-color: blacken(whiten(blacken($beige, 25%), 25%, 8), 5%, 3);
+					}
+					max-width: 450px;
+
+					span.placeholder {
+						color: blacken($beige, 25%);
+						font-size: $h4;
+					}
+
+				}
+
+				div.input-text {
+					margin: {
+						top: 4px;
+						bottom: 4px;
+					}
+					padding: {
+						right: 9px;
+						left: 9px;
+					}
+
+					input {
+						height: 26px;
+							line-height: 26px;
+
+						&.error {
+							color: black;
+						}
+
+					}
+
+					span.placeholder {
+						height: 26px;
+							line-height: 26px;
+					}
+
+					&.error,
+					&.success {
+						padding: {
+							top: 0;
+							bottom: 0;
+						}
+					}
+
+				}
+
+				div.textarea {
+					padding: 8px 9px;
+
+					textarea {
+						height: 72px;
+
+						&.error {
+							background-color: white;
+							color: black;
+						}
+
+					}
+
+					span.placeholder {
+						top: 10px;
+						line-height: 1em;
+					}
+
+					&.error {
+						margin-bottom: 0;
+					}
+
+				}
+
+				div.MultiFile-wrap {
+
+					div.MultiFile-list {
+						@include clearfix;
+
+						div.MultiFile-label {
+							clear: left;
+							@include float-left;
+							color: blacken($beige, 25%, 4);
+
+							a.MultiFile-remove {
+								@include float-right;
+								color: blacken($orangered, 25%);
+								text-decoration: none;
+								@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+
+								&:hover {
+									color: whiten(blacken($orangered, 25%), 25%);
+								}
+
+							}
+
+							span.MultiFile-title {
+								@include float-left;
+								@include ellipsis;
+								color: blacken($beige, 25%, 4);
+								@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+								max-width: 310px;
+								padding-right: 5px;
+							}
+
+						}
+
+					}
+
+					&.success {
+						background-color: transparent;
+						border: none;
+						margin-bottom: 0;
+						padding: 0;
+					}
+
+				}
+
+				div.errorMessage {
+					font-family: ProximaNovaSemibold;
+					color: blacken($orangered, 25%);
+				}
+
+			}
+
+			&:first-child {
+
+				th, td {
+					border-top: none;
+					padding-top: 9px;
+				}
+
+			}
+
+		}
+
+	}
+
+}

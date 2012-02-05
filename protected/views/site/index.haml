@@ -1,0 +1,27 @@
+:php
+	$this->pageTitle=Yii::app()->name;
+
+	$this->layout='column2';
+
+-$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar'))
+
+#site_index-sidebar
+	.about
+		%h2 Buy <span>&#38;</span> Sell
+		%p Got used stuff you don't need anymore? Let <strong>#{Yii::app()->name}</strong> help you sell them!
+		\\&#60; Facebook Share Here &#62;
+
+-$this->endWidget()
+
+#site_index
+	%h2 Latest Posts
+	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider))
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'index',
+		"
+		
+		",
+		CClientScript::POS_READY
+	);
