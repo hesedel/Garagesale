@@ -9,69 +9,81 @@ a {
 }
 
 em {
-	font: {
-		family: ProximaNovaRegularItalic;
-		style: normal;
-	}
+	font-family: ProximaNovaRegularItalic;
+	font-style: normal;
 }
 
 strong {
-	font: {
-		family: ProximaNovaSemibold;
-		weight: normal;
-	}
+	font-family: ProximaNovaSemibold;
+	font-weight: normal;
 }
 
 label, th {
-	font: {
-		family: ProximaNovaRegular;
-		weight: normal;
-	}
+	font-family: ProximaNovaRegular;
+	font-weight: normal;
 }
 
 .g-button {
 	cursor: pointer;
 	color: blacken($beige, 25%, 4);
-	font-size: 1em;
 	text-decoration: none;
-	@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+	@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 	background-color: $whitesmoke;
-	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .1)));
-	border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 6), 25%);
-	border-bottom-color: blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2);
+	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+	border: 1px solid blacken($whitesmoke, 25%);
+	border-bottom-color: blacken($whitesmoke, 25%, 2);
 	@include border-radius(2px);
 	@include box-shadow(
 		rgba(255, 255, 255, 1) 0 1px 1px inset,
-		rgba(0, 0, 0, .05) 0 1px 0
+		rgba(0, 0, 0, .05) 0 1px
 	);
-	line-height: 1em;
-	padding: 7px 9px;
+	padding: 8px 9px;
 
 	&:hover {
 		color: blacken($beige, 25%, 5);
 		background-color: whiten($whitesmoke, 25%);
-		border-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%), 5%);
-		border-bottom-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2), 5%);
+		border-color: blacken($whitesmoke, 25%, 2);
+		border-bottom-color: blacken($whitesmoke, 25%, 3);
+	}
+
+	&:active {
+		background-color: blacken($whitesmoke, 10%);
+		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 	}
 
 	&.orangered {
 		color: white;
 		font-family: ProximaNovaSemibold;
-		@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
-		background-color: whiten(blacken($orangered, 25%), 25%, 2);
-		border-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%);
-		border-bottom-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2);
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		background-color: whiten($orangered, 25%);
+		border-color: blacken($orangered, 25%);
+		border-bottom-color: blacken($orangered, 25%, 2);
 		@include box-shadow(
 			rgba(255, 255, 255, .25) 0 1px 1px inset,
-			rgba(0, 0, 0, .05) 0 1px 0
+			rgba(0, 0, 0, .05) 0 1px
 		);
 
 		&:hover {
-			background-color: whiten(whiten(blacken($orangered, 25%), 25%, 2), 5%);
-			border-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%), 5%);
-			border-bottom-color: blacken(blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2), 5%);
+			color: white;
+			background-color: whiten($orangered, 25%, 2);
+			border-color: blacken($orangered, 25%, 2);
+			border-bottom-color: blacken($orangered, 25%, 3);
 		}
 
+		&:active {
+			background-color: blacken(whiten($orangered, 25%), 10%);
+			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+		}
+
+	}
+
+}
+
+a.g-button {
+	color: blacken($beige, 25%, 4);
+
+	&:hover {
+		color: blacken($beige, 25%, 5);
 	}
 
 }
@@ -89,11 +101,9 @@ div.g-items {
 	}
 
 	div.list-view {
-		margin: {
-			top: -19px;
-			bottom: -1px;
-			left: -1px;
-		}
+		margin-top: -19px;
+		margin-bottom: -1px;
+		margin-left: -1px;
 
 		div.summary {
 			display: none;
@@ -102,21 +112,17 @@ div.g-items {
 		div.items {
 			@include clearfix;
 			width: 750px;
-			padding: {
-				top: 10px;
-				bottom: 19px;
-				left: 1px;
-			}
+			padding-top: 10px;
+			padding-bottom: 19px;
+			padding-left: 1px;
 
 			div.view {
 				@include float-left;
 				background-color: whiten($whitesmoke, 25%, 4);
-				border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
+				border: 1px solid blacken($whitesmoke, 10%);
 				width: 220px;
-				margin: {
-					top: 9px;
-					right: 10px;
-				}
+				margin-top: 9px;
+				margin-right: 10px;
 				padding: 8px 9px;
 
 				a.img {
@@ -134,9 +140,9 @@ div.g-items {
 				}
 
 				strong {
+					@include ellipsis;
 					@include h4;
 					font-family: ProximaNovaRegular;
-					@include ellipsis;
 					display: block;
 					margin-bottom: 0;
 
@@ -154,7 +160,7 @@ div.g-items {
 
 				span.category {
 					@include float-left;
-					color: blacken($beige, 25%, 4);
+					color: blacken($beige, 25%, 3);
 				}
 
 				span.price {
@@ -171,82 +177,38 @@ div.g-items {
 				span.condition {
 					@include float-right;
 					color: white;
-					@include text-shadow(rgba(0, 0, 0, .05), 0, -1px, 0);
+					@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
 					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 					@include border-radius(2px);
 					display: none;
 					line-height: 14px;
-					margin: {
-						top: 2px;
-						bottom: 2px;
-					}
-					padding: {
-						right: 5px;
-						left: 5px;
-					}
+					margin-top: 2px;
+					margin-bottom: 2px;
+					padding-right: 5px;
+					padding-left: 5px;
 
 					&.new {
-						background-color: whiten(blacken($olivedrab, 25%), 25%);
+						background-color: $olivedrab;
 					}
 
 					&.old {
-						background-color: whiten(blacken($orangered, 25%), 25%, 2);
+						background-color: $orangered;
 					}
 
 				}
 
 				&:hover {
 					background-color: white;
-					border-color: whiten(blacken($dodgerblue, 25%), 25%, 4);
-					@include box-shadow(rgba(0, 0, 0, .25), 0, 0, 1px);
+					border-color: whiten($dodgerblue, 25%, 4);
+					@include box-shadow(rgba(0, 0, 0, .25) 0 0 1px);
 					position: relative;
 					margin-bottom: -18px;
 
 					span.location,
 					span.condition {
-						display: inline;
+						display: block;
 					}
 
-				}
-
-			}
-
-		}
-
-	}
-
-}
-
-.g-scrollPane {
-	overflow-y: scroll;
-
-	&.jspScrollable div.jspPane {
-		width: auto !important;
-		right: 0;
-		left: 0;
-	}
-
-	div.jspVerticalBar {
-		background-color: transparent;
-		width: 15px;
-
-		a.jspArrow {
-			background-color: transparent;
-			height: 9px;
-		}
-
-		div.jspTrack {
-			background-color: transparent;
-			padding-left: 5px;
-
-			div.jspDrag {
-				background-color: black;
-				@include border-radius(3px);
-				width: 5px;
-				@include opacity(.05);
-
-				&.jspHover {
-					@include opacity(.25);
 				}
 
 			}

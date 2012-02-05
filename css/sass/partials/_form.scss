@@ -10,38 +10,16 @@ fieldset {
 }
 
 input[type=submit] {
-	cursor: pointer;
-	color: blacken($beige, 25%, 4);
-	font: {
-		family: ProximaNovaRegular;
-		size: 1em;
-	}
-	@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
-	background-color: $whitesmoke;
-	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .1)));
-	border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 6), 25%);
-	border-bottom-color: blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2);
-	@include border-radius(2px);
-	@include box-shadow(
-		rgba(255, 255, 255, 1) 0 1px 1px inset,
-		rgba(0, 0, 0, .05) 0 1px 0
-	);
+	@extend .g-button;
+	font-family: ProximaNovaRegular;
+	font-size: 1em;
 	height: 30px;
-
-	&:hover {
-		color: blacken($beige, 25%, 5);
-		background-color: whiten($whitesmoke, 25%);
-		border-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%), 5%);
-		border-bottom-color: blacken(blacken(whiten(blacken($beige, 25%), 25%, 6), 25%, 2), 5%);
-	}
-
+	padding: 0 10px !important;
 }
 
 input[type=text], textarea {
-	font: {
-		family: ProximaNovaRegular;
-		size: $h4;
-	}
+	font-family: ProximaNovaRegular;
+	font-size: $h4;
 	outline: none;
 }
 
@@ -58,10 +36,8 @@ div.textarea {
 		border: none;
 		display: block;
 		width: 100%;
-		margin: {
-			top: 0;
-			bottom: 0;
-		}
+		margin-top: 0;
+		margin-bottom: 0;
 		padding: 0;
 	}
 
@@ -90,11 +66,11 @@ div.input-text span.placeholder {
 }
 
 .ie7 div.input-text input {
-	margin: {
-		top: -1px;
-		bottom: -1px;
-	}
+	margin-top: -1px;
+	margin-bottom: -1px;
 }
+
+/* CONTINUE CLEANING */
 
 table.form {
 	background-color: whiten(blacken($beige, 25%), 25%, 6);
@@ -132,13 +108,13 @@ table.form {
 		input[type=submit] {
 			color: white;
 			font-family: ProximaNovaSemibold;
-			@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 			background-color: whiten(blacken($orangered, 25%), 25%, 2);
 			border-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%);
 			border-bottom-color: blacken(whiten(blacken($orangered, 25%), 25%, 2), 25%, 2);
 			@include box-shadow(
 				rgba(255, 255, 255, .25) 0 1px 1px inset,
-				rgba(0, 0, 0, .05) 0 1px 0
+				rgba(0, 0, 0, .05) 0 1px
 			);
 			height: 36px;
 			padding: {
@@ -284,7 +260,7 @@ table.form {
 								@include float-right;
 								color: blacken($orangered, 25%);
 								text-decoration: none;
-								@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 								&:hover {
 									color: whiten(blacken($orangered, 25%), 25%);
@@ -296,7 +272,7 @@ table.form {
 								@include float-left;
 								@include ellipsis;
 								color: blacken($beige, 25%, 4);
-								@include text-shadow(rgba(255, 255, 255, 1), 0, 1px, 0);
+								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 								max-width: 310px;
 								padding-right: 5px;
 							}

@@ -13,7 +13,7 @@ body {
 #body {
 	@include clearfix;
 	background-color: white;
-	@include box-shadow(rgba(0, 0, 0, .05), 0, 1px, 0);
+	@include box-shadow(rgba(0, 0, 0, .1) 0 1px);
 	position: relative;
 	padding-top: 18px;
 }
@@ -30,9 +30,15 @@ body {
 #page {
 	@include container;
 	position: relative;
+	padding-top: 72px;
 	overflow: visible;
 }
 
+.no-js #page {
+	padding-top: 0;
+}
+
+/*
 #updates {
 	background-color: whiten($orange, 25%, 4);
 	border: 1px dashed whiten($orange, 25%, 2);
@@ -40,12 +46,14 @@ body {
 	margin-bottom: 18px;
 	padding: 8px 9px;
 }
+*/
 
 #table {
-	border: {
-		collapse: collapse;
-		spacing: 0;
-	}
+	border-collapse: collapse;
+	border-spacing: 0;
+	position: absolute;
+		top: 0;
+		z-index: 1;
 	display: table;
 	width: 100%;
 	margin-bottom: 18px;
@@ -67,6 +75,7 @@ body {
 
 				div {
 					background-color: whiten(blacken($beige, 25%), 25%, 5);
+					padding-bottom: 18px;
 				}
 
 			}
@@ -76,10 +85,11 @@ body {
 
 				div {
 					@include border-bottom-left-radius(2px);
-					padding: {
-						top: 9px;
-						bottom: 18px;
-					}
+					@include box-shadow(
+						rgba(255, 255, 255, 1) 0 1px,
+						rgba(255, 255, 255, 1) -1px 0
+					);
+					padding-top: 9px;
 				}
 
 			}
@@ -89,9 +99,12 @@ body {
 
 				div {
 					@include border-right-radius(2px);
+					@include box-shadow(
+						rgba(255, 255, 255, 1) 1px 0,
+						rgba(255, 255, 255, 1) 0 1px
+					);
 					padding: {
 						top: 8px;
-						bottom: 18px;
 						left: 10px;
 					}
 				}
@@ -116,18 +129,16 @@ body {
 		size: $h3;
 	}
 	text-decoration: none;
-	@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
+	@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 	background-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
-	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
 	@include border-radius(2px);
-	@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+	@include box-shadow(rgba(0, 0, 0, .1) 0 0 1px inset);
 	display: block;
 	height: 54px;
 		line-height: 54px;
-	padding: {
-		right: 20px;
-		left: 20px;
-	}
+	padding-right: 20px;
+	padding-left: 20px;
 
 	&:hover {
 		background-color: whiten(blacken($dodgerblue, 25%), 25%, 3);
@@ -141,22 +152,22 @@ body {
 #filters {
 
 	a {
+		color: blacken($dodgerblue, 25%);
 		font-size: $h4;
 		text-decoration: none;
-		@include text-shadow(rgba(255, 255, 255, .25), 0, 1px, 0);
+		@include text-shadow(rgba(255, 255, 255, .5) 0 1px);
 		white-space: nowrap;
 		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-		@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+		@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+		@include box-shadow(rgba(0, 0, 0, .1) 0 0 1px inset);
 		display: block;
 		height: 54px;
 			line-height: 54px;
-		padding: {
-			right: 20px;
-			left: 20px;
-		}
+		padding-right: 20px;
+		padding-left: 20px;
 
 		&:hover {
+			color: blacken($dodgerblue, 25%, 2);
 			background-color: whiten(blacken($beige, 25%), 25%, 5);
 		}
 
@@ -187,13 +198,12 @@ body {
 	padding-left: 5px !important;
 
 	a {
-		color: blacken($dodgerblue, 25%);
 		@include border-left-radius(2px);
 		position: relative;
 		padding-right: 30px;
 
 		span {
-			@include _16x16-sprite(_filters_a_span);
+			@include _16-sprite(_filters_a_span);
 			cursor: pointer;
 			position: absolute;
 				top: 18px;
@@ -203,10 +213,9 @@ body {
 		}
 
 		&:hover {
-			color: blacken($dodgerblue, 25%, 2);
 
 			span {
-				@include _16x16-sprite(_filters_a-hover_span);
+				@include _16-sprite(_filters_a-hover_span);
 			}
 
 		}
@@ -219,7 +228,7 @@ body {
 			@include box-shadow(none);
 
 			span {
-				@include _16x16-sprite(_filters_a-click_span);
+				@include _16-sprite(_filters_a-click_span);
 			}
 
 		}
@@ -234,18 +243,16 @@ body {
 
 	.table {
 		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+		@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
 		@include border-right-radius(2px);
-		@include box-shadow(rgba(0, 0, 0, .05), 0, 0, 1px, 0, true);
+		@include box-shadow(rgba(0, 0, 0, .1) 0 0 1px inset);
 		display: table;
 		margin-bottom: 0;
 
 		.td {
 			height: 30px;
-			padding: {
-				top: 12px;
-				bottom: 12px;
-			}
+			padding-top: 12px;
+			padding-bottom: 12px;
 
 			&.left {
 				width: 100%;
@@ -253,24 +260,18 @@ body {
 			}
 
 			&.right {
-				padding: {
-					right: 10px;
-					left: 5px;
-				}
+				padding-right: 10px;
+				padding-left: 5px;
 			}
 
 			div.input-text {
 				background-color: white;
 				border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 4), 5%);
-				border: {
-					top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
-					left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
-				}
+				border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
+				border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
 				height: 28px;
-				padding: {
-					right: 9px;
-					left: 9px;
-				}
+				padding-right: 9px;
+				padding-left: 9px;
 
 				&:hover,
 				&.focus {
@@ -292,6 +293,34 @@ body {
 
 		}
 
+	}
+
+}
+
+.no-js #table {
+	position: static;
+
+	#filters a {
+		cursor: default;
+		color: blacken($dodgerblue, 25%, 2);
+		background-color: whiten(blacken($beige, 25%), 25%, 5);
+		@include background-image(none);
+		@include border-bottom-left-radius(0);
+		@include box-shadow(none);
+		padding-right: 20px;
+
+		span {
+			display: none;
+		}
+
+	}
+
+	div.tr.filters {
+		display: table-row;
+	}
+
+	tr.tr.filters {
+		display: block;
 	}
 
 }
@@ -338,141 +367,4 @@ div.breadcrumbs a {
 
 #footer {
 	@include container;
-}
-
-#footermenu {
-	@include float-left;
-	height: 54px;
-		line-height: 54px;
-
-	ul {
-		list-style: none;
-		margin: {
-			right: 0;
-			bottom: 0;
-		}
-		padding-left: 0;
-
-		li {
-			@include float-left;
-			padding-right: 30px;
-
-			a {
-				color: $beige;
-				text-decoration: none;
-				@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
-
-				&:hover {
-					color: white;
-				}
-
-			}
-
-			&.active a {
-				color: white;
-				font-family: ProximaNovaSemibold;
-			}
-
-			&.donate a {
-				color: black;
-				@include text-shadow(rgba(255, 255, 255, .25), 0, 1px, 0);
-				background-color: $gold;
-				@include border-radius(2px);
-				@include box-shadow(
-					rgba(255, 255, 255, 1) 0 0 1px inset,
-					rgba(0, 0, 0, .25) 0 0 1px
-				);
-				padding: {
-					right: 4px;
-					left: 4px;
-				}
-
-				&:hover {
-					background-color: whiten($gold, 25%);
-					@include box-shadow(
-						rgba(255, 255, 255, 1) 0 0 1px inset,
-						rgba(0, 0, 0, .25) 0 0 2px
-					);
-				}
-
-			}
-
-		}
-
-	}
-
-}
-
-#copyright {
-	@include float-right;
-	color: beige;
-	font: {
-		family: ProximaNovaLight;
-		size: $small;
-	}
-	@include text-shadow(rgba(0, 0, 0, .25), 0, -1px, 0);
-	position: relative;
-	height: 54px;
-		line-height: 54px;
-	padding-right: 26px;
-
-	a {
-		color: gold;
-		font-family: ProximaNovaRegular;
-		text-decoration: none;
-
-		&:hover {
-			color: whiten($gold, 25%);
-		}
-
-		&.pajaroncreative {
-			@include inline-block;
-			position: absolute;
-				top: 19px;
-				right: 0;
-			@include opacity(.25);
-
-			img {
-				display: block;
-			}
-
-			&:hover {
-				@include opacity(1);
-			}
-
-		}
-
-	}
-
-}
-
-.no-js {
-
-	#table {
-
-		#filters a {
-			cursor: default;
-			color: blacken($dodgerblue, 25%, 2);
-			background-color: whiten(blacken($beige, 25%), 25%, 5);
-			@include background-image(none);
-			@include border-bottom-left-radius(0);
-			@include box-shadow(none);
-			padding-right: 20px;
-
-			span {
-				display: none;
-			}
-
-		}
-
-		div.tr.filters {
-			display: table-row;
-		}
-
-		tr.tr.filters {
-			display: block;
-		}
-
-	}
-
 }
