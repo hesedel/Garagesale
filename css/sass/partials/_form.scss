@@ -81,6 +81,7 @@ table.form {
 	border-right-width: 20px;
 	border-bottom-width: 18px;
 	border-left-width: 20px;
+	margin-bottom: 0;
 
 	th, td {
 		border-top: 1px dotted white;
@@ -138,6 +139,10 @@ table.form {
 				padding-right: 0;
 				padding-left: 10px;
 
+				label {
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				}
+
 				div.input-text,
 				div.textarea {
 					background-color: white;
@@ -161,17 +166,11 @@ table.form {
 
 				}
 
-/* CONTINUE CLEANING UP */
-
 				div.input-text {
-					margin: {
-						top: 4px;
-						bottom: 4px;
-					}
-					padding: {
-						right: 9px;
-						left: 9px;
-					}
+					margin-top: 4px;
+					margin-bottom: 4px;
+					padding-right: 9px;
+					padding-left: 9px;
 
 					input {
 						height: 26px;
@@ -190,10 +189,8 @@ table.form {
 
 					&.error,
 					&.success {
-						padding: {
-							top: 0;
-							bottom: 0;
-						}
+						padding-top: 0;
+						padding-bottom: 0;
 					}
 
 				}
@@ -230,16 +227,15 @@ table.form {
 						div.MultiFile-label {
 							clear: left;
 							@include float-left;
-							color: blacken($beige, 25%, 4);
 
 							a.MultiFile-remove {
 								@include float-right;
-								color: blacken($orangered, 25%);
+								color: $orangered;
 								text-decoration: none;
 								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 								&:hover {
-									color: whiten(blacken($orangered, 25%), 25%);
+									color: blacken($orangered, 25%);
 								}
 
 							}
@@ -247,7 +243,7 @@ table.form {
 							span.MultiFile-title {
 								@include float-left;
 								@include ellipsis;
-								color: blacken($beige, 25%, 4);
+								color: black;
 								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 								max-width: 310px;
 								padding-right: 5px;
@@ -268,7 +264,7 @@ table.form {
 
 				div.errorMessage {
 					font-family: ProximaNovaSemibold;
-					color: blacken($orangered, 25%);
+					color: $orangered;
 				}
 
 			}
