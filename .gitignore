@@ -5,7 +5,11 @@
 !/images/imagecache/.empty
 /images/uploads/*
 !/images/uploads/.empty
+!/images/uploads/items/
+/images/uploads/items/*
 !/images/uploads/items/.empty
+!/images/uploads/temp/
+/images/uploads/temp/*
 !/images/uploads/temp/.empty
 /protected/config/local.php
 /protected/runtime/*
