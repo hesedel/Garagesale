@@ -56,17 +56,30 @@
 					=$form->error($model,'description');
 
 			%tr
-				%th Image(s)
+				%th =$form->labelEx($model,'images')
 				%td
 					:php
+						$images = CUploadedFile::getInstances($model, 'images');
+						if(isset($images) && count($images) > 0 && strlen($form->error($model, 'images')) <= 74):
+					.images
+						:php
+							foreach($images as $image) {
+								$name = md5($image->name.time()).'.'.$image->extensionName;
+								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+								echo CHtml::image('/images/transparent.gif', '', array('style'=>'background-image: url(/images/image.php/'.$name.'?image=/images/uploads/temp/'.$name.'&width=40&height=36&cropratio=40:36&quality=100)'));
+							}
+					:php
+						endif;
 						$this->widget('CMultiFileUpload',array(
 							'model'=>$model,
 							'attribute'=>'images',
 							'accept'=>'gif|jpg|jpeg|png',
-							'max'=>5,
-							'remove'=>'[ remove ]',
+							'max'=>5 - count($images),
+							'remove'=>'remove',
 						));
 					=$form->error($model,'images')
+					.no-js
+						JavaScript required to upload images.
 
 	:php
 		$this->endWidget()

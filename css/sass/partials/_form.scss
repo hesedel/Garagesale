@@ -71,6 +71,13 @@ div.input-text span.placeholder {
 	margin-bottom: -1px;
 }
 
+div.form.success {
+	color: black;
+	border: none;
+	margin-bottom: 0;
+	padding: 0;
+}
+
 table.form {
 	background-color: whiten(blacken($beige, 25%), 25%, 4);
 	border-collapse: collapse;
@@ -267,6 +274,12 @@ table.form {
 					color: $orangered;
 				}
 
+				div.no-js {
+					color: $orangered;
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+					display: none;
+				}
+
 			}
 
 			&:first-child {
@@ -282,4 +295,8 @@ table.form {
 
 	}
 
+}
+
+.no-js div.no-js {
+	display: block !important;
 }

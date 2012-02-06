@@ -84,6 +84,7 @@ class Item extends CActiveRecord
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',
+			'images' => 'Image(s)',
 		);
 	}
 

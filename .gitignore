@@ -6,6 +6,7 @@
 /images/uploads/*
 !/images/uploads/.empty
 !/images/uploads/items/.empty
+!/images/uploads/temp/.empty
 /protected/config/local.php
 /protected/runtime/*
 !/protected/runtime/.empty
