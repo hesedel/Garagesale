@@ -367,7 +367,7 @@ div.breadcrumbs a {
 	text-decoration: none;
 
 	&:hover {
-		color: whiten($deeppink, 25%);
+		color: blacken($deeppink, 25%);
 		text-decoration: underline;
 	}
 
