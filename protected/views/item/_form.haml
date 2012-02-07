@@ -101,13 +101,13 @@
 			opacity: .75,
 			start: function(event) {
 				uploadIndex_from = $(event.target).index();
+				alert(uploadIndex_from);
 			},
 			update: function(event) {
 				var uploadIndex_to = $(event.target).index();
 				var input = unserialize(base64_decode($('#Item_uploads').val()));
 				var output = [];
 				output[uploadIndex_to] = input[uploadIndex_from];
-				alert(output[uploadIndex_to]['name']);
 				for(var i in input) {
 					if((i < uploadIndex_from && i < uploadIndex_to) || (i > uploadIndex_from && i > uploadIndex_to))
 						output[i] = input[i];
