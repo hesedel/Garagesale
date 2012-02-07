@@ -1,4 +1,4 @@
--header('Content-Type: '.(stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'))
+//-header('Content-Type: '.(stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'))
 -if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 -else:
@@ -32,12 +32,13 @@
 		//%link(rel="stylesheet" type="text/css" href="/css/global.css")
 		-Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/all.css'))
 
-		-Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/jScrollPane/jquery.jscrollpane.css'))
+		//-Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/jScrollPane/jquery.jscrollpane.css'))
 		-Yii::app()->clientScript->registerCoreScript('jquery')
 		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jquery.textarea-expander.js'))
-		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/mwheelIntent.js'))
-		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.mousewheel.js'))
-		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.jscrollpane.min.js'))
+		-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/php.min.js'))
+		//-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/mwheelIntent.js'))
+		//-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.mousewheel.js'))
+		//-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish('js/jScrollPane/jquery.jscrollpane.min.js'))
 
 		//%link(rel="shortcut icon" type="image/x-icon" href="/favicon.#{preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? 'ico' : 'png'}")
 

@@ -237,12 +237,12 @@ table.form {
 
 							a.MultiFile-remove {
 								@include float-right;
-								color: $orangered;
+								color: $dodgerblue;
 								text-decoration: none;
 								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 								&:hover {
-									color: blacken($orangered, 25%);
+									color: blacken($dodgerblue, 25%);
 								}
 
 							}

@@ -31,7 +31,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,6 +71,23 @@ class ItemController extends Controller
 			$model->attributes=$_POST['Item'];
 			if($model->save())
 			{
+				$uploads = unserialize(base64_decode($model->uploads));
+				$images = CUploadedFile::getInstances($model, 'images');
+				foreach($images as $image) {
+					$name = md5($image->name.time()).'.jpg';
+					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+					$uploads[] = array('name'=>$image->name, 'tempName'=>$name);
+				}
+				mkdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/', 0777);
+				if($uploads) {
+					$i = 0;
+					foreach($uploads as $upload) {
+						if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/'.($i + 1).'.jpg'))
+							unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+						$i++;
+					}
+				}
+				/*
 				$images=CUploadedFile::getInstances($model,'images');
 				if(isset($images) && count($images) > 0)
 				{
@@ -83,6 +100,7 @@ class ItemController extends Controller
 							$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type);
 					}
 				}
+				*/
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -165,6 +183,11 @@ class ItemController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionAjaxRemoveImage()
+	{
+		$this->renderPartial('ajax/_removeImage');
 	}
 
 	/**

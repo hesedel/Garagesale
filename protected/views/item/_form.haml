@@ -59,22 +59,29 @@
 				%th =$form->labelEx($model,'images')
 				%td
 					:php
-						$images = CUploadedFile::getInstances($model, 'images');
-						if(isset($images) && count($images) > 0 && strlen($form->error($model, 'images')) <= 74):
+						$uploads = unserialize(base64_decode($model->uploads));
+						if(strlen($form->error($model, 'images')) <= 74) {
+							$images = CUploadedFile::getInstances($model, 'images');
+							foreach($images as $image) {
+								$name = md5($image->name.time()).'.jpg';
+								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+								$uploads[] = array('name'=>$image->name, 'tempName'=>$name);
+							}
+						}
+						if($uploads):
 					.images
 						:php
-							foreach($images as $image) {
-								$name = md5($image->name.time()).'.'.$image->extensionName;
-								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
-								echo CHtml::image('/images/transparent.gif', '', array('style'=>'background-image: url(/images/image.php/'.$name.'?image=/images/uploads/temp/'.$name.'&width=40&height=36&cropratio=40:36&quality=100)'));
+							foreach($uploads as $upload) {
+								echo '<div class="image" title="'.$upload['name'].'" style="background-image: url(/images/image.php/'.$upload['tempName'].'?image=/images/uploads/temp/'.$upload['tempName'].'&#38;width=40&#38;height=36&#38;cropratio=40:36&#38;quality=100)"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
 							}
+							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
 					:php
 						endif;
 						$this->widget('CMultiFileUpload',array(
 							'model'=>$model,
 							'attribute'=>'images',
 							'accept'=>'gif|jpg|jpeg|png',
-							'max'=>5 - count($images),
+							'max'=>5,
 							'remove'=>'remove',
 						));
 					=$form->error($model,'images')
@@ -83,3 +90,35 @@
 
 	:php
 		$this->endWidget()
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'_form',
+		"
+		$('a', '#item_create div.images div.image').click(function() {
+			var \$this = $(this);
+			var input = unserialize(base64_decode($('#Item_uploads').val()));
+			var output = [];
+			for(var i in input)
+				if(i < \$this.parent().index())
+					output[i] = input[i];
+				else if(i > \$this.parent().index())
+					output[i - 1] = input[i];
+			$('#Item_uploads').val(base64_encode(serialize(output)));
+			var image = \$this.parent().attr('style');
+			\$this.parent().remove();
+			$.post(
+				'/ad/ajaxRemoveImage/',
+				{
+					image: image.substring(image.indexOf('=') + 2, image.indexOf('&'))
+				},
+				function(data) {
+					if($('div.images', '#item_create').children('div.image').size() == 0)
+						$('div.images', '#item_create').remove();
+				}
+			);
+			return false;
+		});
+		",
+		CClientScript::POS_READY
+	);
