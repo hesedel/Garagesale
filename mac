@@ -1,5 +1,5 @@
 chmod 757 assets/
-chmod 757 images/imagecache/
+chmod 757 images/slir/cache/
 chmod 757 images/uploads/
 chmod 757 images/uploads/items/
 chmod 757 protected/runtime/
