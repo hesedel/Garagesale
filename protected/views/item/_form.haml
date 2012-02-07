@@ -16,7 +16,7 @@
 
 			%tr
 				%td \\&#160;
-				%td =CHtml::submitButton($model->isNewRecord ? 'Post' : 'Update')
+				%td =CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save')
 
 		%tbody
 
@@ -60,19 +60,29 @@
 				%td
 					:php
 						$uploads = unserialize(base64_decode($model->uploads));
+						if(!$model->isNewRecord && !$uploads) {
+							foreach(glob(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/*.jpg') as $image) {
+								$file = pathinfo($image);
+								$uploads[] = array('name'=>$file['filename'], 'tempName'=>'', 'new'=>false);
+							}
+							//sort($uploads);
+						}
 						if(strlen($form->error($model, 'images')) <= 74) {
 							$images = CUploadedFile::getInstances($model, 'images');
 							foreach($images as $image) {
 								$name = md5($image->name.time()).'.jpg';
 								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
-								$uploads[] = array('name'=>$image->name, 'tempName'=>$name);
+								$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 							}
 						}
-						if($uploads):
+						if($uploads) :
 					.images
 						:php
 							foreach($uploads as $upload) {
-								echo '<div class="image" title="'.$upload['name'].'" style="background-image: url(/images/image.php/'.$upload['tempName'].'?image=/images/uploads/temp/'.$upload['tempName'].'&#38;width=40&#38;height=36&#38;cropratio=40:36&#38;quality=100)"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
+								if($upload['new'])
+									echo '<div class="image new" title="'.$upload['name'].'" style="background-image: url(/images/slir/w40-h36-c40:36/images/uploads/temp/'.$upload['tempName'].')"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
+								else
+									echo '<div class="image" title="'.$upload['name'].'" style="background-image: url(/images/slir/w40-h38-c40:36/images/uploads/items/'.$model->id.'/'.$upload['name'].'.jpg)"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
 							}
 							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
 					:php
@@ -86,7 +96,7 @@
 						));
 					=$form->error($model,'images')
 					.no-js
-						JavaScript required to upload images.
+						JavaScript required
 
 	:php
 		$this->endWidget()
@@ -96,7 +106,7 @@
 		'_form',
 		"
 		var uploadIndex_from = 0;
-		$('div.images', '#item_create').sortable( {
+		$('div.images', '#item_create, #item_update').sortable( {
 			revert: true,
 			opacity: .75,
 			start: function(event) {
@@ -120,7 +130,7 @@
 				$('#Item_uploads').val(base64_encode(serialize(output)));
 			}
 		});
-		$('a', '#item_create div.images div.image').click(function() {
+		$('a', '#item_create div.images div.image, #item_update div.images div.image').click(function() {
 			var \$this = $(this);
 			var input = unserialize(base64_decode($('#Item_uploads').val()));
 			var output = [];
@@ -139,8 +149,8 @@
 					image: image.substring(image.indexOf('=') + 2, image.indexOf('&'))
 				},
 				function(data) {
-					if($('div.images', '#item_create').children('div.image').size() == 0)
-						$('div.images', '#item_create').remove();
+					if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)
+						$('div.images', '#item_create, #item_update').remove();
 				}
 			);
 			return false;

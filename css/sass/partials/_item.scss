@@ -80,6 +80,10 @@
 
 			}
 
+			&.new {
+				border-color: $olivedrab;
+			}
+
 			&:hover {
 				border-color: $dodgerblue;
 

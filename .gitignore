@@ -1,8 +1,7 @@
 /assets/*
 !/assets/.empty
 /css/.sass-cache/
-/images/imagecache/*
-!/images/imagecache/.empty
+/images/slir/cache/
 /images/uploads/*
 !/images/uploads/.empty
 !/images/uploads/items/
