@@ -107,6 +107,7 @@
 				var input = unserialize(base64_decode($('#Item_uploads').val()));
 				var output = [];
 				output[uploadIndex_to] = input[uploadIndex_from];
+				alert(output[uploadIndex_to]['name']);
 				for(var i in input) {
 					if((i < uploadIndex_from && i < uploadIndex_to) || (i > uploadIndex_from && i > uploadIndex_to))
 						output[i] = input[i];
@@ -117,8 +118,6 @@
 							output[i] = input[i - 1];
 					}
 				}
-				for(var i in output)
-					alert(output[i]['name']);
 				$('#Item_uploads').val(base64_encode(serialize(output)));
 			}
 		});
