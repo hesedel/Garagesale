@@ -95,18 +95,41 @@
 	Yii::app()->clientScript->registerScript(
 		'_form',
 		"
+		var uploadIndex_from = 0;
 		$('div.images', '#item_create').sortable( {
-			revert: true
+			revert: true,
+			opacity: .75,
+			start: function(event) {
+				uploadIndex_from = $(event.target).index();
+			},
+			update: function(event) {
+				var uploadIndex_to = $(event.target).index();
+				var input = unserialize(base64_decode($('#Item_uploads').val()));
+				var output = [];
+				output[uploadIndex_to] = input[uploadIndex_from];
+				for(var i in input) {
+					if((i < uploadIndex_from && i < uploadIndex_to) || (i > uploadIndex_from && i > uploadIndex_to))
+						output[i] = input[i];
+					else if(i != uploadIndex_to) {
+						if(uploadIndex_from < uploadIndex_to)
+							output[i] = input[parseInt(i) + 1];
+						else
+							output[i] = input[i - 1];
+					}
+				}
+				$('#Item_uploads').val(base64_encode(serialize(output)));
+			}
 		});
 		$('a', '#item_create div.images div.image').click(function() {
 			var \$this = $(this);
 			var input = unserialize(base64_decode($('#Item_uploads').val()));
 			var output = [];
-			for(var i in input)
+			for(var i in input) {
 				if(i < \$this.parent().index())
 					output[i] = input[i];
 				else if(i > \$this.parent().index())
 					output[i - 1] = input[i];
+			}
 			$('#Item_uploads').val(base64_encode(serialize(output)));
 			var image = \$this.parent().attr('style');
 			\$this.parent().remove();
