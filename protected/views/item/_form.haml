@@ -95,6 +95,9 @@
 	Yii::app()->clientScript->registerScript(
 		'_form',
 		"
+		$('div.images', '#item_create').sortable( {
+			revert: true
+		});
 		$('a', '#item_create div.images div.image').click(function() {
 			var \$this = $(this);
 			var input = unserialize(base64_decode($('#Item_uploads').val()));
