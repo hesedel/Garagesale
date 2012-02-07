@@ -117,6 +117,8 @@
 							output[i] = input[i - 1];
 					}
 				}
+				for(var i in output)
+					alert(output[i]['name']);
 				$('#Item_uploads').val(base64_encode(serialize(output)));
 			}
 		});
