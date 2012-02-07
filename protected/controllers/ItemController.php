@@ -146,6 +146,10 @@ class ItemController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			foreach(glob(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$id.'/*') as $file)
+				unlink($file);
+			rmdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$id.'/');
+
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
