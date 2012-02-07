@@ -78,7 +78,7 @@ class ItemController extends Controller
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 					$uploads[] = array('name'=>$image->name, 'tempName'=>$name);
 				}
-				mkdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/', 0777);
+				mkdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/');
 				if($uploads) {
 					$i = 0;
 					foreach($uploads as $upload) {
