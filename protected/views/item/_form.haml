@@ -61,16 +61,19 @@
 					:php
 						$uploads = unserialize(base64_decode($model->uploads));
 						if(!$model->isNewRecord && !$uploads) {
-							foreach(glob(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/*.jpg') as $image) {
-								$file = pathinfo($image);
-								$uploads[] = array('name'=>$file['filename'], 'tempName'=>'', 'new'=>false);
-							}
-							//sort($uploads);
+							$images = Yii::app()->db->createCommand()
+								->select('*')
+								->from('item_image')
+								->where('item_id=:item_id', array(':item_id'=>$model->id))
+								->order('index')
+								->queryAll();
+							foreach($images as $image)
+								$uploads[] = array('name'=>$image['id'], 'tempName'=>'', 'new'=>false);
 						}
 						if(strlen($form->error($model, 'images')) <= 74) {
 							$images = CUploadedFile::getInstances($model, 'images');
 							foreach($images as $image) {
-								$name = md5($image->name.time()).'.jpg';
+								$name = md5($image->name.time()).'.'.$image->extensionName;
 								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 								$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 							}
@@ -81,8 +84,14 @@
 							foreach($uploads as $upload) {
 								if($upload['new'])
 									echo '<div class="image new" title="'.$upload['name'].'" style="background-image: url(/images/slir/w40-h36-c40:36/images/uploads/temp/'.$upload['tempName'].')"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
-								else
-									echo '<div class="image" title="'.$upload['name'].'" style="background-image: url(/images/slir/w40-h38-c40:36/images/uploads/items/'.$model->id.'/'.$upload['name'].'.jpg)"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
+								else {
+									$image = Yii::app()->db->createCommand()
+										->select('*')
+										->from('item_image')
+										->where('id=:id', array(':id'=>$upload['name']))
+										->queryRow();
+									echo '<div class="image" title="'.$image['id'].'.'.$image['type'].'" style="background-image: url(/images/slir/w40-h38-c40:36/images/uploads/items/'.$image['id'].'.'.$image['type'].')"><a title="remove '.$image['id'].'.'.$image['type'].'" href="#"><span></span></a></div>';
+								}
 							}
 							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
 					:php
@@ -141,18 +150,20 @@
 					output[i - 1] = input[i];
 			}
 			$('#Item_uploads').val(base64_encode(serialize(output)));
-			var image = \$this.parent().attr('style');
+			if(\$this.parent().hasClass('new')) {
+				var image = \$this.parent().attr('style');
+				$.post(
+					'/ad/ajaxRemoveImage/',
+					{
+						image: '".Yii::getPathOfAlias('webroot')."/images/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.lastIndexOf(')'))
+					},
+					function() {
+						if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)
+							$('div.images', '#item_create, #item_update').remove();
+					}
+				);
+			}
 			\$this.parent().remove();
-			$.post(
-				'/ad/ajaxRemoveImage/',
-				{
-					image: image.substring(image.indexOf('=') + 2, image.indexOf('&'))
-				},
-				function(data) {
-					if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)
-						$('div.images', '#item_create, #item_update').remove();
-				}
-			);
 			return false;
 		});
 		",

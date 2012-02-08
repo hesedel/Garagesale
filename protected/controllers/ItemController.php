@@ -74,34 +74,24 @@ class ItemController extends Controller
 				$uploads = unserialize(base64_decode($model->uploads));
 				$images = CUploadedFile::getInstances($model, 'images');
 				foreach($images as $image) {
-					$name = md5($image->name.time()).'.jpg';
+					$name = md5($image->name.time()).'.'.$image->extensionName;
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 					$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 				}
-				mkdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/');
 				if($uploads) {
 					$i = 0;
 					foreach($uploads as $upload) {
-						if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/'.($i + 1).'.jpg'))
-							unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+						$file = pathinfo($upload['tempName']);
+						$model_itemImage=new ItemImage();
+						$model_itemImage->type=$file['extension'];
+						$model_itemImage->index=$i;
+						$model_itemImage->item_id=$model->id;
+						if($model_itemImage->save())
+							if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 						$i++;
 					}
 				}
-
-				/*
-				$images=CUploadedFile::getInstances($model,'images');
-				if(isset($images) && count($images) > 0)
-				{
-					foreach($images as $image)
-					{
-						$model_itemImage=new ItemImage();
-						$model_itemImage->type=$image->extensionName;
-						$model_itemImage->item_id=$model->id;
-						if($model_itemImage->save())
-							$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type);
-					}
-				}
-				*/
 
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -132,24 +122,47 @@ class ItemController extends Controller
 				$uploads = unserialize(base64_decode($model->uploads));
 				$images = CUploadedFile::getInstances($model, 'images');
 				foreach($images as $image) {
-					$name = md5($image->name.time()).'.jpg';
+					$name = md5($image->name.time()).'.'.$image->extensionName;
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 					$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 				}
+				$array1 = array();
 				if($uploads) {
-					foreach(glob(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/*.jpg') as $image) {
-						$file = pathinfo($image);
-						rename($image, Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/_'.$file['basename']);
-					}
 					$i = 0;
 					foreach($uploads as $upload) {
 						if($upload['new']) {
-							if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/'.($i + 1).'.jpg'))
-								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
-						} else
-							rename(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/_'.$upload['name'].'.jpg', Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model->id.'/'.($i + 1).'.jpg');
+							$file = pathinfo($upload['tempName']);
+							$model_itemImage=new ItemImage();
+							$model_itemImage->type=$file['extension'];
+							$model_itemImage->index=$i;
+							$model_itemImage->item_id=$model->id;
+							if($model_itemImage->save()) {
+								if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+									unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+								$array1[] = $model_itemImage->id;
+							}
+						} else {
+							Yii::app()->db->createCommand()->update('item_image', array(
+								'index'=>$i,
+							), 'id=:id', array(':id'=>$upload['name']));
+							$array1[] = $upload['name'];
+						}
 						$i++;
 					}
+				}
+				$images = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_image')
+					->where('item_id=:item_id', array(':item_id'=>$id))
+					->queryAll();
+				$array2 = array();
+				foreach($images as $image) {
+					$array2[] = $image['id'];
+				}
+				$deletes = array_diff($array2, $array1);
+				foreach($deletes as $delete) {
+					Yii::app()->db->createCommand()->delete('item_image', 'id=:id', array(':id'=>$delete));
+					unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.gif');
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
@@ -173,9 +186,14 @@ class ItemController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
-			foreach(glob(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$id.'/*') as $file)
-				unlink($file);
-			rmdir(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$id.'/');
+			$images = Yii::app()->db->createCommand()
+				->select('*')
+				->from('item_image')
+				->where('item_id=:item_id', array(':item_id'=>$id))
+				->queryAll();
+			Yii::app()->db->createCommand()->delete('item_image', 'item_id=:item_id', array(':item_id'=>$id));
+			foreach($images as $image)
+				unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$image['id'].'.'.$image['type']);
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))

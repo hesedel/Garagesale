@@ -1,10 +1,15 @@
 .view
 	:php
+		$image = Yii::app()->db->createCommand()
+			->select('*')
+			->from('item_image')
+			->where('item_id=:id and `index`=0', array(':id'=>$data->id))
+			->queryRow();
 		echo CHtml::link(
 			CHtml::image(
 				'/images/transparent.gif',
 				CHtml::encode($data->title),
-				array('style'=>'background-image: url(/images/slir/w220-h135-c220:135-be8e8e3/images/uploads/items/'.$data->id.'/1.jpg)')
+				array('style'=>'background-image: url(/images/slir/w220-h135-c220:135-be8e8e3/images/uploads/items/'.$image['id'].'.'.$image['type'].')')
 			),
 			array('/item/view', 'id'=>$data->id),
 			array('class'=>'img')

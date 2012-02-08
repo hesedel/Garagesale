@@ -39,8 +39,6 @@ require_once 'slirconfigdefaults.class.php';
 class SLIRConfig extends SLIRConfigDefaults
 {
 	// override configuration values here
-	public static $browserCacheTTL	= 0; // 7 * 24 * 60 * 60
-	public static $useRequestCache	= FALSE;
 	public static $defaultQuality	= 100;
 	public static $logErrors	= FALSE;
 	public static $errorImages	= FALSE;

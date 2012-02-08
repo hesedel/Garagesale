@@ -6,12 +6,14 @@
  * The followings are the available columns in table 'item_image':
  * @property string $id
  * @property string $type
+ * @property integer $index
  * @property string $item_id
  */
 class ItemImage extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
+	 * @param string $className active record class name.
 	 * @return ItemImage the static model class
 	 */
 	public static function model($className=__CLASS__)
@@ -35,12 +37,13 @@ class ItemImage extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('type, item_id', 'required'),
+			array('type, index, item_id', 'required'),
+			array('index', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>4),
 			array('item_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, type, item_id', 'safe', 'on'=>'search'),
+			array('id, type, index, item_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,6 +67,7 @@ class ItemImage extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'type' => 'Type',
+			'index' => 'Index',
 			'item_id' => 'Item',
 		);
 	}
@@ -81,6 +85,7 @@ class ItemImage extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('type',$this->type,true);
+		$criteria->compare('index',$this->index);
 		$criteria->compare('item_id',$this->item_id,true);
 
 		return new CActiveDataProvider($this, array(
