@@ -83,14 +83,14 @@
 						:php
 							foreach($uploads as $upload) {
 								if($upload['new'])
-									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/images/slir/w40-h36-c40:36/images/uploads/temp/'.CHtml::encode($upload['tempName']).')"><a title="remove '.CHtml::encode($upload['name']).'" href="#"><span></span></a></div>';
+									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/images/slir/w40-h36-c40:36-baeaeaa/images/uploads/temp/'.CHtml::encode($upload['tempName']).')"><a title="remove '.CHtml::encode($upload['name']).'" href="#"><span></span></a></div>';
 								else {
 									$image = Yii::app()->db->createCommand()
 										->select('*')
 										->from('item_image')
 										->where('id=:id', array(':id'=>$upload['name']))
 										->queryRow();
-									echo '<div class="image" title="'.$image['id'].'.'.$image['type'].'" style="background-image: url(/images/slir/w40-h38-c40:36/images/uploads/items/'.$image['id'].'.'.$image['type'].')"><a title="remove '.$image['id'].'.'.$image['type'].'" href="#"><span></span></a></div>';
+									echo '<div class="image" title="'.$image['id'].'.'.$image['type'].'" style="background-image: url(/images/slir/w40-h38-c40:36-baeaeaa/images/uploads/items/'.$image['id'].'.'.$image['type'].')"><a title="remove '.$image['id'].'.'.$image['type'].'" href="#"><span></span></a></div>';
 								}
 							}
 							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
