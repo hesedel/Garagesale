@@ -30,9 +30,6 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'with'=>array('condition'),
-			),
 			'pagination'=>false,
 		));
 		$this->render('index',array(

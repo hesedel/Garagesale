@@ -55,8 +55,8 @@
 
 			a {
 				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				border-bottom: 1px solid $dodgerblue;
-				border-left: 1px solid $dodgerblue;
+				border-bottom: 1px solid $deeppink;
+				border-left: 1px solid $deeppink;
 				position: absolute;
 					top: -1px;
 					right: -1px;
@@ -86,7 +86,7 @@
 			}
 
 			&:hover {
-				border-color: $dodgerblue;
+				border-color: $deeppink;
 
 				a {
 					display: block;
@@ -95,7 +95,7 @@
 			}
 
 			&.ui-sortable-helper {
-				border-color: $deeppink;
+				border-color: $dodgerblue;
 
 				a {
 					display: none;
@@ -127,11 +127,34 @@
 	h2 {
 		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 		word-wrap: break-word;
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		background-color: whiten(blacken($beige, 25%), 25%, 5);
 		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 		@include border-radius(2px);
 		line-height: 27px;
 		padding: 27px 15px 9px;
+	}
+
+	table.information {
+		border-spacing: 1px;
+
+		tr {
+
+			th, td {
+				background-color: $whitesmoke;
+			}
+
+			th {
+			}
+
+			td {
+			}
+
+		}
+
+	}
+
+	h3 {
+		color: blacken($beige, 25%, 2);
 	}
 
 	div.images {

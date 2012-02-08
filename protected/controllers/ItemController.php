@@ -215,9 +215,6 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'with'=>array('condition'),
-			),
 			'pagination'=>array('pageSize'=>3),
 		));
 		$this->render('index',array(

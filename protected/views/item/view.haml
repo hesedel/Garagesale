@@ -17,9 +17,31 @@
 #item_view
 
 	%h2 #{$model->title}
-	%h3 PHP #{number_format(CHtml::encode($model->price))}
+	%table.information
+		%tr
+			%th Price
+			%td PHP #{number_format(CHtml::encode($model->price))}
+		%tr
+			%th Category
+			%td #{$model->category_id}
+		%tr
+			%th Condition
+			%td
+				:php
+					if($model->condition_id != null) {
+						$condition = '';
+						switch($model->condition_id) {
+							case 1:
+								$condition = 'old';
+								break;
+							default:
+								$condition = 'new';
+						}
+					}
+				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
+	%h3 Description
 	%p #{$model->description}
-	%h4 Images
+	%h3 Images
 	.images
 		:php
 			$images = Yii::app()->db->createCommand()
@@ -30,19 +52,3 @@
 				->queryAll();
 			foreach($images as $image)
 				echo CHtml::link('', '#', array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')'));
-
-	:php
-		$this->widget('zii.widgets.CDetailView', array(
-			'data'=>$model,
-			'attributes'=>array(
-				'id',
-				'created',
-				'updated',
-				'title',
-				'price',
-				'description',
-				'category_id',
-				'condition_id',
-				'user_id',
-			),
-		));
