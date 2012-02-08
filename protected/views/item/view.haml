@@ -18,16 +18,18 @@
 
 	%h2 #{$model->title}
 	%h3 PHP #{number_format(CHtml::encode($model->price))}
-	:php
-		$images = Yii::app()->db->createCommand()
-			->select('*')
-			->from('item_image')
-			->where('item_id=:item_id', array(':item_id'=>$model->id))
-			->order('index')
-			->queryAll();
-		foreach($images as $image)
-			echo CHtml::image('/images/slir/w530/images/uploads/items/'.$image['id'].'.'.$image['type'], $image['id'].'.'.$image['type']);
 	%p #{$model->description}
+	%h4 Images
+	.images
+		:php
+			$images = Yii::app()->db->createCommand()
+				->select('*')
+				->from('item_image')
+				->where('item_id=:item_id', array(':item_id'=>$model->id))
+				->order('index')
+				->queryAll();
+			foreach($images as $image)
+				echo CHtml::link('', '#', array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')'));
 
 	:php
 		$this->widget('zii.widgets.CDetailView', array(

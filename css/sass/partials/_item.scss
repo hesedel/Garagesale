@@ -127,11 +127,35 @@
 	h2 {
 		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 		word-wrap: break-word;
-		background-color: $whitesmoke;
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
 		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 		@include border-radius(2px);
 		line-height: 27px;
 		padding: 27px 15px 9px;
+	}
+
+	div.images {
+		@include clearfix;
+		margin-right: -1px;
+
+		a {
+			@include float-left;
+			background-color: $whitesmoke;
+			background-position: center;
+			background-repeat: no-repeat;
+			width: 176px;
+			height: 170px;
+			margin-right: 1px;
+			margin-bottom: 1px;
+
+			&:hover {
+				border: 1px solid $deeppink;
+				width: 174px;
+				height: 168px;
+			}
+
+		}
+
 	}
 
 }
