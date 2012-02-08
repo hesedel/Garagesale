@@ -161,8 +161,13 @@ class ItemController extends Controller
 				}
 				$deletes = array_diff($array2, $array1);
 				foreach($deletes as $delete) {
+					$image = Yii::app()->db->createCommand()
+						->select('*')
+						->from('item_image')
+						->where('id=:id', array(':id'=>$delete))
+						->queryRow();
 					Yii::app()->db->createCommand()->delete('item_image', 'id=:id', array(':id'=>$delete));
-					unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.gif');
+					unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.'.$image['type']);
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
