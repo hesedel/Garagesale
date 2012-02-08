@@ -141,13 +141,14 @@ class ItemController extends Controller
 									unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 								$array1[] = $model_itemImage->id;
 							}
-						} else {
+							$i++;
+						} else if(sizeof(Yii::app()->db->createCommand()->select('id')->from('item_image')->where('id=:id', array(':id'=>$upload['name']))->queryAll()) > 0) {
 							Yii::app()->db->createCommand()->update('item_image', array(
 								'index'=>$i,
 							), 'id=:id', array(':id'=>$upload['name']));
 							$array1[] = $upload['name'];
+							$i++;
 						}
-						$i++;
 					}
 				}
 				$images = Yii::app()->db->createCommand()
