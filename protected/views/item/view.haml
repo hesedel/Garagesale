@@ -2,8 +2,8 @@
 	$this->layout='column3';
 
 	$this->breadcrumbs=array(
-		'Items'=>array('index'),
-		$model->title,
+		'Ads'=>array('index'),
+		$model->id,
 	);
 
 	$this->menu=array(
@@ -14,28 +14,33 @@
 		array('label'=>'Manage Item', 'url'=>array('admin')),
 	);
 
-%h2 View Item ##{$model->id}
-:php
-	$this->widget('zii.widgets.CDetailView', array(
-		'data'=>$model,
-		'attributes'=>array(
-			'id',
-			'created',
-			'updated',
-			'title',
-			'price',
-			'description',
-			'category_id',
-			'condition_id',
-			'user_id',
-		),
-	));
-:php
-	$images = Yii::app()->db->createCommand()
-		->select('*')
-		->from('item_image')
-		->where('item_id=:item_id', array(':item_id'=>$model->id))
-		->order('index')
-		->queryAll();
-	foreach($images as $image)
-		echo CHtml::image('/images/slir/w530/images/uploads/items/'.$image['id'].'.'.$image['type'], $image['id'].'.'.$image['type']);
+#item_view
+
+	%h2 #{$model->title}
+	%h3 PHP #{number_format(CHtml::encode($model->price))}
+	:php
+		$images = Yii::app()->db->createCommand()
+			->select('*')
+			->from('item_image')
+			->where('item_id=:item_id', array(':item_id'=>$model->id))
+			->order('index')
+			->queryAll();
+		foreach($images as $image)
+			echo CHtml::image('/images/slir/w530/images/uploads/items/'.$image['id'].'.'.$image['type'], $image['id'].'.'.$image['type']);
+	%p #{$model->description}
+
+	:php
+		$this->widget('zii.widgets.CDetailView', array(
+			'data'=>$model,
+			'attributes'=>array(
+				'id',
+				'created',
+				'updated',
+				'title',
+				'price',
+				'description',
+				'category_id',
+				'condition_id',
+				'user_id',
+			),
+		));

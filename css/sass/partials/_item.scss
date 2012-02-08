@@ -1,12 +1,12 @@
 #item_create,
 #item_update {
 	position: relative;
-	padding-top: 18px;
+	padding-top: 36px;
 
 	h2 {
 		color: $deeppink;
 		position: absolute;
-			top: -27px;
+			top: -9px;
 			right: 0;
 	}
 
@@ -109,6 +109,29 @@
 
 }
 
-.no-js #Item_images {
-	display: none;
+.no-js {
+
+	#item_create,
+	#item_update {
+
+		#Item_images {
+			display: none;
+		}
+
+	}
+
+}
+
+#item_view {
+
+	h2 {
+		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+		word-wrap: break-word;
+		background-color: $whitesmoke;
+		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+		@include border-radius(2px);
+		line-height: 27px;
+		padding: 27px 15px 9px;
+	}
+
 }

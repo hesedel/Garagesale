@@ -53,7 +53,7 @@ body {
 	border-spacing: 0;
 	position: absolute;
 		top: 0;
-		z-index: 1;
+		z-index: 2;
 	display: table;
 	width: 100%;
 	margin-bottom: 18px;
@@ -349,6 +349,7 @@ body {
 	#content {
 		@include column(19, true);
 		@include float-right;
+		position: relative;
 		width: 740px;
 		margin-bottom: 0;
 		padding-left: 10px;
@@ -373,6 +374,7 @@ body {
 		#content {
 			@include column(14, true);
 			@include float-right;
+			position: relative;
 			width: 530px;
 			margin-bottom: 0;
 			padding-left: 10px;
@@ -393,13 +395,22 @@ body {
 
 }
 
-div.breadcrumbs a {
-	color: $deeppink;
-	text-decoration: none;
+div.breadcrumbs {
+	background-color: white;
+	@include border-bottom-right-radius(2px);
+	position: absolute;
+		z-index: 1;
+	padding-right: 10px;
 
-	&:hover {
-		color: blacken($deeppink, 25%);
-		text-decoration: underline;
+	a {
+		color: $deeppink;
+		text-decoration: none;
+
+		&:hover {
+			color: blacken($deeppink, 25%);
+			text-decoration: underline;
+		}
+
 	}
 
 }
