@@ -11,7 +11,7 @@ CREATE TABLE item (
   created timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title varchar(64) NOT NULL,
-  price mediumint(8) unsigned NOT NULL,
+  price int(10) unsigned NOT NULL,
   description text NOT NULL,
   category_id tinyint(3) unsigned DEFAULT NULL,
   condition_id tinyint(3) unsigned DEFAULT NULL,
@@ -22,6 +22,7 @@ CREATE TABLE item (
   KEY category_id (category_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 CREATE TABLE item_category (
   id tinyint(3) unsigned NOT NULL,
   title varchar(16) NOT NULL,
@@ -30,16 +31,23 @@ CREATE TABLE item_category (
   KEY category_id (category_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 CREATE TABLE item_condition (
   id tinyint(3) unsigned NOT NULL,
   title varchar(16) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO item_condition VALUES(0, 'Brand New');
+INSERT INTO item_condition VALUES(1, 'Used');
+
 CREATE TABLE item_image (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(4) NOT NULL,
+  `index` tinyint(3) unsigned NOT NULL,
   item_id int(10) unsigned NOT NULL,
   PRIMARY KEY (id),
-  KEY item_id (item_id)
+  KEY item_id (item_id),
+  KEY `index` (`index`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
