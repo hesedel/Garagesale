@@ -17,28 +17,28 @@
 #item_view
 
 	%h2 #{$model->title}
-	%table.information
+	%table.information(title="Information")
 		%tr
 			%th Price
 			%td.price PHP #{number_format($model->price)}
 		%tr
 			%th Category
 			%td #{$model->category_id}
+		-if($model->condition_id != null):
 		%tr
 			%th Condition
 			%td
 				:php
-					if($model->condition_id != null) {
-						$condition = '';
-						switch($model->condition_id) {
-							case 1:
-								$condition = 'old';
-								break;
-							default:
-								$condition = 'new';
-						}
+					$condition = '';
+					switch($model->condition_id) {
+						case 1:
+							$condition = 'old';
+							break;
+						default:
+							$condition = 'new';
 					}
 				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
+		-endif;
 	%h3 Description
 	%p #{Yii::app()->format->formatNtext($model->description)}
 	%h3 Images
@@ -51,4 +51,4 @@
 				->order('index')
 				->queryAll();
 			foreach($images as $image)
-				echo CHtml::link('', '#', array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')'));
+				echo CHtml::link('&#160;', '#', array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')'));

@@ -38,16 +38,6 @@ body {
 	padding-top: 0;
 }
 
-/*
-#updates {
-	background-color: whiten($orange, 25%, 4);
-	border: 1px dashed whiten($orange, 25%, 2);
-	@include border-radius(2px);
-	margin-bottom: 18px;
-	padding: 8px 9px;
-}
-*/
-
 #table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -331,6 +321,14 @@ body {
 		display: block;
 	}
 
+}
+
+#updates {
+	background-color: whiten($orange, 25%, 4);
+	border: 1px dashed whiten($orange, 25%, 2);
+	@include border-radius(2px);
+	margin-bottom: 18px;
+	padding: 8px 9px;
 }
 
 #column1,
