@@ -40,7 +40,7 @@
 					}
 				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
 	%h3 Description
-	%p #{$model->description}
+	%p #{Yii::app()->format->formatNtext($model->description)}
 	%h3 Images
 	.images
 		:php
