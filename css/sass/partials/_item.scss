@@ -140,13 +140,38 @@
 		tr {
 
 			th, td {
-				background-color: $whitesmoke;
+				vertical-align: top;
+				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				background-color: whiten($whitesmoke, 25%, 2);
+				line-height: 18px;
+				padding: 9px 15px;
 			}
 
 			th {
+				font-size: $h4;
+				@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 			}
 
 			td {
+				width: 100%;
+
+				&.price {
+					color: $olivedrab;
+					font-size: $h3;
+				}
+
+				span.condition {
+
+					&.new {
+						color: $olivedrab;
+					}
+
+					&.old {
+						color: $orangered;
+					}
+
+				}
+
 			}
 
 		}
@@ -154,7 +179,7 @@
 	}
 
 	h3 {
-		color: blacken($beige, 25%, 2);
+		color: blacken($beige, 25%);
 	}
 
 	div.images {
