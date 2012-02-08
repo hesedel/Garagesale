@@ -333,20 +333,23 @@ body {
 
 }
 
-#column1 {
-	@include reset-float;
-	padding-top: 36px;
+#column1,
+#column2,
+#column3 {
 	padding-bottom: 54px;
 }
 
+#column1 {
+	@include reset-float;
+	padding-top: 36px;
+}
+
 #column2 {
-	padding-bottom: 54px;
 
 	#content {
-		@include column(19);
+		@include column(19, true);
 		@include float-right;
 		width: 740px;
-		margin-right: 0;
 		margin-bottom: 0;
 		padding-left: 10px;
 	}
@@ -360,6 +363,34 @@ body {
 
 .ie7 #column2 {
 	padding-bottom: 36px;
+}
+
+#column3 {
+
+	#content-container {
+		@include float-left;
+
+		#content {
+			@include column(14, true);
+			@include float-right;
+			width: 530px;
+			margin-bottom: 0;
+			padding-left: 10px;
+		}
+
+		#sidebar-left {
+			@include column(5);
+			margin-bottom: 0;
+		}
+
+	}
+
+	#sidebar-right {
+		@include column(5, true);
+		@include float-right;
+		margin-bottom: 0;
+	}
+
 }
 
 div.breadcrumbs a {
