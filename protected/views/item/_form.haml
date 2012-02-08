@@ -83,7 +83,7 @@
 						:php
 							foreach($uploads as $upload) {
 								if($upload['new'])
-									echo '<div class="image new" title="'.$upload['name'].'" style="background-image: url(/images/slir/w40-h36-c40:36/images/uploads/temp/'.$upload['tempName'].')"><a title="remove '.$upload['name'].'" href="#"><span></span></a></div>';
+									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/images/slir/w40-h36-c40:36/images/uploads/temp/'.CHtml::encode($upload['tempName']).')"><a title="remove '.CHtml::encode($upload['name']).'" href="#"><span></span></a></div>';
 								else {
 									$image = Yii::app()->db->createCommand()
 										->select('*')

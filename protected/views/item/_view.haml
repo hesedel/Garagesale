@@ -16,7 +16,7 @@
 		);
 	%strong =CHtml::link(CHtml::encode($data->title), array('/item/view', 'id'=>$data->id))
 	%span.category Category
-	%span.price P #{number_format(CHtml::encode($data->price))}
+	%span.price P #{number_format($data->price)}
 	.clear
 	%span.location Location
 	:php
