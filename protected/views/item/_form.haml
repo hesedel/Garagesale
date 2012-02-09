@@ -51,7 +51,7 @@
 							return strcasecmp($a['title'], $b['title']);
 						}
 						foreach($categories as $category)
-							$listData[] = array('id'=>$category['id'], 'title'=>$category['title'], 'parent_id'=>$category['parent_id']);
+							$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
 						usort($listData, 'compare');
 						$htmlOptions = array('options'=>array());
 						$level_max = 0;
