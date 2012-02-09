@@ -51,7 +51,7 @@ class Item extends CActiveRecord
 			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
-			array('condition_id, user_id', 'default', 'value'=>null),
+			array('category_id, condition_id, user_id', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
@@ -67,6 +67,7 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'category'=>array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition'=>array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 		);
 	}

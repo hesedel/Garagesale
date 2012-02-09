@@ -52,9 +52,24 @@
 		%tr
 			%th Price
 			%td.price PHP #{number_format($model->price)}
+		-if($model->category_id != null):
 		%tr
 			%th Category
-			%td #{$model->category_id}
+			%td
+				:php
+					$category = '';
+					$category_parent = $model->category->parent_id;
+					while($category_parent != null) {
+						$category_parent = Yii::app()->db->createCommand()
+							->select('*')
+							->from('item_category')
+							->where('id=:id', array(':id'=>$category_parent))
+							->queryRow();
+						$category = CHtml::encode($category_parent['title']).' &#160; / &#160; '.$category;
+						$category_parent = $category_parent['parent_id'];
+					}
+				=$category.CHtml::encode($model->category->title)
+		-endif
 		-if($model->condition_id != null):
 		%tr
 			%th Condition
@@ -69,7 +84,7 @@
 							$condition = 'new';
 					}
 				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
-		-endif;
+		-endif
 	%table.info-contact(cellspacing="1")
 		%caption Contact Info
 		%tr
