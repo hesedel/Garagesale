@@ -1,10 +1,11 @@
 :php
-	$this->layout='column3';
-
+	-$this->pageTitle=Yii::app()->name . ' - ' . $model->title;
 	$this->breadcrumbs=array(
 		'Ads'=>array('index'),
 		$model->id,
 	);
+
+	$this->layout='column3';
 
 	$this->menu=array(
 		array('label'=>'List Item', 'url'=>array('index')),
@@ -37,7 +38,7 @@
 
 #item_view
 
-	%h2 #{$model->title}
+	%h2 #{CHtml::encode($model->title)}
 	%table.info-item(cellspacing="1")
 		%caption Item Info
 		%tr
@@ -68,7 +69,7 @@
 			%td John Doe
 		%tr
 			%th Email
-			%td email@address.com
+			%td.email #{base64_encode('email@address.com')}
 		%tr
 			%th Phone
 			%td +1 23 456-7890
@@ -98,6 +99,7 @@
 	Yii::app()->clientScript->registerScript(
 		'item_view',
 		"
+		$('td.email', '#item_view table.info-contact').text(base64_decode($('td.email', '#item_view table.info-contact').text()));
 		$('a.lightbox', '#item_view-sidebar-left, #item_view').lightBox( {
 			//overlayBgColor: '#',
 			//overlayOpacity: .25,
