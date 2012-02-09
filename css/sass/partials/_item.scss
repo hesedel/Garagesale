@@ -123,6 +123,33 @@
 
 }
 
+#item_view-sidebar-left {
+
+	a.lightbox {
+		background-color: $whitesmoke;
+		border: 1px solid $whitesmoke;
+		display: block;
+		overflow: hidden;
+
+		img {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&:hover {
+			border-color: $deeppink;
+
+			img {
+				
+			}
+
+		}
+
+	}
+
+}
+
 #item_view {
 
 	h2 {
@@ -135,7 +162,7 @@
 		padding: 27px 15px 9px;
 	}
 
-	table.info-ad,
+	table.info-item,
 	table.info-contact {
 		border-spacing: 1px;
 

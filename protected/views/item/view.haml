@@ -14,11 +14,32 @@
 		array('label'=>'Manage Item', 'url'=>array('admin')),
 	);
 
+	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-left'));
+
+#item_view-sidebar-left
+	:php
+		$image = Yii::app()->db->createCommand()
+			->select('*')
+			->from('item_image')
+			->where('item_id=:item_id and `index`=0', array(':item_id'=>$model->id))
+			->order('index')
+			->queryRow();
+		if($image) {
+			echo CHtml::link(
+				CHtml::image('/images/slir/w188-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'], $image['id'].'.'.$image['type']),
+				'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
+				array('class'=>'lightbox', 'title'=>'click to enlarge')
+			);
+		}
+
+:php
+	$this->endWidget();
+
 #item_view
 
 	%h2 #{$model->title}
-	%table.info-ad(cellspacing="1")
-		%caption Ad Info
+	%table.info-item(cellspacing="1")
+		%caption Item Info
 		%tr
 			%th Price
 			%td.price PHP #{number_format($model->price)}
@@ -53,27 +74,31 @@
 			%td +1 23 456-7890
 	%h3 Description
 	%p #{Yii::app()->format->formatNtext($model->description)}
-	%h3 Images
+	%h3 Additional Photos
 	.images
 		:php
 			$images = Yii::app()->db->createCommand()
 				->select('*')
 				->from('item_image')
-				->where('item_id=:item_id', array(':item_id'=>$model->id))
+				->where('item_id=:item_id and `index`>0', array(':item_id'=>$model->id))
 				->order('index')
 				->queryAll();
-			foreach($images as $image)
-				echo CHtml::link(
-					CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')')),
-					'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
-					array('title'=>'click to enlarge')
-				);
+			if(sizeof($images) > 0) {
+				foreach($images as $image) {
+					echo CHtml::link(
+						CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')')),
+						'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
+						array('class'=>'lightbox', 'title'=>'click to enlarge')
+					);
+				}
+			} else
+				echo 'Seller did not upload any additional photos.';
 
 :php
 	Yii::app()->clientScript->registerScript(
 		'item_view',
 		"
-		$('a', '#item_view div.images').lightBox( {
+		$('a.lightbox', '#item_view-sidebar-left, #item_view').lightBox( {
 			//overlayBgColor: '#',
 			//overlayOpacity: .25,
 			imageLoading: '/images/lightbox-ico-loading.gif',
