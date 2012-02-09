@@ -188,7 +188,6 @@
 			}
 
 			th {
-				font-size: $h4;
 				@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 			}
 
@@ -198,6 +197,10 @@
 				&.price {
 					color: $olivedrab;
 					font-size: $h3;
+				}
+
+				&.condition {
+					font-size: $h4;
 				}
 
 				span.condition {
