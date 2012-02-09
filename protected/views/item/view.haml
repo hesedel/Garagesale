@@ -17,8 +17,8 @@
 #item_view
 
 	%h2 #{$model->title}
-	%table.information(cellspacing="1")
-		%caption Ad Information
+	%table.info-ad(cellspacing="1")
+		%caption Ad Info
 		%tr
 			%th Price
 			%td.price PHP #{number_format($model->price)}
@@ -40,6 +40,17 @@
 					}
 				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
 		-endif;
+	%table.info-contact(cellspacing="1")
+		%caption Contact Info
+		%tr
+			%th Name
+			%td John Doe
+		%tr
+			%th Email
+			%td email@address.com
+		%tr
+			%th Phone
+			%td +1 23 456-7890
 	%h3 Description
 	%p #{Yii::app()->format->formatNtext($model->description)}
 	%h3 Images
