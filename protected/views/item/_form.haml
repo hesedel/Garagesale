@@ -94,6 +94,7 @@
 								}
 							}
 							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
+						.clear
 					:php
 						endif;
 						$this->widget('CMultiFileUpload',array(

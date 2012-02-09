@@ -32,7 +32,6 @@
 	}
 
 	div.images {
-		@include clearfix;
 		margin-right: -10px;
 
 		div.image {
@@ -65,6 +64,8 @@
 				height: 16px;
 
 				span {
+					cursor: pointer;
+					background-color: whiten(blacken($beige, 25%), 25%, 4);
 					@include _16-sprite(x-black);
 					position: absolute;
 						top: 0;
@@ -136,6 +137,17 @@
 
 	table.information {
 		border-spacing: 1px;
+
+		caption {
+			color: blacken($beige, 25%, 2);
+			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+			background-color: whiten(blacken($beige, 25%), 25%, 5);
+			@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+			@include border-top-radius(2px);
+			border-right: 1px solid white;
+			border-left: 1px solid white;
+			padding: 0 15px;
+		}
 
 		tr {
 

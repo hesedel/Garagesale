@@ -64,7 +64,7 @@ body {
 			&.filters-right {
 
 				div {
-					background-color: whiten(blacken($beige, 25%), 25%, 5);
+					background-color: whiten(blacken($beige, 25%), 25%, 6);
 					padding-bottom: 18px;
 				}
 
@@ -212,7 +212,7 @@ body {
 
 		&.click {
 			color: blacken($dodgerblue, 25%, 2);
-			background-color: whiten(blacken($beige, 25%), 25%, 5) !important;
+			background-color: whiten(blacken($beige, 25%), 25%, 6) !important;
 			@include background-image(none);
 			@include border-bottom-left-radius(0);
 			@include box-shadow(none);
@@ -301,7 +301,7 @@ body {
 	#filters a {
 		cursor: default;
 		color: blacken($dodgerblue, 25%, 2);
-		background-color: whiten(blacken($beige, 25%), 25%, 5);
+		background-color: whiten(blacken($beige, 25%), 25%, 6);
 		@include background-image(none);
 		@include border-bottom-left-radius(0);
 		@include box-shadow(none);
@@ -368,6 +368,7 @@ body {
 
 	#content-container {
 		@include float-left;
+		width: 740px;
 
 		#content {
 			@include column(14, true);

@@ -17,7 +17,8 @@
 #item_view
 
 	%h2 #{$model->title}
-	%table.information(title="Information")
+	%table.information(cellspacing="1")
+		%caption Ad Information
 		%tr
 			%th Price
 			%td.price PHP #{number_format($model->price)}
