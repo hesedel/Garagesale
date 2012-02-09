@@ -63,4 +63,26 @@
 				->order('index')
 				->queryAll();
 			foreach($images as $image)
-				echo CHtml::link('&#160;', '#', array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')'));
+				echo CHtml::link(
+					CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')')),
+					'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type']
+				);
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'item_view',
+		"
+		$('a', '#item_view div.images').lightBox( {
+			//overlayBgColor: '#',
+			//overlayOpacity: .25,
+			imageLoading: '/images/lightbox-ico-loading.gif',
+			imageBtnClose: '/images/lightbox-btn-close.gif',
+			imageBtnPrev: '/images/lightbox-btn-prev.gif',
+			imageBtnNext: '/images/lightbox-btn-next.gif'
+			//containerResizeSpeed: 1000,
+			//txtImage: '',
+			//txtOf: ''
+		});
+		",
+		CClientScript::POS_READY
+	);

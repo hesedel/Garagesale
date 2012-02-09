@@ -201,14 +201,19 @@
 
 		a {
 			@include float-left;
-			text-decoration: none;
-			background-color: $whitesmoke;
-			background-position: center;
-			background-repeat: no-repeat;
 			width: 176px;
 			height: 170px;
 			margin-right: 1px;
 			margin-bottom: 1px;
+
+			img {
+				background-color: $whitesmoke;
+				background-position: center;
+				background-repeat: no-repeat;
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
 
 			&:hover {
 				border: 1px solid $deeppink;
