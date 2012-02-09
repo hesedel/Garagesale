@@ -36,6 +36,14 @@
 :php
 	$this->endWidget();
 
+	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-right'));
+
+#item_view-sidebar-right
+	%h4 About the Seller ...
+
+:php
+	$this->endWidget();
+
 #item_view
 
 	%h2 #{CHtml::encode($model->title)}
