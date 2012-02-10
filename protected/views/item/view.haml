@@ -46,7 +46,7 @@
 
 #item_view-sidebar-right
 	=CHtml::link('Post a Free Ad', array('/item/create'), array('class'=>'g-button orangered'))
-	%h4 About the Seller ...
+	%h3 About the Seller ...
 
 :php
 	$this->endWidget();
@@ -99,32 +99,23 @@
 			%td John Doe
 		%tr
 			%th Email
-			%td.email #{base64_encode('email@address.com')}
+			%td.email =base64_encode('email@address.com')
 		%tr
 			%th Phone
 			%td +1 23 456-7890
-	%h3 Description
-	%p #{Yii::app()->format->formatNtext($model->description)}
 	:php
-		$images = Yii::app()->db->createCommand()
-			->select('*')
-			->from('item_image')
-			->where('item_id=:item_id and `index`>0', array(':item_id'=>$model->id))
-			->order('index')
-			->queryAll();
-		if(sizeof($images) > 0):
-	%h3 Additional Photos
-	.images
-		:php
-			foreach($images as $image) {
-				echo CHtml::link(
-					CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge', 'style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')')),
-					'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
-					array('class'=>'lightbox')
-				);
-			}
-	:php
-		endif;
+		$this->widget('zii.widgets.jui.CJuiTabs', array(
+			'tabs'=>array(
+				'Description + Photos'=>$this->renderPartial('view/_description', array('model'=>$model), true),
+				'Video'=>'Video here ...',
+				// panel 3 contains the content rendered by a partial view
+				//'AjaxTab'=>array('ajax'=>$ajaxUrl),
+			),
+			// additional javascript options for the tabs plugin
+			'options'=>array(
+				//'collapsible'=>true,
+			),
+		));
 
 :php
 	Yii::app()->clientScript->registerScript(
