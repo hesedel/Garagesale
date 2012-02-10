@@ -14,7 +14,7 @@
 			array('/item/view', 'id'=>$data->id),
 			array('class'=>'img')
 		);
-	%strong =CHtml::link(CHtml::encode($data->title), array('/item/view', 'id'=>$data->id))
+	%strong =CHtml::link(CHtml::encode($data->title), array('/item/view', 'id'=>$data->id), array('title'=>CHtml::encode($data->title)))
 	%span.category =CHtml::encode($data->category->title)
 	%span.price P #{number_format($data->price)}
 	.clear
