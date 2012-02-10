@@ -7,6 +7,7 @@
 
 	$this->layout='column3';
 
+	/*
 	$this->menu=array(
 		array('label'=>'List Item', 'url'=>array('index')),
 		array('label'=>'Create Item', 'url'=>array('create')),
@@ -14,6 +15,7 @@
 		array('label'=>'Delete Item', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 		array('label'=>'Manage Item', 'url'=>array('admin')),
 	);
+	*/
 
 	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-left'));
 
@@ -33,6 +35,9 @@
 			);
 		} else
 			echo CHtml::image('/images/slir/w190-h117-c190:117-bf5f5f5/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
+	.btn-group
+		=CHtml::link('Edit Ad', array('update', 'id'=>$model->id), array('class'=>'btn'))
+		=CHtml::link('Delete Ad', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
 
 :php
 	$this->endWidget();
