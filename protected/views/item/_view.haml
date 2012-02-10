@@ -9,7 +9,7 @@
 			CHtml::image(
 				'/images/transparent.gif',
 				CHtml::encode($data->title),
-				array('style'=>'background-image: url(/images/slir/w220-h135-c220:135-be8e8e3/images/uploads/items/'.$image['id'].'.'.$image['type'].')')
+				array('style'=>'background-image: url(/images/slir/w220-h135-c220:135-be8e8e3/images/'.($image ? 'uploads/items/'.$image['id'].'.'.$image['type'] : 'item/no-image.gif').')')
 			),
 			array('/item/view', 'id'=>$data->id),
 			array('class'=>'img')

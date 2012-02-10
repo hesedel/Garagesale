@@ -129,6 +129,7 @@
 		background-color: $whitesmoke;
 		border: 1px solid $whitesmoke;
 		display: block;
+		margin-bottom: 18px;
 		overflow: hidden;
 
 		img {
@@ -148,6 +149,14 @@
 
 	}
 
+	img.no-image {
+		background-color: $whitesmoke;
+		display: block;
+		width: 190px;
+		height: 117px;
+		margin-bottom: 18px;
+	}
+
 }
 
 #item_view-sidebar-right {
@@ -157,6 +166,7 @@
 		text-align: center;
 		display: block;
 		line-height: 61px;
+		margin-bottom: 18px;
 		padding: 0;
 	}
 
