@@ -44,7 +44,10 @@
 			%td =Yii::app()->dateFormatter->formatDateTime($model->created)
 		%tr
 			%th Updated on
-			%td =Yii::app()->dateFormatter->formatDateTime($model->updated)
+			%td
+				:php
+					$dateTime = new DateTime($model->updated);
+					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + 28800);
 
 :php
 	$this->endWidget();

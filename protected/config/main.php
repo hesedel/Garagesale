@@ -55,16 +55,18 @@ return array(
 			'showScriptName'=>false,
 			'urlSuffix'=>'/',
 		),
+		/*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
+		*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => $params['db.connectionString'],
-			'emulatePrepare' => true,
-			'username' => $params['db.username'],
-			'password' => $params['db.password'],
-			'charset' => 'utf8',
+			'connectionString'=>$params['db.connectionString'],
+			'emulatePrepare'=>true,
+			'username'=>$params['db.username'],
+			'password'=>$params['db.password'],
+			'charset'=>'utf8',
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
