@@ -40,8 +40,11 @@
 		=CHtml::link('Delete Ad', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
 	%table.time
 		%tr
-			%th Created on
-			%td =Yii::app()->dateFormatter->formatDateTime($model->created)
+			%th Posted on
+			%td
+				:php
+					$dateTime = new DateTime($model->created);
+					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + 14*60*60);
 		%tr
 			%th Updated on
 			%td
