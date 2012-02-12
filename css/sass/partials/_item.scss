@@ -157,6 +157,37 @@
 		margin-bottom: 18px;
 	}
 
+	div.btn-group {
+		margin-bottom: 18px;
+
+		a.btn {
+			text-decoration: none;
+		}
+
+	}
+
+	table.time {
+		margin-bottom: 0;
+
+		th, td {
+			font-size: $small;
+			line-height: 18px;
+			padding: 0;
+		}
+
+		th {
+			color: blacken($beige, 25%, 2);
+			white-space: nowrap;
+			padding-right: 5px;
+		}
+
+		td {
+			width: 100%;
+			padding-left: 5px;
+		}
+
+	}
+
 }
 
 #item_view-sidebar-right {
