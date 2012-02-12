@@ -50,7 +50,8 @@
 			%td
 				:php
 					$dateTime = new DateTime($model->updated);
-					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + 14*60*60);
+					//echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + 14*60*60);
+					echo date_default_timezone_get();
 
 :php
 	$this->endWidget();
