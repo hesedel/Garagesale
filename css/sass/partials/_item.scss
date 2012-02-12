@@ -297,7 +297,6 @@
 				background-color: transparent;
 				background-image: none;
 				border-color: blacken($whitesmoke, 25%);
-				border-style: dotted;
 				@include border-top-radius(2px);
 				top: 0;
 				height: 25px;
@@ -323,7 +322,6 @@
 				&.ui-tabs-selected {
 					background-color: white;
 					border-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
-					border-style: solid;
 					margin-bottom: -1px;
 					padding-bottom: 1px;
 
