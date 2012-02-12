@@ -1,5 +1,9 @@
 <?php
 
+$timeZone = new DateTime(date('Y-m-d H:i:s'), new DateTimeZone('Asia/Manila'));
+$serverTimeZone = new DateTime(date('Y-m-d H:i:s'), new DateTimeZone(date_default_timezone_get()));
+Yii::app()->params['timeZoneOffset'] = $timeZone->getOffset() - $serverTimeZone->getOffset();
+
 return array(
 	'gii.password'=>'password',
 	'db.connectionString'=>'mysql:host=localhost;dbname=garagesale',
