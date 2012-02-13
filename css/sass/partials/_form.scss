@@ -106,6 +106,12 @@ table.form {
 		line-height: 36px;
 		padding-right: 0;
 		padding-left: 0;
+
+		input[type=submit] {
+			@extend .g-button.orangered;
+			display: none;
+		}
+
 	}
 
 	tbody {
@@ -294,6 +300,22 @@ table.form {
 
 }
 
-.no-js div.no-js {
-	display: block !important;
+.no-js {
+
+	div.no-js {
+		display: block !important;
+	}
+
+	tfoot td {
+
+		a.g-button.orangered {
+			display: none;
+		}
+
+		input[type=submit] {
+			display: inline !important;
+		}
+
+	}
+
 }
