@@ -36,9 +36,11 @@
 		} else
 			echo CHtml::image('/images/slir/w190-h117-c190:117-bf5f5f5/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
 	.btn-group
-		=CHtml::link('Edit Ad', array('update', 'id'=>$model->id), array('class'=>'btn'))
-		=CHtml::link('Delete Ad', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
-	%table.time(cellspacing="")
+		=CHtml::link('Renew', array('update', 'id'=>$model->id), array('class'=>'btn'))
+		=CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'btn'))
+		=CHtml::link('Delete', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
+	%table.time
+		%caption Ad Info
 		%tr
 			%th Posted on
 			%td
@@ -51,6 +53,12 @@
 				:php
 					$dateTime = new DateTime($model->updated);
 					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + Yii::app()->params['timeZoneOffset']);
+		%tr
+			%th Expires on
+			%td ...
+		%tr
+			%th Views
+			%td ...
 
 :php
 	$this->endWidget();
@@ -120,8 +128,8 @@
 		$this->widget('zii.widgets.jui.CJuiTabs', array(
 			'tabs'=>array(
 				'Description + Photos'=>$this->renderPartial('view/_description', array('model'=>$model), true),
-				'Video'=>'Video here ...',
-				'Comments'=>'Comments here ...',
+				'Video'=>'...',
+				'Comments'=>'...',
 			),
 			// additional javascript options for the tabs plugin
 			'options'=>array(

@@ -158,16 +158,32 @@
 	}
 
 	div.btn-group {
+		height: 27px;
 		margin-bottom: 18px;
 
 		a.btn {
+			color: blacken($dodgerblue, 25%);
+			font-size: 1em;
 			text-decoration: none;
+			height: 25px;
+				line-height: 25px;
+			padding-top: 0;
+			padding-bottom: 0;
+
+			&:hover {
+				color: blacken($dodgerblue, 25%, 2);
+			}
+
 		}
 
 	}
 
 	table.time {
 		margin-bottom: 0;
+
+		caption {
+			display: none;
+		}
 
 		th, td {
 			font-size: $small;
