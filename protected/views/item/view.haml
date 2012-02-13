@@ -38,7 +38,7 @@
 	.btn-group
 		=CHtml::link('Edit Ad', array('update', 'id'=>$model->id), array('class'=>'btn'))
 		=CHtml::link('Delete Ad', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
-	%table.time
+	%table.time(cellspacing="")
 		%tr
 			%th Posted on
 			%td
@@ -127,6 +127,7 @@
 			'options'=>array(
 				//'collapsible'=>true,
 			),
+			'headerTemplate'=>'<li><a href="{url}">{title}</a></li>',
 		));
 
 :php
