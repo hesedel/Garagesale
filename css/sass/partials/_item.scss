@@ -296,7 +296,7 @@
 			li {
 				background-color: transparent;
 				background-image: none;
-				border-color: blacken($whitesmoke, 25%);
+				border-color: blacken($whitesmoke, 10%);
 				@include border-top-radius(2px);
 				top: 0;
 				height: 25px;
@@ -311,7 +311,7 @@
 				}
 
 				&:hover {
-					border-color: blacken($whitesmoke, 25%, 2);
+					border-color: blacken($whitesmoke, 25%);
 
 					a {
 						color: blacken($beige, 25%, 3);
