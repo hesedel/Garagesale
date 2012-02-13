@@ -134,7 +134,18 @@
 		'item_view',
 		"
 		$('td.email', '#item_view table.info-contact').text(base64_decode($('td.email', '#item_view table.info-contact').text()));
-		$('a.lightbox', '#item_view-sidebar-left, #item_view').lightBox( {
+		$('a.lightbox', '#item_view').lightBox( {
+			//overlayBgColor: '#',
+			//overlayOpacity: .25,
+			imageLoading: '/images/lightbox-ico-loading.gif',
+			imageBtnClose: '/images/lightbox-btn-close.gif',
+			imageBtnPrev: '/images/lightbox-btn-prev.gif',
+			imageBtnNext: '/images/lightbox-btn-next.gif'
+			//containerResizeSpeed: 1000,
+			//txtImage: '',
+			//txtOf: ''
+		});
+		$('a.lightbox', '#item_view-sidebar-left').lightBox( {
 			//overlayBgColor: '#',
 			//overlayOpacity: .25,
 			imageLoading: '/images/lightbox-ico-loading.gif',

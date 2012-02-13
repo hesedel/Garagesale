@@ -294,7 +294,7 @@
 			padding-left: 0;
 
 			li {
-				background-color: transparent;
+				background-color: rgba(0, 0, 0, .05);
 				background-image: none;
 				border-color: blacken($whitesmoke, 10%);
 				@include border-top-radius(2px);
@@ -311,6 +311,7 @@
 				}
 
 				&:hover {
+					background-color: rgba(255, 255, 255, .25);
 					border-color: blacken($whitesmoke, 25%);
 
 					a {
