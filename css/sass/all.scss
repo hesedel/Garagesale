@@ -325,7 +325,7 @@ $small: .8em;
 @import 'sprites/_16/*.png';
 
 @import 'partials/screen';
-@import 'compass';
+@import 'compass', 'partials/pie';
 @import 'partials/bootstrap', 'partials/jquery.lightbox-0.5';
 @import 'partials/main', 'partials/form', 'partials/global';
 @import 'partials/site', 'partials/item';

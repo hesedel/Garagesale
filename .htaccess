@@ -1,4 +1,5 @@
 AddType application/x-httpd-php5 .xml
+AddType text/x-component .htc
 
 AddOutputFilterByType DEFLATE application/xhtml+xml
 AddOutputFilterByType DEFLATE text/html
