@@ -101,14 +101,11 @@ table.form {
 	}
 
 	tfoot td {
+		font-style: normal;
 		text-align: right;
+		line-height: 36px;
 		padding-right: 0;
 		padding-left: 0;
-
-		input[type=submit] {
-			@extend .g-button.orangered;
-		}
-
 	}
 
 	tbody {
