@@ -98,6 +98,7 @@
 											%input(title="Search" type="text")
 											%span.placeholder Search
 									.td.right
+										=CHtml::linkButton('Search', array('class'=>'g-button'))
 										%input(type="submit" value="Search")
 					.tr.filters.hide
 						.td \\&#160;
@@ -138,6 +139,7 @@
 												%input(title="Search" type="text")
 												%span.placeholder Search
 										%td.td.right
+											=CHtml::linkButton('Search', array('class'=>'g-button'))
 											%input(type="submit" value="Search")
 						%tr.tr.filters.hide
 							%td.td(colspan="3") \\&#160;
