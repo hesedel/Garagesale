@@ -45,22 +45,24 @@
 				%th =$form->labelEx($model,'category')
 				%td
 					:php
+
+						// get the categories
 						$categories = Yii::app()->db->createCommand()
 							->select('*')
 							->from('item_category')
+							->order('title')
 							->queryAll();
+
+						// store the categories in a real array
 						$listData = array();
-						function compare($a, $b) {
-							return strcasecmp($a['title'], $b['title']);
-						}
 						foreach($categories as $category)
 							$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
-						usort($listData, 'compare');
-						$htmlOptions = array('options'=>array());
+
+						// indent descendant categories
 						$level_max = 0;
 						foreach($listData as $i=>$data) {
-							$parent_id = $data['parent_id'];
 							$level = 0;
+							$parent_id = $data['parent_id'];
 							while($parent_id) {
 								$parent = Yii::app()->db->createCommand()
 									->select('*')
@@ -80,8 +82,9 @@
 							for($j = 0; $j < $level; $j++)
 								$indentation .= '&#160; &#160;';
 							$listData[$i]['title'] = $indentation.$data['title'];
-							//$htmlOptions['options'][$data['id']] = array('style'=>'padding-left: '.($level * 10).'px');
 						}
+
+						// sort the categories by their ancestors
 						$listData_sorted = array();
 						for($i = 0; $i <= $level_max; $i++) {
 							foreach(array_reverse($listData) as $data) {
@@ -103,6 +106,7 @@
 								}
 							}
 						}
+
 						echo CHtml::activeDropDownList($model, 'category_id', CHtml::listData($listData_sorted, 'id', 'title'), array('encode'=>false, 'empty'=>'select a category'));
 
 			%tr
