@@ -35,10 +35,6 @@
 			);
 		} else
 			echo CHtml::image('/images/slir/w190-h117-c190:117-bf5f5f5/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
-	.btn-group
-		=CHtml::link('Renew', array('update', 'id'=>$model->id), array('class'=>'btn'))
-		=CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'btn'))
-		=CHtml::link('Delete', '#', array('class'=>'btn', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))
 	%table.time
 		%caption Ad Info
 		%tr
@@ -75,6 +71,7 @@
 #item_view
 
 	%h2 #{CHtml::encode($model->title)}
+	.actions #{CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'g-button small'))} #{CHtml::link('Delete', '#', array('class'=>'g-button small', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
 	%table.info-item(cellspacing="1")
 		%caption Item Info
 		%tr

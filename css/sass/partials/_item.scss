@@ -157,32 +157,13 @@
 		margin-bottom: 18px;
 	}
 
-	div.btn-group {
-		height: 27px;
-		margin-bottom: 18px;
-
-		a.btn {
-			color: blacken($dodgerblue, 25%);
-			font-size: 1em;
-			text-decoration: none;
-			height: 25px;
-				line-height: 25px;
-			padding-top: 0;
-			padding-bottom: 0;
-
-			&:hover {
-				color: blacken($dodgerblue, 25%, 2);
-			}
-
-		}
-
-	}
-
 	table.time {
 		margin-bottom: 0;
 
 		caption {
-			display: none;
+			color: black;
+			background-color: transparent;
+			padding: 0;
 		}
 
 		th, td {
@@ -229,6 +210,16 @@
 		@include border-radius(2px);
 		line-height: 27px;
 		padding: 27px 15px 9px;
+	}
+
+	div.actions {
+		background-color: white;
+		@include border-bottom-left-radius(2px);
+		position: absolute;
+			top: -3px;
+			right: -5px;
+		padding-bottom: 3px;
+		padding-left: 5px;
 	}
 
 	table.info-item,
