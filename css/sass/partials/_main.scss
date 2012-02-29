@@ -193,19 +193,18 @@ body {
 		padding-right: 30px;
 
 		span {
-			@include _16-sprite(_filters_a_span);
-			cursor: pointer;
+			border-top: 4px solid blacken(whiten($dodgerblue, 25%), 25%);
+			border-right: 4px solid transparent;
+			border-left: 4px solid transparent;
 			position: absolute;
-				top: 18px;
-				right: 10px;
-			width: 16px;
-			height: 16px;
+				top: 24px;
+				right: 16px;
 		}
 
 		&:hover {
 
 			span {
-				@include _16-sprite(_filters_a-hover_span);
+				border-top-color: blacken($dodgerblue, 25%);
 			}
 
 		}
@@ -218,7 +217,8 @@ body {
 			@include box-shadow(none);
 
 			span {
-				@include _16-sprite(_filters_a-click_span);
+				border-top: none;
+				border-bottom: 4px solid blacken($dodgerblue, 25%);
 			}
 
 		}
