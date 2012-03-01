@@ -33,3 +33,38 @@
 			'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
 			'summaryText'=>'',
 		));
+
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'item_index',
+		"
+		$('div.g-items.list').each(function() {
+			var width = 0;
+			$('div.view', $(this)).each(function() {
+				if($('td.price', $(this)).width() > width)
+					width = $('td.price', $(this)).width()
+			});
+			$('td.price', $(this)).css( {
+				width: width
+			});
+			width = 0;
+			$('div.view', $(this)).each(function() {
+				if($('td.condition', $(this)).width() > width)
+					width = $('td.condition', $(this)).width()
+			});
+			$('td.condition', $(this)).css( {
+				width: width
+			});
+			width = $(this).width();
+			$('div.view', $(this)).each(function() {
+				if($('th', $(this)).width() < width)
+					width = $('th', $(this)).width()
+			});
+			$('th, th strong', $(this)).css( {
+				width: width
+			});
+		});
+		",
+		CClientScript::POS_READY
+	);
