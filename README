@@ -1,7 +1,5 @@
 NOTE
 
-Requires Yii Framework.
-
 For development environment specific settings to apply,
 	make sure your url starts with 'localhost.'.
 
