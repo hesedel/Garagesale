@@ -36,8 +36,8 @@
 						$category_parent = $category_parent['parent_id'];
 					}
 				=$category.CHtml::encode($data->category->title)
-			-endif
 			\\&#160; | &#160;
+			-endif
 			%span.location Location
 	:php
 		$image = Yii::app()->db->createCommand()

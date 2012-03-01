@@ -312,7 +312,6 @@ div.g-items {
 											color: white;
 											@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
 											@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-											border: 1px solid white;
 											@include border-radius(2px);
 											padding-right: 4px;
 											padding-left: 4px;
@@ -377,6 +376,7 @@ div.g-items {
 						@include background-image(linear-gradient(rgba(0, 0, 0, .05), rgba(255, 255, 255, .05)));
 						@include transition(box-shadow, 125ms);
 						position: relative;
+						@include transition(background-color, 125ms);
 					}
 
 				} // .view
