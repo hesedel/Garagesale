@@ -51,7 +51,10 @@
 					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + Yii::app()->params['timeZoneOffset']);
 		%tr
 			%th Expires on
-			%td ...
+			%td
+				:php
+					$dateTime = new DateTime($model->updated);
+					echo Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + Yii::app()->params['timeZoneOffset'] + (60*24*60*60)-(60*60)); // 60 days
 		%tr
 			%th Views
 			%td ...
