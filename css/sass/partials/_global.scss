@@ -209,11 +209,11 @@ div.g-items {
 						padding-left: 5px;
 
 						&.new {
-							background-color: blacken($custom_green, 25%);
+							background-color: $custom_cyan;
 						}
 
 						&.old {
-							background-color: blacken($custom_red, 25%);
+							background-color: $custom_magenta;
 						}
 
 					}
@@ -317,11 +317,11 @@ div.g-items {
 											padding-left: 4px;
 
 											&.new {
-												background-color: blacken($custom_green, 25%);
+												background-color: $custom_cyan;
 											}
 
 											&.old {
-												background-color: blacken($custom_red, 25%);
+												background-color: $custom_magenta;
 											}
 
 										}

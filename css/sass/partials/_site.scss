@@ -21,8 +21,8 @@
 #site_index-sidebar {
 
 	div.about {
-		background-color: whiten($custom_pink, 25%, 3);
-		border: 1px dashed $custom_pink;
+		background-color: whiten($custom_magenta, 25%, 3);
+		border: 1px dashed $custom_magenta;
 		@include border-radius(2px);
 		padding: 8px 9px 17px 9px;
 

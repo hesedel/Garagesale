@@ -419,11 +419,11 @@ div.breadcrumbs {
 	padding-right: 10px;
 
 	a {
-		color: $custom_pink;
+		color: $custom_magenta;
 		text-decoration: none;
 
 		&:hover {
-			color: blacken($custom_pink, 25%);
+			color: blacken($custom_magenta, 25%);
 			text-decoration: underline;
 		}
 

@@ -130,7 +130,7 @@ table.form {
 				label {
 
 					span.required {
-						color: blacken($custom_red, 25%);
+						color: $custom_magenta;
 					}
 
 					&.error {
@@ -274,11 +274,11 @@ table.form {
 
 				div.errorMessage {
 					font-family: ProximaNovaSemibold;
-					color: blacken($custom_red, 25%);
+					color: $custom_magenta;
 				}
 
 				div.no-js {
-					color: blacken($custom_red, 25%);
+					color: $custom_magenta;
 					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 					display: none;
 				}

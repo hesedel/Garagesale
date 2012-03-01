@@ -4,7 +4,7 @@
 	padding-top: 36px;
 
 	h2 {
-		color: $custom_pink;
+		color: $custom_magenta;
 		position: absolute;
 			top: -9px;
 			right: 0;
@@ -54,8 +54,8 @@
 
 			a {
 				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				border-bottom: 1px solid $custom_pink;
-				border-left: 1px solid $custom_pink;
+				border-bottom: 1px solid $custom_magenta;
+				border-left: 1px solid $custom_magenta;
 				position: absolute;
 					top: -1px;
 					right: -1px;
@@ -87,7 +87,7 @@
 			}
 
 			&:hover {
-				border-color: $custom_pink;
+				border-color: $custom_magenta;
 
 				a {
 					display: block;
@@ -139,7 +139,7 @@
 		}
 
 		&:hover {
-			border-color: $custom_pink;
+			border-color: $custom_magenta;
 
 			img {
 				
@@ -270,7 +270,7 @@
 					}
 
 					&.old {
-						color: blacken($custom_red, 25%);
+						color: $custom_magenta;
 					}
 
 				}
@@ -377,7 +377,7 @@
 					}
 
 					&:hover {
-						border: 1px solid $custom_pink;
+						border: 1px solid $custom_magenta;
 						width: 174px;
 						height: 168px;
 					}
