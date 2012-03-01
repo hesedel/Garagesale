@@ -130,7 +130,7 @@ table.form {
 				label {
 
 					span.required {
-						color: $orangered;
+						color: blacken($custom_red, 25%);
 					}
 
 					&.error {
@@ -240,12 +240,12 @@ table.form {
 
 							a.MultiFile-remove {
 								@include float-right;
-								color: $dodgerblue;
+								color: blacken($custom_cyan, 25%);
 								text-decoration: none;
 								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 								&:hover {
-									color: blacken($dodgerblue, 25%);
+									color: blacken($custom_cyan, 25%, 2);
 								}
 
 							}
@@ -274,11 +274,11 @@ table.form {
 
 				div.errorMessage {
 					font-family: ProximaNovaSemibold;
-					color: $orangered;
+					color: blacken($custom_red, 25%);
 				}
 
 				div.no-js {
-					color: $orangered;
+					color: blacken($custom_red, 25%);
 					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 					display: none;
 				}

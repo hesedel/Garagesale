@@ -1,9 +1,9 @@
 a {
 	outline: none;
-	color: blacken($dodgerblue, 25%);
+	color: blacken($custom_cyan, 25%);
 
 	&:hover {
-		color: blacken($dodgerblue, 25%, 2);
+		color: blacken($custom_cyan, 25%, 2);
 	}
 
 }
@@ -58,12 +58,12 @@ label, th {
 		padding: 2px 4px;
 	}
 
-	&.orangered {
+	&.orange {
 		color: white;
 		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
-		background-color: whiten($orangered, 25%);
-		border-color: blacken($orangered, 25%);
-		border-bottom-color: blacken($orangered, 25%, 2);
+		background-color: $custom_orange;
+		border-color: blacken($custom_orange, 25%);
+		border-bottom-color: blacken($custom_orange, 25%, 2);
 		@include box-shadow(
 			rgba(255, 255, 255, .25) 0 1px 1px inset,
 			rgba(0, 0, 0, .05) 0 1px
@@ -71,13 +71,13 @@ label, th {
 
 		&:hover {
 			color: white;
-			background-color: whiten($orangered, 25%, 2);
-			border-color: blacken($orangered, 25%, 2);
-			border-bottom-color: blacken($orangered, 25%, 3);
+			background-color: whiten($custom_orange, 10%);
+			border-color: blacken($custom_orange, 25%, 2);
+			border-bottom-color: blacken($custom_orange, 25%, 3);
 		}
 
 		&:active {
-			background-color: blacken(whiten($orangered, 25%), 10%);
+			background-color: blacken($custom_orange, 10%);
 			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 		}
 
@@ -171,7 +171,7 @@ div.g-items {
 							text-decoration: none;
 
 							&:hover {
-								color: blacken($dodgerblue, 25%);
+								color: blacken($custom_cyan, 25%);
 							}
 
 						}
@@ -185,7 +185,7 @@ div.g-items {
 
 					span.price {
 						@include float-right;
-						color: $olivedrab;
+						color: blacken($custom_green, 25%, 2);
 						font-family: ProximaNovaSemibold;
 					}
 
@@ -209,19 +209,19 @@ div.g-items {
 						padding-left: 5px;
 
 						&.new {
-							background-color: $olivedrab;
+							background-color: blacken($custom_green, 25%);
 						}
 
 						&.old {
-							background-color: blacken($orangered, 25%);
+							background-color: blacken($custom_red, 25%);
 						}
 
 					}
 
 					&:hover {
 						background-color: white;
-						border-color: whiten($dodgerblue, 25%, 2);
-						@include box-shadow(rgba(0, 0, 0, .5) 0 0 2px);
+						border-color: blacken($whitesmoke, 10%, 2);
+						@include box-shadow(rgba(0, 0, 0, .25) 0 0 2px);
 						position: relative;
 						margin-bottom: -18px;
 						@include transition(box-shadow, 125ms);
@@ -252,7 +252,7 @@ div.g-items {
 
 				div.view {
 					@include clearfix;
-					background-color: whiten(blacken($beige, 25%), 25%, 7);
+					background-color: $whitesmoke;
 					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 					@include box-shadow(
 						rgba(255, 255, 255, 1) 0 1px inset,
@@ -287,12 +287,12 @@ div.g-items {
 										overflow: hidden;
 
 										a {
-											color: blacken($dodgerblue, 25%);
+											color: blacken($custom_cyan, 25%);
 											text-decoration: none;
 											@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 											&:hover {
-												color: blacken($dodgerblue, 25%, 2);
+												color: blacken($custom_cyan, 25%, 2);
 											}
 
 										}
@@ -317,11 +317,11 @@ div.g-items {
 											padding-left: 4px;
 
 											&.new {
-												background-color: $olivedrab;
+												background-color: blacken($custom_green, 25%);
 											}
 
 											&.old {
-												background-color: blacken($orangered, 25%);
+												background-color: blacken($custom_red, 25%);
 											}
 
 										}
@@ -329,7 +329,7 @@ div.g-items {
 									}
 
 									&.price {
-										color: $olivedrab;
+										color: blacken($custom_green, 25%, 2);
 										font-family: ProximaNovaSemibold;
 										@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 										padding-left: 5px;
@@ -371,7 +371,7 @@ div.g-items {
 					}
 
 					&:hover {
-						background-color: whiten(blacken($beige, 25%), 25%, 8);
+						background-color: whiten($whitesmoke, 25%);
 						@include background-image(linear-gradient(rgba(0, 0, 0, .05), rgba(255, 255, 255, .05)));
 						@include transition(box-shadow, 125ms);
 						position: relative;

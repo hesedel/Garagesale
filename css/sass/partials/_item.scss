@@ -4,7 +4,7 @@
 	padding-top: 36px;
 
 	h2 {
-		color: $deeppink;
+		color: $custom_pink;
 		position: absolute;
 			top: -9px;
 			right: 0;
@@ -15,7 +15,7 @@
 		padding-left: 44px;
 
 		span.prepend {
-			color: $olivedrab;
+			color: blacken($custom_green, 25%, 2);
 			font-family: ProximaNovaSemibold;
 			font-size: $h4;
 			text-align: center;
@@ -54,8 +54,8 @@
 
 			a {
 				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				border-bottom: 1px solid $deeppink;
-				border-left: 1px solid $deeppink;
+				border-bottom: 1px solid $custom_pink;
+				border-left: 1px solid $custom_pink;
 				position: absolute;
 					top: -1px;
 					right: -1px;
@@ -83,11 +83,11 @@
 			}
 
 			&.new {
-				border-color: $olivedrab;
+				border-color: blacken($custom_green, 25%);
 			}
 
 			&:hover {
-				border-color: $deeppink;
+				border-color: $custom_pink;
 
 				a {
 					display: block;
@@ -96,7 +96,7 @@
 			}
 
 			&.ui-sortable-helper {
-				border-color: $dodgerblue;
+				border-color: $custom_cyan;
 
 				a {
 					display: none;
@@ -139,7 +139,7 @@
 		}
 
 		&:hover {
-			border-color: $deeppink;
+			border-color: $custom_pink;
 
 			img {
 				
@@ -255,7 +255,7 @@
 				width: 100%;
 
 				&.price {
-					color: $olivedrab;
+					color: blacken($custom_green, 25%, 2);
 					font-size: $h3;
 				}
 
@@ -266,11 +266,11 @@
 				span.condition {
 
 					&.new {
-						color: $olivedrab;
+						color: blacken($custom_green, 25%, 2);
 					}
 
 					&.old {
-						color: blacken($orangered, 25%);
+						color: blacken($custom_red, 25%);
 					}
 
 				}
@@ -294,7 +294,7 @@
 			background-image: none;
 			@include background-image(linear-gradient(rgba(255, 255, 255, 0) 75%, rgba(0, 0, 0, .1)));
 			border: none;
-			border-bottom: 1px solid whiten(blacken($dodgerblue, 25%), 25%, 2);
+			border-bottom: 1px solid $custom_cyan;
 			@include border-radius(0);
 			height: 26px;
 			padding-top: 0;
@@ -330,12 +330,12 @@
 
 				&.ui-tabs-selected {
 					background-color: white;
-					border-color: whiten(blacken($dodgerblue, 25%), 25%, 2);
+					border-color: $custom_cyan;
 					margin-bottom: -1px;
 					padding-bottom: 1px;
 
 					a {
-						color: blacken($dodgerblue, 25%);
+						color: blacken($custom_cyan, 25%);
 					}
 
 					&:hover {
@@ -377,7 +377,7 @@
 					}
 
 					&:hover {
-						border: 1px solid $deeppink;
+						border: 1px solid $custom_pink;
 						width: 174px;
 						height: 168px;
 					}
