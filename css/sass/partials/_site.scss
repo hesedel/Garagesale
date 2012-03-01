@@ -5,6 +5,17 @@
 		position: absolute;
 	}
 
+	div.categoryORlocation {
+		@include float-left;
+		width: 240px;
+		margin-right: 10px;
+	}
+
+	div.latest {
+		@include float-left;
+		width: 490px;
+	}
+
 }
 
 #site_index-sidebar {

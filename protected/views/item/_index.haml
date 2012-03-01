@@ -1,15 +1,35 @@
-.g-items
+:php
+	$defaults = array(
+		'viewButton'=>true,
+		'sortButton'=>true,
+		'createButton'=>true,
+		'view'=>'grid',
+	);
+	if(isset($options))
+		$options = array_merge($defaults, $options);
+	else
+		$options = $defaults;
+
+.g-items(class="#{($options['view'] === 'grid' ? 'grid' : 'list').(!$options['viewButton'] && !$options['sortButton'] && !$options['createButton'] ? ' no-toolbox' : '')}")
+	-if(true):
 	.toolbox
+		-if($options['viewButton']):
 		%a.g-button(href="#") \\&#60; GV &#62;
 		%a.g-button(href="#") \\&#60; LV &#62;
+		-endif
+		-if($options['sortButton']):
 		\\&#160;
 		%a.g-button(href="#") \\&#60; Sort by Price &#62;
+		-endif
+		-if($options['createButton']):
 		\\&#160;
 		=CHtml::link('Post a Free Ad', array('/item/create'), array('class'=>'g-button orangered'))
+		-endif
 	.clear
+	-endif
 	:php
 		$this->widget('zii.widgets.CListView', array(
 			'dataProvider'=>$dataProvider,
-			'itemView'=>'/item/_view',
+			'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
 			'summaryText'=>'',
 		));

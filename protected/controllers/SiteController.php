@@ -29,11 +29,19 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$dataProvider=new CActiveDataProvider('Item',array(
-			'pagination'=>false,
+		$dataProvider_featured=new CActiveDataProvider('Item',array(
+			'pagination'=>array(
+				'pageSize'=>3,
+			),
+		));
+		$dataProvider_latest=new CActiveDataProvider('Item',array(
+			'pagination'=>array(
+				'pageSize'=>9,
+			),
 		));
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider_featured'=>$dataProvider_featured,
+			'dataProvider_latest'=>$dataProvider_latest,
 		));
 	}
 

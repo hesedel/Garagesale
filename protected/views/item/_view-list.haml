@@ -1,0 +1,56 @@
+.view
+	.data-container
+		.data
+			%table
+				%tr
+					%th
+						%strong =CHtml::link(CHtml::encode($data->title), array('/item/view', 'id'=>$data->id), array('title'=>$data->title))
+					%td.condition
+						:php
+							if($data->condition_id != null) {
+								$condition = '';
+								switch($data->condition_id) {
+									case 1:
+										$condition = 'old';
+										break;
+									default:
+										$condition = 'new';
+								}
+						%span.condition.#{$condition} =CHtml::encode($data->condition->title)
+						:php
+							}
+					%td.price
+						%span.price P #{number_format($data->price)}
+			-if($data->category_id != null):
+			%em
+				:php
+					$category = '';
+					$category_parent = $data->category->parent_id;
+					while($category_parent != null) {
+						$category_parent = Yii::app()->db->createCommand()
+							->select('*')
+							->from('item_category')
+							->where('id=:id', array(':id'=>$category_parent))
+							->queryRow();
+						$category = CHtml::encode($category_parent['title']).' &#160; / &#160; '.$category;
+						$category_parent = $category_parent['parent_id'];
+					}
+				=$category.CHtml::encode($data->category->title)
+			-endif
+			\\&#160; | &#160;
+			%span.location Location
+	:php
+		$image = Yii::app()->db->createCommand()
+			->select('*')
+			->from('item_image')
+			->where('item_id=:id and `index`=0', array(':id'=>$data->id))
+			->queryRow();
+		echo CHtml::link(
+			CHtml::image(
+				'/images/transparent.gif',
+				CHtml::encode($data->title),
+				array('title'=>$data->description, 'style'=>'background-image: url(/images/slir/w53-h34-c53:34-be8e8e3/images/'.($image ? 'uploads/items/'.$image['id'].'.'.$image['type'] : 'item/no-image.gif').')')
+			),
+			array('/item/view', 'id'=>$data->id),
+			array('class'=>'img')
+		);

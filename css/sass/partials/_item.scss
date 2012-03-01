@@ -270,7 +270,7 @@
 					}
 
 					&.old {
-						color: $orangered;
+						color: blacken($orangered, 25%);
 					}
 
 				}

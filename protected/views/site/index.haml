@@ -14,8 +14,12 @@
 -$this->endWidget()
 
 #site_index
-	%h2 Latest Posts
-	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider))
+	%h2 Featured Ads
+	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>false, 'sortButton'=>false)))
+	.categoryORlocation ...
+	.latest
+		%h3 Latest Ads
+		-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_latest, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'createButton'=>false, 'view'=>'list')))
 
 :php
 	Yii::app()->clientScript->registerScript(

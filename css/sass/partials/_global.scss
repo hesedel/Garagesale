@@ -106,125 +106,285 @@ div.g-items {
 			line-height: 36px;
 	}
 
-	div.list-view {
-		margin-top: -20px;
-		margin-bottom: -2px;
-		margin-left: -2px;
+	&.no-toolbox {
+		padding-top: 0;
 
-		div.summary {
+		div.toolbox {
 			display: none;
 		}
 
-		div.items {
-			@include clearfix;
-			width: 750px;
-			padding-top: 11px;
-			padding-bottom: 20px;
-			padding-left: 2px;
+	}
 
-			div.view {
-				@include float-left;
-				background-color: whiten($whitesmoke, 25%, 4);
-				border: 1px solid blacken($whitesmoke, 10%);
-				width: 220px;
-				margin-top: 9px;
-				margin-right: 10px;
-				padding: 8px 9px;
+	&.grid {
 
-				a.img {
-					display: block;
-					height: 135px;
-					margin-bottom: 9px;
+		div.list-view {
+			margin-top: -20px;
+			margin-bottom: -2px;
+			margin-left: -2px;
 
-					img {
-						background-color: whiten(blacken($beige, 25%), 25%, 4);
-						background-position: center;
-						background-repeat: no-repeat;
-						@include background-size(100%);
+			div.summary {
+				display: none;
+			}
+
+			div.items {
+				@include clearfix;
+				width: 750px;
+				padding-top: 11px;
+				padding-bottom: 20px;
+				padding-left: 2px;
+
+				div.view {
+					@include float-left;
+					background-color: whiten($whitesmoke, 25%, 4);
+					border: 1px solid blacken($whitesmoke, 10%);
+					width: 220px;
+					margin-top: 9px;
+					margin-right: 10px;
+					padding: 8px 9px;
+
+					a.img {
 						display: block;
-						width: 100%;
-						height: 100%;
-					}
+						height: 135px;
+						margin-bottom: 9px;
 
-				}
-
-				strong {
-					@include ellipsis;
-					@include h4;
-					font-family: ProximaNovaRegular;
-					display: block;
-					margin-bottom: 0;
-
-					a {
-						color: black;
-						text-decoration: none;
-
-						&:hover {
-							color: blacken($dodgerblue, 25%);
+						img {
+							background-color: whiten(blacken($beige, 25%), 25%, 4);
+							background-position: center;
+							background-repeat: no-repeat;
+							@include background-size(100%);
+							display: block;
+							width: 100%;
+							height: 100%;
 						}
 
 					}
 
-				}
-
-				span.category {
-					@include float-left;
-					color: blacken($beige, 25%, 3);
-				}
-
-				span.price {
-					@include float-right;
-					color: $olivedrab;
-				}
-
-				span.location {
-					@include float-left;
-					color: blacken($beige, 25%, 2);
-					display: none;
-				}
-
-				span.condition {
-					@include float-right;
-					color: white;
-					@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
-					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-					@include border-radius(2px);
-					display: none;
-					line-height: 14px;
-					margin-top: 2px;
-					margin-bottom: 2px;
-					padding-right: 5px;
-					padding-left: 5px;
-
-					&.new {
-						background-color: $olivedrab;
-					}
-
-					&.old {
-						background-color: $orangered;
-					}
-
-				}
-
-				&:hover {
-					background-color: white;
-					border-color: whiten($dodgerblue, 25%, 2);
-					@include box-shadow(rgba(0, 0, 0, .5) 0 0 2px);
-					position: relative;
-					margin-bottom: -18px;
-					@include transition(box-shadow, 125ms);
-
-					span.location,
-					span.condition {
+					strong {
+						@include ellipsis;
+						@include h4;
+						font-family: ProximaNovaRegular;
 						display: block;
+						margin-bottom: 0;
+
+						a {
+							color: black;
+							text-decoration: none;
+
+							&:hover {
+								color: blacken($dodgerblue, 25%);
+							}
+
+						}
+
 					}
 
-				}
+					em {
+						@include float-left;
+						color: blacken($beige, 25%, 3);
+					}
 
-			}
+					span.price {
+						@include float-right;
+						color: $olivedrab;
+						font-family: ProximaNovaSemibold;
+					}
 
-		}
+					span.location {
+						@include float-left;
+						color: blacken($beige, 25%, 2);
+						display: none;
+					}
 
-	}
+					span.condition {
+						@include float-right;
+						color: white;
+						@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
+						@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+						@include border-radius(2px);
+						display: none;
+						line-height: 14px;
+						margin-top: 2px;
+						margin-bottom: 2px;
+						padding-right: 5px;
+						padding-left: 5px;
+
+						&.new {
+							background-color: $olivedrab;
+						}
+
+						&.old {
+							background-color: blacken($orangered, 25%);
+						}
+
+					}
+
+					&:hover {
+						background-color: white;
+						border-color: whiten($dodgerblue, 25%, 2);
+						@include box-shadow(rgba(0, 0, 0, .5) 0 0 2px);
+						position: relative;
+						margin-bottom: -18px;
+						@include transition(box-shadow, 125ms);
+
+						span.location,
+						span.condition {
+							display: block;
+						}
+
+					}
+
+				} // .view
+
+			} // .items
+
+		} // .list-view
+
+	} // .grid
+
+	&.list {
+		
+
+		div.list-view {
+			
+
+			div.items {
+				
+
+				div.view {
+					@include clearfix;
+					background-color: whiten(blacken($beige, 25%), 25%, 7);
+					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+					@include box-shadow(
+						rgba(255, 255, 255, 1) 0 1px inset,
+						rgba(0, 0, 0, .05) 0 -1px inset
+					);
+					padding: 9px 10px;
+
+					div.data-container {
+						@include float-left;
+						width: 100%;
+
+						div.data {
+							margin-left: 65px;
+
+							table {
+								margin-bottom: 0;
+
+								th, td {
+									padding: 0;
+								}
+
+								th {
+									width: 100%;
+									padding-right: 5px;
+
+									strong {
+										font-family: ProximaNovaRegular;
+										font-size: $h4;
+										display: block;
+										height: 18px;
+											line-height: 18px;
+										overflow: hidden;
+
+										a {
+											color: blacken($dodgerblue, 25%);
+											text-decoration: none;
+											@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+											&:hover {
+												color: blacken($dodgerblue, 25%, 2);
+											}
+
+										}
+
+									}
+
+								}
+
+								td {
+									white-space: nowrap;
+
+									&.condition {
+										padding-right: 5px;
+										padding-left: 5px;
+
+										span.condition {
+											color: white;
+											@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
+											@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+											border: 1px solid white;
+											@include border-radius(2px);
+											padding-right: 4px;
+											padding-left: 4px;
+
+											&.new {
+												background-color: $olivedrab;
+											}
+
+											&.old {
+												background-color: blacken($orangered, 25%);
+											}
+
+										}
+
+									}
+
+									&.price {
+										color: $olivedrab;
+										font-family: ProximaNovaSemibold;
+										@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+										padding-left: 5px;
+									}
+
+								}
+
+							} // table
+
+							em {
+								color: blacken($beige, 25%, 3);
+								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+							}
+
+							span.location {
+								color: blacken($beige, 25%, 2);
+							}
+
+						} // .data
+
+					} // .data-container
+
+					a.img {
+						@include float-left;
+						border: 1px solid white;
+						width: 53px;
+						height: 34px;
+						margin-left: -100%;
+
+						img {
+							background-color: whiten(blacken($beige, 25%), 25%, 4);
+							background-position: center;
+							background-repeat: no-repeat;
+							@include background-size(100%);
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+
+					}
+
+					&:hover {
+						background-color: whiten(blacken($beige, 25%), 25%, 8);
+						@include background-image(linear-gradient(rgba(0, 0, 0, .05), rgba(255, 255, 255, .05)));
+						@include transition(box-shadow, 125ms);
+						position: relative;
+					}
+
+				} // .view
+
+			} // .items
+
+		} // .list-view
+
+	} // .list
 
 }
