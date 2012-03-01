@@ -190,11 +190,11 @@
 		$('div.images', '#item_create, #item_update').sortable( {
 			revert: true,
 			opacity: .75,
-			start: function(event) {
-				uploadIndex_from = $(event.target).index();
+			start: function(event, ui) {
+				uploadIndex_from = ui.item.index();
 			},
-			update: function(event) {
-				var uploadIndex_to = $(event.target).index();
+			update: function(event, ui) {
+				var uploadIndex_to = ui.item.index();
 				var input = unserialize(base64_decode($('#Item_uploads').val()));
 				var output = [];
 				output[uploadIndex_to] = input[uploadIndex_from];
