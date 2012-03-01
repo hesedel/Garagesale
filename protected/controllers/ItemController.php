@@ -74,7 +74,7 @@ class ItemController extends Controller
 				$uploads = unserialize(base64_decode($model->uploads));
 				$images = CUploadedFile::getInstances($model, 'images');
 				foreach($images as $image) {
-					$name = md5($image->name.time()).'.'.$image->extensionName;
+					$name = md5($image->name.time()).'.'.strtolower($image->extensionName);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 					$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 				}
@@ -122,7 +122,7 @@ class ItemController extends Controller
 				$uploads = unserialize(base64_decode($model->uploads));
 				$images = CUploadedFile::getInstances($model, 'images');
 				foreach($images as $image) {
-					$name = md5($image->name.time()).'.'.$image->extensionName;
+					$name = md5($image->name.time()).'.'.strtolower($image->extensionName);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
 					$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 				}
