@@ -39,6 +39,7 @@
 			\\&#160; | &#160;
 			-endif
 			%span.location Location
+			%span.created =time_local($data->created, array('format'=>'Y-m-d\TH-i-sZ'));
 	:php
 		$image = Yii::app()->db->createCommand()
 			->select('*')

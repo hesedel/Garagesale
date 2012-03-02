@@ -1,10 +1,20 @@
 <?php
 
-function time_local($time, $offset = 0)
+function time_local($time, $options = array())
 {
+	$defaults = array(
+		'format'=>false,
+		'offset'=>0,
+	);
+	$options = array_merge($defaults, $options);
+
 	$serverTime = new DateTime(date('Y-m-d H:i:s'), new DateTimeZone(date_default_timezone_get()));
 	$targetTime = new DateTime(date('Y-m-d H:i:s'), new DateTimeZone(Yii::app()->params['timeZone']));
 	$timeZoneOffset = $targetTime->getOffset() - $serverTime->getOffset();
 	$dateTime = new DateTime($time);
-	return Yii::app()->dateFormatter->formatDateTime($dateTime->format('U') + $timeZoneOffset + $offset);
+	$unix = $dateTime->format('U') + $timeZoneOffset + $options['offset'];
+	if(!$options['format'])
+		return Yii::app()->dateFormatter->formatDateTime($unix);
+	else
+		return date($options['format'], $unix);
 }

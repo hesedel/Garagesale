@@ -45,7 +45,7 @@
 			%td =time_local($model->updated);
 		%tr
 			%th Expires on
-			%td =time_local($model->updated, (60*24*60*60)-(60*60)); // 60 days
+			%td =time_local($model->updated, array('offset'=>(60*24*60*60)-(60*60))); // 60 days
 		%tr
 			%th Views
 			%td ...
