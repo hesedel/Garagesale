@@ -35,6 +35,9 @@ class SiteController extends Controller
 			),
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'order'=>'created DESC',
+			),
 			'pagination'=>array(
 				'pageSize'=>9,
 			),

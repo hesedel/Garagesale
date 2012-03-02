@@ -1,6 +1,7 @@
 <?php
 
 $params = require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'local.php');
+require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'../components/helpers.php');
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -120,5 +121,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		'timeZone'=>'Asia/Manila',
 	),
 );
