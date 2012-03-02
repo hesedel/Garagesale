@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2012 at 06:46 PM
+-- Generation Time: Mar 02, 2012 at 04:03 PM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -93,6 +93,8 @@ INSERT INTO `item_condition` VALUES(1, 'Used');
 CREATE TABLE `item_image` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(4) NOT NULL,
+  `size` int(10) unsigned NOT NULL,
+  `data` mediumblob NOT NULL,
   `index` tinyint(3) unsigned NOT NULL,
   `item_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
