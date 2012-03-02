@@ -36,7 +36,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'order'=>'updated DESC',
+				'order'=>'created DESC',
 			),
 			'pagination'=>array(
 				'pageSize'=>9,
