@@ -350,20 +350,24 @@ div.g-items {
 
 							em {
 								color: blacken($beige, 25%, 3);
+								font-size: $small;
 							}
 
 							span.location {
 								color: blacken($beige, 25%, 2);
+								font-size: $small;
 							}
 
 							span.time {
 								@include float-right;
+								color: blacken($beige, 25%, 2);
 								font-size: $small;
 								height: 18px;
 									line-height: 18px;
 
 								abbr {
-									
+									color: blacken($beige, 25%, 3);
+									border-color: blacken($beige, 25%, 2);
 								}
 
 							}
