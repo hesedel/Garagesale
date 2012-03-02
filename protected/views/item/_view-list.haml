@@ -40,7 +40,7 @@
 			-endif
 			%span.location Location
 			%span.time updated
-				%abbr(title="#{date('Y-m-d H:i:s', strtotime($data->updated))}")
+				%abbr(title="#{date('Y-m-d H:i:sO', strtotime($data->updated))}")
 					=$data->updated
 	:php
 		$image = Yii::app()->db->createCommand()
