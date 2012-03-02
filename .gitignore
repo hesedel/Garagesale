@@ -3,11 +3,9 @@
 /css/.sass-cache/
 /images/slir/cache/*
 !/images/slir/cache/.empty
-/images/uploads/*
-!/images/uploads/.empty
-!/images/uploads/items/
-/images/uploads/items/*
-!/images/uploads/items/.empty
+!/images/uploads/cache/
+/images/uploads/cache/*
+!/images/uploads/cache/.empty
 !/images/uploads/temp/
 /images/uploads/temp/*
 !/images/uploads/temp/.empty

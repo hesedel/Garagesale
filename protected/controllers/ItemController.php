@@ -84,11 +84,13 @@ class ItemController extends Controller
 						$file = pathinfo($upload['tempName']);
 						$model_itemImage=new ItemImage();
 						$model_itemImage->type=$file['extension'];
+						$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+						$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 						$model_itemImage->index=$i;
 						$model_itemImage->item_id=$model->id;
 						if($model_itemImage->save())
-							if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
-								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+							//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+							unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 						$i++;
 					}
 				}
@@ -134,11 +136,13 @@ class ItemController extends Controller
 							$file = pathinfo($upload['tempName']);
 							$model_itemImage=new ItemImage();
 							$model_itemImage->type=$file['extension'];
+							$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+							$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 							$model_itemImage->index=$i;
 							$model_itemImage->item_id=$model->id;
 							if($model_itemImage->save()) {
-								if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
-									unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+								//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
 								$array1[] = $model_itemImage->id;
 							}
 							$i++;
@@ -152,7 +156,7 @@ class ItemController extends Controller
 					}
 				}
 				$images = Yii::app()->db->createCommand()
-					->select('*')
+					->select('id')
 					->from('item_image')
 					->where('item_id=:item_id', array(':item_id'=>$id))
 					->queryAll();
@@ -163,12 +167,12 @@ class ItemController extends Controller
 				$deletes = array_diff($array2, $array1);
 				foreach($deletes as $delete) {
 					$image = Yii::app()->db->createCommand()
-						->select('*')
+						->select('id')
 						->from('item_image')
 						->where('id=:id', array(':id'=>$delete))
 						->queryRow();
 					Yii::app()->db->createCommand()->delete('item_image', 'id=:id', array(':id'=>$delete));
-					unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.'.$image['type']);
+					//unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.'.$image['type']);
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
@@ -192,14 +196,18 @@ class ItemController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			/*
 			$images = Yii::app()->db->createCommand()
 				->select('*')
 				->from('item_image')
 				->where('item_id=:item_id', array(':item_id'=>$id))
 				->queryAll();
+			*/
 			Yii::app()->db->createCommand()->delete('item_image', 'item_id=:item_id', array(':item_id'=>$id));
+			/*
 			foreach($images as $image)
 				unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$image['id'].'.'.$image['type']);
+			*/
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))

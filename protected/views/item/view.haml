@@ -22,15 +22,15 @@
 #item_view-sidebar-left
 	:php
 		$image = Yii::app()->db->createCommand()
-			->select('*')
+			->select('id, type')
 			->from('item_image')
 			->where('item_id=:item_id and `index`=0', array(':item_id'=>$model->id))
 			->order('index')
 			->queryRow();
 		if($image) {
 			echo CHtml::link(
-				CHtml::image('/images/slir/w188-h302-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'], $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
-				'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
+				CHtml::image('/images/slir/w188-h302-bf5f5f5/'.db_image('item_image', $image['id']), $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
+				'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
 				array('class'=>'lightbox')
 			);
 		} else

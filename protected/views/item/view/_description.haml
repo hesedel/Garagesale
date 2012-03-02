@@ -1,7 +1,7 @@
 %p =Yii::app()->format->formatNtext($model->description)
 :php
 	$images = Yii::app()->db->createCommand()
-		->select('*')
+		->select('id, type')
 		->from('item_image')
 		->where('item_id=:item_id and `index`>0', array(':item_id'=>$model->id))
 		->order('index')
@@ -11,8 +11,8 @@
 	:php
 		foreach($images as $image) {
 			echo CHtml::link(
-				CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('title'=>'click to enlarge photo', 'style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/images/uploads/items/'.$image['id'].'.'.$image['type'].')')),
-				'/images/slir/w530-bfff/images/uploads/items/'.$image['id'].'.'.$image['type'],
+				CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('title'=>'click to enlarge photo', 'style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/'.db_image('item_image', $image['id']).')')),
+				'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
 				array('class'=>'lightbox')
 			);
 		}

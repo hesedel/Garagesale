@@ -1,5 +1,18 @@
 <?php
 
+function db_image($table, $id) {
+	$image = Yii::app()->db->createCommand()
+		->select('type, data')
+		->from($table)
+		->where('id=:id', array(':id'=>$id))
+		->queryRow();
+	$file = '/images/uploads/cache/'.md5($table.$id).'.'.$image['type'];
+	if(!file_exists(Yii::getPathOfAlias('webroot').$file)) {
+		file_put_contents(Yii::getPathOfAlias('webroot').$file, $image['data']);
+	}
+	return $file;
+}
+
 function time_local($time, $options = array())
 {
 	$defaults = array(
