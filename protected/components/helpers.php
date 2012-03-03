@@ -1,16 +1,26 @@
 <?php
 
-function db_image($table, $id) {
+function db_image($table, $id, $options = array()) {
+	$defaults = array(
+		'unlink'=>false,
+	);
+	$options = array_merge($defaults, $options);
+
 	$image = Yii::app()->db->createCommand()
 		->select('type, data')
 		->from($table)
 		->where('id=:id', array(':id'=>$id))
 		->queryRow();
-	$file = '/images/uploads/cache/'.md5($table.$id).'.'.$image['type'];
-	if(!file_exists(Yii::getPathOfAlias('webroot').$file)) {
-		file_put_contents(Yii::getPathOfAlias('webroot').$file, $image['data']);
-	}
-	return $file;
+	if($image) {
+		$file = '/images/uploads/cache/'.md5($table.$id).'.'.$image['type'];
+		if(!$options['unlink']) {
+			if(!file_exists(Yii::getPathOfAlias('webroot').$file))
+				file_put_contents(Yii::getPathOfAlias('webroot').$file, $image['data']);
+		} else if(file_exists(Yii::getPathOfAlias('webroot').$file))
+			unlink(Yii::getPathOfAlias('webroot').$file);
+		return $file;
+	} else
+		return false;
 }
 
 function time_local($time, $options = array())

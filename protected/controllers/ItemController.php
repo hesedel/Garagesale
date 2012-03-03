@@ -171,8 +171,8 @@ class ItemController extends Controller
 						->from('item_image')
 						->where('id=:id', array(':id'=>$delete))
 						->queryRow();
+					db_image('item_image', $image['id'], array('unlink'=>true));
 					Yii::app()->db->createCommand()->delete('item_image', 'id=:id', array(':id'=>$delete));
-					//unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$delete.'.'.$image['type']);
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
@@ -196,18 +196,14 @@ class ItemController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
-			/*
 			$images = Yii::app()->db->createCommand()
-				->select('*')
+				->select('id')
 				->from('item_image')
 				->where('item_id=:item_id', array(':item_id'=>$id))
 				->queryAll();
-			*/
-			Yii::app()->db->createCommand()->delete('item_image', 'item_id=:item_id', array(':item_id'=>$id));
-			/*
 			foreach($images as $image)
-				unlink(Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$image['id'].'.'.$image['type']);
-			*/
+				db_image('item_image', $image['id'], array('unlink'=>true));
+			Yii::app()->db->createCommand()->delete('item_image', 'item_id=:item_id', array(':item_id'=>$id));
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
