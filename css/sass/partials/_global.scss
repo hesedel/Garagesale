@@ -38,14 +38,14 @@ label, th {
 		rgba(0, 0, 0, .05) 0 1px
 	);
 	padding: 8px 9px;
-	@include transition(background-color 125ms);
+	@include transition(background-color, 125ms);
 
 	&:hover {
 		color: blacken($beige, 25%, 5);
 		background-color: whiten($whitesmoke, 25%);
 		border-color: blacken($whitesmoke, 25%, 2);
 		border-bottom-color: blacken($whitesmoke, 25%, 3);
-		@include transition(background-color 250ms);
+		@include transition(background-color, 250ms);
 	}
 
 	&:active {
@@ -53,6 +53,7 @@ label, th {
 		border-color: blacken($whitesmoke, 25%, 2);
 		border-top-color: blacken($whitesmoke, 25%, 3);
 		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+		@include transition(background-color, 0ms);
 
 		&:hover {
 			border-color: blacken($whitesmoke, 25%, 2);
