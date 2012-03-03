@@ -40,7 +40,7 @@ class SLIRConfig extends SLIRConfigDefaults
 {
 	// override configuration values here
 	public static $defaultQuality	= 100;
-	//public static $defaultCropper	= SLIR::CROP_CLASS_SMART;
+	public static $defaultCropper	= SLIR::CROP_CLASS_SMART;
 	public static $logErrors	= FALSE;
 	public static $errorImages	= FALSE;
 
