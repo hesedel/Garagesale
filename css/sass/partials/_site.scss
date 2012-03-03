@@ -1,13 +1,15 @@
 #site_index {
-	position: relative;
 
 	h2 {
-		position: absolute;
+		font-family: ProximaNovaSemibold;
+		font-size: $h3;
+		line-height: 18px;
+		margin-bottom: 9px;
 	}
 
 	div.categoryORlocation {
 		@include float-left;
-		width: 240px;
+		width: 230px;
 		margin-right: 10px;
 	}
 
@@ -21,14 +23,12 @@
 #site_index-sidebar {
 
 	div.about {
-		background-color: whiten($custom_magenta, 25%, 3);
-		border: 1px dashed $custom_magenta;
-		@include border-radius(2px);
-		padding: 8px 9px 17px 9px;
+		background-color: whiten(blacken($beige, 25%), 25%, 6);
+		@include border-radius(3px);
+		padding: 9px 10px 18px;
 
 		h2 {
-			color: white;
-			@include text-shadow(rgba(0, 0, 0, .05), 0, -1px, 0);
+			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 			margin-bottom: 9px;
 
 			span {
@@ -38,8 +38,7 @@
 		}
 
 		p {
-			color: white;
-			@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
+			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 			margin-bottom: 9px;
 		}
 

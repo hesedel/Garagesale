@@ -32,7 +32,7 @@ label, th {
 	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
 	border: 1px solid blacken($whitesmoke, 25%);
 	border-bottom-color: blacken($whitesmoke, 25%, 2);
-	@include border-radius(2px);
+	@include border-radius(3px);
 	@include box-shadow(
 		rgba(255, 255, 255, 1) 0 1px 1px inset,
 		rgba(0, 0, 0, .05) 0 1px
@@ -51,13 +51,11 @@ label, th {
 	&:active {
 		background-color: blacken($whitesmoke, 10%);
 		border-color: blacken($whitesmoke, 25%, 2);
-		border-top-color: blacken($whitesmoke, 25%, 3);
 		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 		@include transition(background-color, 0ms);
 
 		&:hover {
 			border-color: blacken($whitesmoke, 25%, 2);
-			border-top-color: blacken($whitesmoke, 25%, 3);
 		}
 
 	}
@@ -88,7 +86,6 @@ label, th {
 		&:active {
 			background-color: blacken($custom_orange, 10%);
 			border-color: blacken($custom_orange, 25%, 2);
-			border-top-color: blacken($custom_orange, 25%, 3);
 			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 		}
 
@@ -143,24 +140,24 @@ div.g-items {
 
 			div.items {
 				@include clearfix;
-				width: 750px;
+				width: 740px;
 				padding-top: 11px;
 				padding-bottom: 20px;
 				padding-left: 2px;
 
 				div.view {
 					@include float-left;
-					background-color: whiten($whitesmoke, 25%, 4);
-					border: 1px solid blacken($whitesmoke, 10%);
-					width: 220px;
+					background-color: whiten(blacken($beige, 25%), 25%, 8);
+					border: 1px solid blacken($whitesmoke, 5%);
+					width: 155px;
 					margin-top: 9px;
 					margin-right: 10px;
 					padding: 8px 9px;
 
 					a.img {
 						display: block;
-						height: 135px;
-						margin-bottom: 9px;
+						height: 120px;
+						margin-bottom: 6px;
 
 						img {
 							background-color: whiten(blacken($beige, 25%), 25%, 4);
@@ -176,17 +173,14 @@ div.g-items {
 
 					strong {
 						@include ellipsis;
-						@include h4;
-						font-family: ProximaNovaRegular;
 						display: block;
-						margin-bottom: 0;
 
 						a {
-							color: blacken($custom_cyan, 25%);
+							color: blacken($beige, 25%, 4);
 							text-decoration: none;
 
 							&:hover {
-								color: blacken($custom_cyan, 25%, 2);
+								text-decoration: underline;
 							}
 
 						}
@@ -195,18 +189,17 @@ div.g-items {
 
 					em {
 						@include float-left;
-						color: blacken($beige, 25%, 3);
+						color: blacken($beige, 25%, 2);
 					}
 
 					span.price {
 						@include float-right;
 						color: blacken($custom_green, 25%, 2);
-						font-family: ProximaNovaSemibold;
 					}
 
 					span.location {
 						@include float-left;
-						color: blacken($beige, 25%, 2);
+						color: blacken($beige, 25%);
 						display: none;
 					}
 
@@ -234,9 +227,9 @@ div.g-items {
 					}
 
 					&:hover {
-						background-color: white;
-						border-color: blacken($whitesmoke, 10%, 2);
-						@include box-shadow(rgba(0, 0, 0, .25) 0 0 2px);
+						background-color: transparent;
+						border-color: blacken($whitesmoke, 10%);
+						@include box-shadow(rgba(0, 0, 0, .1) 0 0 2px);
 						position: relative;
 						margin-bottom: -18px;
 						@include transition(box-shadow, 125ms);
@@ -267,15 +260,8 @@ div.g-items {
 
 				div.view {
 					@include clearfix;
-					//background-color: $whitesmoke;
-					//@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-					border-top: 1px dotted blacken($whitesmoke, 10%);
-					/*
-					@include box-shadow(
-						rgba(255, 255, 255, 1) 0 1px inset,
-						rgba(0, 0, 0, .05) 0 -1px inset
-					);
-					*/
+					background-color: whiten(blacken($beige, 25%), 25%, 8);
+					border-top: 1px dotted blacken($whitesmoke, 5%);
 					padding: 17px 10px 18px;
 
 					&:first-child {
@@ -288,7 +274,7 @@ div.g-items {
 						width: 100%;
 
 						div.data {
-							margin-left: 65px;
+							margin-left: 55px;
 
 							table {
 								margin-bottom: 0;
@@ -303,20 +289,15 @@ div.g-items {
 
 									strong {
 										@include ellipsis;
-										font-family: ProximaNovaRegular;
-										font-size: $h4;
 										display: block;
-										height: 18px;
-											line-height: 18px;
-										overflow: hidden;
 
 										a {
-											color: blacken($custom_cyan, 25%);
+											color: blacken($beige, 25%, 4);
 											text-decoration: none;
 											@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 											&:hover {
-												color: blacken($custom_cyan, 25%, 2);
+												text-decoration: underline;
 											}
 
 										}
@@ -354,7 +335,6 @@ div.g-items {
 
 									&.price {
 										color: blacken($custom_green, 25%, 2);
-										font-family: ProximaNovaSemibold;
 										@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 										padding-left: 5px;
 									}
@@ -364,25 +344,23 @@ div.g-items {
 							} // table
 
 							em {
-								color: blacken($beige, 25%, 3);
-								font-size: $small;
+								color: blacken($beige, 25%, 2);
 							}
 
 							span.location {
-								color: blacken($beige, 25%, 2);
-								font-size: $small;
+								color: blacken($beige, 25%);
 							}
 
 							span.time {
 								@include float-right;
-								color: blacken($beige, 25%, 2);
+								color: blacken($beige, 25%);
 								font-size: $small;
 								height: 18px;
 									line-height: 18px;
 
 								abbr {
-									color: blacken($beige, 25%, 3);
-									border-color: blacken($beige, 25%, 2);
+									color: blacken($beige, 25%, 2);
+									border-bottom: none;
 								}
 
 							}
@@ -394,7 +372,7 @@ div.g-items {
 					a.img {
 						@include float-left;
 						border: 1px solid white;
-						width: 53px;
+						width: 43px;
 						height: 34px;
 						margin-left: -100%;
 
@@ -411,11 +389,7 @@ div.g-items {
 					}
 
 					&:hover {
-						background-color: $whitesmoke;
-						//@include background-image(linear-gradient(rgba(0, 0, 0, .05), rgba(255, 255, 255, .05)));
-						//@include transition(box-shadow, 125ms);
-						position: relative;
-						@include transition(background-color, 125ms);
+						background-color: transparent;
 					}
 
 				} // .view

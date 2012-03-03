@@ -101,6 +101,7 @@
 									.td.right
 										=CHtml::linkButton('Search', array('class'=>'g-button'))
 										%input(type="submit" value="Search")
+						.td#post =CHtml::link('Post a<br/>Free Ad', array('/item/create'))
 					.tr.filters.hide
 						.td \\&#160;
 						.td \\&#160;
@@ -109,6 +110,7 @@
 							%div \\&#160;
 						.td.filters-right
 							%div \\&#60; Filters Here &#62;
+						.td \\&#160;
 				<!--<![endif]-->
 				/[if lt IE 8]
 					%table#table(cellspacing="")
@@ -142,12 +144,14 @@
 										%td.td.right
 											=CHtml::linkButton('Search', array('class'=>'g-button'))
 											%input(type="submit" value="Search")
+							%td.td#post =CHtml::link('Post a<br/>Free Ad', array('/item/create'))
 						%tr.tr.filters.hide
 							%td.td(colspan="3") \\&#160;
 							%td.td.filters-left
 								%div \\&#160;
 							%td.td.filters-right
 								%div \\&#60; Filters Here &#62;
+							%td.td \\&#160;
 				//#mainmenu
 				//	:php
 				//		$this->widget('zii.widgets.CMenu',array(

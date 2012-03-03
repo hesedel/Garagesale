@@ -31,7 +31,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider_featured=new CActiveDataProvider('Item',array(
 			'pagination'=>array(
-				'pageSize'=>3,
+				'pageSize'=>4,
 			),
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(
@@ -39,7 +39,7 @@ class SiteController extends Controller
 				'order'=>'created DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>9,
+				'pageSize'=>4,
 			),
 		));
 		$this->render('index',array(

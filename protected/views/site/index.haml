@@ -15,7 +15,7 @@
 
 #site_index
 	%h2 Featured Ads
-	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>false, 'sortButton'=>false)))
+	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'createButton'=>false)))
 	.categoryORlocation ...
 	.latest
 		%h3 Latest Ads
