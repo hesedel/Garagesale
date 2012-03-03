@@ -50,13 +50,13 @@ label, th {
 
 	&:active {
 		background-color: blacken($whitesmoke, 10%);
-		border-top-color: blacken($whitesmoke, 25%, 2);
-		border-bottom-color: blacken($whitesmoke, 25%);
+		border-color: blacken($whitesmoke, 25%, 2);
+		border-top-color: blacken($whitesmoke, 25%, 3);
 		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 
 		&:hover {
-			border-color: blacken($whitesmoke, 25%);
-			border-top-color: blacken($whitesmoke, 25%, 2);
+			border-color: blacken($whitesmoke, 25%, 2);
+			border-top-color: blacken($whitesmoke, 25%, 3);
 		}
 
 	}
@@ -86,8 +86,8 @@ label, th {
 
 		&:active {
 			background-color: blacken($custom_orange, 10%);
-			border-top-color: blacken($custom_orange, 25%, 2);
-			border-bottom-color: blacken($custom_orange, 25%);
+			border-color: blacken($custom_orange, 25%, 2);
+			border-top-color: blacken($custom_orange, 25%, 3);
 			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 		}
 
