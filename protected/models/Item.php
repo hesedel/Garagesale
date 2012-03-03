@@ -55,8 +55,8 @@ class Item extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
-			array('images', 'file', 'allowEmpty'=>true, 'minSize'=>1024, 'maxSize'=>2*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2MB
-			//array('images', 'EPhotoValidator', 'allowEmpty'=>true, 'minWidth'=>640, 'minHeight'=>480),
+			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2MB
+			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>530, 'minHeight'=>530),
 		);
 	}
 
