@@ -141,7 +141,7 @@
 							foreach($images as $image)
 								$uploads[] = array('name'=>$image['id'], 'tempName'=>'', 'new'=>false);
 						}
-						if(strlen($form->error($model, 'images')) <= 74) {
+						if(strlen(strip_tags($form->error($model, 'images'))) == 0) {
 							$images = CUploadedFile::getInstances($model, 'images');
 							foreach($images as $image) {
 								$name = md5($image->name.time()).'.'.strtolower($image->extensionName);
