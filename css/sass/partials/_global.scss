@@ -50,7 +50,15 @@ label, th {
 
 	&:active {
 		background-color: blacken($whitesmoke, 10%);
+		border-top-color: blacken($whitesmoke, 25%, 2);
+		border-bottom-color: blacken($whitesmoke, 25%);
 		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+
+		&:hover {
+			border-color: blacken($whitesmoke, 25%);
+			border-top-color: blacken($whitesmoke, 25%, 2);
+		}
+
 	}
 
 	&.small {
@@ -78,9 +86,15 @@ label, th {
 
 		&:active {
 			background-color: blacken($custom_orange, 10%);
+			border-top-color: blacken($custom_orange, 25%, 2);
+			border-bottom-color: blacken($custom_orange, 25%);
 			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
 		}
 
+	}
+
+	&.disabled {
+		
 	}
 
 }
@@ -411,4 +425,60 @@ div.g-items {
 
 	} // .list
 
-}
+} // .g-items
+
+ul.g-pager {
+	@include float-right;
+	margin-right: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	li {
+		@include float-left;
+		padding-right: 5px;
+		padding-left: 5px;
+
+		a {
+			@extend .g-button;
+			@extend .g-button.small;
+			text-align: center;
+			display: block;
+			@include min-width(15px);
+			height: 16px;
+				line-height: 16px;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		&.first,
+		&.previous,
+		&.next,
+		&.last {
+
+			a {
+				font-size: $h3;
+				line-height: 14px;
+			}
+
+		}
+
+		&.first,
+		&.last {
+			display: none;
+		}
+
+		&.selected {
+
+			a {
+				@extend .g-button:active;
+			}
+
+		}
+
+		&.hidden {
+			
+		}
+
+	}
+
+} // .g-pager

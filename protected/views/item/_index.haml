@@ -32,6 +32,15 @@
 			'dataProvider'=>$dataProvider,
 			'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
 			'summaryText'=>'',
+			'pager'=>array(
+				'header'=>false,
+				'htmlOptions'=>array('class'=>'g-pager'),
+				'firstPageLabel'=>'‹‹',
+				'prevPageLabel'=>'‹',
+				'nextPageLabel'=>'›',
+				'lastPageLabel'=>'››',
+				//'maxButtonCount'=>3,
+			),
 		));
 
 
