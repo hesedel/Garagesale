@@ -7,19 +7,18 @@
 
 #site_index-sidebar
 	.about
-		%h2 Buy <span>&#38;</span> Sell
-		%p Got used stuff you don't need anymore? Let <strong>#{Yii::app()->name}</strong> help you sell them!
-		\\&#60; Facebook Share Here &#62;
+		
 
 -$this->endWidget()
 
 #site_index
 	%h2 Featured Ads
 	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'createButton'=>false)))
-	.categoryORlocation ...
-	.latest
-		%h3 Latest Ads
-		-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_latest, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'createButton'=>false, 'view'=>'list')))
+	//
+		.categoryORlocation ...
+		.latest
+			%h3 Latest Ads
+			-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_latest, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'createButton'=>false, 'view'=>'list')))
 
 :php
 	Yii::app()->clientScript->registerScript(

@@ -135,7 +135,7 @@ div.g-items {
 			margin-left: -2px;
 
 			div.summary {
-				display: none;
+				
 			}
 
 			div.items {
@@ -148,7 +148,8 @@ div.g-items {
 				div.view {
 					@include float-left;
 					background-color: whiten(blacken($beige, 25%), 25%, 8);
-					border: 1px solid blacken($whitesmoke, 5%);
+					border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
+					position: relative;
 					width: 155px;
 					margin-top: 9px;
 					margin-right: 10px;
@@ -178,6 +179,7 @@ div.g-items {
 						a {
 							color: blacken($beige, 25%, 4);
 							text-decoration: none;
+							@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 
 							&:hover {
 								text-decoration: underline;
@@ -188,13 +190,18 @@ div.g-items {
 					}
 
 					em {
-						@include float-left;
+						@include ellipsis;
 						color: blacken($beige, 25%, 2);
+						position: absolute;
 					}
 
 					span.price {
+						font-family: sans-serif;
 						@include float-right;
 						color: blacken($custom_green, 25%, 2);
+						background-color: whiten(blacken($beige, 25%), 25%, 8);
+						position: relative;
+						padding-left: 10px;
 					}
 
 					span.location {
@@ -227,12 +234,16 @@ div.g-items {
 					}
 
 					&:hover {
-						background-color: transparent;
-						border-color: blacken($whitesmoke, 10%);
+						background-color: white;
+						border-color: whiten(blacken($beige, 25%), 25%, 4);
 						@include box-shadow(rgba(0, 0, 0, .1) 0 0 2px);
 						position: relative;
 						margin-bottom: -18px;
 						@include transition(box-shadow, 125ms);
+
+						span.price {
+							background-color: white;
+						}
 
 						span.location,
 						span.condition {
@@ -260,8 +271,8 @@ div.g-items {
 
 				div.view {
 					@include clearfix;
-					background-color: whiten(blacken($beige, 25%), 25%, 8);
-					border-top: 1px dotted blacken($whitesmoke, 5%);
+					background-color: whiten(blacken($beige, 25%), 25%, 6);
+					border-top: 1px dotted white;
 					padding: 17px 10px 18px;
 
 					&:first-child {
@@ -335,7 +346,6 @@ div.g-items {
 
 									&.price {
 										color: blacken($custom_green, 25%, 2);
-										@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 										padding-left: 5px;
 									}
 
@@ -371,9 +381,8 @@ div.g-items {
 
 					a.img {
 						@include float-left;
-						border: 1px solid white;
-						width: 43px;
-						height: 34px;
+						width: 45px;
+						height: 36px;
 						margin-left: -100%;
 
 						img {

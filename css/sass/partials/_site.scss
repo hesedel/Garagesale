@@ -25,23 +25,7 @@
 	div.about {
 		background-color: whiten(blacken($beige, 25%), 25%, 6);
 		@include border-radius(3px);
-		padding: 9px 10px 18px;
-
-		h2 {
-			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-			margin-bottom: 9px;
-
-			span {
-				font-family: NewBaskervilleRegularItalic;
-			}
-
-		}
-
-		p {
-			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-			margin-bottom: 9px;
-		}
-
+		height: 207px;
 	}
 
 }
