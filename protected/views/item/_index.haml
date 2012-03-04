@@ -2,7 +2,6 @@
 	$defaults = array(
 		'viewButton'=>true,
 		'sortButton'=>true,
-		'createButton'=>true,
 		'view'=>'grid',
 	);
 	if(isset($options))
@@ -10,7 +9,7 @@
 	else
 		$options = $defaults;
 
-.g-items(class="#{($options['view'] === 'grid' ? 'grid' : 'list').(!$options['viewButton'] && !$options['sortButton'] && !$options['createButton'] ? ' no-toolbox' : '')}")
+.g-items(class="#{($options['view'] === 'grid' ? 'grid' : 'list').(!$options['viewButton'] && !$options['sortButton'] ? ' no-toolbox' : '')}")
 	-if(true):
 	.toolbox
 		-if($options['viewButton']):
@@ -20,10 +19,6 @@
 		-if($options['sortButton']):
 		\\&#160;
 		%a.g-button(href="#") \\&#60; Sort by Price &#62;
-		-endif
-		-if($options['createButton']):
-		\\&#160;
-		=CHtml::link('Post a Free Ad', array('/item/create'), array('class'=>'g-button orange'))
 		-endif
 	.clear
 	-endif

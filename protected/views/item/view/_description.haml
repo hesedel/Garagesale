@@ -11,7 +11,7 @@
 	:php
 		foreach($images as $image) {
 			echo CHtml::link(
-				CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('title'=>'click to enlarge photo', 'style'=>'background-image: url(/images/slir/w176-h170-c176:170-bf5f5f5/'.db_image('item_image', $image['id']).')')),
+				CHtml::image('/images/transparent.gif', $image['id'].'.'.$image['type'], array('title'=>'click to enlarge photo', 'style'=>'background-image: url(/images/slir/w176-h170-c176:170-be8e8e3/'.db_image('item_image', $image['id']).')')),
 				'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
 				array('class'=>'lightbox')
 			);
