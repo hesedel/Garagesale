@@ -196,7 +196,7 @@ div.g-items {
 					}
 
 					span.price {
-						font-family: sans-serif;
+						font-family: sans-serif; //
 						@include float-right;
 						color: blacken($custom_green, 25%, 2);
 						background-color: whiten(blacken($beige, 25%), 25%, 8);
@@ -255,6 +255,16 @@ div.g-items {
 				} // .view
 
 			} // .items
+
+			&.list-view-loading {
+				background-position: left bottom;
+
+				div.items {
+					@include opacity(.75);
+					@include transition(opacity, 125ms);
+				}
+
+			}
 
 		} // .list-view
 
