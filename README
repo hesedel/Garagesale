@@ -12,9 +12,9 @@ INSTRUCTIONS
 1. Duplicate '/protected/config/local.php.sample' to '/protected/config/local.php'
 	then edit it to match your local environment configuration.
 
-2. Rename '/db_rebuild.php.danger' to '/db_rebuild.php'.
-	Enter 'http://localhost.garagesale.com/db_rebuild.php' in your browser for a clean database,
-	OR 'http://localhost.garagesale.com/db_rebuild.php?populate' for a populated one.
+2. Rename '/db_rebuild.php.danger' to '/db_rebuild.php'
+	then run '/db_rebuild.php' in your browser for a clean database
+	or '/db_rebuild.php?populate' for a populated one.
 
-3. FOR MAC USERS:
+3. For Mac users:
 	Run '$ bash mac' in your local repository.
