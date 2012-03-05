@@ -12,7 +12,7 @@
  * @property string $description
  * @property integer $category_id
  * @property integer $condition_id
- * @property integer $user_id
+ * @property string $user_id
  */
 class Item extends CActiveRecord
 {
@@ -46,8 +46,8 @@ class Item extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, price, description', 'required'),
-			array('price, category_id, condition_id, user_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>64),
+			array('price, category_id, condition_id', 'numerical', 'integerOnly'=>true),
+			array('title, user_id', 'length', 'max'=>64),
 			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
@@ -70,6 +70,7 @@ class Item extends CActiveRecord
 		return array(
 			'category'=>array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition'=>array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
+			'user'=>array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -111,7 +112,7 @@ class Item extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('condition_id',$this->condition_id);
-		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('user_id',$this->user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

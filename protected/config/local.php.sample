@@ -3,6 +3,7 @@ return array(
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
 	'db.name'=>'garagesale',
+	'db.socket'=>'',
 	'db.username'=>'root',
 	'db.password'=>'password',
 );
