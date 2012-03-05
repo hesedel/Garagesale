@@ -1,7 +1,8 @@
 <?php
 return array(
 	'gii.password'=>'password',
-	'db.connectionString'=>'mysql:host=localhost;dbname=garagesale',
+	'db.host'=>'localhost',
+	'db.name'=>'garagesale',
 	'db.username'=>'root',
 	'db.password'=>'password',
 );

@@ -63,12 +63,18 @@ return array(
 		*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString'=>$params['db.connectionString'],
+			'connectionString'=>'mysql:host='.$params['db.host'].';dbname='.$params['db.name'],
 			'emulatePrepare'=>true,
 			'username'=>$params['db.username'],
 			'password'=>$params['db.password'],
 			'charset'=>'utf8',
 		),
+		/*
+		'authManager'=>array(
+			'class'=>'CDbAuthManager',
+			'connectionID'=>'db',
+		),
+		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
