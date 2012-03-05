@@ -9,10 +9,12 @@ For development environment specific settings to apply,
 
 INSTRUCTIONS
 
-1. Create a database and import either 'garagesale.sql' for a blank database or 'garagesale-populated.sql' for a pre-populated one.
-
-2. Duplicate '/protected/config/local.php.sample' to '/protected/config/local.php'
+1. Duplicate '/protected/config/local.php.sample' to '/protected/config/local.php'
 	then edit it to match your local environment configuration.
 
+2. Rename '/db_rebuild.php.danger' to '/db_rebuild.php'.
+	Enter 'http://localhost.garagesale.com/db_rebuild.php' in your browser for a clean database,
+	OR 'http://localhost.garagesale.com/db_rebuild.php?populate' for a populated one.
+
 3. FOR MAC USERS:
-	Run '$ bash mac'.
+	Run '$ bash mac' in your local repository.

@@ -1,0 +1,30 @@
+<?php
+if(isset($_GET['populate']))
+	$populate = true;
+else
+	$populate = false;
+
+// connect to database
+$params = require_once('protected/config/local.php');
+mysql_connect($params['db.host'], $params['db.username'], $params['db.password']);
+
+// recreate database
+mysql_query('DROP DATABASE '.$params['db.name']);
+mysql_query('CREATE DATABASE '.$params['db.name']);
+mysql_query('USE '.$params['db.name']);
+
+// populate database
+$fileName = 'garagesale'.($populate ? '-populated' : '').'.sql';
+$queries = explode(';', fread(fopen($fileName, 'r'), filesize($fileName)));
+foreach($queries as $query)
+	mysql_query($query);
+
+// delete temporary and cached uploaded images
+foreach(glob('images/uploads/temp/*') as $file) {
+	if(!preg_match('/\.empty/', $file))
+		unlink($file);
+}
+foreach(glob('images/uploads/cache/*') as $file) {
+	if(!preg_match('/\.empty/', $file))
+		unlink($file);
+}

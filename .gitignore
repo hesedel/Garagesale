@@ -1,6 +1,7 @@
 /assets/*
 !/assets/.empty
 /css/.sass-cache/
+/db_rebuild.php
 /images/slir/cache/*
 !/images/slir/cache/.empty
 !/images/uploads/cache/
