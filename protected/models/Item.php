@@ -48,7 +48,6 @@ class Item extends CActiveRecord
 			array('title, price, description', 'required'),
 			array('price, category_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
-			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('category_id, condition_id, user_id', 'default', 'value'=>null),
