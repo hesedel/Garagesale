@@ -28,3 +28,6 @@ foreach(glob('images/uploads/cache/*') as $file) {
 	if(!preg_match('/\.empty/', $file))
 		unlink($file);
 }
+
+// run database migrations
+shell_exec($params['php'].' protected/yiic migrate --interactive=0');
