@@ -7,6 +7,9 @@
  * @property integer $id
  * @property string $title
  * @property integer $parent_id
+ *
+ * The followings are the available model relations:
+ * @property Item[] $items
  */
 class ItemCategory extends CActiveRecord
 {
@@ -53,6 +56,7 @@ class ItemCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'items' => array(self::HAS_MANY, 'Item', 'category_id'),
 		);
 	}
 

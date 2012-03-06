@@ -6,11 +6,15 @@
  * The followings are the available columns in table 'item_condition':
  * @property integer $id
  * @property string $title
+ *
+ * The followings are the available model relations:
+ * @property Item[] $items
  */
 class ItemCondition extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
+	 * @param string $className active record class name.
 	 * @return ItemCondition the static model class
 	 */
 	public static function model($className=__CLASS__)
@@ -51,6 +55,7 @@ class ItemCondition extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'items' => array(self::HAS_MANY, 'Item', 'condition_id'),
 		);
 	}
 

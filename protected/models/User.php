@@ -1,25 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "item_image".
+ * This is the model class for table "user".
  *
- * The followings are the available columns in table 'item_image':
+ * The followings are the available columns in table 'user':
  * @property string $id
- * @property string $type
- * @property string $size
- * @property string $data
- * @property integer $index
- * @property string $item_id
+ * @property string $created
+ * @property string $updated
+ * @property string $password
+ * @property integer $role
+ * @property string $name_first
+ * @property string $name_last
  *
  * The followings are the available model relations:
- * @property Item $item
+ * @property Item[] $items
  */
-class ItemImage extends CActiveRecord
+class User extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ItemImage the static model class
+	 * @return User the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +32,7 @@ class ItemImage extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'item_image';
+		return 'user';
 	}
 
 	/**
@@ -42,13 +43,14 @@ class ItemImage extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('type, size, data, index, item_id', 'required'),
-			array('index', 'numerical', 'integerOnly'=>true),
-			array('type', 'length', 'max'=>4),
-			array('size, item_id', 'length', 'max'=>10),
+			array('id, updated, password, role, name_first', 'required'),
+			array('role', 'numerical', 'integerOnly'=>true),
+			array('id', 'length', 'max'=>64),
+			array('password, name_first, name_last', 'length', 'max'=>32),
+			array('created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, type, size, index, item_id', 'safe', 'on'=>'search'),
+			array('id, created, updated, password, role, name_first, name_last', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +62,7 @@ class ItemImage extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'item' => array(self::BELONGS_TO, 'Item', 'item_id'),
+			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
 		);
 	}
 
@@ -71,11 +73,12 @@ class ItemImage extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'type' => 'Type',
-			'size' => 'Size',
-			'data' => 'Data',
-			'index' => 'Index',
-			'item_id' => 'Item',
+			'created' => 'Created',
+			'updated' => 'Updated',
+			'password' => 'Password',
+			'role' => 'Role',
+			'name_first' => 'Name First',
+			'name_last' => 'Name Last',
 		);
 	}
 
@@ -91,11 +94,12 @@ class ItemImage extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('type',$this->type,true);
-		$criteria->compare('size',$this->size,true);
-		$criteria->compare('data',$this->data);
-		$criteria->compare('index',$this->index);
-		$criteria->compare('item_id',$this->item_id,true);
+		$criteria->compare('created',$this->created,true);
+		$criteria->compare('updated',$this->updated,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('role',$this->role);
+		$criteria->compare('name_first',$this->name_first,true);
+		$criteria->compare('name_last',$this->name_last,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
