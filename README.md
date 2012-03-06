@@ -20,8 +20,8 @@ make sure your url starts with `localhost.`.
 		then run `/db_rebuild.php` in your browser for a clean database
 			or `/db_rebuild.php?populate` for a populated one.
 
-	ex:
-		http://localhost.garagesale.com/db_rebuild.php?populate
+		ex:
+			http://localhost.garagesale.com/db_rebuild.php?populate
 
 3. **Applying Database Updates**
 
