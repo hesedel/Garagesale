@@ -23,7 +23,12 @@ make sure your url starts with `localhost.`.
 		ex:
 			http://localhost.garagesale.com/db_rebuild.php?populate
 
+	Use this also to reset the database.
+
 3. **Applying Database Updates**
+
+	Running `/db_rebuild.php` automatically applies database updates.
+	Use the following commands if you want to update the database without resetting it.
 
 	For Mac users:
 		Run `$ protected/yiic migrate` in your local repository.
