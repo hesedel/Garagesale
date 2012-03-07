@@ -44,6 +44,7 @@ return array(
 				'/'=>'site/index',
 				'login'=>'site/login',
 				'logout'=>'site/logout',
+				'register'=>'site/register',
 				'ad'=>'item/index',
 				'post'=>'item/create',
 				'ad/<id:\d+>'=>'item/view',
