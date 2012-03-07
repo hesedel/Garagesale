@@ -69,6 +69,14 @@
 		#body
 			#body-top
 			#page
+				:php
+					if(!Yii::app()->user->isGuest) {
+						$user = Yii::app()->db->createCommand()
+							->select('name_first')
+							->from('user')
+							->where('id=:id', array(':id'=>Yii::app()->user->getId()))
+							->queryScalar();
+					}
 				<!--[if (gt IE 7)|!(IE)]><!-->
 				#table
 					.tr
@@ -84,7 +92,7 @@
 							.td#register =CHtml::link('Register', array('/site/register'))
 							.td#login =CHtml::link('Login', array('/site/login'))
 						-else:
-							.td#user = CHtml::link('Welcome, '.Yii::app()->user->name_first, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
+							.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
 							.td#logout =CHtml::link('Logout', array('/site/logout'))
 						-endif
 						.td#filters
@@ -128,7 +136,7 @@
 								%td.td#register =CHtml::link('Register', array('/site/register'))
 								%td.td#login =CHtml::link('Login', array('/site/login'))
 							-else:
-								%td.td#user = CHtml::link('Welcome, '.Yii::app()->user->name_first, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
+								%td.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
 								%td.td#logout =CHtml::link('Logout', array('/site/logout'))
 							-endif
 							%td.td#filters
