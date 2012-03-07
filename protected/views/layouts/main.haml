@@ -80,10 +80,11 @@
 									'/',
 									array('id'=>'logo')
 								);
-						.td#register =CHtml::link('Register', array('/site/register'))
 						-if(Yii::app()->user->isGuest):
+							.td#register =CHtml::link('Register', array('/site/register'))
 							.td#login =CHtml::link('Login', array('/site/login'))
 						-else:
+							.td#user = CHtml::link('Welcome, '.Yii::app()->user->name_first, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
 							.td#logout =CHtml::link('Logout', array('/site/logout'))
 						-endif
 						.td#filters
@@ -100,7 +101,7 @@
 									.td.right
 										=CHtml::linkButton('Search', array('class'=>'g-button'))
 										%input(type="submit" value="Search")
-						.td#post =CHtml::link('Post a<br/>Free Ad', array('/item/create'))
+						.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
 					.tr.filters.hide
 						.td \\&#160;
 						.td \\&#160;
@@ -124,8 +125,10 @@
 									);
 							%td.td#register =CHtml::link('Register', array('/site/register'))
 							-if(Yii::app()->user->isGuest):
+								%td.td#register =CHtml::link('Register', array('/site/register'))
 								%td.td#login =CHtml::link('Login', array('/site/login'))
 							-else:
+								%td.td#user = CHtml::link('User', '#');
 								%td.td#logout =CHtml::link('Logout', array('/site/logout'))
 							-endif
 							%td.td#filters
@@ -142,7 +145,7 @@
 										%td.td.right
 											=CHtml::linkButton('Search', array('class'=>'g-button'))
 											%input(type="submit" value="Search")
-							%td.td#post =CHtml::link('Post a<br/>Free Ad', array('/item/create'))
+							%td.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
 						%tr.tr.filters.hide
 							%td.td(colspan="3") \\&#160;
 							%td.td.filters-left
