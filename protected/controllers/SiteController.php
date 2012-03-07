@@ -116,4 +116,27 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionRegister()
+	{
+		$model=new RegisterForm;
+
+		// uncomment the following code to enable ajax-based validation
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-register-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		if(isset($_POST['RegisterForm']))
+		{
+			$model->attributes=$_POST['RegisterForm'];
+			if($model->validate() && $model->save())
+			{
+				// form inputs are valid, do something here
+				$this->redirect(Yii::app()->homeUrl);
+			}
+		}
+		$this->render('register',array('model'=>$model));
+	}
 }

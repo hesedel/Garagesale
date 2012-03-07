@@ -43,14 +43,21 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, updated, password, role, name_first', 'required'),
+			array('id, name_first', 'required'),
 			array('role', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>64),
 			array('password, name_first, name_last', 'length', 'max'=>32),
 			array('created', 'safe'),
+			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
+			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
+			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created, updated, password, role, name_first, name_last', 'safe', 'on'=>'search'),
+			array('id, created, updated, role, name_first, name_last', 'safe', 'on'=>'search'),
+			array('id', 'email'),
+			array('id', 'unique'),
+			array('password', 'required', 'on'=>'insert'),
+			array('password', 'length', 'min'=>8),
 		);
 	}
 
@@ -72,13 +79,13 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Email',
 			'created' => 'Created',
 			'updated' => 'Updated',
 			'password' => 'Password',
 			'role' => 'Role',
-			'name_first' => 'Name First',
-			'name_last' => 'Name Last',
+			'name_first' => 'First Name',
+			'name_last' => 'Last Name',
 		);
 	}
 
@@ -96,7 +103,7 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('updated',$this->updated,true);
-		$criteria->compare('password',$this->password,true);
+		$criteria->compare('password',$this->password);
 		$criteria->compare('role',$this->role);
 		$criteria->compare('name_first',$this->name_first,true);
 		$criteria->compare('name_last',$this->name_last,true);
@@ -104,5 +111,20 @@ class User extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function beforeSave()
+	{
+		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);
+		return true;
+	}
+
+	private function password_old()
+	{
+		return Yii::app()->db->createCommand()
+			->select('password')
+			->from('user')
+			->where('id=:id', array(':id'=>$this->id))
+			->queryScalar();
 	}
 }

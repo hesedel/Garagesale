@@ -80,8 +80,7 @@
 									'/',
 									array('id'=>'logo')
 								);
-						.td#register
-							%a(href="#") Register
+						.td#register =CHtml::link('Register', array('/site/register'))
 						-if(Yii::app()->user->isGuest):
 							.td#login =CHtml::link('Login', array('/site/login'))
 						-else:
@@ -123,8 +122,7 @@
 										'/',
 										array('id'=>'logo')
 									);
-							%td.td#register
-								%a(href="#") Register
+							%td.td#register =CHtml::link('Register', array('/site/register'))
 							-if(Yii::app()->user->isGuest):
 								%td.td#login =CHtml::link('Login', array('/site/login'))
 							-else:
