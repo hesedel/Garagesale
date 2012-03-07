@@ -128,7 +128,7 @@
 								%td.td#register =CHtml::link('Register', array('/site/register'))
 								%td.td#login =CHtml::link('Login', array('/site/login'))
 							-else:
-								%td.td#user = CHtml::link('User', '#');
+								%td.td#user = CHtml::link('Welcome, '.Yii::app()->user->name_first, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
 								%td.td#logout =CHtml::link('Logout', array('/site/logout'))
 							-endif
 							%td.td#filters
