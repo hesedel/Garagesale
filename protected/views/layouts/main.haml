@@ -25,7 +25,7 @@
 			else
 				$actionParamsString .= (strlen($actionParamsString) == 0 ? '/' : '').$actionParams[$actionParamKey].'/';
 		}
-		Yii::app()->user->setReturnUrl($route.(sizeof($actionParams) > 0 ? $actionParamsString.$actionParamsStringAjax : ''));
+		Yii::app()->user->setReturnUrl($route.$actionParamsString.$actionParamsStringAjax);
 	}
 -if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
