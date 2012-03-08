@@ -1,3 +1,19 @@
+:php
+	// force user logout when session is no longer valid
+	if(!Yii::app()->user->isGuest) {
+		$user = Yii::app()->db->createCommand()
+			->select('name_first')
+			->from('user')
+			->where('id=:id', array(':id'=>Yii::app()->user->getId()))
+			->queryScalar();
+		if(!$user)
+			$this->redirect(array('/site/logout'));
+	}
+	// redirect to previous page before registering or logging in
+	if($this->getRoute() !== 'site/login' && $this->getRoute() !== 'site/register') {
+		$actionParams = $this->getActionParams();
+		Yii::app()->user->setReturnUrl('/'.$this->getRoute().(sizeof($actionParams) > 0 ? '/'.$actionParams['id'].'/' : ''));
+	}
 -if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 -else:
@@ -69,14 +85,6 @@
 		#body
 			#body-top
 			#page
-				:php
-					if(!Yii::app()->user->isGuest) {
-						$user = Yii::app()->db->createCommand()
-							->select('name_first')
-							->from('user')
-							->where('id=:id', array(':id'=>Yii::app()->user->getId()))
-							->queryScalar();
-					}
 				<!--[if (gt IE 7)|!(IE)]><!-->
 				#table
 					.tr

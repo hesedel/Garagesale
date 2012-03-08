@@ -134,7 +134,12 @@ class SiteController extends Controller
 			if($model->validate() && $model->save())
 			{
 				// form inputs are valid, do something here
-				$this->redirect(Yii::app()->homeUrl);
+				$model_loginForm = new LoginForm;
+				$model_loginForm->username = $model->id;
+				$model_loginForm->password = $model->password_repeat;
+				$model_loginForm->rememberMe = false;
+				if($model_loginForm->login())
+					$this->redirect(Yii::app()->user->returnUrl);
 			}
 		}
 		$this->render('register',array('model'=>$model));
