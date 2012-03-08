@@ -15,7 +15,7 @@
 		%tfoot
 
 			%tr
-				%td \\&#160;
+				%td =$form->hiddenField($model,'user_id',array('value'=>strlen($model->user_id) == 0 ? Yii::app()->user->getId() : $model->user_id))
 				%td
 					=!$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button')).' ' : ''
 					=CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class'=>'g-button orange'))

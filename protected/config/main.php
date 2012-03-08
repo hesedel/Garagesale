@@ -70,12 +70,10 @@ return array(
 			'password'=>$params['db.password'],
 			'charset'=>'utf8',
 		),
-		/*
 		'authManager'=>array(
 			'class'=>'CDbAuthManager',
 			'connectionID'=>'db',
 		),
-		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
