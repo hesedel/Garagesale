@@ -22,5 +22,9 @@ return array(
 			'password' => $params['db.password'],
 			'charset' => 'utf8',
 		),
+		'authManager'=>array(
+			'class'=>'CDbAuthManager',
+			'connectionID'=>'db',
+		),
 	),
 );

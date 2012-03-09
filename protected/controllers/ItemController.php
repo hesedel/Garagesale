@@ -31,12 +31,13 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','ajaxRemoveImage'),
+				'actions'=>array('create','update','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin'),
+				//'users'=>array('admin'),
+				'roles'=>array('admin','super'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -113,6 +114,10 @@ class ItemController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+		$params=array('Item'=>$model);
+		if(!Yii::app()->user->checkAccess('updateOwnItem',$params) && !Yii::app()->user->checkAccess('super'))
+			throw new CHttpException(403, 'You are not authorized to perform this action.');
+
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -121,19 +126,19 @@ class ItemController extends Controller
 			$model->attributes=$_POST['Item'];
 			if($model->save())
 			{
-				$uploads = unserialize(base64_decode($model->uploads));
-				$images = CUploadedFile::getInstances($model, 'images');
+				$uploads=unserialize(base64_decode($model->uploads));
+				$images=CUploadedFile::getInstances($model,'images');
 				foreach($images as $image) {
-					$name = md5($image->name.time()).'.'.strtolower($image->extensionName);
+					$name=md5($image->name.time()).'.'.strtolower($image->extensionName);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
-					$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
+					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 				}
-				$array1 = array();
+				$array1=array();
 				if($uploads) {
-					$i = 0;
+					$i=0;
 					foreach($uploads as $upload) {
 						if($upload['new']) {
-							$file = pathinfo($upload['tempName']);
+							$file=pathinfo($upload['tempName']);
 							$model_itemImage=new ItemImage();
 							$model_itemImage->type=$file['extension'];
 							$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
@@ -141,38 +146,38 @@ class ItemController extends Controller
 							$model_itemImage->index=$i;
 							$model_itemImage->item_id=$model->id;
 							if($model_itemImage->save()) {
-								//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'], Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+								//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
 								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
-								$array1[] = $model_itemImage->id;
+								$array1[]=$model_itemImage->id;
 							}
 							$i++;
-						} else if(sizeof(Yii::app()->db->createCommand()->select('id')->from('item_image')->where('id=:id', array(':id'=>$upload['name']))->queryAll()) > 0) {
-							Yii::app()->db->createCommand()->update('item_image', array(
+						} else if(sizeof(Yii::app()->db->createCommand()->select('id')->from('item_image')->where('id=:id',array(':id'=>$upload['name']))->queryAll()) > 0) {
+							Yii::app()->db->createCommand()->update('item_image',array(
 								'index'=>$i,
-							), 'id=:id', array(':id'=>$upload['name']));
-							$array1[] = $upload['name'];
+							),'id=:id',array(':id'=>$upload['name']));
+							$array1[]=$upload['name'];
 							$i++;
 						}
 					}
 				}
-				$images = Yii::app()->db->createCommand()
+				$images=Yii::app()->db->createCommand()
 					->select('id')
 					->from('item_image')
-					->where('item_id=:item_id', array(':item_id'=>$id))
+					->where('item_id=:item_id',array(':item_id'=>$id))
 					->queryAll();
-				$array2 = array();
+				$array2=array();
 				foreach($images as $image) {
-					$array2[] = $image['id'];
+					$array2[]=$image['id'];
 				}
-				$deletes = array_diff($array2, $array1);
+				$deletes=array_diff($array2,$array1);
 				foreach($deletes as $delete) {
-					$image = Yii::app()->db->createCommand()
+					$image=Yii::app()->db->createCommand()
 						->select('id')
 						->from('item_image')
-						->where('id=:id', array(':id'=>$delete))
+						->where('id=:id',array(':id'=>$delete))
 						->queryRow();
-					db_image('item_image', $image['id'], array('unlink'=>true));
-					Yii::app()->db->createCommand()->delete('item_image', 'id=:id', array(':id'=>$delete));
+					db_image('item_image',$image['id'],array('unlink'=>true));
+					Yii::app()->db->createCommand()->delete('item_image','id=:id',array(':id'=>$delete));
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
@@ -191,10 +196,16 @@ class ItemController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$model=$this->loadModel($id);
+
+		$params=array('Item'=>$model);
+		if(!Yii::app()->user->checkAccess('deleteOwnItem',$params) && !Yii::app()->user->checkAccess('super'))
+			throw new CHttpException(403, 'You are not authorized to perform this action.');
+
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			$model->delete();
 
 			$images = Yii::app()->db->createCommand()
 				->select('id')
