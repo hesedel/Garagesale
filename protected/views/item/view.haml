@@ -63,7 +63,17 @@
 #item_view
 
 	%h2 #{CHtml::encode($model->title)}
-	.actions #{CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'g-button small'))} #{CHtml::link('Delete', '#', array('class'=>'g-button small', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
+	-$params = array('Item'=>$model)
+	.actions
+		-if(Yii::app()->user->checkAccess('updateOwnItem',$params) || Yii::app()->user->checkAccess('super')):
+		#{CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'g-button small'))}
+		-endif
+		-if((Yii::app()->user->checkAccess('updateOwnItem',$params) && Yii::app()->user->checkAccess('deleteOwnItem',$params)) || Yii::app()->user->checkAccess('super')):
+		\\&#160;
+		-endif
+		-if(Yii::app()->user->checkAccess('deleteOwnItem',$params) || Yii::app()->user->checkAccess('super')):
+		#{CHtml::link('Delete', '#', array('class'=>'g-button small', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
+		-endif
 	%table.info-item(cellspacing="1")
 		%caption Item Info
 		%tr

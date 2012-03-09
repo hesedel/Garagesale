@@ -20,7 +20,7 @@
 		foreach(array_keys($actionParams) as $actionParamKey) {
 			if($actionParamKey === 'ajax') {
 				// do nothing
-			} else if(preg_match('/.+_page/', $actionParamKey, $matches) > 0)
+			} else if(preg_match('/^.+_page$/', $actionParamKey, $matches) > 0)
 				$actionParamsStringAjax .= (strlen($actionParamsStringAjax) == 0 ? '?' : '&').$matches[0].'='.$actionParams[$actionParamKey];
 			else
 				$actionParamsString .= (strlen($actionParamsString) == 0 ? '/' : '').$actionParams[$actionParamKey].'/';

@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'user':
  * @property string $id
+ * @property string $email
  * @property string $created
  * @property string $updated
  * @property string $password
@@ -43,19 +44,21 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name_first', 'required'),
+			array('id, email, name_first', 'required'),
 			array('role', 'numerical', 'integerOnly'=>true),
-			array('id', 'length', 'max'=>64),
-			array('password, name_first, name_last', 'length', 'max'=>32),
+			array('id, password, name_first, name_last', 'length', 'max'=>32),
+			array('email', 'length', 'max'=>64),
 			array('created', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created, updated, role, name_first, name_last', 'safe', 'on'=>'search'),
-			array('id', 'email'),
-			array('id', 'unique'),
+			array('id, email, created, updated, role, name_first, name_last', 'safe', 'on'=>'search'),
+			array('id', 'length', 'min'=>4),
+			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/'),
+			array('id, email', 'unique'),
+			array('email', 'email'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
 		);
@@ -79,7 +82,8 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Email',
+			'id' => 'Username',
+			'email' => 'Email',
 			'created' => 'Created',
 			'updated' => 'Updated',
 			'password' => 'Password',
@@ -101,6 +105,7 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('email',$this->email,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('updated',$this->updated,true);
 		$criteria->compare('password',$this->password);
