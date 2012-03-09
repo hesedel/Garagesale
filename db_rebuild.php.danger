@@ -15,18 +15,16 @@ mysql_query('USE '.$params['db.name']);
 
 // populate database
 $fileName = 'garagesale'.($populate ? '-populated' : '').'.sql';
-$queries = explode(';', fread(fopen($fileName, 'r'), filesize($fileName)));
-foreach($queries as $query)
-	mysql_query($query);
-
-// delete temporary and cached uploaded images
-foreach(glob('images/uploads/temp/*') as $file) {
-	if(!preg_match('/\.empty/', $file))
-		unlink($file);
-}
-foreach(glob('images/uploads/cache/*') as $file) {
-	if(!preg_match('/\.empty/', $file))
-		unlink($file);
+$string = '';
+$lines = file($fileName);
+foreach($lines as $line) {
+	if(substr($line, 0, 2) === '--' || $line === '')
+		continue;
+	$string .= $line;
+	if(substr(trim($line), -1, 1) === ';') {
+		mysql_query($string);
+		$string = '';
+	}
 }
 
 // run database migrations
