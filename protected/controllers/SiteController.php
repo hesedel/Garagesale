@@ -58,6 +58,9 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider_featured=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'order'=>'updated DESC',
+			),
 			'pagination'=>array(
 				'pageSize'=>4,
 			),
