@@ -4,6 +4,10 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
+	<?php echo CHtml::encode($data->email); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created')); ?>:</b>
 	<?php echo CHtml::encode($data->created); ?>
 	<br />
@@ -24,9 +28,11 @@
 	<?php echo CHtml::encode($data->name_first); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name_last')); ?>:</b>
 	<?php echo CHtml::encode($data->name_last); ?>
 	<br />
 
+	*/ ?>
 
 </div>

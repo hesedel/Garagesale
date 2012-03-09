@@ -11,8 +11,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'id',array('size'=>32,'maxlength'=>32)); ?>
 		<?php echo $form->error($model,'id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'email'); ?>
+		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->error($model,'email'); ?>
 	</div>
 
 	<div class="row">

@@ -7,7 +7,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'id',array('size'=>32,'maxlength'=>32)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'email'); ?>
+		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>64)); ?>
 	</div>
 
 	<div class="row">
