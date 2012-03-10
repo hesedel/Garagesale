@@ -17,7 +17,7 @@ class SiteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('login','register'),
+				'actions'=>array('login','register','captcha'),
 				'users'=>array('?'),
 			),
 			array('allow',

@@ -18,6 +18,7 @@
 class RegisterForm extends User
 {
 	public $password_repeat;
+	public $verifyCode;
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -30,6 +31,7 @@ class RegisterForm extends User
 		$rules[] = array('password, password_repeat', 'required');
 		$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
 		$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password');
+		$rules[] = array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements());
 		return $rules;
 	}
 
@@ -40,6 +42,7 @@ class RegisterForm extends User
 	{
 		$attributeLabels = parent::attributeLabels();
 		$attributeLabels['password_repeat'] = 'Repeat Password';
+		$attributeLabels['verifyCode'] = 'Verification Code';
 		return $attributeLabels;
 	}
 }
