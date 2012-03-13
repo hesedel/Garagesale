@@ -249,8 +249,8 @@
 		$('div.input-text, div.textarea').click(function() {
 			$('input[type=text], input[type=password], textarea', $(this)).focus();
 		});
-		$('input[type=text], input[type=password], textarea', 'div.input-text, div.textarea')
-			.bind('keydown keyup', function() {
+		$('input[type=text], input[type=password], textarea', 'div.input-text, div.textarea').each(function() {
+			$(this).bind('keydown keyup', function() {
 				if($(this).val().length > 0) {
 					$('span.placeholder', $(this).parent()).hide();
 				} else {
@@ -266,6 +266,8 @@
 				}
 			})
 			.keydown();
+			$(':focus', $(this).parent()).focus();
+		});
 		
 		$('a', '#filters').click(function() {
 			if(!$(this).hasClass('click')) {

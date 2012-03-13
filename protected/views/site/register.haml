@@ -16,6 +16,7 @@
 			$form=$this->beginWidget('CActiveForm', array(
 				'id'=>'user-register-form',
 				'enableAjaxValidation'=>true,
+				'focus'=>array($model,'id'),
 			));
 
 		//=$form->errorSummary($model)
@@ -49,13 +50,14 @@
 							%span.placeholder Email
 						=$form->error($model,'email')
 
-				%tr
-					%th =$form->labelEx($model,'email_repeat')
-					%td
-						.input-text
-							=$form->textField($model,'email_repeat')
-							%span.placeholder Email
-						=$form->error($model,'email_repeat')
+				//
+					%tr
+						%th =$form->labelEx($model,'email_repeat')
+						%td
+							.input-text
+								=$form->textField($model,'email_repeat')
+								%span.placeholder Email
+							=$form->error($model,'email_repeat')
 
 				%tr
 					%th =$form->labelEx($model,'password')
