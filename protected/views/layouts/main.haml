@@ -247,9 +247,9 @@
 			})
 			.TextAreaExpander(36, 216);
 		$('div.input-text, div.textarea').click(function() {
-			$('input[type=text], textarea', $(this)).focus();
+			$('input[type=text], input[type=password], textarea', $(this)).focus();
 		});
-		$('input[type=text], textarea', 'div.input-text, div.textarea')
+		$('input[type=text], input[type=password], textarea', 'div.input-text, div.textarea')
 			.bind('keydown keyup', function() {
 				if($(this).val().length > 0) {
 					$('span.placeholder', $(this).parent()).hide();

@@ -1,0 +1,104 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - Register';
+	$this->breadcrumbs=array(
+		'Register',
+	);
+
+	$this->layout='column2';
+
+#site_register
+
+	%h2 Register
+
+	.form
+
+		:php
+			$form=$this->beginWidget('CActiveForm', array(
+				'id'=>'user-register-form',
+				'enableAjaxValidation'=>true,
+			));
+
+		//=$form->errorSummary($model)
+
+		%table.form(summary="Register")
+			%caption.hide Register
+
+			%tfoot
+
+				%tr
+					%th \\&#160;
+					%td
+						=CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class'=>'g-button orange'))
+						=CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save', array('class'=>'g-button orange'))
+
+			%tbody
+
+				%tr
+					%th =$form->labelEx($model,'id')
+					%td
+						.input-text
+							=$form->textField($model,'id')
+							%span.placeholder Username
+						=$form->error($model,'id')
+
+				%tr
+					%th =$form->labelEx($model,'email')
+					%td
+						.input-text
+							=$form->textField($model,'email')
+							%span.placeholder Email
+						=$form->error($model,'email')
+
+				%tr
+					%th =$form->labelEx($model,'email_repeat')
+					%td
+						.input-text
+							=$form->textField($model,'email_repeat')
+							%span.placeholder Email
+						=$form->error($model,'email_repeat')
+
+				%tr
+					%th =$form->labelEx($model,'password')
+					%td
+						.input-text
+							=$form->passwordField($model,'password')
+							%span.placeholder Password
+						=$form->error($model,'password')
+
+				%tr
+					%th =$form->labelEx($model,'password_repeat')
+					%td
+						.input-text
+							=$form->passwordField($model,'password_repeat')
+							%span.placeholder Repeat Password
+						=$form->error($model,'password_repeat')
+
+				%tr
+					%th =$form->labelEx($model,'name_first')
+					%td
+						.input-text
+							=$form->textField($model,'name_first')
+							%span.placeholder First Name
+						=$form->error($model,'name_first')
+
+				%tr
+					%th =$form->labelEx($model,'name_last')
+					%td
+						.input-text
+							=$form->textField($model,'name_last')
+							%span.placeholder Last Name
+						=$form->error($model,'name_last')
+
+				-if(CCaptcha::checkRequirements()):
+				%tr
+					%th =$form->labelEx($model,'verifyCode')
+					%td
+						-$this->widget('CCaptcha')
+						=$form->textField($model,'verifyCode')
+						.hint Please enter the letters as they are shown in the image above.
+						<br/>Letters are not case-sensitive.
+						=$form->error($model,'verifyCode')
+				-endif
+
+		:php
+			$this->endWidget()

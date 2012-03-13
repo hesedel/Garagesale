@@ -29,3 +29,16 @@
 	}
 
 }
+
+#site_register {
+	position: relative;
+	padding-top: 36px;
+
+	h2 {
+		color: $custom_magenta;
+		position: absolute;
+			top: -9px;
+			right: 0;
+	}
+
+}
