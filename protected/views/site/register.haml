@@ -95,10 +95,11 @@
 				%tr
 					%th =$form->labelEx($model,'verifyCode')
 					%td
-						-$this->widget('CCaptcha')
-						=$form->textField($model,'verifyCode')
-						.hint Please enter the letters as they are shown in the image above.
-						<br/>Letters are not case-sensitive.
+						.captcha
+							-$this->widget('CCaptcha',array('showRefreshButton'=>false))
+						.input-text
+							=$form->textField($model,'verifyCode')
+							%span.placeholder Please enter the letters as they are shown in the image above.
 						=$form->error($model,'verifyCode')
 				-endif
 

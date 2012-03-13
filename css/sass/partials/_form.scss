@@ -272,6 +272,18 @@ table.form {
 
 				}
 
+				div.captcha {
+					background-color: whiten(blacken($beige, 25%), 25%, 5);
+					border: 1px solid white;
+					width: 120px;
+					padding: 1px 4px;
+
+					img {
+						display: block;
+					}
+
+				}
+
 				div.errorMessage {
 					font-family: ProximaNovaSemibold;
 					color: $custom_magenta;
