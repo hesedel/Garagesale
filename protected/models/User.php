@@ -12,6 +12,7 @@
  * @property integer $role
  * @property string $name_first
  * @property string $name_last
+ * @property string $phone
  *
  * The followings are the available model relations:
  * @property Item[] $items
@@ -48,13 +49,14 @@ class User extends CActiveRecord
 			array('role', 'numerical', 'integerOnly'=>true),
 			array('id, password, name_first, name_last', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>64),
+			array('phone', 'length', 'max'=>16),
 			array('created', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, created, updated, role, name_first, name_last', 'safe', 'on'=>'search'),
+			array('id, email, created, updated, role, name_first, name_last, phone', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
 			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/'),
 			array('id, email', 'unique'),
@@ -90,6 +92,7 @@ class User extends CActiveRecord
 			'role' => 'Role',
 			'name_first' => 'First Name',
 			'name_last' => 'Last Name',
+			'phone' => 'Phone',
 		);
 	}
 
@@ -112,6 +115,7 @@ class User extends CActiveRecord
 		$criteria->compare('role',$this->role);
 		$criteria->compare('name_first',$this->name_first,true);
 		$criteria->compare('name_last',$this->name_last,true);
+		$criteria->compare('phone',$this->phone,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

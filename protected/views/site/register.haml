@@ -91,6 +91,14 @@
 							%span.placeholder Last Name
 						=$form->error($model,'name_last')
 
+				%tr
+					%th =$form->labelEx($model,'phone')
+					%td
+						.input-text
+							=$form->textField($model,'phone')
+							%span.placeholder Phone
+						=$form->error($model,'phone')
+
 				-if(CCaptcha::checkRequirements()):
 				%tr
 					%th =$form->labelEx($model,'verifyCode')

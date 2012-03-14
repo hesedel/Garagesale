@@ -45,6 +45,12 @@
 		<?php echo $form->error($model,'name_last'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'phone'); ?>
+		<?php echo $form->textField($model,'phone',array('size'=>16,'maxlength'=>16)); ?>
+		<?php echo $form->error($model,'phone'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -26,5 +26,6 @@ $this->menu=array(
 		'role',
 		'name_first',
 		'name_last',
+		'phone',
 	),
 )); ?>
