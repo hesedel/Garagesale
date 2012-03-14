@@ -58,7 +58,9 @@ class User extends CActiveRecord
 			// Please remove those attributes that should not be searched.
 			array('id, email, created, updated, role, name_first, name_last, phone', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
-			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[\da-z])+$/'),
+			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
+			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
+			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
 			array('id, email', 'unique'),
 			array('email', 'email'),
 			array('password', 'required', 'on'=>'insert'),
