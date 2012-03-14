@@ -39,7 +39,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'id')
-							%span.placeholder Username
+							%span.placeholder Should only consist of letters, numbers, and underscores
 						=$form->error($model,'id')
 
 				%tr
@@ -47,7 +47,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'email')
-							%span.placeholder Email
+							%span.placeholder Your Email Address
 						=$form->error($model,'email')
 
 				//
@@ -80,7 +80,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'name_first')
-							%span.placeholder First Name
+							%span.placeholder Your First Name
 						=$form->error($model,'name_first')
 
 				%tr
@@ -88,7 +88,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'name_last')
-							%span.placeholder Last Name
+							%span.placeholder Your Last Name
 						=$form->error($model,'name_last')
 
 				%tr
@@ -96,7 +96,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'phone')
-							%span.placeholder Phone
+							%span.placeholder Phone number to contact you with
 						=$form->error($model,'phone')
 
 				-if(CCaptcha::checkRequirements()):
