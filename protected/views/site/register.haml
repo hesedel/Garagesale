@@ -39,7 +39,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'id')
-							%span.placeholder Should only consist of letters, numbers, and underscores
+							%span.placeholder Only letters, numbers, and underscores are allowed.
 						=$form->error($model,'id')
 
 				%tr
@@ -47,24 +47,23 @@
 					%td
 						.input-text
 							=$form->textField($model,'email')
-							%span.placeholder Your Email Address
+							%span.placeholder Your email address
 						=$form->error($model,'email')
 
-				//
-					%tr
-						%th =$form->labelEx($model,'email_repeat')
-						%td
-							.input-text
-								=$form->textField($model,'email_repeat')
-								%span.placeholder Email
-							=$form->error($model,'email_repeat')
+				%tr
+					%th =$form->labelEx($model,'email_repeat')
+					%td
+						.input-text
+							=$form->textField($model,'email_repeat')
+							%span.placeholder Re-enter your email address
+						=$form->error($model,'email_repeat')
 
 				%tr
 					%th =$form->labelEx($model,'password')
 					%td
 						.input-text
 							=$form->passwordField($model,'password')
-							%span.placeholder Password
+							%span.placeholder Create a password.
 						=$form->error($model,'password')
 
 				%tr
@@ -72,7 +71,7 @@
 					%td
 						.input-text
 							=$form->passwordField($model,'password_repeat')
-							%span.placeholder Repeat Password
+							%span.placeholder Re-enter the password you created.
 						=$form->error($model,'password_repeat')
 
 				%tr
@@ -80,7 +79,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'name_first')
-							%span.placeholder Your First Name
+							%span.placeholder Your first name
 						=$form->error($model,'name_first')
 
 				%tr
@@ -88,7 +87,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'name_last')
-							%span.placeholder Your Last Name
+							%span.placeholder Your last name
 						=$form->error($model,'name_last')
 
 				%tr
@@ -96,7 +95,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'phone')
-							%span.placeholder Phone number to contact you with
+							%span.placeholder The phone number to contact you with
 						=$form->error($model,'phone')
 
 				-if(CCaptcha::checkRequirements()):
