@@ -50,7 +50,7 @@
 							%span.placeholder Your email address
 						=$form->error($model,'email')
 
-				%tr
+				%tr.repeat
 					%th =$form->labelEx($model,'email_repeat')
 					%td
 						.input-text
@@ -66,7 +66,7 @@
 							%span.placeholder Create a password.
 						=$form->error($model,'password')
 
-				%tr
+				%tr.repeat
 					%th =$form->labelEx($model,'password_repeat')
 					%td
 						.input-text

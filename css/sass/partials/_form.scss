@@ -85,9 +85,9 @@ table.form {
 	border-spacing: 0;
 	border-style: solid;
 	border-top-width: 18px;
-	border-right-width: 20px;
+	border-right-width: 0;
 	border-bottom-width: 18px;
-	border-left-width: 20px;
+	border-left-width: 0;
 	margin-bottom: 0;
 
 	th, td {
@@ -104,8 +104,8 @@ table.form {
 		font-style: normal;
 		text-align: right;
 		line-height: 36px;
-		padding-right: 0;
-		padding-left: 0;
+		padding-right: 20px;
+		padding-left: 20px;
 
 		input[type=submit] {
 			@extend .g-button.orangered;
@@ -119,13 +119,13 @@ table.form {
 		tr {
 
 			th {
-				color: blacken($beige, 25%, 2);
+				color: blacken(whiten($beige, 25%), 25%, 2);
 				@include h4;
 				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 				white-space: nowrap;
 				line-height: 36px;
 				padding-right: 10px;
-				padding-left: 0;
+				padding-left: 20px;
 
 				label {
 
@@ -134,7 +134,7 @@ table.form {
 					}
 
 					&.error {
-						color: blacken($beige, 25%, 3);
+						color: blacken(whiten($beige, 25%), 25%, 3);
 						background-color: transparent;
 						border: none;
 						padding: 0;
@@ -146,7 +146,7 @@ table.form {
 
 			td {
 				width: 100%;
-				padding-right: 0;
+				padding-right: 20px;
 				padding-left: 10px;
 
 				label {
@@ -156,9 +156,9 @@ table.form {
 				div.input-text,
 				div.textarea {
 					background-color: white;
-					border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 4), 5%);
-					border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
-					border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
+					border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
+					border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
+					border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
 					max-width: 450px;
 
 					span.placeholder {
@@ -195,6 +195,11 @@ table.form {
 					span.placeholder {
 						height: 26px;
 							line-height: 26px;
+					}
+
+					&.repeat {
+						max-width: 410px;
+						margin-left: 40px;
 					}
 
 					&.error,
@@ -302,6 +307,26 @@ table.form {
 				th, td {
 					border-top: none;
 					padding-top: 9px;
+				}
+
+			}
+
+			&.repeat {
+
+				th, td {
+					background-color: rgba(255, 255, 255, .25);
+				}
+
+				th {
+					padding-left: 30px;
+				}
+
+				td {
+
+					div.input-text {
+						max-width: 410px;
+					}
+
 				}
 
 			}
