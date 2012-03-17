@@ -17,7 +17,7 @@ class SiteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('login','register','captcha'),
+				'actions'=>array('login','register','captcha','register_success'),
 				'users'=>array('?'),
 			),
 			array('allow',
@@ -166,14 +166,23 @@ class SiteController extends Controller
 			if($model->validate() && $model->save())
 			{
 				// form inputs are valid, do something here
+				/*
 				$model_loginForm=new LoginForm;
 				$model_loginForm->username=$model->id;
 				$model_loginForm->password=$model->password_repeat;
 				$model_loginForm->rememberMe=false;
 				if($model_loginForm->login())
 					$this->redirect(Yii::app()->user->returnUrl);
+				*/
+				$this->render('register-success',array('model'=>$model));
+				Yii::app()->end();
 			}
 		}
 		$this->render('register',array('model'=>$model));
+	}
+
+	public function actionRegister_success()
+	{
+		$this->render('register-success');
 	}
 }
