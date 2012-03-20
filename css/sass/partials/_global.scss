@@ -239,7 +239,7 @@ div.g-items {
 						@include box-shadow(rgba(0, 0, 0, .1) 0 0 2px);
 						position: relative;
 						margin-bottom: -18px;
-						@include transition(box-shadow, 125ms);
+						//@include transition(box-shadow, 125ms); // causes a bug in webkit-based browsers
 
 						span.price {
 							background-color: white;
