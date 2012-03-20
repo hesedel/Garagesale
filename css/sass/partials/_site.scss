@@ -44,7 +44,22 @@
 }
 
 #site_register-success {
+	@include clearfix;
 
-	
+	div.left-container {
+		@include float-left;
+		width: 100%;
+
+		div.left {
+			margin-right: 490px;
+		}
+
+	}
+
+	div.right {
+		@include float-left;
+		width: 460px;
+		margin-left: -460px;
+	}
 
 }

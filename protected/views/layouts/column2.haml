@@ -1,14 +1,15 @@
 -$this->beginContent('//layouts/main')
 #column2
-	#content
-		-if(isset($this->breadcrumbs)):
-			:php
-				$this->widget('zii.widgets.CBreadcrumbs', array(
-					'links'=>$this->breadcrumbs,
-					'separator'=>' &#160; / &#160; ',
-				));
-		-endif
-		=$content
+	#content-container
+		#content
+			-if(isset($this->breadcrumbs)):
+				:php
+					$this->widget('zii.widgets.CBreadcrumbs', array(
+						'links'=>$this->breadcrumbs,
+						'separator'=>' &#160; / &#160; ',
+					));
+			-endif
+			=$content
 	#sidebar
 		=$this->clips['sidebar']
 		:php
