@@ -157,6 +157,9 @@ class SiteController extends Controller
 	{
 		$model=new RegisterForm;
 
+		$headers="From: hes@pajaroncreative.com\r\nReply-To: hes@pajaroncreative.com";
+		mail('hes@pajaroncreative.com','Test Subject','Test body.',$headers);
+
 		// uncomment the following code to enable ajax-based validation
 		if(isset($_POST['ajax']) && $_POST['ajax']==='user-register-form')
 		{
