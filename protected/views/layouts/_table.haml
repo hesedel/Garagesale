@@ -10,36 +10,54 @@
 				);
 		#{!isset($legacy) ? '</h1>' : '</td>'}
 		-if(Yii::app()->user->isGuest):
-			.td#register =CHtml::link('Register', array('/site/register'))
-			.td#login =CHtml::link('Login', array('/site/login'))
+			#{!isset($legacy) ? '<div id="register" class="td">' : '<td id="register" class="td">'}
+				=CHtml::link('Register', array('/site/register'))
+			#{!isset($legacy) ? '</div>' : '</td>'}
+			#{!isset($legacy) ? '<div id="login" class="td">' : '<td id="login" class="td">'}
+				=CHtml::link('Login', array('/site/login'))
+			#{!isset($legacy) ? '</div>' : '</td>'}
 		-else:
-			.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
-			.td#logout =CHtml::link('Logout', array('/site/logout'))
+			#{!isset($legacy) ? '<div id="user" class="td">' : '<td id="user" class="td">'}
+				=CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
+			#{!isset($legacy) ? '</div>' : '</td>'}
+			#{!isset($legacy) ? '<div id="logout" class="td">' : '<td id="logout" class="td">'}
+				=CHtml::link('Logout', array('/site/logout'))
+			#{!isset($legacy) ? '</div>' : '</td>'}
 		-endif
-		.td#filters
+		#{!isset($legacy) ? '<div id="filters" class="td">' : '<td id="filters" class="td">'}
 			%a(href="#")
 				Filters
 				%span
-		.td#search
-			.table
-				.tr
-					.td.left
+		#{!isset($legacy) ? '</div>' : '</td>'}
+		#{!isset($legacy) ? '<div id="search" class="td">' : '<td id="search" class="td">'}
+			#{!isset($legacy) ? '<div class="table">' : '<table class="table">'}
+				#{!isset($legacy) ? '<div class="tr">' : '<tr class="tr">'}
+					#{!isset($legacy) ? '<div class="td left">' : '<td class="td left">'}
 						.input-text
 							%input(title="Search" type="text")
 							%span.placeholder Search
-					.td.right
+					#{!isset($legacy) ? '</div>' : '</td>'}
+					#{!isset($legacy) ? '<div class="td right">' : '<td class="td right">'}
 						=CHtml::linkButton('Search', array('class'=>'g-button'))
 						%input(type="submit" value="Search")
-		.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
+					#{!isset($legacy) ? '</div>' : '</td>'}
+				#{!isset($legacy) ? '</div>' : '</tr>'}
+			#{!isset($legacy) ? '</div>' : '</table>'}
+		#{!isset($legacy) ? '</div>' : '</td>'}
+		#{!isset($legacy) ? '<div id="post" class="td">' : '<td id="post" class="td">'}
+			=CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
+		#{!isset($legacy) ? '</div>' : '</td>'}
 	#{!isset($legacy) ? '</div>' : '</tr>'}
 	#{!isset($legacy) ? '<div class="tr filters hide">' : '<tr class="tr filters hide">'}
-		.td \\&#160;
-		.td \\&#160;
-		.td \\&#160;
-		.td.filters-left
+		#{!isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'}
+		#{!isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'}
+		#{!isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'}
+		#{!isset($legacy) ? '<div class="td filters-left">' : '<td class="td filters-left">'}
 			%div \\&#160;
-		.td.filters-right
+		#{!isset($legacy) ? '</div>' : '</td>'}
+		#{!isset($legacy) ? '<div class="td filters-right">' : '<td class="td filters-right">'}
 			%div \\&#60; Filters Here &#62;
-		.td \\&#160;
+		#{!isset($legacy) ? '</div>' : '</td>'}
+		#{!isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'}
 	#{!isset($legacy) ? '</div>' : '</tr>'}
 #{!isset($legacy) ? '</div>' : '</table>'}
