@@ -174,7 +174,7 @@ class SiteController extends Controller
 				if($model_loginForm->login())
 					$this->redirect(Yii::app()->user->returnUrl);
 				*/
-				$this->render('register-success',array('model'=>$model));
+				$this->render('register-success',array('email'=>$model->email));
 				Yii::app()->end();
 			}
 		}
@@ -183,6 +183,6 @@ class SiteController extends Controller
 
 	public function actionRegister_success()
 	{
-		$this->render('register-success');
+		$this->render('register-success',array('email'=>'your@email.com'));
 	}
 }
