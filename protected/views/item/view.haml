@@ -62,7 +62,7 @@
 
 #item_view
 
-	%h2 #{CHtml::encode($model->title)}
+	%h1 #{CHtml::encode($model->title)}
 	-$params = array('Item'=>$model)
 	.actions
 		-if(Yii::app()->user->checkAccess('updateOwnItem',$params) || Yii::app()->user->checkAccess('super')):

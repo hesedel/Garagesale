@@ -1,6 +1,6 @@
 #{!isset($legacy) ? '<div id="table">' : '<table id="table" cellspacing="0">'}
 	#{!isset($legacy) ? '<div class="tr">' : '<tr class="tr">'}
-		#{!isset($legacy) ? '<h1 id="header" class="td">' : '<td id="header" class="td">'}
+		#{!isset($legacy) ? ($this->getRoute() !== 'item/view' ? '<h1 id="header" class="td">' : '<div id="header" class="td">') : '<td id="header" class="td">'}
 			:php
 				echo CHtml::link(
 					Yii::app()->name,
@@ -8,7 +8,7 @@
 					'/',
 					array('id'=>'logo')
 				);
-		#{!isset($legacy) ? '</h1>' : '</td>'}
+		#{!isset($legacy) ? ($this->getRoute() !== 'item/view' ? '</h1>' : '</div>') : '</td>'}
 		-if(Yii::app()->user->isGuest):
 			#{!isset($legacy) ? '<div id="register" class="td">' : '<td id="register" class="td">'}
 				=CHtml::link('Register', array('/site/register'))

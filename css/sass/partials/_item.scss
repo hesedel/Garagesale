@@ -193,7 +193,8 @@
 
 #item_view {
 
-	h2 {
+	h1 {
+		@include h2;
 		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 		word-wrap: break-word;
 		background-color: whiten(blacken($beige, 25%), 25%, 5);
