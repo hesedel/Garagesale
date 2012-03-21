@@ -1,5 +1,6 @@
 :php
 	// force user logout when session is no longer valid
+	$user = false;
 	if(!Yii::app()->user->isGuest) {
 		$user = Yii::app()->db->createCommand()
 			->select('name_first')
@@ -99,10 +100,10 @@
 			#body-top
 			#page
 				<!--[if (gt IE 7)|!(IE)]><!-->
-				-$this->renderPartial('/layouts/_table')
+				-$this->renderPartial('/layouts/_table', array('user'=>$user))
 				<!--<![endif]-->
 				/[if lt IE 8]
-					-$this->renderPartial('/layouts/_table', array('legacy'=>true))
+					-$this->renderPartial('/layouts/_table', array('user'=>$user, 'legacy'=>true))
 				.hide#filters-shadow
 					%div
 				.hide#tr_filters-shadow
