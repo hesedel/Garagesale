@@ -1,4 +1,4 @@
-#{!isset($legacy) ? '<div id="table">' : '<table id="table">'}
+#{!isset($legacy) ? '<div id="table">' : '<table id="table" cellspacing="0">'}
 	#{!isset($legacy) ? '<div class="tr">' : '<tr class="tr">'}
 		#{!isset($legacy) ? '<h1 id="header" class="td">' : '<td id="header" class="td">'}
 			:php
@@ -30,7 +30,7 @@
 				%span
 		#{!isset($legacy) ? '</div>' : '</td>'}
 		#{!isset($legacy) ? '<div id="search" class="td">' : '<td id="search" class="td">'}
-			#{!isset($legacy) ? '<div class="table">' : '<table class="table">'}
+			#{!isset($legacy) ? '<div class="table">' : '<table class="table" cellspacing="0">'}
 				#{!isset($legacy) ? '<div class="tr">' : '<tr class="tr">'}
 					#{!isset($legacy) ? '<div class="td left">' : '<td class="td left">'}
 						.input-text
