@@ -52,6 +52,11 @@
 
 		div.right {
 			margin-left: 490px;
+
+			h2 {
+				@include h3;
+			}
+
 		}
 
 	}
