@@ -99,88 +99,50 @@
 			#body-top
 			#page
 				<!--[if (gt IE 7)|!(IE)]><!-->
-				#table
-					.tr
-						%h1.td#header
-							:php
-								echo CHtml::link(
-									Yii::app()->name,
-									//CHtml::image('/images/transparent.gif', Yii::app()->name),
-									'/',
-									array('id'=>'logo')
-								);
-						-if(Yii::app()->user->isGuest):
-							.td#register =CHtml::link('Register', array('/site/register'))
-							.td#login =CHtml::link('Login', array('/site/login'))
-						-else:
-							.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
-							.td#logout =CHtml::link('Logout', array('/site/logout'))
-						-endif
-						.td#filters
-							%a(href="#")
-								Filters
-								%span
-						.td#search
-							.table
-								.tr
-									.td.left
-										.input-text
-											%input(title="Search" type="text")
-											%span.placeholder Search
-									.td.right
-										=CHtml::linkButton('Search', array('class'=>'g-button'))
-										%input(type="submit" value="Search")
-						.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
-					.tr.filters.hide
-						.td \\&#160;
-						.td \\&#160;
-						.td \\&#160;
-						.td.filters-left
-							%div \\&#160;
-						.td.filters-right
-							%div \\&#60; Filters Here &#62;
-						.td \\&#160;
+				-$this->renderPartial('/layouts/_table')
 				<!--<![endif]-->
 				/[if lt IE 8]
-					%table#table(cellspacing="")
-						%tr.tr#row
-							%td.td#header
-								:php
-									echo CHtml::link(
-										Yii::app()->name,
-										//CHtml::image('/images/transparent.gif', Yii::app()->name),
-										'/',
-										array('id'=>'logo')
-									);
-							-if(Yii::app()->user->isGuest):
-								%td.td#register =CHtml::link('Register', array('/site/register'))
-								%td.td#login =CHtml::link('Login', array('/site/login'))
-							-else:
-								%td.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
-								%td.td#logout =CHtml::link('Logout', array('/site/logout'))
-							-endif
-							%td.td#filters
-								%a(href="#")
-									Filters
-									%span
-							%td.td#search
-								%table.table(cellspacing="")
-									%tr.tr
-										%td.td.left
-											.input-text
-												%input(title="Search" type="text")
-												%span.placeholder Search
-										%td.td.right
-											=CHtml::linkButton('Search', array('class'=>'g-button'))
-											%input(type="submit" value="Search")
-							%td.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
-						%tr.tr.filters.hide
-							%td.td(colspan="3") \\&#160;
-							%td.td.filters-left
-								%div \\&#160;
-							%td.td.filters-right
-								%div \\&#60; Filters Here &#62;
-							%td.td \\&#160;
+					-$this->renderPartial('/layouts/_table', array('legacy'=>true))
+					//
+						%table#table(cellspacing="")
+							%tr.tr#row
+								%td.td#header
+									:php
+										echo CHtml::link(
+											Yii::app()->name,
+											//CHtml::image('/images/transparent.gif', Yii::app()->name),
+											'/',
+											array('id'=>'logo')
+										);
+								-if(Yii::app()->user->isGuest):
+									%td.td#register =CHtml::link('Register', array('/site/register'))
+									%td.td#login =CHtml::link('Login', array('/site/login'))
+								-else:
+									%td.td#user = CHtml::link('Welcome, '.$user, array('/admin/user/view/id/'.urlencode(Yii::app()->user->getId())));
+									%td.td#logout =CHtml::link('Logout', array('/site/logout'))
+								-endif
+								%td.td#filters
+									%a(href="#")
+										Filters
+										%span
+								%td.td#search
+									%table.table(cellspacing="")
+										%tr.tr
+											%td.td.left
+												.input-text
+													%input(title="Search" type="text")
+													%span.placeholder Search
+											%td.td.right
+												=CHtml::linkButton('Search', array('class'=>'g-button'))
+												%input(type="submit" value="Search")
+								%td.td#post =CHtml::link('Post a<br/>FREE Ad', array('/item/create'))
+							%tr.tr.filters.hide
+								%td.td(colspan="3") \\&#160;
+								%td.td.filters-left
+									%div \\&#160;
+								%td.td.filters-right
+									%div \\&#60; Filters Here &#62;
+								%td.td \\&#160;
 				.hide#filters-shadow
 					%div
 				.hide#tr_filters-shadow
