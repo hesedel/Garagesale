@@ -1,3 +1,7 @@
+form {
+	display: inline;
+}
+
 fieldset {
 	border: none;
 	margin-bottom: 0;
@@ -13,8 +17,23 @@ input[type=submit] {
 	@extend .g-button;
 	font-family: ProximaNovaRegular;
 	font-size: 1em;
+	position: absolute;
 	height: 30px;
 	padding: 0 10px !important;
+	visibility: hidden;
+}
+
+.no-js {
+
+	a.submit {
+		display: none;
+	}
+
+	input[type=submit] {
+		position: static;
+		visibility: visible;
+	}
+
 }
 
 input[type=text], input[type=password], textarea {
