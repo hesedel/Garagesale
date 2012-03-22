@@ -156,6 +156,7 @@ class UserController extends Controller
 	{
 		if(isset($_POST['email']))
 			email_sendVerification($_POST['email'],'Email verification resent!');
+
 		if(!isset($_GET['email']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 
