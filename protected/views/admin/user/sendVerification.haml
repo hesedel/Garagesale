@@ -3,5 +3,5 @@
 
 #user_sendVerification
 	%h2.alert.alert-success =$message
-	%p.alert <strong>BEFORE CAN LOGIN</strong>, you'll need to verify your email address.<br/>An email has been sent to you ( <strong>#{$email}</strong> )<br/>Please follow the instructions in the email to activate your account.<br/>If you can't see the email, it might be in your spam folder.
+	%p.alert <strong>BEFORE YOU CAN LOGIN</strong>, you'll need to verify your email address.<br/>An email has been sent to you ( <strong>#{$email}</strong> )<br/>Please follow the instructions in the email to activate your account.<br/>If you can't see the email, it might be in your spam folder.
 	=CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small'))
