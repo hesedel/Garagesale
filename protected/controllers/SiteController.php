@@ -24,10 +24,6 @@ class SiteController extends Controller
 				'actions'=>array('logout'),
 				'users'=>array('@'),
 			),
-			array('allow',
-				'actions'=>array('register_success'),
-				'roles'=>array('super'),
-			),
 			array('deny',
 				'users'=>array('*'),
 			),
@@ -137,9 +133,21 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
+			$model->validate();
+			if($model->getIdentity()->errorCode==3)
+			{
+				$email=Yii::app()->params['user']=Yii::app()->db->createCommand()
+					->select('email')
+					->from('user')
+					->where('id=:id or email=:id',array(':id'=>$model->username))
+					->queryScalar();
+				$this->redirect(array('/admin/user/unverified','email'=>$email));
+			}
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
+		if(isset($_POST['username']))
+			$model->username=$_POST['username'];
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
@@ -178,15 +186,9 @@ class SiteController extends Controller
 				if($model_loginForm->login())
 					$this->redirect(Yii::app()->user->returnUrl);
 				*/
-				$this->render('register-success',array('email'=>$model->email));
-				Yii::app()->end();
+				email_sendVerification($model->id,'Registration successful!');
 			}
 		}
 		$this->render('register',array('model'=>$model));
-	}
-
-	public function actionRegister_success()
-	{
-		$this->render('register-success',array('email'=>'your@email.com'));
 	}
 }

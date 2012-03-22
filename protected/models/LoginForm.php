@@ -50,14 +50,18 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate()) {
-				switch ($this->_identity->errorCode) {
+			if(!$this->_identity->authenticate())
+			{
+				switch($this->_identity->errorCode)
+				{
 					case 1:
 						$this->addError('username','Incorrect username.');
 						break;
 					case 2:
 						$this->addError('password','Incorrect password.');
 						break;
+					case 3:
+						$this->addError('username','Unverified email.');
 					default:
 						
 				}
@@ -84,5 +88,10 @@ class LoginForm extends CFormModel
 		}
 		else
 			return false;
+	}
+
+	public function getIdentity()
+	{
+		return $this->_identity;
 	}
 }

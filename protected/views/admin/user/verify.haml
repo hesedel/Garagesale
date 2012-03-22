@@ -1,0 +1,20 @@
+:php
+	if(!isset($username))
+		$username = 'yourusername';
+	if(!isset($email))
+		$email = 'your@email.com';
+
+	$this->layout = '/layouts/transition';
+
+#user_verify
+	%h2.alert.alert-success Email verified!
+	%p.alert.alert-info You may now login using<br/>your username ( <strong>#{$username}</strong> )<br/>or email address ( <strong>#{$email}</strong> )
+	:php
+		$form=$this->beginWidget('CActiveForm', array(
+			'action'=>array('/site/login'),
+		));
+	=CHtml::hiddenField('username',$username)
+	//=CHtml::linkButton('proceed to login →', array('class'=>'g-button small'))
+	=CHtml::submitButton('proceed to login →', array('class'=>'g-button small'))
+	:php
+		$this->endWidget();

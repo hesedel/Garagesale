@@ -20,4 +20,52 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+	protected function beforeAction()
+	{
+		// force user logout when session is not valid
+		Yii::app()->params['user']=false;
+		if(!Yii::app()->user->isGuest)
+		{
+			Yii::app()->params['user']=Yii::app()->db->createCommand()
+				->select('name_first')
+				->from('user')
+				->where('id=:id and verified=1',array(':id'=>Yii::app()->user->getId()))
+				->queryRow();
+			if(!Yii::app()->params['user']) {
+				Yii::app()->user->logout();
+				$this->redirect(Yii::app()->homeUrl);
+			}
+		}
+		// set return url
+		$route='/'.$this->getRoute();
+		if(
+			$route!=='/site/error' &&
+			$route!=='/site/login' &&
+			$route!=='/site/register' &&
+			$route!=='/site/captcha' &&
+			$route!=='/admin/user/unverified' &&
+			$route!=='/admin/user/verify'
+		)
+		{
+			if($route==='/site/index')
+				$route='/';
+			$actionParams=$this->getActionParams();
+			$actionParamsString='';
+			$actionParamsStringAjax='';
+			foreach(array_keys($actionParams) as $actionParamKey)
+			{
+				if($actionParamKey==='ajax')
+				{
+					// do nothing
+				}
+				else if(preg_match('/^.+_page$/',$actionParamKey,$matches) > 0)
+					$actionParamsStringAjax .=(strlen($actionParamsStringAjax)==0 ? '?' : '&').$matches[0].'='.$actionParams[$actionParamKey];
+				else
+					$actionParamsString .=(strlen($actionParamsString)==0 ? '/' : '').$actionParams[$actionParamKey].'/';
+			}
+			Yii::app()->user->setReturnUrl($route.$actionParamsString.$actionParamsStringAjax);
+		}
+		return true;
+	}
 }

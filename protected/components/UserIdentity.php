@@ -20,7 +20,7 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		$user = Yii::app()->db->createCommand()
-			->select('id, password, name_first')
+			->select('id, password, name_first, verified')
 			->from('user')
 			->where('id=:id or email=:id', array(':id'=>$this->username))
 			->queryRow();
@@ -28,6 +28,8 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		else if(md5(md5($this->password).Yii::app()->params['salt'])!==$user['password'])
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		else if($user['verified']==0)
+			$this->errorCode=3;
 		else
 		{
 			$this->_id = $user['id'];

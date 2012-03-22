@@ -13,9 +13,11 @@
  * @property string $name_first
  * @property string $name_last
  * @property string $phone
+ * @property integer $verified
  *
  * The followings are the available model relations:
  * @property Item[] $items
+ * @property UserVerify[] $userVerifies
  */
 class User extends CActiveRecord
 {
@@ -46,7 +48,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, email, name_first', 'required'),
-			array('role', 'numerical', 'integerOnly'=>true),
+			array('role, verified', 'numerical', 'integerOnly'=>true),
 			array('id, password, name_first, name_last', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
@@ -56,7 +58,7 @@ class User extends CActiveRecord
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, created, updated, role, name_first, name_last, phone', 'safe', 'on'=>'search'),
+			array('id, email, created, updated, role, name_first, name_last, phone, verified', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
 			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
 			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
@@ -77,6 +79,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
+			'userVerifies' => array(self::HAS_MANY, 'UserVerify', 'user_id'),
 		);
 	}
 
@@ -95,6 +98,7 @@ class User extends CActiveRecord
 			'name_first' => 'First Name',
 			'name_last' => 'Last Name',
 			'phone' => 'Phone',
+			'verified' => 'Verified',
 		);
 	}
 
@@ -118,6 +122,7 @@ class User extends CActiveRecord
 		$criteria->compare('name_first',$this->name_first,true);
 		$criteria->compare('name_last',$this->name_last,true);
 		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('verified',$this->verified);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

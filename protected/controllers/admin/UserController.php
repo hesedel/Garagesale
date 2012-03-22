@@ -27,8 +27,12 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','verify'),
 				'users'=>array('*'),
+			),
+			array('allow',
+				'actions'=>array('unverified'),
+				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -146,6 +150,57 @@ class UserController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionUnverified()
+	{
+		if(isset($_POST['email']))
+		{
+			email_sendVerification($_POST['email'],'Email verification resent!');
+		}
+		else
+		{
+			if(!isset($_GET['email']))
+				throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+			$email=Yii::app()->db->createCommand()
+				->select('email')
+				->from('user')
+				->where('email=:email and verified=0',array(':email'=>$_GET['email']))
+				->queryScalar();
+			if($email)
+				$this->render('unverified',array('email'=>$email));
+			else
+				throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
+	}
+
+	public function actionVerify()
+	{
+		if(!isset($_GET['id']))
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+		$id=Yii::app()->db->createCommand()
+			->select('user_id')
+			->from('user_verify')
+			->where('id=:id',array(':id'=>$_GET['id']))
+			->queryScalar();
+		if($id)
+		{
+			Yii::app()->user->logout();
+			Yii::app()->db->createCommand()->update('user',array(
+				'verified'=>1,
+			),'id=:id',array(':id'=>$id));
+			Yii::app()->db->createCommand()->delete('user_verify','id=:id',array(':id'=>$_GET['id']));
+			$email=Yii::app()->db->createCommand()
+				->select('email')
+				->from('user')
+				->where('id=:id',array(':id'=>$id))
+				->queryScalar();
+			$this->render('verify',array('username'=>$id,'email'=>$email));
+		}	
+		else
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**

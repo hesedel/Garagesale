@@ -1,37 +1,7 @@
-:php
-	// force user logout when session is no longer valid
-	$user = false;
-	if(!Yii::app()->user->isGuest) {
-		$user = Yii::app()->db->createCommand()
-			->select('name_first')
-			->from('user')
-			->where('id=:id', array(':id'=>Yii::app()->user->getId()))
-			->queryScalar();
-		if(!$user)
-			$this->redirect(array('/site/logout'));
-	}
-	// redirect to previous page before registering or logging in
-	$route = '/'.$this->getRoute();
-	if($route !== '/site/login' && $route !== '/site/register') {
-		if($route === '/site/index')
-			$route = '/';
-		$actionParams = $this->getActionParams();
-		$actionParamsString = '';
-		$actionParamsStringAjax = '';
-		foreach(array_keys($actionParams) as $actionParamKey) {
-			if($actionParamKey === 'ajax') {
-				// do nothing
-			} else if(preg_match('/^.+_page$/', $actionParamKey, $matches) > 0)
-				$actionParamsStringAjax .= (strlen($actionParamsStringAjax) == 0 ? '?' : '&').$matches[0].'='.$actionParams[$actionParamKey];
-			else
-				$actionParamsString .= (strlen($actionParamsString) == 0 ? '/' : '').$actionParams[$actionParamKey].'/';
-		}
-		Yii::app()->user->setReturnUrl($route.$actionParamsString.$actionParamsStringAjax);
-	}
 -if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0):
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 -else:
-	//-header('Content-Type: '.(stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'))
+	-header('Content-Type: '.(stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'))
 	!!! Strict
 -endif
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"<?php echo preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"' : ''; ?>>
@@ -100,10 +70,10 @@
 			#body-top
 			#page
 				<!--[if (gt IE 7)|!(IE)]><!-->
-				-$this->renderPartial('/layouts/_table', array('user'=>$user))
+				-$this->renderPartial('/layouts/_table')
 				<!--<![endif]-->
 				/[if lt IE 8]
-					-$this->renderPartial('/layouts/_table', array('user'=>$user, 'legacy'=>true))
+					-$this->renderPartial('/layouts/_table', array('legacy'=>true))
 				.hide#filters-shadow
 					%div
 				.hide#tr_filters-shadow

@@ -1,86 +1,6 @@
 /*
- * colors
- */
-
-$beige     : #f5f5dc;
-$whitesmoke: #f5f5f5;
-
-$custom_cyan   : rgb(0, 153, 204);
-$custom_green  : rgb(172, 229, 0);
-$custom_magenta: rgb(217, 0, 126);
-$custom_orange : rgb(255, 102, 0);
-
-@function whiten($color, $percent, $i: 1) {
-	@while $i > 0 {
-		$color: scale-color($color, $lightness: $percent);
-		$i: $i - 1;
-	}
-	@return $color;
-}
-
-@function blacken($color, $percent, $i: 1) {
-	@while $i > 0 {
-		$color: 0 + mix($color, black, 100% - $percent);
-		$i: $i - 1;
-	}
-	@return $color;
-}
-
-/*
  * fonts
  */
-
-$h1   : 3em;
-$h2   : 2em;
-$h3   : 1.5em;
-$h4   : 1.2em;
-$small: .8em;
-
-@mixin h1 {
-	font-size: $h1;
-	line-height: 1;
-	margin-bottom: .5em;
-}
-
-@mixin h2 {
-	font-size: $h2;
-	margin-bottom: .75em;
-}
-
-@mixin h3 {
-	font-size: $h3;
-	line-height: 1;
-	margin-bottom: 1em;
-}
-
-@mixin h4 {
-	font-size: $h4;
-	line-height: 1.25;
-	margin-bottom: 1.25em;
-}
-
-@mixin h5 {
-	font-size: 1em;
-	font-weight: bold;
-	margin-bottom: 1.5em;
-}
-
-@mixin h6 {
-	font-size: 1em;
-	font-weight: bold;
-}
-
-@mixin large {
-	font-size: $h4;
-	line-height: 2.5em;
-	margin-bottom: 1.25em;
-}
-
-@mixin small {
-	font-size: $small;
-	margin-bottom: 1.875em;
-	line-height: 1.875em;
-}
 
 @font-face {
 	font-family: 'NewBaskervilleRegularItalic';
@@ -320,6 +240,8 @@ $small: .8em;
 /*
  * imports
  */
+
+@import 'partials/all';
 
 @import 'sprites/_16/*.png';
 

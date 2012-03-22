@@ -127,6 +127,9 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		'noReplyEmail'=>'noreply@garagesale.com',
+		'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
+		'tagline'=>'Tagline',
 		'salt'=>'pepper',
 		'timeZone'=>'Asia/Manila',
 	),

@@ -1,0 +1,95 @@
+@import 'partials/all';
+
+a {
+	color: $custom_magenta;
+	text-decoration: none;
+
+	&:hover {
+		color: blacken($custom_magenta, 25%);
+		text-decoration: underline;
+	}
+
+}
+
+#html {
+	width: 100%;
+	height: 100%;
+
+	> tr > td,
+	> tbody > tr > td {
+		vertical-align: top;
+		background-color: whiten(blacken($beige, 25%), 25%, 6);
+		padding: 18px 20px;
+	}
+
+}
+
+#body {
+	max-width: 560px;
+	margin-right: auto;
+	margin-left: auto;
+
+	> tr,
+	> tbody > tr,
+	> thead > tr,
+	> tfoot > tr {
+
+		th, td {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+	}
+
+	> tr > td,
+	> tbody > tr > td {
+		@include h4;
+		border-top: 1px solid white;
+		padding-top: 18px;
+		padding-bottom: 18px;
+	}
+
+	> thead > tr {
+
+		> th,
+		> td {
+			padding-top: 0;
+		}
+
+		> th {
+			font-family: sans-serif;
+			text-align: left;
+			padding-bottom: 0;
+		}
+
+		> td {
+			color: blacken(whiten($beige, 25%), 25%, 2);
+			font-size: $h4;
+			padding-bottom: 18px;
+		}
+
+	}
+
+	> tfoot > tr > td {
+		color: blacken(whiten($beige, 25%), 25%);
+		@include small;
+		text-align: right;
+		border-top: 1px solid white;
+		padding-top: 18px;
+		padding-bottom: 0;
+	}
+
+}
+
+#logo {
+	color: $custom_cyan;
+	font-size: $h3;
+	text-decoration: none;
+	@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+	word-break: normal;
+
+	&:hover {
+		color: blacken($custom_cyan, 25%);
+	}
+
+}

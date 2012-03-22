@@ -1,0 +1,16 @@
+:php
+	$this->layout = '/layouts/transition';
+
+#user_verify
+	%h2.alert.alert-danger Oops! Email unverified.
+	%p.alert You haven't verified your email address yet.<br/>Please check your emails<br/>or click the "<strong>resend email</strong>" button below to resend the email verifyer.
+	=CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small'))
+	:php
+		$form=$this->beginWidget('CActiveForm', array(
+			'action'=>array('/admin/user/unverified'),
+		));
+	=CHtml::hiddenField('email',$email)
+	//=CHtml::linkButton('resend email →', array('class'=>'g-button orange small'))
+	=CHtml::submitButton('resend email →', array('class'=>'g-button orange small'))
+	:php
+		$this->endWidget();
