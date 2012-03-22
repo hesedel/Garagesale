@@ -1,0 +1,55 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - Login';
+	$this->breadcrumbs=array(
+		'Login',
+	);
+
+#site_login
+
+	.form
+
+		:php
+			$form=$this->beginWidget('CActiveForm', array(
+				'id'=>'login-form',
+				'enableClientValidation'=>true,
+				'clientOptions'=>array(
+					'validateOnSubmit'=>true,
+				),
+				'focus'=>array($model,'username'),
+			));
+
+		%table.form(summary="Login")
+			%caption.hide Login
+
+			%tfoot
+
+				%tr
+					%th \\&#160;
+					%td
+						=$form->checkBox($model,'rememberMe')
+						\\&#160;
+						=$form->label($model,'rememberMe')
+						\\&#160; &#160; &#160;
+						=CHtml::linkButton('Login', array('class'=>'g-button orange'))
+						=CHtml::submitButton('Login', array('class'=>'g-button orange'))
+
+			%tbody
+
+				%tr
+					%th =$form->labelEx($model,'username')
+					%td
+						.input-text
+							=$form->textField($model,'username')
+							%span.placeholder Your username or email address
+						=$form->error($model,'username')
+
+				%tr
+					%th =$form->labelEx($model,'password')
+					%td
+						.input-text
+							=$form->passwordField($model,'password')
+							%span.placeholder Your password
+						=$form->error($model,'password')
+
+		:php
+			$this->endWidget();
