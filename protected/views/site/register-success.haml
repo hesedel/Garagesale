@@ -1,7 +1,0 @@
-#site_register-success
-	.right-container
-		.right
-			%h2.alert.alert-success Congrats! You are now registered with #{Yii::app()->name}.
-			%p.alert.alert-warning <strong>BUT BEFORE CAN LOGIN</strong>, you'll need to verify your email address.<br/>An email has been sent to you ( <strong>#{$email}</strong> )<br/>Please follow the instructions in the email to activate your account.
-			=CHtml::link('← Return to the page before registering.', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small'))
-	.left ...
