@@ -109,7 +109,8 @@ table.form {
 
 		input[type=submit] {
 			@extend .g-button.orangered;
-			display: none;
+			position: absolute;
+			visibility: hidden;
 		}
 
 	}
@@ -350,7 +351,8 @@ table.form {
 		}
 
 		input[type=submit] {
-			display: inline !important;
+			position: static !important;
+			visibility: visible !important;
 		}
 
 	}
