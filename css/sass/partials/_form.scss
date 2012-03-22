@@ -17,7 +17,7 @@ input[type=submit] {
 	padding: 0 10px !important;
 }
 
-input[type=text], textarea {
+input[type=text], input[type=password], textarea {
 	font-family: ProximaNovaRegular;
 	font-size: $h4;
 	outline: none;
