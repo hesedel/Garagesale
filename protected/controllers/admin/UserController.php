@@ -220,7 +220,6 @@ class UserController extends Controller
 				$model_passwordChangeForm->attributes=$_POST['PasswordChangeForm'];
 				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
 				{
-					Yii::app()->db->createCommand()->delete('user_changePassword','id=:id',array(':id'=>$_GET['id']));
 					$model_loginForm=new LoginForm;
 					$model_loginForm->username=$id;
 					$model_loginForm->password=$model_passwordChangeForm->password_repeat;
