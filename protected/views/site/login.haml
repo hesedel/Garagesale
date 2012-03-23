@@ -30,6 +30,8 @@
 						\\&#160;
 						=$form->label($model,'rememberMe')
 						\\&#160; &#160; &#160;
+						=CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button'))
+						\\&#160;
 						=CHtml::linkButton('Login', array('class'=>'g-button orange'))
 						=CHtml::submitButton('Login', array('class'=>'g-button orange'))
 
@@ -50,6 +52,9 @@
 							=$form->passwordField($model,'password')
 							%span.placeholder Your password
 						=$form->error($model,'password')
+						-if($model->getErrorCode() == 2):
+						\\&#160;#{CHtml::link('Forgot password?', array('/admin/user/forgotPassword', 'id'=>$model->username))}
+						-endif
 
 		:php
 			$this->endWidget();

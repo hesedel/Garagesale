@@ -90,8 +90,11 @@ class LoginForm extends CFormModel
 			return false;
 	}
 
-	public function getIdentity()
+	public function getErrorCode()
 	{
-		return $this->_identity;
+		if($this->_identity)
+			return $this->_identity->errorCode;
+		else
+			return 0;
 	}
 }

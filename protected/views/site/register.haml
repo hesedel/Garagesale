@@ -29,6 +29,8 @@
 				%tr
 					%th \\&#160;
 					%td
+						=CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button'))
+						\\&#160;
 						=CHtml::linkButton('Register', array('class'=>'g-button orange'))
 						=CHtml::submitButton('Register', array('class'=>'g-button orange'))
 

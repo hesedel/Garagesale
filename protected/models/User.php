@@ -129,7 +129,7 @@ class User extends CActiveRecord
 		));
 	}
 
-	public function beforeSave()
+	protected function beforeSave()
 	{
 		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);
 		return true;

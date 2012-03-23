@@ -27,11 +27,11 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','verify'),
+				'actions'=>array('index','view','changePassword','verify'),
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('unverified'),
+				'actions'=>array('forgotPassword','unverified'),
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -150,6 +150,90 @@ class UserController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionForgotPassword()
+	{
+		if(!isset($_GET['id']))
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+		$user=Yii::app()->db->createCommand()
+			->select('id, email, name_first')
+			->from('user')
+			->where('id=:id or email=:id',array(':id'=>$_GET['id']))
+			->queryRow();
+		if($user)
+		{
+			$user_changePasswordId=Yii::app()->db->createCommand()
+				->select('id')
+				->from('user_changePassword')
+				->where('user_id=:id',array(':id'=>$user['id']))
+				->queryScalar();
+			if(!$user_changePasswordId) {
+				$model_userChangePassword=new UserChangePassword;
+				$model_userChangePassword->user_id=$user['id'];
+				$model_userChangePassword->save();
+				$user_changePasswordId=$model_userChangePassword->id;
+			}
+			$link=Yii::app()->params['serverName'].'admin/user/changePassword/?id='.$user_changePasswordId;
+			$body=new CSSToInlineStyles(
+				Yii::app()->controller->renderPartial(
+					'/site/_emailWrapper',
+					array(
+						'data'=>Yii::app()->controller->renderPartial(
+							'/admin/user/_sendChangePassword-email',
+							array(
+								'name'=>$user['name_first'],
+								'link'=>CHtml::link(
+									$link,
+									$link
+								)
+							),true
+						)
+					),true
+				),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+			);
+			$headers="From: ".Yii::app()->name." <".Yii::app()->params['noReplyEmail'].">\r\nContent-Type: text/html";
+			mail($user['email'], Yii::app()->name.' Password Change', $body->convert(), $headers);
+			$this->render('forgotPassword',array('email'=>$user['email']));
+		}	
+		else
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
+
+	public function actionChangePassword()
+	{
+		if(!isset($_GET['id']))
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+		$id=Yii::app()->db->createCommand()
+			->select('user_id')
+			->from('user_changePassword')
+			->where('id=:id',array(':id'=>$_GET['id']))
+			->queryScalar();
+		if($id)
+		{
+			$model_passwordChangeForm=PasswordChangeForm::model()->findByPk($id);
+			$model_passwordChangeForm->password='';
+			if(isset($_POST['PasswordChangeForm']))
+			{
+				$model_passwordChangeForm->attributes=$_POST['PasswordChangeForm'];
+				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
+				{
+					Yii::app()->db->createCommand()->delete('user_changePassword','id=:id',array(':id'=>$_GET['id']));
+					$model_loginForm=new LoginForm;
+					$model_loginForm->username=$id;
+					$model_loginForm->password=$model_passwordChangeForm->password_repeat;
+					$model_loginForm->rememberMe=false;
+					if($model_loginForm->login())
+						$this->redirect(Yii::app()->homeUrl);
+				}
+			}
+			Yii::app()->user->logout();
+			$this->render('changePassword',array('model'=>$model_passwordChangeForm));
+		}	
+		else
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	public function actionUnverified()

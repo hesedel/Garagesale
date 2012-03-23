@@ -134,7 +134,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			$model->validate();
-			if($model->getIdentity()->errorCode==3)
+			if($model->getErrorCode()==3)
 			{
 				$email=Yii::app()->params['user']=Yii::app()->db->createCommand()
 					->select('email')
@@ -177,15 +177,6 @@ class SiteController extends Controller
 			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate() && $model->save())
 			{
-				// form inputs are valid, do something here
-				/*
-				$model_loginForm=new LoginForm;
-				$model_loginForm->username=$model->id;
-				$model_loginForm->password=$model->password_repeat;
-				$model_loginForm->rememberMe=false;
-				if($model_loginForm->login())
-					$this->redirect(Yii::app()->user->returnUrl);
-				*/
 				email_sendVerification($model->id,'Registration successful!');
 			}
 		}

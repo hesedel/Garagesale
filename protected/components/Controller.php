@@ -40,12 +40,14 @@ class Controller extends CController
 		// set return url
 		$route='/'.$this->getRoute();
 		if(
-			$route!=='/site/error' &&
-			$route!=='/site/login' &&
-			$route!=='/site/register' &&
-			$route!=='/site/captcha' &&
-			$route!=='/admin/user/unverified' &&
-			$route!=='/admin/user/verify'
+			preg_match('/^\/site\/error/',$route) == 0 &&
+			preg_match('/^\/site\/login/',$route) == 0 &&
+			preg_match('/^\/site\/register/',$route) == 0 &&
+			preg_match('/^\/site\/captcha/',$route) == 0 &&
+			preg_match('/^\/admin\/user\/forgotPassword/',$route) == 0 &&
+			preg_match('/^\/admin\/user\/changePassword/',$route) == 0 &&
+			preg_match('/^\/admin\/user\/unverified/',$route) == 0 &&
+			preg_match('/^\/admin\/user\/verify/',$route) == 0
 		)
 		{
 			if($route==='/site/index')

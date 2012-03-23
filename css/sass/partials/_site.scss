@@ -47,6 +47,11 @@
 
 	div.form {
 		width: 50%;
+
+		div.errorMessage {
+			display: inline;
+		}
+
 	}
 
 }
