@@ -203,6 +203,14 @@ class UserController extends Controller
 
 	public function actionChangePassword()
 	{
+		$model_passwordChangeForm=new PasswordChangeForm;
+
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-passwordChange-form')
+		{
+			echo CActiveForm::validate($model_passwordChangeForm);
+			Yii::app()->end();
+		}
+
 		if(!isset($_GET['id']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 
@@ -219,14 +227,7 @@ class UserController extends Controller
 			{
 				$model_passwordChangeForm->attributes=$_POST['PasswordChangeForm'];
 				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
-				{
-					$model_loginForm=new LoginForm;
-					$model_loginForm->username=$id;
-					$model_loginForm->password=$model_passwordChangeForm->password_repeat;
-					$model_loginForm->rememberMe=false;
-					if($model_loginForm->login())
-						$this->redirect(Yii::app()->homeUrl);
-				}
+					$this->redirect(Yii::app()->user->loginUrl);
 			}
 			Yii::app()->user->logout();
 			$this->render('changePassword',array('model'=>$model_passwordChangeForm));

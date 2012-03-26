@@ -11,6 +11,7 @@
 	:php
 		$form=$this->beginWidget('CActiveForm', array(
 			'action'=>array('/admin/user/unverified'),
+			'htmlOptions'=>array('class'=>'inline'),
 		));
 	=CHtml::hiddenField('email',$email)
 	=CHtml::linkButton('resend email →', array('class'=>'submit g-button orange small'))
