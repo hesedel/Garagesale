@@ -14,7 +14,7 @@
 				'clientOptions'=>array(
 					'validateOnSubmit'=>true,
 				),
-				'focus'=>array($model,'username'),
+				'focus'=>strlen($model->username) == 0 || $model->getErrorCode() == 1 ? array($model,'username') : array($model,'password'),
 			));
 
 		%table.form(summary="Login")
