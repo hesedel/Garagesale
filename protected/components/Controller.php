@@ -68,6 +68,10 @@ class Controller extends CController
 			}
 			Yii::app()->user->setReturnUrl($route.$actionParamsString.$actionParamsStringAjax);
 		}
+		else if(Yii::app()->user->getReturnUrl()==='/index.php')
+		{
+			Yii::app()->user->setReturnUrl('/');
+		}
 		return true;
 	}
 }
