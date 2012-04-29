@@ -6,13 +6,14 @@ html {
 body {
 	font-family: ProximaNovaRegular;
 	text-align: left;
-	background-color: blacken(whiten($beige, 25%, 4), 25%);
+	background-color: blacken(whiten($beige, 25%), 25%, 3);
 	@include min-width(970px);
 }
 
 #body {
 	@include clearfix;
 	background-color: white;
+	background-color: blacken(whiten($beige, 25%), 25%, 2);
 	@include box-shadow(rgba(0, 0, 0, .1) 0 1px);
 	position: relative;
 	padding-top: 18px;
@@ -84,9 +85,15 @@ body {
 
 				div {
 					@include border-bottom-left-radius(3px);
+					/*
 					@include box-shadow(
 						rgba(255, 255, 255, 1) 0 1px,
 						rgba(255, 255, 255, 1) -1px 0
+					);
+					*/
+					@include box-shadow(
+						blacken(whiten($beige, 25%), 25%, 2) 0 1px,
+						blacken(whiten($beige, 25%), 25%, 2) -1px 0
 					);
 					padding-top: 9px;
 				}
@@ -98,9 +105,15 @@ body {
 
 				div {
 					@include border-right-radius(3px);
+					/*
 					@include box-shadow(
 						rgba(255, 255, 255, 1) 1px 0,
 						rgba(255, 255, 255, 1) 0 1px
+					);
+					*/
+					@include box-shadow(
+						blacken(whiten($beige, 25%), 25%, 2) 1px 0,
+						blacken(whiten($beige, 25%), 25%, 2) 0 1px
 					);
 					padding: {
 						top: 8px;
@@ -348,7 +361,7 @@ body {
 		z-index: 3;
 
 	div {
-		background-color: white;
+		background-color: blacken(whiten($beige, 25%), 25%, 2);
 		position: absolute;
 			right: -5px;
 			bottom: -1px;
@@ -502,18 +515,22 @@ body {
 }
 
 div.breadcrumbs {
+	color: white;
+	/*
 	background-color: white;
 	@include border-bottom-right-radius(3px);
+	*/
 	position: absolute;
 		z-index: 1;
 	padding-right: 10px;
 
 	a {
-		color: $custom_magenta;
+		color: whiten($custom_magenta, 25%, 3);
 		text-decoration: none;
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 
 		&:hover {
-			color: blacken($custom_magenta, 25%);
+			color: whiten($custom_magenta, 25%, 4);
 			text-decoration: underline;
 		}
 

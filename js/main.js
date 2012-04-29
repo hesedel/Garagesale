@@ -48,7 +48,7 @@ $('a', '#filters').click(function() {
 		.css( {
 			top: $('.tr.filters', '#table').position().top,
 			left: $('.td.filters-left', '#table').position().left + 4,
-			width: $('.td.filters-left', '#table').outerWidth() + $('.td.filters-right', '#table').outerWidth() - 3,
+			width: $('.td.filters-left', '#table').outerWidth() + $('.td.filters-right', '#table').outerWidth() - 4,
 			height: $('.tr.filters', '#table').outerHeight() + 1
 		})
 		.removeClass('hide');

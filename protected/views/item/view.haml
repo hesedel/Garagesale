@@ -55,7 +55,23 @@
 
 	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-right'));
 
-#item_view-sidebar-right =$model->user_id
+#item_view-sidebar-right
+	%table.info-user(cellspacing="1")
+		%caption User Info
+		%thead
+			%tr
+				%th(colspan="2")
+					:php
+						echo CHtml::link(
+							CHtml::image('/images/transparent.gif'),
+							array('/admin/user/view', 'id'=>$model->user_id),
+							array('class'=>'image')
+						);
+					%span =CHtml::link($model->user_id, array('/admin/user/view', 'id'=>$model->user_id))
+		%tbody
+			%tr
+				%th Phone
+				%td +1 23 456-7890
 
 :php
 	$this->endWidget();
@@ -114,12 +130,6 @@
 		-endif
 	%table.info-contact(cellspacing="1")
 		%caption Contact Info
-		%tr
-			%th Name
-			%td John Doe
-		%tr
-			%th Email
-			%td.email =base64_encode('email@address.com')
 		%tr
 			%th Phone
 			%td +1 23 456-7890
