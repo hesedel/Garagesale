@@ -57,7 +57,7 @@ class Controller extends CController
 			$actionParamsStringAjax='';
 			foreach(array_keys($actionParams) as $actionParamKey)
 			{
-				if($actionParamKey==='ajax')
+				if($actionParamKey==='ajax' || preg_match('/^ajax_.*$/',$actionParamKey,$matches) > 0)
 				{
 					// do nothing
 				}

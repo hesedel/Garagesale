@@ -63,7 +63,7 @@ class SiteController extends Controller
 				'order'=>'updated DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>4,
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 4,
 			),
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(

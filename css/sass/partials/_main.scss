@@ -35,6 +35,14 @@ body {
 	overflow: visible;
 }
 
+@media screen and (min-width: 1175px) {
+
+	#page {
+		width: 1135px;
+	}
+
+}
+
 .no-js #page {
 	padding-top: 0;
 }

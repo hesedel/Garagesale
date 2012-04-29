@@ -349,14 +349,14 @@
 
 			div.images {
 				@include clearfix;
-				margin-right: -1px;
+				margin-right: -2px;
 
 				a {
 					@include float-left;
-					width: 176px;
-					height: 170px;
-					margin-right: 1px;
-					margin-bottom: 1px;
+					width: 126px;
+					height: 124px;
+					margin-right: 2px;
+					margin-bottom: 2px;
 
 					img {
 						background-color: whiten(blacken($beige, 25%), 25%, 4);
@@ -369,8 +369,30 @@
 
 					&:hover {
 						border: 1px solid $custom_magenta;
-						width: 174px;
-						height: 168px;
+						width: 124px;
+						height: 122px;
+					}
+
+				}
+
+			}
+
+			@media screen and (min-width: 1175px) {
+
+				div.images {
+					margin-right: -1px;
+
+					a {
+						width: 115px;
+						height: 107px;
+						margin-right: 1px;
+						margin-bottom: 1px;
+
+						&:hover {
+							width: 113px;
+							height: 105px;
+						}
+
 					}
 
 				}
