@@ -463,6 +463,9 @@
 
 			p {
 				color: whiten(blacken($beige, 25%), 25%, 3);
+				background-color: rgba(0, 0, 0, .05);
+				@include border-radius(3px);
+				padding: 9px 10px;
 			}
 
 			div.images {
