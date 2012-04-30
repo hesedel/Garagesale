@@ -88,41 +88,38 @@
 		-if(Yii::app()->user->checkAccess('deleteOwnItem',$params) || Yii::app()->user->checkAccess('super')):
 		#{CHtml::link('Delete', '#', array('class'=>'g-button small', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
 		-endif
-	%table.info-item(cellspacing="1")
-		%caption Item Info
+	-if($model->category_id != null || $model->condition_id != null):
+	.tags
 		-if($model->category_id != null):
-		%tr
-			%th Category
-			%td
-				:php
-					$category = '';
-					$category_parent = $model->category->parent_id;
-					while($category_parent != null) {
-						$category_parent = Yii::app()->db->createCommand()
-							->select('*')
-							->from('item_category')
-							->where('id=:id', array(':id'=>$category_parent))
-							->queryRow();
-						$category = CHtml::encode($category_parent['title']).' &#160; / &#160; '.$category;
-						$category_parent = $category_parent['parent_id'];
-					}
-				=$category.CHtml::encode($model->category->title)
+		%span.category
+			:php
+				$category = '';
+				$category_parent = $model->category->parent_id;
+				while($category_parent != null) {
+					$category_parent = Yii::app()->db->createCommand()
+						->select('*')
+						->from('item_category')
+						->where('id=:id', array(':id'=>$category_parent))
+						->queryRow();
+					$category = CHtml::encode($category_parent['title']).' &#160; / &#160; '.$category;
+					$category_parent = $category_parent['parent_id'];
+				}
+			=$category.CHtml::encode($model->category->title)
 		-endif
-		-if($model->condition_id != null):
-		%tr
-			%th Condition
-			%td.condition
-				:php
-					$condition = '';
-					switch($model->condition_id) {
-						case 1:
-							$condition = 'old';
-							break;
-						default:
-							$condition = 'new';
-					}
-				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
-		-endif
+		:php
+			if($model->condition_id != null) {
+				$condition = '';
+				switch($model->condition_id) {
+					case 1:
+						$condition = 'old';
+						break;
+					default:
+						$condition = 'new';
+				}
+		%span.condition.#{$condition} =CHtml::encode($model->condition->title)
+		:php
+			}
+	-endif
 	:php
 		$this->widget('zii.widgets.jui.CJuiTabs', array(
 			'tabs'=>array(
