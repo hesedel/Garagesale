@@ -24,6 +24,7 @@
 	Yii::app()->clientScript->registerScript(
 		'index',
 		"
+		/*
 		$(window)
 			.resize(function() {
 				switch($('#yw0').width()) {
@@ -38,6 +39,7 @@
 				}
 			})
 			.resize();
+		*/
 		",
 		CClientScript::POS_READY
 	);

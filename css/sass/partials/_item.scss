@@ -411,14 +411,12 @@
 			border: none;
 			@include border-radius(0);
 			height: 27px;
-			padding-top: 0;
-			padding-right: 0;
-			padding-left: 0;
+			padding: 0 0 9px 10px;
 
 			li {
 				background-color: rgba(0, 0, 0, .05);
 				background-image: none;
-				border: 1px solid blacken(whiten($beige, 25%), 25%, 2) !important;
+				border: none;
 				@include border-radius(3px);
 				/*
 				@include box-shadow(
@@ -427,31 +425,30 @@
 				);
 				*/
 				top: 0;
-				height: 25px;
+				height: 27px;
 				margin-right: 10px;
 
 				a {
-					color: whiten($custom_magenta, 25%, 5);
+					color: whiten(blacken($beige, 25%), 25%, 4);
 					font-size: $h4;
 					@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
-					line-height: 25px;
-					padding: 0 14px;
+					line-height: 27px;
+					padding: 0 15px;
 				}
 
 				&:hover {
 					background-color: rgba(0, 0, 0, .1);
-					border-color: blacken(whiten($beige, 25%), 25%, 3) !important;
 
 					a {
-						color: whiten($custom_magenta, 25%, 6);
+						color: white;
 					}
 
 				}
 
 				&.ui-tabs-selected {
-					background-color: rgba(0, 0, 0, .1);
+					background-color: whiten(blacken($beige, 25%), 25%, 4);
 					//@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)));
-					border-color: blacken(whiten($beige, 25%), 25%, 3) !important;
+					@include border-bottom-radius(0);
 					/*
 					@include box-shadow(
 						rgba(255, 255, 255, 1) 0 1px 1px inset,
@@ -459,11 +456,11 @@
 						rgba(255, 255, 255, .1) 1px 1px
 					);
 					*/
-					padding-bottom: 0;
+					padding-bottom: 9px;
 
 					a {
-						color: white;
-						//@include text-shadow(rgba(255, 255, 255, .5) 0 1px);
+						color: blacken($beige, 25%, 3);
+						@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 					}
 
 					&:hover {
@@ -481,14 +478,12 @@
 		}
 
 		div.ui-tabs-panel {
-			@include border-bottom-radius(0);
-			padding: 18px 0 0;
+			background-color: whiten(blacken($beige, 25%), 25%, 4);
+			@include border-radius(3px);
+			padding: 18px 20px;
 
 			p {
-				color: whiten(blacken($beige, 25%), 25%, 3);
-				background-color: rgba(0, 0, 0, .05);
-				@include border-radius(3px);
-				padding: 18px 20px;
+				color: blacken($beige, 25%, 2);
 			}
 
 			div.images {
@@ -497,8 +492,8 @@
 
 				a {
 					@include float-left;
-					width: 126px;
-					height: 124px;
+					width: 116px;
+					height: 106px;
 					margin-right: 2px;
 					margin-bottom: 2px;
 
@@ -513,14 +508,15 @@
 
 					&:hover {
 						border: 1px solid $custom_magenta;
-						width: 124px;
-						height: 122px;
+						width: 114px;
+						height: 104px;
 					}
 
 				}
 
 			}
 
+			/*
 			@media screen and (min-width: 1175px) {
 
 				div.images {
@@ -542,6 +538,7 @@
 				}
 
 			}
+			*/
 
 		}
 
