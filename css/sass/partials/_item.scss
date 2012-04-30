@@ -317,8 +317,7 @@
 		padding-left: 5px;
 	}
 
-	table.info-item,
-	table.info-contact {
+	table.info-item {
 		border-spacing: 1px;
 
 		caption {
@@ -387,7 +386,6 @@
 		ul.ui-tabs-nav {
 			background-color: transparent;
 			background-image: none;
-			//@include background-image(linear-gradient(rgba(255, 255, 255, 0) 75%, rgba(0, 0, 0, .1)));
 			border: none;
 			@include border-radius(0);
 			height: 27px;
@@ -398,9 +396,8 @@
 			li {
 				background-color: rgba(0, 0, 0, .1);
 				background-image: none;
-				border-color: transparent;
 				border: 1px solid  blacken(whiten($beige, 25%), 25%, 3) !important;
-				@include border-radius(3px);
+				@include border-top-radius(0);
 				@include box-shadow(
 					rgba(0, 0, 0, .05) -1px -1px,
 					rgba(255, 255, 255, .1) 1px 1px
@@ -410,7 +407,7 @@
 				margin-right: 10px;
 
 				a {
-					color: whiten($custom_magenta, 25%, 3);
+					color: whiten($custom_magenta, 25%, 5);
 					font-size: $h4;
 					@include text-shadow(rgba(0, 0, 0, .25) 0 1px);
 					line-height: 25px;
@@ -422,7 +419,7 @@
 					border-color: blacken(whiten($beige, 25%), 25%, 4) !important;
 
 					a {
-						color: whiten($custom_magenta, 25%, 4);
+						color: whiten($custom_magenta, 25%, 6);
 					}
 
 				}
@@ -440,7 +437,7 @@
 
 					a {
 						color: blacken($beige, 25%, 4);
-						@include text-shadow(rgba(255, 255, 255, .75) 0 1px);
+						@include text-shadow(rgba(255, 255, 255, .5) 0 1px);
 					}
 
 					&:hover {

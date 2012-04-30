@@ -36,6 +36,7 @@ $('a', '#filters').click(function() {
 	if(!$(this).hasClass('click')) {
 		$(this).addClass('click');
 		$('.filters', '#table').removeClass('hide');
+		/*
 		$('#filters-shadow')
 		.css( {
 			top: $('#filters').position().top - 1,
@@ -52,11 +53,14 @@ $('a', '#filters').click(function() {
 			height: $('.tr.filters', '#table').outerHeight() + 1
 		})
 		.removeClass('hide');
+		*/
 	} else {
 		$(this).removeClass('click');
 		$('.filters', '#table').addClass('hide');
+		/*
 		$('#filters-shadow').addClass('hide');
 		$('#tr_filters-shadow').addClass('hide');
+		*/
 	}
 	return false;
 });

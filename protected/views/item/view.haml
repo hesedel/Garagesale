@@ -128,17 +128,13 @@
 					}
 				%span.condition.#{$condition} =CHtml::encode($model->condition->title)
 		-endif
-	%table.info-contact(cellspacing="1")
-		%caption Contact Info
-		%tr
-			%th Phone
-			%td +1 23 456-7890
 	:php
 		$this->widget('zii.widgets.jui.CJuiTabs', array(
 			'tabs'=>array(
 				'Description + Photos'=>$this->renderPartial('view/_description', array('model'=>$model), true),
 				'Video'=>'...',
 				'Comments'=>'...',
+				'Contact'=>'...',
 			),
 			// additional javascript options for the tabs plugin
 			'options'=>array(
