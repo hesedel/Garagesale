@@ -71,7 +71,12 @@
 
 #item_view
 
-	%h1 #{CHtml::encode($model->title)}
+	//%h1 #{CHtml::encode($model->title)}
+	%table.header
+		%tr
+			%th
+				%h1 =CHtml::encode($model->title)
+			%td PHP #{number_format($model->price)}
 	-$params = array('Item'=>$model)
 	.actions
 		-if(Yii::app()->user->checkAccess('updateOwnItem',$params) || Yii::app()->user->checkAccess('super')):
@@ -85,9 +90,6 @@
 		-endif
 	%table.info-item(cellspacing="1")
 		%caption Item Info
-		%tr
-			%th Price
-			%td.price PHP #{number_format($model->price)}
 		-if($model->category_id != null):
 		%tr
 			%th Category
@@ -140,7 +142,10 @@
 	Yii::app()->clientScript->registerScript(
 		'item_view',
 		"
-		$('td.email', '#item_view table.info-contact').text(base64_decode($('td.email', '#item_view table.info-contact').text()));
+		$('h1', '#item_view table.header').css( {
+			width: $('#item_view').width() - $('td', '#item_view table.header').outerWidth() - 30
+		});
+		//$('td.email', '#item_view table.info-contact').text(base64_decode($('td.email', '#item_view table.info-contact').text()));
 		$('a.lightbox', '#item_view').lightBox( {
 			//overlayBgColor: '#',
 			//overlayOpacity: .25,
