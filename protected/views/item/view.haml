@@ -1,5 +1,5 @@
 :php
-	-$this->pageTitle=Yii::app()->name . ' - ' . $model->title;
+	$this->pageTitle=Yii::app()->name . ' - ' . $model->title;
 	$this->breadcrumbs=array(
 		'Ads'=>array('index'),
 		$model->id,
@@ -38,10 +38,10 @@
 	%table.info-ad
 		%caption Ad Info
 		%tr
-			%th Posted on
+			%th #{$model->getAttributeLabel('created')} On
 			%td =time_local($model->created);
 		%tr
-			%th Updated on
+			%th #{$model->getAttributeLabel('updated')} On
 			%td =time_local($model->updated);
 		%tr
 			%th Expires on
@@ -60,7 +60,7 @@
 		%h2 User Info
 		:php
 			echo CHtml::link(
-				CHtml::image('/images/transparent.gif'),
+				CHtml::image('/images/transparent.gif', $model->user_id),
 				array('/admin/user/view', 'id'=>$model->user_id),
 				array('class'=>'image')
 			);
@@ -73,6 +73,7 @@
 
 	//%h1 #{CHtml::encode($model->title)}
 	%table.header
+		%caption Header
 		%tr
 			%th
 				%h1 =CHtml::encode($model->title)
@@ -80,13 +81,14 @@
 	-$params = array('Item'=>$model)
 	.actions
 		-if(Yii::app()->user->checkAccess('updateOwnItem',$params) || Yii::app()->user->checkAccess('super')):
-		#{CHtml::link('Update', array('update', 'id'=>$model->id), array('class'=>'g-button small'))}
+		#{CHtml::link('Update', array('update', 'id'=>$model->id))}
 		-endif
-		-if((Yii::app()->user->checkAccess('updateOwnItem',$params) && Yii::app()->user->checkAccess('deleteOwnItem',$params)) || Yii::app()->user->checkAccess('super')):
-		\\&#160;
-		-endif
+		//
+			-if((Yii::app()->user->checkAccess('updateOwnItem',$params) && Yii::app()->user->checkAccess('deleteOwnItem',$params)) || Yii::app()->user->checkAccess('super')):
+			\\&#160;
+			-endif
 		-if(Yii::app()->user->checkAccess('deleteOwnItem',$params) || Yii::app()->user->checkAccess('super')):
-		#{CHtml::link('Delete', '#', array('class'=>'g-button small', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
+		#{CHtml::link('Delete', '#', array('submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
 		-endif
 	-if($model->category_id != null || $model->condition_id != null):
 	.tags
@@ -125,6 +127,7 @@
 			'tabs'=>array(
 				'Description + Photos'=>$this->renderPartial('view/_description', array('model'=>$model), true),
 				'Video'=>'...',
+				'Map'=>'...',
 				'Comments'=>'...',
 				'Contact'=>'...',
 			),
@@ -132,6 +135,7 @@
 			'options'=>array(
 				//'collapsible'=>true,
 			),
+			'htmlOptions'=>array('class'=>'g-tabs'),
 			'headerTemplate'=>'<li><a href="{url}">{title}</a></li>',
 		));
 

@@ -1,0 +1,13 @@
+#user_view {
+
+	h2 {
+		color: white;
+		font-family: sans-serif;
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		word-wrap: break-word;
+		line-height: 27px;
+		margin-bottom: 27px;
+		padding-top: 27px;
+	}
+
+}

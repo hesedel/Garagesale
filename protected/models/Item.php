@@ -88,7 +88,7 @@ class Item extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'created' => 'Created',
+			'created' => 'Posted',
 			'updated' => 'Updated',
 			'title' => 'Title',
 			'price' => 'Price',

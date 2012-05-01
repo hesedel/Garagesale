@@ -314,6 +314,10 @@
 	table.header {
 		margin-bottom: 9px;
 
+		caption {
+			display: none;
+		}
+
 		th, td {
 			padding: 27px 0 0;
 		}
@@ -348,15 +352,40 @@
 	}
 
 	div.actions {
-		/*
-		background-color: white;
-		@include border-bottom-left-radius(2px);
-		*/
 		position: absolute;
-			top: -3px;
-			right: -5px;
-		padding-bottom: 3px;
-		padding-left: 5px;
+			top: 0;
+			right: -1px;
+
+		a {
+			@include float-left;
+			color: blacken($beige, 25%, 3);
+			text-decoration: none;
+			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+			background-color: $whitesmoke;
+			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+			@include box-shadow(
+				rgba(255, 255, 255, 1) 0 1px 1px inset,
+				rgba(0, 0, 0, .5) 0 0 1px,
+				rgba(0, 0, 0, .1) 0 1px
+			);
+			position: relative;
+			margin-right: 1px;
+			padding-right: 5px;
+			padding-left: 5px;
+
+			&:hover {
+				color: blacken($beige, 25%, 4);
+				background-color: whiten($whitesmoke, 25%);
+				@include box-shadow(
+					rgba(255, 255, 255, 1) 0 1px 1px inset,
+					rgba(0, 0, 0, .5) 0 0 2px,
+					rgba(0, 0, 0, .1) 0 1px
+				);
+				z-index: 1;
+			}
+
+		}
+
 	}
 
 	div.tags {
@@ -368,7 +397,7 @@
 			@include float-left;
 			color: blacken($beige, 25%, 4);
 			@include text-shadow(rgba(255, 255, 255, .25) 0 1px);
-			background-color: whitesmoke;
+			background-color: $whitesmoke;
 			@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 			border: 1px solid  blacken(whiten($beige, 25%), 25%, 3);
 			@include border-radius(3px);
@@ -396,91 +425,9 @@
 
 	}
 
-	div.ui-tabs {
-		font-family: ProximaNovaRegular;
-		font-size: 1em;
-		background-color: transparent;
-		background-image: none;
-		border: none;
-		@include border-radius(0);
-		padding: 18px 0 0;
-
-		ul.ui-tabs-nav {
-			background-color: transparent;
-			background-image: none;
-			border: none;
-			@include border-radius(0);
-			height: 27px;
-			padding: 0 0 9px 10px;
-
-			li {
-				background-color: rgba(0, 0, 0, .05);
-				background-image: none;
-				border: none;
-				@include border-radius(3px);
-				/*
-				@include box-shadow(
-					rgba(0, 0, 0, .05) -1px -1px,
-					rgba(255, 255, 255, .1) 1px 1px
-				);
-				*/
-				top: 0;
-				height: 27px;
-				margin-right: 10px;
-
-				a {
-					color: whiten(blacken($beige, 25%), 25%, 4);
-					font-size: $h4;
-					@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
-					line-height: 27px;
-					padding: 0 15px;
-				}
-
-				&:hover {
-					background-color: rgba(0, 0, 0, .1);
-
-					a {
-						color: white;
-					}
-
-				}
-
-				&.ui-tabs-selected {
-					background-color: whiten(blacken($beige, 25%), 25%, 4);
-					//@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)));
-					@include border-bottom-radius(0);
-					/*
-					@include box-shadow(
-						rgba(255, 255, 255, 1) 0 1px 1px inset,
-						rgba(0, 0, 0, .05) -1px -1px,
-						rgba(255, 255, 255, .1) 1px 1px
-					);
-					*/
-					padding-bottom: 9px;
-
-					a {
-						color: blacken($beige, 25%, 3);
-						@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-					}
-
-					&:hover {
-
-						a {
-							cursor: default;
-						}
-
-					}
-
-				}
-
-			}
-
-		}
+	div.g-tabs {
 
 		div.ui-tabs-panel {
-			background-color: whiten(blacken($beige, 25%), 25%, 4);
-			@include border-radius(3px);
-			padding: 18px 20px;
 
 			p {
 				color: blacken($beige, 25%, 2);

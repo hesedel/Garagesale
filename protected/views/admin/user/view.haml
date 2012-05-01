@@ -1,0 +1,94 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - ' . $model->id;
+	$this->breadcrumbs=array(
+		'Users'=>array('index'),
+		$model->id,
+	);
+
+	$this->layout='column3';
+
+	$this->menu=array(
+		array('label'=>'List User', 'url'=>array('index')),
+		array('label'=>'Create User', 'url'=>array('create')),
+		array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->id)),
+		array('label'=>'Delete User', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Manage User', 'url'=>array('admin')),
+	);
+
+	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-left'));
+
+#user_view-sidebar-left
+	//
+		:php
+			$image = Yii::app()->db->createCommand()
+				->select('id, type')
+				->from('item_image')
+				->where('item_id=:item_id and `index`=0', array(':item_id'=>$model->id))
+				->order('index')
+				->queryRow();
+			if($image) {
+				echo CHtml::link(
+					CHtml::image('/images/slir/w188-h302-be8e8e3/'.db_image('item_image', $image['id']), $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
+					'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
+					array('class'=>'lightbox')
+				);
+			} else
+				echo CHtml::image('/images/slir/w190-h117-c190:117-be8e8e3/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
+		%table.info-ad
+			%caption Ad Info
+			%tr
+				%th #{$model->getAttributeLabel('created')} on
+				%td =time_local($model->created);
+			%tr
+				%th #{$model->getAttributeLabel('updated')} on
+				%td =time_local($model->updated);
+			%tr
+				%th Expires on
+				%td =time_local($model->updated, array('offset'=>(60*24*60*60)-(60*60))); // 60 days
+			%tr
+				%th Views
+				%td ...
+
+:php
+	$this->endWidget();
+
+	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-right'));
+
+#item_view-sidebar-right
+	//
+		.info-user
+			%h2 User Info
+			:php
+				echo CHtml::link(
+					CHtml::image('/images/transparent.gif'),
+					array('/admin/user/view', 'id'=>$model->user_id),
+					array('class'=>'image')
+				);
+			%span =CHtml::link($model->user_id, array('/admin/user/view', 'id'=>$model->user_id))
+
+:php
+	$this->endWidget();
+
+#user_view
+
+	%h2 =$model->id
+
+	%table.g-table(cellspacing="1")
+		%tr
+			%th =$model->getAttributeLabel('name_first')
+			%td =$model->name_first
+		%tr
+			%th =$model->getAttributeLabel('name_last')
+			%td =$model->name_last
+		%tr
+			%th =$model->getAttributeLabel('email')
+			%td =$model->email
+		%tr
+			%th =$model->getAttributeLabel('phone')
+			%td =$model->phone
+		%tr
+			%th #{$model->getAttributeLabel('created')} On
+			%td =time_local($model->created)
+		%tr
+			%th Last Logged-In On
+			%td =time_local($model->updated)
