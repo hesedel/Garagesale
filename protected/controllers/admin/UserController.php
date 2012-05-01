@@ -91,6 +91,19 @@ class UserController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+		$params=array('User'=>$model);
+		if(
+			Yii::app()->user->checkAccess('updateSelf',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -113,6 +126,21 @@ class UserController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$model=$this->loadModel($id);
+
+		$params=array('User'=>$model);
+		if(
+			Yii::app()->user->checkAccess('deleteSelf',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request

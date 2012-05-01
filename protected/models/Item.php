@@ -61,8 +61,8 @@ class Item extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
-			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2MB
-			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>530, 'minHeight'=>480),
+			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2.5MB
+			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>480, 'minHeight'=>480),
 		);
 	}
 
@@ -124,5 +124,15 @@ class Item extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	protected function afterDelete() {
+		$images=Yii::app()->db->createCommand()
+			->select('id')
+			->from('item_image')
+			->where('item_id=:item_id',array(':item_id'=>$this->id))
+			->queryAll();
+		foreach($images as $image)
+			db_image('item_image',$image['id'],array('unlink'=>true));
 	}
 }

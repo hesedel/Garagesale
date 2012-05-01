@@ -115,7 +115,16 @@ class ItemController extends Controller
 		$model=$this->loadModel($id);
 
 		$params=array('Item'=>$model);
-		if(!Yii::app()->user->checkAccess('updateOwnItem',$params) && !Yii::app()->user->checkAccess('super'))
+		if(
+			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
 			throw new CHttpException(403,'You are not authorized to perform this action.');
 
 		// Uncomment the following line if AJAX validation is needed
@@ -199,21 +208,22 @@ class ItemController extends Controller
 		$model=$this->loadModel($id);
 
 		$params=array('Item'=>$model);
-		if(!Yii::app()->user->checkAccess('deleteOwnItem',$params) && !Yii::app()->user->checkAccess('super'))
+		if(
+			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
 			throw new CHttpException(403,'You are not authorized to perform this action.');
 
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
 			$model->delete();
-
-			$images=Yii::app()->db->createCommand()
-				->select('id')
-				->from('item_image')
-				->where('item_id=:item_id',array(':item_id'=>$id))
-				->queryAll();
-			foreach($images as $image)
-				db_image('item_image',$image['id'],array('unlink'=>true));
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))

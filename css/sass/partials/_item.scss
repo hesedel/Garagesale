@@ -351,43 +351,6 @@
 
 	}
 
-	div.actions {
-		position: absolute;
-			top: 0;
-			right: -1px;
-
-		a {
-			@include float-left;
-			color: blacken($beige, 25%, 3);
-			text-decoration: none;
-			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-			background-color: $whitesmoke;
-			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
-			@include box-shadow(
-				rgba(255, 255, 255, 1) 0 1px 1px inset,
-				rgba(0, 0, 0, .5) 0 0 1px,
-				rgba(0, 0, 0, .1) 0 1px
-			);
-			position: relative;
-			margin-right: 1px;
-			padding-right: 5px;
-			padding-left: 5px;
-
-			&:hover {
-				color: blacken($beige, 25%, 4);
-				background-color: whiten($whitesmoke, 25%);
-				@include box-shadow(
-					rgba(255, 255, 255, 1) 0 1px 1px inset,
-					rgba(0, 0, 0, .5) 0 0 2px,
-					rgba(0, 0, 0, .1) 0 1px
-				);
-				z-index: 1;
-			}
-
-		}
-
-	}
-
 	div.tags {
 		@include clearfix;
 		height: 18px;

@@ -45,11 +45,18 @@ return array(
 				'login'=>'site/login',
 				'logout'=>'site/logout',
 				'register'=>'site/register',
+
 				'ad'=>'item/index',
 				'post'=>'item/create',
 				'ad/<id:\d+>'=>'item/view',
 				'ad/<action:\w+>/<id:\d+>'=>'item/<action>',
 				'ad/<action:\w+>'=>'item/<action>',
+
+				'user'=>'admin/user/index',
+				'user/<id:\w+>'=>'admin/user/view',
+				'user/<action:\w+>/<id:\w+>'=>'admin/user/<action>',
+				//'user/<action:\w+>'=>'admin/user/<action>',
+
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

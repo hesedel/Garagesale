@@ -135,6 +135,17 @@ class User extends CActiveRecord
 		return true;
 	}
 
+	protected function beforeDelete() {
+		$items=Yii::app()->db->createCommand()
+			->select('id')
+			->from('item')
+			->where('user_id=:user_id',array(':user_id'=>$this->id))
+			->queryAll();
+		foreach($items as $item)
+			Item::model()->findByPk($item['id'])->delete();
+		return true;
+	}
+
 	private function password_old()
 	{
 		return Yii::app()->db->createCommand()

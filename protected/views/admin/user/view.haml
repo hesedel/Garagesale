@@ -72,7 +72,14 @@
 #user_view
 
 	%h2 =$model->id
-
+	-$params = array('User'=>$model)
+	.g-actions
+		-if(Yii::app()->user->checkAccess('updateSelf',$params) || (Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super')):
+		#{CHtml::link('Update', array('update', 'id'=>$model->id))}
+		-endif
+		-if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super')):
+		#{CHtml::link('Delete', '#', array('submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this user?'))}
+		-endif
 	%table.g-table(cellspacing="1")
 		%tr
 			%th =$model->getAttributeLabel('name_first')
