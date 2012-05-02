@@ -53,7 +53,8 @@ class Controller extends CController
 			if($route==='/site/index')
 				$route='/';
 			$actionParams=$this->getActionParams();
-			$actionParamsString='';
+			//$actionParamsString='';
+			$actionParamsArray=array();
 			$actionParamsStringAjax='';
 			foreach(array_keys($actionParams) as $actionParamKey)
 			{
@@ -63,10 +64,12 @@ class Controller extends CController
 				}
 				else if(preg_match('/^.+_page$/',$actionParamKey,$matches) > 0)
 					$actionParamsStringAjax .=(strlen($actionParamsStringAjax)==0 ? '?' : '&').$matches[0].'='.$actionParams[$actionParamKey];
-				else
-					$actionParamsString .=(strlen($actionParamsString)==0 ? '/' : '').$actionParams[$actionParamKey].'/';
+				else {
+					//$actionParamsString .=(strlen($actionParamsString)==0 ? '/' : '').$actionParams[$actionParamKey].'/';
+					$actionParamsArray[$actionParamKey] = $actionParams[$actionParamKey];
+				}
 			}
-			Yii::app()->user->setReturnUrl($route.$actionParamsString.$actionParamsStringAjax);
+			Yii::app()->user->setReturnUrl((sizeof($actionParamsArray) == 0 ? '/' : Yii::app()->createUrl($route,$actionParamsArray)).$actionParamsStringAjax);
 		}
 		else if(Yii::app()->user->getReturnUrl()==='/index.php')
 		{
