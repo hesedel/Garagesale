@@ -143,6 +143,20 @@ a.g-button {
 
 }
 
+div.g-form {
+	position: relative;
+	padding-top: 36px;
+
+	h2 {
+		color: whiten($custom_orange, 25%, 2);
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		position: absolute;
+			top: -9px;
+			right: 0;
+	}
+
+} // .g-form
+
 div.g-items {
 	position: relative;
 	padding-top: 45px;

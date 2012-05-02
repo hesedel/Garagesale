@@ -62,7 +62,7 @@ class Item extends CActiveRecord
 			// Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2.5MB
-			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>480, 'minHeight'=>480),
+			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>190, 'minHeight'=>190),
 		);
 	}
 

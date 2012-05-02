@@ -87,9 +87,11 @@
 		%tr
 			%th =$model->getAttributeLabel('name_last')
 			%td =$model->name_last
+		-if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')):
 		%tr
 			%th =$model->getAttributeLabel('email')
 			%td =$model->email
+		-endif
 		%tr
 			%th =$model->getAttributeLabel('phone')
 			%td =$model->phone

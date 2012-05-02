@@ -1,0 +1,75 @@
+.form
+
+	:php
+		$form=$this->beginWidget('CActiveForm', array(
+			'id'=>'user-form',
+			'enableAjaxValidation'=>false,
+			'focus'=>array($model,'title'),
+		));
+
+	//=$form->errorSummary($model)
+
+	%table.form(summary="Post a New Item")
+		%caption.hide Item
+
+		%tfoot
+
+			%tr
+				%th \\&#160;
+				%td
+					=!$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button')).' ' : ''
+					=CHtml::linkButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'g-button orange'))
+					=CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'g-button orange'))
+
+		%tbody
+
+			%tr
+				%th =$form->labelEx($model,'id')
+				%td
+					.input-text
+						=$form->textField($model,'id',array('size'=>32,'maxlength'=>32))
+						%span.placeholder ID
+					=$form->error($model,'id')
+
+			%tr
+				%th =$form->labelEx($model,'email')
+				%td
+					.input-text
+						=$form->textField($model,'email',array('size'=>64,'maxlength'=>64))
+						%span.placeholder Email
+					=$form->error($model,'email')
+
+			%tr
+				%th =$form->labelEx($model,'password')
+				%td
+					.input-text
+						=$form->passwordField($model,'password',array('size'=>32,'maxlength'=>32,'value'=>$model->isNewRecord ? $model->password : ''))
+						%span.placeholder Password
+					=$form->error($model,'password')
+
+			%tr
+				%th =$form->labelEx($model,'name_first')
+				%td
+					.input-text
+						=$form->textField($model,'name_first',array('size'=>32,'maxlength'=>32))
+						%span.placeholder First Name
+					=$form->error($model,'name_first')
+
+			%tr
+				%th =$form->labelEx($model,'name_last')
+				%td
+					.input-text
+						=$form->textField($model,'name_last',array('size'=>32,'maxlength'=>32))
+						%span.placeholder Last Name
+					=$form->error($model,'name_last')
+
+			%tr
+				%th =$form->labelEx($model,'phone')
+				%td
+					.input-text
+						=$form->textField($model,'phone',array('size'=>16,'maxlength'=>16))
+						%span.placeholder Phone
+					=$form->error($model,'phone')
+
+	:php
+		$this->endWidget();
