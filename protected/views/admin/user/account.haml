@@ -1,0 +1,109 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - Account';
+	$this->breadcrumbs=array(
+		$model->id=>array('view','id'=>$model->id),
+		'Account',
+	);
+
+.g-form#user_account
+
+	%h2 Account
+
+	:php
+		$form=$this->beginWidget('CActiveForm', array(
+			'id'=>'account-form',
+			'enableAjaxValidation'=>true,
+			'enableClientValidation'=>true,
+			'focus'=>array($model,'title'),
+		));
+
+	.collumns
+
+		.left
+			.padding
+
+				%table.form
+					%caption User Info
+
+					//
+						%tr
+							%th =$form->labelEx($model,'id')
+							%td
+								.input-text
+									=$form->textField($model,'id',array('size'=>32,'maxlength'=>32))
+									%span.placeholder ID
+								=$form->error($model,'id')
+
+					%tr
+						%th =$form->labelEx($model,'name_first')
+						%td
+							.input-text
+								=$form->textField($model,'name_first',array('size'=>32,'maxlength'=>32))
+								%span.placeholder First Name
+							=$form->error($model,'name_first')
+
+					%tr
+						%th =$form->labelEx($model,'name_last')
+						%td
+							.input-text
+								=$form->textField($model,'name_last',array('size'=>32,'maxlength'=>32))
+								%span.placeholder Last Name
+							=$form->error($model,'name_last')
+
+					%tr
+						%th =$form->labelEx($model,'email')
+						%td
+							.input-text
+								=$form->textField($model,'email',array('size'=>64,'maxlength'=>64))
+								%span.placeholder Email
+							=$form->error($model,'email')
+
+					%tr
+						%th =$form->labelEx($model,'phone')
+						%td
+							.input-text
+								=$form->textField($model,'phone',array('size'=>16,'maxlength'=>16))
+								%span.placeholder Phone
+							=$form->error($model,'phone')
+
+		.right
+			.padding
+
+				%table.form
+					%caption Password Change
+
+					%tr
+						%th =$form->labelEx($model,'password_old')
+						%td
+							.input-text
+								=$form->passwordField($model,'password_old',array('size'=>32,'maxlength'=>32))
+								%span.placeholder Old Password
+							=$form->error($model,'password_old')
+
+					%tr
+						%th =$form->labelEx($model,'password')
+						%td
+							.input-text
+								=$form->passwordField($model,'password',array('size'=>32,'maxlength'=>32,'value'=>isset($_POST['AccountForm']) ? $model->password : ''))
+								%span.placeholder New Password
+							=$form->error($model,'password')
+
+					%tr.repeat
+						%th =$form->labelEx($model,'password_repeat')
+						%td
+							.input-text
+								=$form->passwordField($model,'password_repeat',array('size'=>32,'maxlength'=>32))
+								%span.placeholder New Password
+							=$form->error($model,'password_repeat')
+
+	%table.form.foot
+		%tfoot
+			%tr
+				%th \\&#160;
+				%td
+					=CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button cancel')).' '
+					=CHtml::linkButton('Save', array('class'=>'g-button orange'))
+					=CHtml::submitButton('Save', array('class'=>'g-button orange'))
+
+	:php
+		$this->endWidget();

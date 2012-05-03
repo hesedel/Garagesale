@@ -74,7 +74,10 @@
 	%h2 =$model->id
 	-$params = array('User'=>$model)
 	.g-actions
-		-if(Yii::app()->user->checkAccess('updateSelf',$params) || (Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super')):
+		-if(Yii::app()->user->checkAccess('updateSelf',$params) && !Yii::app()->user->checkAccess('super')):
+		#{CHtml::link('Update', array('account'))}
+		-endif
+		-if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super')):
 		#{CHtml::link('Update', array('update', 'id'=>$model->id))}
 		-endif
 		-if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super')):
@@ -100,4 +103,4 @@
 			%td =time_local($model->created)
 		%tr
 			%th Last Logged-In On
-			%td =time_local($model->updated)
+			%td ...

@@ -35,11 +35,11 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('account'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('create','update','admin','delete'),
 				//'users'=>array('admin'),
 				'roles'=>array('admin','super'),
 			),
@@ -94,11 +94,7 @@ class UserController extends Controller
 
 		$params=array('User'=>$model);
 		if(
-			Yii::app()->user->checkAccess('updateSelf',$params) ||
-			(
-				Yii::app()->user->checkAccess('admin') &&
-				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))
-			) ||
+			!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id)))) ||
 			Yii::app()->user->checkAccess('super')
 		) {
 			// do nothing
@@ -310,6 +306,27 @@ class UserController extends Controller
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
+
+	public function actionAccount()
+	{
+		$model=AccountForm::model()->findByPk(Yii::app()->user->id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['AccountForm']))
+		{
+			$model->attributes=$_POST['AccountForm'];
+			$model->password_old=$_POST['AccountForm']['password_old'];
+			$model->password_repeat=$_POST['AccountForm']['password_repeat'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
+
+		$this->render('account',array(
+			'model'=>$model,
+		));
 	}
 
 	/**

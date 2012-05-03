@@ -18,3 +18,52 @@
 	}
 
 } // #user_view
+
+#user_account {
+
+	div.collumns {
+		@include clearfix;
+
+		div.left,
+		div.right {
+			@include float-left;
+			width: 50%;
+
+			caption {
+				color: whiten($custom_orange, 25%, 3);
+				@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+				background-color: transparent;
+				font-size: $h4;
+				line-height: 27px;
+				padding: 0 0 0 10px;
+			}
+
+		}
+
+		div.left div.padding {
+			padding-right: 10px;
+		}
+
+		div.right div.padding {
+			padding-left: 10px;
+		}
+
+	}
+
+	table.foot {
+		background-color: transparent;
+		border-color: transparent;
+
+		td {
+			padding-right: 0;
+
+			a.cancel {
+				border-color: blacken($whitesmoke, 25%, 3);
+				border-bottom-color: blacken($whitesmoke, 25%, 4);
+			}
+
+		}
+
+	}
+
+} // #user_account
