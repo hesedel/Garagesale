@@ -13,14 +13,20 @@
  * @property string $name_first
  * @property string $name_last
  * @property string $phone
+ * @property string $image
+ * @property string $image_type
+ * @property string $image_size
  * @property integer $verified
  *
  * The followings are the available model relations:
  * @property Item[] $items
+ * @property UserChangePassword[] $userChangePasswords
  * @property UserVerify[] $userVerifies
  */
 class User extends CActiveRecord
 {
+	public $image_temp;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -52,7 +58,9 @@ class User extends CActiveRecord
 			array('id, password, name_first, name_last', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
-			array('created', 'safe'),
+			array('image_type', 'length', 'max'=>4),
+			array('image_size', 'length', 'max'=>10),
+			array('created, image', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
@@ -67,6 +75,8 @@ class User extends CActiveRecord
 			array('email', 'email'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
+			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024)), // minSize 1KB, maxSize 2.5MB
+			array('image_temp', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>190, 'minHeight'=>190),
 		);
 	}
 
@@ -79,6 +89,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
+			'userChangePasswords' => array(self::HAS_MANY, 'UserChangePassword', 'user_id'),
 			'userVerifies' => array(self::HAS_MANY, 'UserVerify', 'user_id'),
 		);
 	}
@@ -98,6 +109,9 @@ class User extends CActiveRecord
 			'name_first' => 'First Name',
 			'name_last' => 'Last Name',
 			'phone' => 'Phone',
+			'image' => 'Image',
+			'image_type' => 'Image Type',
+			'image_size' => 'Image Size',
 			'verified' => 'Verified',
 		);
 	}
@@ -117,7 +131,6 @@ class User extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('updated',$this->updated,true);
-		$criteria->compare('password',$this->password);
 		$criteria->compare('role',$this->role);
 		$criteria->compare('name_first',$this->name_first,true);
 		$criteria->compare('name_last',$this->name_last,true);
@@ -129,9 +142,26 @@ class User extends CActiveRecord
 		));
 	}
 
+	public function getImage() {
+		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		if(file_exists(Yii::getPathOfAlias('webroot').$image))
+			return $image;
+		else
+			return '/images/transparent.gif';
+		return ;
+	}
+
 	protected function beforeSave()
 	{
 		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);
+
+		if($this->image_temp) {
+			$this->image=file_get_contents($this->image_temp->tempName);
+			$this->image_type=basename($this->image_temp->type);
+			$this->image_size=$this->image_temp->size;
+			file_put_contents(Yii::getPathOfAlias('webroot').'/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type, $this->image);
+		}
+
 		return true;
 	}
 

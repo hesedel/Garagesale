@@ -320,6 +320,7 @@ class UserController extends Controller
 			$model->attributes=$_POST['AccountForm'];
 			$model->password_old=$_POST['AccountForm']['password_old'];
 			$model->password_repeat=$_POST['AccountForm']['password_repeat'];
+			$model->image_temp=CUploadedFile::getInstance($model,'image_temp');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

@@ -1,5 +1,6 @@
 :php
 	$this->pageTitle=Yii::app()->name . ' - Account';
+	$this->layout='column1';
 	$this->breadcrumbs=array(
 		$model->id=>array('view','id'=>$model->id),
 		'Account',
@@ -14,6 +15,7 @@
 			'id'=>'account-form',
 			'enableAjaxValidation'=>true,
 			'enableClientValidation'=>true,
+			'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 			'focus'=>array($model,'title'),
 		));
 
@@ -24,6 +26,13 @@
 
 				%table.form
 					%caption User Info
+
+					%tr
+						%th
+							.image =CHtml::image('/images/transparent.gif', $model->id, array('style'=>'background-image: url(/images/slir/w75-h72-c75:72-be8e8e3'.$model->getImage().')'))
+						%td
+							=$form->fileField($model,'image_temp')
+							=$form->error($model,'image_temp')
 
 					//
 						%tr

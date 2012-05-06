@@ -42,6 +42,20 @@
 
 		div.left div.padding {
 			padding-right: 10px;
+
+			div.image {
+				background-color: rgba(0, 0, 0, .05);
+				width: 75px;
+				height: 72px;
+
+				img {
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+
+			}
+
 		}
 
 		div.right div.padding {

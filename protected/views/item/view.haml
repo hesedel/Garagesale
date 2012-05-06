@@ -60,7 +60,7 @@
 		%h2 User Info
 		:php
 			echo CHtml::link(
-				CHtml::image('/images/transparent.gif', $model->user_id),
+				CHtml::image('/images/transparent.gif', $model->user_id, array('style'=>'background-image: url(/images/slir/w38-h34-c38:34-be8e8e3'.User::model()->findByPk($model->user_id)->getImage().')')),
 				array('/admin/user/view', 'id'=>$model->user_id),
 				array('class'=>'image')
 			);

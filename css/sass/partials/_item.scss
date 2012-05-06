@@ -116,190 +116,6 @@
 
 }
 
-#item_view-sidebar-left {
-
-	a.lightbox {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		//border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
-		border: 1px solid white;
-		display: block;
-		margin-bottom: 18px;
-		overflow: hidden;
-
-		img {
-			display: block;
-			margin-right: auto;
-			margin-left: auto;
-		}
-
-		&:hover {
-			border-color: $custom_magenta;
-
-			img {
-				
-			}
-
-		}
-
-	}
-
-	img.no-image {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		display: block;
-		width: 190px;
-		height: 117px;
-		margin-bottom: 18px;
-	}
-
-	table.info-ad {
-		margin-bottom: 0;
-
-		caption {
-			color: blacken(whiten($beige, 25%), 25%);
-			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
-			text-transform: uppercase;
-			background-color: transparent;
-			padding: 0;
-		}
-
-		th, td {
-			font-size: $small;
-			line-height: 18px;
-			padding: 0;
-		}
-
-		th {
-			color: whiten(blacken($beige, 25%), 25%, 3);
-			white-space: nowrap;
-			padding-right: 5px;
-		}
-
-		td {
-			color: white;
-			width: 100%;
-			padding-left: 5px;
-		}
-
-	}
-
-}
-
-#item_view-sidebar-right {
-
-	div.info-user {
-		@include clearfix;
-
-		h2 {
-			color: blacken(whiten($beige, 25%), 25%);
-			font-size: 1em;
-			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
-			text-transform: uppercase;
-		}
-
-		a.image {
-			@include float-left;
-			text-decoration: none;
-			border: 1px solid $custom_green;
-			width: 38px;
-			height: 34px;
-
-			&:hover {
-				border-color: whiten($custom_green, 25%);
-			}
-
-		}
-
-		span {
-			@include float-left;
-			width: 133px;
-			line-height: 36px;
-			padding-left: 15px;
-
-			a {
-				color: $custom_green;
-				font-size: $h4;
-				text-decoration: none;
-				@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
-
-				&:hover {
-					color: whiten($custom_green, 25%);
-					text-decoration: underline;
-				}
-
-			}
-
-		}
-
-	}
-
-	table.info-user {
-		border-spacing: 1px;
-
-		caption {
-			color: white;
-			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
-			background-color: transparent;
-			padding: 0;
-		}
-
-		thead th {
-			background-color: transparent;
-			padding: 0;
-
-			
-
-		}
-
-		tbody {
-
-			tr {
-
-				th, td {
-					vertical-align: top;
-					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-					background-color: whiten($whitesmoke, 25%, 2);
-					line-height: 18px;
-					padding: 9px 15px;
-				}
-
-				th {
-					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-				}
-
-				td {
-					width: 100%;
-
-					&.price {
-						color: blacken($custom_green, 25%, 2);
-						font-size: $h3;
-					}
-
-					&.condition {
-						font-size: $h4;
-					}
-
-					span.condition {
-
-						&.new {
-							color: blacken($custom_green, 25%, 2);
-						}
-
-						&.old {
-							color: $custom_magenta;
-						}
-
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
-}
-
 #item_view {
 
 	table.header {
@@ -440,6 +256,196 @@
 
 			}
 			*/
+
+		}
+
+	}
+
+}
+
+#item_view-sidebar-left {
+
+	a.lightbox {
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		//border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
+		border: 1px solid white;
+		display: block;
+		margin-bottom: 18px;
+		overflow: hidden;
+
+		img {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&:hover {
+			border-color: $custom_magenta;
+
+			img {
+				
+			}
+
+		}
+
+	}
+
+	img.no-image {
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		display: block;
+		width: 190px;
+		height: 117px;
+		margin-bottom: 18px;
+	}
+
+	table.info-ad {
+		margin-bottom: 0;
+
+		caption {
+			color: blacken(whiten($beige, 25%), 25%);
+			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+			text-transform: uppercase;
+			background-color: transparent;
+			padding: 0;
+		}
+
+		th, td {
+			font-size: $small;
+			line-height: 18px;
+			padding: 0;
+		}
+
+		th {
+			color: whiten(blacken($beige, 25%), 25%, 3);
+			white-space: nowrap;
+			padding-right: 5px;
+		}
+
+		td {
+			color: white;
+			width: 100%;
+			padding-left: 5px;
+		}
+
+	}
+
+}
+
+#item_view-sidebar-right {
+
+	div.info-user {
+		@include clearfix;
+
+		h2 {
+			color: blacken(whiten($beige, 25%), 25%);
+			font-size: 1em;
+			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+			text-transform: uppercase;
+		}
+
+		a.image {
+			@include float-left;
+			text-decoration: none;
+			border: 1px solid $custom_green;
+			width: 38px;
+			height: 34px;
+
+			img {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
+			&:hover {
+				border-color: whiten($custom_green, 25%);
+			}
+
+		}
+
+		span {
+			@include float-left;
+			width: 133px;
+			line-height: 36px;
+			padding-left: 15px;
+
+			a {
+				color: $custom_green;
+				font-size: $h4;
+				text-decoration: none;
+				@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+
+				&:hover {
+					color: whiten($custom_green, 25%);
+					text-decoration: underline;
+				}
+
+			}
+
+		}
+
+	}
+
+	table.info-user {
+		border-spacing: 1px;
+
+		caption {
+			color: white;
+			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+			background-color: transparent;
+			padding: 0;
+		}
+
+		thead th {
+			background-color: transparent;
+			padding: 0;
+
+			
+
+		}
+
+		tbody {
+
+			tr {
+
+				th, td {
+					vertical-align: top;
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+					background-color: whiten($whitesmoke, 25%, 2);
+					line-height: 18px;
+					padding: 9px 15px;
+				}
+
+				th {
+					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+				}
+
+				td {
+					width: 100%;
+
+					&.price {
+						color: blacken($custom_green, 25%, 2);
+						font-size: $h3;
+					}
+
+					&.condition {
+						font-size: $h4;
+					}
+
+					span.condition {
+
+						&.new {
+							color: blacken($custom_green, 25%, 2);
+						}
+
+						&.old {
+							color: $custom_magenta;
+						}
+
+					}
+
+				}
+
+			}
 
 		}
 
