@@ -29,8 +29,19 @@
 
 					%tr
 						%th
-							.image =CHtml::image('/images/transparent.gif', $model->id, array('style'=>'background-image: url(/images/slir/w75-h72-c75:72-be8e8e3'.$model->getImage().')'))
+							-if($model->image):
+								.image
+									=CHtml::image('/images/transparent.gif', $model->id, array('style'=>'background-image: url(/images/slir/w73-h70-c73:70-be8e8e3'.$model->getImage().')'))
+									=CHtml::link('<span></span>', '#', array('title'=>'remove profile picture'))
+							-else:
+								=CHtml::image('/images/transparent.gif', $model->id, array('class'=>'no-image', 'style'=>'background-image: url(/images/slir/w73-h70-c73:70-be8e8e3'.$model->getImage().')'))
+							-endif
 						%td
+							-if($model->image):
+								%span Replace your profile picture:
+							-else:
+								%span Upload a profile picture:
+							-endif
 							=$form->fileField($model,'image_temp')
 							=$form->error($model,'image_temp')
 

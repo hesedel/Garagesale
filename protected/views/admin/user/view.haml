@@ -18,22 +18,12 @@
 	$this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar-left'));
 
 #user_view-sidebar-left
+	:php
+		if($model->image) {
+			echo CHtml::image('/images/slir/w188-h302-be8e8e3'.$model->getImage(), $model->id, array('class'=>'image'));
+		} else
+			echo CHtml::image('/images/slir/w190-h117-c190:117-bbabaab'.$model->getImage(), $model->id, array('class'=>'no-image'));
 	//
-		:php
-			$image = Yii::app()->db->createCommand()
-				->select('id, type')
-				->from('item_image')
-				->where('item_id=:item_id and `index`=0', array(':item_id'=>$model->id))
-				->order('index')
-				->queryRow();
-			if($image) {
-				echo CHtml::link(
-					CHtml::image('/images/slir/w188-h302-be8e8e3/'.db_image('item_image', $image['id']), $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
-					'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
-					array('class'=>'lightbox')
-				);
-			} else
-				echo CHtml::image('/images/slir/w190-h117-c190:117-be8e8e3/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
 		%table.info-ad
 			%caption Ad Info
 			%tr

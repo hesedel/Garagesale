@@ -46,8 +46,8 @@
 
 			a {
 				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				border-bottom: 1px solid $custom_magenta;
-				border-left: 1px solid $custom_magenta;
+				border-bottom: 1px solid $custom_orange;
+				border-left: 1px solid $custom_orange;
 				position: absolute;
 					top: -1px;
 					right: -1px;
@@ -75,11 +75,11 @@
 			}
 
 			&.new {
-				border-color: blacken($custom_green, 25%);
+				border-color: $custom_cyan;
 			}
 
 			&:hover {
-				border-color: $custom_magenta;
+				border-color: $custom_orange;
 
 				a {
 					display: block;
@@ -88,7 +88,7 @@
 			}
 
 			&.ui-sortable-helper {
-				border-color: $custom_cyan;
+				border-color:  blacken($custom_green, 25%);
 
 				a {
 					display: none;
@@ -215,7 +215,6 @@
 					margin-bottom: 2px;
 
 					img {
-						background-color: whiten(blacken($beige, 25%), 25%, 4);
 						background-position: center;
 						background-repeat: no-repeat;
 						display: block;
@@ -266,14 +265,13 @@
 #item_view-sidebar-left {
 
 	a.lightbox {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		//border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
 		border: 1px solid white;
 		display: block;
 		margin-bottom: 18px;
 		overflow: hidden;
 
 		img {
+			background-color: blacken(whiten($beige, 25%), 25%);
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
@@ -291,7 +289,7 @@
 	}
 
 	img.no-image {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		background-color: blacken(whiten($beige, 25%), 25%);
 		display: block;
 		width: 190px;
 		height: 117px;
@@ -351,6 +349,7 @@
 			height: 34px;
 
 			img {
+				background-color: blacken(whiten($beige, 25%), 25%);
 				display: block;
 				width: 100%;
 				height: 100%;

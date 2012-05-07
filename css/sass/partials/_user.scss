@@ -19,6 +19,26 @@
 
 } // #user_view
 
+#user_view-sidebar-left {
+
+	img.image,
+	img.no-image {
+		background-color: blacken(whiten($beige, 25%), 25%);
+		display: block;
+		margin-bottom: 18px;
+	}
+
+	img.image {
+		border: 1px solid white;
+	}
+
+	img.no-image {
+		width: 190px;
+		height: 117px;
+	}
+
+}
+
 #user_account {
 
 	div.collumns {
@@ -45,15 +65,66 @@
 
 			div.image {
 				background-color: rgba(0, 0, 0, .05);
+				position: relative;
 				width: 75px;
 				height: 72px;
 
 				img {
+					border: 1px solid white;
 					display: block;
-					width: 100%;
-					height: 100%;
+					width: 73px;
+					height: 70px;
 				}
 
+				a {
+					background-color: whiten(blacken($beige, 25%), 25%, 4);
+					border-bottom: 1px solid $custom_orange;
+					border-left: 1px solid $custom_orange;
+					position: absolute;
+						top: 0;
+						right: 0;
+					display: none;
+					width: 16px;
+					height: 16px;
+
+					span {
+						cursor: pointer;
+						background-color: whiten(blacken($beige, 25%), 25%, 4);
+						@include _16-sprite(x-black);
+						position: absolute;
+							top: 0;
+							right: 0;
+						display: block;
+						width: 16px;
+						height: 16px;
+						@include opacity(.25);
+					}
+
+					&:hover span {
+						@include opacity(.5);
+					}
+
+				}
+
+				&:hover {
+
+					img {
+						border-color: $custom_orange;
+					}
+
+					a {
+						display: block;
+					}
+
+				}
+
+			}
+
+			img.no-image {
+				border: 1px solid white;
+				display: block;
+				width: 73px;
+				height: 70px;
 			}
 
 		}

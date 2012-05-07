@@ -142,14 +142,15 @@ class User extends CActiveRecord
 		));
 	}
 
-	public function getImage() {
+	public function getImage()
+	{
 		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			return $image;
 		else
-			return '/images/transparent.gif';
+			return '/images/user/no-image.gif';
 		return ;
 	}
 

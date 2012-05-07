@@ -126,6 +126,16 @@ class Item extends CActiveRecord
 		));
 	}
 
+	public function getImage()
+	{
+		
+	}
+
+	public function getImages()
+	{
+		
+	}
+
 	protected function afterDelete() {
 		$images=Yii::app()->db->createCommand()
 			->select('id')

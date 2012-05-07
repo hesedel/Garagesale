@@ -4,6 +4,10 @@ $('a', '.ie7').click(function() {
 	$(this).blur();
 });
 
+$('input').bind('keypress', function(e) {
+	if(e.which == 13)
+		$(this).parents('form').find('a.g-button.orange').click();
+});
 $('textarea')
 	.css( {
 		resize: 'none'
