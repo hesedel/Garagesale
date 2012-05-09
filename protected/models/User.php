@@ -154,6 +154,21 @@ class User extends CActiveRecord
 		return ;
 	}
 
+	public function deleteImage($id)
+	{
+		Yii::app()->db->createCommand()->update('user',array(
+			'image'=>null,
+			'image_type'=>null,
+			'image_size'=>null,
+		),'id=:id',array(':id'=>$id));
+
+		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		if(file_exists(Yii::getPathOfAlias('webroot').$image))
+			unlink(Yii::getPathOfAlias('webroot').$image);
+
+		return true;
+	}
+
 	protected function beforeSave()
 	{
 		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);

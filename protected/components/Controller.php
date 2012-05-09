@@ -47,7 +47,8 @@ class Controller extends CController
 			preg_match('/^\/admin\/user\/forgotPassword/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/changePassword/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/unverified/',$route) == 0 &&
-			preg_match('/^\/admin\/user\/verify/',$route) == 0
+			preg_match('/^\/admin\/user\/verify/',$route) == 0 &&
+			preg_match('/^\/admin\/user\/deleteImage/',$route) == 0
 		)
 		{
 			if($route==='/site/index')
@@ -69,7 +70,7 @@ class Controller extends CController
 					$actionParamsArray[$actionParamKey] = $actionParams[$actionParamKey];
 				}
 			}
-			Yii::app()->user->setReturnUrl((sizeof($actionParamsArray) == 0 ? '/' : Yii::app()->createUrl($route,$actionParamsArray)).$actionParamsStringAjax);
+			Yii::app()->user->setReturnUrl((sizeof($actionParamsArray) == 0 ? (strlen(Yii::app()->createUrl($route)) > 0 ? Yii::app()->createUrl($route) : '/') : Yii::app()->createUrl($route,$actionParamsArray)).$actionParamsStringAjax);
 		}
 		else if(Yii::app()->user->getReturnUrl()==='/index.php')
 		{

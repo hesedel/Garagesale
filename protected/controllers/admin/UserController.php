@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account'),
+				'actions'=>array('account','deleteImage'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -328,6 +328,38 @@ class UserController extends Controller
 		$this->render('account',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionDeleteImage($id=null)
+	{
+		if(!isset($id))
+			$id=Yii::app()->user->id;
+
+		$model=$this->loadModel($id);
+
+		$params=array('User'=>$model);
+		if(
+			Yii::app()->user->checkAccess('updateSelf',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+
+		if($model->deleteImage($id))
+		{
+			if(isset($_GET['ajax'])) {
+				$this->render('_image',array(
+					'model'=>$model,
+				));
+			} else {
+				$this->redirect(Yii::app()->user->returnUrl);
+			}
+		}
 	}
 
 	/**
