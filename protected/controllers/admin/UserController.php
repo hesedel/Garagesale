@@ -322,7 +322,7 @@ class UserController extends Controller
 			$model->password_repeat=$_POST['AccountForm']['password_repeat'];
 			$model->image_temp=CUploadedFile::getInstance($model,'image_temp');
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(Yii::app()->user->getReturnUrl());
 		}
 
 		$this->render('account',array(
@@ -353,11 +353,11 @@ class UserController extends Controller
 		if($model->deleteImage($id))
 		{
 			if(isset($_GET['ajax'])) {
-				$this->render('_image',array(
+				$this->renderPartial('_noImage',array(
 					'model'=>$model,
 				));
 			} else {
-				$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect(Yii::app()->user->getReturnUrl());
 			}
 		}
 	}

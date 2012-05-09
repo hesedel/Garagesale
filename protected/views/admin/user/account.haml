@@ -32,9 +32,9 @@
 							-if($model->image):
 								.image
 									=CHtml::image('/images/transparent.gif', $model->id, array('style'=>'background-image: url(/images/slir/w73-h70-c73:70-be8e8e3'.$model->getImage().')'))
-									=CHtml::ajaxLink('<span></span>', array('deleteImage'), array('replace'=>'div.image'), array('submit'=>array('deleteImage', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete your profile picture?', 'title'=>'remove profile picture'))
+									=CHtml::ajaxLink('<span></span>', array('deleteImage', 'ajax'=>true), array('replace'=>'div.image'), array('confirm'=>'Are you sure you want to delete your profile picture?', 'title'=>'remove profile picture'))
 							-else:
-								=$this->renderPartial('_image', array('model'=>$model));
+								=$this->renderPartial('_noImage', array('model'=>$model));
 							-endif
 						%td
 							-if($model->image):
