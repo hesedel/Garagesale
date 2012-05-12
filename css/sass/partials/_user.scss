@@ -118,6 +118,29 @@
 
 				}
 
+				&.loading {
+					border: 1px solid white;
+					width: 73px;
+					height: 70px;
+					overflow: hidden;
+
+					img {
+						position: absolute;
+							top: -1px;
+							left: -1px;
+						@include opacity(.25);
+					}
+
+					&:hover {
+
+						a {
+							display: none;
+						}
+
+					}
+
+				}
+
 			}
 
 			img.no-image {

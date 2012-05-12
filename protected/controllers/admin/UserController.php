@@ -352,7 +352,7 @@ class UserController extends Controller
 
 		if($model->deleteImage($id))
 		{
-			if(isset($_GET['ajax'])) {
+			if(isset($_POST['ajax'])) {
 				$this->renderPartial('_noImage',array(
 					'model'=>$model,
 				));
