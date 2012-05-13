@@ -4,9 +4,18 @@ $('a', '.ie7').click(function() {
 	$(this).blur();
 });
 
+setTimeout(function() {
+	$('div.alert-success').slideUp();
+}, 3000);
+$('form').submit(function() {
+	$(this).submit(function() {
+		return false;
+	});
+	$('a.submit', this).addClass('disabled');
+});
 $('input').bind('keypress', function(e) {
 	if(e.which == 13)
-		$(this).parents('form').find('a.g-button.orange').click();
+		$(this).parents('form').find('a.submit').click();
 });
 $('textarea')
 	.css( {
@@ -35,9 +44,6 @@ $('input[type=text], input[type=password], textarea', 'div.input-text, div.texta
 	.keydown();
 	$(':focus', $(this).parent()).focus();
 });
-setTimeout(function() {
-	$('div.alert-success').slideUp();
-}, 3000);
 
 $('a', '#filters').click(function() {
 	if(!$(this).hasClass('click')) {

@@ -129,7 +129,13 @@ div.g-actions {
 	}
 
 	&.disabled {
-		
+		cursor: default;
+		background-color: blacken($whitesmoke, 25%);
+
+		&:hover {
+			background-color: blacken($whitesmoke, 25%);
+		}
+
 	}
 
 } // .g-button

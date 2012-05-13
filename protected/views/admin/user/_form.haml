@@ -18,8 +18,8 @@
 				%th \\&#160;
 				%td
 					=!$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button')).' ' : ''
-					=CHtml::linkButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'g-button orange'))
-					=CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'g-button orange'))
+					=CHtml::linkButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'submit g-button orange'))
+					=CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'submit g-button orange'))
 
 		%tbody
 
