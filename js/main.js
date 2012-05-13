@@ -13,6 +13,7 @@ $('form').submit(function() {
 		return false;
 	});
 	$('a.submit', this).addClass('disabled');
+	/*
 	var interval = setInterval(function() {
 		if($('.error', $this).length > 0) {
 			clearInterval(interval);
@@ -20,6 +21,7 @@ $('form').submit(function() {
 			$('a.submit', $this).removeClass('disabled');
 		}
 	}, 125);
+	*/
 });
 $('input').bind('keypress', function(e) {
 	if(e.which == 13)

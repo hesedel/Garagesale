@@ -12,9 +12,11 @@
 			$form=$this->beginWidget('CActiveForm', array(
 				'id'=>'login-form',
 				'enableClientValidation'=>true,
+				/*
 				'clientOptions'=>array(
 					'validateOnSubmit'=>true,
 				),
+				*/
 				'focus'=>strlen($model->username) == 0 || $model->getErrorCode() == 1 ? array($model,'username') : array($model,'password'),
 			));
 
