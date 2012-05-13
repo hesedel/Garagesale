@@ -8,10 +8,18 @@ setTimeout(function() {
 	$('div.alert-success').slideUp();
 }, 3000);
 $('form').submit(function() {
-	$(this).submit(function() {
+	$this = $(this);
+	$this.bind('form.submit', function() {
 		return false;
 	});
 	$('a.submit', this).addClass('disabled');
+	var interval = setInterval(function() {
+		if($('.error', $this).length > 0) {
+			clearInterval(interval);
+			$this.unbind('form.submit');
+			$('a.submit', $this).removeClass('disabled');
+		}
+	}, 125);
 });
 $('input').bind('keypress', function(e) {
 	if(e.which == 13)
