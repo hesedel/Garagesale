@@ -35,6 +35,9 @@ $('input[type=text], input[type=password], textarea', 'div.input-text, div.texta
 	.keydown();
 	$(':focus', $(this).parent()).focus();
 });
+setTimeout(function() {
+	$('div.alert-success').slideUp();
+}, 3000);
 
 $('a', '#filters').click(function() {
 	if(!$(this).hasClass('click')) {

@@ -311,6 +311,7 @@ class UserController extends Controller
 	public function actionAccount()
 	{
 		$model=AccountForm::model()->findByPk(Yii::app()->user->id);
+		$success=false;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -322,11 +323,17 @@ class UserController extends Controller
 			$model->password_repeat=$_POST['AccountForm']['password_repeat'];
 			$model->image_temp=CUploadedFile::getInstance($model,'image_temp');
 			if($model->save())
-				$this->redirect(Yii::app()->user->getReturnUrl());
+			{
+				$success=true;
+				$model->password_old='';
+				$model->password='';
+				$model->password_repeat='';
+			}
 		}
 
 		$this->render('account',array(
 			'model'=>$model,
+			'success'=>$success,
 		));
 	}
 
