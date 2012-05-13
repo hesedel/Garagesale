@@ -44,6 +44,8 @@ class Controller extends CController
 			preg_match('/^\/site\/login/',$route) == 0 &&
 			preg_match('/^\/site\/register/',$route) == 0 &&
 			preg_match('/^\/site\/captcha/',$route) == 0 &&
+			preg_match('/^\/item\/create/',$route) == 0 &&
+			preg_match('/^\/item\/update/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/forgotPassword/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/changePassword/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/unverified/',$route) == 0 &&

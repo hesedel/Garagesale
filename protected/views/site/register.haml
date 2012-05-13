@@ -16,9 +16,11 @@
 			$form=$this->beginWidget('CActiveForm', array(
 				'id'=>'user-register-form',
 				'enableClientValidation'=>true,
+				/*
 				'clientOptions'=>array(
 					'validateOnSubmit'=>true,
 				),
+				*/
 				'focus'=>array($model,'id'),
 			));
 
@@ -34,8 +36,8 @@
 					%td
 						=CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button'))
 						\\&#160;
-						=CHtml::linkButton('Register', array('class'=>'g-button orange'))
-						=CHtml::submitButton('Register', array('class'=>'g-button orange'))
+						=CHtml::linkButton('Register', array('class'=>'submit g-button orange'))
+						=CHtml::submitButton('Register', array('class'=>'submit g-button orange'))
 
 			%tbody
 

@@ -144,7 +144,7 @@ class SiteController extends Controller
 				$this->redirect(array('/admin/user/unverified','email'=>$email));
 			}
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect(Yii::app()->user->getReturnUrl());
 		}
 		if(isset($_REQUEST['username']))
 			$model->username=$_REQUEST['username'];

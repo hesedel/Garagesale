@@ -12,9 +12,11 @@
 			$form=$this->beginWidget('CActiveForm', array(
 				'id'=>'login-form',
 				'enableClientValidation'=>true,
+				/*
 				'clientOptions'=>array(
 					'validateOnSubmit'=>true,
 				),
+				*/
 				'focus'=>strlen($model->username) == 0 || $model->getErrorCode() == 1 ? array($model,'username') : array($model,'password'),
 			));
 
@@ -32,8 +34,8 @@
 						\\&#160; &#160; &#160;
 						=CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button'))
 						\\&#160;
-						=CHtml::linkButton('Login', array('class'=>'g-button orange'))
-						=CHtml::submitButton('Login', array('class'=>'g-button orange'))
+						=CHtml::linkButton('Login', array('class'=>'submit g-button orange'))
+						=CHtml::submitButton('Login', array('class'=>'submit g-button orange'))
 
 			%tbody
 
