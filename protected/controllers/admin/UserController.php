@@ -27,15 +27,15 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','changePassword','verify'),
+				'actions'=>array('index','view','password_change','verify'),
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('forgotPassword','unverified'),
+				'actions'=>array('password_forgot','unverified'),
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account','deleteImage'),
+				'actions'=>array('account','image_delete','email_change'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -177,7 +177,7 @@ class UserController extends Controller
 		));
 	}
 
-	public function actionForgotPassword()
+	public function actionPassword_forgot()
 	{
 		if(!isset($_GET['id']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -200,7 +200,7 @@ class UserController extends Controller
 				$model_userChangePassword->save();
 				$user_changePasswordId=$model_userChangePassword->id;
 			}
-			$link=Yii::app()->params['serverName'].'admin/user/changePassword/?id='.$user_changePasswordId;
+			$link=Yii::app()->params['serverName'].'admin/user/password_change/?id='.$user_changePasswordId;
 			$body=new CSSToInlineStyles(
 				Yii::app()->controller->renderPartial(
 					'/site/_emailWrapper',
@@ -226,7 +226,7 @@ class UserController extends Controller
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-	public function actionChangePassword()
+	public function actionPassword_change()
 	{
 		$model_passwordChangeForm=new PasswordChangeForm;
 
@@ -264,7 +264,14 @@ class UserController extends Controller
 	public function actionUnverified()
 	{
 		if(isset($_POST['email']))
-			email_sendVerification($_POST['email'],'Email verification resent!');
+		{
+			$id=Yii::app()->db->createCommand()
+				->select('id')
+				->from('user')
+				->where('email=:email and verified=0',array(':email'=>$_POST['email']))
+				->queryScalar();
+			email_sendVerification($id,'Email verification resent!');
+		}
 
 		if(!isset($_GET['email']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -302,7 +309,13 @@ class UserController extends Controller
 				->from('user')
 				->where('id=:id',array(':id'=>$id))
 				->queryScalar();
-			$this->render('verify',array('username'=>$id,'email'=>$email));
+
+			$identity=new UserIdentity('','');
+			$identity->setId($id);
+			Yii::app()->user->login($identity,60); // one minute
+
+			$this->redirect(Yii::app()->homeUrl);
+			//$this->render('verify',array('username'=>$id,'email'=>$email));
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -337,7 +350,7 @@ class UserController extends Controller
 		));
 	}
 
-	public function actionDeleteImage($id=null)
+	public function actionImage_delete($id=null)
 	{
 		if(!isset($id))
 			$id=Yii::app()->user->id;
@@ -367,6 +380,31 @@ class UserController extends Controller
 				$this->redirect(Yii::app()->user->getReturnUrl());
 			}
 		}
+	}
+
+	public function actionEmail_change()
+	{
+		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>Yii::app()->user->id));
+		if(!$model)
+			$model=new UserChangeEmail;
+		$success=false;
+
+		if(isset($_POST['UserChangeEmail']))
+		{
+			$model->attributes=$_POST['UserChangeEmail'];
+			if($model->save())
+				$success=true;
+		}
+
+		$this->render('changeEmail',array(
+			'model'=>$model,
+			'success'=>$success,
+		));
+	}
+
+	public function actionEmail_change_verification()
+	{
+		
 	}
 
 	/**

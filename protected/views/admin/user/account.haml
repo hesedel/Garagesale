@@ -11,7 +11,7 @@
 	%h2 Account
 
 	-if($success):
-	.alert.alert-success You've successfully updated your account
+	.alert.alert-success.timeout You've successfully updated your account
 	-endif
 
 	:php
@@ -36,7 +36,7 @@
 							-if($model->image):
 								.image
 									=CHtml::image('/images/transparent.gif', $model->id, array('style'=>'background-image: url(/images/slir/w73-h70-c73:70-be8e8e3'.$model->getImage().')'))
-									=CHtml::link('<span></span>', array('deleteImage'), array('title'=>'remove profile picture'))
+									=CHtml::link('<span></span>', array('image_delete'), array('title'=>'remove profile picture'))
 							-else:
 								=$this->renderPartial('_noImage', array('model'=>$model));
 							-endif
@@ -75,12 +75,8 @@
 							=$form->error($model,'name_last')
 
 					%tr
-						%th =$form->labelEx($model,'email')
-						%td
-							.input-text
-								=$form->textField($model,'email',array('size'=>64,'maxlength'=>64))
-								%span.placeholder Email
-							=$form->error($model,'email')
+						%th =$form->label($model,'email')
+						%td #{$model->email} #{CHtml::link('change', array('email_change'))}
 
 					%tr
 						%th =$form->labelEx($model,'phone')
@@ -141,7 +137,7 @@
 			if(confirm('Are you sure you want to delete your profile picture?')) {
 				\$this.parent().addClass('loading');
 				$.post(
-					'".Yii::app()->createUrl('admin/user/deleteImage')."',
+					'".Yii::app()->createUrl('admin/user/image_delete')."',
 					{
 						ajax: true
 					},

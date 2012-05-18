@@ -1,0 +1,60 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - Change Email';
+
+#user_changeEmail
+
+	-if($success):
+	.alert.alert-success You've successfully updated your account
+	-endif
+
+	.form
+
+		:php
+			$form=$this->beginWidget('CActiveForm', array(
+				'id'=>'user-emailChange-form',
+				'enableClientValidation'=>true,
+				'focus'=>array($model,'password'),
+			));
+
+		//=$form->errorSummary($model)
+
+		%table.form(summary="Email Change")
+			%caption.hide Email Change
+
+			%tfoot
+
+				%tr
+					%th \\&#160;
+					%td
+						=CHtml::link('Cancel', array('account'), array('class'=>'g-button cancel')).' '
+						=CHtml::linkButton('Change Email', array('class'=>'submit g-button orange'))
+						=CHtml::submitButton('Change Email', array('class'=>'submit g-button orange'))
+
+			%tbody
+
+				%tr
+					%th =$form->labelEx($model,'password')
+					%td
+						.input-text
+							=$form->passwordField($model,'password')
+							%span.placeholder Password
+						=$form->error($model,'password')
+
+				%tr
+					%th =$form->labelEx($model,'email')
+					%td
+						.input-text
+							=$form->textField($model,'email')
+							%span.placeholder Email
+						=$form->error($model,'email')
+
+				%tr.repeat
+					%th =$form->labelEx($model,'email_repeat')
+					%td
+						.input-text
+							=$form->textField($model,'email_repeat')
+							%span.placeholder Repeat Email
+						=$form->error($model,'email_repeat')
+
+		:php
+			$this->endWidget();

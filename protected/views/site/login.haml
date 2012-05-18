@@ -55,7 +55,7 @@
 							%span.placeholder Your password
 						=$form->error($model,'password')
 						-if($model->getErrorCode() == 2):
-						=CHtml::link('Forgot password?', array('/admin/user/forgotPassword', 'id'=>$model->username), array('class'=>'forgotPassword'))
+						=CHtml::link('Forgot password?', array('/admin/user/password_forgot', 'id'=>$model->username), array('class'=>'forgotPassword'))
 						-endif
 
 		:php

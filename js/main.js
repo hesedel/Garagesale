@@ -5,7 +5,7 @@ $('a', '.ie7').click(function() {
 });
 
 setTimeout(function() {
-	$('div.alert-success').slideUp();
+	$('.alert-success.timeout').slideUp();
 }, 3000);
 $('form').submit(function() {
 	$this = $(this);
