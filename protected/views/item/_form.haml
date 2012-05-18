@@ -155,14 +155,14 @@
 						:php
 							foreach($uploads as $upload) {
 								if($upload['new'])
-									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/images/slir/w40-h36-c40:36-baeaeaa/images/uploads/temp/'.CHtml::encode($upload['tempName']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
+									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/images/slir/w40-h36-c40%3a36-baeaeaa/images/uploads/temp/'.CHtml::encode($upload['tempName']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
 								else {
 									$image = Yii::app()->db->createCommand()
 										->select('id, type')
 										->from('item_image')
 										->where('id=:id', array(':id'=>$upload['name']))
 										->queryRow();
-									echo '<div class="image" title="'.$image['id'].'.'.$image['type'].'" style="background-image: url(/images/slir/w40-h38-c40:36-baeaeaa/'.db_image('item_image', $image['id']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
+									echo '<div class="image" title="'.$image['id'].'.'.$image['type'].'" style="background-image: url(/images/slir/w40-h38-c40%3a36-baeaeaa/'.db_image('item_image', $image['id']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
 								}
 							}
 							echo $form->hiddenField($model,'uploads',array('value'=>base64_encode(serialize($uploads))));
