@@ -34,7 +34,7 @@
 				array('class'=>'lightbox')
 			);
 		} else
-			echo CHtml::image('/images/slir/w190-h117-c190%3a117-bbabaab/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
+			echo CHtml::image('/images/slir/w190-h117-c190:117-bbabaab/images/item/no-image.gif', $model->title, array('class'=>'no-image'));
 	%table.info-ad
 		%caption Ad Info
 		%tr
@@ -60,7 +60,7 @@
 		%h2 User Info
 		:php
 			echo CHtml::link(
-				CHtml::image('/images/transparent.gif', $model->user_id, array('style'=>'background-image: url(/images/slir/w38-h34-c38%3a34-bbabaab'.User::model()->findByPk($model->user_id)->getImage().')')),
+				CHtml::image('/images/transparent.gif', $model->user_id, array('style'=>'background-image: url(/images/slir/w38-h34-c38:34-bbabaab'.User::model()->findByPk($model->user_id)->getImage().')')),
 				array('/admin/user/view', 'id'=>$model->user_id),
 				array('class'=>'image')
 			);
