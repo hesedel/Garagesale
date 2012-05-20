@@ -73,6 +73,7 @@ class User extends CActiveRecord
 			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
 			array('id, email', 'unique'),
 			array('email', 'email'),
+			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
 			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024)), // minSize 1KB, maxSize 2.5MB
@@ -140,6 +141,17 @@ class User extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function authenticateEmail($attribute)
+	{
+		$email=Yii::app()->db->createCommand()
+			->select('email')
+			->from('user_changeEmail')
+			->where('email=:email',array(':email'=>$this->email))
+			->queryScalar();
+		if($email)
+			$this->addError($attribute,'Email "'.$this->email.'" has already been taken.');
 	}
 
 	public function getImage()

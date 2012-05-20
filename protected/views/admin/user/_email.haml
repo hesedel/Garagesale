@@ -1,0 +1,11 @@
+:php
+	$email=Yii::app()->db->createCommand()
+		->select('email')
+		->from('user_changeEmail')
+		->where('user_id=:id',array(':id'=>$model->id))
+		->queryScalar();
+-if(!$email):
+	#{$model->email} #{CHtml::link('change', array('email_change'))}
+-else:
+	<span>#{$email}</span> #{CHtml::link('re-verify', array('email_change_reverify'))}<br/>#{CHtml::link('cancel email change', array('email_change_cancel'))}
+-endif

@@ -6,6 +6,15 @@ a {
 		color: blacken($custom_cyan, 25%, 2);
 	}
 
+	&:visited {
+		color: blacken($custom_cyan, 25%);
+
+		&:hover {
+			color: blacken($custom_cyan, 25%, 2);
+		}
+
+	}
+
 }
 
 em {

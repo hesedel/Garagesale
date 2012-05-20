@@ -4,8 +4,12 @@
 #user_changeEmail
 
 	-if($success):
-	.alert.alert-success You've successfully updated your account
-	-endif
+
+		%h2.alert.alert-success Email Change Request Sent!
+		%p.alert <strong>ALERT!</strong>, you'll need to verify your new email address.<br/>An email has been sent to you ( <strong>#{$model->email}</strong> )<br/>Please follow the instructions in the email to change your email on account.<br/>If you can't see the email, it might be in your spam folder.
+		=CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small'))
+
+	-else:
 
 	.form
 
@@ -58,3 +62,5 @@
 
 		:php
 			$this->endWidget();
+
+	-endif

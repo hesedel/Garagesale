@@ -108,8 +108,13 @@ class UserChangeEmail extends CActiveRecord
 			->from('user')
 			->where('email=:email',array(':email'=>$this->email))
 			->queryScalar();
-		if($id)
-			$this->addError($attribute,'Email already in use.');
+		$email=Yii::app()->db->createCommand()
+			->select('email')
+			->from('user_changeEmail')
+			->where('user_id!=:id and email=:email',array(':id'=>Yii::app()->user->id,':email'=>$this->email))
+			->queryScalar();
+		if($id || $email)
+			$this->addError($attribute,'Email "'.$this->email.'" has already been taken.');
 	}
 
 	public function authenticatePassword($attribute) {
@@ -117,11 +122,8 @@ class UserChangeEmail extends CActiveRecord
 			$this->addError($attribute,'Incorrect password.');
 	}
 
-	protected function beforeSave()
+	public function sendEmailChangeVerification()
 	{
-		$this->id=md5($this->user_id.time());
-		$this->user_id=Yii::app()->user->id;
-
 		$user=Yii::app()->db->createCommand()
 			->select('name_first')
 			->from('user')
@@ -148,7 +150,13 @@ class UserChangeEmail extends CActiveRecord
 		);
 		$headers="From: ".Yii::app()->name." <".Yii::app()->params['noReplyEmail'].">\r\nContent-Type: text/html";
 		mail($this->email, Yii::app()->name.' Email Change Verification', $body->convert(), $headers);
+	}
 
+	protected function beforeSave()
+	{
+		$this->id=md5($this->user_id.time());
+		$this->user_id=Yii::app()->user->id;
+		$this->sendEmailChangeVerification();
 		return true;
 	}
 

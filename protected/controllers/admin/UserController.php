@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account','image_delete','email_change'),
+				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -400,6 +400,30 @@ class UserController extends Controller
 			'model'=>$model,
 			'success'=>$success,
 		));
+	}
+
+	public function actionEmail_change_cancel($id=null)
+	{
+		if(!$id)
+			$id=Yii::app()->user->id;
+
+		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>$id));
+		if($model)
+			$model->delete();
+
+		$this->redirect(array('/admin/user/account'));
+	}
+
+	public function actionEmail_change_reverify($id=null)
+	{
+		if(!$id)
+			$id=Yii::app()->user->id;
+
+		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>$id));
+		if($model)
+			$model->sendEmailChangeVerification();
+
+		$this->redirect(array('/admin/user/account'));
 	}
 
 	public function actionEmail_change_verification()

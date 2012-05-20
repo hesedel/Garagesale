@@ -10,7 +10,7 @@ require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'../components/helpers.php');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Garagesale',
+	'name'=>'Garagesale.ph',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -132,7 +132,7 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-		'noReplyEmail'=>'noreply@garagesale.com',
+		'noReplyEmail'=>'noreply@garagesale.ph',
 		'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
 		'tagline'=>'Tagline',
 		'salt'=>'pepper',

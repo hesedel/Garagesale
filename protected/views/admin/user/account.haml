@@ -76,7 +76,7 @@
 
 					%tr
 						%th =$form->label($model,'email')
-						%td #{$model->email} #{CHtml::link('change', array('email_change'))}
+						%td.email =$this->renderPartial('_email', array('model'=>$model), true)
 
 					%tr
 						%th =$form->labelEx($model,'phone')
