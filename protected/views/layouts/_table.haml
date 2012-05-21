@@ -18,7 +18,7 @@
 			#{!isset($legacy) ? '</div>' : '</td>'}
 		-else:
 			#{!isset($legacy) ? '<div id="user" class="td">' : '<td id="user" class="td">'}
-				=CHtml::link('Welcome, '.Yii::app()->params['user']['name_first'], array('/admin/user/view', 'id'=>urlencode(Yii::app()->user->getId())));
+				=CHtml::link(Yii::app()->user->id, array('/admin/user/view', 'id'=>urlencode(Yii::app()->user->getId())));
 			#{!isset($legacy) ? '</div>' : '</td>'}
 			#{!isset($legacy) ? '<div id="logout" class="td">' : '<td id="logout" class="td">'}
 				=CHtml::link('Logout', array('/site/logout'))

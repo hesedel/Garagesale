@@ -130,7 +130,7 @@ class UserChangeEmail extends CActiveRecord
 			->where('id=:id',array(':id'=>$this->user_id))
 			->queryRow();
 
-		$link=Yii::app()->params['serverName'].'admin/user/email_change_verification/?id='.$this->id;
+		$link=Yii::app()->params['serverName'].'admin/user/email_change_verify/?id='.$this->id;
 		$body=new CSSToInlineStyles(
 			Yii::app()->controller->renderPartial(
 				'/site/_emailWrapper',

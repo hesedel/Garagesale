@@ -418,7 +418,7 @@ class UserController extends Controller
 				->from('user')
 				->where('id=:id',array(':id'=>$id))
 				->queryScalar();
-			$this->renderPartial('_email',array('model'=>$model));
+			$this->renderPartial('account/_email',array('model'=>$model));
 		}
 		else
 			$this->redirect(array('/admin/user/account'));
@@ -436,7 +436,7 @@ class UserController extends Controller
 		$this->redirect(array('/admin/user/account'));
 	}
 
-	public function actionEmail_change_verification()
+	public function actionEmail_change_verify()
 	{
 		
 	}

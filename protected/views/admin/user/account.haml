@@ -49,10 +49,10 @@
 							=$form->fileField($model,'image_temp')
 							=$form->error($model,'image_temp')
 
-					//
-						%tr
-							%th =$form->labelEx($model,'id')
-							%td
+					%tr
+						%th =$form->label($model,'id')
+						%td =$model->id
+							//
 								.input-text
 									=$form->textField($model,'id',array('size'=>32,'maxlength'=>32))
 									%span.placeholder ID
@@ -76,7 +76,7 @@
 
 					%tr
 						%th =$form->label($model,'email')
-						%td.email =$this->renderPartial('_email', array('model'=>$model), true)
+						%td.email =$this->renderPartial('account/_email', array('model'=>$model), true)
 
 					%tr
 						%th =$form->labelEx($model,'phone')
