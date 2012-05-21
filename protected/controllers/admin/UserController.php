@@ -411,7 +411,17 @@ class UserController extends Controller
 		if($model)
 			$model->delete();
 
-		$this->redirect(array('/admin/user/account'));
+		if(isset($_GET['ajax']))
+		{
+			$model->email=Yii::app()->db->createCommand()
+				->select('email')
+				->from('user')
+				->where('id=:id',array(':id'=>$id))
+				->queryScalar();
+			$this->renderPartial('_email',array('model'=>$model));
+		}
+		else
+			$this->redirect(array('/admin/user/account'));
 	}
 
 	public function actionEmail_change_reverify($id=null)

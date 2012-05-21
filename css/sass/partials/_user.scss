@@ -41,7 +41,7 @@
 
 #user_account {
 
-	div.collumns {
+	div.columns {
 		@include clearfix;
 
 		div.left,
@@ -157,6 +157,10 @@
 					font-family: ProximaNovaSemibold;
 				}
 
+				a.no-js {
+					display: none;
+				}
+
 			}
 
 		}
@@ -185,3 +189,19 @@
 	}
 
 } // #user_account
+
+.no-js #user_account {
+
+	div.columns div.left div.padding td.email {
+
+		a.no-js {
+			display: inline;
+		}
+
+		a.js {
+			display: none;
+		}
+
+	}
+
+} // .no-js #user_account

@@ -75,9 +75,9 @@ class UserChangeEmail extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
-			'email' => 'Email',
+			'email' => 'New Email',
 			'password' => 'Password',
-			'email_repeat' => 'Repeat Email',
+			'email_repeat' => 'Repeat New Email',
 		);
 	}
 

@@ -1,6 +1,8 @@
 :php
 	$this->pageTitle=Yii::app()->name . ' - Change Email';
 
+	$this->layout='column3';
+
 #user_changeEmail
 
 	-if($success):
@@ -49,7 +51,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'email')
-							%span.placeholder Email
+							%span.placeholder New Email
 						=$form->error($model,'email')
 
 				%tr.repeat
@@ -57,7 +59,7 @@
 					%td
 						.input-text
 							=$form->textField($model,'email_repeat')
-							%span.placeholder Repeat Email
+							%span.placeholder Repeat New Email
 						=$form->error($model,'email_repeat')
 
 		:php

@@ -7,5 +7,5 @@
 -if(!$email):
 	#{$model->email} #{CHtml::link('change', array('email_change'))}
 -else:
-	<span>#{$email}</span> #{CHtml::link('re-verify', array('email_change_reverify'))}<br/>#{CHtml::link('cancel email change', array('email_change_cancel'))}
+	<span>#{$email}</span> #{CHtml::link('re-verify', array('email_change_reverify'))}<br/>#{CHtml::link('cancel email change', array('email_change_cancel'), array('class'=>'no-js'))}#{CHtml::ajaxLink('cancel email change', array('email_change_cancel', 'ajax'=>true), array('update'=>'#user_account td.email'), array('class'=>'js'))}
 -endif
