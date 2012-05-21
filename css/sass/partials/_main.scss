@@ -324,6 +324,27 @@ body {
 
 			}
 
+			a.g-button,
+			input[type=submit] {
+				border-color: blacken($whitesmoke, 25%);
+				border-bottom-color: blacken($whitesmoke, 25%, 2);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 2);
+					border-bottom-color: blacken($whitesmoke, 25%, 3);
+				}
+
+				&:active {
+					border-color: blacken($whitesmoke, 25%, 2);
+
+					&:hover {
+						border-color: blacken($whitesmoke, 25%, 3);
+					}
+
+				}
+
+			}
+
 			a.g-button {
 				font-size: $h4;
 				display: block;

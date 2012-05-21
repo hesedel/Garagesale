@@ -178,10 +178,24 @@
 		td {
 			padding-right: 0;
 
-			a.cancel,
-			a.disabled {
+			.g-button {
 				border-color: blacken($whitesmoke, 25%, 3);
 				border-bottom-color: blacken($whitesmoke, 25%, 4);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 4);
+					border-bottom-color: blacken($whitesmoke, 25%, 5);
+				}
+
+				&:active {
+					border-color: blacken($whitesmoke, 25%, 4);
+
+					&:hover {
+						border-bottom-color: blacken($whitesmoke, 25%, 5);
+					}
+
+				}
+
 			}
 
 		}

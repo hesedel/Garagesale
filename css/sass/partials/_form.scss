@@ -126,6 +126,47 @@ table.form {
 		padding-right: 20px;
 		padding-left: 20px;
 
+		a.g-button,
+		input[type=submit] {
+			border-color: blacken($whitesmoke, 25%);
+			border-bottom-color: blacken($whitesmoke, 25%, 2);
+
+			&:hover {
+				border-color: blacken($whitesmoke, 25%, 2);
+				border-bottom-color: blacken($whitesmoke, 25%, 3);
+			}
+
+			&:active {
+				border-color: blacken($whitesmoke, 25%, 2);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 3);
+				}
+
+			}
+
+			&.orange {
+				border-color: blacken($custom_orange, 25%);
+				border-bottom-color: blacken($custom_orange, 25%, 2);
+
+				&:hover {
+					border-color: blacken($custom_orange, 25%, 2);
+					border-bottom-color: blacken($custom_orange, 25%, 3);
+				}
+
+				&.active {
+					border-color: blacken($custom_orange, 25%, 2);
+
+					&:hover {
+						border-color: blacken($custom_orange, 25%, 3);
+					}
+
+				}
+
+			}
+
+		}
+
 		input[type=submit] {
 			@extend .g-button.orangered;
 			position: absolute;
