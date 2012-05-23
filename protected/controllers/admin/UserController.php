@@ -27,7 +27,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','password_change','verify'),
+				'actions'=>array('index','view','password_change','verify','email_change_verify'),
 				'users'=>array('*'),
 			),
 			array('allow',
@@ -438,7 +438,30 @@ class UserController extends Controller
 
 	public function actionEmail_change_verify()
 	{
-		
+		if(!isset($_GET['id']))
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+		$user=Yii::app()->db->createCommand()
+			->select('user_id, email')
+			->from('user_changeEmail')
+			->where('id=:id',array(':id'=>$_GET['id']))
+			->queryRow();
+		if($user)
+		{
+			Yii::app()->user->logout();
+			Yii::app()->db->createCommand()->update('user',array(
+				'email'=>$user['email'],
+			),'id=:id',array(':id'=>$user['user_id']));
+			Yii::app()->db->createCommand()->delete('user_changeEmail','id=:id',array(':id'=>$_GET['id']));
+
+			$identity=new UserIdentity('','');
+			$identity->setId($user['user_id']);
+			Yii::app()->user->login($identity,60); // one minute
+
+			$this->redirect(Yii::app()->createUrl('admin/user/account'));
+		}	
+		else
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**
