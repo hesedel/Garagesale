@@ -228,6 +228,7 @@ class UserController extends Controller
 
 	public function actionPassword_change()
 	{
+		/*
 		$model_passwordChangeForm=new PasswordChangeForm;
 
 		if(isset($_POST['ajax']) && $_POST['ajax']==='user-passwordChange-form')
@@ -235,6 +236,7 @@ class UserController extends Controller
 			echo CActiveForm::validate($model_passwordChangeForm);
 			Yii::app()->end();
 		}
+		*/
 
 		if(!isset($_GET['id']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -246,6 +248,7 @@ class UserController extends Controller
 			->queryScalar();
 		if($id)
 		{
+			/*
 			$model_passwordChangeForm=PasswordChangeForm::model()->findByPk($id);
 			$model_passwordChangeForm->password='';
 			if(isset($_POST['PasswordChangeForm']))
@@ -254,8 +257,17 @@ class UserController extends Controller
 				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
 					$this->redirect(array('/site/login','username'=>$id));
 			}
+			*/
+
 			Yii::app()->user->logout();
-			$this->render('changePassword',array('model'=>$model_passwordChangeForm));
+
+			$identity=new UserIdentity('','');
+			$identity->setId($id);
+			Yii::app()->user->login($identity,60); // one minute
+
+			$this->redirect(array('/admin/user/account'));
+
+			//$this->render('changePassword',array('model'=>$model_passwordChangeForm));
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
