@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "message".
+ * This is the model class for table "user_message".
  *
- * The followings are the available columns in table 'message':
+ * The followings are the available columns in table 'user_message':
  * @property string $id
  * @property string $created
  * @property string $message
@@ -15,17 +15,17 @@
  * @property string $parent_id
  *
  * The followings are the available model relations:
- * @property Message $parent
- * @property Message[] $messages
+ * @property UserMessage $parent
+ * @property UserMessage[] $userMessages
  * @property User $userIdFrom
  * @property User $userIdTo
  */
-class Message extends CActiveRecord
+class UserMessage extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Message the static model class
+	 * @return UserMessage the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -37,7 +37,7 @@ class Message extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'message';
+		return 'user_message';
 	}
 
 	/**
@@ -67,8 +67,8 @@ class Message extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parent' => array(self::BELONGS_TO, 'Message', 'parent_id'),
-			'messages' => array(self::HAS_MANY, 'Message', 'parent_id'),
+			'parent' => array(self::BELONGS_TO, 'UserMessage', 'parent_id'),
+			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'parent_id'),
 			'userIdFrom' => array(self::BELONGS_TO, 'User', 'user_id_from'),
 			'userIdTo' => array(self::BELONGS_TO, 'User', 'user_id_to'),
 		);
