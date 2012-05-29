@@ -177,6 +177,12 @@ class SiteController extends Controller
 			$model->attributes=$_POST['RegisterForm'];
 			if($model->validate() && $model->save())
 			{
+				$identity=new UserIdentity('','');
+				$identity->setId($model->id);
+				Yii::app()->user->login($identity,60); // one minute
+
+				$this->redirect(Yii::app()->homeUrl);
+
 				email_sendVerification($model->id,'Registration successful!');
 			}
 		}

@@ -57,13 +57,14 @@
 							%span.placeholder Your email address
 						=$form->error($model,'email')
 
-				%tr.repeat
-					%th =$form->labelEx($model,'email_repeat')
-					%td
-						.input-text
-							=$form->textField($model,'email_repeat')
-							%span.placeholder Re-enter your email address
-						=$form->error($model,'email_repeat')
+				//
+					%tr.repeat
+						%th =$form->labelEx($model,'email_repeat')
+						%td
+							.input-text
+								=$form->textField($model,'email_repeat')
+								%span.placeholder Re-enter your email address
+							=$form->error($model,'email_repeat')
 
 				%tr
 					%th =$form->labelEx($model,'password')
@@ -73,13 +74,14 @@
 							%span.placeholder Create a password.
 						=$form->error($model,'password')
 
-				%tr.repeat
-					%th =$form->labelEx($model,'password_repeat')
-					%td
-						.input-text
-							=$form->passwordField($model,'password_repeat')
-							%span.placeholder Re-enter the password you created.
-						=$form->error($model,'password_repeat')
+				//
+					%tr.repeat
+						%th =$form->labelEx($model,'password_repeat')
+						%td
+							.input-text
+								=$form->passwordField($model,'password_repeat')
+								%span.placeholder Re-enter the password you created.
+							=$form->error($model,'password_repeat')
 
 				%tr
 					%th =$form->labelEx($model,'name_first')
@@ -89,21 +91,23 @@
 							%span.placeholder Your first name
 						=$form->error($model,'name_first')
 
-				%tr
-					%th =$form->labelEx($model,'name_last')
-					%td
-						.input-text
-							=$form->textField($model,'name_last')
-							%span.placeholder Your last name
-						=$form->error($model,'name_last')
+				//
+					%tr
+						%th =$form->labelEx($model,'name_last')
+						%td
+							.input-text
+								=$form->textField($model,'name_last')
+								%span.placeholder Your last name
+							=$form->error($model,'name_last')
 
-				%tr
-					%th =$form->labelEx($model,'phone')
-					%td
-						.input-text
-							=$form->textField($model,'phone')
-							%span.placeholder The phone number to contact you with
-						=$form->error($model,'phone')
+				//
+					%tr
+						%th =$form->labelEx($model,'phone')
+						%td
+							.input-text
+								=$form->textField($model,'phone')
+								%span.placeholder The phone number to contact you with
+							=$form->error($model,'phone')
 
 				-if(CCaptcha::checkRequirements()):
 				%tr

@@ -30,7 +30,7 @@ class Controller extends CController
 			Yii::app()->params['user']=Yii::app()->db->createCommand()
 				->select('name_first')
 				->from('user')
-				->where('id=:id and verified=1',array(':id'=>Yii::app()->user->getId()))
+				->where('id=:id',array(':id'=>Yii::app()->user->getId()))
 				->queryRow();
 			if(!Yii::app()->params['user']) {
 				Yii::app()->user->logout();
