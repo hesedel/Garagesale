@@ -61,8 +61,8 @@ function email_sendVerification($id,$message)
 	);
 	$headers="From: ".Yii::app()->name." <".Yii::app()->params['noReplyEmail'].">\r\nContent-Type: text/html";
 	mail($user['email'], Yii::app()->name.' Email Verification', $body->convert(), $headers);
-	Yii::app()->controller->render('/admin/user/sendVerification', array('message'=>$message,'email'=>$user['email']));
-	Yii::app()->end();
+	//Yii::app()->controller->render('/admin/user/sendVerification', array('message'=>$message,'email'=>$user['email']));
+	//Yii::app()->end();
 }
 
 function time_local($time, $options = array())

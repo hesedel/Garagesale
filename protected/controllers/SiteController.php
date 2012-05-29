@@ -181,9 +181,9 @@ class SiteController extends Controller
 				$identity->setId($model->id);
 				Yii::app()->user->login($identity,60); // one minute
 
-				$this->redirect(Yii::app()->homeUrl);
-
 				email_sendVerification($model->id,'Registration successful!');
+
+				$this->redirect(Yii::app()->homeUrl);
 			}
 		}
 		$this->render('register',array('model'=>$model));

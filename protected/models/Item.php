@@ -22,6 +22,7 @@
  */
 class Item extends CActiveRecord
 {
+	public $location_id;
 	public $images;
 	public $uploads;
 
@@ -97,6 +98,7 @@ class Item extends CActiveRecord
 			'condition_id' => 'Condition',
 			'user_id' => 'User',
 			'images' => 'Image(s)',
+			'location_id' => 'Location',
 		);
 	}
 
@@ -126,6 +128,29 @@ class Item extends CActiveRecord
 		));
 	}
 
+	public function getLocationId()
+	{
+		
+	}
+
+	public function getLocationName()
+	{
+		$location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$this->user_id))
+			->queryScalar();
+		if($location_id)
+		{
+			return Yii::app()->db->createCommand()
+				->select('name')
+				->from('user_location')
+				->where('id=:location_id',array(':location_id'=>$location_id))
+				->queryScalar();
+		}
+		return false;
+	}
+
 	public function getImage()
 	{
 		
@@ -136,7 +161,20 @@ class Item extends CActiveRecord
 		
 	}
 
-	protected function afterDelete() {
+	protected function beforeSave()
+	{
+		if(strlen($this->location_id)==0)
+			$this->location_id=null;
+		Yii::app()->db->createCommand()
+			->update('user',array(
+				'location_id'=>$this->location_id,
+			),'id=:user_id',array(':user_id'=>$this->user_id));
+
+		return true;
+	}
+
+	protected function afterDelete()
+	{
 		$images=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item_image')

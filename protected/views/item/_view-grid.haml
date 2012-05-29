@@ -18,7 +18,7 @@
 	%em =$data->category_id ? CHtml::encode($data->category->title) : ''
 	%span.price P #{number_format($data->price)}
 	.clear
-	%span.location Location
+	%span.location =$data->getLocationName()
 	:php
 		if($data->condition_id != null) {
 			$condition = '';

@@ -80,6 +80,11 @@
 		%tr
 			%th =$model->getAttributeLabel('name_last')
 			%td =$model->name_last
+		-if($model->location_id):
+		%tr
+			%th =$model->getAttributeLabel('location_id')
+			%td =$model->location->name
+		-endif
 		-if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')):
 		%tr
 			%th =$model->getAttributeLabel('email')

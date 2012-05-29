@@ -43,7 +43,7 @@
 					= $form->error($model,'price')
 
 			%tr
-				%th =$form->labelEx($model,'category')
+				%th =$form->labelEx($model,'category_id')
 				%td
 					:php
 
@@ -109,6 +109,24 @@
 						}
 
 						echo CHtml::activeDropDownList($model, 'category_id', CHtml::listData($listData_sorted, 'id', 'title'), array('encode'=>false, 'empty'=>'select a category'));
+
+			%tr
+				%th =$form->labelEx($model,'location_id')
+				%td
+					:php
+						// get the locations
+						$locations = Yii::app()->db->createCommand()
+							->select('*')
+							->from('user_location')
+							->order('name')
+							->queryAll();
+
+						// store the locations in a real array
+						$listData = array();
+						foreach($locations as $location)
+							$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
+
+					=CHtml::activeDropDownList($model, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
 
 			%tr
 				%th Condition

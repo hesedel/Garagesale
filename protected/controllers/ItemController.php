@@ -70,6 +70,7 @@ class ItemController extends Controller
 		if(isset($_POST['Item']))
 		{
 			$model->attributes=$_POST['Item'];
+			$model->location_id=$_POST['Item']['location_id'];
 			if($model->save())
 			{
 				$uploads=unserialize(base64_decode($model->uploads));
@@ -113,6 +114,11 @@ class ItemController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
 
 		$params=array('Item'=>$model);
 		if(
@@ -133,6 +139,7 @@ class ItemController extends Controller
 		if(isset($_POST['Item']))
 		{
 			$model->attributes=$_POST['Item'];
+			$model->location_id=$_POST['Item']['location_id'];
 			if($model->save())
 			{
 				$uploads=unserialize(base64_decode($model->uploads));
