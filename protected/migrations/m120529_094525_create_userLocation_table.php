@@ -9,6 +9,7 @@ class m120529_094525_create_userLocation_table extends CDbMigration
 			'name'=>'varchar(32) NOT NULL',
 		));
 		$this->addColumn('user', 'location_id', 'mediumint UNSIGNED');
+		$this->createIndex('location_id', 'user', 'location_id');
 		$this->addForeignKey('location', 'user', 'location_id', 'user_location', 'id', 'SET NULL', 'CASCADE');
 		$this->insert('user_location', array(
 			'id'=>8000,
