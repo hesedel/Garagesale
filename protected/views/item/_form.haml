@@ -120,6 +120,14 @@
 					.no-js
 						JavaScript required
 
+			%tr
+				%th =$form->labelEx($model,'phone')
+				%td
+					.input-text.half
+						=$form->textField($model,'phone',array('maxLength'=>16))
+						%span.placeholder Phone
+					Changing this will update your account and this will reflect on all your other ads.
+
 	:php
 		$this->endWidget();
 

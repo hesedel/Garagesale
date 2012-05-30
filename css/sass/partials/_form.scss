@@ -258,6 +258,10 @@ table.form {
 							line-height: 26px;
 					}
 
+					&.half {
+						max-width: 210px;
+					}
+
 					&.repeat {
 						max-width: 410px;
 						margin-left: 40px;

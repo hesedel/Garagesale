@@ -68,6 +68,11 @@ class ItemController extends Controller
 			->from('user')
 			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
 			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
@@ -121,6 +126,11 @@ class ItemController extends Controller
 		$model=$this->loadModel($id);
 		$model->location_id=Yii::app()->db->createCommand()
 			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
 			->from('user')
 			->where('id=:user_id',array(':user_id'=>$model->user_id))
 			->queryScalar();

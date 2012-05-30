@@ -25,6 +25,7 @@ class Item extends CActiveRecord
 	public $location_id;
 	public $images;
 	public $uploads;
+	public $phone;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -55,6 +56,7 @@ class Item extends CActiveRecord
 			array('title, price, description', 'required'),
 			array('price, category_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
+			array('phone', 'length', 'max'=>16),
 			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
@@ -99,6 +101,7 @@ class Item extends CActiveRecord
 			'user_id' => 'User',
 			'images' => 'Image(s)',
 			'location_id' => 'Location',
+			'phone' => 'Phone',
 		);
 	}
 
@@ -251,6 +254,7 @@ class Item extends CActiveRecord
 		Yii::app()->db->createCommand()
 			->update('user',array(
 				'location_id'=>$this->location_id,
+				'phone'=>$this->phone,
 			),'id=:user_id',array(':user_id'=>$this->user_id));
 
 		return true;
