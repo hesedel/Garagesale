@@ -28,7 +28,7 @@ if(env_is(array('dev-strict', 'int-strict', 'sta-strict', 'pro-strict')))
 		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy'=>true)) ?><![endif]-->
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
-		<div class="alert alert-success timeout"><?php echo Yii::app()->user->getFlash('success') ?></div>
+		<div id="alert" class="alert alert-success timeout"><?php echo Yii::app()->user->getFlash('success') ?></div>
 		<?php endif ?>
 
 		<?php echo $content ?>

@@ -6,7 +6,7 @@ $('a', '.ie7').click(function() {
 
 setTimeout(function() {
 	$('.alert-success.timeout').slideUp();
-}, 3000);
+}, 10000);
 $('form').submit(function() {
 	$this = $(this);
 	$this.bind('form.submit', function() {

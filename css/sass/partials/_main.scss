@@ -33,7 +33,7 @@ body {
 	@include container;
 	position: relative;
 	//width: auto;
-	padding-top: 81px;
+	padding-top: 63px;
 	overflow: visible;
 }
 
@@ -393,31 +393,6 @@ body {
 
 }
 
-#filters-shadow {
-	@include border-top-left-radius(5px);
-	@include box-shadow(rgba(0, 0, 0, .25) 0 0 4px);
-	position: absolute;
-		z-index: 3;
-
-	div {
-		background-color: blacken(whiten($beige, 25%), 25%, 2);
-		position: absolute;
-			right: -5px;
-			bottom: -1px;
-			left: 0;
-		height: 5px;
-	}
-
-}
-
-#tr_filters-shadow {
-	@include border-radius(5px);
-	@include border-top-left-radius(0);
-	@include box-shadow(rgba(0, 0, 0, .25) 0 0 4px);
-	position: absolute;
-		z-index: 2;
-}
-
 .no-js #table {
 	position: static;
 
@@ -458,10 +433,18 @@ body {
 
 }
 
+#alert {
+	@include h3;
+	text-align: center;
+	@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
+	margin-bottom: 0;
+}
+
 #column1,
 #column2,
 #column3,
 #transition {
+	padding-top: 18px;
 	padding-bottom: 54px;
 }
 
