@@ -81,10 +81,10 @@
 	-$params = array('Item'=>$model)
 	.g-actions
 		-if(Yii::app()->user->checkAccess('updateOwnItem',$params) || (Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))) || Yii::app()->user->checkAccess('super')):
-		#{CHtml::link('<span class="update"></span>Edit', array('update', 'id'=>$model->id))}
+		#{CHtml::link('<i class="icon-pencil"></i> Edit', array('update', 'id'=>$model->id))}
 		-endif
 		-if(Yii::app()->user->checkAccess('deleteOwnItem',$params) || (Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))) || Yii::app()->user->checkAccess('super')):
-		#{CHtml::link('<span class="delete"></span>Delete', '#', array('submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
+		#{CHtml::link('<i class="icon-trash"></i> Delete', '#', array('submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this item?'))}
 		-endif
 	-if($model->category_id != null || $model->getLocationName() || $model->condition_id != null):
 	.tags
