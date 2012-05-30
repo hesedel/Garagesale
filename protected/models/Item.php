@@ -131,6 +131,38 @@ class Item extends CActiveRecord
 		));
 	}
 
+	public function userCanUpdate()
+	{
+		$params=array('Item'=>$this);
+		if(
+			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		)
+			return true;
+		else
+			return false;
+	}
+
+	public function userCanDelete()
+	{
+		$params=array('Item'=>$this);
+		if(
+			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		)
+			return true;
+		else
+			return false;
+	}
+
 	public function getCategoryDropDownList()
 	{
 		// get the categories
@@ -237,9 +269,45 @@ class Item extends CActiveRecord
 		return false;
 	}
 
-	public function getImage()
+	public function getCategories($options=array())
 	{
-		
+		$defaults=array(
+			'separator'=>' &#160; / &#160; ',
+		);
+		$options=array_merge($defaults,$options);
+
+		if($this->category_id != null)
+		{
+			$category = '';
+			$category_parent = $this->category->parent_id;
+			while($category_parent != null) {
+				$category_parent = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->where('id=:id', array(':id'=>$category_parent))
+					->queryRow();
+				$category = CHtml::encode($category_parent['title']).$options['separator'].$category;
+				$category_parent = $category_parent['parent_id'];
+			}
+			return $category.CHtml::encode($this->category->title);
+		} else
+			return false;
+	}
+
+	public function getImage($index=0)
+	{
+		$image=Yii::app()->db->createCommand()
+			->select('id, type, data')
+			->from('item_image')
+			->where('item_id=:id and `index`='.$index, array(':id'=>$this->id))
+			->queryRow();
+		if($image) {
+			$image['path']='/images/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
+			if(!file_exists(Yii::getPathOfAlias('webroot').$image['path']))
+				file_put_contents(Yii::getPathOfAlias('webroot').$image['path'], $image['data']);
+			return $image;
+		} else
+			return false;
 	}
 
 	public function getImages()

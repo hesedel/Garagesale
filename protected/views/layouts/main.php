@@ -25,7 +25,7 @@ if(env_is(array('dev-strict', 'int-strict', 'sta-strict', 'pro-strict')))
 	<div id="page">
 
 		<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table') ?><!--<![endif]-->
-		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy'=>true)) ?><![endif]-->
+		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)) ?><![endif]-->
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
 		<div id="alert" class="alert alert-success timeout"><?php echo Yii::app()->user->getFlash('success') ?></div>
@@ -44,11 +44,10 @@ if(env_is(array('dev-strict', 'int-strict', 'sta-strict', 'pro-strict')))
 </html>
 
 <?php
+Yii::app()->clientScript->registerScript('form',
+	file_get_contents('js/form.js'),
+CClientScript::POS_READY);
 
-	Yii::app()->clientScript->registerScript('form',
-		file_get_contents('js/form.js'),
-	CClientScript::POS_READY);
-
-	Yii::app()->clientScript->registerScript('main',
-		file_get_contents('js/main.js'),
-	CClientScript::POS_READY);
+Yii::app()->clientScript->registerScript('main',
+	file_get_contents('js/main.js'),
+CClientScript::POS_READY);

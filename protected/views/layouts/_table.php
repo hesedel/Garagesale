@@ -8,7 +8,7 @@
 				<?php echo CHtml::link(
 					CHtml::encode(Yii::app()->name) . ' <span>(beta)</span>',
 					'/',
-					array('id'=>'logo')
+					array('id' => 'logo')
 				) ?>
 			<?php echo $this->getRoute() !== 'item/view' ? '</h1>' : '' ?>
 
@@ -27,7 +27,7 @@
 		<?php else: ?>
 
 		<?php echo !isset($legacy) ? '<div id="user" class="td">' : '<td id="user" class="td">' ?>
-			<?php echo CHtml::link(Yii::app()->user->id, array('/admin/user/view', 'id'=>Yii::app()->user->id)) ?>
+			<?php echo CHtml::link(Yii::app()->user->id, array('/admin/user/view', 'id' => Yii::app()->user->id)) ?>
 		<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 
 		<?php echo !isset($legacy) ? '<div id="logout" class="td">' : '<td id="logout" class="td">' ?>
@@ -54,7 +54,7 @@
 					<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 
 					<?php echo !isset($legacy) ? '<div class="td right">' : '<td class="td right">' ?>
-						<?php echo CHtml::linkButton('Search', array('class'=>'g-button')) ?>
+						<?php echo CHtml::linkButton('Search', array('class' => 'g-button')) ?>
 						<input type="submit" value="Search" />
 					<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 
