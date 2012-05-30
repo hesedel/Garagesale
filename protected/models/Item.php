@@ -128,6 +128,89 @@ class Item extends CActiveRecord
 		));
 	}
 
+	public function getCategoryDropDownList()
+	{
+		// get the categories
+		$categories = Yii::app()->db->createCommand()
+			->select('*')
+			->from('item_category')
+			->order('title')
+			->queryAll();
+
+		// store the categories in a real array
+		$listData = array();
+		foreach($categories as $category)
+			$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
+
+		// indent descendant categories
+		$level_max = 0;
+		foreach($listData as $i=>$data) {
+			$level = 0;
+			$parent_id = $data['parent_id'];
+			while($parent_id) {
+				$parent = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->where('id=:parent_id', array(':parent_id'=>$parent_id))
+					->queryRow();
+				if($parent)
+					$parent_id = $parent['parent_id'];
+				else
+					$parent_id = false;
+				$level++;
+				if($level > $level_max)
+					$level_max++;
+			}
+			$listData[$i]['level'] = $level;
+			$indentation = '';
+			for($j = 0; $j < $level; $j++)
+				$indentation .= '&#160; &#160;';
+			$listData[$i]['title'] = $indentation.$data['title'];
+		}
+
+		// sort the categories by their ancestors
+		$listData_sorted = array();
+		for($i = 0; $i <= $level_max; $i++) {
+			foreach(array_reverse($listData) as $data) {
+				if($data['level'] == $i) {
+					if($i == 0)
+						array_unshift($listData_sorted, $data);
+					else {
+						$popped = array();
+						$j = sizeOf($listData_sorted) - 1;
+						while($listData_sorted[$j]['id'] != $data['parent_id']) {
+							$popped[] = array_pop($listData_sorted);
+							$j--;
+						}
+						$listData_sorted[] = $data;
+						for($k = sizeOf($popped) - 1; $k >= 0; $k--) {
+							$listData_sorted[] = $popped[$k];
+						}
+					}
+				}
+			}
+		}
+
+		return CHtml::activeDropDownList($this, 'category_id', CHtml::listData($listData_sorted, 'id', 'title'), array('encode'=>false, 'empty'=>'select a category'));
+	}
+
+	public function getLocationDropDownList()
+	{
+		// get the locations
+		$locations = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_location')
+			->order('name')
+			->queryAll();
+
+		// store the locations in a real array
+		$listData = array();
+		foreach($locations as $location)
+			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
+
+		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
+	}
+
 	public function getLocationId()
 	{
 		
