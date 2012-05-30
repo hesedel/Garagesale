@@ -183,7 +183,9 @@ class SiteController extends Controller
 
 				email_sendVerification($model->id,'Registration successful!');
 
-				$this->redirect(Yii::app()->homeUrl);
+				Yii::app()->user->setFlash('success','You\'ve successfully registered! Please verify your email soon.');
+
+				$this->redirect(Yii::app()->user->returnUrl);
 			}
 		}
 		$this->render('register',array('model'=>$model));

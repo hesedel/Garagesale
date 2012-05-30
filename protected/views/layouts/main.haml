@@ -92,6 +92,9 @@
 				//				*/
 				//			),
 				//		));
+				-if(Yii::app()->user->hasFlash('success')):
+				.alert.alert-success.timeout =Yii::app()->user->getFlash('success')
+				-endif
 				=$content
 		#footer
 			//#footermenu
