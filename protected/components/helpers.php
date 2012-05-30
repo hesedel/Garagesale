@@ -65,6 +65,15 @@ function email_sendVerification($id,$message)
 	//Yii::app()->end();
 }
 
+function env_is($envs)
+{
+	foreach($envs as $env) {
+		if(Yii::app()->params['env'] === $env)
+			return true;
+	}
+	return false;
+}
+
 function time_local($time, $options = array())
 {
 	$defaults = array(

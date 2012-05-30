@@ -1,6 +1,6 @@
 <?php
 
-$params = require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'local.php');
+$params=require(dirname(__FILE__).DIRECTORY_SEPARATOR.'local.php');
 require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'../components/helpers.php');
 
 // uncomment the following to define a path alias
@@ -129,13 +129,16 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-		'noReplyEmail'=>'noreply@garagesale.ph',
-		'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
-		'tagline'=>'Tagline',
-		'salt'=>'pepper',
-		'timeZone'=>'Asia/Manila',
+	'params'=>array_merge(
+		$params,
+		array(
+			// this is used in contact page
+			'adminEmail'=>'webmaster@example.com',
+			'noReplyEmail'=>'noreply@garagesale.ph',
+			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
+			'tagline'=>'Tagline',
+			'salt'=>'pepper',
+			'timeZone'=>'Asia/Manila',
+		)
 	),
 );

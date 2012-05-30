@@ -1,10 +1,11 @@
 <?php
 return array(
-	'php'=>'/usr/bin/php5',
+	'env'=>'dev',//dev,dev-strict,int,int-strict,sta,sta-strict,pro,pro-strict
+	'php'=>'/usr/bin/php5',//Applications/MAMP/bin/php/php5.3.6/bin/php
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
 	'db.name'=>'garagesale',
-	'db.socket'=>'',
+	'db.socket'=>'',//;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock
 	'db.username'=>'root',
 	'db.password'=>'password',
 );

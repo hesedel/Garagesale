@@ -52,7 +52,25 @@ div.g-actions {
 		position: relative;
 		margin-right: 1px;
 		padding-right: 5px;
-		padding-left: 5px;
+		padding-left: 26px;
+
+		span {
+			position: absolute;
+				top: 1px;
+				left: 5px;
+			width: 16px;
+			height: 16px;
+			@include opacity(.25);
+
+			&.update {
+				@include _16-sprite(update-black);
+			}
+	
+			&.delete {
+				@include _16-sprite(delete-black);
+			}
+
+		}
 
 		&:hover {
 			color: blacken($beige, 25%, 4);
@@ -63,6 +81,11 @@ div.g-actions {
 				rgba(0, 0, 0, .1) 0 1px
 			);
 			z-index: 1;
+
+			span {
+				@include opacity(.5);
+			}
+
 		}
 
 	}

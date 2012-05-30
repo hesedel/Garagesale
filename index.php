@@ -1,10 +1,12 @@
 <?php
 
+$params=require(dirname(__FILE__).'/protected/config/local.php');
+
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/framework-1.1.10/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
-if(preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 1) {
+if($params['env']==='dev' || $params['env']==='dev-strict' || $params['env']==='int' || $params['env']==='int-strict') {
 	// remove the following lines when in production mode
 	defined('YII_DEBUG') or define('YII_DEBUG',true);
 	// specify how many levels of call stack should be shown in each log message
