@@ -2,13 +2,17 @@
 
 	<?php echo !isset($legacy) ? '<div class="tr">' : '<tr class="tr">' ?>
 
-		<?php echo !isset($legacy) ? ($this->getRoute() !== 'item/view' ? '<h1 id="header" class="td">' : '<div id="header" class="td">') : '<td id="header" class="td">' ?>
-			<?php echo CHtml::link(
-				CHtml::encode(Yii::app()->name) . ' <span>(beta)</span>',
-				'/',
-				array('id'=>'logo')
-			) ?>
-		<?php echo !isset($legacy) ? ($this->getRoute() !== 'item/view' ? '</h1>' : '</div>') : '</td>' ?>
+		<?php echo !isset($legacy) ? '<div id="header" class="td">' : '<td id="header" class="td">' ?>
+
+			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : '' ?>
+				<?php echo CHtml::link(
+					CHtml::encode(Yii::app()->name) . ' <span>(beta)</span>',
+					'/',
+					array('id'=>'logo')
+				) ?>
+			<?php echo $this->getRoute() !== 'item/view' ? '</h1>' : '' ?>
+
+		<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
