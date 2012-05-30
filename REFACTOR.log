@@ -1,0 +1,7 @@
+/protected
+	/views
+		/layouts
+			/_head.php
+			/_table.php
+			/column2.php
+			/main.php
