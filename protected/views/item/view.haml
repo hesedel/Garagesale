@@ -29,8 +29,8 @@
 			->queryRow();
 		if($image) {
 			echo CHtml::link(
-				CHtml::image('/images/slir/w188-h302-bbabaab/'.db_image('item_image', $image['id']), $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
-				'/images/slir/w530-bfff/'.db_image('item_image', $image['id']),
+				CHtml::image('/images/slir/w188-h302-bbabaab'.db_image('item_image', $image['id']), $image['id'].'.'.$image['type'], array('title'=>'click photo to enlarge')),
+				'/images/slir/w530-bfff'.db_image('item_image', $image['id']),
 				array('class'=>'lightbox')
 			);
 		} else
@@ -136,6 +136,7 @@
 			),
 			'htmlOptions'=>array('class'=>'g-tabs'),
 			'headerTemplate'=>'<li><a href="{url}">{title}</a></li>',
+			'contentTemplate'=>'<div id="{id}" class="tab-content">{content}</div>',
 		));
 
 :php

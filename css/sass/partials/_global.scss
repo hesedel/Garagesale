@@ -654,10 +654,22 @@ div.g-tabs {
 
 	}
 
-	div.ui-tabs-panel {
+	div.tab-content {
 		background-color: whiten(blacken($beige, 25%), 25%, 4);
 		@include border-radius(3px);
 		padding: 18px 20px;
 	}
 
 } // .g-tabs
+
+.no-js div.g-tabs {
+
+	> ul {
+		display: none;
+	}
+
+	div.tab-content {
+		margin-bottom: 18px;
+	}
+
+}
