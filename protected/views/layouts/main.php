@@ -44,6 +44,11 @@ if(env_is(array('dev-strict', 'int-strict', 'sta-strict', 'pro-strict')))
 </html>
 
 <?php
+
+	Yii::app()->clientScript->registerScript('form',
+		file_get_contents('js/form.js'),
+	CClientScript::POS_READY);
+
 	Yii::app()->clientScript->registerScript('main',
 		file_get_contents('js/main.js'),
 	CClientScript::POS_READY);
