@@ -3,7 +3,7 @@
 		#{!isset($legacy) ? ($this->getRoute() !== 'item/view' ? '<h1 id="header" class="td">' : '<div id="header" class="td">') : '<td id="header" class="td">'}
 			:php
 				echo CHtml::link(
-					Yii::app()->name,
+					Yii::app()->name.' <span>(beta)</span>',
 					//CHtml::image('/images/transparent.gif', Yii::app()->name),
 					'/',
 					array('id'=>'logo')

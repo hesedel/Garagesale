@@ -63,6 +63,11 @@ class ItemController extends Controller
 	public function actionCreate()
 	{
 		$model=new Item;
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
