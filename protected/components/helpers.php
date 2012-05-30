@@ -84,3 +84,10 @@ function time_local($time, $options = array())
 	else
 		return date($options['format'], $unix);
 }
+
+function user_login($id)
+{
+	$identity=new UserIdentity('','');
+	$identity->setId($id);
+	Yii::app()->user->login($identity,60); // one minute
+}
