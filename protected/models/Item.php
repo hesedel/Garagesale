@@ -178,7 +178,7 @@ class Item extends CActiveRecord
 	public function getCategoriesString($options=array())
 	{
 		$defaults=array(
-			'separator'=>' &#160; / &#160; ',
+			'separator'=>', ',
 		);
 		$options=array_merge($defaults,$options);
 
