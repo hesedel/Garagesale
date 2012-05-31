@@ -8,7 +8,6 @@
  * @property string $created
  * @property string $updated
  * @property string $password
- * @property integer $role
  * @property string $name_first
  * @property string $name_last
  *

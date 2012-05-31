@@ -164,7 +164,7 @@ class Item extends CActiveRecord
 	 * array						getImage($index=0)
 	 * array						getImages()
 	 * CHtml::activeDropDownList	getLocationDropDownList()
-	 * string						getLocationName()
+	 * array						getOtherItems()
 	 * bool							userCanUpdate()
 	 * bool							userCanDelete()
 	 * 
@@ -347,22 +347,28 @@ class Item extends CActiveRecord
 		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
 	}
 
-	public function getLocationName()
+	public function getOtherItems($options=array())
 	{
-		$location_id=Yii::app()->db->createCommand()
-			->select('location_id')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>$this->user_id))
-			->queryScalar();
-		if($location_id)
+		$defaults=array(
+			'limit'=>3,
+		);
+		$options=array_merge($defaults,$options);
+
+		$items=Yii::app()->db->createCommand()
+			->select('id')
+			->from('item')
+			->where('id!=:id and user_id=:user_id',array(':id'=>$this->id,':user_id'=>$this->user_id))
+			->queryAll();
+		$array=array();
+		if($items)
 		{
-			return Yii::app()->db->createCommand()
-				->select('name')
-				->from('user_location')
-				->where('id=:location_id',array(':location_id'=>$location_id))
-				->queryScalar();
-		}
-		return false;
+			foreach($items as $item)
+			{
+				$array[]=Item::model()->findByPk($item['id']);
+			}
+			return $array;
+		} else
+			return false;
 	}
 
 	public function userCanUpdate()

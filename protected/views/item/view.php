@@ -38,7 +38,7 @@ $this->menu=array(
 
 </div><!-- .g-actions -->
 
-<?php if($model->category_id != null || $model->getLocationName() || $model->condition_id != null): ?>
+<?php if($model->category_id != null || $model->user->location || $model->condition_id != null): ?>
 
 <div class="tags">
 
@@ -46,8 +46,8 @@ $this->menu=array(
 	<span class="category"><i class="icon-tag"></i> <?php echo $model->getCategoriesString(array('separator' => ' &#160; / &#160; ')) ?></span>
 	<?php endif ?>
 
-	<?php if($model->getLocationName()): ?>
-	<span><i class="icon-map-marker"></i> <?php echo $model->getLocationName() ?></span>
+	<?php if($model->user->location): ?>
+	<span><i class="icon-map-marker"></i> <?php echo $model->user->location->name ?></span>
 	<?php endif ?>
 
 	<?php if($model->condition_id != null): ?>

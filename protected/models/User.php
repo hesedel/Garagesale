@@ -9,7 +9,6 @@
  * @property string $created
  * @property string $updated
  * @property string $password
- * @property integer $role
  * @property string $name_first
  * @property string $name_last
  * @property string $phone
@@ -58,7 +57,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, email, name_first', 'required'),
-			array('role, verified, location_id', 'numerical', 'integerOnly'=>true),
+			array('verified, location_id', 'numerical', 'integerOnly'=>true),
 			array('id, password, name_first, name_last', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
@@ -70,7 +69,7 @@ class User extends CActiveRecord
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, created, updated, role, name_first, name_last, phone, verified, location_id', 'safe', 'on'=>'search'),
+			array('id, email, created, updated, name_first, name_last, phone, verified, location_id', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
 			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
 			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
@@ -113,7 +112,6 @@ class User extends CActiveRecord
 			'created' => 'Joined',
 			'updated' => 'Updated',
 			'password' => 'Password',
-			'role' => 'Role',
 			'name_first' => 'First Name',
 			'name_last' => 'Last Name',
 			'phone' => 'Phone',
@@ -140,7 +138,6 @@ class User extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('updated',$this->updated,true);
-		$criteria->compare('role',$this->role);
 		$criteria->compare('name_first',$this->name_first,true);
 		$criteria->compare('name_last',$this->name_last,true);
 		$criteria->compare('phone',$this->phone,true);

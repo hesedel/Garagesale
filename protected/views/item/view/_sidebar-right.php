@@ -20,6 +20,48 @@
 
 </div><!-- .info-user -->
 
+<?php if($items = $model->getOtherItems()): ?>
+
+<div class="other">
+
+	<h2>Other Ads by This User</h2>
+
+	<div class="items">
+
+		<?php foreach($items as $item): ?>
+
+			<div class="item">
+
+				<strong><?php echo CHtml::link(
+					CHtml::encode($item->title),
+					array(
+						'/item/view',
+						'id'=>$item->id),
+					array('title'=>$item->title)
+				); ?></strong>
+
+				<span class="price">PHP <?php echo number_format($item->price) ?></span>
+
+				<p title="<?php echo $item->description ?>"><?php echo $item->description ?></p>
+
+				<?php if($item->category_id != null): ?>
+				<em><?php echo $item->category->title ?></em>
+				<?php endif ?>
+
+				<?php if($item->condition_id != null): ?>
+				<span class="condition <?php echo $item->getConditionClass() ?>"><span><?php echo $item->condition->title ?></span></span>
+				<?php endif ?>
+
+			</div><!-- .item -->
+
+		<?php endforeach ?>
+
+	</div><!-- .items -->
+
+</div><!-- .other -->
+
+<?php endif ?>
+
 </div><!-- #item_view-sidebar-right -->
 
 <?php $this->endWidget() ?>
