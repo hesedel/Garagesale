@@ -43,7 +43,7 @@ $this->menu=array(
 <div class="tags">
 
 	<?php if($model->category_id != null): ?>
-	<span class="category"><i class="icon-tag"></i> <?php echo $model->getCategories() ?></span>
+	<span class="category"><i class="icon-tag"></i> <?php echo $model->getCategoriesString() ?></span>
 	<?php endif ?>
 
 	<?php if($model->getLocationName()): ?>

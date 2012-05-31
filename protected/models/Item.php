@@ -131,35 +131,72 @@ class Item extends CActiveRecord
 		));
 	}
 
-	public function userCanUpdate()
+	protected function beforeSave()
 	{
-		$params=array('Item'=>$this);
-		if(
-			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
-			(
-				Yii::app()->user->checkAccess('admin') &&
-				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
-			) ||
-			Yii::app()->user->checkAccess('super')
-		)
-			return true;
-		else
-			return false;
+		if(strlen($this->location_id)==0)
+			$this->location_id=null;
+		Yii::app()->db->createCommand()
+			->update('user',array(
+				'location_id'=>$this->location_id,
+				'phone'=>$this->phone,
+			),'id=:user_id',array(':user_id'=>$this->user_id));
+
+		return true;
 	}
 
-	public function userCanDelete()
+	protected function afterDelete()
 	{
-		$params=array('Item'=>$this);
-		if(
-			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
-			(
-				Yii::app()->user->checkAccess('admin') &&
-				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
-			) ||
-			Yii::app()->user->checkAccess('super')
-		)
-			return true;
-		else
+		$images=Yii::app()->db->createCommand()
+			->select('id')
+			->from('item_image')
+			->where('item_id=:item_id',array(':item_id'=>$this->id))
+			->queryAll();
+		foreach($images as $image)
+			db_image('item_image',$image['id'],array('unlink'=>true));
+	}
+
+	/**
+	 * Custom Functions
+	 * array						getCategories()
+	 * string						getCategoriesString($options=array())
+	 * CHtml::activeDropDownList	getCategoryDropDownList()
+	 * string						getConditionClass()
+	 * array						getImage($index=0)
+	 * array						getImages()
+	 * CHtml::activeDropDownList	getLocationDropDownList()
+	 * string						getLocationName()
+	 * bool							userCanUpdate()
+	 * bool							userCanDelete()
+	 * 
+	 */
+
+	public function getCategories()
+	{
+		
+	}
+
+	public function getCategoriesString($options=array())
+	{
+		$defaults=array(
+			'separator'=>' &#160; / &#160; ',
+		);
+		$options=array_merge($defaults,$options);
+
+		if($this->category_id != null)
+		{
+			$category = '';
+			$category_parent = $this->category->parent_id;
+			while($category_parent != null) {
+				$category_parent = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->where('id=:id', array(':id'=>$category_parent))
+					->queryRow();
+				$category = CHtml::encode($category_parent['title']).$options['separator'].$category;
+				$category_parent = $category_parent['parent_id'];
+			}
+			return $category.CHtml::encode($this->category->title);
+		} else
 			return false;
 	}
 
@@ -179,7 +216,8 @@ class Item extends CActiveRecord
 
 		// indent descendant categories
 		$level_max = 0;
-		foreach($listData as $i=>$data) {
+		foreach($listData as $i=>$data)
+		{
 			$level = 0;
 			$parent_id = $data['parent_id'];
 			while($parent_id) {
@@ -205,20 +243,28 @@ class Item extends CActiveRecord
 
 		// sort the categories by their ancestors
 		$listData_sorted = array();
-		for($i = 0; $i <= $level_max; $i++) {
-			foreach(array_reverse($listData) as $data) {
-				if($data['level'] == $i) {
+		for($i = 0; $i <= $level_max; $i++)
+		{
+			foreach(array_reverse($listData) as $data)
+			{
+				if($data['level'] == $i)
+				{
 					if($i == 0)
+					{
 						array_unshift($listData_sorted, $data);
-					else {
+					}
+					else
+					{
 						$popped = array();
 						$j = sizeOf($listData_sorted) - 1;
-						while($listData_sorted[$j]['id'] != $data['parent_id']) {
+						while($listData_sorted[$j]['id'] != $data['parent_id'])
+						{
 							$popped[] = array_pop($listData_sorted);
 							$j--;
 						}
 						$listData_sorted[] = $data;
-						for($k = sizeOf($popped) - 1; $k >= 0; $k--) {
+						for($k = sizeOf($popped) - 1; $k >= 0; $k--)
+						{
 							$listData_sorted[] = $popped[$k];
 						}
 					}
@@ -227,46 +273,6 @@ class Item extends CActiveRecord
 		}
 
 		return CHtml::activeDropDownList($this, 'category_id', CHtml::listData($listData_sorted, 'id', 'title'), array('encode'=>false, 'empty'=>'select a category'));
-	}
-
-	public function getLocationDropDownList()
-	{
-		// get the locations
-		$locations = Yii::app()->db->createCommand()
-			->select('*')
-			->from('user_location')
-			->order('name')
-			->queryAll();
-
-		// store the locations in a real array
-		$listData = array();
-		foreach($locations as $location)
-			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
-
-		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
-	}
-
-	public function getLocationId()
-	{
-		
-	}
-
-	public function getLocationName()
-	{
-		$location_id=Yii::app()->db->createCommand()
-			->select('location_id')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>$this->user_id))
-			->queryScalar();
-		if($location_id)
-		{
-			return Yii::app()->db->createCommand()
-				->select('name')
-				->from('user_location')
-				->where('id=:location_id',array(':location_id'=>$location_id))
-				->queryScalar();
-		}
-		return false;
 	}
 
 	public function getConditionClass()
@@ -282,31 +288,6 @@ class Item extends CActiveRecord
 					$condition = 'new';
 			}
 			return $condition;
-		} else
-			return false;
-	}
-
-	public function getCategories($options=array())
-	{
-		$defaults=array(
-			'separator'=>' &#160; / &#160; ',
-		);
-		$options=array_merge($defaults,$options);
-
-		if($this->category_id != null)
-		{
-			$category = '';
-			$category_parent = $this->category->parent_id;
-			while($category_parent != null) {
-				$category_parent = Yii::app()->db->createCommand()
-					->select('*')
-					->from('item_category')
-					->where('id=:id', array(':id'=>$category_parent))
-					->queryRow();
-				$category = CHtml::encode($category_parent['title']).$options['separator'].$category;
-				$category_parent = $category_parent['parent_id'];
-			}
-			return $category.CHtml::encode($this->category->title);
 		} else
 			return false;
 	}
@@ -349,27 +330,70 @@ class Item extends CActiveRecord
 			return false;
 	}
 
-	protected function beforeSave()
+	public function getLocationDropDownList()
 	{
-		if(strlen($this->location_id)==0)
-			$this->location_id=null;
-		Yii::app()->db->createCommand()
-			->update('user',array(
-				'location_id'=>$this->location_id,
-				'phone'=>$this->phone,
-			),'id=:user_id',array(':user_id'=>$this->user_id));
+		// get the locations
+		$locations = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_location')
+			->order('name')
+			->queryAll();
 
-		return true;
+		// store the locations in a real array
+		$listData = array();
+		foreach($locations as $location)
+			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
+
+		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
 	}
 
-	protected function afterDelete()
+	public function getLocationName()
 	{
-		$images=Yii::app()->db->createCommand()
-			->select('id')
-			->from('item_image')
-			->where('item_id=:item_id',array(':item_id'=>$this->id))
-			->queryAll();
-		foreach($images as $image)
-			db_image('item_image',$image['id'],array('unlink'=>true));
+		$location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$this->user_id))
+			->queryScalar();
+		if($location_id)
+		{
+			return Yii::app()->db->createCommand()
+				->select('name')
+				->from('user_location')
+				->where('id=:location_id',array(':location_id'=>$location_id))
+				->queryScalar();
+		}
+		return false;
+	}
+
+	public function userCanUpdate()
+	{
+		$params=array('Item'=>$this);
+		if(
+			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		)
+			return true;
+		else
+			return false;
+	}
+
+	public function userCanDelete()
+	{
+		$params=array('Item'=>$this);
+		if(
+			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		)
+			return true;
+		else
+			return false;
 	}
 }
