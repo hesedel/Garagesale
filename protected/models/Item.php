@@ -269,6 +269,23 @@ class Item extends CActiveRecord
 		return false;
 	}
 
+	public function getConditionClass()
+	{
+		if($this->condition_id != null)
+		{
+			$condition = '';
+			switch($this->condition_id) {
+				case 1:
+					$condition = 'old';
+					break;
+				default:
+					$condition = 'new';
+			}
+			return $condition;
+		} else
+			return false;
+	}
+
 	public function getCategories($options=array())
 	{
 		$defaults=array(
@@ -312,7 +329,24 @@ class Item extends CActiveRecord
 
 	public function getImages()
 	{
-		
+		$images = Yii::app()->db->createCommand()
+			->select('id, type')
+			->from('item_image')
+			->where('item_id=:item_id and `index`>0', array(':item_id'=>$this->id))
+			->order('index')
+			->queryAll();
+		if($images)
+		{
+			$i=0;
+			foreach($images as $key=>$image)
+			{
+				$path=$this->getImage($i);
+				$images[$key]['path']=$path['path'];
+				$i++;
+			}
+			return $images;
+		} else
+			return false;
 	}
 
 	protected function beforeSave()

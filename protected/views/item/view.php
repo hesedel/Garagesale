@@ -42,7 +42,7 @@ $this->menu=array(
 
 <div class="tags">
 
-	<?php if($model->getCategories()): ?>
+	<?php if($model->category_id != null): ?>
 	<span class="category"><i class="icon-tag"></i> <?php echo $model->getCategories() ?></span>
 	<?php endif ?>
 
@@ -50,25 +50,15 @@ $this->menu=array(
 	<span><i class="icon-map-marker"></i> <?php echo $model->getLocationName() ?></span>
 	<?php endif ?>
 
-	<?php if($model->condition_id != null) {
-			$condition = '';
-			switch($model->condition_id) {
-				case 1:
-					$condition = 'old';
-					break;
-				default:
-					$condition = 'new';
-			}
-	?>
-	<span class="condition <?php echo $condition ?>"><?php echo $model->condition->title ?></span>
-	<?php } ?>
+	<?php if($model->condition_id != null): ?>
+	<span class="condition <?php echo $model->getConditionClass() ?>"><?php echo $model->condition->title ?></span>
+	<?php endif ?>
 
 </div><!-- .tags -->
 
 <?php endif ?>
 
-<?php
-$this->widget('zii.widgets.jui.CJuiTabs', array(
+<?php $this->widget('zii.widgets.jui.CJuiTabs', array(
 	'tabs'=>array(
 		'Description + Photos' => $this->renderPartial('view/_description', array('model' => $model), true),
 		//'Video' => '...',
@@ -79,8 +69,7 @@ $this->widget('zii.widgets.jui.CJuiTabs', array(
 	'htmlOptions' => array('class' => 'g-tabs'),
 	'headerTemplate' => '<li><a href="{url}">{title}</a></li>',
 	'contentTemplate' => '<div id="{id}" class="tab-content">{content}</div>',
-));
-?>
+)); ?>
 
 </div><!-- #item_view -->
 
@@ -88,8 +77,7 @@ $this->widget('zii.widgets.jui.CJuiTabs', array(
 <?php $this->renderPartial('view/_sidebar-left', array('model' => $model)) ?>
 <?php $this->renderPartial('view/_sidebar-right', array('model' => $model)) ?>
 
-<?php
-Yii::app()->clientScript->registerScript('item_view',
+<?php Yii::app()->clientScript->registerScript('item_view',
 	"
 	$('h1', '#item_view table.header').css( {
 		width: $('#item_view').width() - $('td', '#item_view table.header').outerWidth() - 30
