@@ -32,17 +32,41 @@
 
 			<div class="item">
 
+				<?php
+				$image = $item->getImage();
+				if($image) {
+					echo CHtml::link(
+						CHtml::image(
+							'/images/transparent.gif',
+							$item->title,
+							array('style' => 'background-image: url(/images/slir/w38-h34-c38:34-bbabaab' . $image['path'] . ')')
+						),
+						array('/item/view', 'id' => $item->id),
+						array('class' => 'image')
+					);
+				} else {
+					echo CHtml::image(
+						'/images/transparent.gif',
+						$item->title,
+						array(
+							'class' => 'no-image',
+							'style' => 'background-image: url(/images/slir/w38-h34-c38:34-bbabaab/images/item/no-image.gif)'
+						)
+					);
+				}
+				?>
+
 				<strong><?php echo CHtml::link(
 					CHtml::encode($item->title),
 					array(
 						'/item/view',
 						'id'=>$item->id),
 					array('title'=>$item->title)
-				); ?></strong>
+				) ?></strong>
 
 				<span class="price">PHP <?php echo number_format($item->price) ?></span>
 
-				<p title="<?php echo $item->description ?>"><?php echo $item->description ?></p>
+				<p title="<?php echo CHtml::encode($item->description) ?>"><?php echo CHtml::encode($item->description) ?></p>
 
 				<?php if($item->category_id != null): ?>
 				<em><?php echo $item->category->title ?></em>

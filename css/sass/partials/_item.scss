@@ -182,10 +182,12 @@
 				margin-right: 0;
 
 				&.new {
+					//color: $custom_magenta;
 					background-color: whiten($custom_cyan, 25%, 4);
 				}
 
 				&.old {
+					//color: blacken($custom_cyan, 25%);
 					background-color: whiten($custom_magenta, 25%, 4);
 				}
 
@@ -464,10 +466,35 @@
 
 			div.item {
 				@include clearfix;
+				position: relative;
 				padding-top: 9px;
+				padding-left: 55px;
 
 				&:first-child {
 					padding-top: 0;
+				}
+
+				a.image {
+					border: 1px solid white;
+					position: absolute;
+						left: 0;
+					width: 38px;
+					height: 34px;
+
+					img {
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+
+				}
+
+				img.no-image {
+					border: 1px solid white;
+					position: absolute;
+						left: 0;
+					width: 38px;
+					height: 34px;
 				}
 
 				strong {
@@ -478,9 +505,11 @@
 
 					a {
 						color: whiten($custom_cyan, 25%, 4);
+						text-decoration: none;
 
 						&:hover {
 							color: whiten($custom_magenta, 25%, 5);
+							text-decoration: underline;
 						}
 
 					}
@@ -514,7 +543,7 @@
 
 					span {
 						font-size: $small;
-						background-color: rgba(0, 0, 0, .25);
+						background-color: $whitesmoke;
 						@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
 						@include border-radius(3px);
 						padding-right: 3px;
@@ -522,11 +551,11 @@
 					}
 
 					&.old span {
-						color: whiten($custom_magenta, 25%, 5);
+						color: $custom_magenta;
 					}
 
 					&.new span {
-						color: whiten($custom_cyan, 25%, 5);
+						color: blacken($custom_cyan, 25%);
 					}
 
 				}
