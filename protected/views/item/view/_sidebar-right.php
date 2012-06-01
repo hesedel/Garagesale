@@ -16,7 +16,14 @@
 		array('class' => 'image')
 	) ?>
 
-	<span><?php echo CHtml::link($model->user_id, array('/admin/user/view', 'id' => $model->user_id)) ?></span>
+	<span><?php echo CHtml::link(
+		$model->user_id,
+		array(
+			'/admin/user/view',
+			'id' => $model->user_id
+		),
+		array('title' => $model->user_id)
+	) ?></span>
 
 </div><!-- .info-user -->
 
