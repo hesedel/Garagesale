@@ -597,51 +597,42 @@ div.g-tabs {
 		border: none;
 		@include border-radius(0);
 		height: 27px;
-		padding: 0 0 9px 10px;
+		margin-top: -1px;
+		padding: 1px 0 9px 10px;
+		overflow: hidden;
 
 		li {
-			background-color: blacken(blacken(whiten($beige, 25%), 25%, 2), 5%);
-			background-image: none;
+			background-color: whiten(blacken($beige, 25%), 25%, 3);
+			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
 			border: none;
 			@include border-radius(3px);
-			/*
-			@include box-shadow(
-				rgba(0, 0, 0, .05) -1px -1px,
-				rgba(255, 255, 255, .1) 1px 1px
-			);
-			*/
+			@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
 			top: 0;
 			height: 27px;
 			margin-right: 10px;
 
 			a {
 				color: whiten(blacken($beige, 25%), 25%, 4);
+				color: blacken($beige, 25%, 3);
 				font-size: $h4;
 				@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
+				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 				line-height: 27px;
 				padding: 0 10px;
 			}
 
 			&:hover {
-				background-color: blacken(blacken(whiten($beige, 25%), 25%, 2), 10%);
+				background-color: whiten(blacken($beige, 25%), 25%, 4);
+				background-image: none;
 
-				a {
-					color: white;
-				}
+				a {}
 
 			}
 
 			&.ui-tabs-selected {
 				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				//@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)));
 				@include border-bottom-radius(0);
-				/*
-				@include box-shadow(
-					rgba(255, 255, 255, 1) 0 1px 1px inset,
-					rgba(0, 0, 0, .05) -1px -1px,
-					rgba(255, 255, 255, .1) 1px 1px
-				);
-				*/
+				background-image: none;
 				padding-bottom: 9px;
 
 				a {
@@ -666,6 +657,7 @@ div.g-tabs {
 	div.tab-content {
 		background-color: whiten(blacken($beige, 25%), 25%, 4);
 		@include border-radius(3px);
+		@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
 		padding: 18px 20px;
 	}
 
