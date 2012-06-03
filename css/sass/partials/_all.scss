@@ -26,6 +26,18 @@ $custom_orange : rgb(255, 102, 0);
 	@return $color;
 }
 
+$dark : blacken(whiten($beige, 25%), 25%, 3);
+$light: whiten(blacken($beige, 25%), 25%, 4);
+
+$dark_cyan    : $custom_cyan;
+$dark_green   : $custom_green;
+$dark_magenta : $custom_magenta;
+$dark_orange  : $custom_orange;
+$light_cyan   : $custom_cyan;
+$light_green  : $custom_green;
+$light_magenta: $custom_magenta;
+$light_orange : $custom_orange;
+
 /*
  * fonts
  */

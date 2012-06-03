@@ -335,12 +335,19 @@
 
 	div.info-user {
 		@include clearfix;
+		border-bottom: 1px solid blacken($dark, 10%);
+		@include box-shadow(rgba(255, 255, 255, .1) 0 1px);
+		padding-bottom: 17px;
 
 		h2 {
 			color: blacken(whiten($beige, 25%), 25%);
 			font-size: 1em;
 			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 			text-transform: uppercase;
+			border-bottom: 1px solid blacken($dark, 10%);
+			@include box-shadow(rgba(255, 255, 255, .1) 0 1px);
+			margin-bottom: 18px;
+			padding-bottom: 8px;
 		}
 
 		div {
@@ -472,13 +479,20 @@
 	}
 
 	div.other {
+		border-bottom: 1px solid blacken($dark, 10%);
+		@include box-shadow(rgba(255, 255, 255, .1) 0 1px);
 		padding-top: 27px;
+		padding-bottom: 17px;
 
 		h2 {
 			color: blacken(whiten($beige, 25%), 25%);
 			font-size: 1em;
 			@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 			text-transform: uppercase;
+			border-bottom: 1px solid blacken($dark, 10%);
+			@include box-shadow(rgba(255, 255, 255, .1) 0 1px);
+			margin-bottom: 18px;
+			padding-bottom: 8px;
 		}
 
 		div.items {
