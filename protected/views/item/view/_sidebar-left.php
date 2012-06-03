@@ -35,7 +35,7 @@ if($image) {
 	</tr>
 	<tr>
 		<th>Expires on</th>
-		<td><?php echo time_local($model->updated, array('offset' => (60*24*60*60) - (60*60))) // 60 days ?></td>
+		<td><?php echo time_local($model->updated, array('offset' => 60*24*60*60)) // 60 days ?></td>
 	</tr>
 	<tr>
 		<th>Views</th>

@@ -36,7 +36,7 @@ $dark_orange  : $custom_orange;
 $light_cyan   : $custom_cyan;
 $light_green  : $custom_green;
 $light_magenta: $custom_magenta;
-$light_orange : $custom_orange;
+$light_orange : whiten($custom_orange, 25%, 3);
 
 /*
  * fonts

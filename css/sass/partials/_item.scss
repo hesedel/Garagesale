@@ -524,16 +524,16 @@
 
 				strong {
 					@include ellipsis;
-					color: whiten($custom_cyan, 25%, 4);
+					color: $light_orange;
 					font-family: ProximaNovaRegular;
 					display: block;
 
 					a {
-						color: whiten($custom_cyan, 25%, 4);
+						color: $light_orange;
 						text-decoration: none;
 
 						&:hover {
-							color: whiten($custom_magenta, 25%, 5);
+							color: whiten($light_orange, 25%);
 							text-decoration: underline;
 						}
 
