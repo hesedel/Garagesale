@@ -52,6 +52,7 @@ return array(
 				'ad/<action:\w+>/<id:\d+>'=>'item/<action>',
 				'ad/<action:\w+>'=>'item/<action>',
 
+				'user/ads'=>'admin/user/items',
 				'user/<action:\w+>/<id:\w+>'=>'admin/user/<action>',
 				'user/<action:\w+>'=>'admin/user/<action>',
 

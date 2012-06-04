@@ -27,7 +27,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','password_change','verify','email_change_verify'),
+				'actions'=>array('index','view','password_change','verify','email_change_verify','items'),
 				'users'=>array('*'),
 			),
 			array('allow',
@@ -474,6 +474,11 @@ class UserController extends Controller
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
+
+	public function actionItems()
+	{
+		$this->render('items');
 	}
 
 	/**
