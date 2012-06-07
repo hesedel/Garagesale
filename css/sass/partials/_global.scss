@@ -32,6 +32,59 @@ label, th {
 	font-weight: normal;
 }
 
+/*
+ * Bootstrap
+ */
+
+ul.dropdown-menu {
+
+	li {
+
+		a {
+			color: $custom_magenta;
+			text-decoration: none;
+
+			i {
+				@include opacity(.5);
+
+				&.out {
+					display: inline-block;
+				}
+
+				&.over {
+					display: none;
+				}
+
+			}
+
+			&:hover {
+				background-color: $custom_cyan;
+
+				i {
+					@include opacity(1);
+
+					&.out {
+						display: none;
+					}
+
+					&.over {
+						display: inline-block;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+/*
+ * g-
+ */
+
 div.g-actions {
 	position: absolute;
 		top: 0;

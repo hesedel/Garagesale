@@ -101,15 +101,19 @@
 
 <?php echo !isset($legacy) ? '</div>' : '</table>' ?>
 
+<?php if(!Yii::app()->user->isGuest): ?>
+
 <div id="user-dropdown" class="navbar">
 	<ul class="dropdown-menu">
-		<li><?php echo CHtml::link('Messages', '#') ?></li>
-		<li><?php echo CHtml::link('Manage Items', '#') ?></li>
+		<li><?php echo CHtml::link('<i class="icon-comment out"></i><i class="icon-comment icon-white over"></i> &#160; Messages', '#') ?></li>
+		<li><?php echo CHtml::link('<i class="icon-briefcase out"></i><i class="icon-briefcase icon-white over"></i> &#160; Manage Items', array('/admin/user/items')) ?></li>
 		<li class="divider"></li>
-		<li><?php echo CHtml::link('Edit Account', '#') ?></li>
-		<li><?php echo CHtml::link('View Profile', '#') ?></li>
+		<li><?php echo CHtml::link('<i class="icon-wrench out"></i><i class="icon-wrench icon-white over"></i> &#160; Edit Account', array('/admin/user/account')) ?></li>
+		<li><?php echo CHtml::link('<i class="icon-user out"></i><i class="icon-user icon-white over"></i> &#160; View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)) ?></li>
 	</ul>
 </div><!-- #user-dropdown -->
+
+<?php endif ?>
 
 <?php Yii::app()->clientScript->registerScript('main_table',
 	"
