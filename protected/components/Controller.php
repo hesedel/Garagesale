@@ -27,11 +27,7 @@ class Controller extends CController
 		Yii::app()->params['user']=false;
 		if(!Yii::app()->user->isGuest)
 		{
-			Yii::app()->params['user']=Yii::app()->db->createCommand()
-				->select('name_first')
-				->from('user')
-				->where('id=:id',array(':id'=>Yii::app()->user->getId()))
-				->queryRow();
+			Yii::app()->params['user']=User::model()->findByPk(Yii::app()->user->getId());
 			if(!Yii::app()->params['user']) {
 				Yii::app()->user->logout();
 				$this->redirect(Yii::app()->homeUrl);

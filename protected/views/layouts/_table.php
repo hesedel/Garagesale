@@ -31,7 +31,7 @@
 				CHtml::image(
 					'/images/transparent.gif',
 					Yii::app()->user->id,
-					array('style' => 'background-image: url(/images/slir/w20-h18-c20:18' . User::model()->findByPk(Yii::app()->user->id)->getImage(array('color'=>'black')) . ')')
+					array('style' => 'background-image: url(/images/slir/w20-h18-c20:18' . Yii::app()->params['user']->getImage(array('color'=>'black')) . ')')
 				) .
 					Yii::app()->user->id,
 				array(
@@ -100,3 +100,26 @@
 	<?php echo !isset($legacy) ? '</div>' : '</tr>' ?>
 
 <?php echo !isset($legacy) ? '</div>' : '</table>' ?>
+
+<div id="user-dropdown" class="navbar">
+	<ul class="dropdown-menu">
+		<li><?php echo CHtml::link('Messages', '#') ?></li>
+		<li><?php echo CHtml::link('Manage Items', '#') ?></li>
+		<li class="divider"></li>
+		<li><?php echo CHtml::link('Edit Account', '#') ?></li>
+		<li><?php echo CHtml::link('View Profile', '#') ?></li>
+	</ul>
+</div><!-- #user-dropdown -->
+
+<?php Yii::app()->clientScript->registerScript('main_table',
+	"
+	$('#user a, #user-dropdown ul.dropdown-menu').hover(function() {
+		$('#user-dropdown').css( {
+			left: $('a', '#user').position().left + 5
+		});
+		$('.dropdown-menu').show();
+	}, function() {
+		$('.dropdown-menu').hide();
+	});
+	",
+CClientScript::POS_READY) ?>
