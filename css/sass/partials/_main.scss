@@ -142,8 +142,8 @@ body {
 	display: block;
 	height: 54px;
 		line-height: 54px;
-	padding-right: 20px;
-	padding-left: 20px;
+	padding-right: 15px;
+	padding-left: 15px;
 
 	span {
 		color: whiten($custom_magenta, 25%, 5);
@@ -178,8 +178,8 @@ body {
 		display: block;
 		height: 54px;
 			line-height: 54px;
-		padding-right: 20px;
-		padding-left: 20px;
+		padding-right: 10px;
+		padding-left: 10px;
 
 		&:hover {
 			color: blacken($custom_cyan, 25%, 2);
@@ -200,6 +200,25 @@ body {
 
 }
 
+#user {
+
+	a {
+		position: relative;
+		padding-left: 35px;
+
+		img {
+			background-position: center;
+			position: absolute;
+				top: 18px;
+				left: 10px;
+			width: 20px;
+			height: 18px;
+		}
+
+	}
+
+}
+
 #login,
 #logout {
 	padding-left: 1px !important;
@@ -216,7 +235,7 @@ body {
 	a {
 		@include border-left-radius(3px);
 		position: relative;
-		padding-right: 30px;
+		padding-right: 25px;
 
 		span {
 			border-top: 4px solid $custom_cyan;
@@ -224,7 +243,7 @@ body {
 			border-left: 4px solid transparent;
 			position: absolute;
 				top: 24px;
-				right: 16px;
+				right: 11px;
 		}
 
 		&:hover {

@@ -27,7 +27,18 @@
 		<?php else: ?>
 
 		<?php echo !isset($legacy) ? '<div id="user" class="td">' : '<td id="user" class="td">' ?>
-			<?php echo CHtml::link(Yii::app()->user->id, array('/admin/user/view', 'id' => Yii::app()->user->id)) ?>
+			<?php echo CHtml::link(
+				CHtml::image(
+					'/images/transparent.gif',
+					Yii::app()->user->id,
+					array('style' => 'background-image: url(/images/slir/w20-h18-c20:18' . User::model()->findByPk(Yii::app()->user->id)->getImage(array('color'=>'black')) . ')')
+				) .
+					Yii::app()->user->id,
+				array(
+					'/admin/user/view',
+					'id' => Yii::app()->user->id,
+				)
+			) ?>
 		<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 
 		<?php echo !isset($legacy) ? '<div id="logout" class="td">' : '<td id="logout" class="td">' ?>

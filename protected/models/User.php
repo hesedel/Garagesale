@@ -160,16 +160,32 @@ class User extends CActiveRecord
 			$this->addError($attribute,'Email "'.$this->email.'" has already been taken.');
 	}
 
-	public function getImage()
+	public function getImage($options=array())
 	{
+		$defaults=array(
+			'color'=>'white',
+		);
+		$options=array_merge($defaults,$options);
+
 		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			return $image;
 		else
-			return '/images/user/no-image.gif';
-		return ;
+		{
+			switch($defaults['color'])
+			{
+				case 'black':
+					return '/images/user/no-image-black.gif';
+					break;
+				case 'white':
+					return '/images/user/no-image-white.gif';
+					break;
+				default:
+					return '/images/user/no-image.gif';
+			}
+		}
 	}
 
 	public function deleteImage($id)
