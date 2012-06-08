@@ -6,11 +6,13 @@
 
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : '' ?>
 				<?php echo CHtml::link(
-					CHtml::encode(Yii::app()->name) . ' <span>(beta)</span>',
+					'Garagesale<span>.ph</span>',
 					'/',
 					array('id' => 'logo')
 				) ?>
 			<?php echo $this->getRoute() !== 'item/view' ? '</h1>' : '' ?>
+
+			<span class="beta">beta</span>
 
 		<?php echo !isset($legacy) ? '</div>' : '</td>' ?>
 

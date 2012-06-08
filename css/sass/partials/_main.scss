@@ -120,9 +120,25 @@ body {
 
 }
 
-#header h1 {
-	font-size: 1em;
-	margin-bottom: 0;
+#header {
+	position: relative;
+
+	h1 {
+		font-size: 1em;
+		margin-bottom: 0;
+	}
+
+	span.beta {
+		@include float-right;
+		color: whiten($custom_cyan, 25%, 4);
+		font-size: $small;
+		@include text-shadow(rgba(0, 0, 0, .1) 0 -1px);
+		height: 18px;
+			line-height: 18px;
+		margin-top: -18px;
+		padding-right: 5px;
+	}
+
 }
 
 #logo {
@@ -146,8 +162,7 @@ body {
 	padding-left: 15px;
 
 	span {
-		color: whiten($custom_magenta, 25%, 5);
-		font-size: .65em;
+		color: whiten($custom_magenta, 25%, 6);
 	}
 
 	&:hover {
