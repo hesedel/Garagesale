@@ -219,3 +219,56 @@
 	}
 
 } // .no-js #user_account
+
+#user_dashboard {
+
+	div.list-view {
+
+		div.items {
+
+			div.view {
+				background-color: $light;
+				@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+				@include border-radius(3px);
+				min-height: 36px;
+				margin-bottom: 1px;
+				padding: 9px 10px 8px 60px;
+
+				a.img {
+					position: absolute;
+						left: 10px;
+
+					img {
+						display: block;
+						width: 40px;
+						height: 36px;
+					}
+
+				}
+
+				strong {
+
+					a {
+						color: black;
+						text-decoration: none;
+						@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+						&:hover {
+							text-decoration: underline;
+						}
+
+					}
+
+				}
+
+				&:hover {
+					background-color: whiten($light, 25%);
+				}
+
+			}
+
+		}
+
+	}
+
+}// #user_dashboard

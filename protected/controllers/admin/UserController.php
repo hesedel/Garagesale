@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify'),
+				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify','dashboard'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -476,9 +476,18 @@ class UserController extends Controller
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-	public function actionItems()
+	public function actionDashboard()
 	{
-		$this->render('items');
+		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'order'=>'updated DESC',
+			),
+			'pagination'=>array(
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 4,
+			),
+		));
+
+		$this->render('dashboard', array('dataProvider'=>$dataProvider));
 	}
 
 	/**

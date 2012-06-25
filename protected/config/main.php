@@ -140,6 +140,7 @@ return array(
 			'tagline'=>'Tagline',
 			'salt'=>'pepper',
 			'timeZone'=>'Asia/Manila',
+			'item_expire'=>60,
 		)
 	),
 );
