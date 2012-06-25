@@ -297,10 +297,11 @@ class Item extends CActiveRecord
     {
         $last_update = $this->updated;
         $day = (int) 60*60*24;
-        $elapsed_time = time() - strtotime($last_update);
+        $expiry = (Yii::app()->params['item_expire'] * $day) + strtotime($last_update);
+        $time_left = $expiry - time();
 
-        if ( $elapsed_time < (Yii::app()->params['item_expire'] * $day) ) {
-            return $elapsed_time;
+        if ( $time_left > 0 ) {
+            return time_word($time_left);
         }
 
         return false;
