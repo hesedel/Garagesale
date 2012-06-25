@@ -301,7 +301,7 @@ class Item extends CActiveRecord
         $time_left = $expiry - time();
 
         if ( $time_left > 0 ) {
-            return time_word($time_left);
+            return $time_left;
         }
 
         return false;
