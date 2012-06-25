@@ -295,21 +295,12 @@ class Item extends CActiveRecord
 
     public function getExpiry()
     {
-        $item=Yii::app()->db->createCommand()
-            ->select('updated')
-            ->from('item')
-            ->where('id=:item_id', array(':item_id'=>$this->id))
-            ->queryRow();
+        $last_update = $this->updated;
+        $day = (int) 60*60*24;
+        $elapsed_time = time() - strtotime($last_update);
 
-        if ($item) {
-            $last_update_local = time_local($item['updated']);
-            $current_time_local = time_local(date('Y-m-d H:i:s'));
-            $day = (int) 60*60*24;
-            $elapsed_time = strtotime($current_time_local) - strtotime($last_update_local);
-
-            if ( $elapsed_time < (Yii::app()->params['item_expiry'] * $day) ) {
-                return $elapsed_time;
-            }
+        if ( $elapsed_time < (Yii::app()->params['item_expire'] * $day) ) {
+            return $elapsed_time;
         }
 
         return false;
