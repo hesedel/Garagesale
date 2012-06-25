@@ -161,6 +161,7 @@ class Item extends CActiveRecord
 	 * string						getCategoriesString($options=array())
 	 * CHtml::activeDropDownList	getCategoryDropDownList()
 	 * string						getConditionClass()
+     * mixed                        getExpiry()
 	 * array						getImage($index=0)
 	 * array						getImages()
 	 * CHtml::activeDropDownList	getLocationDropDownList()
@@ -292,7 +293,29 @@ class Item extends CActiveRecord
 			return false;
 	}
 
-	public function getImage($index=0)
+    public function getExpiry()
+    {
+        $item=Yii::app()->db->createCommand()
+            ->select('updated')
+            ->from('item')
+            ->where('id=:item_id', array(':item_id'=>$this->id))
+            ->queryRow();
+
+        if ($item) {
+            $last_update_local = time_local($item['updated']);
+            $current_time_local = time_local(date('Y-m-d H:i:s'));
+            $day = (int) 60*60*24;
+            $elapsed_time = strtotime($current_time_local) - strtotime($last_update_local);
+
+            if ( $elapsed_time < (Yii::app()->params['item_expiry'] * $day) ) {
+                return $elapsed_time;
+            }
+        }
+
+        return false;
+    }
+
+    public function getImage($index=0)
 	{
 		$image=Yii::app()->db->createCommand()
 			->select('id, type, data')
