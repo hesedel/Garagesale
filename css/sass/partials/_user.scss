@@ -239,6 +239,7 @@
 						left: 10px;
 
 					img {
+						background-color: rgba(0, 0, 0, .25);
 						display: block;
 						width: 40px;
 						height: 36px;
@@ -247,6 +248,7 @@
 				}
 
 				strong {
+					display: block;
 
 					a {
 						color: black;
@@ -257,6 +259,33 @@
 							text-decoration: underline;
 						}
 
+					}
+
+				}
+
+				em,
+				span.location {
+					color: blacken($beige, 25%, 3);
+				}
+
+				span.divider {
+					color: blacken($light, 25%);
+					margin-right: 10px;
+					margin-left: 10px;
+				}
+
+				span.price {
+					color: $dark_green;
+				}
+
+				span.condition {
+
+					&.new {
+						color: $dark_cyan;
+					}
+
+					&.old {
+						color: $dark_magenta;
 					}
 
 				}

@@ -13,6 +13,8 @@ $this->layout='column3';
 
 <div id="user_dashboard">
 
+<h2>Your Ads</h2>
+
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_item',

@@ -30,7 +30,7 @@ $dark : blacken(whiten($beige, 25%), 25%, 3);
 $light: whiten(blacken($beige, 25%), 25%, 4);
 
 $dark_cyan    : $custom_cyan;
-$dark_green   : $custom_green;
+$dark_green   : blacken($custom_green, 25%, 2);
 $dark_magenta : $custom_magenta;
 $dark_orange  : $custom_orange;
 $light_cyan   : $custom_cyan;
