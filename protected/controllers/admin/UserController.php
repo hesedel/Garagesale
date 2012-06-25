@@ -27,7 +27,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','password_change','verify','email_change_verify','items'),
+				'actions'=>array('index','view','password_change','verify','email_change_verify'),
 				'users'=>array('*'),
 			),
 			array('allow',
