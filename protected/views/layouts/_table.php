@@ -35,7 +35,8 @@
 					Yii::app()->user->id,
 					array('style' => 'background-image: url(/images/slir/w20-h18-c20:18' . Yii::app()->params['user']->getImage(array('color'=>'black')) . ')')
 				) .
-					Yii::app()->user->id,
+					Yii::app()->user->id .
+					'<span class="caret"></span>',
 				array(
 					'/admin/user/view',
 					'id' => Yii::app()->user->id,
@@ -107,8 +108,7 @@
 
 <div id="user-dropdown" class="navbar">
 	<ul class="dropdown-menu">
-		<li><?php echo CHtml::link('<i class="icon-comment out"></i><i class="icon-comment icon-white over"></i> &#160; Messages', '#') ?></li>
-		<li><?php echo CHtml::link('<i class="icon-briefcase out"></i><i class="icon-briefcase icon-white over"></i> &#160; Manage Ads', array('/admin/user/items')) ?></li>
+		<li><?php echo CHtml::link('<i class="icon-road out"></i><i class="icon-road icon-white over"></i> &#160; Dashboard', array('/admin/user/dashboard')) ?></li>
 		<li class="divider"></li>
 		<li><?php echo CHtml::link('<i class="icon-wrench out"></i><i class="icon-wrench icon-white over"></i> &#160; Edit Account', array('/admin/user/account')) ?></li>
 		<li><?php echo CHtml::link('<i class="icon-user out"></i><i class="icon-user icon-white over"></i> &#160; View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)) ?></li>

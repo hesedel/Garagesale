@@ -219,6 +219,7 @@ body {
 
 	a {
 		position: relative;
+		padding-right: 25px;
 		padding-left: 35px;
 
 		img {
@@ -229,6 +230,24 @@ body {
 				left: 10px;
 			width: 20px;
 			height: 18px;
+		}
+
+		span.caret {
+			border-top: 4px solid $custom_cyan;
+			border-right: 4px solid transparent;
+			border-left: 4px solid transparent;
+			position: absolute;
+				top: 24px;
+				right: 11px;
+			@include opacity(1);
+		}
+
+		&:hover {
+
+			span.caret {
+				border-top-color: blacken($custom_cyan, 25%);
+			}
+
 		}
 
 	}
