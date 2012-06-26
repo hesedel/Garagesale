@@ -305,6 +305,7 @@
 
 				span.caret {
 					cursor: pointer;
+					background-color: $whitesmoke;
 					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 					border: 1px solid blacken($light, 25%);
 					@include border-radius(9px);
