@@ -1,4 +1,4 @@
-<div class="view">
+<div class="view<?php echo $data->getExpiry() ? '' : ' expired' ?>">
 
 <?php $image = $data->getImage() ?>
 <?php echo CHtml::link(

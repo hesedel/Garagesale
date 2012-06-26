@@ -306,6 +306,15 @@
 					background-color: whiten($light, 25%);
 				}
 
+				&.expired {
+					background-color: mix($custom_orange, $light, 10%);
+
+					span.expiration {
+						color: $dark_orange;
+					}
+
+				}
+
 			}
 
 		}
