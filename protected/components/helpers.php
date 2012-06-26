@@ -94,7 +94,7 @@ function time_local($time, $options = array())
 		return date($options['format'], $unix);
 }
 
-function time_word($time)
+function time_word($time, $max = 'YEAR')
 {
 	$tokens = array
 	(
@@ -109,11 +109,13 @@ function time_word($time)
 
 	foreach($tokens as $unit=>$text)
 	{
-		if($time < $unit)
-			continue;
-		$numberOfUnits = floor($time / $unit);
-		return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+		if($text == strtolower($max)) {
+            $numberOfUnits = floor($time / $unit);
+            return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+        }
 	}
+
+    return false;
 }
 
 function user_login($id)
