@@ -230,9 +230,10 @@
 				background-color: $light;
 				@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
 				@include border-radius(3px);
+				position: relative;
 				min-height: 36px;
 				margin-bottom: 1px;
-				padding: 9px 10px 8px 60px;
+				padding: 9px 38px 8px 60px;
 
 				a.img {
 					position: absolute;
@@ -302,8 +303,50 @@
 
 				}
 
+				span.caret {
+					cursor: pointer;
+					@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+					border: 1px solid blacken($light, 25%);
+					@include border-radius(9px);
+					@include box-shadow(
+						rgba(255, 255, 255, 1) 0 0 1px inset,
+						rgba(255, 255, 255, 1) 0 1px
+					);
+					position: absolute;
+						top: 18px;
+						right: 10px;
+					display: none;
+					width: 16px;
+					height: 16px;
+					@include opacity(1);
+
+					span {
+						position: absolute;
+							top: 4px;
+							left: 7px;
+						border-top: 4px solid transparent;
+						border-bottom: 4px solid transparent;
+						border-left: 4px solid blacken($light, 25%);
+					}
+
+					&:hover {
+						border-color: blacken($light, 25%, 2);
+
+						span {
+							border-left-color: blacken($light, 25%, 2);
+						}
+
+					}
+
+				}
+
 				&:hover {
 					background-color: whiten($light, 25%);
+
+					span.caret {
+						display: block;
+					}
+
 				}
 
 				&.expired {
@@ -317,12 +360,26 @@
 						color: $dark_orange;
 					}
 
+					span.caret {
+						border-color: $dark_orange;
+						@include opacity(.5);
+
+						span {
+							border-left-color: $dark_orange;
+						}
+
+						&:hover {
+							@include opacity(.75);
+						}
+
+					}
+
 				}
 
-			}
+			}// .view
 
-		}
+		}// .items
 
-	}
+	}// .list-view
 
 }// #user_dashboard

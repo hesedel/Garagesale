@@ -46,4 +46,6 @@ switch($data->condition_id) {
 <span class="expiration">expired</span>
 <?php endif ?>
 
+<span class="caret"><span></span></span>
+
 </div><!-- .view -->
