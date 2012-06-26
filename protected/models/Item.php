@@ -161,7 +161,7 @@ class Item extends CActiveRecord
 	 * string						getCategoriesString($options=array())
 	 * CHtml::activeDropDownList	getCategoryDropDownList()
 	 * string						getConditionClass()
-     * mixed                        getExpiry()
+	 * mixed						getExpiry()
 	 * array						getImage($index=0)
 	 * array						getImages()
 	 * CHtml::activeDropDownList	getLocationDropDownList()
@@ -293,19 +293,20 @@ class Item extends CActiveRecord
 			return false;
 	}
 
-    public function getExpiry()
-    {
-        $last_update = $this->updated;
-        $day = (int) 60*60*24;
-        $expiry = (Yii::app()->params['item_expire'] * $day) + strtotime($last_update);
-        $time_left = $expiry - time();
+	public function getExpiry()
+	{
+		$last_update = $this->updated;
+		$day = (int) 60 * 60 * 24;
+		$expiry = (Yii::app()->params['item_expire'] * $day) + strtotime($last_update);
+		$time_left = $expiry - time();
 
-        if ( $time_left > 0 ) {
-            return $time_left;
-        }
+		if($time_left > 0)
+		{
+			return $time_left;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
     public function getImage($index=0)
 	{

@@ -290,6 +290,18 @@
 
 				}
 
+				span.expiration {
+					@include float-right;
+					color: blacken($beige, 25%, 2);
+					font-size: $small;
+					line-height: 18px;
+
+					em {
+						color: blacken($beige, 25%, 3);
+					}
+
+				}
+
 				&:hover {
 					background-color: whiten($light, 25%);
 				}

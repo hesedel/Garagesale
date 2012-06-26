@@ -40,4 +40,10 @@ switch($data->condition_id) {
 <span class="condition <?php echo $condition ?>"><?php echo CHtml::encode($data->condition->title) ?></span>
 <?php endif ?>
 
+<?php if($data->getExpiry()): ?>
+<span class="expiration">expires in <em><?php echo time_word($data->getExpiry()) ?></em></span>
+<?php else: ?>
+<span class="expiration">expired</span>
+<?php endif ?>
+
 </div><!-- .view -->
