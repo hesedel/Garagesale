@@ -309,6 +309,10 @@
 				&.expired {
 					background-color: mix($custom_orange, $light, 10%);
 
+					img {
+						@include opacity(.25);
+					}
+
 					span.expiration {
 						color: $dark_orange;
 					}
