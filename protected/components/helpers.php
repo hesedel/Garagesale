@@ -109,10 +109,11 @@ function time_word($time, $max = 'YEAR')
 
 	foreach($tokens as $unit=>$text)
 	{
-		if($text == strtolower($max)) {
-            $numberOfUnits = floor($time / $unit);
-            return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
-        }
+		if($text == strtolower($max))
+		{
+			$numberOfUnits = floor($time / $unit);
+			return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+		}
 	}
 
     return false;

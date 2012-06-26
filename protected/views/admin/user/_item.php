@@ -41,7 +41,7 @@ switch($data->condition_id) {
 <?php endif ?>
 
 <?php if($data->getExpiry()): ?>
-<span class="expiration">expires in <em><?php echo time_word($data->getExpiry(), 'DAY'); ?></em></span>
+<span class="expiration">expires in <em><?php echo time_word($data->getExpiry(), 'DAY') ?></em></span>
 <?php else: ?>
 <span class="expiration">expired</span>
 <?php endif ?>
