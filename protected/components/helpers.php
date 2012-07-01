@@ -107,10 +107,18 @@ function time_word($time, $max = 'YEAR')
 		1=>'second',
 	);
 
+    $below_max = false;
 	foreach($tokens as $unit=>$text)
 	{
-		if($text == strtolower($max))
+		if($text == strtolower($max) || $below_max)
 		{
+            // sets below max to disregard text comparison
+            // and proceed with unit comparison
+            $below_max = true;
+
+            if ($time < $unit)
+                continue;
+
 			$numberOfUnits = floor($time / $unit);
 			return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
 		}
