@@ -480,9 +480,9 @@ class UserController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-                'condition'=>'user_id = :user_id',
+				'condition'=>'user_id=:user_id',
 				'order'=>'updated DESC',
-                'params'=>array(':user_id'=>Yii::app()->user->id)
+				'params'=>array(':user_id'=>Yii::app()->user->id)
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 4,

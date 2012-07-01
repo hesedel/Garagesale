@@ -375,6 +375,14 @@
 
 					}
 
+					&:hover {
+
+						img {
+							@include opacity(1);
+						}
+
+					}
+
 				}
 
 			}// .view
