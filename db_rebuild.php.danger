@@ -28,7 +28,7 @@ foreach($lines as $line) {
 }
 
 // run database migrations
-shell_exec($params['php'].' protected/yiic migrate --interactive=0');
+echo shell_exec($params['php'].' protected/yiic migrate --interactive=0');
 
 // delete images related to database
 foreach(glob('images/uploads/cache/*.*') as $file)

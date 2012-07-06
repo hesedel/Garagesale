@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify','dashboard'),
+				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify','dashboard','message'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -490,6 +490,11 @@ class UserController extends Controller
 		));
 
 		$this->render('dashboard', array('dataProvider'=>$dataProvider));
+	}
+
+	public function actionMessage()
+	{
+		
 	}
 
 	/**

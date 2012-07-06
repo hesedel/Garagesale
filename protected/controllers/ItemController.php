@@ -51,8 +51,10 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model_userMessage=new UserMessage;
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'model_userMessage'=>$model_userMessage,
 		));
 	}
 

@@ -1,7 +1,7 @@
 <?php
 return array(
 	'env'=>'dev',//dev,dev-strict,int,int-strict,sta,sta-strict,pro,pro-strict
-	'php'=>'/usr/bin/php5',//Applications/MAMP/bin/php/php5.3.6/bin/php
+	'php'=>'/usr/bin/php5',//Applications/MAMP/bin/php/php5.3.13/bin/php
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
 	'db.name'=>'garagesale',

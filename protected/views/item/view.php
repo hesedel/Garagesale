@@ -64,7 +64,7 @@ $this->menu=array(
 		//'Video' => '...',
 		//'Map' => '...',
 		//'Comments' => '...',
-		'Contact' => '...',
+		'Contact' => $this->renderPartial('view/_contact', array('model' => $model, 'model_userMessage' => $model_userMessage), true),
 	),
 	'htmlOptions' => array('class' => 'g-tabs'),
 	'headerTemplate' => '<li><a href="{url}">{title}</a></li>',

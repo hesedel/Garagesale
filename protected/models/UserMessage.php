@@ -15,9 +15,9 @@
  * @property string $parent_id
  *
  * The followings are the available model relations:
+ * @property User $userIdFrom
  * @property UserMessage $parent
  * @property UserMessage[] $userMessages
- * @property User $userIdFrom
  * @property User $userIdTo
  */
 class UserMessage extends CActiveRecord
@@ -67,9 +67,9 @@ class UserMessage extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'userIdFrom' => array(self::BELONGS_TO, 'User', 'user_id_from'),
 			'parent' => array(self::BELONGS_TO, 'UserMessage', 'parent_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'parent_id'),
-			'userIdFrom' => array(self::BELONGS_TO, 'User', 'user_id_from'),
 			'userIdTo' => array(self::BELONGS_TO, 'User', 'user_id_to'),
 		);
 	}
