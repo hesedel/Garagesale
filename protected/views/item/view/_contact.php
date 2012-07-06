@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::textField($model_userMessage,'item_id') ?>
+		<?php echo $form->hiddenField($model_userMessage,'item_id',array('value'=>$model->id)); ?>
 		<?php echo CHtml::linkButton('Send', array('class'=>'submit g-button orange')); ?>
 		<?php echo CHtml::submitButton('Send', array('class'=>'submit g-button orange')); ?>
 	</div>

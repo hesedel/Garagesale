@@ -13,8 +13,10 @@
  * @property string $user_id_from
  * @property string $user_id_to
  * @property string $parent_id
+ * @property string $item_id
  *
  * The followings are the available model relations:
+ * @property Item $item
  * @property User $userIdFrom
  * @property UserMessage $parent
  * @property UserMessage[] $userMessages
@@ -51,11 +53,11 @@ class UserMessage extends CActiveRecord
 			array('message, user_id_to', 'required'),
 			array('read, from, to', 'numerical', 'integerOnly'=>true),
 			array('user_id_from, user_id_to', 'length', 'max'=>64),
-			array('parent_id', 'length', 'max'=>10),
+			array('parent_id, item_id', 'length', 'max'=>10),
 			array('created', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created, message, read, from, to, user_id_from, user_id_to, parent_id', 'safe', 'on'=>'search'),
+			array('id, created, message, read, from, to, user_id_from, user_id_to, parent_id, item_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +69,7 @@ class UserMessage extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'item' => array(self::BELONGS_TO, 'Item', 'item_id'),
 			'userIdFrom' => array(self::BELONGS_TO, 'User', 'user_id_from'),
 			'parent' => array(self::BELONGS_TO, 'UserMessage', 'parent_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'parent_id'),
@@ -89,6 +92,7 @@ class UserMessage extends CActiveRecord
 			'user_id_from' => 'User Id From',
 			'user_id_to' => 'User Id To',
 			'parent_id' => 'Parent',
+			'item_id' => 'Item',
 		);
 	}
 
@@ -112,6 +116,7 @@ class UserMessage extends CActiveRecord
 		$criteria->compare('user_id_from',$this->user_id_from,true);
 		$criteria->compare('user_id_to',$this->user_id_to,true);
 		$criteria->compare('parent_id',$this->parent_id,true);
+		$criteria->compare('item_id',$this->item_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
