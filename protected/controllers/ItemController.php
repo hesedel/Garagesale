@@ -51,10 +51,21 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$model_userMessage=new UserMessage;
+		if(isset($_POST['UserMessage']))
+		{
+			$model = $this->loadModel($id);
+			$model_userMessage=new UserMessage;
+			$model_userMessage->attributes=$_POST['UserMessage'];
+			$model_userMessage->from=1;
+			$model_userMessage->to=0;
+			$model_userMessage->user_id_from=Yii::app()->user->id;
+			$model_userMessage->user_id_to=$model->user_id;
+			$model_userMessage->save();
+		}
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			'model_userMessage'=>$model_userMessage,
+			'model_userMessage'=>new UserMessage(),
 		));
 	}
 

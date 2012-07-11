@@ -54,7 +54,11 @@ class UserMessage extends CActiveRecord
 			array('read, from, to', 'numerical', 'integerOnly'=>true),
 			array('user_id_from, user_id_to', 'length', 'max'=>64),
 			array('parent_id, item_id', 'length', 'max'=>10),
-			array('created', 'safe'),
+			//array('created', 'safe'),
+			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
+			array('read', 'default', 'value'=>'0', 'setOnEmpty'=>false, 'on'=>'insert'),
+			array('from', 'default', 'value'=>'1', 'setOnEmpty'=>false, 'on'=>'insert'),
+			array('to', 'default', 'value'=>'1', 'setOnEmpty'=>false, 'on'=>'insert'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, created, message, read, from, to, user_id_from, user_id_to, parent_id, item_id', 'safe', 'on'=>'search'),
