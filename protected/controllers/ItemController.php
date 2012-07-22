@@ -39,6 +39,10 @@ class ItemController extends Controller
 				//'users'=>array('admin'),
 				'roles'=>array('admin','super'),
 			),
+			array('allow',
+				'actions'=>array('ajaxrequest'),
+				'users'=>array('@'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -60,7 +64,22 @@ class ItemController extends Controller
 			$model_userMessage->to=0;
 			$model_userMessage->user_id_from=Yii::app()->user->id;
 			$model_userMessage->user_id_to=$model->user_id;
-			$model_userMessage->save();
+			if ($model_userMessage->save()) {
+				if (Yii::app()->request->isAjaxRequest) {
+					echo 'Message sent!';
+					Yii::app()->end();
+				} else {
+					Yii::app()->user->setFlash('success', 'Message sent!');
+				}
+			} else {
+				if (Yii::app()->request->isAjaxRequest) {
+					echo 'Oops! your message was not sent. Please try again.';
+					Yii::app()->end();
+				} else {
+					Yii::app()->user->setFlash('failed', 'Oops! your message was not sent. Please try again.');
+				}
+			}
+
 		}
 
 		$this->render('view',array(
