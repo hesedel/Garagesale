@@ -5,13 +5,13 @@ else
 	$populate = false;
 
 // connect to database
-$params = require_once('protected/config/local.php');
-mysql_connect($params['db.host'], $params['db.username'], $params['db.password']);
+$params = require_once('protected/config/params.php');
+$mysqli = new mysqli($params['db.host'], $params['db.username'], $params['db.password'], $params['db.name']);
 
 // recreate database
-mysql_query('DROP DATABASE '.$params['db.name']);
-mysql_query('CREATE DATABASE '.$params['db.name']);
-mysql_query('USE '.$params['db.name']);
+$mysqli->query('DROP DATABASE '.$params['db.name']);
+$mysqli->query('CREATE DATABASE '.$params['db.name']);
+$mysqli->query('USE '.$params['db.name']);
 
 // populate database
 $fileName = 'garagesale'.($populate ? '-populated' : '').'.sql';
@@ -22,7 +22,7 @@ foreach($lines as $line) {
 		continue;
 	$string .= $line;
 	if(substr(trim($line), -1, 1) === ';') {
-		mysql_query($string);
+		$mysqli->query($string);
 		$string = '';
 	}
 }

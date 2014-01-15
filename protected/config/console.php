@@ -1,6 +1,6 @@
 <?php
 
-$params = require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'local.php');
+$params = require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'params.php');
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.

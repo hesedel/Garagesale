@@ -1,0 +1,9 @@
+chmod 757 assets/
+chmod 757 images/slir/cache/
+chmod 757 images/uploads/cache/
+chmod 757 images/uploads/temp/
+chmod 757 protected/controllers/
+chmod 757 protected/models/
+chmod 757 protected/runtime/
+chmod 757 protected/views/
+chmod 757 protected/views/site

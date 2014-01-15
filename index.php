@@ -1,9 +1,9 @@
 <?php
 
-$params=require(dirname(__FILE__).'/protected/config/local.php');
+$params=require(dirname(__FILE__).'/protected/config/params.php');
 
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/framework-1.1.10/yii.php';
+$yii=dirname(__FILE__).'/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 if($params['env']==='dev' || $params['env']==='dev-strict' || $params['env']==='int' || $params['env']==='int-strict') {
