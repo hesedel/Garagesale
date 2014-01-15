@@ -21,7 +21,7 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
-	protected function beforeAction()
+	protected function beforeAction($action)
 	{
 		// force user logout when session is not valid
 		Yii::app()->params['user']=false;

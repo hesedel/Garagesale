@@ -1,17 +1,8 @@
-# NOTE
-
-For development environment specific settings to apply,
-make sure your url starts with `localhost.`.
-
-	ex:
-		http://localhost.garagesale.com/
-
-
 # INSTRUCTIONS
 
 1. **Setting Up Your Local Configuration**
 
-	Duplicate `/protected/config/local.php.sample` to `/protected/config/local.php`
+	Duplicate `/protected/config/params.php.sample` to `/protected/config/params.php`
 		then update it to match your local environment configuration.
 
 2. **Setting Up the Database**
@@ -21,7 +12,7 @@ make sure your url starts with `localhost.`.
 			or `/db_rebuild.php?populate` for a populated one.
 
 		ex:
-			http://localhost.garagesale.com/db_rebuild.php?populate
+			http://local.garagesale.ph/db_rebuild.php?populate
 
 	Use this also to reset the database.
 
@@ -30,12 +21,12 @@ make sure your url starts with `localhost.`.
 	Running `/db_rebuild.php` automatically applies database updates.
 	Use the following commands if you want to update the database without resetting it.
 
-	For Mac users:
+	OSX:
 		Run `$ protected/yiic migrate` in your local repository.
-  	For Windows users:
-  		?
+  Win:
+  	?
 
 4. **Applying Correct File Permissions**
 
-	For Mac users:
-		Run `$ bash mac` in your local repository.
+	OSX:
+		Run `$ bash osx` in your local repository.

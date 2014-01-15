@@ -1,6 +1,6 @@
 <?php
 
-$params=require(dirname(__FILE__).DIRECTORY_SEPARATOR.'local.php');
+$params=require(dirname(__FILE__).DIRECTORY_SEPARATOR.'params.php');
 require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'../components/helpers.php');
 
 // uncomment the following to define a path alias
