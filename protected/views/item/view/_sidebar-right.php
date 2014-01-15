@@ -12,7 +12,7 @@
 			CHtml::image(
 				'/images/transparent.gif',
 				$model->user_id,
-				array('style' => 'background-image: url(/images/slir/w38-h34-c38.34-bbabaab' . User::model()->findByPk($model->user_id)->getImage() . ')')
+				array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . User::model()->findByPk($model->user_id)->getImage() . ')')
 			),
 			array('/admin/user/view', 'id' => $model->user_id),
 			array('class' => 'image')
@@ -53,7 +53,7 @@
 					CHtml::image(
 						'/images/transparent.gif',
 						$item->title,
-						array('style' => 'background-image: url(/images/slir/w38-h34-c38.34-bbabaab' . ($image ? $image['path'] : '/images/item/no-image.gif') . ')')
+						array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . ($image ? $image['path'] : '/images/item/no-image.gif') . ')')
 					),
 					array('/item/view', 'id' => $item->id),
 					array('class' => 'image')

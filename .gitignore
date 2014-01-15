@@ -2,8 +2,13 @@
 !/assets/.empty
 /css/.sass-cache/
 /db_rebuild.php
+
 /images/slir/cache/*
 !/images/slir/cache/.empty
+
+/img/vendor/slir/cache/*
+!/img/vendor/slir/cache/.empty
+
 !/images/uploads/cache/
 /images/uploads/cache/*
 !/images/uploads/cache/.empty

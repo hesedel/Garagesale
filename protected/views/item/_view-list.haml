@@ -52,7 +52,7 @@
 			CHtml::image(
 				'/images/transparent.gif',
 				CHtml::encode($data->title),
-				array('title'=>$data->description, 'style'=>'background-image: url(/images/slir/w45-h36-c45.36-be8e8e3/'.($image ? db_image('item_image', $image['id']) : 'images/item/no-image.gif').')')
+				array('title'=>$data->description, 'style'=>'background-image: url(/img/vendor/slir/w45-h36-c45.36-be8e8e3/'.($image ? db_image('item_image', $image['id']) : 'images/item/no-image.gif').')')
 			),
 			array('/item/view', 'id'=>$data->id),
 			array('class'=>'img')

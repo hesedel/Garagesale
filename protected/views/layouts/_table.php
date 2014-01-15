@@ -33,7 +33,7 @@
 				CHtml::image(
 					'/images/transparent.gif',
 					Yii::app()->user->id,
-					array('style' => 'background-image: url(/images/slir/w20-h18-c20.18' . Yii::app()->params['user']->getImage(array('color'=>'black')) . ')')
+					array('style' => 'background-image: url(/img/vendor/slir/w20-h18-c20.18' . Yii::app()->params['user']->getImage(array('color'=>'black')) . ')')
 				) .
 					Yii::app()->user->id .
 					'<span class="caret"></span>',

@@ -7,16 +7,16 @@ $image=$model->getImage();
 if($image) {
 	echo CHtml::link(
 		CHtml::image(
-			'/images/slir/w188-h302-bbabaab' . $image['path'],
+			'/img/vendor/slir/w188-h302-bbabaab' . $image['path'],
 			$image['id'] . '.' . $image['type'],
 			array('title' => 'click photo to enlarge')
 		),
-		'/images/slir/w530-bfff' . $image['path'],
+		'/img/vendor/slir/w530-bfff' . $image['path'],
 		array('class' => 'lightbox')
 	);
 } else {
 	echo CHtml::image(
-		'/images/slir/w190-h117-c190:117-bbabaab/images/item/no-image.gif',
+		'/img/vendor/slir/w190-h117-c190:117-bbabaab/images/item/no-image.gif',
 		$model->title,
 		array('class' => 'no-image')
 	);

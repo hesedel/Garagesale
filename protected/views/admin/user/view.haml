@@ -20,9 +20,9 @@
 #user_view-sidebar-left
 	:php
 		if($model->image) {
-			echo CHtml::image('/images/slir/w188-h302-be8e8e3'.$model->getImage(), $model->id, array('class'=>'image'));
+			echo CHtml::image('/img/vendor/slir/w188-h302-be8e8e3'.$model->getImage(), $model->id, array('class'=>'image'));
 		} else
-			echo CHtml::image('/images/slir/w190-h117-c190.117-bbabaab'.$model->getImage(), $model->id, array('class'=>'no-image'));
+			echo CHtml::image('/img/vendor/slir/w190-h117-c190.117-bbabaab'.$model->getImage(), $model->id, array('class'=>'no-image'));
 	//
 		%table.info-ad
 			%caption Ad Info

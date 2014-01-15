@@ -8,10 +8,10 @@
 			$image['id'] . '.' . $image['type'],
 			array(
 				'title' => 'click to enlarge photo',
-				'style' => 'background-image: url(/images/slir/w116-h106-c116.106-be8e8e3' . $image['path'] . ')',
+				'style' => 'background-image: url(/img/vendor/slir/w116-h106-c116.106-be8e8e3' . $image['path'] . ')',
 			)
 		),
-		'/images/slir/w510-bfff' . $image['path'],
+		'/img/vendor/slir/w510-bfff' . $image['path'],
 		array('class' => 'lightbox')
 	);
 } ?></div><!-- .images -->
