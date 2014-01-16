@@ -29,7 +29,7 @@
 
 		Run `$ protected/yiic migrate` in your local repository.
 
-	 * Win:
+	* Win:
 
 		?
 
