@@ -26,15 +26,19 @@
 	Use the following commands if you want to update the database without resetting it.
 
 	* OSX:
+
 		Run `$ protected/yiic migrate` in your local repository.
-  * Win:
-  	?
+
+	 * Win:
+
+		?
 
 ---
 
 4. **Applying Correct File Permissions**
 
 	* OSX:
+
 		Run `$ bash osx` in your local repository.
 
 ---
