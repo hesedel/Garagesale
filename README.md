@@ -5,8 +5,6 @@
 	Duplicate `/protected/config/params.php.sample` to `/protected/config/params.php`
 		then update it to match your local environment configuration.
 
----
-
 2. **Setting Up the Database**
 
 	Rename `/db_rebuild.php.danger` to `/db_rebuild.php`
@@ -18,30 +16,24 @@
 
 	Use this also to reset the database.
 
----
-
 3. **Applying Database Updates**
 
 	Running `/db_rebuild.php` automatically applies database updates.
 	Use the following commands if you want to update the database without resetting it.
 
-	* OSX:
+	* **OSX**:
 
 		Run `$ protected/yiic migrate` in your local repository.
 
-	* Win:
+	* **Win**:
 
 		?
 
----
-
 4. **Applying Correct File Permissions**
 
-	* OSX:
+	* **OSX**:
 
 		Run `$ bash osx` in your local repository.
-
----
 
 # PHamlP
 
