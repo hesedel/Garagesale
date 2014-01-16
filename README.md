@@ -25,10 +25,6 @@
 
 		Run `$ protected/yiic migrate` in your local repository.
 
-	* **Win**:
-
-		?
-
 4. **Applying Correct File Permissions**
 
 	* **OSX**:
