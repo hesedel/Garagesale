@@ -30,3 +30,19 @@
 
 	OSX:
 		Run `$ bash osx` in your local repository.
+
+# PHamlP
+
+**This section just references files and lines of code to be removed when all Haml files have been converted back to PHP**
+
+`/protected/extensions/phamlp/`
+
+`/protected/config/main.php`:
+'viewRenderer'=>array(
+	'class'=>'ext.phamlp.Haml',
+	// delete options below in production
+	'ugly' => false,
+	'style' => 'nested',
+	'debug' => 0,
+	'cache' => false,
+),

@@ -111,21 +111,6 @@ return array(
 			'cache'=>false,
 			*/
 		),
-		/*
-		'assetManager'=>array(
-			'class'=>'ext.phamlp.PBMAssetManager',
-			'parsers'=>array(
-				'scss'=>array( // key == the type of file to parse
-					'class'=>'ext.phamlp.Sass', // path alias to the parser
-					'output'=>'css', // the file type it is parsed to
-					'options'=>array(
-						'cache'=>false,
-						'style'=>'compressed',
-					),
-				),
-			),
-		),
-		*/
 	),
 
 	// application-level parameters that can be accessed
@@ -134,7 +119,7 @@ return array(
 		$params,
 		array(
 			// this is used in contact page
-			'adminEmail'=>'webmaster@example.com',
+			'adminEmail'=>'hes@pajaroncreative.com',
 			'noReplyEmail'=>'noreply@garagesale.ph',
 			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
 			'tagline'=>'Tagline',
