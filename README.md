@@ -21,13 +21,13 @@
 	Running `/db_rebuild.php` automatically applies database updates.
 	Use the following commands if you want to update the database without resetting it.
 
-	* **OSX**:
+	OSX:
 
 		Run `$ protected/yiic migrate` in your local repository.
 
 4. **Applying Correct File Permissions**
 
-	* **OSX**:
+	OSX:
 
 		Run `$ bash osx` in your local repository.
 
