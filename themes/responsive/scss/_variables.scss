@@ -1,0 +1,40 @@
+/* colors */
+
+$black: #000;
+$white: #fff;
+
+	@function blacken($color, $percent, $i: 1) {
+		@while $i > 0 {
+			$color: mix(#000, $color, $percent);
+			$i: $i - 1;
+		}
+		@return $color;
+	}
+
+	@function whiten($color, $percent, $i: 1) {
+		@while $i > 0 {
+			$color: mix(#fff, $color, $percent);
+			$i: $i - 1;
+		}
+		@return $color;
+	}
+
+$dodgerblue: #1e90ff;
+$olivedrab: #6b8e23;
+
+/* fonts */
+
+// 100, 100italic, 300, 300italic, 400, 400italic, 700, 700italic, 900, 900italic
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+$sans-serif: proxima-nova, Lato, sans-serif;
+
+/**/
+
+$container-width-lg: 1170px;
+$container-width-md: 970px;
+$container-width-sm: 750px;
+$gutter-width: 15px;
+$line-height: 18px;
+$header-height: $line-height * 5;
+$degree: 4deg;

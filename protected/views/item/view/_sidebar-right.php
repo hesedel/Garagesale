@@ -10,7 +10,7 @@
 
 		<?php echo CHtml::link(
 			CHtml::image(
-				'/images/transparent.gif',
+				'/img/transparent.gif',
 				$model->user_id,
 				array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . User::model()->findByPk($model->user_id)->getImage() . ')')
 			),
@@ -51,7 +51,7 @@
 				$image = $item->getImage();
 				echo CHtml::link(
 					CHtml::image(
-						'/images/transparent.gif',
+						'/img/transparent.gif',
 						$item->title,
 						array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . ($image ? $image['path'] : '/images/item/no-image.gif') . ')')
 					),

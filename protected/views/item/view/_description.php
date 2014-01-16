@@ -4,7 +4,7 @@
 <div class="images"><?php foreach($images as $image) {
 	echo CHtml::link(
 		CHtml::image(
-			'/images/transparent.gif',
+			'/img/transparent.gif',
 			$image['id'] . '.' . $image['type'],
 			array(
 				'title' => 'click to enlarge photo',

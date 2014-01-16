@@ -3,7 +3,7 @@
 <?php $image = $data->getImage() ?>
 <?php echo CHtml::link(
 	CHtml::image(
-		'/images/transparent.gif',
+		'/img/transparent.gif',
 		CHtml::encode($data->title),
 		array('style'=>'background-image: url(/img/vendor/slir/w40-h36-c40.36'.($image ? $image['path'] : '/images/item/no-image.gif').')')
 	),
