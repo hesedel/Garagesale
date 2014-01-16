@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
 <!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" /><![endif]-->
 
-<?php Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/all.css')) ?>
+<?php Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish('css/css.css')) ?>
 
 <!-- css -->
 
