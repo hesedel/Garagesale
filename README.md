@@ -5,6 +5,9 @@
 	Duplicate `/protected/config/params.php.sample` to `/protected/config/params.php`
 		then update it to match your local environment configuration.
 
+	Duplicate `/img/vendor/slir/slirconfig-sample.class.php` to `/img/vendor/slir/slirconfig.class.php`
+		then update it to match your local environment configuration.
+
 2. **Setting Up the Database**
 
 	Rename `/db_rebuild.php.danger` to `/db_rebuild.php`
