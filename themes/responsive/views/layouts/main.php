@@ -27,7 +27,7 @@
 		<div id="alert" class="alert alert-success timeout"><?php echo Yii::app()->user->getFlash('success') ?></div>
 		<?php endif ?>
 
-		<?php //echo $content ?>
+		<?php echo $content ?>
 
 	</div><!-- #page -->
 

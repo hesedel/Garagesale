@@ -2,9 +2,9 @@
 /assets/*
 !/assets/.empty
 /db_rebuild.php
-
 /img/vendor/slir/cache/*
 !/img/vendor/slir/cache/.empty
+/img/vendor/slir/slirconfig.class.php
 
 !/images/uploads/cache/
 /images/uploads/cache/*
@@ -12,6 +12,7 @@
 !/images/uploads/temp/
 /images/uploads/temp/*
 !/images/uploads/temp/.empty
+
 /protected/config/params.php
 /protected/runtime/*
 !/protected/runtime/.empty
