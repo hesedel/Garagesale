@@ -4,7 +4,6 @@
 /db_rebuild.php
 /img/vendor/slir/cache/*
 !/img/vendor/slir/cache/.empty
-/img/vendor/slir/slirconfig.class.php
 
 !/images/uploads/cache/
 /images/uploads/cache/*
