@@ -177,13 +177,13 @@ class User extends CActiveRecord
 			switch($defaults['color'])
 			{
 				case 'black':
-					return '/images/user/no-image-black.gif';
+					return '/img/user/no-image-black.gif';
 					break;
 				case 'white':
-					return '/images/user/no-image-white.gif';
+					return '/img/user/no-image-white.gif';
 					break;
 				default:
-					return '/images/user/no-image.gif';
+					return '/img/user/no-image.gif';
 			}
 		}
 	}

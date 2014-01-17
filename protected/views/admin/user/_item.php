@@ -5,7 +5,7 @@
 	CHtml::image(
 		'/img/transparent.gif',
 		CHtml::encode($data->title),
-		array('style'=>'background-image: url(/img/vendor/slir/w40-h36-c40.36'.($image ? $image['path'] : '/images/item/no-image.gif').')')
+		array('style'=>'background-image: url(/img/vendor/slir/w40-h36-c40.36'.($image ? $image['path'] : '/img/item/no-image.gif').')')
 	),
 	array('/item/view', 'id'=>$data->id),
 	array('class'=>'img')

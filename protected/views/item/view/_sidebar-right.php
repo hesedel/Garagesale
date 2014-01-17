@@ -53,7 +53,7 @@
 					CHtml::image(
 						'/img/transparent.gif',
 						$item->title,
-						array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . ($image ? $image['path'] : '/images/item/no-image.gif') . ')')
+						array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . ($image ? $image['path'] : '/img/item/no-image.gif') . ')')
 					),
 					array('/item/view', 'id' => $item->id),
 					array('class' => 'image')

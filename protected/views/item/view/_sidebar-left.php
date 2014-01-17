@@ -16,7 +16,7 @@ if($image) {
 	);
 } else {
 	echo CHtml::image(
-		'/img/vendor/slir/w190-h117-c190:117-bbabaab/images/item/no-image.gif',
+		'/img/vendor/slir/w190-h117-c190:117-bbabaab/img/item/no-image.gif',
 		$model->title,
 		array('class' => 'no-image')
 	);
