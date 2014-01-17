@@ -6,6 +6,7 @@
 !/img/vendor/slir/cache/.empty
 /img/vendor/slir/slirconfig.class.php
 
+
 !/images/uploads/cache/
 /images/uploads/cache/*
 !/images/uploads/cache/.empty
