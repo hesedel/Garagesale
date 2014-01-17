@@ -74,7 +74,7 @@ class SiteController extends Controller
 				'pageSize'=>4,
 			),
 		));
-		//Yii::app()->theme='responsive';
+		Yii::app()->theme='responsive';
 		$this->render('index',array(
 			'dataProvider_featured'=>$dataProvider_featured,
 			'dataProvider_latest'=>$dataProvider_latest,
