@@ -167,7 +167,7 @@ class User extends CActiveRecord
 		);
 		$options=array_merge($defaults,$options);
 
-		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -196,7 +196,7 @@ class User extends CActiveRecord
 			'image_size'=>null,
 		),'id=:id',array(':id'=>$id));
 
-		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			unlink(Yii::getPathOfAlias('webroot').$image);
 

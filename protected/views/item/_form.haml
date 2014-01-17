@@ -86,7 +86,7 @@
 							$images = CUploadedFile::getInstances($model, 'images');
 							foreach($images as $image) {
 								$name = md5($image->name.time()).'.'.strtolower($image->extensionName);
-								$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+								$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 								$uploads[] = array('name'=>$image->name, 'tempName'=>$name, 'new'=>true);
 							}
 						}
@@ -95,7 +95,7 @@
 						:php
 							foreach($uploads as $upload) {
 								if($upload['new'])
-									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/img/vendor/slir/w40-h36-c40.36-baeaeaa/images/uploads/temp/'.CHtml::encode($upload['tempName']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
+									echo '<div class="image new" title="'.CHtml::encode($upload['name']).'" style="background-image: url(/img/vendor/slir/w40-h36-c40.36-baeaeaa/img/uploads/temp/'.CHtml::encode($upload['tempName']).')">'.CHtml::link('<span></span>', '#', array('title'=>'remove '.CHtml::encode($upload['name']))).'</div>';
 								else {
 									$image = Yii::app()->db->createCommand()
 										->select('id, type')
@@ -176,7 +176,7 @@
 				$.post(
 					'/ad/ajaxRemoveImage/',
 					{
-						image: '".Yii::getPathOfAlias('webroot')."/images/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.lastIndexOf(')'))
+						image: '".Yii::getPathOfAlias('webroot')."/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.lastIndexOf(')'))
 					},
 					function() {
 						if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)

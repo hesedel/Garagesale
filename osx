@@ -1,9 +1,7 @@
 chmod 757 assets/
 chmod 757 img/vendor/slir/cache/
-
-chmod 757 images/uploads/cache/
-chmod 757 images/uploads/temp/
-
+chmod 757 img/uploads/cache/
+chmod 757 img/uploads/temp/
 chmod 757 protected/controllers/
 chmod 757 protected/models/
 chmod 757 protected/runtime/

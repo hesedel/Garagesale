@@ -87,7 +87,7 @@ class ItemController extends Controller
 				$images=CUploadedFile::getInstances($model,'images');
 				foreach($images as $image) {
 					$name=md5($image->name.time()).'.'.strtolower($image->extensionName);
-					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+					$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 				}
 				if($uploads) {
@@ -96,13 +96,13 @@ class ItemController extends Controller
 						$file=pathinfo($upload['tempName']);
 						$model_itemImage=new ItemImage();
 						$model_itemImage->type=$file['extension'];
-						$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
-						$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+						$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
+						$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 						$model_itemImage->index=$i;
 						$model_itemImage->item_id=$model->id;
 						if($model_itemImage->save())
-							//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
-							unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+							//if(copy(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/img/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+							unlink(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 						$i++;
 					}
 				}
@@ -161,7 +161,7 @@ class ItemController extends Controller
 				$images=CUploadedFile::getInstances($model,'images');
 				foreach($images as $image) {
 					$name=md5($image->name.time()).'.'.strtolower($image->extensionName);
-					$image->saveAs(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$name);
+					$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 				}
 				$array1=array();
@@ -172,13 +172,13 @@ class ItemController extends Controller
 							$file=pathinfo($upload['tempName']);
 							$model_itemImage=new ItemImage();
 							$model_itemImage->type=$file['extension'];
-							$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
-							$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+							$model_itemImage->size=filesize(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
+							$model_itemImage->data=file_get_contents(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 							$model_itemImage->index=$i;
 							$model_itemImage->item_id=$model->id;
 							if($model_itemImage->save()) {
-								//if(copy(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/images/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
-								unlink(Yii::getPathOfAlias('webroot').'/images/uploads/temp/'.$upload['tempName']);
+								//if(copy(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/img/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
+								unlink(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 								$array1[]=$model_itemImage->id;
 							}
 							$i++;

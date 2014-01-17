@@ -316,7 +316,7 @@ class Item extends CActiveRecord
 			->where('item_id=:id and `index`='.$index, array(':id'=>$this->id))
 			->queryRow();
 		if($image) {
-			$image['path']='/images/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
+			$image['path']='/img/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
 			if(!file_exists(Yii::getPathOfAlias('webroot').$image['path']))
 				file_put_contents(Yii::getPathOfAlias('webroot').$image['path'], $image['data']);
 			return $image;
