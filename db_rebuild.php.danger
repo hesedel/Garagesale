@@ -31,7 +31,7 @@ foreach($lines as $line) {
 echo shell_exec($params['php'].' protected/yiic migrate --interactive=0');
 
 // delete images related to database
-foreach(glob('images/uploads/cache/*.*') as $file)
+foreach(glob('img/uploads/cache/*.*') as $file)
 	unlink($file);
-foreach(glob('images/uploads/temp/*.*') as $file)
+foreach(glob('img/uploads/temp/*.*') as $file)
 	unlink($file);

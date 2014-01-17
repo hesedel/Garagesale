@@ -9,7 +9,7 @@
 	<thead>
 		<tr><th><?php echo CHtml::link(
 			Yii::app()->name,
-			//CHtml::image('/images/transparent.gif', Yii::app()->name),
+			//CHtml::image('/img/transparent.gif', Yii::app()->name),
 			Yii::app()->params['serverName'],
 			array('id'=>'logo')
 		) ?></th></tr>

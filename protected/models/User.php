@@ -167,7 +167,7 @@ class User extends CActiveRecord
 		);
 		$options=array_merge($defaults,$options);
 
-		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -177,13 +177,13 @@ class User extends CActiveRecord
 			switch($defaults['color'])
 			{
 				case 'black':
-					return '/images/user/no-image-black.gif';
+					return '/img/user/no-image-black.gif';
 					break;
 				case 'white':
-					return '/images/user/no-image-white.gif';
+					return '/img/user/no-image-white.gif';
 					break;
 				default:
-					return '/images/user/no-image.gif';
+					return '/img/user/no-image.gif';
 			}
 		}
 	}
@@ -196,7 +196,7 @@ class User extends CActiveRecord
 			'image_size'=>null,
 		),'id=:id',array(':id'=>$id));
 
-		$image='/images/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			unlink(Yii::getPathOfAlias('webroot').$image);
 

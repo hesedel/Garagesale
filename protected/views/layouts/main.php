@@ -1,8 +1,4 @@
-<?php
-if(env_is(array('dev-strict', 'int-strict', 'sta-strict', 'pro-strict')))
-	header('Content-Type: ' . (stristr($_SERVER['HTTP_ACCEPT'], 'application/xhtml+xml') && !stristr($_SERVER['HTTP_USER_AGENT'], 'msie') ? 'application/xhtml+xml' : 'text/html'));
-?>
-<?php if(env_is(array('sta', 'sta-strict', 'pro', 'pro-strict'))): ?>
+<?php if(env_is(array('sta', 'pro'))): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <?php else: ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

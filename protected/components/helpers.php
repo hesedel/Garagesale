@@ -12,7 +12,7 @@ function db_image($table, $id, $options = array()) {
 		->where('id=:id', array(':id'=>$id))
 		->queryRow();
 	if($image) {
-		$file = '/images/uploads/cache/'.md5($table.$id).'.'.$image['type'];
+		$file = '/img/uploads/cache/'.md5($table.$id).'.'.$image['type'];
 		if(!$options['unlink']) {
 			if(!file_exists(Yii::getPathOfAlias('webroot').$file))
 				file_put_contents(Yii::getPathOfAlias('webroot').$file, $image['data']);
