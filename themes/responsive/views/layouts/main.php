@@ -1,33 +1,40 @@
-<?php if(env_is(array('sta', 'pro'))): ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<?php else: ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<?php endif ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<?php //<meta http-equiv="X-UA-Compatible" content="IE=edge"> ?>
+	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"<?php echo preg_match('/^localhost./', $_SERVER['HTTP_HOST']) == 0 ? ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"' : '' ?>>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<?php $this->renderPartial('/layouts/_head') ?>
-
-<!--[if lt IE 7]><body class="no-js ie6"><![endif]-->
-<!--[if IE 7]><body class="no-js ie7"><![endif]-->
-<!--[if IE 8]><body class="no-js ie8"><![endif]-->
-<!--[if IE 9]><body class="no-js ie9"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><body class="no-js"><!--<![endif]-->
+	<?php
+	Yii::app()->clientScript->registerCssFile('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+	Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/css.css'));
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
+	?>
+</head>
+<body>
 
 <div id="body">
 
 	<div id="body-top"></div>
 
-	<div id="page">
+	<div class="container" id="page">
 
-		<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table') ?><!--<![endif]-->
-		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)) ?><![endif]-->
+		<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
+		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)); ?><![endif]-->
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
-		<div id="alert" class="alert alert-success timeout"><?php echo Yii::app()->user->getFlash('success') ?></div>
+		<div class="alert alert-success timeout" id="alert"><?php echo Yii::app()->user->getFlash('success'); ?></div>
 		<?php endif ?>
 
-		<?php echo $content ?>
+		<?php //echo $content; ?>
 
 	</div><!-- #page -->
 
@@ -35,15 +42,43 @@
 
 <div id="footer"></div><!-- #footer -->
 
-</body>
-
-</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<?php
+Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/plugins.js'),
+	CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/bootstrap.min.js'),
+	CClientScript::POS_END);
+?>
 
 <?php
-Yii::app()->clientScript->registerScript('form',
-	file_get_contents('js/form.js'),
-CClientScript::POS_READY);
+Yii::app()->clientScript->registerScriptFile(
+	Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/form.js'),
+	CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile(
+	Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/main.js'),
+	CClientScript::POS_END);
+?>
 
-Yii::app()->clientScript->registerScript('main',
-	file_get_contents('js/main.js'),
-CClientScript::POS_READY);
+<?php /*
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
+*/ ?>
+
+<?php
+if(env_is(array('dev'))) {
+	Yii::app()->clientScript->registerScript(
+		'livereload',
+		file_get_contents(Yii::app()->theme->basePath . '/js/_livereload.js'),
+		CClientScript::POS_END);
+}
+?>
+</body>
+</html>

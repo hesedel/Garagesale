@@ -1,0 +1,729 @@
+a {
+	outline: none;
+	color: blacken($custom_cyan, 25%);
+
+	&:hover {
+		color: blacken($custom_cyan, 25%, 2);
+	}
+
+	&:visited {
+		color: blacken($custom_cyan, 25%);
+
+		&:hover {
+			color: blacken($custom_cyan, 25%, 2);
+		}
+
+	}
+
+}
+
+em {
+	font-family: ProximaNovaRegularItalic;
+	font-style: normal;
+}
+
+strong {
+	font-family: ProximaNovaSemibold;
+	font-weight: normal;
+}
+
+label, th {
+	font-family: ProximaNovaRegular;
+	font-weight: normal;
+}
+
+/*
+ * Bootstrap
+ */
+
+ul.dropdown-menu {
+
+	li {
+
+		a {
+			color: $custom_magenta;
+			text-decoration: none;
+
+			i {
+				@include opacity(.5);
+
+				&.out {
+					display: inline-block;
+				}
+
+				&.over {
+					display: none;
+				}
+
+			}
+
+			&:hover {
+				background-color: $custom_cyan;
+
+				i {
+					@include opacity(1);
+
+					&.out {
+						display: none;
+					}
+
+					&.over {
+						display: inline-block;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+/*
+ * g-
+ */
+
+div.g-actions {
+	position: absolute;
+		top: 0;
+		right: -1px;
+
+	a {
+		@include float-left;
+		color: blacken($beige, 25%, 3);
+		text-decoration: none;
+		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+		background-color: $whitesmoke;
+		@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+		@include box-shadow(
+			rgba(255, 255, 255, 1) 0 1px 1px inset,
+			rgba(0, 0, 0, .5) 0 0 1px,
+			rgba(0, 0, 0, .1) 0 1px
+		);
+		position: relative;
+		margin-right: 1px;
+		padding-right: 5px;
+		padding-left: 5px;
+
+		i {
+			@include opacity(.25);
+		}
+
+		&:hover {
+			color: blacken($beige, 25%, 4);
+			background-color: whiten($whitesmoke, 25%);
+			@include box-shadow(
+				rgba(255, 255, 255, 1) 0 1px 1px inset,
+				rgba(0, 0, 0, .5) 0 0 2px,
+				rgba(0, 0, 0, .1) 0 1px
+			);
+			z-index: 1;
+
+			i {
+				@include opacity(.5);
+			}
+
+		}
+
+	}
+
+} // .g-actions
+
+.g-button {
+	cursor: pointer;
+	color: blacken($beige, 25%, 4);
+	text-decoration: none;
+	@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+	background-color: $whitesmoke;
+	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+	border: 1px solid blacken($whitesmoke, 25%, 3);
+	border-bottom-color: blacken($whitesmoke, 25%, 4);
+	@include border-radius(3px);
+	@include box-shadow(
+		rgba(255, 255, 255, 1) 0 1px 1px inset,
+		rgba(0, 0, 0, .05) 0 1px
+	);
+	padding: 8px 9px;
+	@include transition(background-color, 125ms);
+
+	&:hover {
+		color: blacken($beige, 25%, 5);
+		background-color: whiten($whitesmoke, 25%);
+		border-color: blacken($whitesmoke, 25%, 4);
+		border-bottom-color: blacken($whitesmoke, 25%, 5);
+		@include transition(background-color, 250ms);
+	}
+
+	&:active {
+		background-color: blacken($whitesmoke, 10%);
+		border-color: blacken($whitesmoke, 25%, 4);
+		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+		@include transition(background-color, 0ms);
+
+		&:hover {
+			border-color: blacken($whitesmoke, 25%, 5);
+		}
+
+	}
+
+	&.small {
+		font-size: 1em;
+		padding: 2px 4px;
+	}
+
+	&.orange {
+		color: white;
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		background-color: $custom_orange;
+		@include box-shadow(
+			rgba(255, 255, 255, .25) 0 1px 1px inset,
+			rgba(0, 0, 0, .05) 0 1px
+		);
+
+		&:hover {
+			color: white;
+			background-color: whiten($custom_orange, 10%);
+		}
+
+		&:active {
+			background-color: blacken($custom_orange, 10%);
+			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+		}
+
+	}
+
+	&.disabled {
+		cursor: default;
+		background-color: blacken($whitesmoke, 25%);
+		border-color: blacken($whitesmoke, 25%, 2) !important;
+		border-bottom-color: blacken($whitesmoke, 25%, 3) !important;
+
+		&:hover, &:active {
+			background-color: blacken($whitesmoke, 25%);
+			border-color: blacken($whitesmoke, 25%, 2) !important;
+			border-bottom-color: blacken($whitesmoke, 25%, 3) !important;
+			@include box-shadow(
+				rgba(255, 255, 255, .25) 0 1px 1px inset,
+				rgba(0, 0, 0, .05) 0 1px
+			);
+		}
+
+	}
+
+} // .g-button
+
+a.g-button {
+	color: blacken($beige, 25%, 4);
+
+	&:hover {
+		color: blacken($beige, 25%, 5);
+	}
+
+}
+
+div.g-form {
+	position: relative;
+	padding-top: 36px;
+
+	h2 {
+		color: whiten($custom_orange, 25%, 3);
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		position: absolute;
+			top: -9px;
+			right: 0;
+	}
+
+} // .g-form
+
+div.g-items {
+	position: relative;
+	padding-top: 45px;
+
+	div.toolbox {
+		position: absolute;
+			top: 0;
+			right: 0;
+		height: 36px;
+			line-height: 36px;
+	}
+
+	&.no-toolbox {
+		padding-top: 0;
+
+		div.toolbox {
+			display: none;
+		}
+
+	}
+
+	&.grid {
+
+		div.list-view {
+			margin-top: -20px;
+			margin-bottom: -2px;
+			margin-left: -2px;
+
+			div.summary {
+				
+			}
+
+			div.items {
+				@include clearfix;
+				margin-right: -10px;
+				padding-top: 11px;
+				padding-bottom: 20px;
+				padding-left: 2px;
+
+				div.view {
+					@include float-left;
+					background-color: whiten(blacken($beige, 25%), 25%, 8);
+					border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
+					position: relative;
+					width: 155px;
+					margin-top: 9px;
+					margin-right: 10px;
+					padding: 8px 9px;
+
+					a.img {
+						display: block;
+						height: 120px;
+						margin-bottom: 6px;
+
+						img {
+							background-position: center;
+							background-repeat: no-repeat;
+							@include background-size(100%);
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+
+					}
+
+					strong {
+						@include ellipsis;
+						display: block;
+
+						a {
+							color: blacken($beige, 25%, 4);
+							text-decoration: none;
+							@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+							&:hover {
+								text-decoration: underline;
+							}
+
+						}
+
+					}
+
+					em {
+						@include ellipsis;
+						color: blacken($beige, 25%, 2);
+						position: absolute;
+					}
+
+					span.price {
+						font-family: sans-serif; //
+						@include float-right;
+						color: blacken($custom_green, 25%, 2);
+						background-color: whiten(blacken($beige, 25%), 25%, 8);
+						position: relative;
+						padding-left: 10px;
+					}
+
+					span.location {
+						@include float-left;
+						color: blacken($beige, 25%);
+						display: none;
+					}
+
+					span.condition {
+						@include float-right;
+						color: white;
+						@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
+						@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+						@include border-radius(2px);
+						display: none;
+						line-height: 14px;
+						margin-top: 2px;
+						margin-bottom: 2px;
+						padding-right: 5px;
+						padding-left: 5px;
+
+						&.new {
+							background-color: $custom_cyan;
+						}
+
+						&.old {
+							background-color: $custom_magenta;
+						}
+
+					}
+
+					&:hover {
+						background-color: white;
+						border-color: whiten(blacken($beige, 25%), 25%, 4);
+						@include box-shadow(rgba(0, 0, 0, .1) 0 0 2px);
+						position: relative;
+						margin-bottom: -18px;
+						//@include transition(box-shadow, 125ms); // causes a bug in webkit-based browsers
+
+						span.price {
+							background-color: white;
+						}
+
+						span.location,
+						span.condition {
+							display: block;
+						}
+
+					}
+
+				} // .view
+
+			} // .items
+
+			&.list-view-loading {
+				background-position: left bottom;
+
+				div.items {
+					@include opacity(.75);
+					@include transition(opacity, 125ms);
+				}
+
+			}
+
+		} // .list-view
+
+	} // .grid
+
+	&.list {
+		
+
+		div.list-view {
+			
+
+			div.items {
+				
+
+				div.view {
+					@include clearfix;
+					background-color: whiten(blacken($beige, 25%), 25%, 6);
+					border-top: 1px dotted white;
+					padding: 17px 10px 18px;
+
+					&:first-child {
+						border-top: none;
+						padding-top: 18px;
+					}
+
+					div.data-container {
+						@include float-left;
+						width: 100%;
+
+						div.data {
+							margin-left: 55px;
+
+							table {
+								margin-bottom: 0;
+
+								th, td {
+									padding: 0;
+								}
+
+								th {
+									width: 100%;
+									padding-right: 5px;
+
+									strong {
+										@include ellipsis;
+										display: block;
+
+										a {
+											color: blacken($beige, 25%, 4);
+											text-decoration: none;
+											@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+											&:hover {
+												text-decoration: underline;
+											}
+
+										}
+
+									}
+
+								}
+
+								td {
+									white-space: nowrap;
+
+									&.condition {
+										padding-right: 5px;
+										padding-left: 5px;
+
+										span.condition {
+											color: white;
+											@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
+											@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+											@include border-radius(2px);
+											padding-right: 4px;
+											padding-left: 4px;
+
+											&.new {
+												background-color: $custom_cyan;
+											}
+
+											&.old {
+												background-color: $custom_magenta;
+											}
+
+										}
+
+									}
+
+									&.price {
+										color: blacken($custom_green, 25%, 2);
+										padding-left: 5px;
+									}
+
+								}
+
+							} // table
+
+							em {
+								color: blacken($beige, 25%, 2);
+							}
+
+							span.location {
+								color: blacken($beige, 25%);
+							}
+
+							span.time {
+								@include float-right;
+								color: blacken($beige, 25%);
+								//font-size: $small;
+								height: 18px;
+									line-height: 18px;
+
+								abbr {
+									color: blacken($beige, 25%, 2);
+									border-bottom: none;
+								}
+
+							}
+
+						} // .data
+
+					} // .data-container
+
+					a.img {
+						@include float-left;
+						width: 45px;
+						height: 36px;
+						margin-left: -100%;
+
+						img {
+							background-color: whiten(blacken($beige, 25%), 25%, 4);
+							background-position: center;
+							background-repeat: no-repeat;
+							@include background-size(100%);
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+
+					}
+
+					&:hover {
+						background-color: transparent;
+					}
+
+				} // .view
+
+			} // .items
+
+		} // .list-view
+
+	} // .list
+
+} // .g-items
+
+ul.g-pager {
+	@include float-right;
+	margin-right: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	li {
+		@include float-left;
+		padding-right: 5px;
+		padding-left: 5px;
+
+		a {
+			@extend .g-button;
+			@extend .g-button.small;
+			text-align: center;
+			display: block;
+			@include min-width(15px);
+			height: 16px;
+				line-height: 16px;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		&.first,
+		&.previous,
+		&.next,
+		&.last {
+
+			a {
+				//font-size: $h3;
+				line-height: 14px;
+			}
+
+		}
+
+		&.first,
+		&.last {
+			display: none;
+		}
+
+		&.selected {
+
+			a {
+				@extend .g-button:active;
+				cursor: default;
+			}
+
+		}
+
+		&.hidden {
+			
+		}
+
+	}
+
+} // .g-pager
+
+table.g-table {
+	border-spacing: 1px;
+	margin-bottom: 0;
+
+	th, td {
+		@include box-shadow(rgba(0, 0, 0, .25) 0 0 1px);
+		padding: 9px 15px;
+	}
+
+	th {
+		color: blacken($beige, 25%, 3);
+		@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+		white-space: nowrap;
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+	}
+
+	td {
+		color: blacken($beige, 25%, 3);
+		//font-size: $h4;
+		line-height: 18px;
+		background-color: whiten(blacken($beige, 25%), 25%, 3);
+		width: 100%;
+	}
+
+} // .g-table
+
+div.g-tabs {
+	font-family: ProximaNovaRegular;
+	font-size: 1em;
+	background-color: transparent;
+	background-image: none;
+	border: none;
+	@include border-radius(0);
+	padding: 18px 0 0;
+
+	ul.ui-tabs-nav {
+		background-color: transparent;
+		background-image: none;
+		border: none;
+		@include border-radius(0);
+		height: 27px;
+		margin-top: -1px;
+		padding: 1px 0 9px 10px;
+		overflow: hidden;
+
+		li {
+			background-color: whiten(blacken($beige, 25%), 25%, 3);
+			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+			border: none;
+			@include border-radius(3px);
+			@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
+			top: 0;
+			height: 27px;
+			margin-right: 10px;
+
+			a {
+				color: whiten(blacken($beige, 25%), 25%, 4);
+				color: blacken($beige, 25%, 3);
+				//font-size: $h4;
+				@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
+				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				line-height: 27px;
+				padding: 0 10px;
+			}
+
+			&:hover {
+				background-color: whiten(blacken($beige, 25%), 25%, 4);
+				background-image: none;
+
+				a {}
+
+			}
+
+			&.ui-tabs-selected {
+				background-color: whiten(blacken($beige, 25%), 25%, 4);
+				@include border-bottom-radius(0);
+				background-image: none;
+				padding-bottom: 9px;
+
+				a {
+					color: blacken($beige, 25%, 3);
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				}
+
+				&:hover {
+
+					a {
+						cursor: default;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	div.tab-content {
+		background-color: whiten(blacken($beige, 25%), 25%, 4);
+		@include border-radius(3px);
+		@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
+		padding: 18px 20px;
+	}
+
+} // .g-tabs
+
+.no-js div.g-tabs {
+
+	> ul {
+		display: none;
+	}
+
+	div.tab-content {
+		margin-bottom: 18px;
+	}
+
+}

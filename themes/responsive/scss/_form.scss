@@ -1,0 +1,424 @@
+form.inline {
+	display: inline;
+}
+
+fieldset {
+	border: none;
+	margin-bottom: 0;
+	padding: 0;
+
+	legend {
+		display: none;
+	}
+
+}
+
+input[type=submit] {
+	@extend .g-button;
+	font-family: ProximaNovaRegular;
+	font-size: 1em;
+	position: absolute;
+	height: 30px;
+	padding: 0 10px !important;
+	visibility: hidden;
+}
+
+.no-js {
+
+	a.submit {
+		display: none;
+	}
+
+	input[type=submit] {
+		position: static;
+		visibility: visible;
+	}
+
+}
+
+input[type=text], input[type=password], textarea {
+	font-family: ProximaNovaRegular;
+	//font-size: $h4;
+	outline: none;
+}
+
+textarea {
+	line-height: 18px;
+}
+
+div.input-text,
+div.textarea {
+	cursor: text;
+	position: relative;
+
+	input, textarea {
+		border: none;
+		display: block;
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 0;
+	}
+
+	span.placeholder {
+		cursor: text;
+		position: absolute;
+			left: 10px;
+	}
+
+}
+
+.no-js {
+
+	div.input-text,
+	div.textarea {
+
+		span.placeholder {
+			display: none;
+		}
+
+	}
+
+}
+
+div.input-text span.placeholder {
+	top: 0;
+}
+
+.ie7 div.input-text input {
+	margin-top: -1px;
+	margin-bottom: -1px;
+}
+
+div.form.success {
+	color: black;
+	border: none;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+table.form {
+	background-color: whiten(blacken($beige, 25%), 25%, 4);
+	border-collapse: collapse;
+	border-color: whiten(blacken($beige, 25%), 25%, 4);
+	border-spacing: 0;
+	border-style: solid;
+	border-top-width: 18px;
+	border-right-width: 0;
+	border-bottom-width: 18px;
+	border-left-width: 0;
+	margin-bottom: 0;
+
+	th, td {
+		border-top: 1px dotted white;
+		padding-top: 8px;
+		padding-bottom: 9px;
+	}
+
+	th {
+		vertical-align: top;
+	}
+
+	tfoot td {
+		font-style: normal;
+		text-align: right;
+		line-height: 36px;
+		padding-right: 20px;
+		padding-left: 20px;
+
+		a.g-button,
+		input[type=submit] {
+			border-color: blacken($whitesmoke, 25%);
+			border-bottom-color: blacken($whitesmoke, 25%, 2);
+
+			&:hover {
+				border-color: blacken($whitesmoke, 25%, 2);
+				border-bottom-color: blacken($whitesmoke, 25%, 3);
+			}
+
+			&:active {
+				border-color: blacken($whitesmoke, 25%, 2);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 3);
+				}
+
+			}
+
+			&.orange {
+				border-color: blacken($custom_orange, 25%);
+				border-bottom-color: blacken($custom_orange, 25%, 2);
+
+				&:hover {
+					border-color: blacken($custom_orange, 25%, 2);
+					border-bottom-color: blacken($custom_orange, 25%, 3);
+				}
+
+				&.active {
+					border-color: blacken($custom_orange, 25%, 2);
+
+					&:hover {
+						border-color: blacken($custom_orange, 25%, 3);
+					}
+
+				}
+
+			}
+
+		}
+
+		input[type=submit] {
+			@extend .g-button.orangered;
+			position: absolute;
+			visibility: hidden;
+		}
+
+	}
+
+	tbody {
+
+		tr {
+
+			th {
+				color: blacken(whiten($beige, 25%), 25%, 2);
+				//@include h4;
+				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				white-space: nowrap;
+				line-height: 36px;
+				padding-right: 10px;
+				padding-left: 20px;
+
+				label {
+
+					span.required {
+						color: $custom_magenta;
+					}
+
+					&.error {
+						color: blacken(whiten($beige, 25%), 25%, 3);
+						background-color: transparent;
+						border: none;
+						padding: 0;
+					}
+
+				}
+
+			}
+
+			td {
+				width: 100%;
+				padding-right: 20px;
+				padding-left: 10px;
+
+				label {
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				}
+
+				div.input-text,
+				div.textarea {
+					background-color: white;
+					border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
+					border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
+					border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
+					max-width: 450px;
+
+					span.placeholder {
+						color: blacken($beige, 25%);
+						//font-size: $h4;
+					}
+
+					&.focus {
+
+						span.placeholder {
+							color: blacken($beige, 25%, 2);
+						}
+
+					}
+
+				}
+
+				div.input-text {
+					margin-top: 4px;
+					margin-bottom: 4px;
+					padding-right: 9px;
+					padding-left: 9px;
+
+					input {
+						height: 26px;
+							line-height: 26px;
+
+						&.error {
+							color: black;
+						}
+
+					}
+
+					span.placeholder {
+						height: 26px;
+							line-height: 26px;
+					}
+
+					&.half {
+						max-width: 210px;
+					}
+
+					&.repeat {
+						max-width: 410px;
+						margin-left: 40px;
+					}
+
+					&.error,
+					&.success {
+						padding-top: 0;
+						padding-bottom: 0;
+					}
+
+				}
+
+				div.textarea {
+					padding: 8px 9px;
+
+					textarea {
+						height: 72px;
+
+						&.error {
+							background-color: white;
+							color: black;
+						}
+
+					}
+
+					span.placeholder {
+						top: 10px;
+						line-height: 1em;
+					}
+
+					&.error {
+						margin-bottom: 0;
+					}
+
+				}
+
+				div.MultiFile-wrap {
+
+					div.MultiFile-list {
+						@include clearfix;
+
+						div.MultiFile-label {
+							clear: left;
+							@include float-left;
+
+							a.MultiFile-remove {
+								@include float-right;
+								color: blacken($custom_cyan, 25%);
+								text-decoration: none;
+								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+								&:hover {
+									color: blacken($custom_cyan, 25%, 2);
+								}
+
+							}
+
+							span.MultiFile-title {
+								@include float-left;
+								@include ellipsis;
+								color: black;
+								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+								max-width: 310px;
+								padding-right: 5px;
+							}
+
+						}
+
+					}
+
+					&.success {
+						background-color: transparent;
+						border: none;
+						margin-bottom: 0;
+						padding: 0;
+					}
+
+				}
+
+				div.captcha {
+					background-color: whiten(blacken($beige, 25%), 25%, 5);
+					border: 1px solid white;
+					width: 120px;
+					padding: 1px 4px;
+
+					img {
+						display: block;
+					}
+
+				}
+
+				div.errorMessage {
+					font-family: ProximaNovaSemibold;
+					color: $custom_magenta;
+				}
+
+				div.no-js {
+					color: $custom_magenta;
+					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+					display: none;
+				}
+
+			}
+
+			&:first-child {
+
+				th, td {
+					border-top: none;
+					padding-top: 9px;
+				}
+
+			}
+
+			&.repeat {
+
+				th, td {
+					background-color: rgba(255, 255, 255, .25);
+				}
+
+				th {
+					padding-left: 30px;
+				}
+
+				td {
+
+					div.input-text {
+						max-width: 410px;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+.no-js {
+
+	div.no-js {
+		display: block !important;
+	}
+
+	tfoot td {
+
+		a.g-button.orange {
+			display: none;
+		}
+
+		input[type=submit] {
+			position: static !important;
+			visibility: visible !important;
+		}
+
+	}
+
+}
