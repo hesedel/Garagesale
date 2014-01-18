@@ -1,9 +1,12 @@
 a {
-	outline: none;
 	color: blacken($custom_cyan, 25%);
 
 	&:hover {
 		color: blacken($custom_cyan, 25%, 2);
+	}
+
+	&:focus {
+		outline: none;
 	}
 
 	&:visited {
@@ -17,18 +20,7 @@ a {
 
 }
 
-em {
-	font-family: ProximaNovaRegularItalic;
-	font-style: normal;
-}
-
-strong {
-	font-family: ProximaNovaSemibold;
-	font-weight: normal;
-}
-
 label, th {
-	font-family: ProximaNovaRegular;
 	font-weight: normal;
 }
 
@@ -36,7 +28,7 @@ label, th {
  * Bootstrap
  */
 
-ul.dropdown-menu {
+.dropdown-menu {
 
 	li {
 
@@ -45,34 +37,13 @@ ul.dropdown-menu {
 			text-decoration: none;
 
 			i {
-				@include opacity(.5);
-
-				&.out {
-					display: inline-block;
-				}
-
-				&.over {
-					display: none;
-				}
-
+				color: $dark;
+				text-align: center;
+				width: $gutter-width;
 			}
 
 			&:hover {
 				background-color: $custom_cyan;
-
-				i {
-					@include opacity(1);
-
-					&.out {
-						display: none;
-					}
-
-					&.over {
-						display: inline-block;
-					}
-
-				}
-
 			}
 
 		}
@@ -134,7 +105,6 @@ div.g-actions {
 .g-button {
 	cursor: pointer;
 	color: blacken($beige, 25%, 4);
-	text-decoration: none;
 	@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
 	background-color: $whitesmoke;
 	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
@@ -150,6 +120,7 @@ div.g-actions {
 
 	&:hover {
 		color: blacken($beige, 25%, 5);
+		text-decoration: none;
 		background-color: whiten($whitesmoke, 25%);
 		border-color: blacken($whitesmoke, 25%, 4);
 		border-bottom-color: blacken($whitesmoke, 25%, 5);

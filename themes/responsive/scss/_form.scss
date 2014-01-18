@@ -15,7 +15,6 @@ fieldset {
 
 input[type=submit] {
 	@extend .g-button;
-	font-family: ProximaNovaRegular;
 	font-size: 1em;
 	position: absolute;
 	height: 30px;
@@ -37,8 +36,6 @@ input[type=submit] {
 }
 
 input[type=text], input[type=password], textarea {
-	font-family: ProximaNovaRegular;
-	//font-size: $h4;
 	outline: none;
 }
 

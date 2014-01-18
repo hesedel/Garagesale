@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<?php //<meta http-equiv="X-UA-Compatible" content="IE=edge"> ?>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +18,9 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
 	?>
+
+	<?php Yii::app()->clientScript->registerScriptFile('//use.typekit.net/fas6ahs.js'); ?>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
 
@@ -25,7 +28,7 @@
 
 	<div id="body-top"></div>
 
-	<div class="container" id="page">
+	<div id="page">
 
 		<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
 		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)); ?><![endif]-->

@@ -25,6 +25,10 @@ body {
 	position: relative;
 }
 
+.lt-ie8 #body {
+	background-color: red;
+}
+
 #body-top {
 	background-color: $custom_cyan;
 	height: 3px;
@@ -36,21 +40,33 @@ body {
 }
 
 #page {
-	padding-top: 63px;
+	@extend .container;
+	padding-top: $line-height * 3.5;
 	position: relative;
 }
 
-/**/
+.no-js #page {
+	padding-top: 0;
+}
 
-#table {
-	border-collapse: collapse;
-	border-spacing: 0;
+#table-container {
+	margin-bottom: $line-height * .5;
 	position: absolute;
 		top: 0;
+		right: $gutter-width;
+		left: $gutter-width;
 		z-index: 4;
-	display: table;
+}
+
+.no-js #table-container {
+	position: static;
+}
+
+#table {
 	width: 100%;
-	margin-bottom: 18px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	display: table;
 
 	.tr {
 		display: table-row;
@@ -69,21 +85,21 @@ body {
 
 				div {
 					background-color: whiten(blacken($beige, 25%), 25%, 6);
-					padding-bottom: 18px;
+					padding-bottom: $line-height;
 				}
 
 			}
 
 			&.filters-left {
-				padding-left: 5px;
+				padding-left: $gutter-width * (1 / 3);
 
 				div {
+					padding-top: $line-height * .5;
 					@include border-bottom-left-radius(3px);
 					@include box-shadow(
-						$dark 0 1px,
-						$dark -1px 0
+						0 1px $dark,
+						-1px 0 $dark
 					);
-					padding-top: 9px;
 				}
 
 			}
@@ -94,12 +110,12 @@ body {
 				div {
 					@include border-right-radius(3px);
 					@include box-shadow(
-						$dark 1px 0,
-						$dark 0 1px
+						1px 0 $dark,
+						0 1px $dark
 					);
 					padding: {
-						top: 8px;
-						left: 10px;
+						top: ($line-height * .5) - 1px;
+						left: $gutter-width * (2 / 3);
 					}
 				}
 
@@ -111,52 +127,65 @@ body {
 
 }
 
+.no-js #table {
+
+	div.tr.filters {
+		display: table-row !important;
+	}
+
+	tr.tr.filters {
+		display: block !important;
+	}
+
+}
+
 #header {
 	position: relative;
 
 	h1 {
 		font-size: 1em;
+		font-weight: 100;
+		margin-top: 0;
 		margin-bottom: 0;
 	}
 
-	span.beta {
+	.beta {
 		@include float-right;
 		color: whiten($custom_cyan, 25%, 4);
-		//font-size: $small;
-		@include text-shadow(rgba(0, 0, 0, .1) 0 -1px);
-		height: 18px;
-			line-height: 18px;
-		margin-top: -18px;
-		padding-right: 5px;
+		font-size: .75em;
+		@include text-shadow(0 -1px rgba($black, .1));
+		height: $line-height;
+			line-height: $line-height;
+		margin-top: -$line-height;
+		padding-right: $gutter-width * (1 / 3);
 	}
 
 }
 
 #logo {
-	color: white;
-	font-family: ProximaNovaLight;
-	//font-size: $h3;
-	text-decoration: none;
-	@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+	color: $white;
+	font-size: 1.25em;
+	@include text-shadow(0 -1px rgba($black, .25));
 	white-space: nowrap;
 	background-color: $custom_cyan;
-	@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .1)));
+	@include background-image(linear-gradient(rgba($white, .25), rgba($black, .1)));
+	height: $line-height * 3;
+		line-height: $line-height * 3;
+	padding-right: $gutter-width;
+	padding-left: $gutter-width;
 	@include border-radius(3px);
 	@include box-shadow(
-		rgba(0, 0, 0, .1) 0 0 1px inset,
-		rgba(0, 0, 0, .5) 0 0 1px
+		0 0 1px rgba($black, .1) inset,
+		0 0 1px rgba($black, .5)
 	);
 	display: block;
-	height: 54px;
-		line-height: 54px;
-	padding-right: 15px;
-	padding-left: 15px;
 
 	span {
 		color: whiten($custom_magenta, 25%, 6);
 	}
 
 	&:hover {
+		text-decoration: none;
 		background-color: whiten($custom_cyan, 5%);
 	}
 
@@ -169,27 +198,32 @@ body {
 #filters,
 #post {
 
-	a {
+	> a,
+	div.a > a,
+	span.a {
 		color: blacken($custom_cyan, 25%);
-		//font-size: $h4;
-		text-decoration: none;
-		@include text-shadow(rgba(255, 255, 255, .5) 0 1px);
+		@include text-shadow(0 1px rgba($white, .5));
 		white-space: nowrap;
 		background-color: $light;
-		@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .1)));
+		@include background-image(linear-gradient(rgba($white, .25), rgba($black, .1)));
+		height: $line-height * 3;
+			line-height: $line-height * 3;
+		padding-right: $gutter-width * (2 / 3);
+		padding-left: $gutter-width * (2 / 3);
 		@include box-shadow(
-			rgba(0, 0, 0, .1) 0 0 1px inset,
-			rgba(0, 0, 0, .5) 0 0 1px
+			0 0 1px rgba($black, .1) inset,
+			0 0 1px rgba($black, .5)
 		);
 		display: block;
-		height: 54px;
-			line-height: 54px;
-		padding-right: 10px;
-		padding-left: 10px;
 
 		&:hover {
 			color: blacken($custom_cyan, 25%, 2);
+			text-decoration: none;
 			background-color: whiten(blacken($beige, 25%), 25%, 5);
+		}
+
+		&:focus {
+			text-decoration: none;
 		}
 
 	}
@@ -198,9 +232,10 @@ body {
 
 #register,
 #user {
-	padding-left: 5px !important;
+	padding-left: $gutter-width * (1 / 3) !important;
 
-	a {
+	> a,
+	.a > a {
 		@include border-left-radius(3px);
 	}
 
@@ -208,35 +243,36 @@ body {
 
 #user {
 
-	a {
+	.a {
 		position: relative;
-		padding-right: 25px;
-		padding-left: 35px;
 
-		img {
-			background-color: rgba(0, 0, 0, .25);
-			background-position: center;
-			position: absolute;
-				top: 18px;
-				left: 10px;
-			width: 20px;
-			height: 18px;
+		> a {
+
+			img {
+				background-color: rgba($black, .25);
+				background-position: center;
+				width: 38px;
+				height: 34px;
+				border: 1px solid $dark;
+				margin-right: $gutter-width * (1 / 3);
+				display: inline-block;
+			}
+
+			.fa-angle-down {
+				margin-left: $gutter-width * (1 / 3);
+			}
+
 		}
 
-		span.caret {
-			border-top: 4px solid $custom_cyan;
-			border-right: 4px solid transparent;
-			border-left: 4px solid transparent;
-			position: absolute;
-				top: 24px;
-				right: 11px;
-			@include opacity(1);
+		.dropdown-menu {
+			margin-top: 0;
+			left: -1px;
 		}
 
 		&:hover {
 
-			span.caret {
-				border-top-color: blacken($custom_cyan, 25%);
+			.dropdown-menu {
+				display: block;
 			}
 
 		}
@@ -256,28 +292,19 @@ body {
 }
 
 #filters {
-	padding-left: 5px !important;
+	padding-left: $gutter-width * (1 / 3) !important;
 
-	a {
+	.a {
+		cursor: pointer;
 		@include border-left-radius(3px);
-		position: relative;
-		padding-right: 25px;
 
-		span {
-			border-top: 4px solid $custom_cyan;
-			border-right: 4px solid transparent;
-			border-left: 4px solid transparent;
-			position: absolute;
-				top: 24px;
-				right: 11px;
+		.fa-angle-down,
+		.fa-angle-up {
+			margin-left: $gutter-width * (1 / 3);
 		}
 
-		&:hover {
-
-			span {
-				border-top-color: blacken($custom_cyan, 25%);
-			}
-
+		.fa-angle-up {
+			display: none;
 		}
 
 		&.click {
@@ -287,13 +314,30 @@ body {
 			@include border-bottom-left-radius(0);
 			@include box-shadow(none);
 
-			span {
-				border-top: none;
-				border-bottom: 4px solid blacken($custom_cyan, 25%);
+			.fa-angle-down {
+				display: none;
+			}
+
+			.fa-angle-up {
+				display: inline-block;
 			}
 
 		}
 
+	}
+
+}
+
+.no-js #filters .a {
+	cursor: default;
+	color: blacken($custom_cyan, 25%, 2);
+	background-color: whiten(blacken($beige, 25%), 25%, 6);
+	@include background-image(none);
+	@include border-bottom-left-radius(0);
+	@include box-shadow(none);
+
+	i {
+		display: none;
 	}
 
 }
@@ -304,47 +348,46 @@ body {
 
 	.table {
 		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		@include background-image(linear-gradient(rgba(255, 255, 255, .25), rgba(0, 0, 0, .1)));
+		@include background-image(linear-gradient(rgba($white, .25), rgba($black, .1)));
 		@include border-right-radius(3px);
 		@include box-shadow(
-			rgba(0, 0, 0, .1) 0 0 1px inset,
-			rgba(0, 0, 0, .5) 0 0 1px
+			0 0 1px rgba($black, .1) inset,
+			0 0 1px rgba($black, .5)
 		);
-		display: table;
 		margin-bottom: 0;
+		display: table;
 
 		.td {
-			height: 30px;
+			height: $line-height * 3;
 			padding-top: 12px;
 			padding-bottom: 12px;
 
 			&.left {
 				width: 100%;
-				padding-left: 10px;
+				padding-left: $gutter-width * (2 / 3);
 			}
 
 			&.right {
-				padding-right: 10px;
-				padding-left: 5px;
+				padding-right: $gutter-width * (2 / 3);
+				padding-left: $gutter-width * (1 / 3);
 			}
 
-			div.input-text {
-				background-color: white;
+			.input-text {
+				background-color: $white;
 				border: 1px solid blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 2);
 				border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
 				border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 4);
-				height: 28px;
-				padding-right: 9px;
-				padding-left: 9px;
+				height: 30px;
+				padding-right: ($gutter-width * (2 / 3)) - 1px;
+				padding-left: ($gutter-width * (2 / 3)) - 1px;
 
 				input {
 					height: 28px;
 						line-height: 28px;
 				}
 
-				span.placeholder {
+				.placeholder {
 					color: blacken($beige, 25%);
-					//font-size: $h4;
 					line-height: 28px;
 				}
 
@@ -355,7 +398,7 @@ body {
 
 				&.focus {
 
-					span.placeholder {
+					.placeholder {
 						color: blacken($beige, 25%, 2);
 					}
 
@@ -363,7 +406,7 @@ body {
 
 			}
 
-			a.g-button,
+			.g-button,
 			input[type=submit] {
 				border-color: blacken($whitesmoke, 25%);
 				border-bottom-color: blacken($whitesmoke, 25%, 2);
@@ -384,11 +427,10 @@ body {
 
 			}
 
-			a.g-button {
-				//font-size: $h4;
+			.g-button {
 				display: block;
-				height: 28px;
-					line-height: 28px;
+				height: 30px;
+					line-height: 30px;
 				padding-top: 0;
 				padding-bottom: 0;
 			}
@@ -403,22 +445,34 @@ body {
 
 }
 
+.no-js #search {
+
+	.g-button {
+		display: none;
+	}
+
+	input[type=submit] {
+		display: inline-block;
+	}
+
+}
+
 #post {
-	padding-left: 5px !important;
+	padding-left: $gutter-width * (1 / 3) !important;
 
 	a {
-		color: white;
+		color: $white;
 		text-align: center;
-		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		@include text-shadow(0 -1px rgba($black, .25));
 		background-color: $custom_orange;
+		height: $line-height * 3;
+			line-height: $line-height;
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
 		@include border-radius(3px);
-		height: 36px;
-			line-height: 18px;
-		padding-top: 9px;
-		padding-bottom: 9px;
 
 		&:hover {
-			color: white;
+			color: $white;
 			background-color: whiten($custom_orange, 10%);
 		}
 

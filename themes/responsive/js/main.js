@@ -10,7 +10,7 @@ setTimeout(function() {
 	$('.alert-success.timeout').slideUp();
 }, 10000);
 
-$('a', '#filters').click(function() {
+$('.a', '#filters').click(function() {
 	if(!$(this).hasClass('click')) {
 		$(this).addClass('click');
 		$('.filters', '#table').removeClass('hide');
