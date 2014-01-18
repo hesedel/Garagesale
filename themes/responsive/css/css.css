@@ -6318,16 +6318,16 @@ td.visible-lg {
   td.visible-lg {
     display: table-cell !important; } }
 @media (max-width: 767px) {
-  .hidden-xs, #login a .fa-sign-in, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span,
+  .hidden-xs, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span, #post,
   tr.hidden-xs,
-  #login a tr.fa-sign-in,
   #filters .a tr.fa-filter,
+  tr#post,
   th.hidden-xs,
-  #login a th.fa-sign-in,
   #filters .a th.fa-filter,
+  th#post,
   td.hidden-xs,
-  #login a td.fa-sign-in,
-  #filters .a td.fa-filter {
+  #filters .a td.fa-filter,
+  td#post {
     display: none !important; } }
 @media (min-width: 768px) and (max-width: 991px) {
   .hidden-sm, #login a .fa-sign-in, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span,
@@ -6726,6 +6726,7 @@ td.visible-print {
 
 /* colors */
 /* fonts */
+/* Bootstrap */
 /**/
 form.inline {
   display: inline; }
@@ -7487,6 +7488,9 @@ body {
 .no-js #page {
   padding-top: 0; }
 
+@media (max-width: 767px) {
+  #page {
+    padding-top: 0; } }
 #table-container {
   margin-bottom: 9px;
   position: absolute;
@@ -7498,6 +7502,9 @@ body {
 .no-js #table-container {
   position: static; }
 
+@media (max-width: 767px) {
+  #table-container {
+    position: static; } }
 #table {
   width: 100%;
   border-collapse: collapse;
@@ -7537,6 +7544,21 @@ body {
 .no-js #table tr.tr.filters {
   display: block !important; }
 
+@media (max-width: 767px) {
+  #table {
+    display: block; }
+    #table > .tr {
+      *zoom: 1;
+      display: block; }
+      #table > .tr:before, #table > .tr:after {
+        content: " ";
+        display: table; }
+      #table > .tr:after {
+        clear: both; }
+      #table > .tr > .td {
+        display: block; }
+    #table .tr.filters > :not(.filters-right) {
+      display: none; } }
 #header {
   position: relative; }
   #header h1 {
@@ -7545,15 +7567,14 @@ body {
     margin-top: 0;
     margin-bottom: 0; }
   #header .beta {
-    display: inline;
-    float: right;
     color: #aedeed;
     font-size: .75em;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
     height: 18px;
     line-height: 18px;
     margin-top: -18px;
-    padding-right: 5px; }
+    padding-right: 5px;
+    float: right; }
 
 #logo {
   color: white;
@@ -7580,6 +7601,10 @@ body {
     text-decoration: none;
     background-color: #0c9ece; }
 
+@media (max-width: 767px) {
+  #logo {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; } }
 #register > a,
 #register div.a > a,
 #register span.a,
@@ -7661,6 +7686,22 @@ body {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px; }
 
+@media (max-width: 767px) {
+  #register,
+  #user {
+    padding-left: 0 !important;
+    float: left; }
+    #register > a,
+    #register .a > a,
+    #user > a,
+    #user .a > a {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; } }
+@media (max-width: 767px) {
+  #register {
+    text-align: center;
+    width: 50%;
+    position: relative; } }
 #user .a {
   position: relative; }
   #user .a > a img {
@@ -7681,6 +7722,9 @@ body {
   #user .a:hover .dropdown-menu {
     display: block; }
 
+@media (max-width: 767px) {
+  #user {
+    width: 75%; } }
 #login,
 #logout {
   padding-left: 1px !important; }
@@ -7689,6 +7733,23 @@ body {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
 
+@media (max-width: 767px) {
+  #login,
+  #logout {
+    text-align: center;
+    padding-left: 0 !important;
+    float: left;
+    position: relative; }
+    #login a,
+    #logout a {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; } }
+@media (max-width: 767px) {
+  #login {
+    width: 50%; } }
+@media (max-width: 767px) {
+  #logout {
+    width: 25%; } }
 #filters {
   padding-left: 5px !important; }
   #filters .a {
@@ -7727,6 +7788,16 @@ body {
   .no-js #filters .a i {
     display: none; }
 
+@media (max-width: 767px) {
+  #filters {
+    text-align: center;
+    width: 25%;
+    padding-left: 0 !important;
+    clear: left;
+    float: left; }
+    #filters .a {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; } }
 #search {
   width: 100%;
   padding-left: 1px !important; }
@@ -7798,6 +7869,14 @@ body {
 .no-js #search input[type=submit] {
   display: inline-block; }
 
+@media (max-width: 767px) {
+  #search {
+    padding-left: 0 !important; }
+    #search .table {
+      width: 75%;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      float: left; } }
 #post {
   padding-left: 5px !important; }
   #post a {
