@@ -168,6 +168,17 @@ body {
 				display: none;
 			}
 
+			.filters-right {
+				padding-top: 0;
+
+				div {
+					padding-left: $gutter-width;
+					@include border-bottom-left-radius(3px);
+					margin-left: 0;
+				}
+
+			}
+
 		}
 
 	}
@@ -480,6 +491,11 @@ body {
 
 		.a {
 			@include border-left-radius(0);
+
+			&.click {
+				height: ($line-height * 3) + 1px;
+			}
+
 		}
 
 	}
