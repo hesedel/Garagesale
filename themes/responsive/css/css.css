@@ -7664,7 +7664,7 @@ body {
 #user .a {
   position: relative; }
   #user .a > a img {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
     background-position: center;
     width: 38px;
     height: 34px;

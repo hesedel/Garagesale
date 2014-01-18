@@ -163,7 +163,7 @@ class User extends CActiveRecord
 	public function getImage($options=array())
 	{
 		$defaults=array(
-			'color'=>'white',
+			'color'=>'black',
 		);
 		$options=array_merge($defaults,$options);
 
@@ -174,7 +174,8 @@ class User extends CActiveRecord
 			return $image;
 		else
 		{
-			switch($defaults['color'])
+			/*
+			switch($options['color'])
 			{
 				case 'black':
 					return '/img/user/no-image-black.gif';
@@ -183,8 +184,10 @@ class User extends CActiveRecord
 					return '/img/user/no-image-white.gif';
 					break;
 				default:
-					return '/img/user/no-image.gif';
+					return '/img/user/no-image-black.gif';
 			}
+			*/
+			return false;
 		}
 	}
 

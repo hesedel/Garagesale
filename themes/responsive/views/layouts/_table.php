@@ -33,13 +33,16 @@
 		<?php echo !isset($legacy) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
 			<div class="a">
 				<?php echo CHtml::link(
-					CHtml::image(
-						'/img/transparent.gif',
-						Yii::app()->user->id,
-						array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38x34' . Yii::app()->params['user']->getImage(array('color'=>'black')) . ')')
+					(Yii::app()->params['user']->getImage()
+						? CHtml::image(
+							'/img/transparent.gif',
+							Yii::app()->user->id,
+							array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38x34' . Yii::app()->params['user']->getImage() . ')')
+						)
+						: '<i class="fa fa-user"></i> '
 					) .
-						Yii::app()->user->id .
-						'<i class="fa fa-angle-down"></i>',
+							Yii::app()->user->id .
+							'<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
 						'id' => Yii::app()->user->id,
