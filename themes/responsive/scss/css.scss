@@ -386,7 +386,7 @@ body {
 	#logout {
 		text-align: center;
 		padding-left: 0 !important;
-		float: left;
+		float: right;
 		position: relative;
 
 		a {
@@ -633,7 +633,7 @@ body {
 		.table {
 			width: 75%;
 			@include border-right-radius(0);
-			float: left;
+			float: right;
 		}
 
 	}
