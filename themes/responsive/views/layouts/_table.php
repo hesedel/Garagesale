@@ -25,7 +25,7 @@
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('Login', array('/site/login')); ?>
+			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php else: ?>
@@ -46,22 +46,22 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
-					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i> &#160; Dashboard', array('/admin/user/dashboard')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
-					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i> &#160; Edit Account', array('/admin/user/account')); ?></li>
-					<li><?php echo CHtml::link('<i class="fa fa-user"></i> &#160; View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
 				</ul>
 			</div>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="logout">' : '<td class="td" id="logout">'; ?>
-			<?php echo CHtml::link('Logout', array('/site/logout')); ?>
+			<?php echo CHtml::link('<i class="fa fa-sign-out"></i> <span>Logout</span>', array('/site/logout')); ?>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php endif ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="filters">' : '<td class="td" id="filters">'; ?>
-			<span class="a">Filters<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span>
+			<span class="a"><i class="fa fa-filter"></i> Filters<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
@@ -78,7 +78,7 @@
 					<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 					<?php echo !isset($legacy) ? '<div class="td right">' : '<td class="td right">'; ?>
-						<?php echo CHtml::linkButton('Search', array('class' => 'g-button')); ?>
+						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button')); ?>
 						<input type="submit" value="Search" />
 					<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
@@ -118,15 +118,6 @@
 
 <?php Yii::app()->clientScript->registerScript('main_table',
 	"
-	/*
-	$('#user a, #user-dropdown ul.dropdown-menu').hover(function() {
-		$('#user-dropdown').css( {
-			left: $('a', '#user').position().left + 5
-		});
-		$('.dropdown-menu').show();
-	}, function() {
-		$('.dropdown-menu').hide();
-	});
-	*/
+	
 	",
 CClientScript::POS_READY) ?>
