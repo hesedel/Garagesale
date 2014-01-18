@@ -114,7 +114,7 @@
 
 <?php echo !isset($legacy) ? '</div>' : '</table>'; ?>
 
-</div><!-- #table-container -->
+</div>
 
 <?php Yii::app()->clientScript->registerScript('main_table',
 	"
