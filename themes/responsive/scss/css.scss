@@ -105,14 +105,15 @@ body {
 
 				div {
 					@include border-right-radius(3px);
+					padding: {
+						top: ($line-height * .5) - 1px;
+						left: ($gutter-width * (2 / 3)) + 1px;
+					}
 					@include box-shadow(
 						1px 0 $dark,
 						0 1px $dark
 					);
-					padding: {
-						top: ($line-height * .5) - 1px;
-						left: $gutter-width * (2 / 3);
-					}
+					margin-left: -1px;
 				}
 
 			}
