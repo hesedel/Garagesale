@@ -3,15 +3,6 @@
 @import 'compass', 'vendor/bourbon/bourbon';
 @import 'variables', 'form', 'global';
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: $sans-serif;
-}
-
-.container {
-	
-}
-
 body {
 	cursor: default;
 	font-family: $sans-serif;
@@ -20,9 +11,15 @@ body {
 
 #body {
 	background-color: $dark;
-	padding-top: 18px;
+	padding-top: $line-height;
 	@include box-shadow(0 1px rgba($black, .1));
 	position: relative;
+}
+
+@media (max-width: $screen-xs-max) {
+	#body {
+		padding-top: 0;
+	}
 }
 
 #body-top {
@@ -33,6 +30,12 @@ body {
 		top: 0;
 		right: 0;
 		left: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+	#body-top {
+		display: none;
+	}
 }
 
 #page {
@@ -173,7 +176,7 @@ body {
 
 				div {
 					padding-left: $gutter-width;
-					@include border-bottom-left-radius(3px);
+					@include border-right-radius(0);
 					margin-left: 0;
 				}
 
@@ -207,12 +210,6 @@ body {
 
 }
 
-@media (max-width: $screen-xs-max) {
-	#header {
-
-	}
-}
-
 #logo {
 	color: $white;
 	font-size: 1.25em;
@@ -244,7 +241,7 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#logo {
-		@include border-bottom-radius(0);
+		@include border-radius(0);
 	}
 }
 
