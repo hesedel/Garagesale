@@ -1,13 +1,7 @@
 $(function() {
 
 $('.a > a', '#user').bind('touchend', function() {
-	var $this = $(this);
-	setTimeout(function() {
-		$this.trigger('mouseout');
-		$this.trigger('mouseleave');
-		$this.parent().trigger('mouseout');
-		$this.parent().trigger('mouseleave');
-	}, 1000);
+	
 	return false;
 });
 
