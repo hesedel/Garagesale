@@ -14,11 +14,11 @@ else
 	<?php if(true): ?>
 	<div class="toolbox">
 		<?php if($options['viewButton']): ?>
-			<a class="g-button" href="#"><i class="fa fa-th"></i></a>
-			<a class="g-button" href="#"><i class="fa fa-th-list"></i></a>
+			<a class="g-button" href="#"><i class="fa fa-th"></i> Grid</a>
+			<a class="g-button" href="#"><i class="fa fa-th-list"></i> List</a>
 		<?php endif; ?>
 		<?php if($options['sortButton']): ?>
-			<a class="g-button" href="#"><i class="fa fa-sort-amount-asc"></i></a>
+			<a class="g-button" href="#"><i class="fa fa-sort-amount-asc"></i> Sort</a>
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>
