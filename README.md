@@ -1,33 +1,12 @@
 # USERS
 
-* u: user
-
-	p: password
-
-* u: user2
-
-	p: password
-
-* u: admin
-
-	p: password
-
-* u: admin2
-
-	p: password
-
-* u: super
-
-	p: password
-
-* u: super2
-
-	p: password
-
-* u: hesedel
-
-	p: password
-
+* u: `user` p: `password`
+* u: `user2` p: `password`
+* u: `admin` p: `password`
+* u: `admin2` p: `password`
+* u: `super` p: `password`
+* u: `super2` p: `password`
+* u: `hesedel` p: `password`
 
 # INSTRUCTIONS
 
