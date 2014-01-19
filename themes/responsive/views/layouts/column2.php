@@ -1,43 +1,46 @@
-<?php $this->beginContent('//layouts/main') ?>
+<?php $this->beginContent('//layouts/main'); ?>
 
 <div id="column2">
 
-<div id="content-container">
+<div class="row">
+	<div class="col-md-9 col-md-push-3">
 
-	<div id="content">
+		<div id="content">
 
-		<?php if(isset($this->breadcrumbs)) {
-			$this->widget('zii.widgets.CBreadcrumbs', array(
-				'links' => $this->breadcrumbs,
-				'separator' => ' &#160; / &#160; ',
-			));
-		} ?>
+			<?php if(isset($this->breadcrumbs)) {
+				$this->widget('zii.widgets.CBreadcrumbs', array(
+					'links' => $this->breadcrumbs,
+					'separator' => ' &#160; / &#160; ',
+				));
+			}; ?>
 
-		<?php echo $content ?>
+			<?php echo $content; ?>
 
-	</div><!-- #content -->
+		</div><!-- #content -->
 
-</div><!-- #content-container -->
+	</div>
+	<div class="col-md-3 col-md-pull-9">
 
-<div id="sidebar">
+		<div id="sidebar">
 
-	<?php echo $this->clips['sidebar'] ?>
+			<?php echo $this->clips['sidebar']; ?>
 
-	<?php $this->beginWidget('zii.widgets.CPortlet', array(
-			'title' => 'Operations',
-	)) ?>
+			<?php $this->beginWidget('zii.widgets.CPortlet', array(
+					'title' => 'Operations',
+			)); ?>
 
-	<?php $this->widget('zii.widgets.CMenu', array(
-		'items' => $this->menu,
-		'htmlOptions' => array('class' => 'operations'),
-	)) ?>
+			<?php $this->widget('zii.widgets.CMenu', array(
+				'items' => $this->menu,
+				'htmlOptions' => array('class' => 'operations'),
+			)); ?>
 
-	<?php $this->endWidget() ?>
+			<?php $this->endWidget(); ?>
 
-</div><!-- #sidebar -->
+		</div><!-- #sidebar -->
 
-<div class="clear"></div>
+	</div>
+</div>
 
 </div><!-- #column2 -->
 
-<?php $this->endContent() ?>
+<?php $this->endContent(); ?>

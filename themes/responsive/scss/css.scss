@@ -660,4 +660,48 @@ body {
 
 }
 
+#alert {
+	text-align: center;
+	@include box-shadow(0 0 1px rgba($black, .5));
+	margin-bottom: 0;
+}
+
+// CONTINUE
+
+#column1,
+#column2,
+#column3,
+#transition {
+	padding-top: 18px;
+	padding-bottom: 54px;
+}
+
+div.breadcrumbs {
+	color: white;
+	/*
+	background-color: white;
+	@include border-bottom-right-radius(3px);
+	*/
+	position: absolute;
+		z-index: 1;
+	padding-right: 10px;
+
+	a {
+		color: whiten($custom_magenta, 25%, 5);
+		text-decoration: none;
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+
+		&:hover {
+			color: whiten($custom_magenta, 25%, 6);
+			text-decoration: underline;
+		}
+
+	}
+
+}
+
+#footer {
+
+}
+
 //@import 'site_index';

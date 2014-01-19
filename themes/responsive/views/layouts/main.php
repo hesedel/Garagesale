@@ -34,8 +34,11 @@
 		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)); ?><![endif]-->
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
-		<div class="alert alert-success timeout" id="alert"><?php echo Yii::app()->user->getFlash('success'); ?></div>
-		<?php endif ?>
+		<div class="alert alert-success alert-dismissable timeout" id="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+			<?php echo Yii::app()->user->getFlash('success'); ?>
+		</div>
+		<?php endif; ?>
 
 		<?php echo $content; ?>
 
