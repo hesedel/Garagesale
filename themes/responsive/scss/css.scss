@@ -239,6 +239,8 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#logo {
+		height: $line-height * 1.5;
+			line-height: $line-height * 1.5;
 		@include border-radius(0);
 	}
 }
