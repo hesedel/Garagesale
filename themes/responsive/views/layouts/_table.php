@@ -35,9 +35,8 @@
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->getImage()
 						? CHtml::image(
-							'/img/transparent.gif',
-							Yii::app()->user->id,
-							array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38x34' . Yii::app()->params['user']->getImage() . ')')
+							'/img/vendor/slir/w76-h68-c38x34' . Yii::app()->params['user']->getImage(),
+							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '
 					) .
