@@ -96,7 +96,7 @@
 
 	<?php echo !isset($legacy) ? '</div>' : '</tr>'; ?>
 
-	<?php echo !isset($legacy) ? '<div class="tr filters hide">' : '<tr class="tr filters hide">'; ?>
+	<?php echo !isset($legacy) ? '<div class="tr filters hidden">' : '<tr class="tr filters hidden">'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>

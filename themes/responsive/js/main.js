@@ -1,17 +1,29 @@
 $(function() {
 
-$('.a > a', '#user').bind('touchend', function() {
-	
-	return false;
+$('.a', '#user').data('hover', false);
+$('.a > a', '#user').bind( {
+	touchstart: function() {
+		if(!$(this).parent().data('hover')) {
+			$(this).parent().data('hover', true);
+			$('.dropdown-menu', $(this).parent()).removeClass('hidden');
+		} else {
+			$(this).parent().data('hover', false);
+			$('.dropdown-menu', $(this).parent()).addClass('hidden');
+			return false;
+		}
+	},
+	touchend: function() {
+		return false;
+	}
 });
 
 $('.a', '#filters').bind('click', function() {
 	if(!$(this).hasClass('click')) {
 		$(this).addClass('click');
-		$('.filters', '#table').removeClass('hide');
+		$('.filters', '#table').removeClass('hidden');
 	} else {
 		$(this).removeClass('click');
-		$('.filters', '#table').addClass('hide');
+		$('.filters', '#table').addClass('hidden');
 	}
 });
 
