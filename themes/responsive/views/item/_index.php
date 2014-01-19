@@ -1,0 +1,128 @@
+<?php
+$defaults = array(
+	'viewButton'=>true,
+	'sortButton'=>true,
+	'view'=>'grid',
+);
+if(isset($options))
+	$options = array_merge($defaults, $options);
+else
+	$options = $defaults;
+?>
+
+<div class="g-items<?php echo ($options['view'] === 'grid' ? ' grid' : ' list') . (!$options['viewButton'] && !$options['sortButton'] ? ' no-toolbox' : ''); ?>">
+	<?php if(true): ?>
+	<div class="toolbox">
+		<?php if($options['viewButton']): ?>
+			<a class="g-button" href="#"><i class="fa fa-th"></i></a>
+			<a class="g-button" href="#"><i class="fa fa-th-list"></i></a>
+		<?php endif; ?>
+		<?php if($options['sortButton']): ?>
+			<a class="g-button" href="#"><i class="fa fa-sort-amount-asc"></i></a>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+
+	<?php $this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$dataProvider,
+		'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
+		'template'=>'{items}{pager}',
+		'pager'=>array(
+			'header'=>false,
+			'htmlOptions'=>array('class'=>'g-pager'),
+			'firstPageLabel'=>'‹‹',
+			'prevPageLabel'=>'‹',
+			'nextPageLabel'=>'›',
+			'lastPageLabel'=>'››',
+			//'maxButtonCount'=>3,
+		),
+		/*
+		'afterAjaxUpdate'=>"function(id) {
+			categoryEllipsis(id);
+		}",
+		*/
+	)); ?>
+
+</div>
+
+<?php /*
+.g-items(class="#{($options['view'] === 'grid' ? 'grid' : 'list').(!$options['viewButton'] && !$options['sortButton'] ? ' no-toolbox' : '')}")
+	-if(true):
+	.toolbox
+		-if($options['viewButton']):
+		%a.g-button(href="#") \\&#60; GV &#62;
+		%a.g-button(href="#") \\&#60; LV &#62;
+		-endif
+		-if($options['sortButton']):
+		\\&#160;
+		%a.g-button(href="#") \\&#60; Sort by Price &#62;
+		-endif
+	.clear
+	-endif
+	:php
+		$this->widget('zii.widgets.CListView', array(
+			'dataProvider'=>$dataProvider,
+			'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
+			'template'=>'{items}{pager}',
+			'pager'=>array(
+				'header'=>false,
+				'htmlOptions'=>array('class'=>'g-pager'),
+				'firstPageLabel'=>'‹‹',
+				'prevPageLabel'=>'‹',
+				'nextPageLabel'=>'›',
+				'lastPageLabel'=>'››',
+				//'maxButtonCount'=>3,
+			),
+			'afterAjaxUpdate'=>"function(id) {
+				categoryEllipsis(id);
+			}",
+		));
+
+
+:php
+	Yii::app()->clientScript->registerScript(
+		'item_index',
+		"
+		function categoryEllipsis(id) {
+			$('em', $('div.g-items.grid #' + id + ' div.view')).each(function() {
+				$(this).css( {
+					width: $(this).parents('div.view').width() - $(this).siblings('span.price').outerWidth()
+				});
+			});
+		}
+		$('div.g-items.grid').each(function() {
+			categoryEllipsis($(this).children('div.list-view').attr('id'));
+		});
+		
+		/*
+		$('abbr', 'div.g-items.list').timeago();
+		
+		setTimeout(function() {
+			$('div.g-items.list').each(function() {
+				var width_price = 0;
+				$('div.view', $(this)).each(function() {
+					if($('td.price', $(this)).width() > width_price)
+						width_price = $('td.price', $(this)).width()
+				});
+				$('td.price', $(this)).css( {
+					width: width_price
+				});
+				var width_condition = 0;
+				$('div.view', $(this)).each(function() {
+					if($('td.condition', $(this)).width() > width_condition)
+						width_condition = $('td.condition', $(this)).width()
+				});
+				$('td.condition', $(this)).css( {
+					width: width_condition
+				});
+				$('th, th strong', $(this)).css( {
+					width: $('table', $(this)).width() - width_condition - width_price - 20
+				});
+			});
+		}, 250);
+		*/
+/*
+		",
+		CClientScript::POS_READY
+	);
+*/

@@ -110,18 +110,16 @@ div.g-actions {
 .g-button {
 	cursor: pointer;
 	color: blacken($beige, 25%, 4);
-	@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+	@include text-shadow(0 1px rgba($white, 1));
 	background-color: $whitesmoke;
-	@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
+	@include background-image(linear-gradient(rgba($white, .1), rgba($black, .1)));
+	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
 	border: 1px solid blacken($whitesmoke, 25%, 3);
 	border-bottom-color: blacken($whitesmoke, 25%, 4);
-	@include border-radius(3px);
 	@include box-shadow(
-		rgba(255, 255, 255, 1) 0 1px 1px inset,
-		rgba(0, 0, 0, .05) 0 1px
+		0 1px 1px rgba($white, 1) inset,
+		0 1px rgba($black, .05)
 	);
-	padding: 8px 9px;
-	@include transition(background-color, 125ms);
 
 	&:hover {
 		color: blacken($beige, 25%, 5);
@@ -129,14 +127,12 @@ div.g-actions {
 		background-color: whiten($whitesmoke, 25%);
 		border-color: blacken($whitesmoke, 25%, 4);
 		border-bottom-color: blacken($whitesmoke, 25%, 5);
-		@include transition(background-color, 250ms);
 	}
 
 	&:active {
 		background-color: blacken($whitesmoke, 10%);
 		border-color: blacken($whitesmoke, 25%, 4);
-		@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
-		@include transition(background-color, 0ms);
+		@include box-shadow(0 1px 1px rgba($black, .25) inset);
 
 		&:hover {
 			border-color: blacken($whitesmoke, 25%, 5);
@@ -145,27 +141,26 @@ div.g-actions {
 	}
 
 	&.small {
-		font-size: 1em;
-		padding: 2px 4px;
+		padding: #{($line-height * (1 / 6)) - 1px} #{($gutter-width * (1 / 3)) - 1px};
 	}
 
 	&.orange {
-		color: white;
-		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		color: $white;
+		@include text-shadow(0 -1px rgba($black, .25));
 		background-color: $custom_orange;
 		@include box-shadow(
-			rgba(255, 255, 255, .25) 0 1px 1px inset,
-			rgba(0, 0, 0, .05) 0 1px
+			0 1px 1px rgba($white, .25) inset,
+			0 1px rgba($black, .05)
 		);
 
 		&:hover {
-			color: white;
+			color: $white;
 			background-color: whiten($custom_orange, 10%);
 		}
 
 		&:active {
 			background-color: blacken($custom_orange, 10%);
-			@include box-shadow(rgba(0, 0, 0, .25) 0 1px 1px inset);
+			@include box-shadow(0 1px 1px rgba($black, .25) inset);
 		}
 
 	}
@@ -181,8 +176,8 @@ div.g-actions {
 			border-color: blacken($whitesmoke, 25%, 2) !important;
 			border-bottom-color: blacken($whitesmoke, 25%, 3) !important;
 			@include box-shadow(
-				rgba(255, 255, 255, .25) 0 1px 1px inset,
-				rgba(0, 0, 0, .05) 0 1px
+				0 1px 1px rgba($white, .25) inset,
+				0 1px rgba($black, .05)
 			);
 		}
 
@@ -190,6 +185,7 @@ div.g-actions {
 
 } // .g-button
 
+/*
 a.g-button {
 	color: blacken($beige, 25%, 4);
 
@@ -198,6 +194,7 @@ a.g-button {
 	}
 
 }
+*/
 
 div.g-form {
 	position: relative;
@@ -527,44 +524,29 @@ div.g-items {
 
 } // .g-items
 
-ul.g-pager {
-	@include float-right;
-	margin-right: 0;
-	margin-bottom: 0;
+.g-pager {
 	padding-left: 0;
+	margin-bottom: 0;
+	float: right;
 
 	li {
-		@include float-left;
-		padding-right: 5px;
-		padding-left: 5px;
 
 		a {
 			@extend .g-button;
 			@extend .g-button.small;
 			text-align: center;
-			display: block;
-			@include min-width(15px);
-			height: 16px;
-				line-height: 16px;
-			padding-top: 0;
-			padding-bottom: 0;
+			min-width: $gutter-width * 2;
+			@include border-radius(0);
+			display: inline-block;
 		}
 
-		&.first,
 		&.previous,
-		&.next,
-		&.last {
+		&.next {
 
 			a {
-				//font-size: $h3;
-				line-height: 14px;
+				float: none;
 			}
 
-		}
-
-		&.first,
-		&.last {
-			display: none;
 		}
 
 		&.selected {
@@ -574,10 +556,6 @@ ul.g-pager {
 				cursor: default;
 			}
 
-		}
-
-		&.hidden {
-			
 		}
 
 	}

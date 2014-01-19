@@ -3,7 +3,7 @@
 <div id="column2">
 
 <div class="row">
-	<div class="col-md-10 col-md-push-2">
+	<div class="col-md-9 col-md-push-3">
 
 		<div id="content">
 
@@ -19,7 +19,7 @@
 		</div><!-- #content -->
 
 	</div>
-	<div class="col-md-2 col-md-pull-10">
+	<div class="col-md-3 col-md-pull-9">
 
 		<div id="sidebar">
 

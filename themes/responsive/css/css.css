@@ -6318,7 +6318,7 @@ td.visible-lg {
   td.visible-lg {
     display: table-cell !important; } }
 @media (max-width: 767px) {
-  .hidden-xs, #logout a span, #filters .a > span, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span, #post,
+  .hidden-xs, #logout a span, #filters .a > span, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td .g-pager li a span, .g-pager li #search .table .td a span, #post,
   tr.hidden-xs,
   tr#post,
   th.hidden-xs,
@@ -6327,7 +6327,7 @@ td.visible-lg {
   td#post {
     display: none !important; } }
 @media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm, #login a .fa-sign-in, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span,
+  .hidden-sm, #login a .fa-sign-in, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td .g-pager li a span, .g-pager li #search .table .td a span,
   tr.hidden-sm,
   #login a tr.fa-sign-in,
   #filters .a tr.fa-filter,
@@ -6813,32 +6813,32 @@ table.form {
     line-height: 36px;
     padding-right: 20px;
     padding-left: 20px; }
-    table.form tfoot td a.g-button, table.form tfoot td ul.g-pager li a, ul.g-pager li table.form tfoot td a,
+    table.form tfoot td a.g-button, table.form tfoot td .g-pager li a, .g-pager li table.form tfoot td a,
     table.form tfoot td input[type=submit] {
       border-color: #b7b7b7;
       border-bottom-color: #898989; }
-      table.form tfoot td a.g-button:hover, table.form tfoot td ul.g-pager li a:hover, ul.g-pager li table.form tfoot td a:hover,
+      table.form tfoot td a.g-button:hover, table.form tfoot td .g-pager li a:hover, .g-pager li table.form tfoot td a:hover,
       table.form tfoot td input[type=submit]:hover {
         border-color: #898989;
         border-bottom-color: #666666; }
-      table.form tfoot td a.g-button:active, table.form tfoot td ul.g-pager li a:active, ul.g-pager li table.form tfoot td a:active, table.form tfoot td ul.g-pager li.selected a, ul.g-pager li.selected table.form tfoot td a,
+      table.form tfoot td a.g-button:active, table.form tfoot td .g-pager li a:active, .g-pager li table.form tfoot td a:active, table.form tfoot td .g-pager li.selected a, .g-pager li.selected table.form tfoot td a,
       table.form tfoot td input[type=submit]:active {
         border-color: #898989; }
-        table.form tfoot td a.g-button:active:hover, table.form tfoot td ul.g-pager li a:active:hover, ul.g-pager li table.form tfoot td a:active:hover, table.form tfoot td ul.g-pager li.selected a:hover, ul.g-pager li.selected table.form tfoot td a:hover,
+        table.form tfoot td a.g-button:active:hover, table.form tfoot td .g-pager li a:active:hover, .g-pager li table.form tfoot td a:active:hover, table.form tfoot td .g-pager li.selected a:hover, .g-pager li.selected table.form tfoot td a:hover,
         table.form tfoot td input[type=submit]:active:hover {
           border-color: #666666; }
-      table.form tfoot td a.g-button.orange, table.form tfoot td ul.g-pager li a.orange, ul.g-pager li table.form tfoot td a.orange,
+      table.form tfoot td a.g-button.orange, table.form tfoot td .g-pager li a.orange, .g-pager li table.form tfoot td a.orange,
       table.form tfoot td input[type=submit].orange {
         border-color: #bf4c00;
         border-bottom-color: #8f3900; }
-        table.form tfoot td a.g-button.orange:hover, table.form tfoot td ul.g-pager li a.orange:hover, ul.g-pager li table.form tfoot td a.orange:hover,
+        table.form tfoot td a.g-button.orange:hover, table.form tfoot td .g-pager li a.orange:hover, .g-pager li table.form tfoot td a.orange:hover,
         table.form tfoot td input[type=submit].orange:hover {
           border-color: #8f3900;
           border-bottom-color: #6b2a00; }
-        table.form tfoot td a.g-button.orange.active, table.form tfoot td ul.g-pager li a.orange.active, ul.g-pager li table.form tfoot td a.orange.active,
+        table.form tfoot td a.g-button.orange.active, table.form tfoot td .g-pager li a.orange.active, .g-pager li table.form tfoot td a.orange.active,
         table.form tfoot td input[type=submit].orange.active {
           border-color: #8f3900; }
-          table.form tfoot td a.g-button.orange.active:hover, table.form tfoot td ul.g-pager li a.orange.active:hover, ul.g-pager li table.form tfoot td a.orange.active:hover,
+          table.form tfoot td a.g-button.orange.active:hover, table.form tfoot td .g-pager li a.orange.active:hover, .g-pager li table.form tfoot td a.orange.active:hover,
           table.form tfoot td input[type=submit].orange.active:hover {
             border-color: #6b2a00; }
     table.form tfoot td input[type=submit] {
@@ -6972,7 +6972,7 @@ table.form {
 
 .no-js div.no-js {
   display: block !important; }
-.no-js tfoot td a.g-button.orange, .no-js tfoot td ul.g-pager li a.orange, ul.g-pager li .no-js tfoot td a.orange {
+.no-js tfoot td a.g-button.orange, .no-js tfoot td .g-pager li a.orange, .g-pager li .no-js tfoot td a.orange {
   display: none; }
 .no-js tfoot td input[type=submit] {
   position: static !important;
@@ -7042,73 +7042,63 @@ div.g-actions {
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
         opacity: 0.5; }
 
-.g-button, input[type=submit], ul.g-pager li a {
+.g-button, input[type=submit], .g-pager li a {
   cursor: pointer;
   color: #4c4c45;
-  text-shadow: white 0 1px;
+  text-shadow: 0 1px white;
   background-color: whitesmoke;
   background-image: -webkit-linear-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
   background-image: linear-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  padding: 8px 9px;
   border: 1px solid #666666;
   border-bottom-color: #4c4c4c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-  box-shadow: white 0 1px 1px inset, rgba(0, 0, 0, 0.05) 0 1px;
-  padding: 8px 9px;
-  -webkit-transition: background-color, 125ms;
-  -moz-transition: background-color, 125ms;
-  transition: background-color, 125ms; }
-  .g-button:hover, input[type=submit]:hover, ul.g-pager li a:hover {
+  box-shadow: 0 1px 1px white inset, 0 1px rgba(0, 0, 0, 0.05); }
+  .g-button:hover, input[type=submit]:hover, .g-pager li a:hover {
     color: #393933;
     text-decoration: none;
     background-color: #f7f7f7;
     border-color: #4c4c4c;
-    border-bottom-color: #393939;
-    -webkit-transition: background-color, 250ms;
-    -moz-transition: background-color, 250ms;
-    transition: background-color, 250ms; }
-  .g-button:active, input[type=submit]:active, ul.g-pager li a:active, ul.g-pager li.selected a {
+    border-bottom-color: #393939; }
+  .g-button:active, input[type=submit]:active, .g-pager li a:active, .g-pager li.selected a {
     background-color: gainsboro;
     border-color: #4c4c4c;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 1px 1px inset;
-    -webkit-transition: background-color, 0ms;
-    -moz-transition: background-color, 0ms;
-    transition: background-color, 0ms; }
-    .g-button:active:hover, input[type=submit]:active:hover, ul.g-pager li a:active:hover, ul.g-pager li.selected a:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset; }
+    .g-button:active:hover, input[type=submit]:active:hover, .g-pager li a:active:hover, .g-pager li.selected a:hover {
       border-color: #393939; }
-  .g-button.small, input.small[type=submit], ul.g-pager li a {
-    font-size: 1em;
+  .g-button.small, input.small[type=submit], .g-pager li a {
     padding: 2px 4px; }
-  .g-button.orange, input.orange[type=submit], ul.g-pager li a.orange {
+  .g-button.orange, input.orange[type=submit], .g-pager li a.orange {
     color: white;
-    text-shadow: rgba(0, 0, 0, 0.25) 0 -1px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
     background-color: #ff6600;
-    box-shadow: rgba(255, 255, 255, 0.25) 0 1px 1px inset, rgba(0, 0, 0, 0.05) 0 1px; }
-    .g-button.orange:hover, input.orange[type=submit]:hover, ul.g-pager li a.orange:hover {
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.25) inset, 0 1px rgba(0, 0, 0, 0.05); }
+    .g-button.orange:hover, input.orange[type=submit]:hover, .g-pager li a.orange:hover {
       color: white;
       background-color: #ff7519; }
-    .g-button.orange:active, input.orange[type=submit]:active, ul.g-pager li a.orange:active, ul.g-pager li.selected a.orange {
+    .g-button.orange:active, input.orange[type=submit]:active, .g-pager li a.orange:active, .g-pager li.selected a.orange {
       background-color: #e55b00;
-      box-shadow: rgba(0, 0, 0, 0.25) 0 1px 1px inset; }
-  .g-button.disabled, input.disabled[type=submit], ul.g-pager li a.disabled {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset; }
+  .g-button.disabled, input.disabled[type=submit], .g-pager li a.disabled {
     cursor: default;
     background-color: #b7b7b7;
     border-color: #898989 !important;
     border-bottom-color: #666666 !important; }
-    .g-button.disabled:hover, input.disabled[type=submit]:hover, ul.g-pager li a.disabled:hover, .g-button.disabled:active, input.disabled[type=submit]:active, ul.g-pager li a.disabled:active, ul.g-pager li.selected a.disabled {
+    .g-button.disabled:hover, input.disabled[type=submit]:hover, .g-pager li a.disabled:hover, .g-button.disabled:active, input.disabled[type=submit]:active, .g-pager li a.disabled:active, .g-pager li.selected a.disabled {
       background-color: #b7b7b7;
       border-color: #898989 !important;
       border-bottom-color: #666666 !important;
-      box-shadow: rgba(255, 255, 255, 0.25) 0 1px 1px inset, rgba(0, 0, 0, 0.05) 0 1px; }
+      box-shadow: 0 1px 1px rgba(255, 255, 255, 0.25) inset, 0 1px rgba(0, 0, 0, 0.05); }
 
-a.g-button, ul.g-pager li a {
-  color: #4c4c45; }
-  a.g-button:hover, ul.g-pager li a:hover {
-    color: #393933; }
+/*
+a.g-button {
+	color: blacken($beige, 25%, 4);
 
+	&:hover {
+		color: blacken($beige, 25%, 5);
+	}
+
+}
+*/
 div.g-form {
   position: relative;
   padding-top: 36px; }
@@ -7336,33 +7326,23 @@ div.g-items {
     div.g-items.list div.list-view div.items div.view:hover {
       background-color: transparent; }
 
-ul.g-pager {
-  display: inline;
-  float: right;
-  margin-right: 0;
+.g-pager {
+  padding-left: 0;
   margin-bottom: 0;
-  padding-left: 0; }
-  ul.g-pager li {
-    display: inline;
-    float: left;
-    padding-right: 5px;
-    padding-left: 5px; }
-    ul.g-pager li a {
-      text-align: center;
-      display: block;
-      min-width: 15px;
-      width: auto !important;
-      width: 15px;
-      height: 16px;
-      line-height: 16px;
-      padding-top: 0;
-      padding-bottom: 0; }
-    ul.g-pager li.first a, ul.g-pager li.previous a, ul.g-pager li.next a, ul.g-pager li.last a {
-      line-height: 14px; }
-    ul.g-pager li.first, ul.g-pager li.last {
-      display: none; }
-    ul.g-pager li.selected a {
-      cursor: default; }
+  float: right; }
+  .g-pager li a {
+    text-align: center;
+    min-width: 30px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    display: inline-block; }
+  .g-pager li.previous a, .g-pager li.next a {
+    float: none; }
+  .g-pager li.selected a {
+    cursor: default; }
 
 table.g-table {
   border-spacing: 1px;
@@ -7854,25 +7834,30 @@ body {
           border-color: #0099cc; }
         #search .table .td .input-text.focus .placeholder {
           color: #89897b; }
-      #search .table .td .g-button, #search .table .td input[type=submit], #search .table .td ul.g-pager li a, ul.g-pager li #search .table .td a,
+      #search .table .td .g-button, #search .table .td input[type=submit], #search .table .td .g-pager li a, .g-pager li #search .table .td a,
       #search .table .td input[type=submit] {
         white-space: nowrap;
         border-color: #b7b7b7;
-        border-bottom-color: #898989; }
-        #search .table .td .g-button i, #search .table .td input[type=submit] i, #search .table .td ul.g-pager li a i, ul.g-pager li #search .table .td a i,
+        border-bottom-color: #898989;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px; }
+        #search .table .td .g-button i, #search .table .td input[type=submit] i, #search .table .td .g-pager li a i, .g-pager li #search .table .td a i,
         #search .table .td input[type=submit] i {
           display: inline; }
-        #search .table .td .g-button:hover, #search .table .td input[type=submit]:hover, #search .table .td ul.g-pager li a:hover, ul.g-pager li #search .table .td a:hover,
+        #search .table .td .g-button:hover, #search .table .td input[type=submit]:hover, #search .table .td .g-pager li a:hover, .g-pager li #search .table .td a:hover,
         #search .table .td input[type=submit]:hover {
           border-color: #898989;
           border-bottom-color: #666666; }
-        #search .table .td .g-button:active, #search .table .td input[type=submit]:active, #search .table .td ul.g-pager li a:active, ul.g-pager li #search .table .td a:active, #search .table .td ul.g-pager li.selected a, ul.g-pager li.selected #search .table .td a,
+        #search .table .td .g-button:active, #search .table .td input[type=submit]:active, #search .table .td .g-pager li a:active, .g-pager li #search .table .td a:active, #search .table .td .g-pager li.selected a, .g-pager li.selected #search .table .td a,
         #search .table .td input[type=submit]:active {
           border-color: #898989; }
-          #search .table .td .g-button:active:hover, #search .table .td input[type=submit]:active:hover, #search .table .td ul.g-pager li a:active:hover, ul.g-pager li #search .table .td a:active:hover, #search .table .td ul.g-pager li.selected a:hover, ul.g-pager li.selected #search .table .td a:hover,
+          #search .table .td .g-button:active:hover, #search .table .td input[type=submit]:active:hover, #search .table .td .g-pager li a:active:hover, .g-pager li #search .table .td a:active:hover, #search .table .td .g-pager li.selected a:hover, .g-pager li.selected #search .table .td a:hover,
           #search .table .td input[type=submit]:active:hover {
             border-color: #666666; }
-      #search .table .td .g-button, #search .table .td input[type=submit], #search .table .td ul.g-pager li a, ul.g-pager li #search .table .td a {
+      #search .table .td .g-button, #search .table .td input[type=submit], #search .table .td .g-pager li a, .g-pager li #search .table .td a {
         display: block;
         height: 30px;
         line-height: 30px;
@@ -7881,7 +7866,7 @@ body {
       #search .table .td input[type=submit] {
         display: none; }
 
-.no-js #search .g-button, .no-js #search input[type=submit], .no-js #search ul.g-pager li a, ul.g-pager li .no-js #search a {
+.no-js #search .g-button, .no-js #search input[type=submit], .no-js #search .g-pager li a, .g-pager li .no-js #search a {
   display: none; }
 .no-js #search input[type=submit] {
   display: inline-block; }

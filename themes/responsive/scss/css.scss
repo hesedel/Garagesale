@@ -570,6 +570,7 @@ body {
 				white-space: nowrap;
 				border-color: blacken($whitesmoke, 25%);
 				border-bottom-color: blacken($whitesmoke, 25%, 2);
+				@include border-radius(3px);
 
 				i {
 					display: inline;
