@@ -6318,15 +6318,12 @@ td.visible-lg {
   td.visible-lg {
     display: table-cell !important; } }
 @media (max-width: 767px) {
-  .hidden-xs, #logout a span, #filters .a .fa-filter, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span, #post,
+  .hidden-xs, #logout a span, #filters .a > span, #search .table .td .g-button span, #search .table .td input[type=submit] span, #search .table .td ul.g-pager li a span, ul.g-pager li #search .table .td a span, #post,
   tr.hidden-xs,
-  #filters .a tr.fa-filter,
   tr#post,
   th.hidden-xs,
-  #filters .a th.fa-filter,
   th#post,
   td.hidden-xs,
-  #filters .a td.fa-filter,
   td#post {
     display: none !important; } }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -7579,7 +7576,7 @@ body {
     font-weight: 100;
     margin-top: 0;
     margin-bottom: 0; }
-  #header .beta {
+  #header .alpha {
     color: #aedeed;
     font-size: .75em;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
@@ -7742,7 +7739,7 @@ body {
 
 @media (max-width: 767px) {
   #user {
-    width: 75%; } }
+    width: 85%; } }
 #login,
 #logout {
   padding-left: 1px !important; }
@@ -7767,7 +7764,7 @@ body {
     width: 50%; } }
 @media (max-width: 767px) {
   #logout {
-    width: 25%; } }
+    width: 15%; } }
 #filters {
   padding-left: 5px !important; }
   #filters .a {
@@ -7809,7 +7806,7 @@ body {
 @media (max-width: 767px) {
   #filters {
     text-align: center;
-    width: 25%;
+    width: 15%;
     padding-left: 0 !important;
     clear: left;
     float: left; }
@@ -7893,7 +7890,7 @@ body {
   #search {
     padding-left: 0 !important; }
     #search .table {
-      width: 75%;
+      width: 85%;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       float: right; } }

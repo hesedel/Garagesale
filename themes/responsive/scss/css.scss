@@ -195,7 +195,7 @@ body {
 		margin-bottom: 0;
 	}
 
-	.beta {
+	.alpha {
 		color: whiten($custom_cyan, 25%, 4);
 		font-size: .75em;
 		@include text-shadow(0 -1px rgba($black, .1));
@@ -364,7 +364,7 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#user {
-		width: 75%;
+		width: 85%;
 	}
 }
 
@@ -418,7 +418,7 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#logout {
-		width: 25%;
+		width: 15%;
 	}
 }
 
@@ -431,6 +431,9 @@ body {
 
 		.fa-filter {
 			@extend .hidden-sm;
+		}
+
+		> span {
 			@extend .hidden-xs;
 		}
 
@@ -481,7 +484,7 @@ body {
 @media (max-width: $screen-xs-max) {
 	#filters {
 		text-align: center;
-		width: 25%;
+		width: 15%;
 		padding-left: 0 !important;
 		clear: left;
 		float: left;
@@ -628,7 +631,7 @@ body {
 		padding-left: 0 !important;
 
 		.table {
-			width: 75%;
+			width: 85%;
 			@include border-right-radius(0);
 			float: right;
 		}

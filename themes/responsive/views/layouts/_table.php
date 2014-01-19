@@ -14,7 +14,7 @@
 				); ?>
 			<?php echo $this->getRoute() !== 'item/view' ? '</h1>' : ''; ?>
 
-			<span class="beta">beta</span>
+			<span class="alpha">alpha</span>
 
 		<?php echo !isset($legacy) ? '</header>' : '</td>'; ?>
 
@@ -63,7 +63,7 @@
 		<?php endif ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="filters">' : '<td class="td" id="filters">'; ?>
-			<span class="a"><i class="fa fa-filter"></i> Filters<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span>
+			<span class="a"><i class="fa fa-filter"></i> <span>Filters</span><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
