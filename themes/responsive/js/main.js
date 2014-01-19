@@ -1,6 +1,6 @@
 $(function() {
 
-$('.a > a', '#user').bind('touchstart', function() {
+$('.a > a', '#user').bind('touchend', function() {
 	$(this).parent().trigger('mouseout');
 	return false;
 });
