@@ -1,7 +1,7 @@
 $(function() {
 
 $('.a > a', '#user').bind('touchstart', function() {
-	$(this).parent().blur();
+	$(this).blur();
 	return false;
 });
 
