@@ -4,7 +4,7 @@ $('.a > a', '#user').bind('touchend', function() {
 	var $this = $(this);
 	setTimeout(function() {
 		$this.parent().trigger('mouseout');
-	});
+	}, 0);
 	return false;
 });
 
