@@ -1,19 +1,19 @@
 # USERS
 
 * u: user
-	p: password
+		p: password
 * u: user2
-	p: password
+		p: password
 * u: admin
-	p: password
+		p: password
 * u: admin2
-	p: password
+		p: password
 * u: super
-	p: password
+		p: password
 * u: super2
-	p: password
+		p: password
 * u: hesedel
-	p: password
+		p: password
 
 # INSTRUCTIONS
 
