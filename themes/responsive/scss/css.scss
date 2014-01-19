@@ -69,6 +69,8 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#table-container {
+		margin-right: -$gutter-width;
+		margin-left: -$gutter-width;
 		position: static;
 	}
 }
