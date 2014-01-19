@@ -1,0 +1,13 @@
+#site_index {
+
+}
+
+#site_index-sidebar {
+
+	.about {
+		background-color: whiten(blacken($beige, 25%), 25%, 6);
+		@include border-radius(3px);
+		height: $line-height * 20;
+	}
+
+}
