@@ -1,6 +1,6 @@
 $(function() {
 
-$('.a > a', '#user').bind('touchend', function() {
+$('.a > a', '#user').bind('touchstart', function() {
 	$(this).parent().blur();
 	return false;
 });
