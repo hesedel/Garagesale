@@ -140,6 +140,10 @@ body {
 
 .no-js #table {
 
+	.tr.filters.hidden {
+		visibility: visible !important;
+	}
+
 	div.tr.filters {
 		display: table-row !important;
 	}
@@ -165,6 +169,7 @@ body {
 		}
 
 		.tr.filters {
+			display: block;
 
 			> .td {
 				display: none;
@@ -182,6 +187,14 @@ body {
 
 			}
 
+		}
+
+	}
+
+	.no-js #table {
+
+		div.tr.filters {
+			display: block !important;
 		}
 
 	}
@@ -477,7 +490,7 @@ body {
 	@include border-bottom-left-radius(0);
 	@include box-shadow(none);
 
-	i {
+	.fa-angle-down {
 		display: none;
 	}
 
@@ -500,6 +513,10 @@ body {
 
 		}
 
+	}
+
+	.no-js #filters .a {
+		height: ($line-height * 3) + 1px;
 	}
 }
 
