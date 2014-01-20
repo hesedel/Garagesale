@@ -231,7 +231,6 @@ div.g-form {
 	&.grid {
 
 		.list-view {
-			background-color: red;
 
 			.summary {}
 
@@ -241,7 +240,6 @@ div.g-form {
 				@include clearfix;
 
 				.view-container {
-					background-color: blue;
 					//width: #{(1 / 5) * 100%};
 					padding-top: $line-height;
 					padding-left: $gutter-width;
@@ -316,7 +314,6 @@ div.g-form {
 						color: blacken($beige, 25%);
 						margin-right: -100%;
 						clear: left;
-						//display: none;
 						float: left;
 					}
 
@@ -332,7 +329,6 @@ div.g-form {
 						margin-bottom: 2px;
 						margin-left: -100%;
 						clear: right;
-						//display: none;
 						float: right;
 
 						&.new {
@@ -348,8 +344,7 @@ div.g-form {
 					&:hover {
 						background-color: $white;
 						border-color: whiten(blacken($beige, 25%), 25%, 4);
-						//@include box-shadow(0 0 2px rgba($black, .1));
-						@include box-shadow(0 0 2px red);
+						@include box-shadow(0 0 2px rgba($black, .1));
 						position: relative;
 
 						.price {
@@ -370,9 +365,8 @@ div.g-form {
 			&.list-view-loading {
 				background-position: left bottom;
 
-				div.items {
+				.items {
 					@include opacity(.75);
-					@include transition(opacity, 125ms);
 				}
 
 			}
@@ -529,6 +523,10 @@ div.g-form {
 		} // .list-view
 
 	} // .list
+
+	.pager {
+		margin-top: 0;
+	}
 
 } // .g-items
 
