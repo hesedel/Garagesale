@@ -404,6 +404,15 @@ div.g-form {
 
 			} // .items
 
+			&.list-view-loading {
+				background-position: left bottom;
+
+				.items {
+					@include opacity(.75);
+				}
+
+			}
+
 		} // .list-view
 
 	} // @mixin g-items_list
