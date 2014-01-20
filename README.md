@@ -1,3 +1,7 @@
+* Integration: `http://int.garagesale.pajaroncreative.com/`
+* Staging: `http://sta.garagesale.pajaroncreative.com/`
+* Production: `http://garagesale.ph/`
+
 # USERS
 
 * u: `user` p: `password`
