@@ -154,10 +154,10 @@ class User extends CActiveRecord
 		$email=Yii::app()->db->createCommand()
 			->select('email')
 			->from('user_changeEmail')
-			->where('email=:email',array(':email'=>$this->email))
+			->where('email=:email', array(':email'=>$this->email))
 			->queryScalar();
 		if($email)
-			$this->addError($attribute,'Email "'.$this->email.'" has already been taken.');
+			$this->addError($attribute, 'Email "'.$this->email.'" has already been taken.');
 	}
 
 	public function getImage($options=array())
@@ -165,7 +165,7 @@ class User extends CActiveRecord
 		$defaults=array(
 			'color'=>'black',
 		);
-		$options=array_merge($defaults,$options);
+		$options=array_merge($defaults, $options);
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -194,7 +194,7 @@ class User extends CActiveRecord
 			'image'=>null,
 			'image_type'=>null,
 			'image_size'=>null,
-		),'id=:id',array(':id'=>$id));
+		), 'id=:id', array(':id'=>$id));
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -220,7 +220,7 @@ class User extends CActiveRecord
 		$items=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item')
-			->where('user_id=:user_id',array(':user_id'=>$this->id))
+			->where('user_id=:user_id', array(':user_id'=>$this->id))
 			->queryAll();
 		foreach($items as $item)
 			Item::model()->findByPk($item['id'])->delete();

@@ -136,10 +136,10 @@ class Item extends CActiveRecord
 		if(strlen($this->location_id)==0)
 			$this->location_id=null;
 		Yii::app()->db->createCommand()
-			->update('user',array(
+			->update('user', array(
 				'location_id'=>$this->location_id,
 				'phone'=>$this->phone,
-			),'id=:user_id',array(':user_id'=>$this->user_id));
+			), 'id=:user_id', array(':user_id'=>$this->user_id));
 
 		return true;
 	}
@@ -149,10 +149,10 @@ class Item extends CActiveRecord
 		$images=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item_image')
-			->where('item_id=:item_id',array(':item_id'=>$this->id))
+			->where('item_id=:item_id', array(':item_id'=>$this->id))
 			->queryAll();
 		foreach($images as $image)
-			db_image('item_image',$image['id'],array('unlink'=>true));
+			db_image('item_image', $image['id'], array('unlink'=>true));
 	}
 
 	/**
@@ -181,7 +181,7 @@ class Item extends CActiveRecord
 		$defaults=array(
 			'separator'=>', ',
 		);
-		$options=array_merge($defaults,$options);
+		$options=array_merge($defaults, $options);
 
 		if($this->category_id != null)
 		{
@@ -308,8 +308,13 @@ class Item extends CActiveRecord
 		return false;
 	}
 
-    public function getImage($index=0)
+	public function getImage($index=0, $options=array())
 	{
+		$defaults=array(
+			'color'=>'black',
+		);
+		$options=array_merge($defaults, $options);
+
 		$image=Yii::app()->db->createCommand()
 			->select('id, type, data')
 			->from('item_image')
@@ -319,9 +324,20 @@ class Item extends CActiveRecord
 			$image['path']='/img/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
 			if(!file_exists(Yii::getPathOfAlias('webroot').$image['path']))
 				file_put_contents(Yii::getPathOfAlias('webroot').$image['path'], $image['data']);
-			return $image;
-		} else
-			return false;
+			return $image['path'];
+		} else {
+			switch($options['color'])
+			{
+				case 'black':
+					return '/img/item/no-image-black.gif';
+					break;
+				case 'white':
+					return '/img/item/no-image-white.gif';
+					break;
+				default:
+					return '/img/item/no-image-black.gif';
+			}
+		}
 	}
 
 	public function getImages()
@@ -373,7 +389,7 @@ class Item extends CActiveRecord
 		$items=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item')
-			->where('id!=:id and user_id=:user_id',array(':id'=>$this->id,':user_id'=>$this->user_id))
+			->where('id!=:id and user_id=:user_id', array(':id'=>$this->id, ':user_id'=>$this->user_id))
 			->queryAll();
 		$array=array();
 		if($items)
@@ -391,7 +407,7 @@ class Item extends CActiveRecord
 	{
 		$params=array('Item'=>$this);
 		if(
-			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			Yii::app()->user->checkAccess('updateOwnItem', $params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
@@ -407,7 +423,7 @@ class Item extends CActiveRecord
 	{
 		$params=array('Item'=>$this);
 		if(
-			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
+			Yii::app()->user->checkAccess('deleteOwnItem', $params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))

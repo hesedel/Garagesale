@@ -9,8 +9,9 @@
 		->queryRow();
 
 	echo CHtml::link(
+
 		CHtml::image(
-			'/img/vendor/slir/w276-h216-c138x108-be8e8e3' . ($image ? db_image('item_image', $image['id']) : '/img/item/no-image.gif'),
+			'/img/vendor/slir/w276-h216-c138x108-be8e8e3' . $data->getImage(),
 			CHtml::encode($data->title),
 			array('title' => $data->description)
 		),
