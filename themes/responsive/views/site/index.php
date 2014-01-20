@@ -18,8 +18,8 @@ $this->layout = 'column2';
 		'dataProvider' => $dataProvider_featured,
 		'options' => array(
 			'toolbox' => array(
-				'viewButton' => true,
-				'sortButton' => true,
+				'viewButton' => false,
+				'sortButton' => false,
 			),
 		),
 	)); ?>
@@ -29,8 +29,8 @@ $this->layout = 'column2';
 			'dataProvider' => $dataProvider_latest,
 			'options' => array(
 				'toolbox' => array(
-					'viewButton' => true,
-					'sortButton' => true,
+					'viewButton' => false,
+					'sortButton' => false,
 				),
 				'view' => 'list',
 			),
