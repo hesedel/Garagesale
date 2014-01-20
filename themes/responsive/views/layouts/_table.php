@@ -117,9 +117,3 @@
 <?php echo !isset($legacy) ? '</div>' : '</table>'; ?>
 
 </div>
-
-<?php Yii::app()->clientScript->registerScript('main_table',
-	"
-	
-	",
-CClientScript::POS_READY) ?>

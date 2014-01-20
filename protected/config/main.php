@@ -111,6 +111,15 @@ return array(
 			'cache'=>false,
 			*/
 		),
+		'clientScript'=>array(
+			'class'=>'ext.minScript.components.ExtMinScript'
+		),
+	),
+
+	'controllerMap'=>array(
+		'min'=>array(
+			'class'=>'ext.minScript.controllers.ExtMinScriptController'
+		),
 	),
 
 	// application-level parameters that can be accessed

@@ -42,60 +42,6 @@ else
 			'lastPageLabel' => '››',
 			//'maxButtonCount' => 3,
 		),
-		/*
-		'afterAjaxUpdate' => "function(id) {
-			categoryEllipsis(id);
-		}",
-		*/
 	)); ?>
 
 </div>
-
-<?php /*
-:php
-	Yii::app()->clientScript->registerScript(
-		'item_index',
-		"
-		function categoryEllipsis(id) {
-			$('em', $('div.g-items.grid #' + id + ' div.view')).each(function() {
-				$(this).css( {
-					width: $(this).parents('div.view').width() - $(this).siblings('span.price').outerWidth()
-				});
-			});
-		}
-		$('div.g-items.grid').each(function() {
-			categoryEllipsis($(this).children('div.list-view').attr('id'));
-		});
-		
-		/*
-		$('abbr', 'div.g-items.list').timeago();
-		
-		setTimeout(function() {
-			$('div.g-items.list').each(function() {
-				var width_price = 0;
-				$('div.view', $(this)).each(function() {
-					if($('td.price', $(this)).width() > width_price)
-						width_price = $('td.price', $(this)).width()
-				});
-				$('td.price', $(this)).css( {
-					width: width_price
-				});
-				var width_condition = 0;
-				$('div.view', $(this)).each(function() {
-					if($('td.condition', $(this)).width() > width_condition)
-						width_condition = $('td.condition', $(this)).width()
-				});
-				$('td.condition', $(this)).css( {
-					width: width_condition
-				});
-				$('th, th strong', $(this)).css( {
-					width: $('table', $(this)).width() - width_condition - width_price - 20
-				});
-			});
-		}, 250);
-		*/
-/*
-		",
-		CClientScript::POS_READY
-	);
-*/

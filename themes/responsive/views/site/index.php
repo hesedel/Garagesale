@@ -37,30 +37,3 @@ $this->layout = 'column2';
 		)); ?>
 	</div>
 </div>
-
-<?php /*
-:php
-	Yii::app()->clientScript->registerScript(
-		'index',
-		"
-		/*
-		$(window)
-			.resize(function() {
-				switch($('#yw0').width()) {
-					case 917:
-						if($('div.view', '#yw0').size() != 5)
-							$.fn.yiiListView.update('yw0', {data: {ajax_pageSize: 5}});
-						break;
-					case 732:
-						if($('div.view', '#yw0').size() != 4)
-						$.fn.yiiListView.update('yw0', {data: {ajax_pageSize: 4}});
-					default:
-				}
-			})
-			.resize();
-		*/
-/*
-		",
-		CClientScript::POS_READY
-	);
-*/
