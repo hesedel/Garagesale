@@ -19,9 +19,9 @@ $this->layout = 'column2';
 		'options' => array(
 			'toolbox' => array(
 				'viewButton' => true,
-				'sortButton' => true
-			)
-		)
+				'sortButton' => true,
+			),
+		),
 	)); ?>
 	<div class="latest">
 		<h3>Latest Ads</h3>
@@ -30,9 +30,9 @@ $this->layout = 'column2';
 			'options' => array(
 				'toolbox' => array(
 					'viewButton' => false,
-					'sortButton' => false
-				)
-			)
+					'sortButton' => false,
+				),
+			),
 		)); ?>
 	</div>
 </div>

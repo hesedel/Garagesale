@@ -174,7 +174,6 @@ class User extends CActiveRecord
 			return $image;
 		else
 		{
-			/*
 			switch($options['color'])
 			{
 				case 'black':
@@ -186,8 +185,6 @@ class User extends CActiveRecord
 				default:
 					return '/img/user/no-image-black.gif';
 			}
-			*/
-			return false;
 		}
 	}
 
