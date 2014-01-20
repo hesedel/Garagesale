@@ -162,7 +162,7 @@ class Item extends CActiveRecord
 	 * CHtml::activeDropDownList	getCategoryDropDownList()
 	 * string						getConditionClass()
 	 * mixed						getExpiry()
-	 * array						getImage($index=0)
+	 * string						getImage($index=0, $options=array())
 	 * array						getImages()
 	 * CHtml::activeDropDownList	getLocationDropDownList()
 	 * array						getOtherItems()
