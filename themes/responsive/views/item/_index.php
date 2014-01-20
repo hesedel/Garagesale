@@ -30,7 +30,7 @@ else
 
 	<?php $this->widget('zii.widgets.CListView', array(
 		'dataProvider' => $dataProvider,
-		'itemView' => $options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
+		'itemView' => '/item/_view',
 		'viewData' => array('options' => $options),
 		'template' => '{items}{pager}',
 		'pager' => array(

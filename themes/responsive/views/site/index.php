@@ -29,9 +29,10 @@ $this->layout = 'column2';
 			'dataProvider' => $dataProvider_latest,
 			'options' => array(
 				'toolbox' => array(
-					'viewButton' => false,
-					'sortButton' => false,
+					'viewButton' => true,
+					'sortButton' => true,
 				),
+				'view' => 'list',
 			),
 		)); ?>
 	</div>

@@ -228,11 +228,179 @@ div.g-form {
 
 	}
 
+	@mixin g-items_list {
+
+		.list-view {
+			padding-top: $line-height;
+
+			.items {
+				padding-bottom: 0; //
+				border-collapse: collapse;
+				margin-bottom: $line-height;
+				margin-left: 0; //
+				display: table;
+
+				.view-container {
+					padding-top: 0; //
+					padding-left: 0; //
+					display: table-row-group;
+					float: none; //
+
+					&.clear-left {
+						clear: none; //
+					}
+
+				}
+
+				.view {
+					background-color: transparent; //
+					padding: 0; //
+					border: none; //
+					display: table-row;
+					position: static; //
+
+					> * {
+						background-color: whiten(blacken($beige, 25%), 25%, 6);
+						padding: #{($line-height * .5) - 1px} #{$gutter-width * .5} #{$line-height * .5};
+						border-top: 1px solid $dark;
+						display: table-cell !important;
+					}
+
+					.img,
+					strong,
+					em,
+					.price,
+					.location {
+						border-right: 1px solid $dark;
+					}
+
+					strong,
+					em,
+					.price,
+					.location,
+					.condition {
+						border-left: 1px solid $dark;
+					}
+
+					em,
+					.price,
+					.location,
+					.condition {
+						@extend .hidden-xs;
+						white-space: nowrap;
+					}
+
+					.img {
+						margin-bottom: 0; //
+						overflow: visible; //
+
+						img {
+							width: auto; //
+							height: $line-height * 2;
+							display: block;
+						}
+
+					}
+
+					strong {
+						font-weight: 600;
+						vertical-align: top;
+						white-space: normal; //
+						word-break: break-all;
+						width: 100%;
+
+						a {
+							color: blacken($beige, 25%, 4);
+							@include text-shadow(0 1px rgba($white, 1));
+						}
+
+					}
+
+					em {
+						color: blacken($beige, 25%, 2);
+						font-size: .75em;
+						margin-right: 0; //
+						float: none; //
+					}
+
+					.price {
+						color: blacken($custom_green, 25%, 2);
+						margin-left: 0; //
+						float: none; //
+						position: static; //
+
+						&:before {
+							display: none; //
+						}
+
+					}
+
+					.location {
+						color: blacken($beige, 25%);
+						font-size: .75em;
+						margin-right: 0; //
+						clear: none; //
+						float: none; //
+					}
+
+					.condition {
+						margin-left: 0; //
+						clear: none; //
+						float: none; //
+						position: static; //
+
+						&:before {
+							display: none; //
+						}
+
+						span {
+							color: $white;
+							font-size: .75em;
+							@include text-shadow(0 -1px rgba($black, .05));
+							@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
+							padding-right: $gutter-width * (1 / 3);
+							padding-left: $gutter-width * (1 / 3);
+							@include border-radius(2px);
+						}
+
+						&.new span {
+							background-color: blacken($custom_green, 25%);
+						}
+
+						&.old span {
+							background-color: $custom_magenta;
+						}
+
+					}
+
+					&:hover {
+						background-color: transparent; //
+						border-color: transparent; //
+						@include box-shadow(none); //
+						position: static; //
+
+						> * {
+							background-color: $white;
+						}
+
+					}
+
+				} // .view
+
+				.view-container:first-child .view > * {
+					padding-top: $line-height * .5;
+					border-top: none;
+				}
+
+			} // .items
+
+		} // .list-view
+
+	} // @mixin g-items_list
+
 	&.grid {
 
 		.list-view {
-
-			.summary {}
 
 			.items {
 				padding-bottom: $line-height;
@@ -253,15 +421,15 @@ div.g-form {
 
 				.view {
 					background-color: whiten(blacken($beige, 25%), 25%, 8);
-					border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
 					padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px} #{($line-height * .5) + ($line-height * (1 / 6)) - 1px};
+					border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
 					@include clearfix;
 					position: relative;
 
 
 					.img {
-						display: block;
 						margin-bottom: $line-height * (1 / 3);
+						display: block;
 						overflow: hidden;
 
 						img {
@@ -304,8 +472,8 @@ div.g-form {
 							@include background-image(linear-gradient(left, rgba(whiten(blacken($beige, 25%), 25%, 8), 0), rgba(whiten(blacken($beige, 25%), 25%, 8), 1)));
 							width: $gutter-width;
 							position: absolute;
-								top: 1px;
-								bottom: 1px;
+								top: 0;
+								bottom: 0;
 								left: -$gutter-width;
 						}
 
@@ -320,25 +488,38 @@ div.g-form {
 					}
 
 					.condition {
-						color: $white;
-						font-size: .75em;
-						@include text-shadow(0 -1px rgba($black, .05));
-						@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
-						line-height: 14px;
-						padding-right: $gutter-width * (1 / 3);
-						padding-left: $gutter-width * (1 / 3);
-						@include border-radius(2px);
-						margin-top: 2px;
-						margin-bottom: 2px;
+						background-color: whiten(blacken($beige, 25%), 25%, 8);
+						padding-left: $gutter-width * (2 / 3);
 						margin-left: -100%;
 						clear: right;
 						float: right;
+						position: relative;
 
-						&.new {
+						&:before {
+							content: '';
+							@include background-image(linear-gradient(left, rgba(whiten(blacken($beige, 25%), 25%, 8), 0), rgba(whiten(blacken($beige, 25%), 25%, 8), 1)));
+							width: $gutter-width;
+							position: absolute;
+								top: 0;
+								bottom: 0;
+								left: -$gutter-width;
+						}
+
+						span {
+							color: $white;
+							font-size: .75em;
+							@include text-shadow(0 -1px rgba($black, .05));
+							@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
+							padding-right: $gutter-width * (1 / 3);
+							padding-left: $gutter-width * (1 / 3);
+							@include border-radius(2px);
+						}
+
+						&.new span {
 							background-color: blacken($custom_green, 25%);
 						}
 
-						&.old {
+						&.old span {
 							background-color: $custom_magenta;
 						}
 
@@ -350,7 +531,8 @@ div.g-form {
 						@include box-shadow(0 0 2px rgba($black, .1));
 						position: relative;
 
-						.price {
+						.price,
+						.condition {
 							background-color: $white;
 
 							&:before {
@@ -378,154 +560,15 @@ div.g-form {
 
 	} // .grid
 
+	@media (max-width: $screen-xs-max) {
+		&.grid {
+			@include g-items_list;
+		}
+	}
+
 	&.list {
-		
-
-		div.list-view {
-			
-
-			div.items {
-				
-
-				div.view {
-					@include clearfix;
-					background-color: whiten(blacken($beige, 25%), 25%, 6);
-					border-top: 1px dotted white;
-					padding: 17px 10px 18px;
-
-					&:first-child {
-						border-top: none;
-						padding-top: 18px;
-					}
-
-					div.data-container {
-						@include float-left;
-						width: 100%;
-
-						div.data {
-							margin-left: 55px;
-
-							table {
-								margin-bottom: 0;
-
-								th, td {
-									padding: 0;
-								}
-
-								th {
-									width: 100%;
-									padding-right: 5px;
-
-									strong {
-										@include ellipsis;
-										display: block;
-
-										a {
-											color: blacken($beige, 25%, 4);
-											text-decoration: none;
-											@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-
-											&:hover {
-												text-decoration: underline;
-											}
-
-										}
-
-									}
-
-								}
-
-								td {
-									white-space: nowrap;
-
-									&.condition {
-										padding-right: 5px;
-										padding-left: 5px;
-
-										span.condition {
-											color: white;
-											@include text-shadow(rgba(0, 0, 0, .05) 0 -1px);
-											@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
-											@include border-radius(2px);
-											padding-right: 4px;
-											padding-left: 4px;
-
-											&.new {
-												background-color: $custom_cyan;
-											}
-
-											&.old {
-												background-color: $custom_magenta;
-											}
-
-										}
-
-									}
-
-									&.price {
-										color: blacken($custom_green, 25%, 2);
-										padding-left: 5px;
-									}
-
-								}
-
-							} // table
-
-							em {
-								color: blacken($beige, 25%, 2);
-							}
-
-							span.location {
-								color: blacken($beige, 25%);
-							}
-
-							span.time {
-								@include float-right;
-								color: blacken($beige, 25%);
-								//font-size: $small;
-								height: 18px;
-									line-height: 18px;
-
-								abbr {
-									color: blacken($beige, 25%, 2);
-									border-bottom: none;
-								}
-
-							}
-
-						} // .data
-
-					} // .data-container
-
-					a.img {
-						@include float-left;
-						width: 45px;
-						height: 36px;
-						margin-left: -100%;
-
-						img {
-							background-color: whiten(blacken($beige, 25%), 25%, 4);
-							background-position: center;
-							background-repeat: no-repeat;
-							@include background-size(100%);
-							display: block;
-							width: 100%;
-							height: 100%;
-						}
-
-					}
-
-					&:hover {
-						background-color: transparent;
-					}
-
-				} // .view
-
-			} // .items
-
-		} // .list-view
-
-	} // .list
+		@include g-items_list;
+	}
 
 	.pager {
 		margin-top: 0;

@@ -18,12 +18,15 @@
 		array('class' => 'img')
 	);
 	?>
+
 	<strong><?php echo CHtml::link(CHtml::encode($data->title), array('/item/view', 'id' => $data->id), array('title' => $data->title)); ?></strong>
+
 	<em<?php echo $data->category_id ? ' title="' . CHtml::encode($data->category->title) . '"' : ''; ?>><?php echo $data->category_id ? CHtml::encode($data->category->title) : ''; ?></em>
+
 	<span class="price">P <?php echo number_format($data->price); ?></span>
-	<?php if($data->user->location): ?>
-	<span class="location"><?php echo $data->user->location->name; ?></span>
-	<?php endif; ?>
+
+	<span class="location"><?php echo $data->user->location ? $data->user->location->name : ''; ?></span>
+
 	<?php if($data->condition_id != null) {
 		$condition = '';
 		switch($data->condition_id) {
@@ -33,9 +36,12 @@
 			default:
 				$condition = 'new';
 		}
-	?>
-	<span class="condition <?php echo $condition; ?>"><?php echo CHtml::encode($data->condition->title); ?></span>
-	<?php } ?>
+	} ?>
+	<span class="condition<?php echo isset($condition) ? ' ' . $condition : ''; ?>">
+		<?php if($data->condition_id != null): ?>
+		<span><?php echo CHtml::encode($data->condition->title); ?></span>
+		<?php endif; ?>
+	</span>
 </div>
 
 </div>
