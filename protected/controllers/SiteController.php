@@ -63,7 +63,7 @@ class SiteController extends Controller
 				'order'=>'updated DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 4,
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 10,
 			),
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(
@@ -71,7 +71,7 @@ class SiteController extends Controller
 				'order'=>'created DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>4,
+				'pageSize'=>5,
 			),
 		));
 		Yii::app()->theme='responsive';

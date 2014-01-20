@@ -1,10 +1,10 @@
 <?php
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle = Yii::app()->name;
 
-$this->layout='column2';
+$this->layout = 'column2';
 ?>
 
-<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id'=>'sidebar')); ?>
+<?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'sidebar')); ?>
 
 <div id="site_index-sidebar">
 	<div class="about"></div>
@@ -14,19 +14,30 @@ $this->layout='column2';
 
 <div id="site_index">
 	<h2>Featured Ads</h2>
-	<?php $this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>true, 'sortButton'=>true))); ?>
+	<?php $this->renderPartial('/item/_index', array(
+		'dataProvider' => $dataProvider_featured,
+		'options' => array(
+			'toolbox' => array(
+				'viewButton' => true,
+				'sortButton' => true
+			)
+		)
+	)); ?>
+	<div class="latest">
+		<h3>Latest Ads</h3>
+		<?php $this->renderPartial('/item/_index', array(
+			'dataProvider' => $dataProvider_latest,
+			'options' => array(
+				'toolbox' => array(
+					'viewButton' => false,
+					'sortButton' => false
+				)
+			)
+		)); ?>
+	</div>
 </div>
 
 <?php /*
-#site_index
-	%h2 Featured Ads
-	-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_featured, 'options'=>array('viewButton'=>false, 'sortButton'=>false)))
-	//
-		.categoryORlocation ...
-		.latest
-			%h3 Latest Ads
-			-$this->renderPartial('/item/_index', array('dataProvider'=>$dataProvider_latest, 'options'=>array('viewButton'=>false, 'sortButton'=>false, 'view'=>'list')))
-
 :php
 	Yii::app()->clientScript->registerScript(
 		'index',

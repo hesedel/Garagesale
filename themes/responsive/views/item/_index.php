@@ -1,8 +1,13 @@
 <?php
 $defaults = array(
-	'viewButton'=>true,
-	'sortButton'=>true,
-	'view'=>'grid',
+	'toolbox' => array(
+		'viewButton' => true,
+		'sortButton' => true,
+	),
+	'view' => 'grid',
+	'grid' => array(
+		'itemsPerRow' => 5,
+	),
 );
 if(isset($options))
 	$options = array_merge($defaults, $options);
@@ -10,34 +15,35 @@ else
 	$options = $defaults;
 ?>
 
-<div class="g-items<?php echo ($options['view'] === 'grid' ? ' grid' : ' list') . (!$options['viewButton'] && !$options['sortButton'] ? ' no-toolbox' : ''); ?>">
+<div class="g-items<?php echo ($options['view'] === 'grid' ? ' grid' : ' list') . (!$options['toolbox']['viewButton'] && !$options['toolbox']['sortButton'] ? ' no-toolbox' : ''); ?>">
 	<?php if(true): ?>
 	<div class="toolbox">
-		<?php if($options['viewButton']): ?>
+		<?php if($options['toolbox']['viewButton']): ?>
 			<a class="g-button" href="#"><i class="fa fa-th"></i> Grid</a>
 			<a class="g-button" href="#"><i class="fa fa-th-list"></i> List</a>
 		<?php endif; ?>
-		<?php if($options['sortButton']): ?>
+		<?php if($options['toolbox']['sortButton']): ?>
 			<a class="g-button" href="#"><i class="fa fa-sort-amount-asc"></i> Sort</a>
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>
 
 	<?php $this->widget('zii.widgets.CListView', array(
-		'dataProvider'=>$dataProvider,
-		'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
-		'template'=>'{items}{pager}',
-		'pager'=>array(
-			'header'=>false,
-			'htmlOptions'=>array('class'=>'g-pager'),
-			'firstPageLabel'=>'‹‹',
-			'prevPageLabel'=>'‹',
-			'nextPageLabel'=>'›',
-			'lastPageLabel'=>'››',
-			//'maxButtonCount'=>3,
+		'dataProvider' => $dataProvider,
+		'itemView' => $options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
+		'viewData' => array('options' => $options),
+		'template' => '{items}{pager}',
+		'pager' => array(
+			'header' => false,
+			'htmlOptions' => array('class' => 'g-pager'),
+			'firstPageLabel' => '‹‹',
+			'prevPageLabel' => '‹',
+			'nextPageLabel' => '›',
+			'lastPageLabel' => '››',
+			//'maxButtonCount' => 3,
 		),
 		/*
-		'afterAjaxUpdate'=>"function(id) {
+		'afterAjaxUpdate' => "function(id) {
 			categoryEllipsis(id);
 		}",
 		*/
@@ -46,39 +52,6 @@ else
 </div>
 
 <?php /*
-.g-items(class="#{($options['view'] === 'grid' ? 'grid' : 'list').(!$options['viewButton'] && !$options['sortButton'] ? ' no-toolbox' : '')}")
-	-if(true):
-	.toolbox
-		-if($options['viewButton']):
-		%a.g-button(href="#") \\&#60; GV &#62;
-		%a.g-button(href="#") \\&#60; LV &#62;
-		-endif
-		-if($options['sortButton']):
-		\\&#160;
-		%a.g-button(href="#") \\&#60; Sort by Price &#62;
-		-endif
-	.clear
-	-endif
-	:php
-		$this->widget('zii.widgets.CListView', array(
-			'dataProvider'=>$dataProvider,
-			'itemView'=>$options['view'] === 'grid' ? '/item/_view-grid' : '/item/_view-list',
-			'template'=>'{items}{pager}',
-			'pager'=>array(
-				'header'=>false,
-				'htmlOptions'=>array('class'=>'g-pager'),
-				'firstPageLabel'=>'‹‹',
-				'prevPageLabel'=>'‹',
-				'nextPageLabel'=>'›',
-				'lastPageLabel'=>'››',
-				//'maxButtonCount'=>3,
-			),
-			'afterAjaxUpdate'=>"function(id) {
-				categoryEllipsis(id);
-			}",
-		));
-
-
 :php
 	Yii::app()->clientScript->registerScript(
 		'item_index',
