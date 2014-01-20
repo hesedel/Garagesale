@@ -166,12 +166,13 @@ body {
 
 		.tr.filters {
 
-			> :not(.filters-right) {
+			> .td {
 				display: none;
 			}
 
 			.filters-right {
 				padding-top: 0;
+				display: block;
 
 				div {
 					padding-left: $gutter-width;
