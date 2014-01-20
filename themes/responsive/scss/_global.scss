@@ -258,8 +258,10 @@ div.g-form {
 					border: none; //
 					display: table-row;
 					position: static; //
+					overflow: visible; //
 
 					> * {
+						vertical-align: top;
 						background-color: whiten(blacken($beige, 25%), 25%, 6);
 						padding: #{($line-height * .5) - 1px} #{$gutter-width * .5} #{$line-height * .5};
 						border-top: 1px solid $dark;
@@ -304,7 +306,6 @@ div.g-form {
 
 					strong {
 						font-weight: 600;
-						vertical-align: top;
 						white-space: normal; //
 						word-break: break-all;
 						width: 100%;
@@ -425,6 +426,7 @@ div.g-form {
 					border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
 					@include clearfix;
 					position: relative;
+					overflow: hidden;
 
 
 					.img {
