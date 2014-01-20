@@ -21,7 +21,7 @@ a {
 }
 
 label, th {
-	font-weight: normal;
+	font-weight: 400;
 }
 
 /*
@@ -286,8 +286,7 @@ div.g-form {
 
 					em,
 					.price,
-					.location,
-					.condition {
+					.location {
 						@extend .hidden-xs;
 						white-space: nowrap;
 					}
@@ -313,6 +312,13 @@ div.g-form {
 						a {
 							color: blacken($beige, 25%, 4);
 							@include text-shadow(0 1px rgba($white, 1));
+						}
+
+						.price-xs {
+							@extend .visible-xs;
+							color: blacken($custom_green, 25%, 2);
+							font-weight: 400;
+							text-align: right;
 						}
 
 					}
@@ -357,11 +363,14 @@ div.g-form {
 						span {
 							color: $white;
 							font-size: .75em;
+							text-align: center;
 							@include text-shadow(0 -1px rgba($black, .05));
 							@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
+							line-height: $line-height * .75;
 							padding-right: $gutter-width * (1 / 3);
 							padding-left: $gutter-width * (1 / 3);
 							@include border-radius(2px);
+							display: inline-block;
 						}
 
 						&.new span {
@@ -449,6 +458,10 @@ div.g-form {
 						a {
 							color: blacken($beige, 25%, 4);
 							@include text-shadow(0 1px rgba($white, 1));
+						}
+
+						.price-xs {
+							display: none;
 						}
 
 					}

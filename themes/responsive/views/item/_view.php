@@ -19,7 +19,7 @@
 	);
 	?>
 
-	<strong><?php echo CHtml::link(CHtml::encode($data->title), array('/item/view', 'id' => $data->id), array('title' => $data->title)); ?></strong>
+	<strong><?php echo CHtml::link(CHtml::encode($data->title), array('/item/view', 'id' => $data->id), array('title' => $data->title)); ?> <span class="price-xs">P <?php echo number_format($data->price); ?></span></strong>
 
 	<em<?php echo $data->category_id ? ' title="' . CHtml::encode($data->category->title) . '"' : ''; ?>><?php echo $data->category_id ? CHtml::encode($data->category->title) : ''; ?></em>
 
