@@ -21,7 +21,7 @@
 	</div>
 	<div class="col-md-3 col-md-pull-9">
 
-		<div id="sidebar">
+		<aside id="sidebar">
 
 			<?php echo $this->clips['sidebar']; ?>
 
@@ -36,7 +36,7 @@
 
 			<?php $this->endWidget(); ?>
 
-		</div><!-- #sidebar -->
+		</aside><!-- #sidebar -->
 
 	</div>
 </div>
