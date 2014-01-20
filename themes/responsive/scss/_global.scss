@@ -286,6 +286,7 @@ div.g-form {
 					em {
 						@include ellipsis;
 						color: blacken($beige, 25%, 2);
+						font-size: .75em;
 						margin-right: -100%;
 						float: left;
 					}
@@ -312,6 +313,7 @@ div.g-form {
 
 					.location {
 						color: blacken($beige, 25%);
+						font-size: .75em;
 						margin-right: -100%;
 						clear: left;
 						float: left;
@@ -319,6 +321,7 @@ div.g-form {
 
 					.condition {
 						color: $white;
+						font-size: .75em;
 						@include text-shadow(0 -1px rgba($black, .05));
 						@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
 						line-height: 14px;
@@ -332,7 +335,7 @@ div.g-form {
 						float: right;
 
 						&.new {
-							background-color: $custom_cyan;
+							background-color: blacken($custom_green, 25%);
 						}
 
 						&.old {
