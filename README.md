@@ -2,16 +2,6 @@
 * Staging: `http://sta.garagesale.pajaroncreative.com/`
 * Production: `http://garagesale.ph/`
 
-# USERS
-
-* u: `user` p: `password`
-* u: `user2` p: `password`
-* u: `admin` p: `password`
-* u: `admin2` p: `password`
-* u: `super` p: `password`
-* u: `super2` p: `password`
-* u: `hesedel` p: `password`
-
 # INSTRUCTIONS
 
 1. **Setting Up Your Local Configuration**
@@ -47,6 +37,16 @@
 	OSX:
 
 		Run `$ bash osx` in your local repository.
+
+# USERS
+
+* u: `user` p: `password`
+* u: `user2` p: `password`
+* u: `admin` p: `password`
+* u: `admin2` p: `password`
+* u: `super` p: `password`
+* u: `super2` p: `password`
+* u: `hesedel` p: `password`
 
 # PHamlP
 
