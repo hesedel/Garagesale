@@ -45,6 +45,7 @@ return array(
 				'login'=>'site/login',
 				'logout'=>'site/logout',
 				'register'=>'site/register',
+				'maintenance'=>'site/maintenance',
 
 				'ad'=>'item/index',
 				'post'=>'item/create',

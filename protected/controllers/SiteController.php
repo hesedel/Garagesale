@@ -13,7 +13,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','error','contact'),
+				'actions'=>array('index','error','contact','maintenance'),
 				'users'=>array('*'),
 			),
 			array('allow',
@@ -188,5 +188,10 @@ class SiteController extends Controller
 			}
 		}
 		$this->render('register',array('model'=>$model));
+	}
+
+	public function actionMaintenance() {
+		Yii::app()->theme='responsive';
+		$this->render('maintenance');
 	}
 }
