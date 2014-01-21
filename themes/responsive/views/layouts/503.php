@@ -36,7 +36,9 @@ header('Retry-After: 3600'); // 1 hour
 
 	<div id="page">
 
-		<header id="header"><h1>Garagesale<span>.ph</span></h1></header>
+		<header id="header">
+			<h1 id="logo">Garagesale<span>.ph</span></h1>
+		</header>
 
 		<?php echo $content; ?>
 
@@ -44,7 +46,11 @@ header('Retry-After: 3600'); // 1 hour
 
 </div><!-- #body -->
 
-<footer id="footer"></footer><!-- #footer -->
+<footer id="footer">
+
+	<?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format'=>'Y')); ?>
+
+</footer><!-- #footer -->
 
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -4,6 +4,12 @@ $this->pageTitle = Yii::app()->name . ', Coming Soon';
 $this->layout = '503';
 ?>
 
-<h2>Coming Soon</h2>
+<div class="row">
 
-<p><?php echo Yii::app()->name; ?> ...</p>
+	<div class="col-md-6 col-md-push-3">
+		<h2>Coming Soon</h2>
+
+		<p><?php echo Yii::app()->name; ?> ...</p>
+	</div>
+
+</div>
