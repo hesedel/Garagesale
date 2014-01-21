@@ -1,3 +1,10 @@
+<?php
+$protocol = 'HTTP/1.0';
+if($_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1')
+	$protocol = 'HTTP/1.1';
+header($protocol . ' 503 Service Unavailable', true, 503);
+header('Retry-After: 3600'); // 1 hour
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="503 no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="503 no-js lt-ie9 lt-ie8"> <![endif]-->
