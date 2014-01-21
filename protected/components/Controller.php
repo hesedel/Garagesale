@@ -23,6 +23,17 @@ class Controller extends CController
 
 	protected function beforeAction($action)
 	{
+		if(Yii::app()->params['maintenance'])
+		{
+			if($this->getRoute() !== 'site/maintenance')
+				$this->redirect(Yii::app()->createUrl('site/maintenance'));
+		}
+		else
+		{
+			if($this->getRoute() === 'site/maintenance')
+				$this->redirect(Yii::app()->homeUrl);
+		}
+
 		// force user logout when session is not valid
 		Yii::app()->params['user']=false;
 		if(!Yii::app()->user->isGuest)

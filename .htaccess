@@ -259,9 +259,9 @@ AddDefaultCharset utf-8
     # maintenance
 
     #RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1
-    RewriteCond %{REQUEST_URI} !^/(index.php|maintenance/) [NC]
-    #RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
-    RewriteRule .* /maintenance/ [R=302,L]
+    #RewriteCond %{REQUEST_URI} !^/(index.php|min/serve/|maintenance/) [NC]
+    #RewriteCond %{REQUEST_URI} !\.(gif|jpe?g|png) [NC]
+    #RewriteRule .* /maintenance/ [R=302,L]
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
