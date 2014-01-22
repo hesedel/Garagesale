@@ -1,3 +1,7 @@
+<?php if($index % $options['grid']['itemsPerRow'] == 0): ?>
+<div class="view-row">
+<?php endif; ?>
+
 <div class="view-container<?php echo $index % $options['grid']['itemsPerRow'] == 0 ? ' clear-left' : ''; ?>" style="width: <?php echo 100 / $options['grid']['itemsPerRow']; ?>%">
 
 <div class="view">
@@ -11,7 +15,7 @@
 	echo CHtml::link(
 
 		CHtml::image(
-			'/img/vendor/slir/w276-h216-c138x108-be8e8e3' . $data->getImage(),
+			'/img/vendor/slir/w298-h252-c149x126-be8e8e3' . $data->getImage(),
 			CHtml::encode($data->title),
 			array('title' => $data->description)
 		),
@@ -46,3 +50,7 @@
 </div>
 
 </div>
+
+<?php if($index % $options['grid']['itemsPerRow'] == $options['grid']['itemsPerRow'] - 1 || $index == $widget->dataProvider->getPagination()->pageSize - 1): ?>
+</div><!-- endrow -->
+<?php endif; ?>
