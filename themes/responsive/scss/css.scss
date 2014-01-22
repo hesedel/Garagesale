@@ -229,7 +229,7 @@ body {
 	@include text-shadow(0 -1px rgba($black, .25));
 	white-space: nowrap;
 	background-color: $custom_cyan;
-	@include background-image(linear-gradient(rgba($white, .25), rgba($black, .1)));
+	@include background-image(linear-gradient(rgba($white, .1), rgba($black, .1)));
 	height: $line-height * 3;
 		line-height: $line-height * 3;
 	padding-right: $gutter-width;
@@ -274,7 +274,7 @@ body {
 		@include text-shadow(0 1px rgba($white, .5));
 		white-space: nowrap;
 		background-color: $light;
-		@include background-image(linear-gradient(rgba($white, .25), rgba($black, .1)));
+		@include background-image(linear-gradient(rgba($white, .1), rgba($black, .1)));
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);
