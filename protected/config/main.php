@@ -112,7 +112,7 @@ return array(
 			'cache'=>false,
 			*/
 		),
-		'clientScript'=>(!os_is_windows() ? array(
+		'clientScript'=>(env_is(array('dev')) || !os_is_windows() ? array(
 			'class'=>'ext.minScript.components.ExtMinScript'
 		) : array()),
 	),
