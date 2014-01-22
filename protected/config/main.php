@@ -112,9 +112,12 @@ return array(
 			'cache'=>false,
 			*/
 		),
-		'clientScript'=>(env_is(array('dev')) || !os_is_windows() ? array(
-			'class'=>'ext.minScript.components.ExtMinScript'
-		) : array()),
+		'clientScript'=>($params['env'] !== 'dev' && !os_is_windows()
+			? array(
+				'class'=>'ext.minScript.components.ExtMinScript'
+			)
+			: array() // do nothing
+		),
 	),
 
 	'controllerMap'=>array(

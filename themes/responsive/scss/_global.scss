@@ -238,15 +238,17 @@ div.g-form {
 				padding-bottom: 0; //
 				border-collapse: collapse;
 				margin-bottom: $line-height;
-				margin-left: 0; //
 				display: table;
+				overflow: visible; //
 
 				.view-row {
 					border-top: 1px solid $dark;
+					margin-top: 0; //
+					margin-left: 0; //
 					display: block;
+					overflow: visible; //
 
 					.view-container {
-						padding-top: 0; //
 						padding-left: 0; //
 						display: table-row-group;
 						float: none; //
@@ -260,10 +262,13 @@ div.g-form {
 					.view {
 						background-color: transparent; //
 						padding: 0; //
-						border: none; //
 						display: table-row;
 						position: static; //
 						overflow: visible; //
+
+						&:before {
+							display: none; //
+						}
 
 						> * {
 							vertical-align: top;
@@ -271,6 +276,7 @@ div.g-form {
 							padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{$line-height * .5};
 							border-top: 1px solid $dark;
 							display: table-cell !important;
+							position: static; //
 						}
 
 						.img,
@@ -332,6 +338,7 @@ div.g-form {
 						em {
 							color: blacken($beige, 25%, 2);
 							font-size: .75em;
+							font-style: normal;
 							margin-right: 0; //
 							float: none; //
 						}
@@ -391,9 +398,8 @@ div.g-form {
 
 						&:hover {
 							background-color: transparent; //
-							border-color: transparent; //
-							@include box-shadow(none); //
 							position: static; //
+								z-index: 0; //
 
 							> * {
 								background-color: $white;
@@ -435,15 +441,17 @@ div.g-form {
 
 			.items {
 				padding-bottom: $line-height;
-				margin-left: -1px;
 				@include clearfix;
+				overflow: hidden;
 
 				.view-row {
+					margin-top: 1px;
+					margin-left: -1px;
 					@include clearfix;
+					overflow: hidden;
 
 					.view-container {
 						//width: #{(1 / 5) * 100%};
-						padding-top: 1px;
 						padding-left: 1px;
 						float: left;
 
@@ -455,13 +463,25 @@ div.g-form {
 
 					.view {
 						background-color: whiten(blacken($beige, 25%), 25%, 8);
-						padding: #{($line-height * .5) - 2px} #{($gutter-width * (2 / 3)) - 1px} #{($line-height * .5) + ($line-height * (1 / 6)) - 1px};
-						//border: 1px solid whiten(blacken($beige, 25%), 25%, 6);
-						border: 1px solid whiten(blacken($beige, 25%), 25%, 8);
+						padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{($line-height * .5) + ($line-height * (1 / 6))};
 						@include clearfix;
 						position: relative;
-						overflow: hidden;
+						//overflow: hidden;
 
+						&:before {
+							content: '';
+							background-color: whiten(blacken($beige, 25%), 25%, 8);
+							display: block;
+							position: absolute;
+								top: 0;
+								right: 0;
+								bottom: -$line-height * 2;
+								left: 0;
+						}
+
+						> * {
+							position: relative;
+						}
 
 						.img {
 							margin-bottom: $line-height * (1 / 3);
@@ -497,6 +517,7 @@ div.g-form {
 							@include ellipsis;
 							color: blacken($beige, 25%, 2);
 							font-size: .75em;
+							font-style: normal;
 							margin-right: -100%;
 							float: left;
 						}
@@ -569,10 +590,13 @@ div.g-form {
 
 						&:hover {
 							background-color: $white;
-							border-color: $white;
-							@include box-shadow(0 0 8px rgba($black, .25));
 							position: relative;
 								z-index: 1;
+
+							&:before {
+								background-color: $white;
+								@include box-shadow(0 0 8px rgba($black, .25));
+							}
 
 							.price,
 							.condition {
@@ -589,13 +613,10 @@ div.g-form {
 					} // .view
 
 					&:first-child {
-
-						.view-container {
-							padding-top: 0;
-						}
+						margin-top: 0;
 
 						.view {
-							padding-top: #{($line-height * .5) - 1px};
+							padding-top: #{$line-height * .5};
 						}
 
 					}
