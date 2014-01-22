@@ -724,7 +724,14 @@ div.breadcrumbs {
 }
 
 #footer {
+	@extend .container;
+	padding-top: $line-height * 2;
+	padding-bottom: $line-height * 2;
+}
 
+#copyright {
+	color: $dark;
+	float: right;
 }
 
 @import 'site_';

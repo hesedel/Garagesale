@@ -45,7 +45,9 @@
 
 </div><!-- #body -->
 
-<footer id="footer"></footer><!-- #footer -->
+<footer id="footer">
+	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format'=>'Y')); ?></div>
+</footer><!-- #footer -->
 
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
