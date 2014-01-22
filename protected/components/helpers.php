@@ -74,6 +74,11 @@ function env_is($envs)
 	return false;
 }
 
+function os_is_windows()
+{
+	return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+}
+
 function time_local($time, $options = array())
 {
 	$defaults = array(

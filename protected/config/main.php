@@ -112,9 +112,9 @@ return array(
 			'cache'=>false,
 			*/
 		),
-		'clientScript'=>array(
+		'clientScript'=>(!os_is_windows() ? array(
 			'class'=>'ext.minScript.components.ExtMinScript'
-		),
+		) : array()),
 	),
 
 	'controllerMap'=>array(

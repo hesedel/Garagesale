@@ -7,7 +7,7 @@ $this->layout = 'column2';
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'sidebar')); ?>
 
 <div id="site_index-sidebar">
-	<div class="about"><?php echo PHP_OS; ?></div>
+	<div class="about"></div>
 </div>
 
 <?php $this->endWidget(); ?>
