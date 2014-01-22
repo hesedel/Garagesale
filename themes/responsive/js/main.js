@@ -27,6 +27,15 @@ $('.a', '#filters').bind('click', function() {
 	}
 });
 
+$('input[type=text]', '#search').bind( {
+	focus: function() {
+		$('.a:not(.click)', '#filters').trigger('click');
+	},
+	blur: function() {
+		$('.a.click', '#filters').trigger('click');
+	}
+});
+
 });
 
 $(window).load(function() {
