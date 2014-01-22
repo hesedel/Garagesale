@@ -498,9 +498,10 @@ div.g-form {
 						strong {
 							//@include ellipsis;
 							font-weight: 600;
-							word-break: break-all;
+							//word-break: break-all;
 							min-height: $line-height * 4;
 							display: block;
+							overflow: hidden;
 
 							a {
 								color: blacken($beige, 25%, 4);
