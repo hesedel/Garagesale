@@ -313,6 +313,7 @@ div.g-form {
 							//white-space: normal; //
 							word-break: break-all;
 							width: 100%;
+							min-height: auto; //
 
 							a {
 								color: blacken($beige, 25%, 4);
@@ -478,6 +479,7 @@ div.g-form {
 							//@include ellipsis;
 							font-weight: 600;
 							word-break: break-all;
+							min-height: $line-height * 4;
 							display: block;
 
 							a {
