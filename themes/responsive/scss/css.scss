@@ -729,6 +729,13 @@ div.breadcrumbs {
 	padding-bottom: $line-height * 2;
 }
 
+@media (max-width: $screen-xs-max) {
+	#footer {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
 #copyright {
 	color: $dark;
 	float: right;
