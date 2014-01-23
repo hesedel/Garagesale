@@ -166,6 +166,7 @@ class Item extends CActiveRecord
 	 * array						getImages()
 	 * CHtml::activeDropDownList	getLocationDropDownList()
 	 * array						getOtherItems()
+	 * string						getTimeAgo($createdORupdated='created')
 	 * bool							userCanUpdate()
 	 * bool							userCanDelete()
 	 * 
@@ -401,6 +402,11 @@ class Item extends CActiveRecord
 			return $array;
 		} else
 			return false;
+	}
+
+	public function getTimeAgo($createdORupdated='created')
+	{
+		return 'time'.' ago';
 	}
 
 	public function userCanUpdate()

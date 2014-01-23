@@ -42,6 +42,9 @@ else
 			'lastPageLabel' => '››',
 			//'maxButtonCount' => 3,
 		),
+		'afterAjaxUpdate'=>"function(id) {
+			$('time.timeago', '#' + id).timeago();
+		}",
 	)); ?>
 
 </div>

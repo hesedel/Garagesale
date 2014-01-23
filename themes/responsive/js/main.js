@@ -36,6 +36,8 @@ $('input[type=text]', '#search').bind( {
 	}
 });
 
+//$('time.timeago').timeago();
+
 });
 
 $(window).load(function() {

@@ -283,6 +283,7 @@ div.g-form {
 						strong,
 						em,
 						.price,
+						.time,
 						.location {
 							border-right: 1px solid $dark;
 						}
@@ -290,6 +291,7 @@ div.g-form {
 						strong,
 						em,
 						.price,
+						.time,
 						.location,
 						.condition {
 							border-left: 1px solid $dark;
@@ -297,6 +299,7 @@ div.g-form {
 
 						em,
 						.price,
+						.time,
 						.location {
 							@extend .hidden-xs;
 							white-space: nowrap;
@@ -326,11 +329,27 @@ div.g-form {
 								@include text-shadow(0 1px rgba($white, 1));
 							}
 
-							.price-xs {
+							.price-xs,
+							.time-xs,
+							.location-xs {
 								@extend .visible-xs;
-								color: blacken($custom_green, 25%, 2);
 								font-weight: 400;
-								text-align: right;
+							}
+
+							.price-xs {
+								color: blacken($custom_green, 25%, 2);
+							}
+
+							.time-xs,
+							.location-xs {
+								color: blacken($beige, 25%, 2);
+
+								i {
+									text-align: center;
+									width: $gutter-width;
+									margin-right: $gutter-width * (1 / 3);
+								}
+
 							}
 
 						}
@@ -345,33 +364,57 @@ div.g-form {
 
 						.price {
 							color: blacken($custom_green, 25%, 2);
-							margin-left: 0; //
-							float: none; //
-							position: static; //
+							margin-bottom: 0; //
+							//margin-left: 0; //
+							//float: none; //
+							//position: static; //
 
+							/*
 							&:before {
 								display: none; //
+							}
+							*/
+
+						}
+
+						.time {
+							color: blacken($beige, 25%, 2);
+
+							i {
+								text-align: center;
+								width: $gutter-width;
+								margin-right: $gutter-width * (1 / 3);
 							}
 
 						}
 
 						.location {
-							color: blacken($beige, 25%);
-							font-size: .75em;
-							margin-right: 0; //
-							clear: none; //
-							float: none; //
+							color: blacken($beige, 25%, 2);
+							//font-size: .75em;
+							//margin-right: 0; //
+							//clear: none; //
+							//float: none; //
+
+							i {
+								text-align: center;
+								width: $gutter-width;
+								margin-right: $gutter-width * (1 / 3);
+							}
+
 						}
 
 						.condition {
-							margin-left: 0; //
-							clear: none; //
+							text-align: center;
+							//margin-left: 0; //
+							//clear: none; //
 							float: none; //
 							position: static; //
 
+							/*
 							&:before {
 								display: none; //
 							}
+							*/
 
 							span {
 								color: $white;
@@ -508,7 +551,9 @@ div.g-form {
 								@include text-shadow(0 1px rgba($white, 1));
 							}
 
-							.price-xs {
+							.price-xs,
+							.time-xs,
+							.location-xs {
 								display: none;
 							}
 
@@ -525,12 +570,15 @@ div.g-form {
 
 						.price {
 							color: blacken($custom_green, 25%, 2);
-							background-color: whiten(blacken($beige, 25%), 25%, 8);
-							padding-left: $gutter-width * (2 / 3);
-							margin-left: -100%;
-							float: right;
-							position: relative;
+							//background-color: whiten(blacken($beige, 25%), 25%, 8);
+							//padding-left: $gutter-width * (2 / 3);
+							margin-bottom: $line-height * .5;
+							//margin-left: -100%;
+							display: block;
+							//float: right;
+							//position: relative;
 
+							/*
 							&:before {
 								content: '';
 								@include background-image(linear-gradient(left, rgba(whiten(blacken($beige, 25%), 25%, 8), 0), rgba(whiten(blacken($beige, 25%), 25%, 8), 1)));
@@ -539,26 +587,49 @@ div.g-form {
 									top: 0;
 									bottom: 0;
 									left: -$gutter-width;
+							}
+							*/
+
+						}
+
+						.time {
+							color: blacken($beige, 25%, 2);
+							display: block;
+
+							i {
+								text-align: center;
+								width: $gutter-width;
+								margin-right: $gutter-width * (1 / 3);
 							}
 
 						}
 
 						.location {
-							color: blacken($beige, 25%);
-							font-size: .75em;
-							margin-right: -100%;
-							clear: left;
-							float: left;
+							color: blacken($beige, 25%, 2);
+							//font-size: .75em;
+							//margin-right: -100%;
+							//clear: left;
+							//float: left;
+
+							i {
+								text-align: center;
+								width: $gutter-width;
+								margin-right: $gutter-width * (1 / 3);
+							}
+
 						}
 
 						.condition {
-							background-color: whiten(blacken($beige, 25%), 25%, 8);
-							padding-left: $gutter-width * (2 / 3);
-							margin-left: -100%;
-							clear: right;
-							float: right;
-							position: relative;
+							text-align: right;
+							//background-color: whiten(blacken($beige, 25%), 25%, 8);
+							//padding-left: $gutter-width * (2 / 3);
+							//margin-left: -100%;
+							//clear: right;
+							display: block;
+							//float: right;
+							//position: relative;
 
+							/*
 							&:before {
 								content: '';
 								@include background-image(linear-gradient(left, rgba(whiten(blacken($beige, 25%), 25%, 8), 0), rgba(whiten(blacken($beige, 25%), 25%, 8), 1)));
@@ -568,6 +639,7 @@ div.g-form {
 									bottom: 0;
 									left: -$gutter-width;
 							}
+							*/
 
 							span {
 								color: $white;
