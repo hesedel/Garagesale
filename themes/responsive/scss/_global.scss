@@ -325,8 +325,13 @@ div.g-form {
 							min-height: auto; //
 
 							a {
-								color: blacken($beige, 25%, 4);
+								//color: blacken($beige, 25%, 4);
 								@include text-shadow(0 1px rgba($white, 1));
+
+								&:hover {
+									text-decoration: none;
+								}
+
 							}
 
 							.price-xs,
@@ -379,6 +384,7 @@ div.g-form {
 
 						.time {
 							color: blacken($beige, 25%, 2);
+							font-size: .75em;
 
 							i {
 								text-align: center;
@@ -390,7 +396,7 @@ div.g-form {
 
 						.location {
 							color: blacken($beige, 25%, 2);
-							//font-size: .75em;
+							font-size: .75em;
 							//margin-right: 0; //
 							//clear: none; //
 							//float: none; //
@@ -547,8 +553,13 @@ div.g-form {
 							overflow: hidden;
 
 							a {
-								color: blacken($beige, 25%, 4);
+								//color: blacken($beige, 25%, 4);
 								@include text-shadow(0 1px rgba($white, 1));
+
+								&:hover {
+									text-decoration: none;
+								}
+
 							}
 
 							.price-xs,
@@ -594,6 +605,7 @@ div.g-form {
 
 						.time {
 							color: blacken($beige, 25%, 2);
+							font-size: .75em;
 							display: block;
 
 							i {
@@ -606,7 +618,7 @@ div.g-form {
 
 						.location {
 							color: blacken($beige, 25%, 2);
-							//font-size: .75em;
+							font-size: .75em;
 							//margin-right: -100%;
 							//clear: left;
 							//float: left;
