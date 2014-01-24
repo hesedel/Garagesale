@@ -62,6 +62,11 @@ body {
 		right: $gutter-width;
 		left: $gutter-width;
 		z-index: 4;
+
+	* {
+		@include user-select(none);
+	}
+
 }
 
 .no-js #table-container {
@@ -92,7 +97,6 @@ body {
 
 			&.filters-left,
 			&.filters-right {
-				@include user-select(none);
 
 				div {
 					background-color: whiten(blacken($beige, 25%), 25%, 6);
@@ -202,7 +206,6 @@ body {
 }
 
 #header {
-	@include user-select(none);
 	position: relative;
 
 	h1 {
@@ -268,7 +271,6 @@ body {
 #logout,
 #filters,
 #post {
-	@include user-select(none);
 
 	> a,
 	div.a > a,
@@ -524,7 +526,6 @@ body {
 }
 
 #search {
-	@include user-select(none);
 	width: 100%;
 	padding-left: 1px !important;
 
