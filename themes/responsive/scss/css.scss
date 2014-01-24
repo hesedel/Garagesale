@@ -63,7 +63,7 @@ body {
 		left: $gutter-width;
 		z-index: 4;
 
-	*:not(input[type=text]) {
+	*:not([type=text]) {
 		@include user-select(none);
 	}
 
