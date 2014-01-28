@@ -309,6 +309,22 @@ class Item extends CActiveRecord
 		return false;
 	}
 
+	public function old_getImage($index=0)
+	{
+		$image=Yii::app()->db->createCommand()
+			->select('id, type, data')
+			->from('item_image')
+			->where('item_id=:id and `index`='.$index, array(':id'=>$this->id))
+			->queryRow();
+		if($image) {
+			$image['path']='/img/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
+			if(!file_exists(Yii::getPathOfAlias('webroot').$image['path']))
+				file_put_contents(Yii::getPathOfAlias('webroot').$image['path'], $image['data']);
+			return $image;
+		} else
+			return false;
+	}
+
 	public function getImage($index=0, $options=array())
 	{
 		$defaults=array(
@@ -354,7 +370,7 @@ class Item extends CActiveRecord
 			$i=0;
 			foreach($images as $key=>$image)
 			{
-				$path=$this->getImage($i);
+				$path=$this->old_getImage($i);
 				$images[$key]['path']=$path['path'];
 				$i++;
 			}

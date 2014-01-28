@@ -3,7 +3,7 @@
 <div id="item_view-sidebar-left">
 
 <?php
-$image=$model->getImage();
+$image=$model->old_getImage();
 if($image) {
 	echo CHtml::link(
 		CHtml::image(
