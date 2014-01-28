@@ -187,6 +187,7 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 			}
 		}
+		Yii::app()->theme='responsive';
 		$this->render('register',array('model'=>$model));
 	}
 

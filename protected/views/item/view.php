@@ -2,7 +2,7 @@
 $this->pageTitle=Yii::app()->name . ' - ' . $model->title;
 
 $this->breadcrumbs=array(
-	'Ads' => array('index'),
+	'Items' => array('index'),
 	$model->id,
 );
 

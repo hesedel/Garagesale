@@ -47,13 +47,13 @@ return array(
 				'register'=>'site/register',
 				'maintenance'=>'site/maintenance',
 
-				'ad'=>'item/index',
+				'items'=>'item/index',
 				'post'=>'item/create',
-				'ad/<id:\d+>'=>'item/view',
-				'ad/<action:\w+>/<id:\d+>'=>'item/<action>',
-				'ad/<action:\w+>'=>'item/<action>',
+				'item/<id:\d+>'=>'item/view',
+				'item/<action:\w+>/<id:\d+>'=>'item/<action>',
+				'item/<action:\w+>'=>'item/<action>',
 
-				'user/ads'=>'admin/user/items',
+				'user/items'=>'admin/user/items',
 				'user/<action:\w+>/<id:\w+>'=>'admin/user/<action>',
 				'user/<action:\w+>'=>'admin/user/<action>',
 

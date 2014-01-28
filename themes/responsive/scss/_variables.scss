@@ -11,6 +11,10 @@ $custom_green  : rgb(172, 229, 0);
 $custom_magenta: rgb(217, 0, 126);
 $custom_orange : rgb(255, 102, 0);
 
+// flatuicolors.com
+$color_clouds: #ecf0f1;
+$color_silver: #bdc3c7;
+
 	@function blacken($color, $percent, $i: 1) {
 		@while $i > 0 {
 			$color: mix(#000, $color, $percent);

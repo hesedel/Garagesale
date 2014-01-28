@@ -463,8 +463,13 @@ div.g-form {
 						border-top: none;
 					}
 
-					&:first-child .view-container:first-child .view > * {
-						padding-top: $line-height * .5;
+					&:first-child {
+						border-top: none;
+
+						.view-container:first-child .view > * {
+							padding-top: $line-height * .5;
+						}
+
 					}
 
 				} // .view-row

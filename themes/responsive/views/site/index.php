@@ -13,7 +13,7 @@ $this->layout = 'column2';
 <?php $this->endWidget(); ?>
 
 <div id="site_index">
-	<h2>Featured Ads</h2>
+	<h2>Featured Items</h2>
 	<?php $this->renderPartial('/item/_index', array(
 		'dataProvider' => $dataProvider_featured,
 		'options' => array(
@@ -24,7 +24,7 @@ $this->layout = 'column2';
 		),
 	)); ?>
 	<div class="latest">
-		<h3>Latest Ads</h3>
+		<h3>Latest Items</h3>
 		<?php $this->renderPartial('/item/_index', array(
 			'dataProvider' => $dataProvider_latest,
 			'options' => array(
