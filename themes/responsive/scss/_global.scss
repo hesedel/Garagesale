@@ -745,9 +745,14 @@ div.g-form {
 } // .g-items
 
 .g-pager {
+	@include user-select(none);
 	padding-left: 0;
 	margin-bottom: 0;
 	float: right;
+
+	* {
+		@include user-select(none);
+	}
 
 	li {
 

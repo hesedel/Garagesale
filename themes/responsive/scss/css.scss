@@ -56,6 +56,7 @@ body {
 }
 
 #table-container {
+	@include user-select(none);
 	margin-bottom: $line-height * .5;
 	position: absolute;
 		top: 0;
