@@ -691,7 +691,7 @@ div.g-form {
 
 							.price,
 							.condition {
-								background-color: $white;
+								//background-color: $white;
 
 								&:before {
 									@include background-image(linear-gradient(left, rgba($white, 0), rgba($white, 1)));
