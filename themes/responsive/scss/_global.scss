@@ -285,7 +285,7 @@ div.g-form {
 						.price,
 						.time,
 						.location {
-							border-right: 1px solid $dark;
+							//border-right: 1px solid $dark;
 						}
 
 						strong,
@@ -294,7 +294,7 @@ div.g-form {
 						.time,
 						.location,
 						.condition {
-							border-left: 1px solid $dark;
+							//border-left: 1px solid $dark;
 						}
 
 						em,
@@ -306,6 +306,7 @@ div.g-form {
 						}
 
 						.img {
+							border-right: 1px solid $dark;
 							margin-bottom: 0; //
 							overflow: visible; //
 
@@ -323,6 +324,7 @@ div.g-form {
 							word-break: break-all;
 							width: 100%;
 							min-height: auto; //
+							border-left: 1px solid $dark;
 
 							a {
 								//color: blacken($beige, 25%, 4);
