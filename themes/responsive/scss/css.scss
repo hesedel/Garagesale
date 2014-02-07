@@ -326,7 +326,13 @@ body {
 		@include text-shadow(0 1px rgba($white, .5));
 		white-space: nowrap;
 		background-color: $light;
-		@include background-image(linear-gradient(rgba($white, .1), rgba($black, .1)));
+		@include background-image(linear-gradient(
+			top,
+			rgba($white, .1),
+			rgba($black, .1) 50%,
+			transparent 100%
+		));
+		@include background-size(100% 200%);
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);
@@ -495,7 +501,7 @@ body {
 	.a {
 		cursor: pointer;
 		@include border-left-radius(3px);
-		//@include transition(all .25s ease .5s);
+		@include transition(all .25s ease .5s);
 
 		.fa-filter {
 			@extend .hidden-sm;
@@ -514,13 +520,18 @@ body {
 			display: none;
 		}
 
+		&:hover {
+			//@include transition(none);
+		}
+
 		&.click {
 			color: blacken($custom_cyan, 25%, 2);
 			background-color: whiten(blacken($beige, 25%), 25%, 6) !important;
-			@include background-image(none);
+			//@include background-image(none);
+			background-position: left -100%;
 			@include border-bottom-left-radius(0);
 			@include box-shadow(none);
-			//@include transition(none);
+			@include transition(none);
 
 			.fa-angle-down {
 				display: none;
