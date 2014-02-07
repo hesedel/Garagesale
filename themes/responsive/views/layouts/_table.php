@@ -107,7 +107,13 @@
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td filters-right">' : '<td class="td filters-right">'; ?>
-			<div>&#60; Filters Here &#62;</div>
+			<div>
+				&#60; Filters Here &#62;<br>
+				&#60; Filters Here &#62;<br>
+				&#60; Filters Here &#62;<br>
+				&#60; Filters Here &#62;<br>
+				&#60; Filters Here &#62;
+			</div>
 		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
 
 		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
