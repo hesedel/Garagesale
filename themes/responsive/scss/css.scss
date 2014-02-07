@@ -658,11 +658,11 @@ body {
 				}
 
 				&:hover,
-				&.focus {
+				&.is-focused {
 					border-color: $custom_cyan;
 				}
 
-				&.focus {
+				&.is-focused {
 
 					.placeholder {
 						color: blacken($beige, 25%, 2);
