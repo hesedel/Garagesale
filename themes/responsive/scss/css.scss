@@ -164,9 +164,9 @@ body {
 
 			}
 
-			&.hidden {
+			&.is-hidden {
 				display: table-row !important;
-				//visibility: visible !important;
+				visibility: hidden;
 				//@include opacity(0);
 				//@include transition(all .5s cubic-bezier(0, -.25, 1, -.25));
 
@@ -204,7 +204,7 @@ body {
 
 .no-js #table {
 
-	.tr.filters.hidden {
+	.tr.filters.is-hidden {
 		visibility: visible !important;
 	}
 
@@ -258,7 +258,7 @@ body {
 
 			}
 
-			&.hidden {
+			&.is-hidden {
 				display: block !important;
 			}
 
@@ -547,7 +547,7 @@ body {
 			//@include transition(none);
 		}
 
-		&.click {
+		&.is-clicked {
 			color: blacken($custom_cyan, 25%, 2);
 			background-color: whiten(blacken($beige, 25%), 25%, 6) !important;
 			//@include background-image(none);
@@ -595,7 +595,7 @@ body {
 		.a {
 			@include border-left-radius(0);
 
-			&.click {
+			&.is-clicked {
 				height: ($line-height * 3) + 1px;
 			}
 

@@ -165,7 +165,7 @@ div.g-actions {
 
 	}
 
-	&.disabled {
+	&.is-disabled {
 		cursor: default;
 		background-color: blacken($whitesmoke, 25%);
 		border-color: blacken($whitesmoke, 25%, 2) !important;

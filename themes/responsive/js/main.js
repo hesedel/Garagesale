@@ -18,21 +18,21 @@ $('.a > a', '#user').bind( {
 });
 
 $('.a', '#filters').bind('click', function() {
-	if(!$(this).hasClass('click')) {
-		$(this).addClass('click');
-		$('.filters', '#table').removeClass('hidden');
+	if(!$(this).hasClass('is-clicked')) {
+		$(this).addClass('is-clicked');
+		$('.filters', '#table').removeClass('is-hidden');
 	} else {
-		$(this).removeClass('click');
-		$('.filters', '#table').addClass('hidden');
+		$(this).removeClass('is-clicked');
+		$('.filters', '#table').addClass('is-hidden');
 	}
 });
 
 $('input[type=text]', '#search').bind( {
 	focus: function() {
-		$('.a:not(.click)', '#filters').trigger('click');
+		$('.a:not(.is-clicked)', '#filters').trigger('click');
 	},
 	blur: function() {
-		$('.a.click', '#filters').trigger('click');
+		$('.a.is-clicked', '#filters').trigger('click');
 	}
 });
 

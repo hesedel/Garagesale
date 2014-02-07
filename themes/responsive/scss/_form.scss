@@ -61,6 +61,11 @@ div.textarea {
 		cursor: text;
 		position: absolute;
 			left: $gutter-width * (2 / 3);
+
+		&.is-hidden {
+			display: none;
+		}
+
 	}
 
 }
@@ -114,61 +119,9 @@ table.form {
 
 	th {
 		vertical-align: top;
-	}
 
-	tfoot td {
-		font-style: normal;
-		text-align: right;
-		line-height: $line-height * 2;
-		padding-right: $gutter-width * 2;
-		padding-left: $gutter-width * 2;
-
-		a.g-button,
-		input[type=submit] {
-			border-color: blacken($whitesmoke, 25%);
-			border-bottom-color: blacken($whitesmoke, 25%, 2);
-
-			&:hover {
-				border-color: blacken($whitesmoke, 25%, 2);
-				border-bottom-color: blacken($whitesmoke, 25%, 3);
-			}
-
-			&:active {
-				border-color: blacken($whitesmoke, 25%, 2);
-
-				&:hover {
-					border-color: blacken($whitesmoke, 25%, 3);
-				}
-
-			}
-
-			&.orange {
-				border-color: blacken($custom_orange, 25%);
-				border-bottom-color: blacken($custom_orange, 25%, 2);
-
-				&:hover {
-					border-color: blacken($custom_orange, 25%, 2);
-					border-bottom-color: blacken($custom_orange, 25%, 3);
-				}
-
-				&.active {
-					border-color: blacken($custom_orange, 25%, 2);
-
-					&:hover {
-						border-color: blacken($custom_orange, 25%, 3);
-					}
-
-				}
-
-			}
-
-		}
-
-		input[type=submit] {
-			@extend .g-button.orangered;
-			position: absolute;
-				right: 0;
-			visibility: hidden;
+		label {
+			margin-bottom: 0;
 		}
 
 	}
@@ -182,8 +135,8 @@ table.form {
 				@include text-shadow(rgba($white, 1) 0 1px);
 				white-space: nowrap;
 				line-height: $line-height * 2;
-				padding-right: $gutter-width;
-				padding-left: $gutter-width * 2;
+				padding-right: 10px;
+				padding-left: 20px;
 
 				label {
 
@@ -204,8 +157,8 @@ table.form {
 
 			td {
 				width: 100%;
-				padding-right: $gutter-width * 2;
-				padding-left: $gutter-width;
+				padding-right: 20px;
+				padding-left: 10px;
 
 				label {
 					@include text-shadow(rgba($white, 1) 0 1px);
@@ -223,7 +176,7 @@ table.form {
 						color: blacken($beige, 25%);
 					}
 
-					&.focus {
+					&.is-focused {
 
 						span.placeholder {
 							color: blacken($beige, 25%, 2);
@@ -395,6 +348,140 @@ table.form {
 
 	}
 
+	tfoot td {
+		font-style: normal;
+		text-align: right;
+		line-height: $line-height * 2;
+		padding-right: 20px;
+		padding-left: 20px;
+
+		a.g-button,
+		input[type=submit] {
+			border-color: blacken($whitesmoke, 25%);
+			border-bottom-color: blacken($whitesmoke, 25%, 2);
+
+			&:hover {
+				border-color: blacken($whitesmoke, 25%, 2);
+				border-bottom-color: blacken($whitesmoke, 25%, 3);
+			}
+
+			&:active {
+				border-color: blacken($whitesmoke, 25%, 2);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 3);
+				}
+
+			}
+
+			&.orange {
+				border-color: blacken($custom_orange, 25%);
+				border-bottom-color: blacken($custom_orange, 25%, 2);
+
+				&:hover {
+					border-color: blacken($custom_orange, 25%, 2);
+					border-bottom-color: blacken($custom_orange, 25%, 3);
+				}
+
+				&.active {
+					border-color: blacken($custom_orange, 25%, 2);
+
+					&:hover {
+						border-color: blacken($custom_orange, 25%, 3);
+					}
+
+				}
+
+			}
+
+		}
+
+		input[type=submit] {
+			@extend .g-button.orangered;
+			position: absolute;
+				right: 0;
+			visibility: hidden;
+		}
+
+	}
+
+}
+
+@media (max-width: $screen-xs-max) {
+	table.form {
+		background-color: transparent;
+		border-top: none;
+		border-bottom: none;
+		display: block;
+
+		tbody, tfoot, tr, th, td {
+			display: block;
+		}
+
+		tr {
+			background-color: whiten(blacken($beige, 25%), 25%, 4);
+			padding-top: ($line-height * .5) - 1px;
+			padding-bottom: $line-height * .5;
+			margin-top: 1px;
+		}
+
+		th, td {
+			padding-top: 0;
+			padding-bottom: 0;
+			border-top: none;
+		}
+
+		tbody {
+
+			tr {
+
+				th {
+					line-height: $line-height;
+					padding-left: $gutter-width;
+				}
+
+				td {
+					padding-right: $gutter-width;
+
+					div.input-text,
+					div.textarea {
+
+						span.placeholder {
+							display: none;
+						}
+
+					}
+
+				}
+
+				&:first-child {
+					padding-top: $line-height * .5;
+					margin-top: 0;
+
+					th, td {
+						padding-top: 0;
+					}
+
+				}
+
+			}
+
+		}
+
+		tfoot {
+
+			th {
+				display: none;
+			}
+
+			td {
+				padding-right: $gutter-width;
+				padding-left: $gutter-width;
+			}
+
+		}
+
+	}
 }
 
 .no-js {
