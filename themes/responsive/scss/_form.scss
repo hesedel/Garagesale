@@ -3,9 +3,9 @@ form.inline {
 }
 
 fieldset {
+	padding: 0;
 	border: none;
 	margin-bottom: 0;
-	padding: 0;
 
 	legend {
 		display: none;
@@ -16,9 +16,9 @@ fieldset {
 input[type=submit] {
 	@extend .g-button;
 	font-size: 1em;
-	position: absolute;
 	height: 30px;
-	padding: 0 10px !important;
+	padding: 0 #{$gutter-width * (2 / 3)} !important;
+	position: absolute;
 	visibility: hidden;
 }
 
@@ -40,7 +40,7 @@ input[type=text], input[type=password], textarea {
 }
 
 textarea {
-	line-height: 18px;
+	line-height: $line-height;
 }
 
 div.input-text,
@@ -49,18 +49,18 @@ div.textarea {
 	position: relative;
 
 	input, textarea {
-		border: none;
-		display: block;
 		width: 100%;
+		padding: 0;
+		border: none;
 		margin-top: 0;
 		margin-bottom: 0;
-		padding: 0;
+		display: block;
 	}
 
 	span.placeholder {
 		cursor: text;
 		position: absolute;
-			left: 10px;
+			left: $gutter-width * (2 / 3);
 	}
 
 }
@@ -88,10 +88,10 @@ div.input-text span.placeholder {
 }
 
 div.form.success {
-	color: black;
+	color: $black;
+	padding: 0;
 	border: none;
 	margin-bottom: 0;
-	padding: 0;
 }
 
 table.form {
@@ -100,16 +100,16 @@ table.form {
 	border-color: whiten(blacken($beige, 25%), 25%, 4);
 	border-spacing: 0;
 	border-style: solid;
-	border-top-width: 18px;
+	border-top-width: $line-height;
 	border-right-width: 0;
-	border-bottom-width: 18px;
+	border-bottom-width: $line-height;
 	border-left-width: 0;
 	margin-bottom: 0;
 
 	th, td {
-		border-top: 1px dotted white;
 		padding-top: 8px;
 		padding-bottom: 9px;
+		border-top: 1px dotted $white;
 	}
 
 	th {
@@ -119,9 +119,9 @@ table.form {
 	tfoot td {
 		font-style: normal;
 		text-align: right;
-		line-height: 36px;
-		padding-right: 20px;
-		padding-left: 20px;
+		line-height: $line-height * 2;
+		padding-right: $gutter-width * 2;
+		padding-left: $gutter-width * 2;
 
 		a.g-button,
 		input[type=submit] {
@@ -167,6 +167,7 @@ table.form {
 		input[type=submit] {
 			@extend .g-button.orangered;
 			position: absolute;
+				right: 0;
 			visibility: hidden;
 		}
 
@@ -178,12 +179,11 @@ table.form {
 
 			th {
 				color: blacken(whiten($beige, 25%), 25%, 2);
-				//@include h4;
-				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+				@include text-shadow(rgba($white, 1) 0 1px);
 				white-space: nowrap;
-				line-height: 36px;
-				padding-right: 10px;
-				padding-left: 20px;
+				line-height: $line-height * 2;
+				padding-right: $gutter-width;
+				padding-left: $gutter-width * 2;
 
 				label {
 
@@ -194,8 +194,8 @@ table.form {
 					&.error {
 						color: blacken(whiten($beige, 25%), 25%, 3);
 						background-color: transparent;
-						border: none;
 						padding: 0;
+						border: none;
 					}
 
 				}
@@ -204,24 +204,23 @@ table.form {
 
 			td {
 				width: 100%;
-				padding-right: 20px;
-				padding-left: 10px;
+				padding-right: $gutter-width * 2;
+				padding-left: $gutter-width;
 
 				label {
-					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+					@include text-shadow(rgba($white, 1) 0 1px);
 				}
 
 				div.input-text,
 				div.textarea {
-					background-color: white;
+					background-color: $white;
+					max-width: 450px;
 					border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
 					border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
 					border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
-					max-width: 450px;
 
 					span.placeholder {
 						color: blacken($beige, 25%);
-						//font-size: $h4;
 					}
 
 					&.focus {
@@ -235,17 +234,17 @@ table.form {
 				}
 
 				div.input-text {
+					padding-right: ($gutter-width * (2 / 3)) - 1px;
+					padding-left: ($gutter-width * (2 / 3)) - 1px;
 					margin-top: 4px;
 					margin-bottom: 4px;
-					padding-right: 9px;
-					padding-left: 9px;
 
 					input {
 						height: 26px;
 							line-height: 26px;
 
 						&.error {
-							color: black;
+							color: $black;
 						}
 
 					}
@@ -273,14 +272,14 @@ table.form {
 				}
 
 				div.textarea {
-					padding: 8px 9px;
+					padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
 
 					textarea {
-						height: 72px;
+						height: $line-height * 4;
 
 						&.error {
-							background-color: white;
-							color: black;
+							color: $black;
+							background-color: $white;
 						}
 
 					}
@@ -303,13 +302,13 @@ table.form {
 
 						div.MultiFile-label {
 							clear: left;
-							@include float-left;
+							float: left;
 
 							a.MultiFile-remove {
-								@include float-right;
 								color: blacken($custom_cyan, 25%);
 								text-decoration: none;
-								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+								@include text-shadow(rgba($white, 1) 0 1px);
+								float: right;
 
 								&:hover {
 									color: blacken($custom_cyan, 25%, 2);
@@ -318,12 +317,12 @@ table.form {
 							}
 
 							span.MultiFile-title {
-								@include float-left;
 								@include ellipsis;
-								color: black;
-								@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+								color: $black;
+								@include text-shadow(rgba($white, 1) 0 1px);
 								max-width: 310px;
-								padding-right: 5px;
+								padding-right: $gutter-width * (1 / 3);
+								float: left;
 							}
 
 						}
@@ -332,18 +331,18 @@ table.form {
 
 					&.success {
 						background-color: transparent;
+						padding: 0;
 						border: none;
 						margin-bottom: 0;
-						padding: 0;
 					}
 
 				}
 
 				div.captcha {
 					background-color: whiten(blacken($beige, 25%), 25%, 5);
-					border: 1px solid white;
-					width: 120px;
+					width: 120px + 8px;
 					padding: 1px 4px;
+					border: 1px solid $white;
 
 					img {
 						display: block;
@@ -352,13 +351,12 @@ table.form {
 				}
 
 				div.errorMessage {
-					font-family: ProximaNovaSemibold;
 					color: $custom_magenta;
 				}
 
 				div.no-js {
 					color: $custom_magenta;
-					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+					@include text-shadow(rgba($white, 1) 0 1px);
 					display: none;
 				}
 
@@ -368,7 +366,7 @@ table.form {
 
 				th, td {
 					border-top: none;
-					padding-top: 9px;
+					padding-top: $line-height * .5;
 				}
 
 			}
@@ -376,7 +374,7 @@ table.form {
 			&.repeat {
 
 				th, td {
-					background-color: rgba(255, 255, 255, .25);
+					background-color: rgba($white, .25);
 				}
 
 				th {
