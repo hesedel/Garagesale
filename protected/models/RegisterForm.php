@@ -16,8 +16,8 @@
  */
 class RegisterForm extends User
 {
-	//public $email_repeat;
-	//public $password_repeat;
+	public $email_repeat;
+	public $password_repeat;
 	public $verifyCode;
 
 	/**

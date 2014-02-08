@@ -785,26 +785,17 @@ body {
 	padding-bottom: $line-height * 3;
 }
 
-// CONTINUE
-
-div.breadcrumbs {
-	color: white;
-	/*
-	background-color: white;
-	@include border-bottom-right-radius(3px);
-	*/
+.breadcrumbs {
+	color: $white;
 	position: absolute;
 		z-index: 1;
-	padding-right: 10px;
 
 	a {
 		color: whiten($custom_magenta, 25%, 5);
-		text-decoration: none;
 		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 
 		&:hover {
 			color: whiten($custom_magenta, 25%, 6);
-			text-decoration: underline;
 		}
 
 	}
