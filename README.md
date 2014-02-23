@@ -14,7 +14,7 @@
 
 2. **Setting Up the Database**
 
-	Rename `/db_rebuild.php.danger` to `/db_rebuild.php`
+	Duplicate `/db_rebuild.php.danger` to `/db_rebuild.php`
 		then run `/db_rebuild.php` in your browser for a clean database
 			or `/db_rebuild.php?populate` for a populated one.
 
