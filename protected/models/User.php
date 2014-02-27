@@ -21,8 +21,8 @@
  * The followings are the available model relations:
  * @property Item[] $items
  * @property UserLocation $location
- * @property UserChangeEmail[] $userChangeEmails
- * @property UserChangePassword[] $userChangePasswords
+ * @property UserEmailChange[] $userEmailChanges
+ * @property UserPasswordChange[] $userPasswordChanges
  * @property UserMessage[] $userMessages
  * @property UserVerify[] $userVerifies
  */
@@ -94,8 +94,8 @@ class User extends CActiveRecord
 		return array(
 			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
 			'location' => array(self::BELONGS_TO, 'UserLocation', 'location_id'),
-			'userChangeEmails' => array(self::HAS_MANY, 'UserChangeEmail', 'user_id'),
-			'userChangePasswords' => array(self::HAS_MANY, 'UserChangePassword', 'user_id'),
+			'userEmailChanges' => array(self::HAS_MANY, 'UserEmailChange', 'user_id'),
+			'userPasswordChanges' => array(self::HAS_MANY, 'UserPasswordChange', 'user_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'user_id_from'),
 			'userVerifies' => array(self::HAS_MANY, 'UserVerify', 'user_id'),
 		);
@@ -153,7 +153,7 @@ class User extends CActiveRecord
 	{
 		$email=Yii::app()->db->createCommand()
 			->select('email')
-			->from('user_changeEmail')
+			->from('user_emailChange')
 			->where('email=:email', array(':email'=>$this->email))
 			->queryScalar();
 		if($email)
