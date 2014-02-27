@@ -11,7 +11,7 @@ $this->layout='column2';
 	<h2>Register</h2>
 	<div class="form">
 		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'user-register-form',
+			'id'=>'register-form',
 			'enableClientValidation'=>true,
 			/*
 			'clientOptions'=>array(

@@ -1,0 +1,68 @@
+:php
+	$this->pageTitle=Yii::app()->name . ' - Change Email';
+
+	$this->layout='column3';
+
+#user_changeEmail
+
+	-if($success):
+
+		%h2.alert.alert-success Email Change Request Sent!
+		%p.alert <strong>ALERT!</strong>, you'll need to verify your new email address.<br/>An email has been sent to you ( <strong>#{$model->email}</strong> )<br/>Please follow the instructions in the email to change your email on account.<br/>If you can't see the email, it might be in your spam folder.
+		=CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small'))
+
+	-else:
+
+	.form
+
+		:php
+			$form=$this->beginWidget('CActiveForm', array(
+				'id'=>'user-emailChange-form',
+				'enableClientValidation'=>true,
+				'focus'=>array($model,'password'),
+			));
+
+		//=$form->errorSummary($model)
+
+		%table.form(summary="Email Change")
+			%caption.hide Email Change
+
+			%tfoot
+
+				%tr
+					%th \\&#160;
+					%td
+						=CHtml::link('Cancel', array('account'), array('class'=>'g-button cancel')).' '
+						=CHtml::linkButton('Change Email', array('class'=>'submit g-button orange'))
+						=CHtml::submitButton('Change Email', array('class'=>'submit g-button orange'))
+
+			%tbody
+
+				%tr
+					%th =$form->labelEx($model,'password')
+					%td
+						.input-text
+							=$form->passwordField($model,'password')
+							%span.placeholder Password
+						=$form->error($model,'password')
+
+				%tr
+					%th =$form->labelEx($model,'email')
+					%td
+						.input-text
+							=$form->textField($model,'email')
+							%span.placeholder New Email
+						=$form->error($model,'email')
+
+				%tr.repeat
+					%th =$form->labelEx($model,'email_repeat')
+					%td
+						.input-text
+							=$form->textField($model,'email_repeat')
+							%span.placeholder Repeat New Email
+						=$form->error($model,'email_repeat')
+
+		:php
+			$this->endWidget();
+
+	-endif

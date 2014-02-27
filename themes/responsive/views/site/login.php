@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 $this->layout = '/layouts/transition';
 ?>
 
-<div class="g-form" id="site_login">
+<div id="site_login">
 	<h2>Login</h2>
 	<div class="form">
 		<?php $form=$this->beginWidget('CActiveForm', array(

@@ -335,15 +335,7 @@ table.form {
 				}
 
 				th {
-					padding-left: 30px; //
-				}
-
-				td {
-
-					div.input-text {
-						max-width: 410px; //
-					}
-
+					padding-left: $gutter-width * 2;
 				}
 
 			}

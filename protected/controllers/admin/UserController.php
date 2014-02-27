@@ -397,19 +397,20 @@ class UserController extends Controller
 
 	public function actionEmail_change()
 	{
-		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>Yii::app()->user->id));
+		$model=UserEmailChange::model()->find('user_id=:user_id',array(':user_id'=>Yii::app()->user->id));
 		if(!$model)
-			$model=new UserChangeEmail;
+			$model=new UserEmailChange;
 		$success=false;
 
-		if(isset($_POST['UserChangeEmail']))
+		if(isset($_POST['UserEmailChange']))
 		{
-			$model->attributes=$_POST['UserChangeEmail'];
+			$model->attributes=$_POST['UserEmailChange'];
 			if($model->save())
 				$success=true;
 		}
 
-		$this->render('changeEmail',array(
+		Yii::app()->theme='responsive';
+		$this->render('email-change',array(
 			'model'=>$model,
 			'success'=>$success,
 		));
@@ -420,7 +421,7 @@ class UserController extends Controller
 		if(!$id)
 			$id=Yii::app()->user->id;
 
-		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>$id));
+		$model=UserEmailChange::model()->find('user_id=:user_id',array(':user_id'=>$id));
 		if($model)
 			$model->delete();
 
@@ -437,18 +438,6 @@ class UserController extends Controller
 			$this->redirect(array('/admin/user/account'));
 	}
 
-	public function actionEmail_change_reverify($id=null)
-	{
-		if(!$id)
-			$id=Yii::app()->user->id;
-
-		$model=UserChangeEmail::model()->find('user_id=:user_id',array(':user_id'=>$id));
-		if($model)
-			$model->sendEmailChangeVerification();
-
-		$this->redirect(array('/admin/user/account'));
-	}
-
 	public function actionEmail_change_verify()
 	{
 		if(!isset($_GET['id']))
@@ -456,7 +445,7 @@ class UserController extends Controller
 
 		$user=Yii::app()->db->createCommand()
 			->select('user_id, email')
-			->from('user_changeEmail')
+			->from('user_email_change')
 			->where('id=:id',array(':id'=>$_GET['id']))
 			->queryRow();
 		if($user)
@@ -465,7 +454,7 @@ class UserController extends Controller
 			Yii::app()->db->createCommand()->update('user',array(
 				'email'=>$user['email'],
 			),'id=:id',array(':id'=>$user['user_id']));
-			Yii::app()->db->createCommand()->delete('user_changeEmail','id=:id',array(':id'=>$_GET['id']));
+			Yii::app()->db->createCommand()->delete('user_email_change','id=:id',array(':id'=>$_GET['id']));
 
 			$identity=new UserIdentity('','');
 			$identity->setId($user['user_id']);
@@ -475,6 +464,18 @@ class UserController extends Controller
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
+
+	public function actionEmail_change_reverify($id=null)
+	{
+		if(!$id)
+			$id=Yii::app()->user->id;
+
+		$model=UserEmailChange::model()->find('user_id=:user_id',array(':user_id'=>$id));
+		if($model)
+			$model->sendEmailChangeVerification();
+
+		$this->redirect(array('/admin/user/account'));
 	}
 
 	public function actionDashboard()
