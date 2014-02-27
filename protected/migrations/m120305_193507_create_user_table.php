@@ -11,7 +11,7 @@ class m120305_193507_create_user_table extends CDbMigration
 			'name_first'=>'varchar(32) NOT NULL',
 			'name_last'=>'varchar(32)',
 		), 'ENGINE InnoDB');
-		$this->alterColumn('item', 'user_id', 'varchar(64)');
+		$this->alterColumn('item', 'user_id', 'varchar(32)');
 	}
 
 	public function safeDown()
