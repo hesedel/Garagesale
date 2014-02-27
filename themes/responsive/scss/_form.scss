@@ -258,6 +258,10 @@ table.form {
 					@include text-shadow(rgba($white, 1) 0 1px);
 				}
 
+				input[type=file] {
+					width: 100%;
+				}
+
 				div.input-text,
 				div.textarea {
 					background-color: $white;
