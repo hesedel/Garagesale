@@ -327,6 +327,8 @@ class UserController extends Controller
 			$identity->setId($id);
 			Yii::app()->user->login($identity,60); // one minute
 
+			Yii::app()->user->setFlash('success','You\'ve successfully verified your email! Thank you!');
+
 			$this->redirect(Yii::app()->homeUrl);
 			//$this->render('verify',array('username'=>$id,'email'=>$email));
 		}	
