@@ -8,7 +8,7 @@ class m120513_195839_create_userEmailChange_table extends CDbMigration
 			'id'=>'varchar(32) PRIMARY KEY',
 			'user_id'=>'varchar(64) NOT NULL UNIQUE',
 			'email'=>'varchar(64) NOT NULL UNIQUE',
-		));
+		), 'ENGINE InnoDB');
 		$this->addForeignKey('email_change', 'user_email_change', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
 	}
 

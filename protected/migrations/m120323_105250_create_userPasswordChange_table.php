@@ -7,7 +7,7 @@ class m120323_105250_create_userPasswordChange_table extends CDbMigration
 		$this->createTable('user_password_change', array(
 			'id'=>'varchar(32) PRIMARY KEY',
 			'user_id'=>'varchar(64) NOT NULL UNIQUE',
-		));
+		), 'ENGINE InnoDB');
 		$this->addForeignKey('password-change', 'user_password_change', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
 	}
 

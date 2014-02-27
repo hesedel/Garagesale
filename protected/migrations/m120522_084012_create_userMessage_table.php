@@ -14,7 +14,7 @@ class m120522_084012_create_userMessage_table extends CDbMigration
 			'user_id_from'=>'varchar(64)',
 			'user_id_to'=>'varchar(64) NOT NULL',
 			'parent_id'=>'int UNSIGNED',
-		));
+		), 'ENGINE InnoDB');
 		$this->addForeignKey('from', 'user_message', 'user_id_from', 'user', 'id', 'CASCADE', 'CASCADE');
 		$this->addForeignKey('to', 'user_message', 'user_id_to', 'user', 'id', 'CASCADE', 'CASCADE');
 		$this->addForeignKey('parent', 'user_message', 'parent_id', 'user_message', 'id', 'CASCADE', 'CASCADE');
