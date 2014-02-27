@@ -520,6 +520,7 @@ table.form {
 
 .no-js table.form {
 
+	// TODO: Used only in item images form
 	div.no-js {
 		display: block !important;
 	}
@@ -543,8 +544,8 @@ table.form {
 		}
 
 		input[type=submit] {
-			position: static !important;
-			visibility: visible !important;
+			position: static;
+			visibility: visible;
 		}
 
 	}
