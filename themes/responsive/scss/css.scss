@@ -108,7 +108,7 @@ body {
 
 				> div {
 					background-color: whiten(blacken($beige, 25%), 25%, 6);
-					max-height: 1000px;
+					max-height: 768px;
 						//line-height: $line-height;
 					padding-bottom: $line-height - 1px;
 					//overflow: hidden;
@@ -205,7 +205,30 @@ body {
 .no-js #table {
 
 	.tr.filters.is-hidden {
-		visibility: visible !important;
+		visibility: visible;
+
+		.td {
+
+			&.filters-left,
+			&.filters-right {
+
+				> div {
+					max-height: none;
+					padding-bottom: $line-height - 1px;
+				}
+
+			}
+
+			&.filters-left > div {
+				padding-top: $line-height * .5;
+			}
+
+			&.filters-right > div {
+				padding-top: ($line-height * .5) - 1px;
+			}
+
+		}
+
 	}
 
 	div.tr.filters {

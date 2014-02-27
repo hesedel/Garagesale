@@ -357,9 +357,12 @@ class UserController extends Controller
 			}
 		}
 
+		if($success)
+			Yii::app()->user->setFlash('success','You\'ve successfully updated your account.');
+
+		Yii::app()->theme='responsive';
 		$this->render('account',array(
 			'model'=>$model,
-			'success'=>$success,
 		));
 	}
 
