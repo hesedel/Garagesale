@@ -27,8 +27,8 @@ $this->layout='column1';
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
-								<?php echo CHtml::image('/img/transparent.gif', $model->id, array('style'=>'background-image: url(/img/vendor/slir/w73-h70-c73.70-be8e8e3'.$model->getImage().')')); ?>
-								<?php echo CHtml::link('<span></span>', array('image_delete'), array('title'=>'remove profile picture')); ?>
+								<?php echo CHtml::image('/img/vendor/slir/w73-h70-c73x70-be8e8e3'.$model->getImage(), $model->id); ?>
+								<?php echo CHtml::link('<i class="fa fa-times"></i>', array('image_delete'), array('title'=>'remove profile picture')); ?>
 							</div>
 							<?php else:
 								echo $this->renderPartial('_noImage', array('model'=>$model));

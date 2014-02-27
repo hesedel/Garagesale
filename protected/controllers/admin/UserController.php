@@ -389,6 +389,7 @@ class UserController extends Controller
 		if($model->deleteImage($id))
 		{
 			if(isset($_POST['ajax'])) {
+				Yii::app()->theme='responsive';
 				$this->renderPartial('_noImage',array(
 					'model'=>$model,
 				));
@@ -435,6 +436,7 @@ class UserController extends Controller
 				->from('user')
 				->where('id=:id',array(':id'=>$id))
 				->queryScalar();
+			Yii::app()->theme='responsive';
 			$this->renderPartial('account/_email',array('model'=>$model));
 		}
 		else
