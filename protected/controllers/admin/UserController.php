@@ -189,24 +189,24 @@ class UserController extends Controller
 			->queryRow();
 		if($user)
 		{
-			$user_changePasswordId=Yii::app()->db->createCommand()
+			$user_passwordChangeId=Yii::app()->db->createCommand()
 				->select('id')
-				->from('user_changePassword')
+				->from('user_password_change')
 				->where('user_id=:id',array(':id'=>$user['id']))
 				->queryScalar();
-			if(!$user_changePasswordId) {
-				$model_userChangePassword=new UserChangePassword;
-				$model_userChangePassword->user_id=$user['id'];
-				$model_userChangePassword->save();
-				$user_changePasswordId=$model_userChangePassword->id;
+			if(!$user_passwordChangeId) {
+				$model_userPasswordChange=new UserPasswordChange;
+				$model_userPasswordChange->user_id=$user['id'];
+				$model_userPasswordChange->save();
+				$user_passwordChangeId=$model_userPasswordChange->id;
 			}
-			$link=Yii::app()->params['serverName'].'admin/user/password_change/?id='.$user_changePasswordId;
+			$link=Yii::app()->params['serverName'].'admin/user/password_change/?id='.$user_passwordChangeId;
 			$body=new CSSToInlineStyles(
 				Yii::app()->controller->renderPartial(
 					'/site/_emailWrapper',
 					array(
 						'data'=>Yii::app()->controller->renderPartial(
-							'/admin/user/_sendChangePassword-email',
+							'/admin/user/_sendPasswordChange-email',
 							array(
 								'name'=>$user['name_first'],
 								'link'=>CHtml::link(
@@ -220,7 +220,8 @@ class UserController extends Controller
 			);
 			$headers="From: ".Yii::app()->name." <".Yii::app()->params['noReplyEmail'].">\r\nContent-Type: text/html";
 			mail($user['email'], Yii::app()->name.' Password Change', $body->convert(), $headers);
-			$this->render('forgotPassword',array('email'=>$user['email']));
+			Yii::app()->theme='responsive';
+			$this->render('password-forgot',array('email'=>$user['email']));
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -243,7 +244,7 @@ class UserController extends Controller
 
 		$id=Yii::app()->db->createCommand()
 			->select('user_id')
-			->from('user_changePassword')
+			->from('user_password_change')
 			->where('id=:id',array(':id'=>$_GET['id']))
 			->queryScalar();
 		if($id)
@@ -267,7 +268,7 @@ class UserController extends Controller
 
 			$this->redirect(array('/admin/user/account'));
 
-			//$this->render('changePassword',array('model'=>$model_passwordChangeForm));
+			//$this->render('password_change',array('model'=>$model_passwordChangeForm));
 		}	
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');

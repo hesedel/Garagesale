@@ -3,12 +3,12 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
+
+$this->layout = '/layouts/transition';
 ?>
 
 <div class="g-form" id="site_login">
-
-	<div class="row"><div class="col-md-6 col-md-push-3 col-sm-8 col-sm-push-2">
-
+	<h2>Login</h2>
 	<div class="form">
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'login-form',
@@ -67,7 +67,4 @@ $this->breadcrumbs=array(
 		</table>
 		<?php $this->endWidget(); ?>
 	</div>
-
-	</div></div>
-
 </div>
