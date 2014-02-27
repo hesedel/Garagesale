@@ -193,6 +193,7 @@ table.form {
 					margin-bottom: 4px;
 
 					input {
+						background-color: transparent;
 						height: 26px;
 							line-height: 26px;
 
@@ -293,9 +294,12 @@ table.form {
 
 				div.captcha {
 					background-color: whiten(blacken($beige, 25%), 25%, 5);
-					width: 120px + 8px; //
-					padding: 1px 4px; //
+					padding-top: 1px;
+					padding-bottom: 1px;
 					border: 1px solid $white;
+					display: inline-block;
+					*display: inline;
+					zoom: 1;
 
 					img {
 						display: block;
