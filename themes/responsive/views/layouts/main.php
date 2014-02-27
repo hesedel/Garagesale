@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=7">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
