@@ -563,6 +563,10 @@ table.form {
 		border-bottom: none;
 		display: block;
 
+		caption {
+			display: block;
+		}
+
 		tbody, tfoot, tr, th, td {
 			display: block;
 		}
@@ -627,6 +631,21 @@ table.form {
 			td {
 				padding-right: $gutter-width;
 				padding-left: $gutter-width;
+			}
+
+		}
+
+		&.foot {
+			//background-color: transparent;
+
+			tr {
+				background-color: transparent;
+			}
+
+			td {
+				//background-color: transparent;
+				//padding-right: $gutter-width;
+				//padding-left: $gutter-width;
 			}
 
 		}
