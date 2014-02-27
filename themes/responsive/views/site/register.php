@@ -139,10 +139,9 @@ $this->layout='column2';
 			<tfoot>
 
 				<tr>
-					<th>&#160;</th>
-					<td>
+					<?php //<th>&#160;</th> ?>
+					<td colspan="2">
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button')); ?>
-						&#160;
 						<?php echo CHtml::linkButton('Register', array('class'=>'submit g-button orange')); ?>
 						<?php echo CHtml::submitButton('Register', array('class'=>'submit g-button orange')); ?>
 					</td>

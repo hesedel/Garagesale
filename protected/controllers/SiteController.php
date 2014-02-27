@@ -150,6 +150,7 @@ class SiteController extends Controller
 		if(isset($_REQUEST['username']))
 			$model->username=$_REQUEST['username'];
 		// display the login form
+		Yii::app()->theme='responsive';
 		$this->render('login',array('model'=>$model));
 	}
 
