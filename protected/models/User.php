@@ -153,7 +153,7 @@ class User extends CActiveRecord
 	{
 		$email=Yii::app()->db->createCommand()
 			->select('email')
-			->from('user_emailChange')
+			->from('user_email_change')
 			->where('email=:email', array(':email'=>$this->email))
 			->queryScalar();
 		if($email)
