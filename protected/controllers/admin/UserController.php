@@ -55,6 +55,7 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+		Yii::app()->theme='responsive';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -390,9 +391,7 @@ class UserController extends Controller
 		{
 			if(isset($_POST['ajax'])) {
 				Yii::app()->theme='responsive';
-				$this->renderPartial('_noImage',array(
-					'model'=>$model,
-				));
+				$this->renderPartial('_noImage');
 			} else {
 				$this->redirect(Yii::app()->user->getReturnUrl());
 			}

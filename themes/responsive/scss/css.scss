@@ -826,6 +826,13 @@ body {
 
 }
 
+#column3 h2 {
+	color: $white;
+	@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+	padding-top: $line-height * 1.5;
+	margin-top: 0;
+}
+
 #footer {
 	@extend .container;
 	padding-top: $line-height * 2;

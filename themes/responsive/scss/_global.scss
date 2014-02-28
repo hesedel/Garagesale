@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6,
 div.g-actions {
 	position: absolute;
 		top: 0;
-		right: -1px;
+		right: 0;
 
 	a {
 		@include float-left;
@@ -196,7 +196,7 @@ a.g-button {
 
 div.g-form {
 	position: relative;
-	padding-top: 36px;
+	padding-top: $line-height * 2;
 
 	h2 {
 		color: whiten($custom_orange, 25%, 3);
@@ -204,7 +204,7 @@ div.g-form {
 		margin-top: 0;
 		margin-bottom: 0;
 		position: absolute;
-			top: -9px;
+			top: -#{$line-height * .5};
 			right: 0;
 	}
 
@@ -792,13 +792,35 @@ div.g-form {
 
 } // .g-pager
 
+.g-position-relative {
+	position: relative;
+}
+
+div.g-sidebar-image {
+	border: 1px solid $white;
+
+	img {
+		width: 100%;
+	}
+
+	div.image {
+		font-size: 4em;
+		text-align: center;
+		background-color: $light;
+		padding-top: ($line-height * 3) - 1px;
+		padding-bottom: ($line-height * 3) - 1px;
+	}
+
+} // .g-sidebar-image
+
 table.g-table {
+	border-collapse: separate;
 	border-spacing: 1px;
 	margin-bottom: 0;
 
 	th, td {
 		@include box-shadow(rgba(0, 0, 0, .25) 0 0 1px);
-		padding: 9px 15px;
+		padding: #{$line-height * .5} $gutter-width;
 	}
 
 	th {
@@ -811,8 +833,7 @@ table.g-table {
 
 	td {
 		color: blacken($beige, 25%, 3);
-		//font-size: $h4;
-		line-height: 18px;
+		line-height: $line-height;
 		background-color: whiten(blacken($beige, 25%), 25%, 3);
 		width: 100%;
 	}

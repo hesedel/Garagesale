@@ -7,7 +7,7 @@ $this->layout = 'column2';
 <?php $this->beginWidget('system.web.widgets.CClipWidget', array('id' => 'sidebar')); ?>
 
 <div id="site_index-sidebar">
-	
+	<div style="background-color: rgba(255, 255, 255, .1); height: 480px; border-radius: 4px;"></div>
 </div>
 
 <?php $this->endWidget(); ?>
