@@ -932,3 +932,163 @@ div.g-tabs {
 	}
 
 }
+
+div.g-userItemView {
+	background-color: $light;
+	@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+	@include border-radius(3px);
+	position: relative;
+	min-height: 36px;
+	margin-bottom: 1px;
+	padding: 9px 38px 8px 60px;
+
+	a.img {
+		position: absolute;
+			left: 10px;
+
+		img {
+			background-color: rgba(0, 0, 0, .25);
+			display: block;
+			width: 40px;
+			height: 36px;
+		}
+
+	}
+
+	strong {
+		display: block;
+
+		a {
+			color: black;
+			text-decoration: none;
+			@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+		}
+
+	}
+
+	em,
+	span.location {
+		color: blacken($beige, 25%, 3);
+	}
+
+	span.divider {
+		color: blacken($light, 25%);
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+
+	span.price {
+		color: $dark_green;
+	}
+
+	span.condition {
+
+		&.new {
+			color: $dark_cyan;
+		}
+
+		&.old {
+			color: $dark_magenta;
+		}
+
+	}
+
+	span.expiration {
+		@include float-right;
+		color: blacken($beige, 25%, 2);
+		line-height: 18px;
+
+		em {
+			color: blacken($beige, 25%, 3);
+		}
+
+	}
+
+	span.caret {
+		cursor: pointer;
+		background-color: $whitesmoke;
+		@include background-image(linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .05)));
+		border: 1px solid blacken($light, 25%);
+		@include border-radius(9px);
+		@include box-shadow(
+			rgba(255, 255, 255, 1) 0 0 1px inset,
+			rgba(255, 255, 255, 1) 0 1px
+		);
+		position: absolute;
+			top: 18px;
+			right: 10px;
+		display: none;
+		width: 16px;
+		height: 16px;
+		@include opacity(1);
+
+		span {
+			position: absolute;
+				top: 4px;
+				left: 7px;
+			border-top: 4px solid transparent;
+			border-bottom: 4px solid transparent;
+			border-left: 4px solid blacken($light, 25%);
+		}
+
+		&:hover {
+			border-color: blacken($light, 25%, 2);
+
+			span {
+				border-left-color: blacken($light, 25%, 2);
+			}
+
+		}
+
+	}
+
+	&:hover {
+		background-color: whiten($light, 25%);
+
+		span.caret {
+			display: block;
+		}
+
+	}
+
+	&.expired {
+		background-color: mix($custom_orange, $light, 10%);
+
+		img {
+			@include opacity(.25);
+		}
+
+		span.expiration {
+			color: $dark_orange;
+		}
+
+		span.caret {
+			border-color: $dark_orange;
+			@include opacity(.5);
+
+			span {
+				border-left-color: $dark_orange;
+			}
+
+			&:hover {
+				@include opacity(.75);
+			}
+
+		}
+
+		&:hover {
+
+			img {
+				@include opacity(1);
+			}
+
+		}
+
+	}
+
+}// .g-userItemview

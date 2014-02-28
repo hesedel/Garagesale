@@ -495,6 +495,7 @@ class UserController extends Controller
 			),
 		));
 
+		Yii::app()->theme='responsive';
 		$this->render('dashboard', array('dataProvider'=>$dataProvider));
 	}
 
