@@ -262,8 +262,9 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'pagination'=>array('pageSize'=>3),
+			'pagination'=>array('pageSize'=>15),
 		));
+		Yii::app()->theme='responsive';
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
