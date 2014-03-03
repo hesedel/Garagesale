@@ -51,6 +51,7 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
+		Yii::app()->theme='responsive';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
