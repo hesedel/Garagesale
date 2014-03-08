@@ -500,7 +500,7 @@ table.form {
 		}
 
 		input[type=submit] {
-			@extend .g-button.orangered;
+			//@extend .g-button.orangered;
 			position: absolute;
 				right: 0;
 			visibility: hidden;

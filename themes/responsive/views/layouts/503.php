@@ -20,7 +20,8 @@ header('Retry-After: 3600'); // 1 hour
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<?php
-	Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/503.css'));
+	//Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/503.css'));
+	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/503.css');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
 	?>

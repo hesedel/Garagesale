@@ -13,7 +13,8 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<?php
-	Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/css.css'));
+	//Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/css.css'));
+	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/css.css');
 	Yii::app()->clientScript->registerCoreScript('jquery.ui');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
@@ -90,10 +91,12 @@ ga('create','UA-XXXXX-X');ga('send','pageview');
 
 <?php
 if(env_is(array('dev'))) {
+	/*
 	Yii::app()->clientScript->registerScript(
 		'livereload',
 		file_get_contents(Yii::app()->theme->basePath . '/js/_livereload.js'),
 		CClientScript::POS_END);
+	*/
 }
 ?>
 </body>
