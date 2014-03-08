@@ -14,13 +14,16 @@
 
 	<?php
 	Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/css.css'));
+	Yii::app()->clientScript->registerCoreScript('jquery.ui');
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
 	?>
 
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.lightbox-0.5.min.js'));
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.textarea-expander.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.timeago.js'));
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/php.min.js'));
 	?>
 	<?php Yii::app()->clientScript->registerScriptFile('//use.typekit.net/fas6ahs.js'); ?>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>

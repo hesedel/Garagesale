@@ -12,13 +12,11 @@ $('input').bind('keypress', function(e) {
 		$('a.submit', $(this).parents('form')).trigger('click');
 });
 
-/*
 $('textarea')
 	.css( {
 		resize: 'none'
 	})
 	.TextAreaExpander(36, 216);
-*/
 
 $('div.input-text, div.textarea').bind('click', function() {
 	$('input[type=text], input[type=password], textarea', $(this)).focus();

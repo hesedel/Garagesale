@@ -112,6 +112,7 @@ class ItemController extends Controller
 			}
 		}
 
+		Yii::app()->theme='responsive';
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -216,6 +217,7 @@ class ItemController extends Controller
 			}
 		}
 
+		Yii::app()->theme='responsive';
 		$this->render('update',array(
 			'model'=>$model,
 		));
