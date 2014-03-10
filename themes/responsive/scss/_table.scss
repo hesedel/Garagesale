@@ -23,9 +23,13 @@
 @media (max-width: $screen-xs-max) {
 	#table-container {
 		height: auto;
-		margin-right: -$gutter-width;
-		margin-left: -$gutter-width;
 		position: static;
+
+		.container {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
 	}
 }
 
