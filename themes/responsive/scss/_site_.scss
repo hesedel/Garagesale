@@ -1,15 +1,15 @@
 #site_index {
 
 	h2, h3 {
-		color: $color_asbestos;
 		background-color: $color_white;
+		padding-top: $line-height * .5;
 		padding-right: $gutter-width;
+		padding-bottom: ($line-height * .5) - 1px;
 		padding-left: $gutter-width;
 		@include border-top-radius($border-radius);
+		margin-top: 0;
 		margin-bottom: 1px;
-		float: left;
+		display: inline-block;
 	}
 
 }
-
-#site_index-sidebar {}
