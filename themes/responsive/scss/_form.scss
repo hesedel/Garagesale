@@ -15,9 +15,8 @@ fieldset {
 
 input[type=submit] {
 	@extend .g-button;
-	font-size: 1em;
 	height: 30px;
-	padding: 0 #{$gutter-width * (2 / 3)} !important;
+	padding: 0 #{$gutter-width * (2 / 3)};
 	position: absolute;
 	visibility: hidden;
 }
@@ -25,7 +24,7 @@ input[type=submit] {
 .no-js {
 
 	a.submit {
-		display: none;
+		display: none !important;
 	}
 
 	input[type=submit] {
@@ -43,22 +42,27 @@ textarea {
 	line-height: $line-height;
 }
 
-div.input-text,
-div.textarea {
+.input-text,
+.textarea {
 	cursor: text;
+	background-color: $color_white;
+	padding-right: ($gutter-width * (2 / 3)) - 1px;
+	padding-left: ($gutter-width * (2 / 3)) - 1px;				
+	border: 1px solid $color_white;
+	@include border-radius($border-radius);
+	@include box-shadow(1px 1px 2px rgba($color_black, .25));
 	position: relative;
 
 	input, textarea {
+		background-color: transparent;
 		width: 100%;
-		padding: 0;
 		border: none;
-		margin-top: 0;
-		margin-bottom: 0;
 		display: block;
 	}
 
-	span.placeholder {
+	.placeholder {
 		cursor: text;
+		color: $color_concrete;
 		position: absolute;
 			left: $gutter-width * (2 / 3);
 
@@ -66,6 +70,46 @@ div.textarea {
 			display: none;
 		}
 
+	}
+
+}
+
+.input-text {
+	margin-top: 3px;
+	margin-bottom: 3px;
+
+	input {
+		height: 28px;
+			line-height: 28px;
+	}
+
+	.placeholder {
+		height: 28px;
+			line-height: 28px;
+	}
+
+}
+
+div.textarea {
+	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
+
+	textarea {
+		height: $line-height * 4;
+
+		&.error {
+			color: $black;
+			background-color: $white;
+		}
+
+	}
+
+	span.placeholder {
+		top: 10px; //
+		line-height: 1em;
+	}
+
+	&.error {
+		margin-bottom: 0;
 	}
 
 }
@@ -264,47 +308,10 @@ table.form {
 
 				div.input-text,
 				div.textarea {
-					background-color: $white;
 					max-width: 450px;
-					border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
-					border-top-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
-					border-left-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 5%, 3);
-
-					span.placeholder {
-						color: blacken($beige, 25%);
-					}
-
-					&.is-focused {
-
-						span.placeholder {
-							color: blacken($beige, 25%, 2);
-						}
-
-					}
-
 				}
 
 				div.input-text {
-					padding-right: ($gutter-width * (2 / 3)) - 1px;
-					padding-left: ($gutter-width * (2 / 3)) - 1px;
-					margin-top: 4px;
-					margin-bottom: 4px;
-
-					input {
-						background-color: transparent;
-						height: 26px;
-							line-height: 26px;
-
-						&.error {
-							color: $black;
-						}
-
-					}
-
-					span.placeholder {
-						height: 26px;
-							line-height: 26px;
-					}
 
 					&.half {
 						max-width: 210px; //
@@ -315,36 +322,10 @@ table.form {
 						margin-left: 40px; //
 					}
 
-					&.error,
-					&.success {
-						padding-top: 0;
-						padding-bottom: 0;
-					}
-
 				}
 
 				div.textarea {
-					padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
-
-					textarea {
-						height: $line-height * 4;
-
-						&.error {
-							color: $black;
-							background-color: $white;
-						}
-
-					}
-
-					span.placeholder {
-						top: 10px; //
-						line-height: 1em;
-					}
-
-					&.error {
-						margin-bottom: 0;
-					}
-
+					
 				}
 
 				div.MultiFile-wrap {

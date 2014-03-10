@@ -3,6 +3,9 @@
 $black: #000;
 $white: #fff;
 
+$color_black: #000;
+$color_white: #fff;
+
 $beige     : #f5f5dc;
 $whitesmoke: #f5f5f5;
 
@@ -12,10 +15,26 @@ $custom_magenta: rgb(217, 0, 126);
 $custom_orange : rgb(255, 102, 0);
 
 // flatuicolors.com
-$color_asbestos: #7f8c8d;
-$color_clouds  : #ecf0f1;
-$color_concrete: #95a5a6;
-$color_silver  : #bdc3c7;
+$color_alizarin    : #e74c3c;
+$color_amethyst    : #9b59b6;
+$color_asbestos    : #7f8c8d;
+$color_belizeHole  : #2980b9;
+$color_carrot      : #e67e22;
+$color_clouds      : #ecf0f1;
+$color_concrete    : #95a5a6;
+$color_emerald     : #2ecc71;
+$color_greenSea    : #16a085;
+$color_midnightBlue: #2c3e50;
+$color_nephritis   : #27ae60;
+$color_orange      : #f39c12;
+$color_peterRiver  : #3498db;
+$color_pomegranate : #c0392b;
+$color_pumpkin     : #d35400;
+$color_silver      : #bdc3c7;
+$color_sunFlower   : #f1c40f;
+$color_turquoise   : #1abc9c;
+$color_wetAsphalt  : #34495e;
+$color_wisteria    : #8e44ad;
 
 	@function blacken($color, $percent, $i: 1) {
 		@while $i > 0 {
@@ -45,6 +64,14 @@ $light_green  : $custom_green;
 $light_magenta: $custom_magenta;
 $light_orange : whiten($custom_orange, 25%, 3);
 
+$color          : $color_asbestos;
+$color_anchor   : $color_peterRiver;
+	$color_anchor-hover: $color_belizeHole;
+	$color_anchor-visited: $color_amethyst;
+		$color_anchor-visited-hover: $color_wisteria;
+$color_body_bg  : blacken($color_clouds, 10%);
+$color_footer_bg: $color_asbestos;
+
 /* fonts */
 
 // 100, 100italic, 300, 300italic, 400, 400italic, 700, 700italic, 900, 900italic
@@ -58,6 +85,7 @@ $screen-xs-max: 767px;
 
 /**/
 
+$border-radius: 3px;
 $container-width-lg: 1170px;
 $container-width-md: 970px;
 $container-width-sm: 750px;

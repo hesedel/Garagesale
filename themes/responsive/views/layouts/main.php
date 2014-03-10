@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -26,6 +26,7 @@
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.timeago.js'));
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/php.min.js'));
 	?>
+
 	<?php Yii::app()->clientScript->registerScriptFile('//use.typekit.net/fas6ahs.js'); ?>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
@@ -33,12 +34,10 @@
 
 <div id="body">
 
-	<div id="body-top"></div>
+	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
+	<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('lt_ie_8' => true)); ?><![endif]-->
 
 	<div id="page">
-
-		<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
-		<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('legacy' => true)); ?><![endif]-->
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
 		<div class="alert alert-success alert-dismissable timeout" id="alert">
@@ -54,7 +53,7 @@
 </div><!-- #body -->
 
 <footer id="footer">
-	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format'=>'Y')); ?></div>
+	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
 </footer><!-- #footer -->
 
 <?php /*
@@ -89,15 +88,13 @@ ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
 */ ?>
 
-<?php
+<?php /*
 if(env_is(array('dev'))) {
-	/*
 	Yii::app()->clientScript->registerScript(
 		'livereload',
 		file_get_contents(Yii::app()->theme->basePath . '/js/_livereload.js'),
 		CClientScript::POS_END);
-	*/
 }
-?>
+*/ ?>
 </body>
 </html>

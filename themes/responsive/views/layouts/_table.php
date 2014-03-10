@@ -1,10 +1,12 @@
-<div id="table-container">
+<div id="table-container"><div class="container">
 
-<?php echo !isset($legacy) ? '<div id="table">' : '<table id="table" cellspacing="0">'; ?>
+<?php echo !isset($lt_ie_8) ? '<div id="table">' : '<table id="table" cellspacing="0">'; ?>
 
-	<?php echo !isset($legacy) ? '<div class="tr">' : '<tr class="tr">'; ?>
+	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
 
-		<?php echo !isset($legacy) ? '<header class="td" id="header">' : '<td class="td" id="header">'; ?>
+		<?php #header ?>
+
+		<?php echo !isset($lt_ie_8) ? '<header class="td" id="header">' : '<td class="td" id="header">'; ?>
 
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : ''; ?>
 				<?php echo CHtml::link(
@@ -16,21 +18,33 @@
 
 			<span class="alpha">alpha</span>
 
-		<?php echo !isset($legacy) ? '</header>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</header>' : '</td>'; ?>
+
+		<?php #header end ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
-			<?php echo CHtml::link('Register', array('/site/register')); ?>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php #register ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
+			<?php echo CHtml::link('Register', array('/site/register')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #register end ?>
+
+		<?php #login ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
 			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #login end ?>
 
 		<?php else: ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
+		<?php #user ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
 			<div class="a">
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->image
@@ -54,72 +68,90 @@
 					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
 				</ul>
 			</div>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="logout">' : '<td class="td" id="logout">'; ?>
+		<?php #user end ?>
+
+		<?php #logout ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="logout">' : '<td class="td" id="logout">'; ?>
 			<?php echo CHtml::link('<i class="fa fa-sign-out"></i> <span>Logout</span>', array('/site/logout')); ?>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #logout end ?>
 
 		<?php endif ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="filters">' : '<td class="td" id="filters">'; ?>
-			<span class="a"><i class="fa fa-filter"></i> <span>Filters</span><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php #filters ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="filters">' : '<td class="td" id="filters">'; ?>
+			<span class="a-container"><span class="a"><i class="fa fa-filter"></i> <span>Filters</span><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span></span>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-			<?php echo !isset($legacy) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
+		<?php #filters end ?>
 
-				<?php echo !isset($legacy) ? '<div class="tr">' : '<tr class="tr">'; ?>
+		<?php #search ?>
 
-					<?php echo !isset($legacy) ? '<div class="td left">' : '<td class="td left">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+
+			<?php echo !isset($lt_ie_8) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
+
+				<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
+
+					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 						<div class="input-text">
-							<input title="Search" type="text" />
+							<input title="Search" type="text">
 							<span class="placeholder">Search</span>
 						</div>
-					<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-					<?php echo !isset($legacy) ? '<div class="td right">' : '<td class="td right">'; ?>
-						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button')); ?>
-						<input type="submit" value="Search" />
-					<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+					<?php echo !isset($lt_ie_8) ? '<div class="td right">' : '<td class="td right">'; ?>
+						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button submit')); ?>
+						<input type="submit" value="Search">
+					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-				<?php echo !isset($legacy) ? '</div>' : '</tr>'; ?>
+				<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
-			<?php echo !isset($legacy) ? '</div>' : '</table>'; ?>
+			<?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
 
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
+		<?php #search end ?>
+
+		<?php #post ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
 			<?php echo CHtml::link('Post a<br>FREE Ad', array('/item/create')); ?>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-	<?php echo !isset($legacy) ? '</div>' : '</tr>'; ?>
+		<?php #post end ?>
 
-	<?php echo !isset($legacy) ? '<div class="tr filters is-hidden">' : '<tr class="tr filters is-hidden">'; ?>
+	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
-		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
-		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
+	<?php echo !isset($lt_ie_8) ? '<div class="tr filters is-hidden">' : '<tr class="tr filters is-hidden">'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td filters-left">' : '<td class="td filters-left">'; ?>
-			<div>&#160;</div>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td filters-right">' : '<td class="td filters-right">'; ?>
-			<div>
+		<?php echo !isset($lt_ie_8) ? '<div class="td filters-left">' : '<td class="td filters-left">'; ?>
+			<div><div>&#160;</div></div>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td filters-right">' : '<td class="td filters-right">'; ?>
+			<div><div>
 				&#60; Filters Here &#62;<br>
 				&#60; Filters Here &#62;<br>
 				&#60; Filters Here &#62;<br>
 				&#60; Filters Here &#62;<br>
 				&#60; Filters Here &#62;
-			</div>
-		<?php echo !isset($legacy) ? '</div>' : '</td>'; ?>
+			</div></div>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php echo !isset($legacy) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 
-	<?php echo !isset($legacy) ? '</div>' : '</tr>'; ?>
+	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
-<?php echo !isset($legacy) ? '</div>' : '</table>'; ?>
+<?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
 
-</div>
+</div></div><?php #table-container ?>

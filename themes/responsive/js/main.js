@@ -1,5 +1,6 @@
 $(function() {
 
+/*
 $('.a', '#user').data('hover', false);
 $('.a > a', '#user').bind( {
 	touchstart: function() {
@@ -16,6 +17,7 @@ $('.a > a', '#user').bind( {
 		return false;
 	}
 });
+*/
 
 $('.a', '#filters').bind('click', function() {
 	if(!$(this).hasClass('is-clicked')) {
@@ -40,6 +42,7 @@ $('input[type=text]', '#search').bind( {
 
 });
 
+/*
 $(window).load(function() {
 
 setTimeout(function() {
@@ -47,3 +50,4 @@ setTimeout(function() {
 }, 10000);
 
 });
+*/

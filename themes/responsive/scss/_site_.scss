@@ -1,7 +1,13 @@
 #site_index {
 
 	h2, h3 {
-		color: $white;
+		color: $color_asbestos;
+		background-color: $color_white;
+		padding-right: $gutter-width;
+		padding-left: $gutter-width;
+		@include border-top-radius($border-radius);
+		margin-bottom: 1px;
+		float: left;
 	}
 
 }
