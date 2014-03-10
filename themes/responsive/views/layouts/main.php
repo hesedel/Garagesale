@@ -45,10 +45,6 @@
 			<?php echo Yii::app()->user->getFlash('success'); ?>
 		</div>
 		<?php endif; ?>
-		<div class="alert alert-success alert-dismissable timeout" id="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
-			The quick brown fox jumps over the lazy dog.
-		</div>
 
 		<?php echo $content; ?>
 
