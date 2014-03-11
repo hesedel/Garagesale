@@ -97,6 +97,7 @@
 							border-top: 1px solid $color_body_bg;
 							display: table-cell !important;
 							position: static; //
+							@include transition(all .25s);
 						}
 
 						.img {
