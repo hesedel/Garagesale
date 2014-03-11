@@ -1,0 +1,19 @@
+.g-button {
+	cursor: pointer;
+	color: $color_white;
+	background-color: $color_asbestos;
+	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
+	border: none;
+	@include border-radius($border-radius);
+
+	&:hover, &:active {
+		color: $color_white;
+		text-decoration: none;
+		background-color: whiten($color_asbestos, 25%);
+	}
+
+	&.small {
+		padding: #{($line-height * (1 / 6))} #{($gutter-width * (1 / 3))};
+	}
+
+} // .g-button

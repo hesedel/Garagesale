@@ -422,7 +422,14 @@ class Item extends CActiveRecord
 
 	public function getTimeAgo($createdORupdated='created')
 	{
-		return 'time'.' ago';
+		switch($createdORupdated)
+		{
+			case 'updated':
+				return time_local($this->updated);
+				break;
+			default:
+				return time_local($this->created);
+		}
 	}
 
 	public function userCanUpdate()

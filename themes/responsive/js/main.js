@@ -36,7 +36,7 @@ $('input[type=text]', '#search').bind( {
 	}
 });
 
-//$('time.timeago').timeago();
+$('time.timeago').timeago();
 
 });
 

@@ -6,7 +6,7 @@
 		padding-right: $gutter-width;
 		padding-bottom: ($line-height * .5) - 1px;
 		padding-left: $gutter-width;
-		@include border-top-radius($border-radius);
+		@include border-radius($border-radius);
 		margin-top: 0;
 		margin-bottom: 1px;
 		display: inline-block;

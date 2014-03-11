@@ -52,10 +52,10 @@ body {
 	z-index: 1;
 
 	a {
-		color: $color_orange;
+		color: $color_carrot;
 
 		&:hover {
-			color: blacken($color_orange, 25%);
+			color: blacken($color_carrot, 25%);
 			text-decoration: none;
 		}
 
