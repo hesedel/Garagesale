@@ -487,10 +487,6 @@
 			display: none;
 		}
 
-		&.is-inactive {
-			@include transition(all .25s ease .5s);
-		}
-
 		&.is-active {
 			color: blacken($color, 25%);
 			background-color: $color_white;
@@ -508,6 +504,10 @@
 				display: inline-block;
 			}
 
+		}
+
+		&.is-inactive {
+			@include transition(all .25s ease .5s);
 		}
 
 	}
