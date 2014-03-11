@@ -23,7 +23,9 @@ $(function() {
 		},
 		click: function() {
 			if(!$(this).hasClass('is-active')) {
-				$(this).addClass('is-active');
+				$(this)
+					.removeClass('is-inactive')
+					.addClass('is-active');
 				$('.filters', '#table').removeClass('is-hidden');
 			} else {
 				$(this)
