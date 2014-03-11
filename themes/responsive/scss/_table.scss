@@ -469,7 +469,6 @@
 	.a {
 		cursor: pointer;
 		@include border-left-radius(3px);
-		@include transition(all .25s ease .5s);
 
 		.fa-filter {
 			@extend .hidden-sm;
@@ -488,7 +487,11 @@
 			display: none;
 		}
 
-		&.is-clicked {
+		&.is-inactive {
+			@include transition(all .25s ease .5s);
+		}
+
+		&.is-active {
 			color: blacken($color, 25%);
 			background-color: $color_white;
 			height: ($line-height * 3) + ($gutter-width * (1 / 3));
