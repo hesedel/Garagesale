@@ -82,8 +82,5 @@ $sans-serif: proxima-nova, Lato, sans-serif;
 /**/
 
 $border-radius: 3px;
-$container-width-lg: 1170px;
-$container-width-md: 970px;
-$container-width-sm: 750px;
-$gutter-width: 15px;
+$gutter-width: $grid-gutter-width * .5;
 $line-height: 18px;
