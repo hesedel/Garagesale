@@ -32,7 +32,7 @@
 
 		<span class="price">₱ <?php echo number_format($data->price); ?></span>
 
-		<span class="time"><i class="fa fa-clock-o"></i><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($data->updated)); ?>"><?php echo $data->getTimeAgo(); ?></time></span>
+		<span class="time"><i class="fa fa-clock-o"></i><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($data->updated)); ?>"><?php echo $data->getTimeAgo('updated'); ?></time></span>
 
 		<span class="location"><i class="fa fa-map-marker"></i><?php echo $data->user->location ? $data->user->location->name : ''; ?></span>
 

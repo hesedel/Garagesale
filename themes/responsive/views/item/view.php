@@ -1,12 +1,21 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - ' . $model->title;
+$this->pageTitle = Yii::app()->name . ' - ' . $model->title;
 
-$this->breadcrumbs=array(
+$this->breadcrumbs = array(
 	'Items' => array('index'),
-	$model->id,
 );
 
-$this->layout='column3';
+if($model->user->location) {
+	$this->breadcrumbs[] = $model->user->location->name;
+}
+
+if($model->category_id != null) {
+	$this->breadcrumbs = array_merge($this->breadcrumbs, $model->getCategories());
+}
+
+$this->breadcrumbs[] = 'Ad ID ' . $model->id;
+
+$this->layout = 'column1';
 
 /*
 $this->menu=array(
@@ -22,66 +31,147 @@ $this->menu=array(
 <div id="item_view">
 
 <table class="header" cellspacing="0">
-	<caption>Header</caption>
-	<tr>
-		<th><h1><?php echo CHtml::encode($model->title) ?></h1></th>
-		<td>PHP <?php echo number_format($model->price) ?></td>
-	</tr>
+	<thead>
+		<tr>
+
+			<th><h1><?php echo CHtml::encode($model->title); ?></h1></th>
+
+			<td><span class="price">PHP <?php echo number_format($model->price); ?></span></td>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>
+
+				<span><i class="fa fa-clock-o"></i> <time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo('updated'); ?></time></span>
+
+				<?php if($model->user->location): ?>
+				<span><i class="fa fa-map-marker"></i> <?php echo $model->user->location->name; ?></span>
+				<?php endif; ?>
+
+			</th>
+			<td>
+
+				<?php if($model->condition_id != null): ?>
+				<span class="condition <?php echo $model->getConditionClass(); ?>"><?php echo $model->condition->title; ?></span>
+				<?php endif; ?>
+
+			</td>
+		</tr>
+	</tbody>
 </table>
 
-<?php $params = array('Item' => $model) ?>
-<div class="g-actions">
+<div class="row">
+	<div class="col-md-8">
 
-	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="icon-pencil"></i> Edit', array('update', 'id' => $model->id)) : '' ?>
+		<?php if($images = $model->getImages()): ?>
 
-	<?php echo $model->userCanDelete() ? CHtml::link('<i class="icon-trash"></i> Delete', '#', array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : '' ?>
+		<div class="hes-slider img">
+			<div class="hes-slider-scroll">
+				<div class="hes-slider-slides"><!--
 
-</div><!-- .g-actions -->
+					<?php foreach($images as $image): ?>
+					--><div class="hes-slider-slide"><div>
+						<?php echo CHtml::link(
+							CHtml::image(
+								'/img/vendor/slir/w1234-h774-c1234x774-bfff' . $image['path'],
+								$image['id'] . '.' . $image['type'],
+								array(
+									'title' => 'click to enlarge photo',
+								)
+							),
+							'/img/vendor/slir/w510-bfff' . $image['path'],
+							array('class' => 'lightbox')
+						); ?>
+					</div></div><!--
+					<?php endforeach; ?>
 
-<?php if($model->category_id != null || $model->user->location || $model->condition_id != null): ?>
+				--></div>
+			</div>
 
-<div class="tags">
+			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
 
-	<?php if($model->category_id != null): ?>
-	<span class="category"><i class="icon-tag"></i> <?php echo $model->getCategoriesString(array('separator' => ' &#160; / &#160; ')) ?></span>
-	<?php endif ?>
+		</div>
 
-	<?php if($model->user->location): ?>
-	<span><i class="icon-map-marker"></i> <?php echo $model->user->location->name ?></span>
-	<?php endif ?>
+		<div class="hes-slider imgs">
+			<div class="hes-slider-scroll">
+				<div class="hes-slider-slides"><!--
 
-	<?php if($model->condition_id != null): ?>
-	<span class="condition <?php echo $model->getConditionClass() ?>"><?php echo $model->condition->title ?></span>
-	<?php endif ?>
+					<?php foreach($images as $image): ?>
+					--><div class="hes-slider-slide"><div>
+						<?php echo CHtml::link(
+							CHtml::image(
+								'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
+								$image['id'] . '.' . $image['type'],
+								array(
+									'title' => 'click to enlarge photo',
+								)
+							),
+							'/img/vendor/slir/w510-bfff' . $image['path'],
+							array('class' => 'lightbox')
+						); ?>
+					</div></div><!--
+					--><div class="hes-slider-slide"><div>
+						<?php echo CHtml::link(
+							CHtml::image(
+								'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
+								$image['id'] . '.' . $image['type'],
+								array(
+									'title' => 'click to enlarge photo',
+								)
+							),
+							'/img/vendor/slir/w510-bfff' . $image['path'],
+							array('class' => 'lightbox')
+						); ?>
+					</div></div><!--
+					<?php endforeach; ?>
 
-</div><!-- .tags -->
+				--></div>
+			</div>
 
-<?php endif ?>
+			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
 
-<?php $this->widget('zii.widgets.jui.CJuiTabs', array(
-	'tabs'=>array(
-		'Description + Photos' => $this->renderPartial('view/_description', array('model' => $model), true),
-		//'Video' => '...',
-		//'Map' => '...',
-		//'Comments' => '...',
-		'Contact' => '...',
-	),
-	'htmlOptions' => array('class' => 'g-tabs'),
-	'headerTemplate' => '<li><a href="{url}">{title}</a></li>',
-	'contentTemplate' => '<div id="{id}" class="tab-content">{content}</div>',
-)); ?>
+		</div>
+
+		<?php endif; ?>
+
+		<table class="info-ad" cellspacing="0">
+			<caption>Ad Info</caption>
+			<tr>
+				<th><?php echo $model->getAttributeLabel('created') ?> on</th>
+				<td><?php echo time_local($model->created) ?></td>
+			</tr>
+			<tr>
+				<th><?php echo $model->getAttributeLabel('updated') ?> on</th>
+				<td><?php echo time_local($model->updated) ?></td>
+			</tr>
+			<tr>
+				<th>Expires on</th>
+				<td><?php echo time_local($model->updated, array('offset' => 60*24*60*60)) // 60 days ?></td>
+			</tr>
+			<tr>
+				<th>Views</th>
+				<td>...</td>
+			</tr>
+		</table>
+
+		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
+
+	</div>
+	<aside class="col-md-4">
+
+		<?php $this->renderPartial('view/_sidebar-right', array('model' => $model)); ?>
+
+	</aside>
+</div>
 
 </div><!-- #item_view -->
 
-<!-- sidebars -->
-<?php $this->renderPartial('view/_sidebar-left', array('model' => $model)) ?>
-<?php $this->renderPartial('view/_sidebar-right', array('model' => $model)) ?>
-
 <?php Yii::app()->clientScript->registerScript('item_view',
 	"
-	$('h1', '#item_view table.header').css( {
-		width: $('#item_view').width() - $('td', '#item_view table.header').outerWidth() - 30
-	});
 	$('a.lightbox', '#item_view').lightBox( {
 		//overlayBgColor: '#',
 		//overlayOpacity: .25,

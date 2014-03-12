@@ -45,6 +45,7 @@ $(function() {
 		}
 	});
 
+	$('.hes-slider').hesSlider();
 	$('time.timeago').timeago();
 
 });

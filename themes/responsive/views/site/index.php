@@ -1,5 +1,6 @@
 <?php
 $this->pageTitle = Yii::app()->name;
+
 $this->layout = 'column1';
 ?>
 
@@ -21,11 +22,11 @@ $this->layout = 'column1';
 		)); ?>
 
 	</div>
-	<div class="col-md-4 col-md-push-8 col-lg-4 col-lg-push-0">
+	<aside class="col-md-4 col-md-push-8 col-lg-4 col-lg-push-0">
 
 		...
 
-	</div>
+	</aside>
 	<div class="col-md-8 col-md-pull-4 col-lg-8 col-lg-pull-0">
 
 			<h3>Latest Items</h3>

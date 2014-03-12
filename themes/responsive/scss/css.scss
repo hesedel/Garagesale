@@ -1,5 +1,8 @@
 @import 'normalize', 'main';
-@import 'vendor/bootstrap', 'vendor/font-awesome/font-awesome', 'vendor/jquery.lightbox-0.5';
+@import 'vendor/bootstrap',
+				'vendor/font-awesome/font-awesome',
+				'vendor/jquery.hes.slider',
+				'vendor/jquery.lightbox-0.5';
 @import 'compass', 'bourbon';
 @import 'variables', 'global', 'form';
 
@@ -48,8 +51,7 @@ body {
 }
 
 .breadcrumbs {
-	position: absolute;
-	z-index: 1;
+	margin-bottom: $line-height;
 
 	a {
 		color: $color_carrot;

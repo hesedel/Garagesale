@@ -26,6 +26,10 @@ label, th {
 }
 */
 
+th {
+	font-weight: 400;
+}
+
 /*
  * Bootstrap
  */
@@ -179,6 +183,7 @@ table.g-table {
 
 } // .g-table
 
+/*
 div.g-tabs {
 	font-family: ProximaNovaRegular;
 	font-size: 1em;
@@ -259,7 +264,9 @@ div.g-tabs {
 	}
 
 } // .g-tabs
+*/
 
+/*
 .no-js div.g-tabs {
 
 	> ul {
@@ -271,6 +278,7 @@ div.g-tabs {
 	}
 
 }
+*/
 
 div.g-userItemView {
 	background-color: $light;

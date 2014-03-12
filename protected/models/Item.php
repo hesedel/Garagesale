@@ -174,7 +174,22 @@ class Item extends CActiveRecord
 
 	public function getCategories()
 	{
-		
+		if($this->category_id != null)
+		{
+			$categories = array($this->category->title);
+			$category_parent = $this->category->parent_id;
+			while($category_parent != null) {
+				$category_parent = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->where('id=:id', array(':id'=>$category_parent))
+					->queryRow();
+				array_unshift($categories, $category_parent['title']);
+				$category_parent = $category_parent['parent_id'];
+			}
+			return $categories;
+		} else
+			return false;
 	}
 
 	public function getCategoriesString($options=array())
