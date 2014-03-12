@@ -54,7 +54,7 @@
 						)
 						: '<i class="fa fa-user"></i> '
 					) .
-							Yii::app()->user->id .
+						Yii::app()->user->id .
 							'<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',

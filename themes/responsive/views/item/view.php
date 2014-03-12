@@ -113,19 +113,6 @@ $this->menu=array(
 							array('class' => 'lightbox')
 						); ?>
 					</div></div><!--
-					--><div class="hes-slider-slide"><div>
-						<?php echo CHtml::link(
-							CHtml::image(
-								'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
-								$image['id'] . '.' . $image['type'],
-								array(
-									'title' => 'click to enlarge photo',
-								)
-							),
-							'/img/vendor/slir/w510-bfff' . $image['path'],
-							array('class' => 'lightbox')
-						); ?>
-					</div></div><!--
 					<?php endforeach; ?>
 
 				--></div>
@@ -138,24 +125,20 @@ $this->menu=array(
 
 		<?php endif; ?>
 
-		<table class="info-ad" cellspacing="0">
-			<caption>Ad Info</caption>
-			<tr>
-				<th><?php echo $model->getAttributeLabel('created') ?> on</th>
-				<td><?php echo time_local($model->created) ?></td>
-			</tr>
-			<tr>
-				<th><?php echo $model->getAttributeLabel('updated') ?> on</th>
-				<td><?php echo time_local($model->updated) ?></td>
-			</tr>
-			<tr>
-				<th>Expires on</th>
-				<td><?php echo time_local($model->updated, array('offset' => 60*24*60*60)) // 60 days ?></td>
-			</tr>
-			<tr>
-				<th>Views</th>
-				<td>...</td>
-			</tr>
+		<?php
+		$info = array();
+		$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
+		$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
+		$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
+		?>
+		<table class="info" cellspacing="0">
+			<?php $i = 0; foreach($info as $key => $value) { ?>
+			<?php if($i % 2 == 0): ?><tr><?php endif; ?>
+				<th><?php echo $key; ?></th>
+				<td><?php echo $value; ?></td>
+			<?php $i++; ?>
+			<?php if($i % 2 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
+			<?php } ?>
 		</table>
 
 		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>

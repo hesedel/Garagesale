@@ -12,6 +12,15 @@
 		background-color: whiten($color_asbestos, 25%);
 	}
 
+	&:visited {
+		color: $color_white;
+
+		&:hover {
+			color: $color_white;
+		}
+
+	}
+
 	&.small {
 		padding: #{($line-height * (1 / 6))} #{($gutter-width * (1 / 3))};
 	}

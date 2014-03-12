@@ -120,7 +120,7 @@
 		background-color: $color_clouds;
 		width: 100%;
 		@include border-radius($border-radius * 2);
-		margin-bottom: $line-height;
+		margin-bottom: $line-height * 2;
 
 		th {
 			width: 100%;
@@ -144,6 +144,7 @@
 				h1 {
 					color: $color_black;
 					font-size: 2em;
+					word-break: break-all;
 					margin-top: 0;
 					margin-bottom: $line-height * .5;
 				}
@@ -281,12 +282,98 @@
 
 	}
 
+	.info {
+		background-color: $color_white;
+		width: 100%;
+
+		th, td {
+			padding-top: $line-height * .5;
+			padding-bottom: ($line-height * .5) - 1px;
+			border-bottom: 1px solid $color_body-bg;
+		}
+
+		th {
+			white-space: nowrap;
+			padding-right: $gutter-width * .5;
+			padding-left: $gutter-width;
+		}
+
+		td {
+			font-weight: 600;
+			width: 50%;
+			padding-right: $gutter-width;
+			padding-left: $gutter-width * .5;
+		}
+
+	}
+
 	.description {
 		color: $color-black;
 		background-color: $color_white;
-		padding: $line-height $gutter-width;
+		padding: $line-height $gutter-width #{$line-height * 1.5};
 		@include border-bottom-radius($border-radius * 2);
 		margin-bottom: 0;
+	}
+
+}
+
+#item_view-sidebar {
+
+	.actions {
+		margin-bottom: $line-height;
+	}
+
+	.user {
+		color: $color_white;
+		background-color: $color_asbestos;
+		padding: #{$line-height * .5} $gutter-width;
+		@include border-top-radius($border-radius * 2);
+
+		.user-img {
+			color: $color_white;
+			font-size: 1.5em;
+			display: block;
+
+			img {
+				@include box-sizing(content-box);
+				width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
+				height: ($line-height * 2) - 2px;
+				border: 1px solid $color_body-bg;
+				margin-right: $gutter-width * (1 / 3);
+				display: inline-block;
+			}
+
+			i {
+				text-align: center;
+				width: $gutter-width * 2;
+			}
+
+		}
+
+		.user-created {
+			display: block;
+		}
+
+	}
+
+	.contact {
+		background-color: $color_clouds;
+		padding: $line-height $gutter-width #{$line-height * 1.5};
+		@include border-bottom-radius($border-radius * 2);
+
+		.phone,
+		.email {
+			font-size: 1.25em;
+			margin-bottom: $line-height * .5;
+			display: block;
+
+			i {
+				text-align: center;
+				width: $gutter-width * 2;
+			}
+
+		}
+
 	}
 
 }

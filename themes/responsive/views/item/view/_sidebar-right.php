@@ -1,48 +1,66 @@
-<div id="item_view-sidebar-right">
+<div id="item_view-sidebar">
 
-<?php $params = array('Item' => $model) ?>
-<div class="g-actions">
+<?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
+<div class="actions">
 
-	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="icon-pencil"></i> Edit', array('update', 'id' => $model->id)) : '' ?>
+	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'g-button')) : ''; ?>
 
-	<?php echo $model->userCanDelete() ? CHtml::link('<i class="icon-trash"></i> Delete', '#', array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : '' ?>
+	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class'=>'g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
 
-</div><!-- .g-actions -->
+</div>
+<?php endif; ?>
 
-<div class="info-user">
+<?php $user = User::model()->findByPk($model->user_id); ?>
+<div class="user">
 
-	<h2>User Info</h2>
-
-	<div<?php echo strlen($model->user->phone) != 0 ? ' class="hasPhone"' : '' ?>>
-
-		<?php echo CHtml::link(
-			CHtml::image(
-				'/img/transparent.gif',
-				$model->user_id,
-				array('style' => 'background-image: url(/img/vendor/slir/w38-h34-c38.34-bbabaab' . User::model()->findByPk($model->user_id)->getImage() . ')')
-			),
-			array('/admin/user/view', 'id' => $model->user_id),
-			array('class' => 'image')
-		) ?>
-
-		<strong><?php echo CHtml::link(
+	<?php echo CHtml::link(
+		($user->image
+			? CHtml::image(
+				'/img/vendor/slir/w76-h68-c38x34-bfff' . $user->getImage(),
+				$model->user_id . '\'s avatar'
+			)
+			: '<i class="fa fa-user"></i> '
+		) .
 			$model->user_id,
-			array(
-				'/admin/user/view',
-				'id' => $model->user_id
-			),
-			array('title' => $model->user_id)
-		) ?></strong>
+		array(
+			'/admin/user/view',
+			'id' => Yii::app()->user->id,
+		),
+		array('class' => 'user-img')
+	); ?>
 
-		<?php if(strlen($model->user->phone) != 0): ?>
-		<span><?php echo $model->user->phone ?></span>
-		<?php endif ?>
+	<span class="user-created">member since <?php echo time_local($user->created, array('format' => 'Y')); ?></span>
 
+</div>
+
+<div class="contact">
+
+	<?php if(strlen($model->user->phone) != 0): ?>
+	<span class="phone"><i class="fa fa-phone"></i> <?php echo $model->user->phone; ?></span>
+	<?php endif; ?>
+
+	<span class="email"><i class="fa fa-envelope"></i> Email poster</span>
+
+	<div class="textarea">
+		<textarea></textarea>
+		<span class="placeholder">Your message</span>
 	</div>
 
-</div><!-- .info-user -->
+	<div class="input-text">
+		<input type="text">
+		<span class="placeholder">Your email address</span>
+	</div>
 
-<?php if($items = $model->getOtherItems()): ?>
+	<div class="input-text">
+		<input type="text">
+		<span class="placeholder">Your name</span>
+	</div>
+
+	<a class="g-button">Send</a>
+
+</div>
+
+<?php /* if($items = $model->getOtherItems()): ?>
 
 <div class="other">
 
@@ -95,6 +113,6 @@
 
 </div><!-- .other -->
 
-<?php endif ?>
+<?php endif; */ ?>
 
-</div><!-- #item_view-sidebar-right -->
+</div><!-- #item_view-sidebar -->
