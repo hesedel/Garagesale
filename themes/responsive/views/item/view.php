@@ -125,6 +125,9 @@ $this->menu=array(
 
 		<?php endif; ?>
 
+	</div>
+	<div class="col-sm-6 col-md-8">
+
 		<?php
 		$info = array();
 		$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
@@ -144,7 +147,7 @@ $this->menu=array(
 		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 
 	</div>
-	<aside class="col-md-4">
+	<aside class="col-sm-6 col-md-4">
 
 		<?php $this->renderPartial('view/_sidebar-right', array('model' => $model)); ?>
 

@@ -249,6 +249,7 @@
 	}
 
 	.imgs {
+		@extend .hidden-sm;
 		@extend .hidden-xs;
 		background-color: $color_asbestos;
 		padding-right: ($gutter-width * (1 / 3)) + ($gutter-width * 2);
@@ -315,6 +316,32 @@
 		margin-bottom: 0;
 	}
 
+	> .row {
+		position: relative;
+
+		> aside {
+			position: absolute;
+				top: 0;
+				right: 0;
+		}
+		
+	}
+
+}
+
+@media (max-width: $screen-sm-max) {
+	#item_view {
+
+		> .row {
+			position: static;
+
+			> aside {
+				position: relative;
+			}
+
+		}
+
+	}
 }
 
 #item_view-sidebar {
