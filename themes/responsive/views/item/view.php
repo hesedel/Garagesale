@@ -149,7 +149,11 @@ $this->menu=array(
 	</div>
 	<aside class="col-sm-6 col-md-4">
 
-		<?php $this->renderPartial('view/_sidebar-right', array('model' => $model)); ?>
+		<?php $this->renderPartial('view/_sidebar-right', array(
+			'model' => $model,
+			'model_contact' => $model_contact,
+			'model_contact_success' => $model_contact_success,
+		)); ?>
 
 	</aside>
 </div>

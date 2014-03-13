@@ -39,24 +39,12 @@
 	<span class="phone"><i class="fa fa-phone"></i> <?php echo $model->user->phone; ?></span>
 	<?php endif; ?>
 
-	<span class="email"><i class="fa fa-envelope"></i> Email poster</span>
-
-	<div class="textarea">
-		<textarea></textarea>
-		<span class="placeholder">Your message</span>
+	<div class="form">
+		<?php $this->renderPartial('view/_contact', array(
+			'model' => $model_contact,
+			'model_success' => $model_contact_success,
+		)); ?>
 	</div>
-
-	<div class="input-text">
-		<input type="text">
-		<span class="placeholder">Your email address</span>
-	</div>
-
-	<div class="input-text">
-		<input type="text">
-		<span class="placeholder">Your name</span>
-	</div>
-
-	<a class="g-button">Send</a>
 
 </div>
 
