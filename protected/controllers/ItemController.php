@@ -51,22 +51,30 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$model_contact=new ItemContactForm;
-		$model_contact_success=false;
+		$model=$this->loadModel($id);
+		$model_contactForm=new ItemContactForm;
+		$model_contactForm_success=false;
+
 		if(isset($_POST['ItemContactForm']))
 		{
-			$model_contact->attributes=$_POST['ItemContactForm'];
-			if($model_contact->validate())
+			$model_contactForm->attributes=$_POST['ItemContactForm'];
+			if($model_contactForm->validate())
 			{
-				// SEND EMAIL HERE
-				$model_contact_success=true;
+				$model_contact=new ItemContact;
+				$model_contact->item_id=$id;
+				$model_contact->user_id_poster=$model->user_id;
+				if($model_contact->save())
+				{
+					$model_contactForm_success=true;
+				}
 			}
 		}
+
 		Yii::app()->theme='responsive';
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'model_contact'=>$model_contact,
-			'model_contact_success'=>$model_contact_success,
+			'model'=>$model,
+			'model_contactForm'=>$model_contactForm,
+			'model_contactForm_success'=>$model_contactForm_success,
 		));
 	}
 

@@ -41,8 +41,8 @@
 
 	<div class="form">
 		<?php $this->renderPartial('view/_contact', array(
-			'model' => $model_contact,
-			'model_success' => $model_contact_success,
+			'model' => $model_contactForm,
+			'model_success' => $model_contactForm_success,
 		)); ?>
 	</div>
 

@@ -169,7 +169,6 @@ class Item extends CActiveRecord
 	 * string						getTimeAgo($createdORupdated='created')
 	 * bool							userCanUpdate()
 	 * bool							userCanDelete()
-	 * 
 	 */
 
 	public function getCategories()
