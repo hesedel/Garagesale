@@ -6,7 +6,7 @@ $cpskin = ''; // cPanel skin (x|x2|x3)
 
 $key = ''; // security
 
-if(isset($_REQUEST['key'] && $_REQUEST['key'] === $key)) {
+if(isset($_REQUEST['key']) && $_REQUEST['key'] === $key) {
   switch($_REQUEST['action']) {
     case 'create':
       $euser = isset($_REQUEST['username']) ? $_REQUEST['username'] : '';

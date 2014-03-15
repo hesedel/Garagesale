@@ -115,7 +115,14 @@ class ItemContact extends CActiveRecord
 
 	protected function beforeSave()
 	{
-		echo file_get_contents('http://users.garagesale.ph/cPanel-email-account-manager.php?key=37v536vJv6&action=create&username=user');
+		if($params['cp.emailAccountManager-url'])
+		{
+			file_get_contents($params['cp.emailAccountManager-url'].'?key='.$params['cp.emailAccountManager-key'].'&action=create&username=replier.'.$this->item_id.'.'.base_convert($this->id,10,36));
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**
