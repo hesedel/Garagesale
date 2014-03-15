@@ -124,6 +124,7 @@ class ItemContact extends CActiveRecord
 
 			// create email forwarders
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&user=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&fwdemail='.$this->replier_email);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&user=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&fwdemail='.$this->user_poster->email);
 		}
 	}
 
