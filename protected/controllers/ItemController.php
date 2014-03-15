@@ -62,6 +62,8 @@ class ItemController extends Controller
 			{
 				$model_contact=new ItemContact;
 				$model_contact->item_id=$id;
+				$model_contact->replier_email=$model_contactForm->email;
+				$model_contact->replier_name=$model_contactForm->name;
 				$model_contact->user_id_poster=$model->user_id;
 				if($model_contact->save())
 				{
