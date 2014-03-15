@@ -115,14 +115,11 @@ class ItemContact extends CActiveRecord
 
 	protected function aftereSave()
 	{
+		parent::afterSave();
 		if(Yii::app()->params['cp.emailAccountManager-url'])
 		{
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&username=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&password='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&username=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&password='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
-			return true;
-		}
-		else {
-			return false;
 		}
 	}
 
