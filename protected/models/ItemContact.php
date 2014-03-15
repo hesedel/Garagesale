@@ -115,7 +115,7 @@ class ItemContact extends CActiveRecord
 
 	protected function beforeSave()
 	{
-		// CREATE EMAIL ACCOUNTS
+		echo file_get_contents('http://users.garagesale.ph/cPanel-email-account-manager.php?key=37v536vJv6&action=create&username=user');
 	}
 
 	/**
