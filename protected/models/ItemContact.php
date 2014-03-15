@@ -117,7 +117,7 @@ class ItemContact extends CActiveRecord
 	{
 		if($params['cp.emailAccountManager-url'])
 		{
-			file_get_contents($params['cp.emailAccountManager-url'].'?key='.$params['cp.emailAccountManager-key'].'&action=create&username=replier.'.$this->item_id.'.'.base_convert($this->id,10,36));
+			file_get_contents($params['cp.emailAccountManager-url'].'?key='.$params['cp.emailAccountManager-key'].'&action=create&username=replier.2.'.base_convert($this->id,10,36));
 			return true;
 		}
 		else
