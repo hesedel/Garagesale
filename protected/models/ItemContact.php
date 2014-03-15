@@ -113,7 +113,7 @@ class ItemContact extends CActiveRecord
 		));
 	}
 
-	protected function aftereSave()
+	protected function afterSave()
 	{
 		parent::afterSave();
 		if(Yii::app()->params['cp.emailAccountManager-url'])
