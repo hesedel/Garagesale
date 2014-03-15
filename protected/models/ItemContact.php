@@ -119,11 +119,11 @@ class ItemContact extends CActiveRecord
 		if(Yii::app()->params['cp.emailAccountManager-url'])
 		{
 			// create email accounts
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&username=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&password='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&username=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&password='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&user=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&pass='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&user=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&pass='.Yii::app()->params['cp.emailAccountManager-key'].'&domain='.Yii::app()->params['usersEmailDomain']);
 
 			// create email forwarders
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&username=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&forward='.$this->replier_email);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&user=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&fwdemail='.$this->replier_email);
 		}
 	}
 
