@@ -2206,6 +2206,14 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsSetByUser": 0
 		},
+	"\/views\/item\/view\/_contact.php": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/views\/item\/view\/_contact.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
 	"\/views\/item\/view\/_sidebar-right.php": {
 		"fileType": 8192,
 		"ignore": 1,

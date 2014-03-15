@@ -10,8 +10,6 @@
 	*/
 )); ?>
 
-<span class="email"><i class="fa fa-envelope"></i> Email poster</span>
-
 <div class="textarea">
 	<?php echo $form->textArea($model, 'body'); ?>
 	<span class="placeholder">Your message</span>

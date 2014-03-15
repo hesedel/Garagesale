@@ -39,6 +39,8 @@
 	<span class="phone"><i class="fa fa-phone"></i> <?php echo $model->user->phone; ?></span>
 	<?php endif; ?>
 
+	<span class="email"><i class="fa fa-envelope"></i> Email poster</span>
+
 	<div class="form">
 		<?php $this->renderPartial('view/_contact', array(
 			'model' => $model_contactForm,
