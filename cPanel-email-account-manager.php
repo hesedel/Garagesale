@@ -14,23 +14,23 @@ if(isset($_REQUEST['key']) && $_REQUEST['key'] === $key) {
       $edomain = isset($_REQUEST['domain']) ? $_REQUEST['domain'] : $cpdomain;
       $equota = isset($_REQUEST['quota']) ? $_REQUEST['quota'] : 10;
 
-      $success = false;
+      $success = 0;
       if(strlen($euser) > 0) {
         while(true) {
           // create email account
           $f = fopen("http://$cpuser:$cppass@$cpdomain:2082/frontend/$cpskin/mail/doaddpop.html?email=$euser&domain=$edomain&password=$epass&quota=$equota", "r");
           if(!$f) {
-            $success = false;
+            $success = 0;
             break;
           }
         
-          $success = true;
+          $success = 1;
         
           // check result
           while(!feof($f)) {
             $line = fgets($f, 1024);
             if(ereg("already exists", $line, $out)) {
-              $success = false;
+              $success = 0;
               break;
             }
           }
