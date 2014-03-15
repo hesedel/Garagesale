@@ -14,9 +14,9 @@ class m140314_112253_create_itemContact_table extends CDbMigration
 			'replier_name'=>'varchar(32) DEFAULT NULL',
 			'user_id_poster'=>'varchar(64) NOT NULL',
 		), 'ENGINE InnoDB');
-		$this->addForeignKey('item_contact', 'item_contact', 'item_id', 'item', 'id', 'CASCADE', 'CASCADE');
-		$this->addForeignKey('user_replier', 'item_contact', 'user_id_replier', 'user', 'id', 'CASCADE', 'CASCADE');
-		$this->addForeignKey('user_poster', 'item_contact', 'user_id_poster', 'user', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('item_contact', 'item_contact', 'item_id', 'item', 'id', 'RESTRICT', 'CASCADE');
+		$this->addForeignKey('user_replier', 'item_contact', 'user_id_replier', 'user', 'id', 'SET NULL', 'CASCADE');
+		$this->addForeignKey('user_poster', 'item_contact', 'user_id_poster', 'user', 'id', 'NO ACTION', 'CASCADE');
 	}
 
 	public function safeDown()
