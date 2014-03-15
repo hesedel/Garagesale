@@ -24,7 +24,7 @@
 			$model->user_id,
 		array(
 			'/admin/user/view',
-			'id' => Yii::app()->user->id,
+			'id' => $model->user_id,
 		),
 		array('class' => 'user-img')
 	); ?>
