@@ -120,7 +120,7 @@ class ItemContact extends CActiveRecord
 		{
 			// create email accounts
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&password='.Yii::app()->params['cp.emailAccountManager-key']);
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&emailr=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&password='.Yii::app()->params['cp.emailAccountManager-key']);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&password='.Yii::app()->params['cp.emailAccountManager-key']);
 
 			// create email forwarders
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&fwdopt=pipe&pipefwd=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
