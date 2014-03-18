@@ -114,9 +114,26 @@ return array(
 		),
 		'clientScript'=>($params['env'] !== 'dev' && !os_is_windows()
 			? array(
+				/*
+				'packages'=>array(
+					'jquery'=>array(
+						'baseUrl'=>'/js/vendor',
+						'js'=>array('jquery-1.11.0.min.js'),
+					),
+				),
+				*/
 				'class'=>'ext.minScript.components.ExtMinScript'
 			)
-			: array() // do nothing
+			: array(
+				/*
+				'packages'=>array(
+					'jquery'=>array(
+						'baseUrl'=>'/js/vendor',
+						'js'=>array('jquery-1.11.0.min.js'),
+					),
+				),
+				*/
+			)
 		),
 	),
 

@@ -73,6 +73,13 @@ class ItemController extends Controller
 		}
 
 		Yii::app()->theme='responsive';
+		if(isset($_POST['ajax']) && $_POST['ajax']==='item-contact-form') {
+			$this->renderPartial('view/_contact',array(
+				'model'=>$model_contactForm,
+				'model_success'=>$model_contactForm_success,
+			));
+			Yii::app()->end();
+		}
 		$this->render('view',array(
 			'model'=>$model,
 			'model_contactForm'=>$model_contactForm,

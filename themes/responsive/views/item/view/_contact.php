@@ -8,6 +8,9 @@
 		'validateOnSubmit'=>true,
 	),
 	*/
+	'htmlOptions'=>array(
+		'class'=>'ajax',
+	),
 )); ?>
 
 <div class="textarea">
