@@ -82,7 +82,7 @@ $('form.ajax').bind('submit', function() {
 		i++;
 	});
 
-	$.post('', $this.serialize() + '&ajax=' + $this.attr('id'), function(data) {
+	$.post(window.location.pathname, $this.serialize() + '&ajax=' + $this.attr('id'), function(data) {
 		var id = $this.attr('id');
 		$this.replaceWith(data);
 		$this = $('#' + id);
@@ -113,7 +113,10 @@ $('form.ajax').bind('submit', function() {
 			$(':focus', $(this).parent()).trigger('focus');
 		});
 
-	});
+	})
+		.fail(function() {
+			
+		});
 
 	return false;
 });
