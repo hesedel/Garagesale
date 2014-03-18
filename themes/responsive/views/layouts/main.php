@@ -13,19 +13,17 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<?php
-	//Yii::app()->clientScript->registerCssFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/css/css.css'));
 	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/css.css');
-	Yii::app()->clientScript->registerCoreScript('jquery.ui');
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/modernizr-2.6.2.min.js'));
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/respond.min.js'));
+	Yii::app()->clientScript->registerPackage('modernizr');
+	Yii::app()->clientScript->registerPackage('respond');
+	Yii::app()->clientScript->registerPackage('php');
 	?>
 
 	<?php
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.hes.slider.js'));
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.lightbox-0.5.min.js'));
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.textarea-expander.js'));
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/jquery.timeago.js'));
-	Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/php.min.js'));
+	Yii::app()->clientScript->registerPackage('hes.slider');
+	Yii::app()->clientScript->registerPackage('lightbox');
+	Yii::app()->clientScript->registerPackage('textarea-expander');
+	Yii::app()->clientScript->registerPackage('timeago');
 	?>
 
 	<?php Yii::app()->clientScript->registerScriptFile('//use.typekit.net/fas6ahs.js'); ?>
@@ -61,20 +59,15 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 */ ?>
+
 <?php
-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/plugins.js'),
-	CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/vendor/bootstrap.min.js'),
-	CClientScript::POS_END);
+Yii::app()->clientScript->registerPackage('plugins');
+Yii::app()->clientScript->registerPackage('bootstrap');
 ?>
 
 <?php
-Yii::app()->clientScript->registerScriptFile(
-	Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/form.js'),
-	CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile(
-	Yii::app()->getAssetManager()->publish(Yii::app()->theme->basePath . '/js/main.js'),
-	CClientScript::POS_END);
+Yii::app()->clientScript->registerPackage('form');
+Yii::app()->clientScript->registerPackage('main');
 ?>
 
 <?php /*
@@ -89,13 +82,5 @@ ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
 */ ?>
 
-<?php /*
-if(env_is(array('dev'))) {
-	Yii::app()->clientScript->registerScript(
-		'livereload',
-		file_get_contents(Yii::app()->theme->basePath . '/js/_livereload.js'),
-		CClientScript::POS_END);
-}
-*/ ?>
 </body>
 </html>

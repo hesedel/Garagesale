@@ -6,6 +6,11 @@
 
 1. **Setting Up Your Local Configuration**
 
+	(Optional) Copy cPanel-email-account-manager.php into a different subdomain in your server
+		then update it to match your cPanel configuration.
+
+	Change pipe.php permissions to 777.
+
 	Duplicate `/protected/config/params.php.sample` to `/protected/config/params.php`
 		then update it to match your local environment configuration.
 

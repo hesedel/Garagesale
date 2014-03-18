@@ -51,22 +51,45 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$model_contact=new ItemContactForm;
-		$model_contact_success=false;
+		$model=$this->loadModel($id);
+		$model_contactForm=new ItemContactForm;
+		$model_contactForm_success=false;
+
+		if(!Yii::app()->user->isGuest)
+		{
+			$model_contactForm->email=Yii::app()->params['user']->email;
+			$model_contactForm->name=Yii::app()->params['user']->name_first;
+		}
+
 		if(isset($_POST['ItemContactForm']))
 		{
-			$model_contact->attributes=$_POST['ItemContactForm'];
-			if($model_contact->validate())
+			$model_contactForm->attributes=$_POST['ItemContactForm'];
+			if($model_contactForm->validate())
 			{
-				// SEND EMAIL HERE
-				$model_contact_success=true;
+				$model_contact=new ItemContact;
+				$model_contact->item_id=$id;
+				$model_contact->replier_email=$model_contactForm->email;
+				$model_contact->replier_name=$model_contactForm->name;
+				$model_contact->user_id_poster=$model->user_id;
+				if($model_contact->save())
+				{
+					$model_contactForm_success=true;
+				}
 			}
 		}
+
 		Yii::app()->theme='responsive';
+		if(isset($_POST['ajax']) && $_POST['ajax']==='item-contact-form') {
+			$this->renderPartial('view/_contact',array(
+				'model'=>$model_contactForm,
+				'model_success'=>$model_contactForm_success,
+			));
+			Yii::app()->end();
+		}
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'model_contact'=>$model_contact,
-			'model_contact_success'=>$model_contact_success,
+			'model'=>$model,
+			'model_contactForm'=>$model_contactForm,
+			'model_contactForm_success'=>$model_contactForm_success,
 		));
 	}
 

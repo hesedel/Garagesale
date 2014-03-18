@@ -8,29 +8,55 @@
 		'validateOnSubmit'=>true,
 	),
 	*/
+	'htmlOptions'=>array(
+		'class'=>'ajax',
+	),
 )); ?>
+<table class="form--partial">
+	<tbody>
 
-<div class="textarea">
-	<?php echo $form->textArea($model, 'body'); ?>
-	<span class="placeholder">Your message</span>
-</div>
-<?php echo $form->error($model,'body'); ?>
+		<tr>
+			<td>
+				<div class="textarea">
+					<?php echo $form->textArea($model, 'body'); ?>
+					<span class="placeholder">Your message</span>
+				</div>
+				<?php echo $form->error($model,'body'); ?>
+			</td>
+		</tr>
 
-<div class="input-text">
-	<?php echo $form->textField($model, 'email'); ?>
-	<span class="placeholder">Your email address</span>
-</div>
-<?php echo $form->error($model,'email'); ?>
+		<tr>
+			<td>
+				<div class="input-text">
+					<?php echo $form->textField($model, 'email', array('disabled' => Yii::app()->user->isGuest ? false : true)); ?>
+					<span class="placeholder">Your email address</span>
+				</div>
+				<?php echo $form->error($model,'email'); ?>
+				</td>
+		</tr>
 
-<div class="input-text">
-	<?php echo $form->textField($model, 'name'); ?>
-	<span class="placeholder">Your name</span>
-</div>
-<?php echo $form->error($model,'name'); ?>
+		<tr>
+			<td>
+				<div class="input-text">
+					<?php echo $form->textField($model, 'name', array('disabled' => Yii::app()->user->isGuest ? false : true)); ?>
+					<span class="placeholder">Your name</span>
+				</div>
+				<?php echo $form->error($model,'name'); ?>
+				</td>
+		</tr>
 
-<?php echo CHtml::linkButton('Send', array('class'=>'submit g-button')); ?>
-<?php echo CHtml::submitButton('Send', array('class'=>'submit g-button')); ?>
+	</tbody>
+	<tfoot>
 
+		<tr>
+			<td>
+				<?php echo CHtml::linkButton('Send', array('class'=>'submit g-button')); ?>
+				<?php echo CHtml::submitButton('Send', array('class'=>'submit g-button')); ?>
+			</td>
+		</tr>
+
+	</tfoot>
+</table>
 <?php $this->endWidget(); ?>
 
 <?php else: ?>

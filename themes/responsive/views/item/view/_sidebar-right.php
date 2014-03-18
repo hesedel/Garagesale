@@ -24,7 +24,7 @@
 			$model->user_id,
 		array(
 			'/admin/user/view',
-			'id' => Yii::app()->user->id,
+			'id' => $model->user_id,
 		),
 		array('class' => 'user-img')
 	); ?>
@@ -43,8 +43,8 @@
 
 	<div class="form">
 		<?php $this->renderPartial('view/_contact', array(
-			'model' => $model_contact,
-			'model_success' => $model_contact_success,
+			'model' => $model_contactForm,
+			'model_success' => $model_contactForm_success,
 		)); ?>
 	</div>
 

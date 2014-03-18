@@ -151,8 +151,8 @@ $this->menu=array(
 
 		<?php $this->renderPartial('view/_sidebar-right', array(
 			'model' => $model,
-			'model_contact' => $model_contact,
-			'model_contact_success' => $model_contact_success,
+			'model_contactForm' => $model_contactForm,
+			'model_contactForm_success' => $model_contactForm_success,
 		)); ?>
 
 	</aside>
