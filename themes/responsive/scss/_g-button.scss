@@ -6,7 +6,7 @@
 	border: none;
 	@include border-radius($border-radius);
 
-	&:hover, &:focus {
+	&:hover, &:active, &:focus {
 		color: $color_white;
 		text-decoration: none;
 		background-color: whiten($color, 25%);
