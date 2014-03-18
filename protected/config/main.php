@@ -3,6 +3,63 @@
 $params=require(dirname(__FILE__).DIRECTORY_SEPARATOR.'params.php');
 require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'../components/helpers.php');
 
+$clientScript_packages=array(
+	'modernizr'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('modernizr-2.6.2.min.js'),
+	),
+	'respond'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('respond.min.js'),
+	),
+	'php'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('php.min.js'),
+	),
+
+	'hes.slider'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('jquery.hes.slider.js'),
+		'depends'=>array('jquery'),
+	),
+	'lightbox'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('jquery.lightbox-0.5.min.js'),
+		'depends'=>array('jquery'),
+	),
+	'textarea-expander'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('jquery.textarea-expander.js'),
+		'depends'=>array('jquery'),
+	),
+	'timeago'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('jquery.timeago.js'),
+		'depends'=>array('jquery'),
+	),
+
+	'plugins'=>array(
+		'baseUrl'=>'themes/responsive/js',
+		'js'=>array('plugins.js'),
+	),
+	'bootstrap'=>array(
+		'baseUrl'=>'themes/responsive/js/vendor',
+		'js'=>array('bootstrap.min.js'),
+		'depends'=>array('jquery'),
+	),
+
+	'form'=>array(
+		'baseUrl'=>'themes/responsive/js',
+		'js'=>array('form.js'),
+		'depends'=>array('jquery', 'jquery.ui'),
+	),
+	'main'=>array(
+		'baseUrl'=>'themes/responsive/js',
+		'js'=>array('main.js'),
+		'depends'=>array('jquery'),
+	),
+);
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -114,25 +171,11 @@ return array(
 		),
 		'clientScript'=>($params['env'] !== 'dev' && !os_is_windows()
 			? array(
-				/*
-				'packages'=>array(
-					'jquery'=>array(
-						'baseUrl'=>'/js/vendor',
-						'js'=>array('jquery-1.11.0.min.js'),
-					),
-				),
-				*/
-				'class'=>'ext.minScript.components.ExtMinScript'
+				'packages'=>$clientScript_packages,
+				'class'=>'ext.minScript.components.ExtMinScript',
 			)
 			: array(
-				/*
-				'packages'=>array(
-					'jquery'=>array(
-						'baseUrl'=>'/js/vendor',
-						'js'=>array('jquery-1.11.0.min.js'),
-					),
-				),
-				*/
+				'packages'=>$clientScript_packages,
 			)
 		),
 	),
