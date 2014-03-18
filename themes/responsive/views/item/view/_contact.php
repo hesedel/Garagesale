@@ -20,13 +20,13 @@
 <?php echo $form->error($model,'body'); ?>
 
 <div class="input-text">
-	<?php echo $form->textField($model, 'email'); ?>
+	<?php echo $form->textField($model, 'email', array('disabled' => Yii::app()->user->isGuest ? false : true)); ?>
 	<span class="placeholder">Your email address</span>
 </div>
 <?php echo $form->error($model,'email'); ?>
 
 <div class="input-text">
-	<?php echo $form->textField($model, 'name'); ?>
+	<?php echo $form->textField($model, 'name', array('disabled' => Yii::app()->user->isGuest ? false : true)); ?>
 	<span class="placeholder">Your name</span>
 </div>
 <?php echo $form->error($model,'name'); ?>

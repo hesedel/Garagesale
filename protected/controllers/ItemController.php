@@ -55,6 +55,12 @@ class ItemController extends Controller
 		$model_contactForm=new ItemContactForm;
 		$model_contactForm_success=false;
 
+		if(!Yii::app()->user->isGuest)
+		{
+			$model_contactForm->email=Yii::app()->params['user']->email;
+			$model_contactForm->name=Yii::app()->params['user']->name_first;
+		}
+
 		if(isset($_POST['ItemContactForm']))
 		{
 			$model_contactForm->attributes=$_POST['ItemContactForm'];
