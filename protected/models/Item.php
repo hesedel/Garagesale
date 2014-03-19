@@ -81,6 +81,7 @@ class Item extends CActiveRecord
 			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
+			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
 		);
 	}
 
@@ -149,6 +150,10 @@ class Item extends CActiveRecord
 		foreach($this->itemImages as $itemImage)
 		{
 			$itemImage->delete();
+		}
+		foreach($this->itemContacts as $itemContact)
+		{
+			$itemContact->delete();
 		}
 		return true;
 	}
