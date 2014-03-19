@@ -146,15 +146,6 @@ class Item extends CActiveRecord
 
 	protected function beforeDelete()
 	{
-		/*
-		$images=Yii::app()->db->createCommand()
-			->select('id')
-			->from('item_image')
-			->where('item_id=:item_id', array(':item_id'=>$this->id))
-			->queryAll();
-		foreach($images as $image)
-			db_image('item_image', $image['id'], array('unlink'=>true));
-		*/
 		foreach($this->itemImages as $itemImage)
 		{
 			$itemImage->delete();
