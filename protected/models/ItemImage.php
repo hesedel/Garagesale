@@ -101,4 +101,10 @@ class ItemImage extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	protected function beforeDelete()
+	{
+			db_image('item_image', $this->id, array('unlink'=>true));
+			return true;
+	}
 }

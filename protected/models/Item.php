@@ -144,8 +144,9 @@ class Item extends CActiveRecord
 		return true;
 	}
 
-	protected function afterDelete()
+	protected function beforeDelete()
 	{
+		/*
 		$images=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item_image')
@@ -153,6 +154,12 @@ class Item extends CActiveRecord
 			->queryAll();
 		foreach($images as $image)
 			db_image('item_image', $image['id'], array('unlink'=>true));
+		*/
+		foreach($this->itemImages as $itemImage)
+		{
+			$itemImage->delete();
+		}
+		return true;
 	}
 
 	/**
