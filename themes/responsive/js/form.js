@@ -74,7 +74,7 @@ $('form.ajax').bind('submit', function() {
 	var events = [];
 	var i = 0;
 	events[i] = {};
-	$.extend(true, events[i], $._data($(this).get(0), 'events'));
+	$.extend(true, events[i], $._data($this.get(0), 'events'));
 	i++;
 	$('*', $this).each(function() {
 		events[i] = {};
@@ -86,8 +86,6 @@ $('form.ajax').bind('submit', function() {
 		var id = $this.attr('id');
 		$this.replaceWith(data);
 		$this = $('#' + id);
-
-		eval(yiiactiveform);
 
 		i = 0;
 		$.each(events[i], function(eventType, e) {
@@ -106,6 +104,8 @@ $('form.ajax').bind('submit', function() {
 			i++;
 		});
 
+		eval(yiiactiveform);
+
 		$('.error:eq(0)', $this).trigger('focus');
 
 		$($('input[type=text], input[type=password], textarea', 'div.input-text, div.textarea'), $this).each(function() {
@@ -113,10 +113,7 @@ $('form.ajax').bind('submit', function() {
 			$(':focus', $(this).parent()).trigger('focus');
 		});
 
-	})
-		.fail(function() {
-			
-		});
+	});
 
 	return false;
 });

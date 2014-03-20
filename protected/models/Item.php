@@ -81,6 +81,7 @@ class Item extends CActiveRecord
 			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
+			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
 		);
 	}
 
@@ -144,15 +145,17 @@ class Item extends CActiveRecord
 		return true;
 	}
 
-	protected function afterDelete()
+	protected function beforeDelete()
 	{
-		$images=Yii::app()->db->createCommand()
-			->select('id')
-			->from('item_image')
-			->where('item_id=:item_id', array(':item_id'=>$this->id))
-			->queryAll();
-		foreach($images as $image)
-			db_image('item_image', $image['id'], array('unlink'=>true));
+		foreach($this->itemImages as $itemImage)
+		{
+			$itemImage->delete();
+		}
+		foreach($this->itemContacts as $itemContact)
+		{
+			$itemContact->delete();
+		}
+		return true;
 	}
 
 	/**
