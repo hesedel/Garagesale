@@ -35,3 +35,11 @@ foreach(glob('img/uploads/cache/*.*') as $file)
 	unlink($file);
 foreach(glob('img/uploads/temp/*.*') as $file)
 	unlink($file);
+
+// delete all email forwarders and accounts related to database
+if($params['cp.emailAccountManager-url']) {
+	$f = fopen($params['cp.emailAccountManager-url'].'?key='.$params['cp.emailAccountManager-key'].'&action=forwarder_delete_all&domain='.$params['usersEmailDomain'], 'r');
+	fclose($f);
+	$f = fopen($params['cp.emailAccountManager-url'].'?key='.$params['cp.emailAccountManager-key'].'&action=delete_all&domain='.$params['usersEmailDomain'], 'r');
+	fclose($f);
+}

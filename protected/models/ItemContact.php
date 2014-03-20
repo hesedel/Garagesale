@@ -115,7 +115,7 @@ class ItemContact extends CActiveRecord
 
 	protected function afterSave()
 	{
-		parent::afterSave();
+		//parent::afterSave();
 		if(Yii::app()->params['cp.emailAccountManager-url'])
 		{
 			// create email accounts
