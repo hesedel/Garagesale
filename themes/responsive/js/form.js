@@ -87,7 +87,24 @@ $('form.ajax').bind('submit', function() {
 		$this.replaceWith(data);
 		$this = $('#' + id);
 
-		
+		i = 0;
+		$.each(events[i], function(eventType, e) {
+			$.each(e, function(j, h) {
+				$this.bind(eventType + (h.namespace ? '.' + h.namespace : ''), h.handler);
+			});
+		});
+		$this.unbind('submit.form');
+		i++;
+		$('*', $this).each(function() {
+			$.each(events[i], function(eventType, e) {
+				$.each(e, function(j, h) {
+					$('*:eq(' + (i - 1) + ')', $this).bind(eventType + (h.namespace ? '.' + h.namespace : ''), h.handler);
+				});
+			});
+			i++;
+		});
+
+		eval(yiiactiveform);
 
 		$('.error:eq(0)', $this).trigger('focus');
 
