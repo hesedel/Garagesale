@@ -113,10 +113,7 @@ $('form.ajax').bind('submit', function() {
 			$(':focus', $(this).parent()).trigger('focus');
 		});
 
-	})
-		.fail(function() {
-			
-		});
+	});
 
 	return false;
 });
