@@ -74,7 +74,7 @@ $('form.ajax').bind('submit', function() {
 	var events = [];
 	var i = 0;
 	events[i] = {};
-	$.extend(true, events[i], $._data($(this).get(0), 'events'));
+	$.extend(true, events[i], $._data($this.get(0), 'events'));
 	i++;
 	$('*', $this).each(function() {
 		events[i] = {};
@@ -87,24 +87,7 @@ $('form.ajax').bind('submit', function() {
 		$this.replaceWith(data);
 		$this = $('#' + id);
 
-		eval(yiiactiveform);
-
-		i = 0;
-		$.each(events[i], function(eventType, e) {
-			$.each(e, function(j, h) {
-				$this.bind(eventType + (h.namespace ? '.' + h.namespace : ''), h.handler);
-			});
-		});
-		$this.unbind('submit.form');
-		i++;
-		$('*', $this).each(function() {
-			$.each(events[i], function(eventType, e) {
-				$.each(e, function(j, h) {
-					$('*:eq(' + (i - 1) + ')', $this).bind(eventType + (h.namespace ? '.' + h.namespace : ''), h.handler);
-				});
-			});
-			i++;
-		});
+		
 
 		$('.error:eq(0)', $this).trigger('focus');
 
