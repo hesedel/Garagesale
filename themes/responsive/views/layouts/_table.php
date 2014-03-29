@@ -111,7 +111,7 @@
 					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 						<div class="input-text">
 							<?php echo $form->textField($this->model_itemSearchForm, 'keywords'); ?>
-							<span class="placeholder"><?php echo $this->model_itemSearchForm->attributeLabels()['keywords']; ?></span>
+							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
