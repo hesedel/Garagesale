@@ -372,11 +372,58 @@
 	@media (max-width: $screen-xs-max) {
 		&.grid {
 			@include g-items_list;
+
+			.list-view {
+
+				.items {
+
+					.view-row {
+
+						.view {
+
+							> * {
+								background-color: $color_white;
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
 		}
 	}
 
 	&.list {
 		@include g-items_list;
+	}
+
+	@media (max-width: $screen-xs-max) {
+		&.list {
+
+			.list-view {
+
+				.items {
+
+					.view-row {
+
+						.view {
+
+							> * {
+								background-color: $color_white;
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
 	}
 
 	.list-view-loading {

@@ -1,5 +1,15 @@
 <div id="table-container"><div class="container">
 
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'item-search-form',
+	//'enableClientValidation'=>true,
+	//'clientOptions'=>array(
+	//	'validateOnSubmit'=>true,
+	//),
+	'action'=>array('item/search'),
+	'method'=>'get',
+)); ?>
+
 <?php echo !isset($lt_ie_8) ? '<div id="table">' : '<table id="table" cellspacing="0">'; ?>
 
 	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
@@ -100,14 +110,14 @@
 
 					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 						<div class="input-text">
-							<input title="Search" type="text">
-							<span class="placeholder">Search</span>
+							<?php echo $form->textField($this->model_itemSearchForm, 'keywords'); ?>
+							<span class="placeholder"><?php echo $this->model_itemSearchForm->attributeLabels()['keywords']; ?></span>
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 					<?php echo !isset($lt_ie_8) ? '<div class="td right">' : '<td class="td right">'; ?>
 						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button submit')); ?>
-						<input type="submit" value="Search">
+						<?php echo CHtml::submitButton('Search'); ?>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 				<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
@@ -153,5 +163,7 @@
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
 <?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
+
+<?php $this->endWidget(); ?>
 
 </div></div><?php #table-container ?>

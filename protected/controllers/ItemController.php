@@ -26,8 +26,8 @@ class ItemController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+			array('allow',  // allow all users to perform 'index', 'view' and 'search' actions
+				'actions'=>array('index','view','search'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -321,6 +321,26 @@ class ItemController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+		));
+	}
+
+	public function actionSearch()
+	{
+		// remove unnecessary spaces
+		$this->model_itemSearchForm->keywords=trim($this->model_itemSearchForm->keywords);
+		$this->model_itemSearchForm->keywords=preg_replace('/ +/',' ',$this->model_itemSearchForm->keywords);
+
+		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$this->model_itemSearchForm->keywords).'%\'',
+			),
+			'pagination'=>array(
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
+			),
+		));
+		Yii::app()->theme='responsive';
+		$this->render('search',array(
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
