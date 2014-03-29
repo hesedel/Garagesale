@@ -1,3 +1,3 @@
 #!/usr/local/bin/php -q
 <?php
-mail('hes@pajaroncreative.com', 'Pipe Test', 'Pipe test succeeded.');
+mail('janzen.contact@gmail.com', 'Pipe Test', 'Pipe test succeeded.');
