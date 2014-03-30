@@ -26,8 +26,8 @@ class ItemController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index', 'view' and 'search' actions
-				'actions'=>array('index','view','search'),
+			array('allow',  // allow all users to perform 'index', 'view', 'search' and 'search_autoComplete' actions
+				'actions'=>array('index','view','search','search_autoComplete'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -326,13 +326,11 @@ class ItemController extends Controller
 
 	public function actionSearch()
 	{
-		// remove unnecessary spaces
-		$this->model_itemSearchForm->keywords=trim($this->model_itemSearchForm->keywords);
-		$this->model_itemSearchForm->keywords=preg_replace('/ +/',' ',$this->model_itemSearchForm->keywords);
+		$this->model_itemSearchForm->keywords=$this->processKeywords($this->model_itemSearchForm->keywords);
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$this->model_itemSearchForm->keywords).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',str_replace('\\','\\\\',addslashes($this->model_itemSearchForm->keywords))).'%\'',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
@@ -342,6 +340,21 @@ class ItemController extends Controller
 		$this->render('search',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+
+	public function actionSearch_autoComplete($term)
+	{
+		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',str_replace('\\','\\\\',addslashes($this->processKeywords($term)))).'%\'',
+			),
+		));
+		$items=array();
+		foreach($dataProvider->getData() as $item)
+		{
+			$items[]=array('label'=>$item->title,'value'=>$item->title);
+		}
+		echo CJSON::encode($items);
 	}
 
 	/**
@@ -368,5 +381,13 @@ class ItemController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	protected function processKeywords($keywords)
+	{
+		// remove unnecessary spaces
+		$keywords=trim($keywords);
+		$keywords=preg_replace('/ +/',' ',$keywords);
+		return $keywords;
 	}
 }
