@@ -110,7 +110,6 @@
 
 					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 						<div class="input-text">
-							<?php //echo $form->textField($this->model_itemSearchForm, 'keywords'); ?>
 							<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 								'model' => $this->model_itemSearchForm,
 								'attribute' => 'keywords',
@@ -119,7 +118,7 @@
 									'minLength' => 2,
 								),
 							)); ?>
-							<span class="placeholder"><?php echo $this->model_itemSearchForm->attributeLabels()['keywords']; ?></span>
+							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
