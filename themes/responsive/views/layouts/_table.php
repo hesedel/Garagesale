@@ -6,7 +6,7 @@
 	//'clientOptions'=>array(
 	//	'validateOnSubmit'=>true,
 	//),
-	'action'=>array('item/search'),
+	'action'=>array('/item/search'),
 	'method'=>'get',
 )); ?>
 
@@ -110,7 +110,15 @@
 
 					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 						<div class="input-text">
-							<?php echo $form->textField($this->model_itemSearchForm, 'keywords'); ?>
+							<?php //echo $form->textField($this->model_itemSearchForm, 'keywords'); ?>
+							<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+								'model' => $this->model_itemSearchForm,
+								'attribute' => 'keywords',
+								'sourceUrl' => array('/item/search_autocomplete'),
+								'options' => array(
+									'minLength' => 2,
+								),
+							)); ?>
 							<span class="placeholder"><?php echo $this->model_itemSearchForm->attributeLabels()['keywords']; ?></span>
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
