@@ -118,7 +118,7 @@
 									'minLength' => 2,
 								),
 							)); ?>
-							<span class="placeholder"><?php echo $this->model_itemSearchForm->attributeLabels()['keywords']; ?></span>
+							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
