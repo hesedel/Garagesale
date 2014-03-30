@@ -2,53 +2,36 @@
 
 class ItemController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
 	public $layout='//layouts/column1';
 
-	/**
-	 * @return array action filters
-	 */
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
+			'accessControl',
 		);
 	}
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index', 'view', 'search' and 'search_autoComplete' actions
+			array('allow',
 				'actions'=>array('index','view','search','search_autoComplete'),
 				'users'=>array('*'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow',
 				'actions'=>array('create','update','delete'),
 				'users'=>array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			array('allow',
 				'actions'=>array('admin'),
-				//'users'=>array('admin'),
 				'roles'=>array('admin','super'),
 			),
-			array('deny',  // deny all users
+			array('deny',
 				'users'=>array('*'),
 			),
 		);
 	}
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
 	public function actionView($id)
 	{
 		$model=$this->loadModel($id);
@@ -93,10 +76,6 @@ class ItemController extends Controller
 		));
 	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
 	public function actionCreate()
 	{
 		$model=new Item;
@@ -111,7 +90,6 @@ class ItemController extends Controller
 			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
 			->queryScalar();
 
-		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Item']))
@@ -138,7 +116,6 @@ class ItemController extends Controller
 						$model_itemImage->index=$i;
 						$model_itemImage->item_id=$model->id;
 						if($model_itemImage->save())
-							//if(copy(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/img/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
 							unlink(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 						$i++;
 					}
@@ -154,11 +131,6 @@ class ItemController extends Controller
 		));
 	}
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -186,7 +158,6 @@ class ItemController extends Controller
 		} else
 			throw new CHttpException(403,'You are not authorized to perform this action.');
 
-		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Item']))
@@ -215,7 +186,6 @@ class ItemController extends Controller
 							$model_itemImage->index=$i;
 							$model_itemImage->item_id=$model->id;
 							if($model_itemImage->save()) {
-								//if(copy(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName'],Yii::getPathOfAlias('webroot').'/img/uploads/items/'.$model_itemImage->id.'.'.$model_itemImage->type))
 								unlink(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$upload['tempName']);
 								$array1[]=$model_itemImage->id;
 							}
@@ -259,11 +229,6 @@ class ItemController extends Controller
 		));
 	}
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
 	public function actionDelete($id)
 	{
 		$model=$this->loadModel($id);
@@ -283,21 +248,15 @@ class ItemController extends Controller
 
 		if(Yii::app()->request->isPostRequest)
 		{
-			// we only allow deletion via POST request
 			$model->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				//$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 				$this->redirect(Yii::app()->homeUrl);
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-	/**
-	 * Lists all models.
-	 */
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
@@ -309,9 +268,6 @@ class ItemController extends Controller
 		));
 	}
 
-	/**
-	 * Manages all models.
-	 */
 	public function actionAdmin()
 	{
 		$model=new Item('search');
@@ -327,15 +283,19 @@ class ItemController extends Controller
 	public function actionSearch()
 	{
 		$this->model_itemSearchForm->keywords=$this->processKeywords($this->model_itemSearchForm->keywords);
+		$keywords=addslashes($this->model_itemSearchForm->keywords);
+		$keywords=str_replace('\\','\\\\',$keywords);
+		$keywords=str_replace('\\\\\'','\\\'',$keywords);
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',str_replace('\\','\\\\',addslashes($this->model_itemSearchForm->keywords))).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\'',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
 			),
 		));
+
 		Yii::app()->theme='responsive';
 		$this->render('search',array(
 			'dataProvider'=>$dataProvider,
@@ -344,24 +304,26 @@ class ItemController extends Controller
 
 	public function actionSearch_autoComplete($term)
 	{
+		$term=$this->processKeywords($term);
+		$term=addslashes($term);
+		$term=str_replace('\\','\\\\',$term);
+		$term=str_replace('\\\\\'','\\\'',$term);
+
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',str_replace('\\','\\\\',addslashes($this->processKeywords($term)))).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
 			),
 		));
+
 		$items=array();
 		foreach($dataProvider->getData() as $item)
 		{
 			$items[]=array('label'=>$item->title,'value'=>$item->title);
 		}
+
 		echo CJSON::encode($items);
 	}
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
 	public function loadModel($id)
 	{
 		$model=Item::model()->findByPk($id);
@@ -370,10 +332,6 @@ class ItemController extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='item-form')
