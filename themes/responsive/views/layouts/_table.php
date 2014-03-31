@@ -90,15 +90,15 @@
 
 		<?php #logout end ?>
 
-		<?php endif ?>
+		<?php endif; ?>
 
-		<?php #filters ?>
+		<?php /* #filters ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="filters">' : '<td class="td" id="filters">'; ?>
 			<span class="a-container"><span class="a"><i class="fa fa-filter"></i> <span>Filters</span><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></span></span>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #filters end ?>
+		<?php #filters end */ ?>
 
 		<?php #search ?>
 
@@ -145,6 +145,8 @@
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
+	<?php /*
+
 	<?php echo !isset($lt_ie_8) ? '<div class="tr filters is-hidden">' : '<tr class="tr filters is-hidden">'; ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
@@ -168,6 +170,8 @@
 		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
+
+	*/ ?>
 
 <?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
 

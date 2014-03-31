@@ -19,6 +19,12 @@ body {
 	padding-top: 0;
 }
 
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	body {
+		padding-top: $line-height * 7;
+	}
+}
+
 @media (max-width: $screen-xs-max) {
 	body {
 		padding-top: 0;
