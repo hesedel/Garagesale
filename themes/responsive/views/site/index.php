@@ -9,8 +9,6 @@ $this->layout = 'column1';
 <div class="row">
 	<div class="col-md-12 col-lg-8">
 
-		<h2>Featured Items</h2>
-
 		<?php $this->renderPartial('/item/_index', array(
 			'dataProvider' => $dataProvider_featured,
 			'options' => array(
@@ -28,8 +26,6 @@ $this->layout = 'column1';
 
 	</aside>
 	<div class="col-md-8 col-md-pull-4 col-lg-8 col-lg-pull-0">
-
-			<h3>Latest Items</h3>
 
 			<?php $this->renderPartial('/item/_index', array(
 				'dataProvider' => $dataProvider_latest,

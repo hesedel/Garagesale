@@ -1,15 +1,1 @@
-#site_index {
-
-	h2, h3 {
-		background-color: $color_white;
-		padding-top: $line-height * .5;
-		padding-right: $gutter-width;
-		padding-bottom: ($line-height * .5) - 1px;
-		padding-left: $gutter-width;
-		@include border-radius($border-radius);
-		margin-top: 0;
-		margin-bottom: 1px;
-		display: inline-block;
-	}
-
-}
+#site_index {}

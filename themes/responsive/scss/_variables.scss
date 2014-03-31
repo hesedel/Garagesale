@@ -64,13 +64,14 @@ $light_green  : $custom_green;
 $light_magenta: $custom_magenta;
 $light_orange : whiten($custom_orange, 25%, 3);
 
-$color          : $color_asbestos;
+$color          : blacken($color_clouds, 25%, 2);
 $color_anchor   : $color_peterRiver;
 	$color_anchor-hover: $color_belizeHole;
 	$color_anchor-visited: $color_amethyst;
 		$color_anchor-visited-hover: $color_wisteria;
-$color_body_bg  : blacken($color_clouds, 10%);
-$color_footer_bg: $color_asbestos;
+$color_header_bg: blacken($color_clouds, 25%);
+$color_body_bg  : blacken($color_clouds, 5%);
+$color_footer_bg: $color;
 
 /* fonts */
 

@@ -92,7 +92,7 @@
 
 						> * {
 							vertical-align: top;
-							background-color: $color_clouds;
+							background-color: whiten($color_clouds, 25%, 4);
 							padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{$line-height * .5};
 							border-top: 1px solid $color_body_bg;
 							display: table-cell !important;
@@ -253,13 +253,13 @@
 					}
 
 					.view {
-						background-color: $color_clouds;
+						background-color: whiten($color_clouds, 25%, 4);
 						padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{($line-height * .5) + ($line-height * (1 / 6))};
 						position: relative;
 
 						&:before {
 							content: '';
-							background-color: $color_clouds;
+							background-color: whiten($color_clouds, 25%, 4);
 							display: block;
 							position: absolute;
 								top: 0;
