@@ -76,6 +76,8 @@
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
+					<li class="divider visible-xs"></li>
+					<li class="visible-xs"><?php echo CHtml::link('<i class="fa fa-sign-out"></i>Logout', array('/site/logout')); ?></li>
 				</ul>
 			</div>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
