@@ -34,7 +34,7 @@ $this->menu=array(
 	<thead>
 		<tr>
 
-			<th><h1><?php echo CHtml::encode($model->title); ?></h1></th>
+			<td><h1><?php echo CHtml::encode($model->title); ?></h1></td>
 
 			<td><span class="price">PHP <?php echo number_format($model->price); ?></span></td>
 
@@ -42,15 +42,15 @@ $this->menu=array(
 	</thead>
 	<tbody>
 		<tr>
-			<th>
+			<td>
 
-				<span><i class="fa fa-clock-o"></i> <time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo('updated'); ?></time></span>
+				<span class="time"><i class="fa fa-clock-o"></i> <time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo('updated'); ?></time></span>
 
 				<?php if($model->user->location): ?>
-				<span><i class="fa fa-map-marker"></i> <?php echo $model->user->location->name; ?></span>
+				<span class="location"><i class="fa fa-map-marker"></i> <?php echo $model->user->location->name; ?></span>
 				<?php endif; ?>
 
-			</th>
+			</td>
 			<td>
 
 				<?php if($model->condition_id != null): ?>

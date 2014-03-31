@@ -122,24 +122,22 @@
 		@include border-radius($border-radius * 2);
 		margin-bottom: $line-height * 2;
 
-		th {
-			width: 100%;
-			padding-right: $gutter-width * .5;
-			padding-left: $gutter-width;
-		}
-
 		td {
 			padding-right: $gutter-width;
 			padding-left: $gutter-width * .5;
+
+			&:first-child {
+				width: 100%;
+				padding-right: $gutter-width * .5;
+				padding-left: $gutter-width;
+			}
+
 		}
 
 		thead {
 
-			th, td {
+			td {
 				padding-top: $line-height;
-			}
-
-			th {
 
 				h1 {
 					color: $color_black;
@@ -148,10 +146,6 @@
 					margin-top: 0;
 					margin-bottom: $line-height * .5;
 				}
-
-			}
-
-			td {
 
 				.price {
 					color: $color_nephritis;
@@ -165,21 +159,15 @@
 
 		tbody {
 
-			th, td {
+			td {
 				padding-bottom: $line-height;
-			}
 
-			th {
-
-				span {
+				.time,
+				.location {
 					padding-right: $gutter-width * (2 / 3);
 					padding-left: $gutter-width * (2 / 3);
 					float: left;
 				}
-
-			}
-
-			td {
 
 				.condition {
 					color: $color_white;
