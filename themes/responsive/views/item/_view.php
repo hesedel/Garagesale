@@ -56,6 +56,6 @@
 
 </div>
 
-<?php if($index % $options['grid']['itemsPerRow'] == $options['grid']['itemsPerRow'] - 1 || $index == $widget->dataProvider->getPagination()->pageSize - 1): ?>
-</div>
+<?php if($index % $options['grid']['itemsPerRow'] == $options['grid']['itemsPerRow'] - 1 || $index == $widget->dataProvider->getItemCount() - 1): ?>
+</div><!-- END ROW -->
 <?php endif; ?>

@@ -9,7 +9,7 @@ $this->layout = 'column1';
 <div class="row">
 	<div class="col-md-12 col-lg-8">
 
-		<h2>Search Results for <?php echo ucwords($this->model_itemSearchForm->keywords); ?></h2>
+		<h2>Search Results for <?php echo ucwords(CHTML::encode($this->model_itemSearchForm->keywords)); ?></h2>
 
 		<?php $this->renderPartial('/item/_index', array(
 			'dataProvider' => $dataProvider,

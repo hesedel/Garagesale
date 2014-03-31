@@ -3,7 +3,7 @@
 				'vendor/font-awesome/font-awesome',
 				'vendor/jquery.hes.slider',
 				'vendor/jquery.lightbox-0.5';
-@import 'compass', 'bourbon';
+@import 'compass', 'vendor/bourbon/bourbon';
 @import 'variables', 'global', 'form';
 
 body {
