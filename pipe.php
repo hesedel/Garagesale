@@ -64,5 +64,5 @@ if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'te
 $message = "<br><br>Message ID: $messageID<br><br>Reply ID: $replyToID<br><br>Subject: $subject<br><br>To: $toName $toEmail<br><br>From: $fromName $fromEmail<br><br>Body: $body<br><br>";  
   
 //show all the decoded email info  
-print_r($decoded); 
-mail('janzen.contact@gmail.com', $message, 'Pipe test succeeded.');
+// print_r($decoded); 
+mail('janzen.contact@gmail.com', $subject, $message);
