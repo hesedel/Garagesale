@@ -664,6 +664,17 @@
 				margin-bottom: 0;
 			}
 
+			.g-button,
+			input[type=submit] {
+				color: $color;
+				background-color: $color_body_bg;
+
+				&:hover {
+					background-color: whiten($color_body_bg, 25%);
+				}
+
+			}
+
 			.g-button {
 				white-space: nowrap;
 				display: block;
