@@ -1,6 +1,6 @@
 <?php return array(
 	'env'=>'dev', // dev,int,sta,pro
-	'php'=>'/usr/bin/php5', // /Applications/MAMP/bin/php/php5.5.3/bin/php
+	'php'=>'/usr/bin/php5', // /Applications/MAMP/bin/php/php5.5.10/bin/php
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
 	'db.name'=>'garagesale',
