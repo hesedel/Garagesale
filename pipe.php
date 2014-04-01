@@ -1,8 +1,8 @@
 #!/usr/local/bin/php -q
 <?php
 //include email parser  
-require_once('rfc822_addresses.php');  
-require_once('mime_parser.php'); 
+require_once('pipe/rfc822_addresses.php');  
+require_once('pipe/mime_parser.php'); 
 
 // read email in from stdin  
 $fd = fopen("php://stdin", "r");  
