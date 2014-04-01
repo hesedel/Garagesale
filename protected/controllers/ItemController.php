@@ -312,7 +312,9 @@ class ItemController extends Controller
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
 				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
+				//'limit'=>5,
 			),
+			'pagination'=>false,
 		));
 
 		$items=array();
