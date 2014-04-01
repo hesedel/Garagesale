@@ -56,6 +56,8 @@ class ItemCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'parentCategory' => array(self::BELONGS_TO, 'ItemCategory', 'parent_id'),
+			'subCategories' => array(self::HAS_MANY, 'ItemCategory', 'parent_id'),
 			'items' => array(self::HAS_MANY, 'Item', 'category_id'),
 		);
 	}
