@@ -17,4 +17,9 @@ class ItemSearchForm extends CFormModel
 			'keywords'=>'Search',
 		);
 	}
+
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
 }

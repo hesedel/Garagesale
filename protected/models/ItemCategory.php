@@ -10,19 +10,11 @@
  *
  * The followings are the available model relations:
  * @property Item[] $items
+ * @property ItemCategory $parent
+ * @property ItemCategory[] $itemCategories
  */
 class ItemCategory extends CActiveRecord
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return ItemCategory the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -43,7 +35,7 @@ class ItemCategory extends CActiveRecord
 			array('id, parent_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>16),
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
+			// @todo Please remove those attributes that should not be searched.
 			array('id, title, parent_id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -56,9 +48,9 @@ class ItemCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parentCategory' => array(self::BELONGS_TO, 'ItemCategory', 'parent_id'),
-			'subCategories' => array(self::HAS_MANY, 'ItemCategory', 'parent_id'),
 			'items' => array(self::HAS_MANY, 'Item', 'category_id'),
+			'parent' => array(self::BELONGS_TO, 'ItemCategory', 'parent_id'),
+			'itemCategories' => array(self::HAS_MANY, 'ItemCategory', 'parent_id'),
 		);
 	}
 
@@ -76,12 +68,19 @@ class ItemCategory extends CActiveRecord
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
@@ -92,5 +91,16 @@ class ItemCategory extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return ItemCategory the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }
