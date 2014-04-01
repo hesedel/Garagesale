@@ -65,4 +65,4 @@ $message = "<br><br>Message ID: $messageID<br><br>Reply ID: $replyToID<br><br>Su
   
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $message);
+mail('janzen.contact@gmail.com', 'Test Message', $message);
