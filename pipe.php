@@ -91,7 +91,13 @@ $body=new CSSToInlineStyles(
 	$template,$css
 );
 
+$headers = "From: " . $fromEmail . "\r\n";
+$headers .= "Reply-To: ". $toEmail . "\r\n";
+// $headers .= "CC: susan@example.com\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
 
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $body->convert());
+mail('janzen.contact@gmail.com', $subject, $body->convert(), $headers);
