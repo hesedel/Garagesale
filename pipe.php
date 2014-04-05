@@ -81,13 +81,13 @@ $team name
 $name = 'Janzen';
 $link = 'http://local.garagsale.com';
 $team = 'Garagesale';
-include('css/emailWrapper.css');
+include('pipe/_emailTemplate.php');
 $template = ob_get_clean();
-// $body=new CSSToInlineStyles(
-// 	$template,file_get_contents('css/emailWrapper.css')
-// );
+$body=new CSSToInlineStyles(
+	$template,file_get_contents('css/emailWrapper.css')
+);
 
 
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $template);
+mail('janzen.contact@gmail.com', $subject, $body);
