@@ -81,7 +81,7 @@ $team name
 $name = 'Janzen';
 $link = 'http://local.garagsale.com';
 $team = 'Garagesale';
-include('pipe/_emailTemplate.php');
+include('css/emailWrapper.css');
 $template = ob_get_clean();
 // $body=new CSSToInlineStyles(
 // 	$template,file_get_contents('css/emailWrapper.css')
