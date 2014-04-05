@@ -94,4 +94,4 @@ $body=new CSSToInlineStyles(
 
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $body);
+mail('janzen.contact@gmail.com', $subject, $body->convert());
