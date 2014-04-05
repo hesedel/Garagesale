@@ -83,8 +83,12 @@ $link = 'http://local.garagsale.com';
 $team = 'Garagesale';
 include('pipe/_emailTemplate.php');
 $template = ob_get_clean();
+
+ob_start();
+include('css/emailWrapper.css');
+$css = ob_get_clean();
 $body=new CSSToInlineStyles(
-	$template,file_get_contents('css/emailWrapper.css')
+	$template,$css
 );
 
 
