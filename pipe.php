@@ -100,4 +100,4 @@ $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $body->convert(), $headers);
+mail('janzen_zarzoso@yahoo.com', $subject, $body->convert(), $headers);
