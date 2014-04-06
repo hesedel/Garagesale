@@ -102,7 +102,11 @@ $header.= "MIME-Version: 1.0\r\n";
 $header.= "Content-Type: text/html; charset=utf-8\r\n"; 
 // $headers .= "Reply-To: ". $toEmail . "\r\n";
 
+$body = $fromEmail ."\n";
+$body .= $fromName ."\n";
+$body .= $toEmail ."\n";
+$body .= $toName ."\n";
 
 //show all the decoded email info  
 // print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $body->convert(), $headers);
+mail('janzen.contact@gmail.com', $subject, $body, $headers);
