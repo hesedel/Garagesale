@@ -3,6 +3,7 @@
 //include email parser  
 require_once('pipe/rfc822_addresses.php');  
 require_once('pipe/mime_parser.php'); 
+require_once('pipe/db_connection.php'); 
 require_once('protected/components/CSSToInlineStyles.php');
 
 // read email in from stdin  
@@ -70,8 +71,45 @@ $message = "<br><br>Message ID: $messageID<br><br>Reply ID: $replyToID<br><br>Su
 2. Then retrieve data from "item_contact" table using the converted ID. 
 */
 
-ob_start();
+$token = explode('.', $toEmail);
+$recipient = $token[0];
+$item_id = $token[1];
+$convo_id = base_convert($token[2],36,10);
 
+/**
+* Get row from item_contact table
+* $item_contact = SELECT * FROM item_contact WHERE id = $convo_id
+*/
+$query = mysqli_query($conn,"SELECT * FROM item_contact WHERE id = $convo_id");
+$item_contact = mysqli_fetch_array($query)
+/**
+* $replier_id = $item_contact['user_id_replier']
+* $poster_id = $item_contact['user_id_poster']
+*/
+
+// Check if the message is sent to either replier or poster
+if ( $recipient == 'replier' ) {
+	// If replier get the replier's email via $replier_id
+	// If replier_id is not empty
+	if ( $replier_id ) {
+		$query = mysqli_query($conn,"SELECT email FROM user WHERE id = $replier_id");
+		$recipient_user = mysqli_fetch_array($query);
+		$recipient_email = $recipient_user['email'];
+	} else {
+		// If $replier_id is empty then get the email from the item_contact table instead
+		$recipient_email = $item_contact['replier_email'];
+	}
+	
+	$sender_email = str_replace('replier', 'poster', $toEmail);
+} else {
+	$query = mysqli_query($conn,"SELECT email FROM user WHERE id = $poster_id");
+	$recipient_user = mysqli_fetch_array($query);
+	$recipient_email = $recipient_user['email'];
+
+	$sender_email = str_replace('poster', 'replier', $toEmail);
+}
+
+ob_start();
 /*
 Get these datas and send it to the file:
 $name
@@ -97,16 +135,20 @@ $body=new CSSToInlineStyles(
 // $headers .= "MIME-Version: 1.0\r\n";
 // $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-$header = "From: noreply@example.com\r\n"; 
+$header = "From: ".$sender_email."\r\n"; 
 $header.= "MIME-Version: 1.0\r\n"; 
 $header.= "Content-Type: text/html; charset=utf-8\r\n"; 
 // $headers .= "Reply-To: ". $toEmail . "\r\n";
 
-$body = $fromEmail ."\n";
-$body .= $fromName ."\n";
-$body .= $toEmail ."\n";
-$body .= $toName ."\n";
+$body = "From Email: {$fromEmail} \n";
+$body .= "From Name: {$fromName} \n";
+$body .= "To Email: {$toEmail} \n";
+$body .= "To Name: {$toName} \n";
+$body .= "/************************/ \n";
+$body .= "Sender Email: {$sender_email} \n";
+$body .= "Recipient Email: {$recipient_email} \n";
 
 //show all the decoded email info  
 // print_r($decoded); 
 mail('janzen.contact@gmail.com', $subject, $body, $headers);
+mysqli_close($conn);
