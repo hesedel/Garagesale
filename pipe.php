@@ -81,7 +81,7 @@ $convo_id = base_convert($token[2],36,10);
 * $item_contact = SELECT * FROM item_contact WHERE id = $convo_id
 */
 $query = mysqli_query($conn,"SELECT * FROM item_contact WHERE id = $convo_id");
-$item_contact = mysqli_fetch_array($query)
+$item_contact = mysqli_fetch_array($query);
 /**
 * $replier_id = $item_contact['user_id_replier']
 * $poster_id = $item_contact['user_id_poster']
