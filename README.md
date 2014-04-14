@@ -1,6 +1,6 @@
-* Integration: `http://int.garagesale.pajaroncreative.com/`
-* Staging: `http://sta.garagesale.pajaroncreative.com/`
-* Production: `http://garagesale.ph/`
+* Integration: `http://int-stycle.pajaroncreative.com/`
+* Staging: `http://sta-stycle.pajaroncreative.com/`
+* Production: `http://stycle.pajaroncreative.com/`
 
 # INSTRUCTIONS
 
@@ -24,7 +24,7 @@
 			or `/db_rebuild.php?populate` for a populated one.
 
 		ex:
-			http://local.garagesale.ph/db_rebuild.php?populate
+			http://local.stycle.com/db_rebuild.php?populate
 
 	Use this also to reset the database.
 

@@ -3,12 +3,12 @@
 	'php'=>'/usr/bin/php5', // /Applications/MAMP/bin/php/php5.5.10/bin/php
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
-	'db.name'=>'garagesale',
+	'db.name'=>'stycle',
 	'db.socket'=>'', // ;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock
 	'db.username'=>'root',
 	'db.password'=>'password',
-	'cp.emailAccountManager-url'=>false, // http://users.garagesale.ph/cPanel-email-account-manager.php
+	'cp.emailAccountManager-url'=>false, // http://users.stycle.com/cPanel-email-account-manager.php
 	'cp.emailAccountManager-key'=>'',
-	'usersEmailDomain'=>'users.garagesale.ph',
+	'usersEmailDomain'=>'users.stycle.com',
 	'maintenance'=>false,
 );
