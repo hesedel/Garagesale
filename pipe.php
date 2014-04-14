@@ -82,10 +82,8 @@ $convo_id = base_convert($token[2],36,10);
 */
 $query = mysqli_query($conn,"SELECT * FROM item_contact WHERE id = $convo_id");
 $item_contact = mysqli_fetch_array($query);
-/**
-* $replier_id = $item_contact['user_id_replier']
-* $poster_id = $item_contact['user_id_poster']
-*/
+$replier_id = $item_contact['user_id_replier'];
+$poster_id = $item_contact['user_id_poster'];
 
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
@@ -129,8 +127,8 @@ $body=new CSSToInlineStyles(
 	$template,$css
 );
 
-// $headers = "From: " . $fromEmail . "\r\n";
-// $headers .= "Reply-To: ". $toEmail . "\r\n";
+// $headers = "From: " . $sender_email . "\r\n";
+// $headers .= "Reply-To: ". $sender_email . "\r\n";
 // $headers .= "CC: susan@example.com\r\n";
 // $headers .= "MIME-Version: 1.0\r\n";
 // $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
