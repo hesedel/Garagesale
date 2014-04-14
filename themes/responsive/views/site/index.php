@@ -6,39 +6,41 @@ $this->layout = 'column1';
 
 <div id="site_index">
 
-<div class="row">
-	<div class="col-md-12 col-lg-8">
+<h2>Latest freebies</h2>
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider_freebies,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+	),
+)); ?>
 
-		<?php $this->renderPartial('/item/_index', array(
-			'dataProvider' => $dataProvider_featured,
-			'options' => array(
-				'toolbox' => array(
-					'viewButton' => false,
-					'sortButton' => false,
-				),
-			),
-		)); ?>
+&lt; Move Search here &gt;
 
-	</div>
-	<aside class="col-md-4 col-md-push-8 col-lg-4 col-lg-push-0">
+<h2>Latest from your course</h2>
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider_course,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+		'view' => 'list',
+	),
+)); ?>
 
-		...
-
-	</aside>
-	<div class="col-md-8 col-md-pull-4 col-lg-8 col-lg-pull-0">
-
-			<?php $this->renderPartial('/item/_index', array(
-				'dataProvider' => $dataProvider_latest,
-				'options' => array(
-					'toolbox' => array(
-						'viewButton' => false,
-						'sortButton' => false,
-					),
-					'view' => 'list',
-				),
-			)); ?>
-
-	</div>
-</div>
+<h2>Recently viewed by your classmates</h2>
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider_classmates,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+		'view' => 'list',
+	),
+)); ?>
 
 </div><!-- #site_index -->
