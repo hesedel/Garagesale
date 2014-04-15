@@ -4,4 +4,67 @@
 		font-size: 1em;
 	}
 
+	.g-items {
+
+		@media (max-width: $screen-xs-max) {
+			&.grid {
+
+				.list-view {
+
+					.items {
+						@include border-radius(0);
+						display: block;
+
+						.view-row {
+							border-top: none;
+							margin-right: -($gutter-width * (1 / 3));
+							margin-left: -($gutter-width * (1 / 3));
+
+							.view-container {
+								display: block;
+								float: left;
+
+								&.clear-left {
+									clear: left;
+								}
+
+							}
+
+							.view {
+								padding-top: 0;
+								padding-right: $gutter-width * (1 / 3);
+								padding-left: $gutter-width * (1 / 3);
+								display: block;
+
+								> * {
+									padding-top: $line-height * .5;
+									border-top: none;
+									display: none !important;
+								}
+
+								.img {
+									border-right: none;
+									@include border-radius($border-radius);
+									display: block !important;
+
+									img {
+										width: 100%;
+										height: auto;
+									}
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+		}
+
+	}
+
 }

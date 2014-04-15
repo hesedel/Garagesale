@@ -20,16 +20,12 @@ a {
 
 }
 
-//body {
-
-	h1, h2,
-	.h1, .h2 {
-		color: $color_headings;
-		font-family: $sans-serif-soft;
-		font-weight: 700;
-	}
-
-//}
+h1, h2,
+.h1, .h2 {
+	color: $color_headings;
+	font-family: $sans-serif-soft;
+	font-weight: 600;
+}
 
 /*
 label, th {

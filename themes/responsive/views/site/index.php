@@ -14,6 +14,9 @@ $this->layout = 'column1';
 			'viewButton' => false,
 			'sortButton' => false,
 		),
+		'grid' => array(
+			'itemsPerRow' => 3,
+		),
 	),
 )); ?>
 
@@ -27,7 +30,9 @@ $this->layout = 'column1';
 			'viewButton' => false,
 			'sortButton' => false,
 		),
-		'view' => 'list',
+		'grid' => array(
+			'itemsPerRow' => 3,
+		),
 	),
 )); ?>
 
@@ -39,7 +44,9 @@ $this->layout = 'column1';
 			'viewButton' => false,
 			'sortButton' => false,
 		),
-		'view' => 'list',
+		'grid' => array(
+			'itemsPerRow' => 3,
+		),
 	),
 )); ?>
 
