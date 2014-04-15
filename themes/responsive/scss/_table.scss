@@ -347,9 +347,9 @@
 	> a,
 	div.a > a,
 	span.a {
-		color: $color_white;
+		color: $color_greenSea;
 		white-space: nowrap;
-		background-color: $color_header_bg;
+		background-color: whiten($color_turquoise, 25%, 4);
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);
@@ -359,7 +359,7 @@
 		&:hover {
 			//color: blacken($color, 25%);
 			text-decoration: none;
-			background-color: blacken($color_header_bg, 25%);
+			//background-color: blacken($color_header_bg, 25%);
 		}
 
 		&:focus {
@@ -677,12 +677,17 @@
 
 			.g-button,
 			input[type=submit] {
-				color: $color;
-				background-color: $color_body_bg;
+				//color: $color_white;
+				font-family: $sans-serif-soft;
+				font-size: 1.25em;
+				font-weight: 700;
+				background-color: $color_turquoise;
 
+				/*
 				&:hover {
 					background-color: whiten($color_body_bg, 25%);
 				}
+				*/
 
 			}
 
@@ -694,9 +699,13 @@
 				padding-top: 0;
 				padding-bottom: 0;
 
+				i {
+					@extend .hidden-xs;
+				}
+
 				span {
 					@extend .hidden-sm;
-					@extend .hidden-xs;
+					//@extend .hidden-xs;
 				}
 
 			}
@@ -740,9 +749,9 @@
 	//@extend .hidden-xs;
 
 	a {
-		color: $color_white;
+		//color: $color_white;
 		text-align: center;
-		background-color: $color_nephritis;
+		//background-color: $color_nephritis;
 		@include box-sizing(content-box);
 		height: $line-height * 2;
 			line-height: $line-height;
@@ -750,10 +759,12 @@
 		padding-bottom: $line-height * .5;
 		@include border-radius(3px);
 
+		/*
 		&:hover {
 			color: $color_white;
 			background-color: blacken($color_nephritis, 25%);
 		}
+		*/
 
 	}
 
@@ -771,6 +782,7 @@
 
 		a {
 			height: $line-height * 2;
+				line-height: $line-height * 2;
 			padding-top: 0;
 			padding-bottom: 0;
 			@include border-radius($border-radius);

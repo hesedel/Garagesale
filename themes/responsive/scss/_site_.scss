@@ -2,6 +2,13 @@
 
 	h2 {
 		font-size: 1em;
+		line-height: $line-height;
+		margin-top: $line-height;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
 	}
 
 	.g-items {
@@ -63,6 +70,35 @@
 				}
 
 			}
+		}
+
+	}
+
+	#search {
+		margin-top: $line-height;
+
+		.table {
+			background-color: transparent;
+
+			.tr {
+				display: table-row;
+
+				.td {
+					display: table-cell;
+					vertical-align: top;
+
+					&.left {
+						padding-left: 0;
+					}
+
+					&.right {
+						padding-right: 0;
+					}
+
+				}
+
+			}
+
 		}
 
 	}

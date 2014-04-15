@@ -106,50 +106,20 @@
 
 		<?php #filters end */ ?>
 
-		<?php #search ?>
+		<?php if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 
-			<?php echo !isset($lt_ie_8) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
-
-				<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
-
-					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
-						<div class="input-text">
-							<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-								'model' => $this->model_itemSearchForm,
-								'attribute' => 'keywords',
-								'sourceUrl' => array('/item/search_autocomplete'),
-								'options' => array(
-									'appendTo' => '#search .input-text',
-									'minLength' => 2,
-									'position' => array(
-										'of' => '.input-text',
-										'collision' => 'fit',
-									),
-								),
-							)); ?>
-							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
-						</div>
-					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-					<?php echo !isset($lt_ie_8) ? '<div class="td right">' : '<td class="td right">'; ?>
-						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button submit')); ?>
-						<?php echo CHtml::submitButton('Search'); ?>
-					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-				<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
-
-			<?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
+			<?php $this->renderPartial('/layouts/_search'); ?>
 
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #search end ?>
+		<?php endif; #search end ?>
 
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('Post a<br>FREE Ad', array('/item/create')); ?>
+			<?php echo CHtml::link('Sell', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>

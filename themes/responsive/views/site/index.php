@@ -20,7 +20,18 @@ $this->layout = 'column1';
 	),
 )); ?>
 
-&lt; Move Search here &gt;
+<?php $form=$this->beginWidget('CActiveForm', array(
+	//'enableClientValidation'=>true,
+	//'clientOptions'=>array(
+	//	'validateOnSubmit'=>true,
+	//),
+	'action'=>array('/item/search'),
+	'method'=>'get',
+)); ?>
+
+<div id="search"><?php $this->renderPartial('/layouts/_search'); ?></div>
+
+<?php $this->endWidget(); ?>
 
 <h2>Latest from your course</h2>
 <?php $this->renderPartial('/item/_index', array(
