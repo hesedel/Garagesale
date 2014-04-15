@@ -657,8 +657,8 @@
 		display: table;
 
 		.td {
-			padding-top: 12px;
-			padding-bottom: 12px;
+			padding-top: $line-height * .5;
+			padding-bottom: $line-height * .5;
 
 			&.left {
 				width: 100%;
@@ -671,8 +671,15 @@
 			}
 
 			.input-text {
+				padding-top: $line-height * .5;
+				padding-bottom: $line-height * .5;
 				margin-top: 0;
 				margin-bottom: 0;
+
+				.placeholder {
+					top: $line-height * .5;
+				}
+
 			}
 
 			.g-button,
@@ -694,8 +701,8 @@
 			.g-button {
 				white-space: nowrap;
 				display: block;
-				height: 30px;
-					line-height: 30px;
+				height: $line-height * 2;
+					line-height: $line-height * 2;
 				padding-top: 0;
 				padding-bottom: 0;
 
