@@ -29,7 +29,7 @@ $this->menu=array(
 ?>
 <test 2> 
 <div id="item_view">
-test
+
 <table class="header" cellspacing="0">
 	<thead>
 		<tr>
