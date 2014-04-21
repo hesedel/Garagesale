@@ -27,7 +27,7 @@ $this->menu=array(
 );
 */
 ?>
-
+<test 2> 
 <div id="item_view">
 test
 <table class="header" cellspacing="0">
@@ -35,6 +35,7 @@ test
 		<tr>
 
 			<td><h1><?php echo CHtml::encode($model->title); ?></h1></td>
+			<h1>testing again</h1>
 
 			<td><span class="price">PHP <?php echo number_format($model->price); ?></span></td>
 
