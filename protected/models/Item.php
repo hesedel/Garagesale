@@ -8,16 +8,17 @@
  * @property string $created
  * @property string $updated
  * @property string $title
- * @property integer $price
+ * @property string $price
  * @property string $description
  * @property integer $category_id
  * @property integer $condition_id
  * @property string $user_id
  *
  * The followings are the available model relations:
- * @property User $user
- * @property ItemCategory $category
  * @property ItemCondition $condition
+ * @property ItemCategory $category
+ * @property User $user
+ * @property ItemContact[] $itemContacts
  * @property ItemImage[] $itemImages
  */
 class Item extends CActiveRecord
@@ -26,16 +27,6 @@ class Item extends CActiveRecord
 	public $images;
 	public $uploads;
 	public $phone;
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Item the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
 
 	/**
 	 * @return string the associated database table name
@@ -62,7 +53,7 @@ class Item extends CActiveRecord
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('category_id, condition_id, user_id', 'default', 'value'=>null),
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
+			// @todo Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2.5MB
 			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>190, 'minHeight'=>190),
@@ -77,11 +68,11 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
-			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
+			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
+			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
 		);
 	}
 
@@ -108,12 +99,19 @@ class Item extends CActiveRecord
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
@@ -157,22 +155,6 @@ class Item extends CActiveRecord
 		}
 		return true;
 	}
-
-	/**
-	 * Custom Functions
-	 * array						getCategories()
-	 * string						getCategoriesString($options=array())
-	 * CHtml::activeDropDownList	getCategoryDropDownList()
-	 * string						getConditionClass()
-	 * mixed						getExpiry()
-	 * string						getImage($index=0, $options=array())
-	 * array						getImages()
-	 * CHtml::activeDropDownList	getLocationDropDownList()
-	 * array						getOtherItems()
-	 * string						getTimeAgo($createdORupdated='created')
-	 * bool							userCanUpdate()
-	 * bool							userCanDelete()
-	 */
 
 	public function getCategories()
 	{
@@ -326,7 +308,7 @@ class Item extends CActiveRecord
 		return false;
 	}
 
-	public function old_getImage($index=0)
+	public function old_getImage($index=0) // deprecated
 	{
 		$image=Yii::app()->db->createCommand()
 			->select('id, type, data')
@@ -479,5 +461,16 @@ class Item extends CActiveRecord
 			return true;
 		else
 			return false;
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return Item the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }

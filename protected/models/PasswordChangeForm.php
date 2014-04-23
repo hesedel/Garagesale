@@ -1,13 +1,8 @@
 <?php
 
-class PasswordChangeForm extends CActiveRecord
+class PasswordChangeForm extends CFormModel
 {
 	public $password_repeat;
-
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
 
 	public function tableName()
 	{
@@ -35,5 +30,10 @@ class PasswordChangeForm extends CActiveRecord
 	{
 		$this->password = md5(md5($this->password).Yii::app()->params['salt']);
 		return true;
+	}
+
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }

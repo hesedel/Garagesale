@@ -117,7 +117,12 @@
 								'attribute' => 'keywords',
 								'sourceUrl' => array('/item/search_autocomplete'),
 								'options' => array(
+									'appendTo' => '#search .input-text',
 									'minLength' => 2,
+									'position' => array(
+										'of' => '.input-text',
+										'collision' => 'fit',
+									),
 								),
 							)); ?>
 							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
