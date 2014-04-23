@@ -36,9 +36,17 @@
 
 		<?php #header end ?>
 
+		<?php #menu-toggle ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
+			<i class="fa fa-bars"></i>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #menu-toggle end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
-		<?php #register ?>
+		<?php /* #register ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
 			<?php echo CHtml::link('Register', array('/site/register')); ?>
@@ -52,7 +60,26 @@
 			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #login end ?>
+		<?php #login end */ ?>
+
+		<?php #user ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
+			<div class="a">
+				<?php echo CHtml::link(
+					'<i class="fa fa-user"></i> ' .
+						Yii::app()->user->id .
+							'<i class="fa fa-angle-down"></i>',
+					array('#')
+				); ?>
+				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i>Login', array('/site/login')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i>Register', array('/site/register')); ?></li>
+				</ul>
+			</div>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #user end ?>
 
 		<?php else: ?>
 
@@ -106,6 +133,36 @@
 
 		<?php #filters end */ ?>
 
+		<?php /* if($this->getRoute() !== 'site/index'): #search ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+
+			<?php $this->renderPartial('/layouts/_search'); ?>
+
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #search end */ ?>
+
+		<?php #post ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
+			<?php echo CHtml::link('Sell', array('/item/create')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #post end ?>
+
+		<?php #menu ?>
+
+		<div id="menu">
+			<ul>
+				<li><a href="#">Menu Item 1</a></li>
+				<li><a href="#">Menu Item 2</a></li>
+				<li><a href="#">Menu Item 3</a></li>
+			</ul>
+		</div>
+
+		<?php #menu end ?>
+
 		<?php if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
@@ -115,14 +172,6 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php endif; #search end ?>
-
-		<?php #post ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('Sell', array('/item/create')); ?>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php #post end ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
