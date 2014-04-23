@@ -39,7 +39,7 @@ CREATE TABLE `item` (
   KEY `condition_id` (`condition_id`),
   KEY `user_id` (`user_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `item`
@@ -58,7 +58,7 @@ CREATE TABLE `item_category` (
   `parent_id` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `item_category`
@@ -75,7 +75,7 @@ CREATE TABLE `item_condition` (
   `id` tinyint(3) unsigned NOT NULL,
   `title` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `item_condition`
@@ -100,7 +100,7 @@ CREATE TABLE `item_image` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   KEY `index` (`index`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `item_image`

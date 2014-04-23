@@ -8,16 +8,17 @@
  * @property string $created
  * @property string $updated
  * @property string $title
- * @property integer $price
+ * @property string $price
  * @property string $description
  * @property integer $category_id
  * @property integer $condition_id
  * @property string $user_id
  *
  * The followings are the available model relations:
- * @property User $user
- * @property ItemCategory $category
  * @property ItemCondition $condition
+ * @property ItemCategory $category
+ * @property User $user
+ * @property ItemContact[] $itemContacts
  * @property ItemImage[] $itemImages
  */
 class Item extends CActiveRecord
@@ -26,16 +27,6 @@ class Item extends CActiveRecord
 	public $images;
 	public $uploads;
 	public $phone;
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Item the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
 
 	/**
 	 * @return string the associated database table name
@@ -62,7 +53,7 @@ class Item extends CActiveRecord
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('category_id, condition_id, user_id', 'default', 'value'=>null),
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
+			// @todo Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 1KB, maxSize 2.5MB
 			array('images', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>190, 'minHeight'=>190),
@@ -77,9 +68,10 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
 			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
+			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
 			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
 		);
 	}
@@ -107,12 +99,19 @@ class Item extends CActiveRecord
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
@@ -136,44 +135,45 @@ class Item extends CActiveRecord
 		if(strlen($this->location_id)==0)
 			$this->location_id=null;
 		Yii::app()->db->createCommand()
-			->update('user',array(
+			->update('user', array(
 				'location_id'=>$this->location_id,
 				'phone'=>$this->phone,
-			),'id=:user_id',array(':user_id'=>$this->user_id));
+			), 'id=:user_id', array(':user_id'=>$this->user_id));
 
 		return true;
 	}
 
-	protected function afterDelete()
+	protected function beforeDelete()
 	{
-		$images=Yii::app()->db->createCommand()
-			->select('id')
-			->from('item_image')
-			->where('item_id=:item_id',array(':item_id'=>$this->id))
-			->queryAll();
-		foreach($images as $image)
-			db_image('item_image',$image['id'],array('unlink'=>true));
+		foreach($this->itemImages as $itemImage)
+		{
+			$itemImage->delete();
+		}
+		foreach($this->itemContacts as $itemContact)
+		{
+			$itemContact->delete();
+		}
+		return true;
 	}
-
-	/**
-	 * Custom Functions
-	 * array						getCategories()
-	 * string						getCategoriesString($options=array())
-	 * CHtml::activeDropDownList	getCategoryDropDownList()
-	 * string						getConditionClass()
-	 * mixed						getExpiry()
-	 * array						getImage($index=0)
-	 * array						getImages()
-	 * CHtml::activeDropDownList	getLocationDropDownList()
-	 * array						getOtherItems()
-	 * bool							userCanUpdate()
-	 * bool							userCanDelete()
-	 * 
-	 */
 
 	public function getCategories()
 	{
-		
+		if($this->category_id != null)
+		{
+			$categories = array($this->category->title);
+			$category_parent = $this->category->parent_id;
+			while($category_parent != null) {
+				$category_parent = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->where('id=:id', array(':id'=>$category_parent))
+					->queryRow();
+				array_unshift($categories, $category_parent['title']);
+				$category_parent = $category_parent['parent_id'];
+			}
+			return $categories;
+		} else
+			return false;
 	}
 
 	public function getCategoriesString($options=array())
@@ -181,7 +181,7 @@ class Item extends CActiveRecord
 		$defaults=array(
 			'separator'=>', ',
 		);
-		$options=array_merge($defaults,$options);
+		$options=array_merge($defaults, $options);
 
 		if($this->category_id != null)
 		{
@@ -308,7 +308,7 @@ class Item extends CActiveRecord
 		return false;
 	}
 
-    public function getImage($index=0)
+	public function old_getImage($index=0) // deprecated
 	{
 		$image=Yii::app()->db->createCommand()
 			->select('id, type, data')
@@ -324,6 +324,38 @@ class Item extends CActiveRecord
 			return false;
 	}
 
+	public function getImage($index=0, $options=array())
+	{
+		$defaults=array(
+			'color'=>'black',
+		);
+		$options=array_merge($defaults, $options);
+
+		$image=Yii::app()->db->createCommand()
+			->select('id, type, data')
+			->from('item_image')
+			->where('item_id=:id and `index`='.$index, array(':id'=>$this->id))
+			->queryRow();
+		if($image) {
+			$image['path']='/img/uploads/cache/'.md5('item_image'.$image['id']).'.'.$image['type'];
+			if(!file_exists(Yii::getPathOfAlias('webroot').$image['path']))
+				file_put_contents(Yii::getPathOfAlias('webroot').$image['path'], $image['data']);
+			return $image['path'];
+		} else {
+			switch($options['color'])
+			{
+				case 'black':
+					return '/img/item/no-image-black.gif';
+					break;
+				case 'white':
+					return '/img/item/no-image-white.gif';
+					break;
+				default:
+					return '/img/item/no-image-black.gif';
+			}
+		}
+	}
+
 	public function getImages()
 	{
 		$images = Yii::app()->db->createCommand()
@@ -337,7 +369,7 @@ class Item extends CActiveRecord
 			$i=0;
 			foreach($images as $key=>$image)
 			{
-				$path=$this->getImage($i);
+				$path=$this->old_getImage($i);
 				$images[$key]['path']=$path['path'];
 				$i++;
 			}
@@ -373,7 +405,7 @@ class Item extends CActiveRecord
 		$items=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item')
-			->where('id!=:id and user_id=:user_id',array(':id'=>$this->id,':user_id'=>$this->user_id))
+			->where('id!=:id and user_id=:user_id', array(':id'=>$this->id, ':user_id'=>$this->user_id))
 			->queryAll();
 		$array=array();
 		if($items)
@@ -387,11 +419,23 @@ class Item extends CActiveRecord
 			return false;
 	}
 
+	public function getTimeAgo($createdORupdated='created')
+	{
+		switch($createdORupdated)
+		{
+			case 'updated':
+				return time_local($this->updated);
+				break;
+			default:
+				return time_local($this->created);
+		}
+	}
+
 	public function userCanUpdate()
 	{
 		$params=array('Item'=>$this);
 		if(
-			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			Yii::app()->user->checkAccess('updateOwnItem', $params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
@@ -407,7 +451,7 @@ class Item extends CActiveRecord
 	{
 		$params=array('Item'=>$this);
 		if(
-			Yii::app()->user->checkAccess('deleteOwnItem',$params) ||
+			Yii::app()->user->checkAccess('deleteOwnItem', $params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
@@ -417,5 +461,16 @@ class Item extends CActiveRecord
 			return true;
 		else
 			return false;
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return Item the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }

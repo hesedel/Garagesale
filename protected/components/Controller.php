@@ -20,9 +20,21 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+	public $model_itemSearchForm;
 
 	protected function beforeAction($action)
 	{
+		if(Yii::app()->params['maintenance'])
+		{
+			if($this->getRoute() !== 'site/maintenance')
+				$this->redirect(Yii::app()->createUrl('site/maintenance'));
+		}
+		else
+		{
+			if($this->getRoute() === 'site/maintenance')
+				$this->redirect(Yii::app()->homeUrl);
+		}
+
 		// force user logout when session is not valid
 		Yii::app()->params['user']=false;
 		if(!Yii::app()->user->isGuest)
@@ -42,6 +54,7 @@ class Controller extends CController
 			preg_match('/^\/site\/captcha/',$route) == 0 &&
 			preg_match('/^\/item\/create/',$route) == 0 &&
 			preg_match('/^\/item\/update/',$route) == 0 &&
+			preg_match('/^\/item\/search_autocomplete/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/password_forgot/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/password_change/',$route) == 0 &&
 			preg_match('/^\/admin\/user\/unverified/',$route) == 0 &&
@@ -67,7 +80,8 @@ class Controller extends CController
 				}
 				else if(preg_match('/^.+_page$/',$actionParamKey,$matches) > 0)
 					$actionParamsStringAjax .=(strlen($actionParamsStringAjax)==0 ? '?' : '&').$matches[0].'='.$actionParams[$actionParamKey];
-				else {
+				else
+				{
 					//$actionParamsString .=(strlen($actionParamsString)==0 ? '/' : '').$actionParams[$actionParamKey].'/';
 					$actionParamsArray[$actionParamKey] = $actionParams[$actionParamKey];
 				}
@@ -78,6 +92,12 @@ class Controller extends CController
 		{
 			Yii::app()->user->setReturnUrl('/');
 		}
+
+		// search
+		$this->model_itemSearchForm=new ItemSearchForm;
+		if(isset($_GET['ItemSearchForm']))
+			$this->model_itemSearchForm->attributes=$_GET['ItemSearchForm'];
+
 		return true;
 	}
 }

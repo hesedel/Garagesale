@@ -48,7 +48,7 @@
 			<div class="item">
 
 				<?php
-				$image = $item->getImage();
+				$image = $item->old_getImage();
 				echo CHtml::link(
 					CHtml::image(
 						'/img/transparent.gif',

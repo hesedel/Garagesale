@@ -13,7 +13,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','error','contact'),
+				'actions'=>array('index','error','contact','maintenance'),
 				'users'=>array('*'),
 			),
 			array('allow',
@@ -63,7 +63,7 @@ class SiteController extends Controller
 				'order'=>'updated DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 4,
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
 			),
 		));
 		$dataProvider_latest=new CActiveDataProvider('Item',array(
@@ -71,7 +71,7 @@ class SiteController extends Controller
 				'order'=>'created DESC',
 			),
 			'pagination'=>array(
-				'pageSize'=>4,
+				'pageSize'=>5,
 			),
 		));
 		Yii::app()->theme='responsive';
@@ -150,6 +150,7 @@ class SiteController extends Controller
 		if(isset($_REQUEST['username']))
 			$model->username=$_REQUEST['username'];
 		// display the login form
+		Yii::app()->theme='responsive';
 		$this->render('login',array('model'=>$model));
 	}
 
@@ -187,6 +188,12 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 			}
 		}
+		Yii::app()->theme='responsive';
 		$this->render('register',array('model'=>$model));
+	}
+
+	public function actionMaintenance() {
+		Yii::app()->theme='responsive';
+		$this->render('maintenance');
 	}
 }

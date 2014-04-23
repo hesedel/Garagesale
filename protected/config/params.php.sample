@@ -1,11 +1,14 @@
 <?php return array(
 	'env'=>'dev', // dev,int,sta,pro
-	'php'=>'/usr/bin/php5', // /Applications/MAMP/bin/php/php5.5.3/bin/php
+	'php'=>'/usr/bin/php5', // /Applications/MAMP/bin/php/php5.5.10/bin/php
 	'gii.password'=>'password',
 	'db.host'=>'localhost',
 	'db.name'=>'garagesale',
 	'db.socket'=>'', // ;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock
 	'db.username'=>'root',
 	'db.password'=>'password',
+	'cp.emailAccountManager-url'=>false, // http://users.garagesale.ph/cPanel-email-account-manager.php
+	'cp.emailAccountManager-key'=>'',
+	'usersEmailDomain'=>'users.garagesale.ph',
 	'maintenance'=>false,
 );

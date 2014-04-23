@@ -1,10 +1,5 @@
 <?php
 
-/**
- * LoginForm class.
- * LoginForm is the data structure for keeping
- * user login form data. It is used by the 'login' action of 'SiteController'.
- */
 class LoginForm extends CFormModel
 {
 	public $username;
@@ -13,26 +8,15 @@ class LoginForm extends CFormModel
 
 	private $_identity;
 
-	/**
-	 * Declares the validation rules.
-	 * The rules state that username and password are required,
-	 * and password needs to be authenticated.
-	 */
 	public function rules()
 	{
 		return array(
-			// username and password are required
 			array('username, password', 'required'),
-			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
-			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
 	}
 
-	/**
-	 * Declares attribute labels.
-	 */
 	public function attributeLabels()
 	{
 		return array(
@@ -41,10 +25,6 @@ class LoginForm extends CFormModel
 		);
 	}
 
-	/**
-	 * Authenticates the password.
-	 * This is the 'authenticate' validator as declared in rules().
-	 */
 	public function authenticate($attribute,$params)
 	{
 		if(!$this->hasErrors())
@@ -68,10 +48,6 @@ class LoginForm extends CFormModel
 		}
 	}
 
-	/**
-	 * Logs in the user using the given username and password in the model.
-	 * @return boolean whether login is successful
-	 */
 	public function login()
 	{
 		if($this->_identity===null)
@@ -83,7 +59,7 @@ class LoginForm extends CFormModel
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
 			Yii::app()->user->login($this->_identity,$duration);
-			Yii::app()->db->createCommand()->delete('user_changePassword','user_id=:id',array(':id'=>$this->_identity->getId()));
+			Yii::app()->db->createCommand()->delete('user_password_change','user_id=:id',array(':id'=>$this->_identity->getId()));
 			return true;
 		}
 		else
@@ -96,5 +72,10 @@ class LoginForm extends CFormModel
 			return $this->_identity->errorCode;
 		else
 			return 0;
+	}
+
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }

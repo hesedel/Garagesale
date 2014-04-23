@@ -1,7 +1,7 @@
 :php
 	$email=Yii::app()->db->createCommand()
 		->select('email')
-		->from('user_changeEmail')
+		->from('user_email_change')
 		->where('user_id=:id',array(':id'=>$model->id))
 		->queryScalar();
 -if(!$email):

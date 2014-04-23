@@ -5,11 +5,6 @@ class AccountForm extends User
 	public $password_old;
 	public $password_repeat;
 
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
-
 	public function rules()
 	{
 		$rules = parent::rules();
@@ -30,7 +25,8 @@ class AccountForm extends User
 	}
 
 	public function authenticatePassword($attribute) {
-		if(strlen($this->password) != 0) {
+		if(strlen($this->password) != 0)
+		{
 			if(strlen($this->password_old) == 0)
 				$this->addError($attribute, $this->getAttributeLabel($attribute).' is required for password change.');
 			if(md5(md5($this->password_old).Yii::app()->params['salt']) !== $this->password_old())
@@ -47,4 +43,8 @@ class AccountForm extends User
 			->queryScalar();
 	}
 
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
 }

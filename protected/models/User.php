@@ -20,25 +20,18 @@
  *
  * The followings are the available model relations:
  * @property Item[] $items
+ * @property ItemContact[] $itemContacts
+ * @property ItemContact[] $itemContacts1
  * @property UserLocation $location
- * @property UserChangeEmail[] $userChangeEmails
- * @property UserChangePassword[] $userChangePasswords
+ * @property UserEmailChange[] $userEmailChanges
  * @property UserMessage[] $userMessages
+ * @property UserMessage[] $userMessages1
+ * @property UserPasswordChange[] $userPasswordChanges
  * @property UserVerify[] $userVerifies
  */
 class User extends CActiveRecord
 {
 	public $image_temp;
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return User the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
 
 	/**
 	 * @return string the associated database table name
@@ -68,7 +61,7 @@ class User extends CActiveRecord
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
+			// @todo Please remove those attributes that should not be searched.
 			array('id, email, created, updated, name_first, name_last, phone, verified, location_id', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
 			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
@@ -93,10 +86,13 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
+			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'user_id_replier'),
+			'itemContacts1' => array(self::HAS_MANY, 'ItemContact', 'user_id_poster'),
 			'location' => array(self::BELONGS_TO, 'UserLocation', 'location_id'),
-			'userChangeEmails' => array(self::HAS_MANY, 'UserChangeEmail', 'user_id'),
-			'userChangePasswords' => array(self::HAS_MANY, 'UserChangePassword', 'user_id'),
+			'userEmailChanges' => array(self::HAS_MANY, 'UserEmailChange', 'user_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'user_id_from'),
+			'userMessages1' => array(self::HAS_MANY, 'UserMessage', 'user_id_to'),
+			'userPasswordChanges' => array(self::HAS_MANY, 'UserPasswordChange', 'user_id'),
 			'userVerifies' => array(self::HAS_MANY, 'UserVerify', 'user_id'),
 		);
 	}
@@ -125,11 +121,19 @@ class User extends CActiveRecord
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
+		// @todo Please modify the following code to remove attributes that
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
@@ -153,19 +157,19 @@ class User extends CActiveRecord
 	{
 		$email=Yii::app()->db->createCommand()
 			->select('email')
-			->from('user_changeEmail')
-			->where('email=:email',array(':email'=>$this->email))
+			->from('user_email_change')
+			->where('email=:email', array(':email'=>$this->email))
 			->queryScalar();
 		if($email)
-			$this->addError($attribute,'Email "'.$this->email.'" has already been taken.');
+			$this->addError($attribute, 'Email "'.$this->email.'" has already been taken.');
 	}
 
 	public function getImage($options=array())
 	{
 		$defaults=array(
-			'color'=>'white',
+			'color'=>'black',
 		);
-		$options=array_merge($defaults,$options);
+		$options=array_merge($defaults, $options);
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -174,7 +178,7 @@ class User extends CActiveRecord
 			return $image;
 		else
 		{
-			switch($defaults['color'])
+			switch($options['color'])
 			{
 				case 'black':
 					return '/img/user/no-image-black.gif';
@@ -183,7 +187,7 @@ class User extends CActiveRecord
 					return '/img/user/no-image-white.gif';
 					break;
 				default:
-					return '/img/user/no-image.gif';
+					return '/img/user/no-image-black.gif';
 			}
 		}
 	}
@@ -194,7 +198,7 @@ class User extends CActiveRecord
 			'image'=>null,
 			'image_type'=>null,
 			'image_size'=>null,
-		),'id=:id',array(':id'=>$id));
+		), 'id=:id', array(':id'=>$id));
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
@@ -220,7 +224,7 @@ class User extends CActiveRecord
 		$items=Yii::app()->db->createCommand()
 			->select('id')
 			->from('item')
-			->where('user_id=:user_id',array(':user_id'=>$this->id))
+			->where('user_id=:user_id', array(':user_id'=>$this->id))
 			->queryAll();
 		foreach($items as $item)
 			Item::model()->findByPk($item['id'])->delete();
@@ -234,5 +238,16 @@ class User extends CActiveRecord
 			->from('user')
 			->where('id=:id', array(':id'=>$this->id))
 			->queryScalar();
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return User the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
 	}
 }

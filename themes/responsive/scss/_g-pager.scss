@@ -1,0 +1,43 @@
+.g-pager {
+	@include user-select(none);
+	padding-left: 0;
+	margin-bottom: 0;
+	float: right;
+
+	* {
+		@include user-select(none);
+	}
+
+	li {
+		padding-left: $gutter-width * (1 / 3);
+		float: left;
+
+		a {
+			@extend .g-button;
+			@extend .g-button.small;
+			text-align: center;
+			min-width: $gutter-width * 2;
+			display: block;
+		}
+
+		&.previous,
+		&.next {
+
+			a {
+				float: none;
+			}
+
+		}
+
+		&.selected {
+
+			a {
+				@extend .g-button:active;
+				cursor: default;
+			}
+
+		}
+
+	}
+
+} // .g-pager

@@ -1,198 +1,91 @@
 @import 'normalize', 'main';
-@import 'vendor/bootstrap.min', 'vendor/bootstrap-theme';
-@import 'compass';
-@import 'vendor/bourbon/bourbon';
-@import 'variables';
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: $sans-serif;
-}
-
-.container {
-	position: relative;
-}
+@import 'vendor/bootstrap',
+				'vendor/font-awesome/font-awesome',
+				'vendor/jquery.hes.slider',
+				'vendor/jquery.lightbox-0.5';
+@import 'compass', 'vendor/bourbon/bourbon';
+@import 'variables', 'global', 'form';
 
 body {
 	cursor: default;
+	color: $color;
 	font-family: $sans-serif;
-	background-color: whiten($black, 15%);
+	background-color: $color_footer_bg;
+	line-height: $line-height;
+	padding-top: $line-height * 5;
 }
+
+.no-js body {
+	padding-top: 0;
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	body {
+		padding-top: $line-height * 7;
+	}
+}
+
+@media (max-width: $screen-xs-max) {
+	body {
+		padding-top: 0;
+	}
+}
+
+#body {
+	background-color: $color_body_bg;
+}
+
+@import 'table';
 
 #page {
-	padding-top: $header-height;
-	padding-bottom: $header-height * 2;
-	position: relative;
+	@extend .container;
+
 }
 
-#bg {
-	background-color: blacken($olivedrab, 25%, 2);
-	@include box-shadow(0 0 1px transparent);
-	position: absolute;
-		top: -($header-height * 3);
-		right: 0;
-		bottom: ($header-height * 2) - 1px;
-		left: 0;
-		z-index: -1;
-	@include transform(skew(0, -$degree));
-	overflow: hidden;
-}
-
-#bg div {
-	background-attachment: fixed;
-	background-image: url(/img/bg.png);
-	background-position: center;
-	position: absolute;
-		top: 0;
-		right: 0;
-		bottom: -($header-height * 3);
-		left: 0;
-	@include transform(skew(0, $degree));
-}
-
-#header {
-	height: ($header-height * 4) + 4px;
-	@include box-shadow(0 0 1px transparent);
-	position: fixed;
-		top: -($header-height * 3);
-		right: 0;
-		left: 0;
-		z-index: 1;
-	@include transform(skew(0, -$degree));
-	overflow: hidden;
-	@include transition(all 125ms);
-}
-
-#header.compact {
-	height: ($header-height * 4) + 4px - ($line-height * 2);
-	//top: -(($header-height * 3) + ($line-height * 2));
-}
-
-#header .bg {
-	background-color: whiten($black, 15%);
-	@include background-image(linear-gradient(rgba($white, .05), rgba($black, .05)));
-	@include box-shadow(0 0 1px transparent);
-	position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	@include transition(all 125ms);
-}
-
-#header.compact .bg {
-	@include box-shadow(0 0 4px rgba($black, .25));
-	@include opacity(.95);
-}
-
-#header .skewed {
-	height: $header-height * 4;
-	padding-top: $header-height * 3;
-	overflow: hidden;
-	@include transition(all 125ms);
-}
-
-#header.compact .skewed {
-	height: ($header-height * 4) - ($line-height * 2);
-}
-
-#header .unskewed {
-	@include clearfix;
-	@include transform(skew(0, $degree));
-}
-
-#header h1 {
-	height: $header-height - ($line-height * 2);
-	margin-top: $line-height;
+#alert {
+	text-align: center;
 	margin-bottom: 0;
-	margin-left: $gutter-width;
-	float: left;
-	position: relative;
-	@include transition(all 125ms);
 }
 
-#header.compact h1 {
-	margin-top: $line-height / 2;
+#column1,
+#column2,
+#column3,
+#transition {
+	padding-top: $line-height;
+	padding-bottom: $line-height * 3;
 }
 
-#header h1 a {
-	height: 100%;
-	display: block;
-}
+.breadcrumbs {
+	margin-bottom: $line-height;
 
-#logo-png,
-#logo-svg {
-	//width: 196px;
-	height: $header-height;
-	@include transition(all 125ms);
-}
+	a {
+		color: $color_carrot;
 
-#header.compact #logo-png,
-#header.compact #logo-svg {
-	height: $header-height - ($line-height * 1.5);
-}
+		&:hover {
+			color: blacken($color_carrot, 25%);
+			text-decoration: none;
+		}
 
-#logo-png,
-.svg #logo-svg {
-	display: block;
-}
-
-#logo-svg,
-.svg #logo-png {
-	display: none;
-}
-
-#content {}
-
-#summary {
-	padding-top: 1px;
-}
-
-#summary > div {
-	background-color: whiten($black, 20%);
-	@include box-shadow(0 0 1px transparent);
-	@include transform(skew(0, -$degree));
-}
-
-#summary .container {
-	padding-top: ($line-height * 3) - 1px;
-	padding-bottom: $line-height * 4;
-	@include transform(skew(0, $degree));
-}
-
-#summary strong {
-	color: $white;
-}
-
-#summary li {
-	color: $white;
-}
-
-#footer {
-	position: absolute;
-		right: 0;
-		bottom: $header-height + $line-height;
-		left: 0;
-}
-
-#footer .container {}
-
-#copyright {
-	color: $white;
-	font-family: proxima-nova-n3, $sans-serif;
-	font-weight: 300;
-	margin-right: $gutter-width;
-	float: right;
-}
-
-#copyright a {
-	color: blacken($olivedrab, 25%);
-
-	&:hover {
-		color: $olivedrab;
-		text-decoration: none;
 	}
 
 }
 
-@import 'site_index';
+#footer {
+	@extend .container;
+	padding-top: $line-height * 2;
+	padding-bottom: $line-height * 2;
+}
+
+@media (max-width: $screen-xs-max) {
+	#footer {
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
+	}
+}
+
+#copyright {
+	color: $color_body_bg;
+	float: right;
+}
+
+@import 'site_', 'item_';

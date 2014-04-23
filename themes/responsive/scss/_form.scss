@@ -1,0 +1,652 @@
+form.inline {
+	display: inline;
+}
+
+fieldset {
+	padding: 0;
+	border: none;
+	margin-bottom: 0;
+
+	legend {
+		display: none;
+	}
+
+}
+
+input[type=submit] {
+	@extend .g-button;
+	height: 30px;
+	padding: 0 #{$gutter-width * (2 / 3)};
+	position: absolute;
+		right: 0;
+	visibility: hidden;
+}
+
+.no-js {
+
+	a.submit {
+		display: none !important;
+	}
+
+	input[type=submit] {
+		position: static;
+		visibility: visible;
+	}
+
+}
+
+input[type=text], input[type=password], textarea {
+	outline: none;
+}
+
+textarea {
+	line-height: $line-height;
+}
+
+.input-text,
+.textarea {
+	cursor: text;
+	background-color: $color_white;
+	padding-right: $gutter-width * (2 / 3);
+	padding-left: $gutter-width * (2 / 3);				
+	@include border-radius($border-radius);
+	@include box-shadow(1px 1px 2px rgba($color_black, .25));
+	position: relative;
+
+	input, textarea {
+		background-color: transparent;
+		width: 100%;
+		padding: 0;
+		border: none;
+		display: block;
+	}
+
+	.placeholder {
+		cursor: text;
+		color: $color_concrete;
+		line-height: $line-height;
+		position: absolute;
+			left: $gutter-width * (2 / 3);
+
+		&.is-hidden {
+			display: none;
+		}
+
+	}
+
+}
+
+div.input-text {
+	padding-top: $line-height * (1 / 3);
+	padding-bottom: $line-height * (1 / 3);
+	margin-top: $line-height * (1 / 6);
+	margin-bottom: $line-height * (1 / 6);
+
+	input {
+		height: $line-height;
+			line-height: $line-height;
+	}
+
+	span.placeholder {
+		top: $line-height * (1 / 3);
+	}
+
+}
+
+div.textarea {
+	padding-top: $line-height * .5;
+	padding-bottom: $line-height * .5;
+
+	textarea {
+		height: $line-height * 4;
+
+		&.error {
+			color: $black;
+			background-color: $white;
+		}
+
+	}
+
+	span.placeholder {
+		top: $line-height * .5;
+	}
+
+	&.error {
+		margin-bottom: 0;
+	}
+
+}
+
+.no-js {
+
+	div.input-text,
+	div.textarea {
+
+		span.placeholder {
+			display: none;
+		}
+
+	}
+
+}
+
+.ie7 div.input-text input {
+	margin-top: -1px;
+	margin-bottom: -1px;
+}
+
+div.form.success {
+	color: $black;
+	padding: 0;
+	border: none;
+	margin-bottom: 0;
+}
+
+table.form {
+	background-color: whiten(blacken($beige, 25%), 25%, 4);
+	border-collapse: collapse;
+	border-color: whiten(blacken($beige, 25%), 25%, 4);
+	border-spacing: 0;
+	border-style: solid;
+	border-top-width: $line-height;
+	border-right-width: 0;
+	border-bottom-width: $line-height;
+	border-left-width: 0;
+	margin-bottom: 0;
+
+	caption {
+		color: whiten($custom_orange, 25%, 3);
+		text-align: left;
+		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
+		line-height: $line-height * 1.5;
+		padding-left: $gutter-width;
+	}
+
+	th, td {
+		padding-top: ($line-height * .5) - 1px;
+		padding-bottom: $line-height * .5;
+		border-top: 1px dotted $white;
+	}
+
+	th {
+		vertical-align: top;
+
+		label {
+			margin-bottom: 0;
+		}
+
+	}
+
+	tbody {
+
+		tr {
+
+			th {
+				color: blacken(whiten($beige, 25%), 25%, 2);
+				@include text-shadow(rgba($white, 1) 0 1px);
+				white-space: nowrap;
+				line-height: $line-height * 2;
+				padding-right: $gutter-width * (1 / 3);
+				padding-left: $gutter-width;
+
+				label {
+
+					span.required {
+						color: $custom_magenta;
+					}
+
+					&.error {
+						color: blacken(whiten($beige, 25%), 25%, 3);
+						background-color: transparent;
+						padding: 0;
+						border: none;
+					}
+
+				}
+
+				div.image {
+					background-color: rgba(0, 0, 0, .05);
+					position: relative;
+					width: $gutter-width * 5;
+					height: $line-height * 4;
+
+					img {
+						border: 1px solid $white;
+						display: block;
+					}
+
+					a {
+						text-align: center;
+						background-color: whiten(blacken($beige, 25%), 25%, 4);
+						width: $gutter-width;
+						height: $line-height;
+							line-height: $line-height;
+						border-bottom: 1px solid $custom_orange;
+						border-left: 1px solid $custom_orange;
+						display: none;
+						position: absolute;
+							top: 0;
+							right: 0;
+
+						i {
+							cursor: pointer;
+							color: $custom_orange;
+						}
+
+						&:hover i {
+							color: $black;
+						}
+
+					}
+
+					&:hover {
+
+						img {
+							border-color: $custom_orange;
+						}
+
+						a {
+							display: block;
+						}
+
+					}
+
+					&.loading {
+						@include box-sizing(content-box);
+						width: ($gutter-width * 5) - 2px;
+						height: ($line-height * 4) - 2px;
+						border: 1px solid $white;
+
+						img {
+							position: absolute;
+								top: -1px;
+								left: -1px;
+							@include opacity(.25);
+						}
+
+						&:hover {
+
+							img {
+								border-color: $white;
+							}
+
+							a {
+								display: none;
+							}
+
+						}
+
+					}
+
+					&.no-image {
+						font-size: 2.5em;
+						text-align: center;
+						@include box-sizing(content-box);
+						width: ($gutter-width * 5) - 2px;
+						height: ($line-height * 4) - 2px;
+							line-height: ($line-height * 4) - 2px;
+						border: 1px solid $white;
+					}
+
+				}
+
+			}
+
+			td {
+				width: 100%;
+				padding-right: $gutter-width;
+				padding-left: $gutter-width * (1 / 3);
+
+				label {
+					@include text-shadow(rgba($white, 1) 0 1px);
+				}
+
+				input[type=file] {
+					width: 100%;
+				}
+
+				div.input-text,
+				div.textarea {
+					max-width: 450px;
+				}
+
+				div.input-text {
+
+					&.half {
+						max-width: 210px; //
+					}
+
+					&.repeat {
+						max-width: 410px; //
+						margin-left: 40px; //
+					}
+
+				}
+
+				div.textarea {
+					
+				}
+
+				div.MultiFile-wrap {
+
+					div.MultiFile-list {
+						@include clearfix;
+
+						div.MultiFile-label {
+							clear: left;
+							float: left;
+
+							a.MultiFile-remove {
+								color: blacken($custom_cyan, 25%);
+								text-decoration: none;
+								@include text-shadow(rgba($white, 1) 0 1px);
+								float: right;
+
+								&:hover {
+									color: blacken($custom_cyan, 25%, 2);
+								}
+
+							}
+
+							span.MultiFile-title {
+								@include ellipsis;
+								color: $black;
+								@include text-shadow(rgba($white, 1) 0 1px);
+								max-width: 310px; //
+								padding-right: $gutter-width * (1 / 3);
+								float: left;
+							}
+
+						}
+
+					}
+
+					&.success {
+						background-color: transparent;
+						padding: 0;
+						border: none;
+						margin-bottom: 0;
+					}
+
+				}
+
+				div.captcha {
+					background-color: whiten(blacken($beige, 25%), 25%, 5);
+					padding-top: 1px;
+					padding-bottom: 1px;
+					border: 1px solid $white;
+					display: inline-block;
+					*display: inline;
+					zoom: 1;
+
+					img {
+						display: block;
+					}
+
+				}
+
+				div.errorMessage {
+					color: $custom_magenta;
+				}
+
+				div.no-js {
+					color: $custom_magenta;
+					@include text-shadow(rgba($white, 1) 0 1px);
+					display: none;
+				}
+
+				&.email {
+
+					span {
+						color: blacken($custom_orange, 25%);
+						font-weight: 700;
+					}
+
+					a.no-js {
+						display: none;
+					}
+
+				}
+
+			}
+
+			&:first-child {
+
+				th, td {
+					border-top: none;
+					padding-top: $line-height * .5;
+				}
+
+			}
+
+			&.repeat {
+
+				th {
+					padding-left: $gutter-width * 2;
+				}
+
+			}
+
+		}
+
+	}
+
+	tfoot td {
+		font-style: normal;
+		text-align: right;
+		line-height: $line-height * 2;
+		padding-right: $gutter-width;
+		padding-left: $gutter-width;
+
+		a.g-button,
+		input[type=submit] {
+			border-color: blacken($whitesmoke, 25%);
+			border-bottom-color: blacken($whitesmoke, 25%, 2);
+
+			&:hover {
+				border-color: blacken($whitesmoke, 25%, 2);
+				border-bottom-color: blacken($whitesmoke, 25%, 3);
+			}
+
+			&:active {
+				border-color: blacken($whitesmoke, 25%, 2);
+
+				&:hover {
+					border-color: blacken($whitesmoke, 25%, 3);
+				}
+
+			}
+
+			&.orange {
+				border-color: blacken($custom_orange, 25%);
+				border-bottom-color: blacken($custom_orange, 25%, 2);
+
+				&:hover {
+					border-color: blacken($custom_orange, 25%, 2);
+					border-bottom-color: blacken($custom_orange, 25%, 3);
+				}
+
+				&.active {
+					border-color: blacken($custom_orange, 25%, 2);
+
+					&:hover {
+						border-color: blacken($custom_orange, 25%, 3);
+					}
+
+				}
+
+			}
+
+		}
+
+		input[type=submit] {
+			//@extend .g-button.orangered;
+			position: absolute;
+				right: 0;
+			visibility: hidden;
+		}
+
+	}
+
+	&.foot {
+		background-color: transparent;
+		width: 100%;
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+
+		td {
+			padding: 0;
+		}
+
+	}
+
+}
+
+.no-js table.form {
+
+	// TODO: Used only in item images form
+	div.no-js {
+		display: block !important;
+	}
+
+	tbody tr td.email {
+
+		a.no-js {
+			display: inline;
+		}
+
+		a.js {
+			display: none;
+		}
+
+	}
+
+	tfoot td {
+
+		a.g-button.orange {
+			display: none;
+		}
+
+		input[type=submit] {
+			position: static;
+			visibility: visible;
+		}
+
+	}
+
+}
+
+@media (max-width: $screen-xs-max) {
+	table.form {
+		background-color: transparent;
+		border-top: none;
+		border-bottom: none;
+		display: block;
+
+		caption {
+			display: block;
+		}
+
+		tbody, tfoot, tr, th, td {
+			display: block;
+		}
+
+		tr {
+			background-color: whiten(blacken($beige, 25%), 25%, 4);
+			padding-top: ($line-height * .5) - 1px;
+			padding-bottom: $line-height * .5;
+			margin-top: 1px;
+		}
+
+		th, td {
+			padding-top: 0;
+			padding-bottom: 0;
+			border-top: none;
+		}
+
+		tbody {
+
+			tr {
+
+				th {
+					line-height: $line-height;
+					padding-left: $gutter-width;
+				}
+
+				td {
+					padding-right: $gutter-width;
+					padding-left: $gutter-width;
+
+					div.input-text,
+					div.textarea {
+
+						span.placeholder {
+							display: none;
+						}
+
+					}
+
+				}
+
+				&:first-child {
+					padding-top: $line-height * .5;
+					margin-top: 0;
+
+					th, td {
+						padding-top: 0;
+					}
+
+				}
+
+			}
+
+		}
+
+		tfoot {
+
+			th {
+				display: none;
+			}
+
+			td {
+				padding-right: $gutter-width;
+				padding-left: $gutter-width;
+			}
+
+		}
+
+		&.foot {
+			//background-color: transparent;
+
+			tr {
+				background-color: transparent;
+			}
+
+			td {
+				//background-color: transparent;
+				//padding-right: $gutter-width;
+				//padding-left: $gutter-width;
+			}
+
+		}
+
+	}
+}
+
+table.form--partial {
+	width: 100%;
+
+	td {
+		padding-top: $line-height * .5;
+	}
+
+	tbody tr:first-child td {
+		padding-top: 0;
+	}
+
+	tfoot td {
+		text-align: right;
+		line-height: $line-height * 2;
+	}
+
+}

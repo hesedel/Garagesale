@@ -1,0 +1,114 @@
+@import 'normalize', 'main';
+@import 'vendor/bootstrap',
+				'vendor/font-awesome/font-awesome';
+@import 'compass', 'vendor/bourbon/bourbon';
+@import 'variables', 'form', 'global';
+
+body {
+	cursor: default;
+	font-family: $sans-serif;
+	background-color: blacken(whiten($beige, 25%), 25%, 4);
+	line-height: $line-height;
+}
+
+#body {
+	background-color: $dark;
+	padding-top: $line-height;
+	@include box-shadow(0 1px rgba($black, .1));
+	position: relative;
+}
+
+@media (max-width: $screen-xs-max) {
+	#body {
+		padding-top: 0;
+	}
+}
+
+#body-top {
+	background-color: $custom_cyan;
+	height: 3px;
+	@include box-shadow(0 1px rgba($black, .1));
+	position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+	#body-top {
+		display: none;
+	}
+}
+
+#page {
+	@extend .container;
+	padding-top: $line-height * 3.5;
+	padding-bottom: $line-height * 4;
+	position: relative;
+}
+
+.no-js #page {
+	padding-top: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+	#page {
+		padding-top: 0;
+	}
+}
+
+#header {
+	text-align: center;
+	margin-bottom: $line-height;
+
+	h1 {
+		font-weight: 100;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+}
+
+#logo {
+	color: $white;
+	@include text-shadow(0 -1px rgba($black, .25));
+	background-color: $custom_cyan;
+	padding: $line-height #{$gutter-width * 2};
+	@include border-radius(3px);
+	@include box-shadow(
+		0 0 1px rgba($black, .1) inset,
+		0 0 1px rgba($black, .5)
+	);
+	display: inline;
+
+	span {
+		color: whiten($custom_magenta, 25%, 6);
+	}
+
+}
+
+@media (max-width: $screen-xs-max) {
+	#logo {
+		height: $line-height * 1.5;
+			line-height: $line-height * 1.5;
+		@include border-radius(0);
+	}
+}
+
+h2 {
+	color: whiten($custom_cyan, 25%);
+	text-align: center;
+	margin-bottom: $line-height * 2;
+}
+
+p {
+	color: $white;
+	font-size: 1.5em;
+}
+
+#footer {
+	color: $dark;
+	text-align: center;
+	padding-top: $line-height * 2;
+	padding-bottom: $line-height * 2;
+}
