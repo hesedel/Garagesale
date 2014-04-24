@@ -154,10 +154,18 @@
 		<?php #menu ?>
 
 		<div id="menu">
+			<span class="x">&times;</span>
 			<ul>
-				<li><a href="#">Menu Item 1</a></li>
-				<li><a href="#">Menu Item 2</a></li>
-				<li><a href="#">Menu Item 3</a></li>
+				<li class="heading">All categories</li>
+				<li><a href="#">Category 1</a></li>
+				<li><a href="#">Category 2</a></li>
+				<li><a href="#">Category 3</a></li>
+				<?php if(!Yii::app()->user->isGuest): ?>
+				<li class="heading">Your categories</li>
+				<li><a href="#">Category 1</a><span class="badge">#</span></li>
+				<li><a href="#">Category 2</a><span class="badge">#</span></li>
+				<li><a href="#">Category 3</a><span class="badge">#</span></li>
+			<?php endif; ?>
 			</ul>
 		</div>
 
