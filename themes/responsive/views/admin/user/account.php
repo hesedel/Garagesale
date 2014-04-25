@@ -18,6 +18,16 @@ $this->layout = 'column1';
 		'focus' => array($model, 'title'),
 	)); ?>
 
+	<ul class="nav nav-tabs" id="tab">
+		<li class="active"><a href="#home" data-toggle="tab">User Info</a></li>
+		<li><a href="#profile" data-toggle="tab">Password Change</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="home">...</div>
+		<div class="tab-pane" id="profile">...</div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-6 col-sm-6">
 			<table class="form">
@@ -179,6 +189,9 @@ $this->layout = 'column1';
 <?php Yii::app()->clientScript->registerScript(
 	'user_account',
 	"
+	$(function () {
+    $('#tab a:last').tab('show');
+  })
 	$('a', '#user_account div.image').bind('click', function() {
 		var \$this = $(this);
 		if(confirm('Are you sure you want to delete your profile picture?')) {
