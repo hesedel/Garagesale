@@ -240,6 +240,23 @@ class User extends CActiveRecord
 			->queryScalar();
 	}
 
+	public function getLocationDropDownList()
+	{
+		// get the locations
+		$locations = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_location')
+			->order('name')
+			->queryAll();
+
+		// store the locations in a real array
+		$listData = array();
+		foreach($locations as $location)
+			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
+
+		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
