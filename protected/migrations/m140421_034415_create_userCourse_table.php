@@ -6,58 +6,58 @@ class m140421_034415_create_userCourse_table extends CDbMigration
 	{
 		$this->createTable('user_course', array(
 			'id'=>'mediumint UNSIGNED PRIMARY KEY',
-			'name'=>'varchar(64) NOT NULL',
+			'title'=>'varchar(64) NOT NULL',
 		), 'ENGINE InnoDB');
 		$this->addColumn('user', 'course_id', 'mediumint UNSIGNED');
 		$this->addForeignKey('course', 'user', 'course_id', 'user_course', 'id', 'SET NULL', 'CASCADE');
 
 		$this->insert('user_course', array(
 			'id'=>0,
-			'name'=>'Business',
+			'title'=>'Business',
 		));
 		$this->insert('user_course', array(
 			'id'=>1,
-			'name'=>'Communication',
+			'title'=>'Communication',
 		));
 		$this->insert('user_course', array(
 			'id'=>2,
-			'name'=>'Creative Intelligence and Innovation',
+			'title'=>'Creative Intelligence and Innovation',
 		));
 		$this->insert('user_course', array(
 			'id'=>3,
-			'name'=>'Design, Architecture and Building',
+			'title'=>'Design, Architecture and Building',
 		));
 		$this->insert('user_course', array(
 			'id'=>4,
-			'name'=>'Education',
+			'title'=>'Education',
 		));
 		$this->insert('user_course', array(
 			'id'=>5,
-			'name'=>'Engineering',
+			'title'=>'Engineering',
 		));
 		$this->insert('user_course', array(
 			'id'=>6,
-			'name'=>'Health',
+			'title'=>'Health',
 		));
 		$this->insert('user_course', array(
 			'id'=>7,
-			'name'=>'Information Technology',
+			'title'=>'Information Technology',
 		));
 		$this->insert('user_course', array(
 			'id'=>8,
-			'name'=>'International Studies',
+			'title'=>'International Studies',
 		));
 		$this->insert('user_course', array(
 			'id'=>9,
-			'name'=>'Law',
+			'title'=>'Law',
 		));
 		$this->insert('user_course', array(
 			'id'=>10,
-			'name'=>'Pharmacy',
+			'title'=>'Pharmacy',
 		));
 		$this->insert('user_course', array(
 			'id'=>11,
-			'name'=>'Science',
+			'title'=>'Science',
 		));
 
 	}

@@ -245,6 +245,23 @@ class User extends CActiveRecord
 			->queryScalar();
 	}
 
+	public function getCourseDropDownList()
+	{
+		// get the courses
+		$courses = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_course')
+			->order('title')
+			->queryAll();
+
+		// store the categories in a real array
+		$listData = array();
+		foreach($courses as $course)
+			$listData[] = array('id'=>$course['id'], 'title'=>CHtml::encode($course['title']));
+
+		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a course'));
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
