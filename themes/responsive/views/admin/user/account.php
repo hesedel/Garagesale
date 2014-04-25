@@ -18,18 +18,14 @@ $this->layout = 'column1';
 		'focus' => array($model, 'title'),
 	)); ?>
 
-	<ul class="nav nav-tabs" id="tab">
-		<li class="active"><a href="#home" data-toggle="tab">User Info</a></li>
-		<li><a href="#profile" data-toggle="tab">Password Change</a></li>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#user_account-userInfo" data-toggle="tab">User Info</a></li>
+		<li><a href="#user_account-passwordChange" data-toggle="tab">Password Change</a></li>
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="home">...</div>
-		<div class="tab-pane" id="profile">...</div>
-	</div>
+		<div class="tab-pane active" id="user_account-userInfo">
 
-	<div class="row">
-		<div class="col-md-6 col-sm-6">
 			<table class="form">
 				<caption>User Info</caption>
 				<tbody>
@@ -126,8 +122,10 @@ $this->layout = 'column1';
 
 				</tbody>
 			</table>
+
 		</div>
-		<div class="col-md-6 col-sm-6">
+		<div class="tab-pane" id="user_account-passwordChange">
+
 			<table class="form">
 				<caption>Password Change</caption>
 				<tbody>
@@ -167,6 +165,7 @@ $this->layout = 'column1';
 
 				</tbody>
 			</table>
+
 		</div>
 	</div>
 
