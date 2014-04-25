@@ -108,20 +108,7 @@ $this->layout='column1';
 					<tr>
 						<th><?php echo $form->labelEx($model,'location_id'); ?></th>
 						<td>
-							<?php
-							// get the locations
-							$locations = Yii::app()->db->createCommand()
-								->select('*')
-								->from('user_location')
-								->order('name')
-								->queryAll();
-	
-							// store the locations in a real array
-							$listData = array();
-							foreach($locations as $location)
-								$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
-							?>
-							<?php echo CHtml::activeDropDownList($model, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location')); ?>
+							<?php echo $model->getLocationDropDownList(); ?>
 							<?php echo $form->error($model,'location_id'); ?>
 						</td>
 					</tr>
