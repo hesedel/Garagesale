@@ -97,19 +97,13 @@ $this->layout='column1';
 						</td>
 					</tr>
 
-						<tr>
-						<th><?php echo $form->labelEx($model,'course_area'); ?></th>
+					<tr>
+						<th><?php echo $form->labelEx($model,'course'); ?></th>
 						<td>
-							<div class="input-text">
-								<?php echo $form->textField($model,'course_area'); ?>
-								<span class="placeholder">Phone</span>
-							</div>
-							<?php echo $form->error($model,'course_area'); ?>
+							<?php echo $model->getCourseDropDownList(); ?>
+							<?php echo $form->error($model,'course'); ?>
 						</td>
 					</tr>
-
-
-
 
 					<tr>
 						<th><?php echo $form->labelEx($model,'location_id'); ?></th>
