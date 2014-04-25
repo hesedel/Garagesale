@@ -4,7 +4,7 @@ $this->breadcrumbs=array(
 	'Register',
 );
 
-$this->layout='column2';
+$this->layout='column1';
 ?>
 
 <div class="g-form" id="site_register">
@@ -142,8 +142,8 @@ $this->layout='column2';
 					<?php //<th>&#160;</th> ?>
 					<td colspan="2">
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button')); ?>
-						<?php echo CHtml::linkButton('Register', array('class'=>'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Register', array('class'=>'submit g-button orange')); ?>
+						<?php echo CHtml::linkButton('Register', array('class'=>'submit g-button--primary')); ?>
+						<?php echo CHtml::submitButton('Register', array('class'=>'submit g-button--primary')); ?>
 					</td>
 				</tr>
 

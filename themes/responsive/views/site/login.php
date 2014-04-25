@@ -4,10 +4,10 @@ $this->breadcrumbs=array(
 	'Login',
 );
 
-$this->layout = '/layouts/transition';
+$this->layout = '/layouts/column1';
 ?>
 
-<div id="site_login">
+<div class="g-form" id="site_login">
 	<h2>Login</h2>
 	<div class="form">
 		<?php $form=$this->beginWidget('CActiveForm', array(
@@ -57,9 +57,10 @@ $this->layout = '/layouts/transition';
 					<td colspan="2">
 						<?php echo $form->checkBox($model,'rememberMe'); ?>
 						<?php echo $form->label($model,'rememberMe'); ?>
+						<br>
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class'=>'g-button')); ?>
-						<?php echo CHtml::linkButton('Login', array('class'=>'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Login', array('class'=>'submit g-button orange')); ?>
+						<?php echo CHtml::linkButton('Login', array('class'=>'submit g-button--primary')); ?>
+						<?php echo CHtml::submitButton('Login', array('class'=>'submit g-button--primary')); ?>
 					</td>
 				</tr>
 
