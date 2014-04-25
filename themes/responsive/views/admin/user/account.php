@@ -97,7 +97,8 @@ $this->layout='column1';
 						</td>
 					</tr>
 
-						<tr>
+					<?php /*
+					<tr>
 						<th><?php echo $form->labelEx($model,'course_area'); ?></th>
 						<td>
 							<div class="input-text">
@@ -107,9 +108,7 @@ $this->layout='column1';
 							<?php echo $form->error($model,'course_area'); ?>
 						</td>
 					</tr>
-
-
-
+					*/ ?>
 
 					<tr>
 						<th><?php echo $form->labelEx($model,'location_id'); ?></th>
