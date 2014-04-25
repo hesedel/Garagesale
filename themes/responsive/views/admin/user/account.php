@@ -178,8 +178,8 @@ $this->layout='column1';
 				<?php //<th>&#160;</th> ?>
 				<td>
 					<?php echo CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button cancel')); ?>
-					<?php echo CHtml::linkButton('Save', array('class'=>'submit g-button orange')); ?>
-					<?php echo CHtml::submitButton('Save', array('class'=>'submit g-button orange')); ?>
+					<?php echo CHtml::linkButton('Save', array('class'=>'submit g-button--primary')); ?>
+					<?php echo CHtml::submitButton('Save', array('class'=>'submit g-button--primary')); ?>
 				</td>
 			</tr>
 		</tfoot>
