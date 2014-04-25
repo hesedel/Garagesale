@@ -15,7 +15,7 @@ $this->layout = 'column1';
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
 		'htmlOptions' => array('enctype' => 'multipart/form-data'),
-		'focus' => array($model,'title'),
+		'focus' => array($model, 'title'),
 	)); ?>
 
 	<div class="row">
@@ -28,11 +28,11 @@ $this->layout = 'column1';
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
-								<?php echo CHtml::image('/img/vendor/slir/w73-h70-c73x70-be8e8e3'.$model->getImage(), $model->id); ?>
-								<?php echo CHtml::link('<i class="fa fa-times"></i>', array('image_delete'), array('title'=>'remove profile picture')); ?>
+								<?php echo CHtml::image('/img/vendor/slir/w73-h70-c73x70-be8e8e3' . $model->getImage(), $model->id); ?>
+								<?php echo CHtml::link('<i class="fa fa-times"></i>', array('image_delete'), array('title' => 'remove profile picture')); ?>
 							</div>
 							<?php else:
-								echo $this->renderPartial('_noImage', array('model'=>$model));
+								echo $this->renderPartial('_noImage', array('model' => $model));
 							endif; ?>
 						</th>
 						<td>
@@ -41,76 +41,76 @@ $this->layout = 'column1';
 							<?php else: ?>
 							<span>Upload a profile picture:</span>
 							<?php endif; ?>
-							<?php echo $form->fileField($model,'image_temp'); ?>
-							<?php echo $form->error($model,'image_temp'); ?>
+							<?php echo $form->fileField($model, 'image_temp'); ?>
+							<?php echo $form->error($model, 'image_temp'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->label($model,'id'); ?></th>
+						<th><?php echo $form->label($model, 'id'); ?></th>
 						<td>
 							<?php echo $model->id; ?>
 							<?php /*
 							<div class="input-text">
-								<?php echo $form->textField($model,'id'); ?>
+								<?php echo $form->textField($model, 'id'); ?>
 								<span class="placeholder">ID</span>
 							</div>
-							<?php echo $form->error($model,'id'); ?>
+							<?php echo $form->error($model, 'id'); ?>
 							*/ ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'name_first'); ?></th>
+						<th><?php echo $form->labelEx($model, 'name_first'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->textField($model,'name_first'); ?>
+								<?php echo $form->textField($model, 'name_first'); ?>
 								<span class="placeholder">First Name</span>
 							</div>
-							<?php echo $form->error($model,'name_first'); ?>
+							<?php echo $form->error($model, 'name_first'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'name_last'); ?></th>
+						<th><?php echo $form->labelEx($model, 'name_last'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->textField($model,'name_last'); ?>
+								<?php echo $form->textField($model, 'name_last'); ?>
 								<span class="placeholder">Last Name</span>
 							</div>
-							<?php echo $form->error($model,'name_last'); ?>
+							<?php echo $form->error($model, 'name_last'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'email'); ?></th>
-						<td class="email"><?php echo $this->renderPartial('account/_email', array('model'=>$model), true); ?></td>
+						<th><?php echo $form->labelEx($model, 'email'); ?></th>
+						<td class="email"><?php echo $this->renderPartial('account/_email', array('model' => $model), true); ?></td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'phone'); ?></th>
+						<th><?php echo $form->labelEx($model, 'phone'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->textField($model,'phone'); ?>
+								<?php echo $form->textField($model, 'phone'); ?>
 								<span class="placeholder">Phone</span>
 							</div>
-							<?php echo $form->error($model,'phone'); ?>
+							<?php echo $form->error($model, 'phone'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'course'); ?></th>
+						<th><?php echo $form->labelEx($model, 'course'); ?></th>
 						<td>
 							<?php echo $model->getCourseDropDownList(); ?>
-							<?php echo $form->error($model,'course'); ?>
+							<?php echo $form->error($model, 'course'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'location_id'); ?></th>
+						<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 						<td>
 							<?php echo $model->getLocationDropDownList(); ?>
-							<?php echo $form->error($model,'location_id'); ?>
+							<?php echo $form->error($model, 'location_id'); ?>
 						</td>
 					</tr>
 
@@ -123,35 +123,35 @@ $this->layout = 'column1';
 				<tbody>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'password_old'); ?></th>
+						<th><?php echo $form->labelEx($model, 'password_old'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->passwordField($model,'password_old',array('size'=>32,'maxlength'=>32)); ?>
+								<?php echo $form->passwordField($model, 'password_old', array('size' => 32, 'maxlength' => 32)); ?>
 								<span class="placeholder">Old Password</span>
 							</div>
-							<?php echo $form->error($model,'password_old'); ?>
+							<?php echo $form->error($model, 'password_old'); ?>
 						</td>
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model,'password'); ?></th>
+						<th><?php echo $form->labelEx($model, 'password'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->passwordField($model,'password',array('size'=>32,'maxlength'=>32,'value'=>isset($_POST['AccountForm']) ? $model->password : '')); ?>
+								<?php echo $form->passwordField($model, 'password', array('size' => 32, 'maxlength' => 32, 'value' => isset($_POST['AccountForm']) ? $model->password : '')); ?>
 								<span class="placeholder">New Password</span>
 							</div>
-							<?php echo $form->error($model,'password'); ?>
+							<?php echo $form->error($model, 'password'); ?>
 						</td>
 					</tr>
 
 					<tr class="repeat">
-						<th><?php echo $form->labelEx($model,'password_repeat'); ?></th>
+						<th><?php echo $form->labelEx($model, 'password_repeat'); ?></th>
 						<td>
 							<div class="input-text">
-								<?php echo $form->passwordField($model,'password_repeat',array('size'=>32,'maxlength'=>32)); ?>
+								<?php echo $form->passwordField($model, 'password_repeat', array('size' => 32, 'maxlength' => 32)); ?>
 								<span class="placeholder">New Password</span>
 							</div>
-							<?php echo $form->error($model,'password_repeat'); ?>
+							<?php echo $form->error($model, 'password_repeat'); ?>
 						</td>
 					</tr>
 
