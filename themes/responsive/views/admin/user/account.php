@@ -189,9 +189,6 @@ $this->layout = 'column1';
 <?php Yii::app()->clientScript->registerScript(
 	'user_account',
 	"
-	$(function () {
-    $('#tab a:last').tab('show');
-  })
 	$('a', '#user_account div.image').bind('click', function() {
 		var \$this = $(this);
 		if(confirm('Are you sure you want to delete your profile picture?')) {
