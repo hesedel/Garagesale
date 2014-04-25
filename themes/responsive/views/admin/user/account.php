@@ -1,22 +1,23 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Account';
-$this->breadcrumbs=array(
-	$model->id=>array('view','id'=>$model->id),
+$this->pageTitle = Yii::app()->name . ' - Account';
+$this->breadcrumbs = array(
+	$model->id => array('view', 'id' => $model->id),
 	'Account',
 );
 
-$this->layout='column1';
+$this->layout = 'column1';
 ?>
 
 <div class="g-form" id="user_account">
 	<h2>Account</h2>
-	<?php $form=$this->beginWidget('CActiveForm', array(
-		'id'=>'user-account-form',
-		'enableAjaxValidation'=>true,
-		'enableClientValidation'=>true,
-		'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-		'focus'=>array($model,'title'),
+	<?php $form = $this->beginWidget('CActiveForm', array(
+		'id' => 'user-account-form',
+		'enableAjaxValidation' => true,
+		'enableClientValidation' => true,
+		'htmlOptions' => array('enctype' => 'multipart/form-data'),
+		'focus' => array($model,'title'),
 	)); ?>
+
 	<div class="row">
 		<div class="col-md-6 col-sm-6">
 			<table class="form">
