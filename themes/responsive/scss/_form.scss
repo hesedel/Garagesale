@@ -555,7 +555,7 @@ table.form {
 			//background-color: whiten(blacken($beige, 25%), 25%, 4);
 			padding-top: ($line-height * .5) - 1px;
 			padding-bottom: $line-height * .5;
-			border-top: 1px dotted $color;
+			border-top: 1px solid blacken($color_body_bg, 5%);
 			//margin-top: 1px;
 		}
 

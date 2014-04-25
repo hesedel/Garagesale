@@ -73,8 +73,8 @@ $color_anchor   : $color_peterRiver;
 	$color_anchor-hover: $color_belizeHole;
 	$color_anchor-visited: $color_amethyst;
 		$color_anchor-visited-hover: $color_wisteria;
-$color_header_bg: blacken($color_clouds, 5%, 2);
-$color_body_bg  : blacken($color_clouds, 5%, 2);
+$color_header_bg: blacken($color_clouds, 5%);
+$color_body_bg  : blacken($color_clouds, 5%);
 $color_footer_bg: $color_greenSea;
 $color_headings : $color_customBrown;
 

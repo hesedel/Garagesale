@@ -172,10 +172,8 @@
 		<?php #menu end ?>
 
 		<?php if(
-			$this->getRoute() !== 'site/index' &&
-			$this->getRoute() !== 'site/register' &&
-			$this->getRoute() !== 'site/login' &&
-			$this->getRoute() !== 'admin/user/account'
+			$this->getRoute() == 'item/search' ||
+			$this->getRoute() == 'item/view'
 		): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
