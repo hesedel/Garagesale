@@ -180,8 +180,6 @@ div.g-form {
 	padding-top: $line-height * 2;
 
 	h2 {
-		color: whiten($custom_orange, 25%, 3);
-		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 		margin-top: 0;
 		margin-bottom: 0;
 		position: absolute;
@@ -242,102 +240,7 @@ table.g-table {
 
 } // .g-table
 
-/*
-div.g-tabs {
-	font-family: ProximaNovaRegular;
-	font-size: 1em;
-	background-color: transparent;
-	background-image: none;
-	border: none;
-	@include border-radius(0);
-	padding: 18px 0 0;
-
-	ul.ui-tabs-nav {
-		background-color: transparent;
-		background-image: none;
-		border: none;
-		@include border-radius(0);
-		height: 27px;
-		margin-top: -1px;
-		padding: 1px 0 9px 10px;
-		overflow: hidden;
-
-		li {
-			background-color: whiten(blacken($beige, 25%), 25%, 3);
-			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
-			border: none;
-			@include border-radius(3px);
-			@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
-			top: 0;
-			height: 27px;
-			margin-right: 10px;
-
-			a {
-				color: whiten(blacken($beige, 25%), 25%, 4);
-				color: blacken($beige, 25%, 3);
-				//font-size: $h4;
-				@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
-				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-				line-height: 27px;
-				padding: 0 10px;
-			}
-
-			&:hover {
-				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				background-image: none;
-
-				a {}
-
-			}
-
-			&.ui-tabs-selected {
-				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				@include border-bottom-radius(0);
-				background-image: none;
-				padding-bottom: 9px;
-
-				a {
-					color: blacken($beige, 25%, 3);
-					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-				}
-
-				&:hover {
-
-					a {
-						cursor: default;
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
-	div.tab-content {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		@include border-radius(3px);
-		@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
-		padding: 18px 20px;
-	}
-
-} // .g-tabs
-*/
-
-/*
-.no-js div.g-tabs {
-
-	> ul {
-		display: none;
-	}
-
-	div.tab-content {
-		margin-bottom: 18px;
-	}
-
-}
-*/
+@import 'g-tabs';
 
 div.g-userItemView {
 	background-color: $light;

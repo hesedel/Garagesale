@@ -1,5 +1,19 @@
 $(function() {
 
+	$('i', '#menu-toggle').bind('click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#menu').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#menu').removeClass('is-active');
+		}
+	});
+
+	$('.x', '#menu').bind('click', function() {
+		$('i', '#menu-toggle').trigger('click');
+	});
+
 	$('.a', '#user').data('hover', false);
 	$('.a > a', '#user').bind( {
 		touchstart: function() {

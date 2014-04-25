@@ -59,10 +59,10 @@ body {
 	margin-bottom: $line-height;
 
 	a {
-		color: $color_carrot;
+		color: $color_customBrown;
 
 		&:hover {
-			color: blacken($color_carrot, 25%);
+			color: blacken($color_customBrown, 25%);
 			text-decoration: none;
 		}
 
