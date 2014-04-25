@@ -39,7 +39,7 @@ class SiteController extends Controller
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
-				'backColor'=>0xEEEEEA,
+				'backColor'=>0xFFFFFF,
 				'foreColor'=>0x000000,
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'

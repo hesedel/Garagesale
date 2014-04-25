@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'user_course':
  * @property integer $id
- * @property string $name
+ * @property string $title
  *
  * The followings are the available model relations:
  * @property User[] $users
@@ -28,12 +28,12 @@ class UserCourse extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name', 'required'),
+			array('id, title', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>32),
+			array('title', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('id, title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +45,7 @@ class UserCourse extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::HAS_MANY, 'User', 'course_area_id'),
+			'users' => array(self::HAS_MANY, 'User', 'course_id'),
 		);
 	}
 
@@ -56,7 +56,7 @@ class UserCourse extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'title' => 'Title',
 		);
 	}
 
@@ -79,7 +79,7 @@ class UserCourse extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('title',$this->title,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

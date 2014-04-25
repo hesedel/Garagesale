@@ -36,9 +36,17 @@
 
 		<?php #header end ?>
 
+		<?php #menu-toggle ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
+			<i class="fa fa-bars"></i>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #menu-toggle end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
-		<?php #register ?>
+		<?php /* #register ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
 			<?php echo CHtml::link('Register', array('/site/register')); ?>
@@ -52,7 +60,26 @@
 			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #login end ?>
+		<?php #login end */ ?>
+
+		<?php #user ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
+			<div class="a">
+				<?php echo CHtml::link(
+					'<i class="fa fa-user"></i> ' .
+						Yii::app()->user->id .
+							'<i class="fa fa-angle-down"></i>',
+					array('#')
+				); ?>
+				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i>Login', array('/site/login')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i>Register', array('/site/register')); ?></li>
+				</ul>
+			</div>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #user end ?>
 
 		<?php else: ?>
 
@@ -106,7 +133,7 @@
 
 		<?php #filters end */ ?>
 
-		<?php if($this->getRoute() !== 'site/index'): #search ?>
+		<?php /* if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 
@@ -114,7 +141,7 @@
 
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php endif; #search end ?>
+		<?php endif; #search end */ ?>
 
 		<?php #post ?>
 
@@ -123,6 +150,39 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
+
+		<?php #menu ?>
+
+		<div id="menu">
+			<span class="x">&times;</span>
+			<ul>
+				<li class="heading">All categories</li>
+				<li><a href="#">Category 1</a></li>
+				<li><a href="#">Category 2</a></li>
+				<li><a href="#">Category 3</a></li>
+				<?php if(!Yii::app()->user->isGuest): ?>
+				<li class="heading">Your categories</li>
+				<li><a href="#">Category 1</a><span class="badge">#</span></li>
+				<li><a href="#">Category 2</a><span class="badge">#</span></li>
+				<li><a href="#">Category 3</a><span class="badge">#</span></li>
+			<?php endif; ?>
+			</ul>
+		</div>
+
+		<?php #menu end ?>
+
+		<?php if(
+			$this->getRoute() == 'item/search' ||
+			$this->getRoute() == 'item/view'
+		): #search ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+
+			<?php $this->renderPartial('/layouts/_search'); ?>
+
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #search end ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 

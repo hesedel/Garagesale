@@ -17,11 +17,13 @@
  * @property string $image_size
  * @property integer $verified
  * @property integer $location_id
+ * @property integer $course_id
  *
  * The followings are the available model relations:
  * @property Item[] $items
  * @property ItemContact[] $itemContacts
  * @property ItemContact[] $itemContacts1
+ * @property UserCourse $course
  * @property UserLocation $location
  * @property UserEmailChange[] $userEmailChanges
  * @property UserMessage[] $userMessages
@@ -50,7 +52,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, email, name_first', 'required'),
-			array('verified, location_id', 'numerical', 'integerOnly'=>true),
+			array('verified, location_id, course_id', 'numerical', 'integerOnly'=>true),
 			array('id, password, name_first, name_last', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
@@ -62,7 +64,7 @@ class User extends CActiveRecord
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, created, updated, name_first, name_last, phone, verified, location_id', 'safe', 'on'=>'search'),
+			array('id, email, created, updated, name_first, name_last, phone, verified, location_id, course_id', 'safe', 'on'=>'search'),
 			array('id', 'length', 'min'=>4),
 			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
 			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
@@ -88,6 +90,7 @@ class User extends CActiveRecord
 			'items' => array(self::HAS_MANY, 'Item', 'user_id'),
 			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'user_id_replier'),
 			'itemContacts1' => array(self::HAS_MANY, 'ItemContact', 'user_id_poster'),
+			'course' => array(self::BELONGS_TO, 'UserCourse', 'course_id'),
 			'location' => array(self::BELONGS_TO, 'UserLocation', 'location_id'),
 			'userEmailChanges' => array(self::HAS_MANY, 'UserEmailChange', 'user_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'user_id_from'),
@@ -116,6 +119,7 @@ class User extends CActiveRecord
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
 			'location_id' => 'Location',
+			'course_id' => 'Course',
 		);
 	}
 
@@ -147,6 +151,7 @@ class User extends CActiveRecord
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('verified',$this->verified);
 		$criteria->compare('location_id',$this->location_id);
+		$criteria->compare('course_id',$this->course_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -238,6 +243,40 @@ class User extends CActiveRecord
 			->from('user')
 			->where('id=:id', array(':id'=>$this->id))
 			->queryScalar();
+	}
+
+	public function getLocationDropDownList()
+	{
+		// get the locations
+		$locations = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_location')
+			->order('name')
+			->queryAll();
+
+		// store the locations in a real array
+		$listData = array();
+		foreach($locations as $location)
+			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
+
+		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
+	}
+
+	public function getCourseDropDownList()
+	{
+		// get the courses
+		$courses = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_course')
+			->order('title')
+			->queryAll();
+
+		// store the categories in a real array
+		$listData = array();
+		foreach($courses as $course)
+			$listData[] = array('id'=>$course['id'], 'title'=>CHtml::encode($course['title']));
+
+		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a course'));
 	}
 
 	/**
