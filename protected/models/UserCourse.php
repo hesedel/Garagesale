@@ -30,7 +30,7 @@ class UserCourse extends CActiveRecord
 		return array(
 			array('id, name', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>32),
+			array('name', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name', 'safe', 'on'=>'search'),
@@ -45,7 +45,7 @@ class UserCourse extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::HAS_MANY, 'User', 'course_area_id'),
+			'users' => array(self::HAS_MANY, 'User', 'course_id'),
 		);
 	}
 
