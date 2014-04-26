@@ -80,8 +80,8 @@ $convo_id = base_convert($token[2],36,10);
 * Get row from item_contact table
 * $item_contact = SELECT * FROM item_contact WHERE id = $convo_id
 */
-$query = mysqli_query($conn,"SELECT * FROM item_contact WHERE id = $convo_id");
-$item_contact = mysqli_fetch_array($query);
+$result = $mysqli->query("SELECT * FROM item_contact WHERE id = $convo_id");
+$item_contact = $result->fetch_array(MYSQLI_ASSOC);
 $replier_id = $item_contact['user_id_replier'];
 $poster_id = $item_contact['user_id_poster'];
 
@@ -90,8 +90,8 @@ if ( $recipient == 'replier' ) {
 	// If replier get the replier's email via $replier_id
 	// If replier_id is not empty
 	if ( $replier_id ) {
-		$query = mysqli_query($conn,"SELECT email FROM user WHERE id = $replier_id");
-		$recipient_user = mysqli_fetch_array($query);
+		$result = $mysqli->query("SELECT email FROM user WHERE id = $replier_id");
+		$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 		$recipient_email = $recipient_user['email'];
 	} else {
 		// If $replier_id is empty then get the email from the item_contact table instead
@@ -100,8 +100,8 @@ if ( $recipient == 'replier' ) {
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
 } else {
-	$query = mysqli_query($conn,"SELECT email FROM user WHERE id = $poster_id");
-	$recipient_user = mysqli_fetch_array($query);
+	$result = $mysqli->query("SELECT email FROM user WHERE id = $poster_id");
+	$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 	$recipient_email = $recipient_user['email'];
 
 	$sender_email = str_replace('poster', 'replier', $toEmail);
@@ -149,4 +149,8 @@ $body .= "Recipient Email: {$recipient_email} \n";
 //show all the decoded email info  
 // print_r($decoded); 
 mail('janzen.contact@gmail.com', $subject, $body, $headers);
-mysqli_close($conn);
+/* free result set */
+$result->free();
+
+/* close connection */
+$mysqli->close();
