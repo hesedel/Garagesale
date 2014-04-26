@@ -35,6 +35,7 @@ class SiteController extends Controller
 	 */
 	public function actions()
 	{
+		Yii::app()->theme='responsive';
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
