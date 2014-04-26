@@ -134,6 +134,7 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
+		Yii::app()->theme='responsive';
 		$this->render('contact',array('model'=>$model));
 	}
 
