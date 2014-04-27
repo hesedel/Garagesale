@@ -17,16 +17,16 @@ $this->layout = '/layouts/column1';
 
 		<p class="alert alert-warning"><strong>ALERT!</strong>, you'll need to verify your new email address.<br/>An email has been sent to you ( <strong><?php echo $model->email; ?></strong> )<br/>Please follow the instructions in the email to change your email on account.<br/>If you can't see the email, it might be in your spam folder.</p>
 
-		<?php echo CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small')); ?>
+		<?php echo CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class' => 'g-button small')); ?>
 
 	<?php else: ?>
 
 	<h2>Email Change</h2>
 	<div class="form">
 		<?php $form = $this->beginWidget('CActiveForm', array(
-			'id'=>'user-emailChange-form',
-			'enableClientValidation'=>true,
-			'focus'=>array($model,'password'),
+			'id' => 'user-emailChange-form',
+			'enableClientValidation' => true,
+			'focus' => array($model,'password'),
 		)); ?>
 		<?php //echo $form->errorSummary($model); ?>
 		<table class="form" summary="Email Change">
@@ -34,35 +34,35 @@ $this->layout = '/layouts/column1';
 			<tbody>
 
 				<tr>
-					<th><?php echo $form->labelEx($model,'password'); ?></th>
+					<th><?php echo $form->labelEx($model, 'password'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->passwordField($model,'password'); ?>
+							<?php echo $form->passwordField($model, 'password'); ?>
 							<span class="placeholder">Password</span>
 						</div>
-						<?php echo $form->error($model,'password'); ?>
+						<?php echo $form->error($model, 'password'); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th><?php echo $form->labelEx($model,'email'); ?></th>
+					<th><?php echo $form->labelEx($model, 'email'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model,'email'); ?>
+							<?php echo $form->textField($model, 'email'); ?>
 							<span class="placeholder">New Email</span>
 						</div>
-						<?php echo $form->error($model,'email'); ?>
+						<?php echo $form->error($model, 'email'); ?>
 					</td>
 				</tr>
 
 				<tr class="repeat">
-					<th><?php echo $form->labelEx($model,'email_repeat'); ?></th>
+					<th><?php echo $form->labelEx($model, 'email_repeat'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model,'email_repeat'); ?>
+							<?php echo $form->textField($model, 'email_repeat'); ?>
 							<span class="placeholder">Repeat New Email</span>
 						</div>
-						<?php echo $form->error($model,'email_repeat'); ?>
+						<?php echo $form->error($model, 'email_repeat'); ?>
 					</td>
 				</tr>
 
