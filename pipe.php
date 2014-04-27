@@ -142,6 +142,10 @@ $body = "From Email: {$fromEmail} \n";
 $body .= "From Name: {$fromName} \n";
 $body .= "To Email: {$toEmail} \n";
 $body .= "To Name: {$toName} \n";
+if ( $result )
+	$body .= "True Result \n";
+else
+	$body .= "False Result \n";
 $body .= "/************************/ \n";
 $body .= "Sender Email: {$sender_email} \n";
 $body .= "Recipient Email: {$recipient_email} \n";
