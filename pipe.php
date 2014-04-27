@@ -75,7 +75,8 @@ $token = explode('.', $toEmail);
 $split = explode('@', $token[2]);
 $recipient = $token[0];
 $item_id = $token[1];
-$convo_id = base_convert($split[0],36,10);
+// $convo_id = base_convert($split[0],36,10);
+$convo_id = $split[0];
 
 /**
 * Get row from item_contact table
