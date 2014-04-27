@@ -1,13 +1,13 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Post a FREE Ad';
-$this->breadcrumbs=array(
-	'Ads'=>array('index'),
+$this->pageTitle = Yii::app()->name . ' - Post a FREE Ad';
+$this->breadcrumbs = array(
+	'Ads' => array('index'),
 	'Post',
 );
 
-$this->menu=array(
-	array('label'=>'List Item', 'url'=>array('index')),
-	array('label'=>'Manage Item', 'url'=>array('admin')),
+$this->menu = array(
+	array('label'=>'List Item', 'url' => array('index')),
+	array('label' => 'Manage Item', 'url' => array('admin')),
 );
 ?>
 
@@ -15,5 +15,5 @@ $this->menu=array(
 
 	<h2>Post a FREE Ad</h2>
 
-	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+	<?php echo $this->renderPartial('_form', array('model' => $model)); ?>
 </div>
