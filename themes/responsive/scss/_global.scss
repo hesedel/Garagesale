@@ -121,6 +121,69 @@ th {
 
 }
 
+.nav {
+
+	> li {
+		padding-top: $line-height * (1 / 3);
+
+		> a {
+			padding: #{($line-height * (1 / 6)) - 1px} #{($gutter-width * (2 / 3)) - 1px}
+		}
+
+		&.active {
+			padding-top: 0;
+
+			a {
+				padding-top: ($line-height * .5) - 1px;
+				padding-bottom: ($line-height * .5) - 1px;
+			}
+
+		}
+
+	}
+
+}
+
+.nav-tabs {
+	border-bottom-color: blacken($color_body-bg, 25%);
+
+	> li {
+
+		> a {
+			color: $color_customBrown;
+			background-color: $color_customYellow;
+			line-height: $line-height;
+			border-color: blacken($color_body-bg, 25%);
+			@include border-radius($border-radius);
+			margin-right: $gutter-width * (1 / 3);
+
+			&:hover {
+				background-color: $color_customYellow;
+				border-color: blacken($color_body-bg, 25%);
+			}
+
+		}
+
+		&.active {
+
+			> a {
+				@include border-bottom-radius(0);
+			}
+
+			> a, a:hover, a:focus {
+				color: $color_customBrown;
+				background-color: $color_body-bg;
+				border-top-color: blacken($color_body-bg, 25%);
+				border-right-color: blacken($color_body-bg, 25%);
+				border-left-color: blacken($color_body-bg, 25%);
+			}
+
+		}
+
+	}
+
+}
+
 /*
  * g-
  */
