@@ -146,6 +146,7 @@ $body .= "To Email: {$toEmail} \n";
 $body .= "To Name: {$toName} \n";
 $body .= "\n\n";
 $body .= var_export($token, true);
+$body .= var_export($split, true);
 $body .= "\n\n";
 $body .= var_export("SELECT * FROM item_contact WHERE id = $convo_id", true);
 $body .= "\n\n";
