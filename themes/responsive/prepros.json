@@ -247,6 +247,20 @@
         "mangle": true,
         "sourcemaps": false
       }
+    },
+    "6e96e3ed": {
+      "id": "6e96e3ed",
+      "pid": "c6f102e3",
+      "name": "bootstrap.codekit.js",
+      "input": "js\\vendor\\bootstrap.codekit.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
     }
   },
   "imports": {
@@ -263,7 +277,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_variables.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "535cbe2b": {
@@ -271,7 +286,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_mixins.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "a928a957": {
@@ -279,7 +295,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_path.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "edd8be48": {
@@ -287,7 +304,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_core.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "9076959d": {
@@ -295,7 +313,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_larger.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "b5e1e091": {
@@ -303,7 +322,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_fixed-width.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "7e7070f3": {
@@ -311,7 +331,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_list.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "54f7df02": {
@@ -319,7 +340,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_bordered-pulled.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "0c26fd9d": {
@@ -327,7 +349,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_spinning.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "cd2293e6": {
@@ -335,7 +358,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_rotated-flipped.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "6ffbd205": {
@@ -343,7 +367,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_stacked.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "3cc8fe45": {
@@ -351,7 +376,8 @@
       "pid": "c6f102e3",
       "path": "scss\\vendor\\font-awesome\\_icons.scss",
       "parents": [
-        "16ad29e9"
+        "16ad29e9",
+        "5a2d746f"
       ]
     },
     "19b72eee": {
@@ -360,7 +386,8 @@
       "path": "scss\\vendor\\bootstrap\\_variables.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "5812ca59": {
@@ -369,7 +396,8 @@
       "path": "scss\\vendor\\bootstrap\\_mixins.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "13f33a68": {
@@ -378,7 +406,8 @@
       "path": "scss\\vendor\\bootstrap\\_normalize.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "0ecc3b38": {
@@ -387,7 +416,8 @@
       "path": "scss\\vendor\\bootstrap\\_print.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "1b125256": {
@@ -396,7 +426,8 @@
       "path": "scss\\vendor\\bootstrap\\_scaffolding.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "c70dbc42": {
@@ -405,7 +436,8 @@
       "path": "scss\\vendor\\bootstrap\\_type.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "930b71e2": {
@@ -424,7 +456,8 @@
       "path": "scss\\vendor\\bootstrap\\_grid.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "853ebd60": {
@@ -433,7 +466,8 @@
       "path": "scss\\vendor\\bootstrap\\_tables.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "867b9548": {
@@ -442,7 +476,8 @@
       "path": "scss\\vendor\\bootstrap\\_forms.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "db9ece49": {
@@ -471,7 +506,8 @@
       "path": "scss\\vendor\\bootstrap\\_glyphicons.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "bf80f0ef": {
@@ -500,7 +536,8 @@
       "path": "scss\\vendor\\bootstrap\\_input-groups.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "00c04e8b": {
@@ -509,7 +546,8 @@
       "path": "scss\\vendor\\bootstrap\\_navs.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "3686a97e": {
@@ -518,7 +556,8 @@
       "path": "scss\\vendor\\bootstrap\\_navbar.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "fc6a04b6": {
@@ -537,7 +576,8 @@
       "path": "scss\\vendor\\bootstrap\\_pagination.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "cf90c34b": {
@@ -546,7 +586,8 @@
       "path": "scss\\vendor\\bootstrap\\_pager.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "47545bbf": {
@@ -555,7 +596,8 @@
       "path": "scss\\vendor\\bootstrap\\_labels.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "ddc88fbc": {
@@ -574,7 +616,8 @@
       "path": "scss\\vendor\\bootstrap\\_jumbotron.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "569ecdea": {
@@ -583,7 +626,8 @@
       "path": "scss\\vendor\\bootstrap\\_thumbnails.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "0a8aef8c": {
@@ -602,7 +646,8 @@
       "path": "scss\\vendor\\bootstrap\\_progress-bars.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "6228afd5": {
@@ -611,7 +656,8 @@
       "path": "scss\\vendor\\bootstrap\\_media.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "6763a2bc": {
@@ -620,7 +666,8 @@
       "path": "scss\\vendor\\bootstrap\\_list-group.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "630ca3d6": {
@@ -629,7 +676,8 @@
       "path": "scss\\vendor\\bootstrap\\_panels.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "11de3378": {
@@ -638,7 +686,8 @@
       "path": "scss\\vendor\\bootstrap\\_wells.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "e32ad051": {
@@ -657,7 +706,8 @@
       "path": "scss\\vendor\\bootstrap\\_modals.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "f9435e86": {
@@ -666,7 +716,8 @@
       "path": "scss\\vendor\\bootstrap\\_tooltip.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "eea3e8cd": {
@@ -675,7 +726,8 @@
       "path": "scss\\vendor\\bootstrap\\_popovers.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "a24baab8": {
@@ -694,7 +746,8 @@
       "path": "scss\\vendor\\bootstrap\\_utilities.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "82b61130": {
@@ -703,7 +756,8 @@
       "path": "scss\\vendor\\bootstrap\\_responsive-utilities.scss",
       "parents": [
         "6424f8e0",
-        "5d155a20"
+        "5d155a20",
+        "5a2d746f"
       ]
     },
     "31462c45": {
@@ -1143,8 +1197,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\affix.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "a2b64d79": {
@@ -1152,8 +1206,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\alert.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "6f236d0e": {
@@ -1161,8 +1215,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\button.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "e5bb5abe": {
@@ -1170,8 +1224,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\carousel.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "371922a6": {
@@ -1179,8 +1233,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\collapse.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "b54728a6": {
@@ -1188,8 +1242,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\dropdown.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "c6cd8f67": {
@@ -1197,8 +1251,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\tab.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "e7cb303e": {
@@ -1206,8 +1260,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\transition.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "5d9c49d7": {
@@ -1215,8 +1269,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\scrollspy.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "0c85d7db": {
@@ -1224,8 +1278,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\modal.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "1fe58b55": {
@@ -1233,8 +1287,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\tooltip.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "a6e74837": {
@@ -1242,8 +1296,8 @@
       "pid": "c6f102e3",
       "path": "js\\vendor\\bootstrap\\popover.js",
       "parents": [
-        "8c293f79",
-        "ca2ed446"
+        "ca2ed446",
+        "6e96e3ed"
       ]
     },
     "5d155a20": {
@@ -1306,6 +1360,30 @@
       "id": "e146076d",
       "pid": "c6f102e3",
       "path": "scss\\_site_.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "16ad29e9": {
+      "id": "16ad29e9",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\font-awesome.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "7636350e": {
+      "id": "7636350e",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\jquery.hes.slider.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "349e3e46": {
+      "id": "349e3e46",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\jquery.lightbox-0.5.scss",
       "parents": [
         "5a2d746f"
       ]
