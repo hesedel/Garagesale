@@ -12,19 +12,6 @@
 	<table class="form" summary="Post a New Item">
 		<caption class="hide">Item</caption>
 
-		<tfoot>
-
-			<tr>
-				<th><?php echo $form->hiddenField($model, 'user_id', array('value' => strlen($model->user_id) == 0 ? Yii::app()->user->getId() : $model->user_id)); ?>
-				<td>
-					<?php echo !$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id' => $model->id), array('class' => 'g-button')) . ' ' : ''; ?>
-					<?php echo CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
-				</td>
-			</tr>
-
-		</tfoot>
-
 		<tbody>
 
 			<tr>
@@ -154,6 +141,19 @@
 			</tr>
 
 		</tbody>
+
+		<tfoot>
+
+			<tr>
+				<th><?php echo $form->hiddenField($model, 'user_id', array('value' => strlen($model->user_id) == 0 ? Yii::app()->user->getId() : $model->user_id)); ?>
+				<td>
+					<?php echo !$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id' => $model->id), array('class' => 'g-button')) . ' ' : ''; ?>
+					<?php echo CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
+				</td>
+			</tr>
+
+		</tfoot>
 
 	</table>
 
