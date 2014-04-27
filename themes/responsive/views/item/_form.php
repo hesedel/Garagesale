@@ -220,8 +220,8 @@ Yii::app()->clientScript->registerScript(
 					image: '" . Yii::getPathOfAlias('webroot') . "/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.length)
 				},
 				function() {
-					if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)
-						$('div.images', '#item_create, #item_update').remove();
+					if($('.images', '#item_create, #item_update').children('.image-container').size() == 0)
+						$('.images', '#item_create, #item_update').remove();
 				}
 			);
 		}
