@@ -1,10 +1,15 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Email Change';
+$this->pageTitle = Yii::app()->name . ' - Email Change';
+$this->breadcrumbs = array(
+	Yii::app()->user->id => array('view', 'id' => Yii::app()->user->id),
+	'Account' => array('/admin/user/account'),
+	'Email Change',
+);
 
-$this->layout = '/layouts/transition';
+$this->layout = '/layouts/column1';
 ?>
 
-<div id="user_email-change">
+<div class="g-form" id="user_email-change">
 
 	<?php if($success): ?>
 
@@ -18,7 +23,7 @@ $this->layout = '/layouts/transition';
 
 	<h2>Email Change</h2>
 	<div class="form">
-		<?php $form=$this->beginWidget('CActiveForm', array(
+		<?php $form = $this->beginWidget('CActiveForm', array(
 			'id'=>'user-emailChange-form',
 			'enableClientValidation'=>true,
 			'focus'=>array($model,'password'),
@@ -67,9 +72,9 @@ $this->layout = '/layouts/transition';
 				<tr>
 					<?php //<th>&#160;</th> ?>
 					<td colspan="2">
-						<?php echo CHtml::link('Cancel', array('account'), array('class'=>'g-button')); ?>
-						<?php echo CHtml::linkButton('Change Email', array('class'=>'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Change Email', array('class'=>'submit g-button orange')); ?>
+						<?php echo CHtml::link('Cancel', array('account'), array('class' => 'g-button')); ?>
+						<?php echo CHtml::linkButton('Change Email', array('class' => 'submit g-button--primary')); ?>
+						<?php echo CHtml::submitButton('Change Email', array('class' => 'submit g-button--primary')); ?>
 					</td>
 				</tr>
 
