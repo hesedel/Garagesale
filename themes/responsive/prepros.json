@@ -1387,6 +1387,14 @@
       "parents": [
         "5a2d746f"
       ]
+    },
+    "4a575d4b": {
+      "id": "4a575d4b",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-tabs.scss",
+      "parents": [
+        "5a2d746f"
+      ]
     }
   },
   "images": {},
