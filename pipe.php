@@ -75,8 +75,8 @@ $token = explode('.', $toEmail);
 $split = explode('@', $token[2]);
 $recipient = $token[0];
 $item_id = $token[1];
-// $convo_id = base_convert($split[0],36,10);
-$convo_id = $split[0];
+$convo_id = base_convert($split[0],36,10);
+// $convo_id = $split[0];
 
 /**
 * Get row from item_contact table
@@ -129,6 +129,9 @@ $body=new CSSToInlineStyles(
 	$template,$css
 );
 
+$result = $mysqli->query("SELECT * FROM item_contact");
+$item_contacts = $result->fetch_array(MYSQLI_ASSOC);
+
 // $headers = "From: " . $sender_email . "\r\n";
 // $headers .= "Reply-To: ". $sender_email . "\r\n";
 // $headers .= "CC: susan@example.com\r\n";
@@ -145,14 +148,7 @@ $body .= "From Name: {$fromName} \n";
 $body .= "To Email: {$toEmail} \n";
 $body .= "To Name: {$toName} \n";
 $body .= "\n\n";
-$body .= var_export($token, true);
-$body .= var_export($split, true);
-$body .= "\n\n";
-$body .= var_export("SELECT * FROM item_contact WHERE id = $convo_id", true);
-$body .= "\n\n";
-$body .= var_export("SELECT email FROM user WHERE id = $replier_id", true);
-$body .= "\n\n";
-$body .= var_export($result->fetch_array(MYSQLI_ASSOC), true);
+$body .= var_export($item_contacts);
 $body .= "\n\n";
 $body .= "/************************/ \n";
 $body .= "Sender Email: {$sender_email} \n";
