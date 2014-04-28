@@ -128,7 +128,7 @@ $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 // Initial message
-if ( $item_contact_result->mysqli_num_rows() > 1 ) {
+if ( $item_contact_result->num_rows > 1 ) {
 	$subject = 'Inquiry for '.$item['title'];
 	include('pipe/_emailTemplate.php');
 	$template = ob_get_clean();
