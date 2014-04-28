@@ -165,7 +165,10 @@ if ( $item_contact_result->num_rows > 1 ) {
 
 /* free result set */
 $item_contact_result->free();
-$result->free();
+$item_result->free();
+
+if ( is_object($result) )
+	$result->free();
 
 /* close connection */
 $mysqli->close();
