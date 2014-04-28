@@ -28,6 +28,43 @@ $this->menu=array(
 */
 ?>
 
+
+<style>
+.social-single {
+margin: 17px 0 0 0;
+}
+
+#twitterbutton, #likebutton, #sharebutton {
+float: left;
+display: block;
+}
+
+#likebutton {
+margin-top:0px;
+margin-left:2px;
+margin-right: 13px;
+}
+
+#sharebutton {
+margin-left:0px;
+margin-top:0px;
+margin-right: 5px;
+}
+</style>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
 <div id="item_view">
 
 <table class="header" cellspacing="0">
@@ -159,7 +196,14 @@ $this->menu=array(
 </div>
 
 </div><!-- #item_view -->
-
+<div class="social-single">
+<div id="sharebutton" class="Facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button">
+</div>
+</div>
+<div id="twitterbutton">
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="medium" data-via="twitterapi" data-lang="en">Tweet</a>
+</div>
+</div>
 <?php Yii::app()->clientScript->registerScript('item_view',
 	"
 	$('a.lightbox', '#item_view').lightBox( {
