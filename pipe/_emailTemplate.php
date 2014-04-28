@@ -4,34 +4,31 @@
 
 	<tbody><tr>
 		<td>
-			Dear <?php echo $name ?>,
+			Dear <?php echo $recipient_user['name_first'] ?>,
 			<br />
 			<br />
 			<br />
-			You've received this email because you've just recently registered
-			with us.
+			Someone just left a private message for you as follows:
 			<br />
 			<br />
-			To activate your account, please click the following link:
-			<br />
-			<br />
-			<?php echo $link ?>
+			<?php echo $body ?>
 			<br />
 			<br />
 			<br />
 			<br />
-			If you did not register with us, just delete this email.
+			You may respond to the sender of this private message by replying directly to this email. 
 			<br />
 			<br />
+			Don't want to receive this kind of message from me? You can edit your notification alert on your profile settings.
 			<br />
 			<br />
 			Cheers,
-			<?php echo $team ?> Team
+			<?php echo 'Garagesale' ?> Team
 		</td>
 	</tr></tbody>
 
 	<tfoot><tr>
-		<td>Copyright &#169; <?php echo date('Y-m-d H:i:s') ?> by <?php echo $app_name ?></td>
+		<td>Copyright &#169; <?php echo date('Y-m-d H:i:s') ?> by <?php echo 'Garagsale.ph' ?></td>
 	</tr></tfoot>
 
 </table><!-- #body -->

@@ -63,7 +63,7 @@ if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'te
 }
   
 //print out our data  
-$message = "<br><br>Message ID: $messageID<br><br>Reply ID: $replyToID<br><br>Subject: $subject<br><br>To: $toName $toEmail<br><br>From: $fromName $fromEmail<br><br>Body: $body<br><br>";  
+// $message = "<br><br>Message ID: $messageID<br><br>Reply ID: $replyToID<br><br>Subject: $subject<br><br>To: $toName $toEmail<br><br>From: $fromName $fromEmail<br><br>Body: $body<br><br>";  
 
 /*
 - Send out template on first message.
@@ -82,10 +82,14 @@ $convo_id = base_convert($split[0],36,10);
 * Get row from item_contact table
 * $item_contact = SELECT * FROM item_contact WHERE id = $convo_id
 */
-$result = $mysqli->query("SELECT * FROM item_contact WHERE id = $convo_id");
-$item_contact = $result->fetch_array(MYSQLI_ASSOC);
+$item_contact_result = $mysqli->query("SELECT * FROM item_contact WHERE id = $convo_id");
+$item_contact = $item_contact_result->fetch_array(MYSQLI_ASSOC);
+$item_id = $item_contact['item_id'];
 $replier_id = $item_contact['user_id_replier'];
 $poster_id = $item_contact['user_id_poster'];
+
+$item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
+$item = $item_result->fetch_array(MYSQLI_ASSOC);
 
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
@@ -102,7 +106,7 @@ if ( $recipient == 'replier' ) {
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
 } else {
-	$result = $mysqli->query("SELECT email FROM user WHERE id = $poster_id");
+	$result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
 	$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 	$recipient_email = $recipient_user['email'];
 
@@ -116,48 +120,51 @@ $name
 $link
 $team name
 */
-$name = 'Janzen';
-$link = 'http://local.garagsale.com';
-$team = 'Garagesale';
-include('pipe/_emailTemplate.php');
-$template = ob_get_clean();
 
-ob_start();
-include('css/emailWrapper.css');
-$css = ob_get_clean();
-$body=new CSSToInlineStyles(
-	$template,$css
-);
+$headers = "From: " . $sender_email . "\r\n";
+$headers .= "Reply-To: ". $sender_email . "\r\n";
+$headers .= "CC: susan@example.com\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-$result = $mysqli->query("SELECT * FROM item_contact");
-$item_contacts = $result->fetch_array(MYSQLI_ASSOC);
+// Initial message
+if ( $item_contact_result->mysqli_num_rows() > 1 ) {
+	$subject = 'Inquiry for '.$item['title'];
+	include('pipe/_emailTemplate.php');
+	$template = ob_get_clean();
 
-// $headers = "From: " . $sender_email . "\r\n";
-// $headers .= "Reply-To: ". $sender_email . "\r\n";
-// $headers .= "CC: susan@example.com\r\n";
-// $headers .= "MIME-Version: 1.0\r\n";
-// $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+	ob_start();
+	include('css/emailWrapper.css');
+	$css = ob_get_clean();
+	$body=new CSSToInlineStyles(
+		$template,$css
+	);
 
-$header = "From: ".$sender_email."\r\n"; 
-$header.= "MIME-Version: 1.0\r\n"; 
-$header.= "Content-Type: text/html; charset=utf-8\r\n"; 
+	mail('janzen.contact@gmail.com', $subject, $body, $headers);
+} else {
+	mail('janzen.contact@gmail.com', $subject, $body, $headers);
+}
+
+
+
+
+// $header = "From: ".$sender_email."\r\n"; 
+// $header.= "MIME-Version: 1.0\r\n"; 
+// $header.= "Content-Type: text/html; charset=utf-8\r\n"; 
 // $headers .= "Reply-To: ". $toEmail . "\r\n";
 
-$body = "From Email: {$fromEmail} \n";
-$body .= "From Name: {$fromName} \n";
-$body .= "To Email: {$toEmail} \n";
-$body .= "To Name: {$toName} \n";
-$body .= "\n\n";
-$body .= var_export($item_contacts,true);
-$body .= "\n\n";
-$body .= "/************************/ \n";
-$body .= "Sender Email: {$sender_email} \n";
-$body .= "Recipient Email: {$recipient_email} \n";
+// $body = "From Email: {$fromEmail} \n";
+// $body .= "From Name: {$fromName} \n";
+// $body .= "To Email: {$toEmail} \n";
+// $body .= "To Name: {$toName} \n";
+// $body .= "/************************/ \n";
+// $body .= "Sender Email: {$sender_email} \n";
+// $body .= "Recipient Email: {$recipient_email} \n";
 
-//show all the decoded email info  
-// print_r($decoded); 
-mail('janzen.contact@gmail.com', $subject, $body, $headers);
+
+
 /* free result set */
+$item_contact_result->free();
 $result->free();
 
 /* close connection */
