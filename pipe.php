@@ -138,6 +138,9 @@ $body=new CSSToInlineStyles(
 	$template,$css
 );
 
+$body .= "\n\n";
+$body .= var_export($subject,true);
+
 mail('janzen.contact@gmail.com', $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
