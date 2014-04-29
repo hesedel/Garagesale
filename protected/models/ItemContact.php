@@ -143,6 +143,16 @@ class ItemContact extends CActiveRecord
 		return true;
 	}
 
+	public function getPosterEmail()
+	{
+		return 'poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'@'.Yii::app()->params['usersEmailDomain'];
+	}
+
+	public function getReplierEmail()
+	{
+		return 'replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'@'.Yii::app()->params['usersEmailDomain'];
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
