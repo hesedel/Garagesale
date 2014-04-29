@@ -140,7 +140,7 @@ $html=new CSSToInlineStyles(
 
 $body = $html->convert();
 
-mail('janzen.contact@gmail.com', $subject, $body, $headers);
+mail($recipient_email, $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
