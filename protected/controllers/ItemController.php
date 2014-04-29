@@ -56,6 +56,24 @@ class ItemController extends Controller
 				$model_contact->user_id_poster=$model->user_id;
 				if($model_contact->save())
 				{
+					$body=new CSSToInlineStyles(
+						Yii::app()->controller->renderPartial(
+							'/site/_emailWrapper',
+							array(
+								'data'=>Yii::app()->controller->renderPartial(
+									'/admin/user/_sendMessage-email',
+									array(
+										'name_replier'=>$model_contact->replier_name,
+										'name_poster'=>$model->user->name_first,
+										'message'=>$model_contactForm->body,
+									),true
+								)
+							),true
+						),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+					);
+					$headers="From: ".$model_contact->replier_name." <".$model_contact->getReplierEmail().">\r\nContent-Type: text/html";
+					mail($model_contact->getPosterEmail(), Yii::app()->name.' New Message', $body->convert(), $headers);
+
 					$model_contactForm_success=true;
 				}
 			}
