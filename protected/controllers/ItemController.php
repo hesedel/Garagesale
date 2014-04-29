@@ -61,7 +61,7 @@ class ItemController extends Controller
 							'/site/_emailWrapper',
 							array(
 								'data'=>Yii::app()->controller->renderPartial(
-									'/admin/user/_sendMessage-email',
+									'_sendMessage-email',
 									array(
 										'name_replier'=>$model_contact->replier_name,
 										'name_poster'=>$model->user->name_first,
