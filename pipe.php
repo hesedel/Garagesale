@@ -134,14 +134,11 @@ $template = ob_get_clean();
 ob_start();
 include('css/emailWrapper.css');
 $css = ob_get_clean();
-$body=new CSSToInlineStyles(
+$html=new CSSToInlineStyles(
 	$template,$css
 );
 
-$body .= "\n\n";
-$body .= var_export($subject,true);
-
-mail('janzen.contact@gmail.com', $subject, $body, $headers);
+mail('janzen.contact@gmail.com', $subject, $html, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
