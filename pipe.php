@@ -140,7 +140,7 @@ $body=new CSSToInlineStyles(
 
 $html = var_export($subject,true);
 $html .= "\n\n";
-$html = var_export($body,true);
+// $html = var_export($body,true);
 
 mail('janzen.contact@gmail.com', $subject, $html, $headers);
 
