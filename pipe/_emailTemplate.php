@@ -1,3 +1,8 @@
+<?php 
+	// Initial message
+	if ( $item_contact_result->num_rows > 1 ):
+		$subject = 'Inquiry for '.$item['title'];
+?>
 <table id="html" cellspacing="0"><tr><td>
 
 <table id="body" cellspacing="0">
@@ -34,3 +39,19 @@
 </table><!-- #body -->
 
 </td></tr></table><!-- #html -->
+<?php else: ?>
+	<table id="html" cellspacing="0"><tr><td>
+
+	<table id="body" cellspacing="0">
+
+		<tbody>
+			<tr>
+				<td>
+					<?php echo $body ?>
+				</td>
+			</tr>
+		</tbody>
+	</table><!-- #body -->
+
+	</td></tr></table><!-- #html -->
+<?php endif;?>
