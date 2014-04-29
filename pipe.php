@@ -121,6 +121,10 @@ $headers .= "Reply-To: ". $sender_email . "\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
+// Tweaked for initial message.
+if ( $item_contact_result->num_rows > 1 ):
+	$subject = 'Inquiry for '.$item['title'];
+
 // Get Template
 ob_start();
 include('pipe/_emailTemplate.php');
