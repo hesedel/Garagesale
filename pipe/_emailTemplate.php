@@ -1,7 +1,6 @@
 <?php 
 	// Initial message
 	if ( $item_contact_result->num_rows > 1 ):
-		$subject = 'Inquiry for '.$item['title'];
 ?>
 <table id="html" cellspacing="0"><tr><td>
 
