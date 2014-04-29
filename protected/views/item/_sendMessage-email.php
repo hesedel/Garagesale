@@ -6,5 +6,6 @@ from <?php echo $name_replier; ?>.
 
 <?php echo $message; ?>
 
+
 Cheers,
 <?php echo Yii::app()->name; ?> Team
