@@ -138,9 +138,14 @@ $html=new CSSToInlineStyles(
 	$template,$css
 );
 
-$body = $html->convert();
+// $body = $html->convert();
+$body = var_export($recipient_email,true);
+$body = "\n\n";
+$body = var_export($fromEmail,true);
+$body = "\n\n";
+$body = var_export($toEmail,true);
 
-mail($recipient_email, $subject, $body, $headers);
+mail('janzen.contact@gmail.com', $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
