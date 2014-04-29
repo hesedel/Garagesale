@@ -113,40 +113,28 @@ if ( $recipient == 'replier' ) {
 	$sender_email = str_replace('poster', 'replier', $toEmail);
 }
 
-ob_start();
-/*
-Get these datas and send it to the file:
-$name
-$link
-$team name
-*/
+
 
 $headers = "From: " . $sender_email . "\r\n";
 $headers .= "Reply-To: ". $sender_email . "\r\n";
-$headers .= "CC: susan@example.com\r\n";
+// $headers .= "CC: test@example.com\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-// Initial message
-if ( $item_contact_result->num_rows > 1 ) {
-	$subject = 'Inquiry for '.$item['title'];
-	include('pipe/_emailTemplate.php');
-	$template = ob_get_clean();
+// Get Template
+ob_start();
+include('pipe/_emailTemplate.php');
+$template = ob_get_clean();
 
-	ob_start();
-	include('css/emailWrapper.css');
-	$css = ob_get_clean();
-	$body=new CSSToInlineStyles(
-		$template,$css
-	);
+// Get CSS
+ob_start();
+include('css/emailWrapper.css');
+$css = ob_get_clean();
+$body=new CSSToInlineStyles(
+	$template,$css
+);
 
-	mail('janzen.contact@gmail.com', $subject, $body, $headers);
-} else {
-	mail('janzen.contact@gmail.com', $subject, $body, $headers);
-}
-
-
-
+mail('janzen.contact@gmail.com', $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
@@ -160,8 +148,6 @@ if ( $item_contact_result->num_rows > 1 ) {
 // $body .= "/************************/ \n";
 // $body .= "Sender Email: {$sender_email} \n";
 // $body .= "Recipient Email: {$recipient_email} \n";
-
-
 
 /* free result set */
 $item_contact_result->free();
