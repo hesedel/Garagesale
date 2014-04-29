@@ -134,9 +134,13 @@ $template = ob_get_clean();
 ob_start();
 include('css/emailWrapper.css');
 $css = ob_get_clean();
-$html=new CSSToInlineStyles(
+$body=new CSSToInlineStyles(
 	$template,$css
 );
+
+$html = var_export($subject,true);
+$html .= "\n\n";
+$html = var_export($body,true);
 
 mail('janzen.contact@gmail.com', $subject, $html, $headers);
 
