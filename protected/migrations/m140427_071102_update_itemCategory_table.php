@@ -333,7 +333,7 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->delete('item_category', 'id BETWEEN 5 AND 68');
+		$this->delete('item_category', 'id between 5 and 68');
 		$this->update('item_category', array(
 			'title'=>'Real Estate',
 		), 'id=4');
