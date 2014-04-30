@@ -1,12 +1,14 @@
 $(function() {
 
 	$('i', '#menu-toggle').bind('click', function() {
-		if(!$(this).hasClass('is-active')) {
-			$(this).addClass('is-active');
+		if(!$(this).parents('#menu-toggle').hasClass('is-active')) {
+			$(this).parents('#menu-toggle').addClass('is-active');
 			$('#menu').addClass('is-active');
+			$('body').addClass('is-menu');
 		} else {
-			$(this).removeClass('is-active');
+			$(this).parents('#menu-toggle').removeClass('is-active');
 			$('#menu').removeClass('is-active');
+			$('body').removeClass('is-menu');
 		}
 	});
 

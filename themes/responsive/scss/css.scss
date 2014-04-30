@@ -28,6 +28,16 @@ body {
 @media (max-width: $screen-xs-max) {
 	body {
 		padding-top: 0;
+		position: relative;
+			left: 0;
+		@include transition(left .25s ease);
+
+		&.is-menu {
+			width: 100%;
+			position: fixed;
+				left: 75%;
+		}
+
 	}
 }
 
@@ -72,6 +82,7 @@ body {
 
 #footer {
 	@extend .container;
+	background-color: $color_footer_bg;
 	padding-top: $line-height * 2;
 	padding-bottom: $line-height * 2;
 }
