@@ -291,6 +291,8 @@
 @media (max-width: $screen-xs-max) {
 	#header {
 		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
+		border-left: 1px solid $color_body_bg;
 		float: left;
 	}
 }
@@ -386,7 +388,6 @@
 	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-left: $gutter-width;
-	border-right: 1px solid $color_body_bg;
 	float: left;
 	position: relative;
 		z-index: 1;
