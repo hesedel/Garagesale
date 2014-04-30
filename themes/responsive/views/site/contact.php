@@ -5,13 +5,17 @@ $this->breadcrumbs = array(
 );
 ?>
 
-<h1>Contact Us</h1>
+<h2>Contact Us</h2>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
 <div class="flash-success">
 	<?php echo Yii::app()->user->getFlash('contact'); ?>
 </div>
+
+<h3>Message sent</h3>
+<h4>What happens next?</h4>
+<p>We will contact you within 48 hrs regarding your enquiry</p>
 
 <?php else: ?>
 
