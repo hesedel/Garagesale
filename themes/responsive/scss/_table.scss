@@ -431,8 +431,8 @@
 		z-index: -1;
 	//overflow: hidden;
 	overflow: auto;
+		-webkit-overflow-scrolling: auto;
 	//@include transition(max-height .25s ease);
-	//@include transition(width .25s ease);
 
 	.x {
 		color: whiten($color_wetAsphalt, 25%, 2);

@@ -7,7 +7,9 @@ $(function() {
 			$('body').addClass('is-menu');
 		} else {
 			$(this).parents('#menu-toggle').removeClass('is-active');
-			$('#menu').removeClass('is-active');
+			setTimeout(function() {
+				$('#menu').removeClass('is-active');
+			}, 250);
 			$('body').removeClass('is-menu');
 		}
 	});
