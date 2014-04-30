@@ -32,10 +32,51 @@ body {
 			left: 0;
 		@include transition(left .25s ease);
 
+		&:before, &:after {
+			content: '';
+			position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0%;
+		}
+
+		&:before {
+			background-color: $color_black;
+			z-index: -1;
+			@include opacity(0);
+			@include transition(
+				left .25s ease,
+				z-index 0s ease .25s,
+				opacity .25s ease
+			);
+		}
+
+		&:after {
+			background-color: $color_footer_bg;
+			z-index: -1;
+			@include transition(left .25s ease);
+		}
+
 		&.is-menu {
 			width: 100%;
 			position: fixed;
 				left: 75%;
+
+			&:before, &:after {
+				left: 75%;
+			}
+
+			&:before {
+				z-index: 1;
+				@include opacity(.25);
+				@include transition(
+					left .25s ease,
+					z-index 0s ease 0s,
+					opacity .25s ease
+				);
+			}
+
 		}
 
 	}
@@ -82,7 +123,6 @@ body {
 
 #footer {
 	@extend .container;
-	background-color: $color_footer_bg;
 	padding-top: $line-height * 2;
 	padding-bottom: $line-height * 2;
 }

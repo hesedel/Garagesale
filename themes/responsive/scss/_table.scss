@@ -389,6 +389,7 @@
 	border-right: 1px solid $color_body_bg;
 	float: left;
 	position: relative;
+		z-index: 1;
 
 	i {
 		color: $color_white;
