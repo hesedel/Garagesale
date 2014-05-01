@@ -89,7 +89,7 @@ body {
 
 			#is-menu-before {
 				z-index: 1;
-				@include opacity(.25);
+				@include opacity(0);
 				
 			}
 
