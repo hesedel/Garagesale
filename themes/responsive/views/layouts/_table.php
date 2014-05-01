@@ -16,9 +16,7 @@
 
 		<?php #menu-toggle ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
-			<i class="fa fa-bars"></i>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+		<div id="menu-toggle"><i class="fa fa-bars"></i></div>
 
 		<?php #menu-toggle end ?>
 
@@ -43,6 +41,35 @@
 		<?php echo !isset($lt_ie_8) ? '</header>' : '</td>'; ?>
 
 		<?php #header end ?>
+
+		<?php #menu ?>
+
+		<div id="menu">
+			<ul>
+				<li><a href="#">Menu Item 1</a></li>
+				<li><a href="#">Menu Item 2</a></li>
+				<li><a href="#">Menu Item 3</a></li>
+				<li><a href="#">Menu Item 4</a></li>
+				<li><a href="#">Menu Item 5</a></li>
+				<li><a href="#">Menu Item 6</a></li>
+				<li><a href="#">Menu Item 7</a></li>
+				<li><a href="#">Menu Item 8</a></li>
+				<li><a href="#">Menu Item 9</a></li>
+				<li><a href="#">Menu Item 10</a></li>
+				<li><a href="#">Menu Item 11</a></li>
+				<li><a href="#">Menu Item 12</a></li>
+				<li><a href="#">Menu Item 13</a></li>
+				<li><a href="#">Menu Item 14</a></li>
+				<li><a href="#">Menu Item 15</a></li>
+				<li><a href="#">Menu Item 16</a></li>
+				<li><a href="#">Menu Item 17</a></li>
+				<li><a href="#">Menu Item 18</a></li>
+				<li><a href="#">Menu Item 19</a></li>
+				<li><a href="#">Menu Item 20</a></li>
+			</ul>
+		</div>
+
+		<?php #menu end ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
@@ -150,38 +177,6 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
-
-		<?php #menu ?>
-
-		<div id="menu">
-			<span class="x">&times;</span>
-			<ul>
-				<li class="heading">All categories</li>
-				<li><a href="#">Category 1</a></li>
-				<li><a href="#">Category 2</a></li>
-				<li><a href="#">Category 3</a></li>
-				<li><a href="#">Category 4</a></li>
-				<li><a href="#">Category 5</a></li>
-				<li><a href="#">Category 6</a></li>
-				<li><a href="#">Category 7</a></li>
-				<li><a href="#">Category 8</a></li>
-				<li><a href="#">Category 9</a></li>
-				<li><a href="#">Category 10</a></li>
-				<li><a href="#">Category 11</a></li>
-				<li><a href="#">Category 12</a></li>
-				<li><a href="#">Category 13</a></li>
-				<li><a href="#">Category 14</a></li>
-				<li><a href="#">Category 15</a></li>
-				<?php if(!Yii::app()->user->isGuest): ?>
-				<li class="heading">Your categories</li>
-				<li><a href="#">Category 1</a><span class="badge">#</span></li>
-				<li><a href="#">Category 2</a><span class="badge">#</span></li>
-				<li><a href="#">Category 3</a><span class="badge">#</span></li>
-			<?php endif; ?>
-			</ul>
-		</div>
-
-		<?php #menu end ?>
 
 		<?php if(
 			$this->getRoute() == 'item/search' ||
