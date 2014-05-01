@@ -1090,11 +1090,6 @@ body.is-menuActive {
 			@include border-radius($border-radius);
 			margin-right: $gutter-width;
 			margin-left: $gutter-width * (1 / 3);
-
-			&:hover {
-				background-color: $color_emerald;
-			}
-
 		}
 
 	}
