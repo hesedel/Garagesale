@@ -217,12 +217,12 @@ table.form {
 
 					a {
 						text-align: center;
-						background-color: whiten(blacken($beige, 25%), 25%, 4);
+						background-color: $color_body_bg;
 						width: $gutter-width;
 						height: $line-height;
 							line-height: $line-height;
-						border-bottom: 1px solid $custom_orange;
-						border-left: 1px solid $custom_orange;
+						border-bottom: 1px solid $color_customBrown;
+						border-left: 1px solid $color_customBrown;
 						display: none;
 						position: absolute;
 							top: 0;
@@ -230,11 +230,11 @@ table.form {
 
 						i {
 							cursor: pointer;
-							color: $custom_orange;
+							color: $color_alizarin;
 						}
 
 						&:hover i {
-							color: $black;
+							color: $color_pomegranate;
 						}
 
 					}
@@ -242,7 +242,7 @@ table.form {
 					&:hover {
 
 						img {
-							border-color: $custom_orange;
+							border-color: $color_customBrown;
 						}
 
 						a {
@@ -544,7 +544,8 @@ table.form {
 		display: block;
 
 		caption {
-			display: block;
+			//display: block;
+			display: none;
 		}
 
 		tbody, tfoot, tr, th, td {
@@ -573,6 +574,24 @@ table.form {
 					line-height: $line-height;
 					//padding-left: $gutter-width;
 					padding-left: 0;
+
+					div.image {
+
+						a {
+							border-color: $color_white;
+							display: block;
+						}
+
+						&:hover {
+
+							img {
+								border-color: $color_white;
+							}
+
+						}
+
+					}
+
 				}
 
 				td {
@@ -599,6 +618,21 @@ table.form {
 
 					th, td {
 						padding-top: 0;
+					}
+
+				}
+
+				&.avatar {
+					@include clearfix;
+
+					th {
+						width: 30%;
+						float: left;
+					}
+
+					td {
+						width: 70%;
+						float: right;
 					}
 
 				}

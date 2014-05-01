@@ -14,6 +14,14 @@
 
 	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
 
+		<?php #menu-toggle ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
+			<i class="fa fa-bars"></i>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #menu-toggle end ?>
+
 		<?php #header ?>
 
 		<?php echo !isset($lt_ie_8) ? '<header class="td" id="header">' : '<td class="td" id="header">'; ?>
@@ -21,7 +29,7 @@
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : ''; ?>
 				<?php echo CHtml::link(
 					CHtml::image(
-						'/img/vendor/slir/h54/img/logo-white.png',
+						'/img/vendor/slir/h72/img/logo-white.png',
 						CHtml::encode(Yii::app()->name)
 					) .
 						'St<span>ycle</span>',
@@ -35,14 +43,6 @@
 		<?php echo !isset($lt_ie_8) ? '</header>' : '</td>'; ?>
 
 		<?php #header end ?>
-
-		<?php #menu-toggle ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
-			<i class="fa fa-bars"></i>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php #menu-toggle end ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
@@ -160,6 +160,18 @@
 				<li><a href="#">Category 1</a></li>
 				<li><a href="#">Category 2</a></li>
 				<li><a href="#">Category 3</a></li>
+				<li><a href="#">Category 4</a></li>
+				<li><a href="#">Category 5</a></li>
+				<li><a href="#">Category 6</a></li>
+				<li><a href="#">Category 7</a></li>
+				<li><a href="#">Category 8</a></li>
+				<li><a href="#">Category 9</a></li>
+				<li><a href="#">Category 10</a></li>
+				<li><a href="#">Category 11</a></li>
+				<li><a href="#">Category 12</a></li>
+				<li><a href="#">Category 13</a></li>
+				<li><a href="#">Category 14</a></li>
+				<li><a href="#">Category 15</a></li>
 				<?php if(!Yii::app()->user->isGuest): ?>
 				<li class="heading">Your categories</li>
 				<li><a href="#">Category 1</a><span class="badge">#</span></li>

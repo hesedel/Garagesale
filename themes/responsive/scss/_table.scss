@@ -288,6 +288,15 @@
 	}
 }
 
+@media (max-width: $screen-xs-max) {
+	#header {
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
+		border-left: 1px solid $color_body_bg;
+		float: left;
+	}
+}
+
 #logo {
 	color: $color_white;
 	font-family: $sans-serif-soft;
@@ -324,77 +333,56 @@
 
 @media (max-width: $screen-xs-max) {
 	#logo {
-		height: $line-height * 1.5;
-			line-height: $line-height * 1.5;
+		font-size: 2em;
+		background-color: transparent;
+		//height: $line-height * 1.5;
+		height: $line-height * 2;
+			//line-height: $line-height * 1.5;
+			line-height: $line-height * 2;
 		@include border-radius(0);
 
 		img {
 			height: 100%;
-			margin-right: $gutter-width * (1 / 3);
+			margin-right: $gutter-width * (2 / 3);
 			float: left;
 		}
 
 	}
 }
 
-#register,
-#user,
-#login,
-#logout,
-#filters,
-#post {
-
-	> a,
-	div.a > a,
-	span.a {
-		color: $color_greenSea;
-		white-space: nowrap;
-		background-color: whiten($color_turquoise, 25%, 4);
-		height: $line-height * 3;
-			line-height: $line-height * 3;
-		padding-right: $gutter-width * (2 / 3);
-		padding-left: $gutter-width * (2 / 3);
-		display: block;
-
-		&:hover {
-			//color: blacken($color, 25%);
-			text-decoration: none;
-			//background-color: blacken($color_header_bg, 25%);
-		}
-
-		&:focus {
-			text-decoration: none;
-		}
-
-	}
-
-}
-
 #menu-toggle {
+	@extend .visible-xs;
+	background-color: $color_greenSea;
 	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
+	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-left: $gutter-width;
 	float: left;
+	//position: relative;
+		//z-index: 1;
 
 	i {
-		color: $color_greenSea;
+		color: $color_white;
 		font-size: 1.25em;
-		background-color: whiten($color_turquoise, 25%, 4);
 		height: ($line-height * 2) - ($line-height * (1 / 3));
 			line-height: ($line-height * 2) - ($line-height * (1 / 3));
 		padding-right: $gutter-width * (2 / 3);
 		padding-left: $gutter-width * (2 / 3);
 		@include border-radius($border-radius);
 		display: block;
-		@include transition(all 0s ease .25s);
+		//@include transition(all 0s ease .25s);
+	}
 
-		&.is-active {
-			color: $color_turquoise;
+	&.is-active {
+		background-color: $color_wetAsphalt;
+
+		i {
+			//color: $color_turquoise;
 			background-color: $color_wetAsphalt;
 			height: ($line-height * 2) - ($line-height * (1 / 3)) + ($line-height * .5) + ($line-height * (1 / 6));
 			@include border-bottom-radius(0);
 			margin-bottom: -(($line-height * .5) + ($line-height * (1 / 6)));
-			@include transition(all 0s ease);
+			//@include transition(all 0s ease);
 		}
 
 	}
@@ -402,16 +390,27 @@
 }
 
 #menu {
+	@extend .visible-xs;
 	background-color: $color_wetAsphalt;
-	max-height: 0;
-	clear: both;
-	position: relative;
-	overflow: hidden;
-	@include transition(max-height .25s ease);
+	@include background-image(linear-gradient(rgba($color_black, 0), rgba($color_black, .25)));
+	//width: 0;
+	//max-height: 0;
+	//clear: both;
+	position: fixed;
+		top: 0;
+		right: 25%;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+	//overflow: hidden;
+	overflow: auto;
+		-webkit-overflow-scrolling: auto;
+	//@include transition(max-height .25s ease);
 
 	.x {
 		color: whiten($color_wetAsphalt, 25%, 2);
 		font-size: 2em;
+		display: none;
 		position: absolute;
 			top: $line-height;
 			right: $gutter-width;
@@ -475,7 +474,42 @@
 	}
 
 	&.is-active {
-		max-height: $line-height * 60;
+		//width: 75%;
+		//max-height: $line-height * 60;
+		-webkit-overflow-scrolling: touch;
+	}
+
+}
+
+#register,
+#user,
+#login,
+#logout,
+#filters,
+#post {
+
+	> a,
+	div.a > a,
+	span.a {
+		color: $color_greenSea;
+		white-space: nowrap;
+		background-color: whiten($color_turquoise, 25%, 4);
+		height: $line-height * 3;
+			line-height: $line-height * 3;
+		padding-right: $gutter-width * (2 / 3);
+		padding-left: $gutter-width * (2 / 3);
+		display: block;
+
+		&:hover {
+			//color: blacken($color, 25%);
+			text-decoration: none;
+			//background-color: blacken($color_header_bg, 25%);
+		}
+
+		&:focus {
+			text-decoration: none;
+		}
+
 	}
 
 }
@@ -899,7 +933,7 @@
 
 #post {
 	padding-left: $gutter-width * (1 / 3);
-	//@extend .hidden-xs;
+	@extend .hidden-xs;
 
 	a {
 		//color: $color_white;

@@ -29,7 +29,7 @@
 				<th><?php echo $form->labelEx($model, 'price'); ?>
 				<td>
 					<div class="price input-text">
-						<span class="prepend">PHP</span>
+						<span class="prepend">AU$</span>
 						<?php echo $form->textField($model, 'price'); ?>
 						<span class="placeholder">How much does it cost?</span>
 					</div>
@@ -97,19 +97,29 @@
 					if($uploads) :
 					?>
 					<div class="images">
-						<?php
-						foreach($uploads as $upload) {
+						<?php foreach($uploads as $upload): ?>
+						<div class="image-container">
+							<?php
 							if($upload['new'])
-								echo '<div class="image new" title="' . CHtml::encode($upload['name']) . '" style="background-image: url(/img/vendor/slir/w40-h36-c40.36-baeaeaa/img/uploads/temp/' . CHtml::encode($upload['tempName']) . ')">' . CHtml::link('<span></span>', '#', array('title' => 'remove ' . CHtml::encode($upload['name']))) . '</div>';
+								echo '<div class="image new" title="' . CHtml::encode($upload['name']) . '">' .
+									CHtml::image('/img/vendor/slir/w142-h142-c142x142-bffffff/img/uploads/temp/' . CHtml::encode($upload['tempName']), CHtml::encode($upload['name'])) .
+									CHtml::link('<i class="fa fa-times"></i>', '#', array('title' => 'remove ' . CHtml::encode($upload['name']))) .
+								'</div>';
 							else {
 								$image = Yii::app()->db->createCommand()
 									->select('id, type')
 									->from('item_image')
 									->where('id=:id', array(':id' => $upload['name']))
 									->queryRow();
-								echo '<div class="image" title="' . $image['id'] . '.' . $image['type'] . '" style="background-image: url(/img/vendor/slir/w40-h38-c40.36-baeaeaa/' . db_image('item_image', $image['id']) . ')">' . CHtml::link('<span></span>', '#', array('title' => 'remove ' . CHtml::encode($upload['name']))) . '</div>';
+								echo '<div class="image" title="' . $image['id'] . '.' . $image['type'] . '">' .
+									CHtml::image('/img/vendor/slir/w142-h142-c142x142-bffffff/' . db_image('item_image', $image['id']), CHtml::encode($upload['name'])) .
+									CHtml::link('<i class="fa fa-times"></i>', '#', array('title' => 'remove ' . CHtml::encode($upload['name']))) .
+								'</div>';
 							}
-						}
+							?>
+						</div>
+						<?php endforeach; ?>
+						<?php
 						echo $form->hiddenField($model, 'uploads', array('value' => base64_encode(serialize($uploads))));
 						?>
 						<div class="clear"></div>
@@ -148,8 +158,8 @@
 				<th><?php echo $form->hiddenField($model, 'user_id', array('value' => strlen($model->user_id) == 0 ? Yii::app()->user->getId() : $model->user_id)); ?>
 				<td>
 					<?php echo !$model->isNewRecord ? CHtml::link('Cancel', array('view', 'id' => $model->id), array('class' => 'g-button')) . ' ' : ''; ?>
-					<?php echo CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button orange')); ?>
+					<?php echo CHtml::linkButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button--primary')); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Post' : 'Save', array('class' => 'submit g-button--primary')); ?>
 				</td>
 			</tr>
 
@@ -167,8 +177,9 @@ Yii::app()->clientScript->registerScript(
 	"
 	var uploadIndex_from = 0;
 	$('div.images', '#item_create, #item_update').sortable( {
-		revert: true,
+		handle: '.image',
 		opacity: .75,
+		revert: true,
 		start: function(event, ui) {
 			uploadIndex_from = ui.item.index();
 		},
@@ -190,31 +201,31 @@ Yii::app()->clientScript->registerScript(
 			$('#Item_uploads').val(base64_encode(serialize(output)));
 		}
 	});
-	$('a', '#item_create div.images div.image, #item_update div.images div.image').click(function() {
+	$('a', '#item_create .images .image, #item_update .images .image').click(function() {
 		var \$this = $(this);
 		var input = unserialize(base64_decode($('#Item_uploads').val()));
 		var output = [];
 		for(var i in input) {
-			if(i < \$this.parent().index())
+			if(i < \$this.parents('.image-container').index())
 				output[i] = input[i];
-			else if(i > \$this.parent().index())
+			else if(i > \$this.parents('.image-container').index())
 				output[i - 1] = input[i];
 		}
 		$('#Item_uploads').val(base64_encode(serialize(output)));
 		if(\$this.parent().hasClass('new')) {
-			var image = \$this.parent().attr('style');
+			var image = \$this.siblings('img').attr('src');
 			$.post(
 				'/item/ajaxRemoveImage/',
 				{
-					image: '" . Yii::getPathOfAlias('webroot') . "/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.lastIndexOf(')'))
+					image: '" . Yii::getPathOfAlias('webroot') . "/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.length)
 				},
 				function() {
-					if($('div.images', '#item_create, #item_update').children('div.image').size() == 0)
-						$('div.images', '#item_create, #item_update').remove();
+					if($('.images', '#item_create, #item_update').children('.image-container').size() == 0)
+						$('.images', '#item_create, #item_update').remove();
 				}
 			);
 		}
-		\$this.parent().remove();
+		\$this.parents('.image-container').remove();
 		return false;
 	});
 	",
