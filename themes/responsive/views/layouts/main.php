@@ -31,7 +31,7 @@
 </head>
 <body>
 
-<div id="is-menu"></div>
+<div id="is-menu-before"></div>
 
 <div id="body">
 
@@ -83,6 +83,8 @@ r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
 */ ?>
+
+<div id="is-menu-after"></div>
 
 </body>
 </html>
