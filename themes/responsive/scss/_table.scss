@@ -422,6 +422,7 @@
 
 #menu {
 	background-color: $color_wetAsphalt;
+	@include background-image(linear-gradient(rgba($color_black, 0), rgba($color_black, .25)));
 	//width: 0;
 	//max-height: 0;
 	//clear: both;

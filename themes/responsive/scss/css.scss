@@ -54,6 +54,7 @@ body {
 
 		&:after {
 			background-color: $color_footer_bg;
+			@include box-shadow(0 0 #{$gutter_width * (1 / 3)} rgba($color_black, .25));
 			z-index: -1;
 			@include transition(left .25s ease);
 		}
