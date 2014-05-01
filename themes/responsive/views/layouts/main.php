@@ -31,8 +31,6 @@
 </head>
 <body>
 
-<div id="is-menu-before"></div>
-
 <div id="body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
@@ -60,6 +58,18 @@
 <div id="menu-x"></div>
 <div id="menu-footer"></div>
 
+<div id="not-mobile">
+	<div>
+		<?php echo CHtml::image(
+			'/img/vendor/slir/h72/img/logo-white.png',
+			CHtml::encode(Yii::app()->name)
+		); ?>
+		<h2>Ooops!</h2>
+		<p>Stycle is not yet ready for the table or desktop.</p>
+		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
+	</div>
+</div>
+
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
@@ -86,20 +96,6 @@ r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
 */ ?>
-
-<div id="is-menu-after"></div>
-
-<div id="not-mobile">
-	<div>
-		<?php echo CHtml::image(
-			'/img/vendor/slir/h72/img/logo-white.png',
-			CHtml::encode(Yii::app()->name)
-		); ?>
-		<h2>Ooops!</h2>
-		<p>Stycle is not yet ready for the table or desktop.</p>
-		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
-	</div>
-</div>
 
 </body>
 </html>
