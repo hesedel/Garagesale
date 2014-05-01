@@ -121,9 +121,7 @@
 							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '
-					) .
-						Yii::app()->user->id .
-							'<i class="fa fa-angle-down"></i>',
+					) . '<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
 						'id' => Yii::app()->user->id,
