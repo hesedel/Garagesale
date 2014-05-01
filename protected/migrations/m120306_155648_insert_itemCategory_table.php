@@ -27,8 +27,6 @@ class m120306_155648_insert_itemCategory_table extends CDbMigration
 		$this->update('item', array(
 			'category_id'=>NULL,
 		), 'category_id=4 or category_id=3 or category_id=2 or category_id=1');
-		$this->delete('item_category', array(
-			'id=4 or id=3 or id=2 or id=1',
-		));
+		$this->delete('item_category');
 	}
 }

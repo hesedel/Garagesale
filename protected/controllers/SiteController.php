@@ -13,11 +13,11 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','error','contact','maintenance'),
+				'actions'=>array('captcha','page','index','error','contact','maintenance'),
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('login','register','captcha'),
+				'actions'=>array('login','register'),
 				'users'=>array('?'),
 			),
 			array('allow',
