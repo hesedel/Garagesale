@@ -1,5 +1,64 @@
 $(function() {
 
+	$('#menu-toggle').bind('click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('body')
+				.addClass('is-animating')
+				.addClass('is-menuActive');
+			setTimeout(function() {
+				$('body').removeClass('is-animating');
+			}, 125);
+		} else {
+			$(this).removeClass('is-active');
+			$('body')
+				.addClass('is-animating')
+				.removeClass('is-menuActive');
+			setTimeout(function() {
+				$('body').removeClass('is-animating');
+			}, 125);
+		}
+	});
+
+	$('#menu-x').bind( {
+		click: function() {
+			$('#menu-toggle').trigger('click');
+		},
+		touchstart: function(e) {
+			$(this).data('x', e.originalEvent.touches[0].screenX);
+		},
+		touchmove: function(e) {
+			var x = e.originalEvent.touches[0].screenX;
+			var percent = 1 - (($(this).data('x') - x) / $(window).width());
+			$('body').css( {
+				left: (75 * percent) + '%'
+			});
+			return false;
+		},
+		touchend: function() {
+			var percent = $('body').offset().left / $(window).width();
+			$('body').addClass('is-animating');
+			if(percent > 0.5) {
+				$('body').css( {
+					left: '75%'
+				});
+				setTimeout(function() {
+					$('body').removeClass('is-animating');
+				}, 125);
+			} else {
+				$('body').css( {
+					left: '0%'
+				});
+				setTimeout(function() {
+					$('#menu-toggle').trigger('click');
+				}, 125);
+			}
+			setTimeout(function() {
+				$('body').attr('style', '');
+			}, 125);
+		}
+	});
+
 	$('.a', '#user').data('hover', false);
 	$('.a > a', '#user').bind( {
 		touchstart: function() {

@@ -14,6 +14,12 @@
 
 	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
 
+		<?php #menu-toggle ?>
+
+		<div id="menu-toggle"><i class="fa fa-bars"></i></div>
+
+		<?php #menu-toggle end ?>
+
 		<?php #header ?>
 
 		<?php echo !isset($lt_ie_8) ? '<header class="td" id="header">' : '<td class="td" id="header">'; ?>
