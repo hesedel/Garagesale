@@ -19,18 +19,19 @@ $this->layout = 'column1';
 	)); ?>
 
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#user_account-userInfo" data-toggle="tab">User Info</a></li>
-		<li><a href="#user_account-passwordChange" data-toggle="tab">Password Change</a></li>
+		<li class="active"><a href="#user_account-user" data-toggle="tab">User</a></li>
+		<li><a href="#user_account-community" data-toggle="tab">Community</a></li>
+		<li><a href="#user_account-password" data-toggle="tab">Password</a></li>
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="user_account-userInfo">
+		<div class="tab-pane active" id="user_account-user">
 
 			<table class="form">
-				<caption>User Info</caption>
+				<caption>User</caption>
 				<tbody>
 
-					<tr>
+					<tr class="avatar">
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
@@ -104,13 +105,15 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
-					<tr>
-						<th><?php echo $form->labelEx($model, 'course'); ?></th>
-						<td>
-							<?php echo $model->getCourseDropDownList(); ?>
-							<?php echo $form->error($model, 'course'); ?>
-						</td>
-					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="tab-pane" id="user_account-community">
+
+			<table class="form">
+				<caption>Community</caption>
+				<tbody>
 
 					<tr>
 						<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
@@ -120,14 +123,22 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
+					<tr>
+						<th><?php echo $form->labelEx($model, 'course'); ?></th>
+						<td>
+							<?php echo $model->getCourseDropDownList(); ?>
+							<?php echo $form->error($model, 'course'); ?>
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
 
 		</div>
-		<div class="tab-pane" id="user_account-passwordChange">
+		<div class="tab-pane" id="user_account-password">
 
 			<table class="form">
-				<caption>Password Change</caption>
+				<caption>Password</caption>
 				<tbody>
 
 					<tr>

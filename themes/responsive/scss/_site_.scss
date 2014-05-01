@@ -21,6 +21,7 @@
 			background-color: $color_customYellow;
 			padding-right: $gutter-width * (1 / 3);
 			padding-left: $gutter-width * (1 / 3);
+			//border: 1px solid blacken($color_body-bg, 25%);
 			@include border-radius($border-radius);
 			float: right;
 		}

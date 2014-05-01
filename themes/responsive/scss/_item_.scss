@@ -20,64 +20,58 @@
 
 	}
 
-	div.images {
-		margin-right: -10px;
+	.images {
+		margin-right: -($gutter-width * (1 / 3));
+		margin-left: -($gutter-width * (1 / 3));
 		overflow: auto;
 
-		div.image {
-			cursor: move;
-			@include float-left;
-			background-color: blacken(whiten(blacken($beige, 25%), 25%, 4), 25%);
-			background-position: center;
-			background-repeat: no-repeat;
-			@include background-size(100%);
-			border: 1px solid whiten(blacken($beige, 25%), 25%, 4);
-			position: relative;
-			width: 38px;
-			height: 34px;
-			margin-right: 10px;
-			margin-bottom: 9px;
+		.image-container {
+			width: 25%;
+			margin-bottom: $line-height * .5;
+			float: left;
+		}
 
-			&:first-child {
-				border-color: white;
+		.image {
+			cursor: move;
+			margin-right: $gutter-width * (1 / 3);
+			margin-left: $gutter-width * (1 / 3);
+			border: 1px solid $color_customBrown;
+			position: relative;
+
+			img {
+				width: 100%;
 			}
 
 			a {
-				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				border-bottom: 1px solid $custom_orange;
-				border-left: 1px solid $custom_orange;
+				text-align: center;
+				background-color: $color_body-bg;
+				width: $gutter-width;
+				height: $line-height;
+					line-height: $line-height;
+				border-bottom: 1px solid $color_customBrown;
+				border-left: 1px solid $color_customBrown;
+				display: none;
 				position: absolute;
 					top: -1px;
 					right: -1px;
-				display: none;
-				width: 16px;
-				height: 16px;
 
-				span {
+				i {
 					cursor: pointer;
-					background-color: whiten(blacken($beige, 25%), 25%, 4);
-					//@include _16-sprite(x-black);
-					position: absolute;
-						top: 0;
-						right: 0;
-					display: block;
-					width: 16px;
-					height: 16px;
-					@include opacity(.25);
+					color: $color_alizarin;
 				}
 
-				&:hover span {
-					@include opacity(.5);
+				&:hover i {
+					color: $color_pomegranate;
 				}
 
 			}
 
 			&.new {
-				border-color: $custom_cyan;
+				border-color: $color_turquoise;
 			}
 
 			&:hover {
-				border-color: $custom_orange;
+				border-color: $color_customBrown;
 
 				a {
 					display: block;
@@ -96,6 +90,15 @@
 
 		}
 
+		.image-container:first-child .image {
+			border-color: $color_white;
+
+			&:hover {
+				border-color: $color_customBrown;
+			}
+
+		}
+
 	}
 
 }
@@ -105,13 +108,62 @@
 	#item_create,
 	#item_update {
 
-		div.images,
+		.images,
 		#Item_images {
 			display: none;
 		}
 
 	}
 
+}
+
+@media (max-width: $screen-xs-max) {
+	#item_create,
+	#item_update {
+
+		.images,
+		#Item_images {
+
+			.image {
+				
+				a {
+					display: block;
+				}
+
+				&.new {
+
+					a {
+						border-color: $color_turquoise;
+					}
+
+				}
+
+				&:hover {
+					border-color: $color_white;
+
+					a {
+						border-color: $color_white;
+					}
+
+				}
+
+			}
+
+			.image-container:first-child .image {
+
+				a {
+					border-color: $color_white;
+				}
+
+				&:hover {
+					border-color: $color_white;
+				}
+
+			}
+
+		}
+
+	}
 }
 
 #item_view {
