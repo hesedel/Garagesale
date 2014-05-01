@@ -1,0 +1,1434 @@
+{
+  "id": "c6f102e3",
+  "cfgVersion": 1,
+  "name": "Garagesale",
+  "files": {
+    "13f3a187": {
+      "id": "13f3a187",
+      "pid": "c6f102e3",
+      "name": "form.js",
+      "input": "js\\form.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "50ef0fa9": {
+      "id": "50ef0fa9",
+      "pid": "c6f102e3",
+      "name": "main.js",
+      "input": "js\\main.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "d6dc2db1": {
+      "id": "d6dc2db1",
+      "pid": "c6f102e3",
+      "name": "plugins.js",
+      "input": "js\\plugins.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "8c293f79": {
+      "id": "8c293f79",
+      "pid": "c6f102e3",
+      "name": "bootstrap.js",
+      "input": "js\\vendor\\bootstrap.js",
+      "customOutput": "js\\vendor\\bootstrap.min.js",
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "ba004e77": {
+      "id": "ba004e77",
+      "pid": "c6f102e3",
+      "name": "jquery.hes.slider.js",
+      "input": "js\\vendor\\jquery.hes.slider.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "463b6d73": {
+      "id": "463b6d73",
+      "pid": "c6f102e3",
+      "name": "jquery.textarea-expander.js",
+      "input": "js\\vendor\\jquery.textarea-expander.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "4aecc712": {
+      "id": "4aecc712",
+      "pid": "c6f102e3",
+      "name": "jquery.timeago.js",
+      "input": "js\\vendor\\jquery.timeago.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "9b33c5e5": {
+      "id": "9b33c5e5",
+      "pid": "c6f102e3",
+      "name": "503.scss",
+      "input": "scss\\503.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "5a2d746f": {
+      "id": "5a2d746f",
+      "pid": "c6f102e3",
+      "name": "css.scss",
+      "input": "scss\\css.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "6424f8e0": {
+      "id": "6424f8e0",
+      "pid": "c6f102e3",
+      "name": "bootstrap.scss",
+      "input": "scss\\vendor\\bootstrap\\bootstrap.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "5d155a20": {
+      "id": "5d155a20",
+      "pid": "c6f102e3",
+      "name": "bootstrap.scss",
+      "input": "scss\\vendor\\bootstrap.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "16ad29e9": {
+      "id": "16ad29e9",
+      "pid": "c6f102e3",
+      "name": "font-awesome.scss",
+      "input": "scss\\vendor\\font-awesome\\font-awesome.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "7636350e": {
+      "id": "7636350e",
+      "pid": "c6f102e3",
+      "name": "jquery.hes.slider.scss",
+      "input": "scss\\vendor\\jquery.hes.slider.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "349e3e46": {
+      "id": "349e3e46",
+      "pid": "c6f102e3",
+      "name": "jquery.lightbox-0.5.scss",
+      "input": "scss\\vendor\\jquery.lightbox-0.5.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "ca2ed446": {
+      "id": "ca2ed446",
+      "pid": "c6f102e3",
+      "name": "bootstrap.prepros.js",
+      "input": "js\\vendor\\bootstrap.prepros.js",
+      "customOutput": "js\\vendor\\bootstrap.min.js",
+      "type": "Js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "6e96e3ed": {
+      "id": "6e96e3ed",
+      "pid": "c6f102e3",
+      "name": "bootstrap.codekit.js",
+      "input": "js\\vendor\\bootstrap.codekit.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    }
+  },
+  "imports": {
+    "81872104": {
+      "id": "81872104",
+      "pid": "c6f102e3",
+      "path": "scss\\_item_.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "b80cfafa": {
+      "id": "b80cfafa",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_variables.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "535cbe2b": {
+      "id": "535cbe2b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_mixins.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "a928a957": {
+      "id": "a928a957",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_path.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "edd8be48": {
+      "id": "edd8be48",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_core.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "9076959d": {
+      "id": "9076959d",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_larger.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "b5e1e091": {
+      "id": "b5e1e091",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_fixed-width.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "7e7070f3": {
+      "id": "7e7070f3",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_list.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "54f7df02": {
+      "id": "54f7df02",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_bordered-pulled.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "0c26fd9d": {
+      "id": "0c26fd9d",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_spinning.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "cd2293e6": {
+      "id": "cd2293e6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_rotated-flipped.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "6ffbd205": {
+      "id": "6ffbd205",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_stacked.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "3cc8fe45": {
+      "id": "3cc8fe45",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\_icons.scss",
+      "parents": [
+        "16ad29e9",
+        "5a2d746f"
+      ]
+    },
+    "19b72eee": {
+      "id": "19b72eee",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_variables.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "5812ca59": {
+      "id": "5812ca59",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_mixins.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "13f33a68": {
+      "id": "13f33a68",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_normalize.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "0ecc3b38": {
+      "id": "0ecc3b38",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_print.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "1b125256": {
+      "id": "1b125256",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_scaffolding.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "c70dbc42": {
+      "id": "c70dbc42",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_type.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "930b71e2": {
+      "id": "930b71e2",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_code.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "7e1956c6": {
+      "id": "7e1956c6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_grid.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "853ebd60": {
+      "id": "853ebd60",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_tables.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "867b9548": {
+      "id": "867b9548",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_forms.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "db9ece49": {
+      "id": "db9ece49",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_buttons.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "541948c6": {
+      "id": "541948c6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_component-animations.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "faaba38a": {
+      "id": "faaba38a",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_glyphicons.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "bf80f0ef": {
+      "id": "bf80f0ef",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_dropdowns.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "f18b0e24": {
+      "id": "f18b0e24",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_button-groups.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "f03f68ee": {
+      "id": "f03f68ee",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_input-groups.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "00c04e8b": {
+      "id": "00c04e8b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_navs.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "3686a97e": {
+      "id": "3686a97e",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_navbar.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "fc6a04b6": {
+      "id": "fc6a04b6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_breadcrumbs.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "d4d61a84": {
+      "id": "d4d61a84",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_pagination.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "cf90c34b": {
+      "id": "cf90c34b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_pager.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "47545bbf": {
+      "id": "47545bbf",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_labels.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "ddc88fbc": {
+      "id": "ddc88fbc",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_badges.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "90d562af": {
+      "id": "90d562af",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_jumbotron.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "569ecdea": {
+      "id": "569ecdea",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_thumbnails.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "0a8aef8c": {
+      "id": "0a8aef8c",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_alerts.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "755f305e": {
+      "id": "755f305e",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_progress-bars.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "6228afd5": {
+      "id": "6228afd5",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_media.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "6763a2bc": {
+      "id": "6763a2bc",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_list-group.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "630ca3d6": {
+      "id": "630ca3d6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_panels.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "11de3378": {
+      "id": "11de3378",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_wells.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "e32ad051": {
+      "id": "e32ad051",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_close.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "7dd4b687": {
+      "id": "7dd4b687",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_modals.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "f9435e86": {
+      "id": "f9435e86",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_tooltip.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "eea3e8cd": {
+      "id": "eea3e8cd",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_popovers.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "a24baab8": {
+      "id": "a24baab8",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_carousel.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "20bd40e1": {
+      "id": "20bd40e1",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_utilities.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "82b61130": {
+      "id": "82b61130",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap\\_responsive-utilities.scss",
+      "parents": [
+        "6424f8e0",
+        "5d155a20",
+        "5a2d746f"
+      ]
+    },
+    "eda02cab": {
+      "id": "eda02cab",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\affix.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "a2b64d79": {
+      "id": "a2b64d79",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\alert.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "6f236d0e": {
+      "id": "6f236d0e",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\button.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "e5bb5abe": {
+      "id": "e5bb5abe",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\carousel.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "371922a6": {
+      "id": "371922a6",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\collapse.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "b54728a6": {
+      "id": "b54728a6",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\dropdown.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "c6cd8f67": {
+      "id": "c6cd8f67",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\tab.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "e7cb303e": {
+      "id": "e7cb303e",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\transition.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "5d9c49d7": {
+      "id": "5d9c49d7",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\scrollspy.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "0c85d7db": {
+      "id": "0c85d7db",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\modal.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "1fe58b55": {
+      "id": "1fe58b55",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\tooltip.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "a6e74837": {
+      "id": "a6e74837",
+      "pid": "c6f102e3",
+      "path": "js\\vendor\\bootstrap\\popover.js",
+      "parents": [
+        "ca2ed446",
+        "6e96e3ed"
+      ]
+    },
+    "31462c45": {
+      "id": "31462c45",
+      "pid": "c6f102e3",
+      "path": "scss\\_normalize.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "0e368b66": {
+      "id": "0e368b66",
+      "pid": "c6f102e3",
+      "path": "scss\\_main.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "5d155a20": {
+      "id": "5d155a20",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bootstrap.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "16ad29e9": {
+      "id": "16ad29e9",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\font-awesome\\font-awesome.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "7636350e": {
+      "id": "7636350e",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\jquery.hes.slider.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "349e3e46": {
+      "id": "349e3e46",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\jquery.lightbox-0.5.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "816cdf01": {
+      "id": "816cdf01",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\_bourbon.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "e1970aa2": {
+      "id": "e1970aa2",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_deprecated-webkit-gradient.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "02693bd0": {
+      "id": "02693bd0",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_gradient-positions-parser.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "68e35128": {
+      "id": "68e35128",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_linear-positions-parser.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "c4b6cf12": {
+      "id": "c4b6cf12",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_radial-arg-parser.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "0f6b9ba5": {
+      "id": "0f6b9ba5",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_radial-positions-parser.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "7fd09ad6": {
+      "id": "7fd09ad6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_render-gradients.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "e78329c3": {
+      "id": "e78329c3",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\helpers\\_shape-size-stripper.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "843df9f5": {
+      "id": "843df9f5",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_compact.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "f937e74b": {
+      "id": "f937e74b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_flex-grid.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "bd328ff1": {
+      "id": "bd328ff1",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_grid-width.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "31dae941": {
+      "id": "31dae941",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_linear-gradient.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "45f1e9ab": {
+      "id": "45f1e9ab",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_modular-scale.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "7c51cc33": {
+      "id": "7c51cc33",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_px-to-em.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "789985fb": {
+      "id": "789985fb",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_radial-gradient.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "a0722d57": {
+      "id": "a0722d57",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_tint-shade.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "020f3416": {
+      "id": "020f3416",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\functions\\_transition-property-name.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4c4aa552": {
+      "id": "4c4aa552",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_animation.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "ce5fb3d1": {
+      "id": "ce5fb3d1",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_appearance.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "f1e5bb88": {
+      "id": "f1e5bb88",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_backface-visibility.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "e68c3460": {
+      "id": "e68c3460",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_background.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "fd784310": {
+      "id": "fd784310",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_background-image.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "2cc9bfc8": {
+      "id": "2cc9bfc8",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_border-image.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "c840edf0": {
+      "id": "c840edf0",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_border-radius.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "28970f33": {
+      "id": "28970f33",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_box-sizing.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "cf8891a1": {
+      "id": "cf8891a1",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_columns.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "018b9376": {
+      "id": "018b9376",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_flex-box.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "b9ffcbea": {
+      "id": "b9ffcbea",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_font-face.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "0a39f0ba": {
+      "id": "0a39f0ba",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_hidpi-media-query.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "98a7a839": {
+      "id": "98a7a839",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_image-rendering.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "bca6cfbf": {
+      "id": "bca6cfbf",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_inline-block.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "55dea6b1": {
+      "id": "55dea6b1",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_keyframes.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "8a12093b": {
+      "id": "8a12093b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_linear-gradient.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4aa9bbe6": {
+      "id": "4aa9bbe6",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_perspective.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "914dc0fc": {
+      "id": "914dc0fc",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_radial-gradient.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "99eaf8e7": {
+      "id": "99eaf8e7",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_transform.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "f0c8fedd": {
+      "id": "f0c8fedd",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_transition.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "fb96cd53": {
+      "id": "fb96cd53",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_user-select.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "a19de86d": {
+      "id": "a19de86d",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\css3\\_placeholder.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "739a383a": {
+      "id": "739a383a",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_button.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "fe94b8fe": {
+      "id": "fe94b8fe",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_clearfix.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "b9861a00": {
+      "id": "b9861a00",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_font-family.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "daf54251": {
+      "id": "daf54251",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_hide-text.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "8a9a2bce": {
+      "id": "8a9a2bce",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_html5-input-types.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "68da3cab": {
+      "id": "68da3cab",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_position.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "564f6ec7": {
+      "id": "564f6ec7",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_prefixer.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4275c90b": {
+      "id": "4275c90b",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_retina-image.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "fdf58a95": {
+      "id": "fdf58a95",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_size.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4423a36d": {
+      "id": "4423a36d",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_timing-functions.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "f78a9160": {
+      "id": "f78a9160",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\addons\\_triangle.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "af24f109": {
+      "id": "af24f109",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\bourbon\\_bourbon-deprecated-upcoming.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "461718bf": {
+      "id": "461718bf",
+      "pid": "c6f102e3",
+      "path": "scss\\_variables.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "c36e40dc": {
+      "id": "c36e40dc",
+      "pid": "c6f102e3",
+      "path": "scss\\_global.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "9e180818": {
+      "id": "9e180818",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-button.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "a9731b11": {
+      "id": "a9731b11",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-items.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "db8c9ad8": {
+      "id": "db8c9ad8",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-pager.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "ff755db7": {
+      "id": "ff755db7",
+      "pid": "c6f102e3",
+      "path": "scss\\_form.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "05abb1ec": {
+      "id": "05abb1ec",
+      "pid": "c6f102e3",
+      "path": "scss\\_table.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "e146076d": {
+      "id": "e146076d",
+      "pid": "c6f102e3",
+      "path": "scss\\_site_.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4a575d4b": {
+      "id": "4a575d4b",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-tabs.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    }
+  },
+  "images": {},
+  "config": {
+    "watch": true,
+    "liveRefresh": true,
+    "liveRefreshDelay": 0,
+    "filterPatterns": "",
+    "useCustomServer": true,
+    "customServerUrl": "http://local.garagesale.ph/",
+    "cssPath": "css/",
+    "jsPath": "js/",
+    "htmlPath": "html/",
+    "minJsPath": "min/",
+    "htmlExtension": ".html",
+    "cssPathType": "REPLACE_TYPE",
+    "htmlPathType": "REPLACE_TYPE",
+    "jsPathType": "REPLACE_TYPE",
+    "minJsPathType": "RELATIVE_FILEDIR",
+    "htmlTypes": "jade, haml, slim, markdown, md",
+    "cssTypes": "less, sass, stylus, scss, styl",
+    "jsTypes": "coffee, coffeescript, coffeescripts, ls, livescript, livescripts",
+    "cssPreprocessorPath": "",
+    "htmlPreprocessorPath": "",
+    "jsPreprocessorPath": "",
+    "minJsPreprocessorPath": "",
+    "autoprefixerBrowsers": "",
+    "ftpHost": "",
+    "ftpPort": "21",
+    "ftpRemotePath": "",
+    "ftpIgnorePreprocessorFiles": true,
+    "ftpType": "FTP",
+    "ftpExcludePatterns": "",
+    "ftpPassword": "",
+    "ftpUsername": ""
+  }
+}

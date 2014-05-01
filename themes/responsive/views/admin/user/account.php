@@ -18,23 +18,20 @@ $this->layout = 'column1';
 		'focus' => array($model, 'title'),
 	)); ?>
 
-	<ul class="nav nav-tabs" id="tab">
-		<li class="active"><a href="#home" data-toggle="tab">User Info</a></li>
-		<li><a href="#profile" data-toggle="tab">Password Change</a></li>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#user_account-user" data-toggle="tab">User</a></li>
+		<li><a href="#user_account-community" data-toggle="tab">Community</a></li>
+		<li><a href="#user_account-password" data-toggle="tab">Password</a></li>
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="home">...</div>
-		<div class="tab-pane" id="profile">...</div>
-	</div>
+		<div class="tab-pane active" id="user_account-user">
 
-	<div class="row">
-		<div class="col-md-6 col-sm-6">
 			<table class="form">
-				<caption>User Info</caption>
+				<caption>User</caption>
 				<tbody>
 
-					<tr>
+					<tr class="avatar">
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
@@ -108,13 +105,15 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
-					<tr>
-						<th><?php echo $form->labelEx($model, 'course'); ?></th>
-						<td>
-							<?php echo $model->getCourseDropDownList(); ?>
-							<?php echo $form->error($model, 'course'); ?>
-						</td>
-					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="tab-pane" id="user_account-community">
+
+			<table class="form">
+				<caption>Community</caption>
+				<tbody>
 
 					<tr>
 						<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
@@ -124,12 +123,22 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
+					<tr>
+						<th><?php echo $form->labelEx($model, 'course'); ?></th>
+						<td>
+							<?php echo $model->getCourseDropDownList(); ?>
+							<?php echo $form->error($model, 'course'); ?>
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
+
 		</div>
-		<div class="col-md-6 col-sm-6">
+		<div class="tab-pane" id="user_account-password">
+
 			<table class="form">
-				<caption>Password Change</caption>
+				<caption>Password</caption>
 				<tbody>
 
 					<tr>
@@ -167,6 +176,7 @@ $this->layout = 'column1';
 
 				</tbody>
 			</table>
+
 		</div>
 	</div>
 

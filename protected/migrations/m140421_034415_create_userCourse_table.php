@@ -2,7 +2,7 @@
 
 class m140421_034415_create_userCourse_table extends CDbMigration
 {
-		public function safeUp()
+	public function safeUp()
 	{
 		$this->createTable('user_course', array(
 			'id'=>'mediumint UNSIGNED PRIMARY KEY',

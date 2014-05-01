@@ -31,6 +31,8 @@
 </head>
 <body>
 
+<div id="is-menu-before"></div>
+
 <div id="body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
@@ -81,6 +83,8 @@ r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
 */ ?>
+
+<div id="is-menu-after"></div>
 
 </body>
 </html>

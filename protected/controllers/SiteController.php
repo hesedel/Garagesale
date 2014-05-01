@@ -13,11 +13,11 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','error','contact','maintenance'),
+				'actions'=>array('captcha','page','index','error','contact','maintenance'),
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('login','register','captcha'),
+				'actions'=>array('login','register'),
 				'users'=>array('?'),
 			),
 			array('allow',
@@ -35,6 +35,7 @@ class SiteController extends Controller
 	 */
 	public function actions()
 	{
+		Yii::app()->theme='responsive';
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
@@ -133,6 +134,7 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
+		Yii::app()->theme='responsive';
 		$this->render('contact',array('model'=>$model));
 	}
 
