@@ -1,6 +1,6 @@
 $(function() {
 
-	$('#menu-toggle').bind('touchend', function() {
+	$('#menu-toggle').bind('touchend click', function() {
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
 			$('#menu').addClass('is-active');
@@ -33,10 +33,12 @@ $(function() {
 			var distance = $(this).data('x') - x;
 			distance *= 2; // acceleration
 			var percent = 1 - (distance / $(window).width());
-			if(percent < 0)
+			if(percent < 0) {
 				percent = 0;
-			if(percent > 1)
+			}
+			if(percent > 1) {
 				percent = 1;
+			}
 			$('body, #menu-x, #menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
@@ -44,7 +46,7 @@ $(function() {
 		},
 		touchend: function(e) {
 			var x = e.originalEvent.changedTouches[0].screenX;
-			if(x == $(this).data('x')) {
+			if(x === $(this).data('x')) {
 				$('#menu-toggle').trigger('touchend');
 			}	else {
 				var percent = $(this).offset().left / $(window).width();
@@ -58,7 +60,7 @@ $(function() {
 					}, 125);
 				} else {
 					$('body, #menu-x, #menu-footer').css( {
-						left: '0%'
+						left: '0'
 					});
 					setTimeout(function() {
 						$('#menu-toggle').trigger('touchend');
@@ -69,6 +71,9 @@ $(function() {
 				}, 125);
 			}
 			return false;
+		},
+		click: function() {
+			$('#menu-toggle').trigger('click');
 		}
 	});
 
