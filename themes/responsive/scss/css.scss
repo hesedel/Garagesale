@@ -167,4 +167,31 @@ body {
 	float: right;
 }
 
+#not-mobile {
+	@extend .hidden-xs;
+	text-align: center;
+	background-color: rgba($color_black, .9);
+	width: 100%;
+	height: 100%;
+	display: table;
+	position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 2;
+
+		> div {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+	h2 {
+		color: $color_customYellow;
+	}
+
+	p {
+		color: $color_white;
+	}
+
+}
+
 @import 'site_', 'item_';

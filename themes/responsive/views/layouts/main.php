@@ -86,5 +86,17 @@ ga('create','UA-XXXXX-X');ga('send','pageview');
 
 <div id="is-menu-after"></div>
 
+<div id="not-mobile">
+	<div>
+		<?php echo CHtml::image(
+			'/img/vendor/slir/h72/img/logo-white.png',
+			CHtml::encode(Yii::app()->name)
+		); ?>
+		<h2>Ooops!</h2>
+		<p>Stycle is not yet ready for the table or desktop.</p>
+		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
+	</div>
+</div>
+
 </body>
 </html>
