@@ -1048,7 +1048,6 @@ body.is-menuActive {
 
 #post {
 	padding-left: $gutter-width * (1 / 3);
-	@extend .hidden-xs;
 
 	a {
 		//color: $color_white;
