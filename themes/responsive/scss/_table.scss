@@ -352,6 +352,7 @@
 
 #menu-toggle {
 	@extend .visible-xs;
+	background-color: $color_greenSea;
 	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
