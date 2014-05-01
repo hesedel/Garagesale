@@ -629,7 +629,6 @@ body.is-menuActive {
 
 #register,
 #user {
-	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	> a,
@@ -660,6 +659,10 @@ body.is-menuActive {
 	}
 }
 
+#register {
+	@extend .hidden-xs;
+}
+
 @media (max-width: $screen-xs-max) {
 	#register {
 		text-align: center;
@@ -667,7 +670,6 @@ body.is-menuActive {
 		width: (1 / 3) * 100%; //
 		padding-top: $line-height * .5; //
 		padding-bottom: $line-height * .5; //
-		display: none !important;
 		position: relative;
 
 		> a {
@@ -1047,6 +1049,7 @@ body.is-menuActive {
 }
 
 #post {
+	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	a {
