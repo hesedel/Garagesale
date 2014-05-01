@@ -56,6 +56,7 @@
 </footer><!-- #footer -->
 
 <div id="menu-x"></div>
+<div id="menu-footer"></div>
 
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

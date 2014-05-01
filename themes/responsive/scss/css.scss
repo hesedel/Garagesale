@@ -39,6 +39,11 @@ body {
 
 		&.is-animating {
 			@include transition(left .125s ease);
+
+			#menu-footer {
+				@include transition(left .125s ease);
+			}
+
 		}
 
 	}

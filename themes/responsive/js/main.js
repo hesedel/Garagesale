@@ -3,6 +3,7 @@ $(function() {
 	$('#menu-toggle').bind('click', function() {
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
+			$('#menu').addClass('is-active');
 			$('body')
 				.addClass('is-animating')
 				.addClass('is-menuActive');
@@ -11,6 +12,9 @@ $(function() {
 			}, 125);
 		} else {
 			$(this).removeClass('is-active');
+			setTimeout(function() {
+				$('#menu').removeClass('is-active');
+			}, 125);
 			$('body')
 				.addClass('is-animating')
 				.removeClass('is-menuActive');
@@ -30,23 +34,23 @@ $(function() {
 		touchmove: function(e) {
 			var x = e.originalEvent.touches[0].screenX;
 			var percent = 1 - (($(this).data('x') - x) / $(window).width());
-			$('body').css( {
+			$('body, #menu-x, #menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
 			return false;
 		},
 		touchend: function() {
-			var percent = $('body').offset().left / $(window).width();
+			var percent = $(this).offset().left / $(window).width();
 			$('body').addClass('is-animating');
 			if(percent > 0.5) {
-				$('body').css( {
+				$('body, #menu-x, #menu-footer').css( {
 					left: '75%'
 				});
 				setTimeout(function() {
 					$('body').removeClass('is-animating');
 				}, 125);
 			} else {
-				$('body').css( {
+				$('body, #menu-x, #menu-footer').css( {
 					left: '0%'
 				});
 				setTimeout(function() {
@@ -54,7 +58,7 @@ $(function() {
 				}, 125);
 			}
 			setTimeout(function() {
-				$('body').attr('style', '');
+				$('body, #menu-x, #menu-footer').attr('style', '');
 			}, 125);
 		}
 	});

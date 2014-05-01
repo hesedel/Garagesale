@@ -38,6 +38,35 @@
 
 		<?php #header end ?>
 
+		<?php #menu ?>
+
+		<div id="menu">
+			<ul>
+				<li><a href="#">Menu Item 1</a></li>
+				<li><a href="#">Menu Item 2</a></li>
+				<li><a href="#">Menu Item 3</a></li>
+				<li><a href="#">Menu Item 4</a></li>
+				<li><a href="#">Menu Item 5</a></li>
+				<li><a href="#">Menu Item 6</a></li>
+				<li><a href="#">Menu Item 7</a></li>
+				<li><a href="#">Menu Item 8</a></li>
+				<li><a href="#">Menu Item 9</a></li>
+				<li><a href="#">Menu Item 10</a></li>
+				<li><a href="#">Menu Item 11</a></li>
+				<li><a href="#">Menu Item 12</a></li>
+				<li><a href="#">Menu Item 13</a></li>
+				<li><a href="#">Menu Item 14</a></li>
+				<li><a href="#">Menu Item 15</a></li>
+				<li><a href="#">Menu Item 16</a></li>
+				<li><a href="#">Menu Item 17</a></li>
+				<li><a href="#">Menu Item 18</a></li>
+				<li><a href="#">Menu Item 19</a></li>
+				<li><a href="#">Menu Item 20</a></li>
+			</ul>
+		</div>
+
+		<?php #menu end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
 		<?php #register ?>
