@@ -204,7 +204,7 @@ Yii::app()->clientScript->registerScript(
 		if(\$this.parent().hasClass('new')) {
 			var image = \$this.parent().attr('style');
 			$.post(
-				'/ad/ajaxRemoveImage/',
+				'/item/ajaxRemoveImage/',
 				{
 					image: '" . Yii::getPathOfAlias('webroot') . "/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.lastIndexOf(')'))
 				},
