@@ -384,6 +384,7 @@
 }
 
 #menu-toggle {
+	@extend .visible-xs;
 	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
@@ -421,6 +422,7 @@
 }
 
 #menu {
+	@extend .visible-xs;
 	background-color: $color_wetAsphalt;
 	@include background-image(linear-gradient(rgba($color_black, 0), rgba($color_black, .25)));
 	//width: 0;

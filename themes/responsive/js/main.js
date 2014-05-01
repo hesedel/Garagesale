@@ -4,18 +4,65 @@ $(function() {
 		if(!$(this).parents('#menu-toggle').hasClass('is-active')) {
 			$(this).parents('#menu-toggle').addClass('is-active');
 			$('#menu').addClass('is-active');
-			$('body').addClass('is-menu');
+			$('html, body').addClass('is-menu');
 		} else {
 			$(this).parents('#menu-toggle').removeClass('is-active');
 			setTimeout(function() {
 				$('#menu').removeClass('is-active');
-			}, 250);
-			$('body').removeClass('is-menu');
+			}, 125);
+			$('html, body').removeClass('is-menu');
 		}
 	});
 
 	$('.x', '#menu').bind('click', function() {
 		$('i', '#menu-toggle').trigger('click');
+	});
+
+	/*
+	$(window).bind('touchend', function() {
+		if($('html').hasClass('is-menu')) {
+			if($(window).scrollLeft() > $(window).width() * .25) {
+				$('html, body').animate( {
+					scrollLeft:  $(window).width() * .75
+				}, 125, function() {
+					$('body')
+						.css( {
+							left: 0
+						})
+						.removeClass('is-menu')
+						.attr('style', '');
+					//$('i', '#menu-toggle').trigger('click');
+				});
+			} else {
+				$('html, body').animate( {
+					scrollLeft: 0
+				}, 125);
+			}
+		}
+	});
+	*/
+
+	$('#is-menu').bind( {
+		click: function() {
+			$('i', '#menu-toggle').trigger('click');
+		}//,
+		/*
+		touchstart: function(e) {
+			$(this).data('x', e.originalEvent.touches[0].screenX);
+		},
+		*/
+		/*
+		touchmove: function(e) {
+			//e.preventDefault();
+			//var x = e.originalEvent.touches[0].screenX;
+			//var percent = 1 - (($(this).data('x') - x) / $(window).width());
+			//console.log(percent);
+			//$('body').css( {
+				//left: (75 * percent) + '%'
+			//});
+			return false;
+		}
+		*/
 	});
 
 	$('.a', '#user').data('hover', false);

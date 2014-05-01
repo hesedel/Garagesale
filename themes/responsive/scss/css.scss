@@ -6,6 +6,12 @@
 @import 'compass', 'vendor/bourbon/bourbon';
 @import 'variables', 'global', 'form';
 
+@media (max-width: $screen-xs-max) {
+	html.is-menu {
+		//overflow: hidden;
+	}
+}
+
 body {
 	cursor: default;
 	color: $color;
@@ -30,9 +36,9 @@ body {
 		padding-top: 0;
 		position: relative;
 			left: 0;
-		@include transition(left .25s ease);
+		@include transition(left .125s ease);
 
-		&:before, &:after {
+		#is-menu, &:after {
 			content: '';
 			position: fixed;
 				top: 0;
@@ -41,14 +47,14 @@ body {
 				left: 0%;
 		}
 
-		&:before {
+		#is-menu {
 			background-color: $color_black;
 			z-index: -1;
 			@include opacity(0);
 			@include transition(
-				left .25s ease,
-				z-index 0s ease .25s,
-				opacity .25s ease
+				left .125s ease,
+				z-index 0s ease .125s,
+				opacity .125s ease
 			);
 		}
 
@@ -56,25 +62,28 @@ body {
 			background-color: $color_footer_bg;
 			@include box-shadow(0 0 #{$gutter_width * (1 / 3)} rgba($color_black, .25));
 			z-index: -1;
-			@include transition(left .25s ease);
+			@include transition(left .125s ease);
 		}
 
 		&.is-menu {
 			width: 100%;
 			position: fixed;
+				top: 0;
+				bottom: 0;
 				left: 75%;
+			overflow: hidden;
 
-			&:before, &:after {
+			#is-menu, &:after {
 				left: 75%;
 			}
 
-			&:before {
+			#is-menu {
 				z-index: 1;
 				@include opacity(.25);
 				@include transition(
-					left .25s ease,
+					left .125s ease,
 					z-index 0s ease 0s,
-					opacity .25s ease
+					opacity .125s ease
 				);
 			}
 

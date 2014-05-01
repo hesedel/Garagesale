@@ -31,6 +31,8 @@
 </head>
 <body>
 
+<div id="is-menu"></div>
+
 <div id="body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
