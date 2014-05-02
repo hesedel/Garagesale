@@ -101,4 +101,12 @@ body {
 	float: right;
 }
 
+#alert {
+
+	.modal-footer {
+		text-align: center;
+	}
+
+}
+
 @import 'site_', 'item_';
