@@ -72,7 +72,7 @@
 <div id="not-mobile">
 	<div>
 		<?php echo CHtml::image(
-			'/img/vendor/slir/h72/img/logo-white.png',
+			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
 		<h2>Ooops!</h2>

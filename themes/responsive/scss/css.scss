@@ -118,6 +118,10 @@ body {
 			vertical-align: middle;
 		}
 
+	img {
+		height: $line-height * 4;
+	}
+
 	h2 {
 		color: $color_customYellow;
 	}
