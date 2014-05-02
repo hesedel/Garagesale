@@ -174,7 +174,7 @@
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('Sell', array('/item/create')); ?>
+			<?php echo CHtml::link('<i class="fa fa-usd"></i>ell', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
