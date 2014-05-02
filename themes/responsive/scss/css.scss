@@ -111,7 +111,7 @@ body {
 	position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 2;
+		z-index: 1050;
 
 		> div {
 			display: table-cell;
@@ -124,6 +124,14 @@ body {
 
 	p {
 		color: $color_white;
+	}
+
+}
+
+#alert {
+
+	.modal-footer {
+		text-align: center;
 	}
 
 }

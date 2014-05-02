@@ -58,6 +58,17 @@
 <div id="menu-x"></div>
 <div id="menu-footer"></div>
 
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="g-button" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="not-mobile">
 	<div>
 		<?php echo CHtml::image(
