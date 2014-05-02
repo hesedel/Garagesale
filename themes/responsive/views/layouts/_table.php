@@ -168,6 +168,8 @@
 
 		<?php endif; #search end */ ?>
 
+		<?php if(Yii::app()->user->isGuest): ?>
+
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
@@ -175,6 +177,8 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
+
+		<?php endif; ?>
 
 		<?php if(
 			$this->getRoute() == 'item/search' ||
