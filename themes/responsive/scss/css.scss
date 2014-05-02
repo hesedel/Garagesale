@@ -130,8 +130,17 @@ body {
 
 #alert {
 
+	.modal-content {
+		background-color: $color_customYellow;
+	}
+
+	.modal-body {
+		color: $color_customBrown;
+	}
+
 	.modal-footer {
 		text-align: center;
+		border-top-color: $color_customBrown;
 	}
 
 }

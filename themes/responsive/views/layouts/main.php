@@ -63,7 +63,7 @@
 		<div class="modal-content">
 			<div class="modal-body"></div>
 			<div class="modal-footer">
-				<button type="button" class="g-button" data-dismiss="modal">OK</button>
+				<button type="button" class="g-button g-button--primary" data-dismiss="modal">OK</button>
 			</div>
 		</div>
 	</div>
