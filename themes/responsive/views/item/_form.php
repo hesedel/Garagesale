@@ -30,7 +30,7 @@
 				<td>
 					<div class="price input-text">
 						<span class="prepend">AU$</span>
-						<?php echo $form->textField($model, 'price'); ?>
+						<?php echo $form->numberField($model, 'price'); ?>
 						<span class="placeholder">How much does it cost?</span>
 					</div>
 					<?php echo $form->error($model, 'price'); ?>
