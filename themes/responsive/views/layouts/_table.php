@@ -128,6 +128,7 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-usd"></i>Sell', array('/item/create')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
