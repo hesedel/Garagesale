@@ -28,7 +28,7 @@ $this->layout = '/layouts/column1';
 					<th><?php echo $form->labelEx($model, 'username'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'username', array('autocapitalize' => 'none')); ?>
+							<?php echo $form->emailField($model, 'username', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Your username or email address</span>
 						</div>
 						<?php echo $form->error($model, 'username'); ?>
