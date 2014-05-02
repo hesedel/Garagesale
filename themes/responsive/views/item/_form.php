@@ -130,6 +130,22 @@
 						'model' => $model,
 						'attribute' => 'images',
 						'accept' => 'gif|jpg|jpeg|png',
+						'options' => array(
+							'onFileSelect' => "function(e ,v, m) {
+								e.files[0].name = 'tae';
+								console.log(e.files);
+							}",
+							'afterFileAppend' => "function(e, v, m) {
+								if(e.files.length > 1) {
+									$('.MultiFile-title',
+										$('.MultiFile-label:eq(' + $(e).index() + ')',
+											$('#' + $(m.e).attr('id') + '_wrap_list')
+										)
+									).text(e.files.length + ' images');
+								}
+							}",
+						),
+						'htmlOptions' => array('multiple' => true),
 						'max' => 5,
 						'remove' => 'remove',
 					));
