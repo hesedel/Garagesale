@@ -771,7 +771,6 @@ body.is-menuActive {
 
 #login,
 #logout {
-	@extend .hidden-xs;
 	padding-left: 1px;
 
 	a {
@@ -799,24 +798,24 @@ body.is-menuActive {
 
 	a .fa-sign-in {
 		@extend .hidden-sm;
+		@extend .hidden-xs;
 	}
 
 }
 
 @media (max-width: $screen-xs-max) {
 	#login {
-		width: 50%;
-		width: (1 / 3) * 100%; //
-		padding-top: $line-height * .5; //
-		padding-bottom: $line-height * .5; //
-		display: none !important;
+		//width: 50%;
+		//width: (1 / 3) * 100%; //
+		padding-top: ($line-height * .5) + ($line-height * (1 / 6)); //
+		padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));//
+		float: right;
 
 		a {
-			height: $line-height * 2;
-				line-height: $line-height * 2;
+			height: ($line-height * 2) - ($line-height * (1 / 3));
+				line-height: ($line-height * 2) - ($line-height * (1 / 3));
 			@include border-radius($border-radius);
-			margin-right: $gutter-width * (1 / 3);
-			margin-left: $gutter-width * (1 / 3);
+			margin-right: $gutter-width;
 		}
 
 	}

@@ -79,7 +79,7 @@
 			<?php echo CHtml::link('Register', array('/site/register')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #register end ?>
+		<?php #register end */ ?>
 
 		<?php #login ?>
 
@@ -87,9 +87,9 @@
 			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #login end */ ?>
+		<?php #login end ?>
 
-		<?php #user ?>
+		<?php /* #user ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
 			<div class="a">
@@ -106,7 +106,7 @@
 			</div>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #user end ?>
+		<?php #user end */ ?>
 
 		<?php else: ?>
 
