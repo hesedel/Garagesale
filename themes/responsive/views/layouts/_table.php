@@ -16,9 +16,7 @@
 
 		<?php #menu-toggle ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="menu-toggle">' : '<td class="td" id="menu">'; ?>
-			<i class="fa fa-bars"></i>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+		<div id="menu-toggle"><i class="fa fa-bars"></i></div>
 
 		<?php #menu-toggle end ?>
 
@@ -44,6 +42,35 @@
 
 		<?php #header end ?>
 
+		<?php #menu ?>
+
+		<div id="menu">
+			<ul>
+				<li><a href="#">Menu Item 1</a></li>
+				<li><a href="#">Menu Item 2</a></li>
+				<li><a href="#">Menu Item 3</a></li>
+				<li><a href="#">Menu Item 4</a></li>
+				<li><a href="#">Menu Item 5</a></li>
+				<li><a href="#">Menu Item 6</a></li>
+				<li><a href="#">Menu Item 7</a></li>
+				<li><a href="#">Menu Item 8</a></li>
+				<li><a href="#">Menu Item 9</a></li>
+				<li><a href="#">Menu Item 10</a></li>
+				<li><a href="#">Menu Item 11</a></li>
+				<li><a href="#">Menu Item 12</a></li>
+				<li><a href="#">Menu Item 13</a></li>
+				<li><a href="#">Menu Item 14</a></li>
+				<li><a href="#">Menu Item 15</a></li>
+				<li><a href="#">Menu Item 16</a></li>
+				<li><a href="#">Menu Item 17</a></li>
+				<li><a href="#">Menu Item 18</a></li>
+				<li><a href="#">Menu Item 19</a></li>
+				<li><a href="#">Menu Item 20</a></li>
+			</ul>
+		</div>
+
+		<?php #menu end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
 		<?php /* #register ?>
@@ -52,7 +79,7 @@
 			<?php echo CHtml::link('Register', array('/site/register')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #register end ?>
+		<?php #register end */ ?>
 
 		<?php #login ?>
 
@@ -60,9 +87,9 @@
 			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #login end */ ?>
+		<?php #login end ?>
 
-		<?php #user ?>
+		<?php /* #user ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
 			<div class="a">
@@ -79,7 +106,7 @@
 			</div>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #user end ?>
+		<?php #user end */ ?>
 
 		<?php else: ?>
 
@@ -94,15 +121,14 @@
 							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '
-					) .
-						Yii::app()->user->id .
-							'<i class="fa fa-angle-down"></i>',
+					) . '<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
 						'id' => Yii::app()->user->id,
 					)
 				); ?>
 				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-usd"></i>Sell', array('/item/create')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
@@ -143,45 +169,17 @@
 
 		<?php endif; #search end */ ?>
 
+		<?php if(Yii::app()->user->isGuest): ?>
+
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('Sell', array('/item/create')); ?>
+			<?php echo CHtml::link('<i class="fa fa-usd"></i>ell', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
 
-		<?php #menu ?>
-
-		<div id="menu">
-			<span class="x">&times;</span>
-			<ul>
-				<li class="heading">All categories</li>
-				<li><a href="#">Category 1</a></li>
-				<li><a href="#">Category 2</a></li>
-				<li><a href="#">Category 3</a></li>
-				<li><a href="#">Category 4</a></li>
-				<li><a href="#">Category 5</a></li>
-				<li><a href="#">Category 6</a></li>
-				<li><a href="#">Category 7</a></li>
-				<li><a href="#">Category 8</a></li>
-				<li><a href="#">Category 9</a></li>
-				<li><a href="#">Category 10</a></li>
-				<li><a href="#">Category 11</a></li>
-				<li><a href="#">Category 12</a></li>
-				<li><a href="#">Category 13</a></li>
-				<li><a href="#">Category 14</a></li>
-				<li><a href="#">Category 15</a></li>
-				<?php if(!Yii::app()->user->isGuest): ?>
-				<li class="heading">Your categories</li>
-				<li><a href="#">Category 1</a><span class="badge">#</span></li>
-				<li><a href="#">Category 2</a><span class="badge">#</span></li>
-				<li><a href="#">Category 3</a><span class="badge">#</span></li>
-			<?php endif; ?>
-			</ul>
-		</div>
-
-		<?php #menu end ?>
+		<?php endif; ?>
 
 		<?php if(
 			$this->getRoute() == 'item/search' ||

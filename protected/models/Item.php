@@ -361,7 +361,7 @@ class Item extends CActiveRecord
 		$images = Yii::app()->db->createCommand()
 			->select('id, type')
 			->from('item_image')
-			->where('item_id=:item_id and `index`>0', array(':item_id'=>$this->id))
+			->where('item_id=:item_id', array(':item_id'=>$this->id))
 			->order('index')
 			->queryAll();
 		if($images)
