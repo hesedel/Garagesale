@@ -29,7 +29,7 @@ $this->layout = 'column1';
 					<th><?php echo $form->labelEx($model, 'id'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'id'); ?>
+							<?php echo $form->textField($model, 'id', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Only small letters, numbers, and underscores are allowed.</span>
 						</div>
 						<?php echo $form->error($model, 'id'); ?>
@@ -40,7 +40,7 @@ $this->layout = 'column1';
 					<th><?php echo $form->labelEx($model, 'email'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'email'); ?>
+							<?php echo $form->emailField($model, 'email'); ?>
 							<span class="placeholder">Your email address</span>
 						</div>
 						<?php echo $form->error($model, 'email'); ?>
@@ -127,7 +127,7 @@ $this->layout = 'column1';
 					<td>
 						<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?></div>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'verifyCode'); ?>
+							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Please enter the letters as they are shown in the image above.</span>
 						</div>
 						<?php echo $form->error($model, 'verifyCode'); ?>
