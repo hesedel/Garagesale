@@ -1,5 +1,5 @@
 <?php
-$params=require(dirname(__FILE__).'../protected/config/params.php');
+$params=require(dirname(__FILE__).'/../protected/config/params.php');
 
 $mysqli = new mysqli($params['db.host'],$params['db.username'],$params['db.password'],$params['db.name']);
 
