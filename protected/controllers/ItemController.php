@@ -79,8 +79,8 @@ class ItemController extends Controller
 						),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
 					);
 					$headers="From: ".$model_contact->replier_name." <".$model_contact->getReplierEmail().">\r\nContent-Type: text/html";
-Yii::trace($headers);
-					if(mail($model->user->email, Yii::app()->name.' New Message', $body->convert(), $headers))
+
+					if(mail($model->user->email,Yii::app()->name.' New Message',$body->convert(),$headers))
 						$model_contactForm_success=true;
 				}
 			}
