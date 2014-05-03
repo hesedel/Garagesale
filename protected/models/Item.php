@@ -24,6 +24,7 @@
 class Item extends CActiveRecord
 {
 	public $location_id;
+	public $photo;
 	public $images;
 	public $uploads;
 	public $phone;
@@ -55,8 +56,8 @@ class Item extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
-			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>64*1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 64KB, maxSize 2.5MB
-			array('images', 'ImageValidator', 'allowEmpty'=>true),
+			array('photo, images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>64*1024, 'maxSize'=>2.5*(1024*1024), 'maxFiles'=>5), // minSize 64KB, maxSize 2.5MB
+			array('photo, images', 'ImageValidator', 'allowEmpty'=>true),
 		);
 	}
 
@@ -91,6 +92,7 @@ class Item extends CActiveRecord
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',
+			'photo' => 'Photo',
 			'images' => 'Image(s)',
 			'location_id' => 'Location',
 			'phone' => 'Phone',
