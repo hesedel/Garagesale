@@ -1,5 +1,10 @@
 $(function() {
 
+	window.alert = function(message) {
+		$('.modal-body', '#alert').text(message);
+		$('#alert').modal();
+	}
+
 	$('#menu-toggle').bind('touchend click', function() {
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
