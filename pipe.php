@@ -91,6 +91,10 @@ $poster_id = $item_contact['user_id_poster'];
 $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
+// Get poster name
+$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
+$poster_name = $poster_result->fetch_array(MYSQLI_ASSOC);
+
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
 	// If replier get the replier's email via $replier_id
@@ -105,6 +109,7 @@ if ( $recipient == 'replier' ) {
 	}
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
+	$sender_name = $poster_name;
 } else {
 	$result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
 	$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
@@ -115,11 +120,11 @@ if ( $recipient == 'replier' ) {
 
 
 
-$headers = "From: " . $sender_email . "\r\n";
+$headers = "From: $sender_name <" . $sender_email . ">\r\n";
 $headers .= "Reply-To: ". $sender_email . "\r\n";
 // $headers .= "CC: test@example.com\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+//$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html";
 
 /*
 // Tweaked for initial message.
