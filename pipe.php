@@ -92,9 +92,9 @@ $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
 // Get poster's name
-$poster_result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
-	$poster = $result->fetch_array(MYSQLI_ASSOC);
-$poster_name = $poster['name_first'];
+//$poster_result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
+	//$poster = $result->fetch_array(MYSQLI_ASSOC);
+$poster_name = $poster_id;
 
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
