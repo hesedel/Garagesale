@@ -93,7 +93,7 @@ $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
 // Get poster name
 $poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
-$poster_name = $poster_result->fetch_array(MYSQLI_ASSOC);
+$poster_name = $poster_result->fetch_array(MYSQLI_ASSOC)[0];
 
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
@@ -101,7 +101,7 @@ if ( $recipient == 'replier' ) {
 	// If replier_id is not empty
 	if ( $replier_id ) {
 		$result = $mysqli->query("SELECT email FROM user WHERE id = $replier_id");
-		$recipient_user = $result->fetch_array(MYSQLI_ASSOC)[0];
+		$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 		$recipient_email = $recipient_user['email'];
 	} else {
 		// If $replier_id is empty then get the email from the item_contact table instead
