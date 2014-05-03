@@ -51,12 +51,37 @@ class ItemController extends Controller
 			{
 				$model_contact=new ItemContact;
 				$model_contact->item_id=$id;
-				$model_contact->replier_email=$model_contactForm->email;
-				$model_contact->replier_name=$model_contactForm->name;
-				$model_contact->user_id_poster=$model->user_id;
-				if($model_contact->save())
+				if(Yii::app()->user->isGuest)
 				{
-					$model_contactForm_success=true;
+					$model_contact->replier_email=$model_contactForm->email;
+					$model_contact->replier_name=$model_contactForm->name;
+				}
+				else
+				{
+					$model_contact->user_id_replier=Yii::app()->user->id;
+				}
+				$model_contact->user_id_poster=$model->user_id;
+				if($model_contact->save() || isset($model_contact->id))
+				{
+					$body=new CSSToInlineStyles(
+						Yii::app()->controller->renderPartial(
+							'/site/_emailWrapper',
+							array(
+								'data'=>Yii::app()->controller->renderPartial(
+									'_sendMessage-email',
+									array(
+										'name_replier'=>$model_contact->replier_name,
+										'name_poster'=>$model->user->name_first,
+										'message'=>$model_contactForm->body,
+									),true
+								)
+							),true
+						),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+					);
+					$headers="From: ".$model_contact->replier_name." <".$model_contact->getReplierEmail().">\r\nContent-Type: text/html";
+
+					if(mail($model->user->email,Yii::app()->name.' New Message',$body->convert(),$headers))
+						$model_contactForm_success=true;
 				}
 			}
 		}

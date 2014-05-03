@@ -113,14 +113,65 @@ class ItemContact extends CActiveRecord
 		));
 	}
 
+	protected function beforeSave()
+	{
+		$replier_email=Yii::app()->db->createCommand()
+			->select('id,replier_email')
+			->from('item_contact')
+			->where(
+				'item_id=:item_id and replier_email=:replier_email',
+				array(
+					':item_id'=>$this->item_id,
+					':replier_email'=>$this->replier_email,
+				)
+			)
+			->queryRow();
+		if($replier_email!=null)
+		{
+			extract($replier_email);
+			Yii::app()->db->createCommand()
+				->update(
+					'item_contact',
+					array('replier_name'=>$this->replier_name),
+					'id=:id',
+					array(':id'=>$id)
+				);
+		}
+		$user_id_replier=Yii::app()->db->createCommand()
+			->select('id,user_id_replier')
+			->from('item_contact')
+			->where(
+				'item_id=:item_id and user_id_replier=:user_id_replier',
+				array(
+					':item_id'=>$this->item_id,
+					':user_id_replier'=>$this->user_id_replier,
+				)
+			)
+			->queryRow();
+		if($user_id_replier!=null)
+		{
+			extract($user_id_replier);
+			$this->replier_name=User::model()->findByPk($user_id_replier)->name_first;
+		}
+		if($replier_email!=null || $user_id_replier!=null)
+		{
+			$this->id=$id;
+		}
+		else {
+			return true;
+		}
+	}
+
 	protected function afterSave()
 	{
 		parent::afterSave();
 		if(Yii::app()->params['cp.emailAccountManager-url'])
 		{
 			// create email accounts
+			/*
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&password='.Yii::app()->params['cp.emailAccountManager-key']);
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=create&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&password='.Yii::app()->params['cp.emailAccountManager-key']);
+			*/
 
 			// create email forwarders
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_create&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&fwdopt=pipe&pipefwd=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
@@ -137,10 +188,22 @@ class ItemContact extends CActiveRecord
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&emaildest=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
 
 			// delete email accounts
+			/*
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=delete&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
 			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
+			*/
 		}
 		return true;
+	}
+
+	public function getPosterEmail()
+	{
+		return 'poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'@'.Yii::app()->params['usersEmailDomain'];
+	}
+
+	public function getReplierEmail()
+	{
+		return 'replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'@'.Yii::app()->params['usersEmailDomain'];
 	}
 
 	/**
