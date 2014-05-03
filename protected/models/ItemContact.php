@@ -159,12 +159,12 @@ class ItemContact extends CActiveRecord
 		}
 		else {
 			if($this->user_id_replier!=null)
-				{
+			{
 				$this->replier_name=$user_id_replier=Yii::app()->db->createCommand()
 				->select('name_first')
 				->from('user')
 				->where(
-					'user_id_replier=:user_id_replier',
+					'id=:user_id_replier',
 					array(
 						':user_id_replier'=>$this->user_id_replier,
 					)
