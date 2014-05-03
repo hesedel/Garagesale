@@ -51,10 +51,17 @@ class ItemController extends Controller
 			{
 				$model_contact=new ItemContact;
 				$model_contact->item_id=$id;
-				$model_contact->replier_email=$model_contactForm->email;
-				$model_contact->replier_name=$model_contactForm->name;
+				if(Yii::app()->user->isGuest)
+				{
+					$model_contact->replier_email=$model_contactForm->email;
+					$model_contact->replier_name=$model_contactForm->name;
+				}
+				else
+				{
+					$model_contact->user_id_replier=Yii::app()->user->id;
+				}
 				$model_contact->user_id_poster=$model->user_id;
-				if($model_contact->save())
+				if($model_contact->save() || isset($model_contact->id))
 				{
 					$body=new CSSToInlineStyles(
 						Yii::app()->controller->renderPartial(
