@@ -83,6 +83,7 @@ $('form.ajax').bind('submit', function() {
 	});
 
 	$.post(window.location.pathname, $this.serialize() + '&ajax=' + $this.attr('id'), function(data) {
+		alert('a');
 		var id = $this.attr('id');
 		$this.replaceWith(data);
 		$this = $('#' + id);
