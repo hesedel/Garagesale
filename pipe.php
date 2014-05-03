@@ -91,6 +91,20 @@ $poster_id = $item_contact['user_id_poster'];
 $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
+// Get replier's name
+if ( $replier_id ) {
+$replier_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
+//$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
+$replier_name = $replier_result ? 'success' : 'failure';
+} else {
+	$replier_name = $item_contact['replier_name'];
+}
+
+// Get poster's name
+$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
+//$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
+$poster_name = $poster_result ? 'success' : 'failure';
+
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
 	// If replier get the replier's email via $replier_id
@@ -105,12 +119,6 @@ if ( $recipient == 'replier' ) {
 	}
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
-
-	// Get poster's name
-$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
-//$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
-$poster_name = $poster_result ? 'success' : 'failure';
-
 	$sender_name = $poster_name;
 } else {
 	$result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
@@ -118,6 +126,7 @@ $poster_name = $poster_result ? 'success' : 'failure';
 	$recipient_email = $recipient_user['email'];
 
 	$sender_email = str_replace('poster', 'replier', $toEmail);
+	$sender_name = $replier_name;
 }
 
 
