@@ -92,7 +92,7 @@ $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
 // Get poster's name
-$poster_result = $mysqli->query("SELECT * FROM item_contact WHERE id = $convo_id");
+$poster_result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
 //$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
 $poster_name = $poster_result ? 'success' : 'failure';
 
