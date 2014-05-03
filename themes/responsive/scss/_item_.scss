@@ -366,6 +366,17 @@
 		}
 		
 	}
+	.social-share{
+		background-color: red;
+		@include clearfix;
+
+		> div, > a {
+			float: left;
+
+		}
+
+	}
+
 
 }
 

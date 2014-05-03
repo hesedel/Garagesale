@@ -158,8 +158,8 @@ $this->menu=array(
 	</aside>
 </div>
 
-<div class="row">
-	<div class="col-xs-6">
+<div class="social-share">
+	
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
@@ -169,11 +169,10 @@ $this->menu=array(
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
-	</div>
-	<div class="cols-xs-6">
+		
 		<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	</div>
+	
 </div>
 
 </div><!-- #item_view -->
