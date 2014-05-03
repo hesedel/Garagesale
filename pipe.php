@@ -101,7 +101,7 @@ $replier_name = $replier_result ? 'success' : 'failure';
 }
 
 // Get poster's name
-$poster_result = $mysqli->query("SELECT name_first FROM user WHERE `id` = $poster_id");
+$poster_result = $mysqli->query("SELECT `name_first` FROM `user` WHERE `id` = $poster_id");
 //$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
 $poster_name = $poster_result ? 'success' : 'failure';
 
