@@ -72,7 +72,7 @@ class User extends CActiveRecord
 			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
-			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>64*1024, 'maxSize'=>2.5*(1024*1024)), // minSize 64KB, maxSize 2.5MB
+			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024)), // minSize 16KB, maxSize 3MB
 			array('image_temp', 'ImageValidator', 'allowEmpty'=>true),
 		);
 	}

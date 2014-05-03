@@ -107,6 +107,13 @@ class ItemController extends Controller
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 					$i++;
 				}
+				$photos=CUploadedFile::getInstances($model,'photo');
+				foreach($photos as $photo) {
+					$name=md5($photo->name.time().$i).'.'.strtolower($photo->extensionName);
+					$photo->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
+					$uploads[]=array('name'=>$photo->name,'tempName'=>$name,'new'=>true);
+					$i++;
+				}
 				if($uploads) {
 					$i=0;
 					foreach($uploads as $upload) {
@@ -175,6 +182,13 @@ class ItemController extends Controller
 					$name=md5($image->name.time().$i).'.'.strtolower($image->extensionName);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
+					$i++;
+				}
+				$photos=CUploadedFile::getInstancess($model,'photo');
+				foreach($photos as $photo) {
+					$name=md5($photo->name.time().$i).'.'.strtolower($photo->extensionName);
+					$photo->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
+					$uploads[]=array('name'=>$photo->name,'tempName'=>$name,'new'=>true);
 					$i++;
 				}
 				$array1=array();

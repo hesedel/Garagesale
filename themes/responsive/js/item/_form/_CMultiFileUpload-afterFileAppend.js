@@ -19,13 +19,13 @@ function(e, v, m) {
 		$.each(e.files, function(index, value) {
 			if(value) {
 
-				if(value.size < 64 * 1024) {
-					alert('The file "' + value.name + '" is too small. Its size cannot be smaller than ' + (64 * 1024) + ' bytes.');
+				if(value.size < 16 * 1024) {
+					alert('The file "' + value.name + '" is too small. Its size cannot be smaller than ' + (16 * 1024) + ' bytes.');
 					$('.MultiFile-remove', $label).trigger('click');
 				}
 
-				if(value.size > 2.5 * (1024 * 1024)) {
-					alert('The file "' + value.name + '" is too large. Its size cannot exceed ' + (2.5 * (1024 * 1024)) + ' bytes.');
+				if(value.size > 3 * (1024 * 1024)) {
+					alert('The file "' + value.name + '" is too large. Its size cannot exceed ' + (3 * (1024 * 1024)) + ' bytes.');
 					$('.MultiFile-remove', $label).trigger('click');
 				}
 
