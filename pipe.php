@@ -91,8 +91,8 @@ $poster_id = $item_contact['user_id_poster'];
 $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
-// Get poster name
-$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
+// Get poster's name
+$poster_result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
 $poster = $poster_result->fetch_array(MYSQLI_ASSOC);
 $poster_name = $poster['name_first'];
 
