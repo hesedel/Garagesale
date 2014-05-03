@@ -101,7 +101,7 @@ if ( $recipient == 'replier' ) {
 	// If replier_id is not empty
 	if ( $replier_id ) {
 		$result = $mysqli->query("SELECT email FROM user WHERE id = $replier_id");
-		$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
+		$recipient_user = $result->fetch_array(MYSQLI_ASSOC)[0];
 		$recipient_email = $recipient_user['email'];
 	} else {
 		// If $replier_id is empty then get the email from the item_contact table instead
