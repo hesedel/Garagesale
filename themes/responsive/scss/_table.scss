@@ -199,6 +199,7 @@
 
 @media (max-width: $screen-xs-max) {
 	#table {
+		background-color: $color;
 		margin-top: 0;
 		display: block;
 
@@ -246,6 +247,103 @@
 
 }
 
+#menu-toggle {
+	@extend .visible-xs;
+	cursor: pointer;
+	background-color: $color_emerald;
+	padding: $line-height $gutter-width;
+	float: left;
+
+	i {
+		color: $color_white;
+		font-size: 1.25em;
+		line-height: $line-height;
+		display: block;
+	}
+
+}
+
+#menu {
+	@extend .visible-xs;
+	background-color: $color_black;
+	position: fixed;
+		top: 0;
+		right: 25%;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+	overflow: auto;
+
+		ul {
+			list-style: none;
+			padding-left: 0;
+			margin-bottom: 0;
+		}
+
+		li {
+
+		}
+
+		a {
+			padding: $line-height $gutter-width;
+			display: block;
+		}
+
+		&.is-active {
+			-webkit-overflow-scrolling: touch;
+		}
+
+}
+
+#menu-x {
+	@extend .visible-xs;
+	cursor: pointer;
+	background-color: $color_black;
+	position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+	@include opacity(0);
+}
+
+body.is-menuActive {
+
+	#menu-x {
+		left: 75%;
+		z-index: 0;
+	}
+
+}
+
+#menu-footer {
+	@extend .visible-xs;
+	background-color: $color_footer-bg;
+	position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+}
+
+body.is-menuActive {
+
+	#menu-footer {
+		left: 75%;
+	}
+
+}
+
+body.is-animating {
+
+	#menu-footer {
+		@include transition(left .125s ease);
+	}
+
+}
+
 #header {
 
 	h1 {
@@ -286,6 +384,12 @@
 	}
 }
 
+@media (max-width: $screen-xs-max) {
+	#header {
+		float: left;
+	}
+}
+
 #logo {
 	color: $color_white;
 	font-size: 1.25em;
@@ -320,8 +424,9 @@
 
 @media (max-width: $screen-xs-max) {
 	#logo {
-		height: $line-height * 1.5;
-			line-height: $line-height * 1.5;
+		background-color: transparent;
+		//height: $line-height * 1.5;
+			//line-height: $line-height * 1.5;
 		@include border-radius(0);
 	}
 }
@@ -361,6 +466,7 @@
 
 #register,
 #user {
+	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	> a,
@@ -474,6 +580,7 @@
 
 #login,
 #logout {
+	@extend .hidden-xs;
 	padding-left: 1px;
 
 	a {
@@ -725,13 +832,13 @@
 }
 
 #post {
-	padding-left: $gutter-width * (1 / 3);
 	//@extend .hidden-xs;
+	padding-left: $gutter-width * (1 / 3);
 
 	a {
 		color: $color_white;
 		text-align: center;
-		background-color: $color_nephritis;
+		background-color: $color_emerald;
 		@include box-sizing(content-box);
 		height: $line-height * 2;
 			line-height: $line-height;
@@ -741,7 +848,7 @@
 
 		&:hover {
 			color: $color_white;
-			background-color: blacken($color_nephritis, 25%);
+			background-color: blacken($color_emerald, 25%);
 		}
 
 	}
@@ -755,7 +862,7 @@
 		padding-bottom: $line-height * .5;
 		padding-left: 0;
 		position: absolute;
-			top: $line-height * 1.5;
+			top: 0;
 			right: 0;
 
 		a {
@@ -765,6 +872,11 @@
 			@include border-radius($border-radius);
 			margin-right: $gutter-width;
 			margin-left: $gutter-width * (1 / 3);
+
+			&:hover {
+				background-color: $color_emerald;
+			}
+
 		}
 
 	}

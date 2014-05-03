@@ -19,7 +19,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','update','delete'),
+				'actions'=>array('create','update','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -342,6 +342,11 @@ class ItemController extends Controller
 		}
 
 		echo CJSON::encode($items);
+	}
+
+	public function actionAjaxRemoveImage()
+	{
+		$this->renderPartial('ajax/_removeImage');
 	}
 
 	public function loadModel($id)
