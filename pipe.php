@@ -53,8 +53,8 @@ if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'te
 
 } elseif(substr($decoded[0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Body'])) {  
 
-    $body = json_encode($decoded[0]['Parts'][0]['Body']);
-    file_put_contents(dirname(__FILE__).'/pipe.log', implode("\n",$decoded));
+    $body = nl2br($decoded[0]['Parts'][0]['Body']);
+    file_put_contents(dirname(__FILE__).'/pipe.log', implode("\n",json_encode($decoded)));
 
 } elseif(substr($decoded[0]['Parts'][0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Parts'][0]['Body'])) {  
 
