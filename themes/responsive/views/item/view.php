@@ -36,7 +36,7 @@ $this->menu=array(
 
 			<td><h1><?php echo CHtml::encode($model->title); ?></h1></td>
 
-			<td><span class="price">PHP <?php echo number_format($model->price); ?></span></td>
+			<td><span class="price">AUD$ <?php echo number_format($model->price); ?></span></td>
 
 		</tr>
 	</thead>
@@ -147,6 +147,47 @@ $this->menu=array(
 		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 
 	</div>
+
+	<div class="col-sm-6 col-md-8">
+
+	<div id="item-info-tabs">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#collection-details-pane" data-toggle="tab">Collection Details</a></li>
+			<li><a href="#seller-info-pane" data-toggle="tab">Seller Info</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="collection-details-pane">
+				<p>Location</p>
+				<p>Time</p>
+				<p>Day</p>
+			</div>
+			<div class="tab-pane" id="seller-info-pane">
+				<p>University</p>
+				<p>Area of Study</p>
+				<p>Rating *****</p>
+				<p>Follow Seller Button / All Seller Items Button</p>
+			</div>
+		</div>
+	</div>
+
+	</div>
+
+	<style>
+	#item-info-tabs {
+		padding: 20px 0;	
+	}
+
+	#item-info-tabs .tab-pane {
+		background-color: white;
+		padding: 20px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border: 1px solid #ddd;
+		border-top: none;
+	}
+	</style>
+
 	<aside class="col-sm-6 col-md-4">
 
 		<?php $this->renderPartial('view/_sidebar-right', array(
