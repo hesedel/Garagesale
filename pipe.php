@@ -93,24 +93,24 @@ $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
 // Get replier's name
 if ( $replier_id ) {
-$replier_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
-//$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
-$replier_name = $replier_result ? 'success' : 'failure';
+$replier_result = $mysqli->query("SELECT name_first FROM user WHERE id = '$poster_id'");
+$replier = $replier_result->fetch_array(MYSQLI_ASSOC);
+$replier_name = $replier['name_first'];
 } else {
 	$replier_name = $item_contact['replier_name'];
 }
 
 // Get poster's name
-$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = $poster_id");
-//$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
-$poster_name = $poster_result ? 'success' : 'failure';
+$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = '$poster_id'");
+$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
+$poster_name = $poster['name_first'];
 
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
 	// If replier get the replier's email via $replier_id
 	// If replier_id is not empty
 	if ( $replier_id ) {
-		$result = $mysqli->query("SELECT email FROM user WHERE id = $replier_id");
+		$result = $mysqli->query("SELECT email FROM user WHERE id = '$replier_id'");
 		$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 		$recipient_email = $recipient_user['email'];
 	} else {
@@ -119,20 +119,22 @@ if ( $recipient == 'replier' ) {
 	}
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
+	$recipient_name = $replier_name;
 	$sender_name = $poster_name;
 } else {
-	$result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
+	$result = $mysqli->query("SELECT * FROM user WHERE id = '$poster_id'");
 	$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 	$recipient_email = $recipient_user['email'];
 
 	$sender_email = str_replace('poster', 'replier', $toEmail);
+	$recipient_name = $poster_name;
 	$sender_name = $replier_name;
 }
 
 
 
 $headers = "From: $sender_name <" . $sender_email . ">\r\n";
-$headers .= "Reply-To: ". $sender_email . "\r\n";
+//$headers .= "Reply-To: ". $sender_email . "\r\n";
 // $headers .= "CC: test@example.com\r\n";
 //$headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html";
@@ -158,7 +160,7 @@ $html=new CSSToInlineStyles(
 $body = $html->convert();
 */
 
-mail($recipient_email, $subject, $body, $headers);
+mail($recipient_name.' <'.$recipient_email.'>', $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
