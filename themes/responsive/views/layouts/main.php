@@ -58,10 +58,21 @@
 <div id="menu-x"></div>
 <div id="menu-footer"></div>
 
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="g-button g-button--primary" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="not-mobile">
 	<div>
 		<?php echo CHtml::image(
-			'/img/vendor/slir/h72/img/logo-white.png',
+			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
 		<h2>Ooops!</h2>
