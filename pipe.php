@@ -57,8 +57,7 @@ if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'te
 
 } elseif(substr($decoded[0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Body'])) {  
 
-    $body = nl2br($decoded[0]['Parts'][0]['Body']);
-    file_put_contents(dirname(__FILE__).'/pipe.log', print_r($decoded, true));
+    $body = $decoded[0]['Parts'][0]['Body'];
 
 } elseif(substr($decoded[0]['Parts'][0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Parts'][0]['Body'])) {  
 
