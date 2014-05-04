@@ -1,5 +1,7 @@
 <?php
-$mysqli = new mysqli("localhost","hes_janx","janzenzarzoso","hes_garagesale_int");
+$params=require(dirname(__FILE__).'/../protected/config/params.php');
+
+$mysqli = new mysqli($params['db.host'],$params['db.username'],$params['db.password'],$params['db.name']);
 
 // Check connection
 if ($mysqli->connect_errno){

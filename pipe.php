@@ -32,33 +32,36 @@ $fromEmail = $decoded[0]['ExtractedAddresses']['from:'][0]['address'];
 //get the name and email of the recipient  
 $toEmail = $decoded[0]['ExtractedAddresses']['to:'][0]['address'];  
 $toName = $decoded[0]['ExtractedAddresses']['to:'][0]['name'];  
-  
+
 //get the subject  
 $subject = $decoded[0]['Headers']['subject:'];  
-  
+
 $removeChars = array('<','>');  
-  
+
 //get the message id  
 $messageID = str_replace($removeChars,'',$decoded[0]['Headers']['message-id:']);  
-  
+
 //get the reply id  
 $replyToID = str_replace($removeChars,'',$decoded[0]['Headers']['in-reply-to:']);  
-  
-  
+
 //---------------------- FIND THE BODY -----------------------//  
-  
+
 //get the message body  
 if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Body'])){  
-      
-    $body = $decoded[0]['Body'];  
-  
+
+    $body = $decoded[0]['Body'];
+
+} elseif(substr($decoded[0]['Parts'][1]['Headers']['content-type:'],0,strlen('text/html')) == 'text/html' && isset($decoded[0]['Parts'][1]['Body'])) {
+
+	$body = $decoded[0]['Parts'][1]['Body'];
+
 } elseif(substr($decoded[0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Body'])) {  
-      
-    $body = $decoded[0]['Parts'][0]['Body'];  
-  
+
+    $body = $decoded[0]['Parts'][0]['Body'];
+
 } elseif(substr($decoded[0]['Parts'][0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Parts'][0]['Body'])) {  
-      
-    $body = $decoded[0]['Parts'][0]['Parts'][0]['Body'];  
+
+    $body = $decoded[0]['Parts'][0]['Parts'][0]['Body'];
   
 }
   
@@ -91,12 +94,26 @@ $poster_id = $item_contact['user_id_poster'];
 $item_result = $mysqli->query("SELECT * FROM item WHERE id = $item_id");
 $item = $item_result->fetch_array(MYSQLI_ASSOC);
 
+// Get replier's name
+if ( $replier_id ) {
+$replier_result = $mysqli->query("SELECT name_first FROM user WHERE id = '$poster_id'");
+$replier = $replier_result->fetch_array(MYSQLI_ASSOC);
+$replier_name = $replier['name_first'];
+} else {
+	$replier_name = $item_contact['replier_name'];
+}
+
+// Get poster's name
+$poster_result = $mysqli->query("SELECT name_first FROM user WHERE id = '$poster_id'");
+$poster = $poster_result->fetch_array(MYSQLI_ASSOC);
+$poster_name = $poster['name_first'];
+
 // Check if the message is sent to either replier or poster
 if ( $recipient == 'replier' ) {
 	// If replier get the replier's email via $replier_id
 	// If replier_id is not empty
 	if ( $replier_id ) {
-		$result = $mysqli->query("SELECT email FROM user WHERE id = $replier_id");
+		$result = $mysqli->query("SELECT email FROM user WHERE id = '$replier_id'");
 		$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 		$recipient_email = $recipient_user['email'];
 	} else {
@@ -105,22 +122,27 @@ if ( $recipient == 'replier' ) {
 	}
 	
 	$sender_email = str_replace('replier', 'poster', $toEmail);
+	$recipient_name = $replier_name;
+	$sender_name = $poster_name;
 } else {
-	$result = $mysqli->query("SELECT * FROM user WHERE id = $poster_id");
+	$result = $mysqli->query("SELECT * FROM user WHERE id = '$poster_id'");
 	$recipient_user = $result->fetch_array(MYSQLI_ASSOC);
 	$recipient_email = $recipient_user['email'];
 
 	$sender_email = str_replace('poster', 'replier', $toEmail);
+	$recipient_name = $poster_name;
+	$sender_name = $replier_name;
 }
 
 
 
-$headers = "From: " . $sender_email . "\r\n";
-$headers .= "Reply-To: ". $sender_email . "\r\n";
+$headers = "From: $sender_name <" . $sender_email . ">\r\n";
+//$headers .= "Reply-To: ". $sender_email . "\r\n";
 // $headers .= "CC: test@example.com\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+//$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html";
 
+/*
 // Tweaked for initial message.
 if ( $item_contact_result->num_rows > 1 )
 	$subject = 'Inquiry for '.$item['title'];
@@ -139,8 +161,9 @@ $html=new CSSToInlineStyles(
 );
 
 $body = $html->convert();
+*/
 
-mail($recipient_email, $subject, $body, $headers);
+mail($recipient_name.' <'.$recipient_email.'>', $subject, $body, $headers);
 
 // $header = "From: ".$sender_email."\r\n"; 
 // $header.= "MIME-Version: 1.0\r\n"; 
