@@ -1,14 +1,6 @@
 $(function() {
 
 /*
-$('input').bind('keypress', function(e) {
-	if(e.which === 13) {
-		$('a.submit', $(this).parents('form')).trigger('click');
-	}
-});
-*/
-
-/*
 $('textarea')
 	.css( {
 		resize: 'none'
