@@ -102,6 +102,7 @@ body {
 }
 
 #not-mobile {
+	display: none;
 	@extend .hidden-xs;
 	text-align: center;
 	background-color: rgba($color_black, .9);
