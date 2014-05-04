@@ -51,6 +51,10 @@ if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'te
 
     $body = $decoded[0]['Body'];
 
+} elseif(substr($decoded[0]['Parts'][1]['Headers']['content-type:'],0,strlen('text/html')) == 'text/html' && isset($decoded[0]['Parts'][1]['Body'])) {
+
+	$body = $decoded[0]['Parts'][1]['Body'];
+
 } elseif(substr($decoded[0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Body'])) {  
 
     $body = nl2br($decoded[0]['Parts'][0]['Body']);
