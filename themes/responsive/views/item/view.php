@@ -128,6 +128,7 @@ $this->menu=array(
 	</div>
 	<div class="col-sm-6 col-md-8">
 
+		<?php /*
 		<?php
 		$info = array();
 		$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
@@ -143,6 +144,7 @@ $this->menu=array(
 			<?php if($i % 2 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
 			<?php } ?>
 		</table>
+		*/ ?>
 
 		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 
