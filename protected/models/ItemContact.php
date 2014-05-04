@@ -197,13 +197,13 @@ class ItemContact extends CActiveRecord
 		if(Yii::app()->params['cp.emailAccountManager-url'])
 		{
 			// delete email forwarders
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_delete&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&emaildest=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=forwarder_delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&emaildest=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.urlencode(Yii::app()->params['cp.emailAccountManager-key']).'&action=forwarder_delete&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&emaildest=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.urlencode(Yii::app()->params['cp.emailAccountManager-key']).'&action=forwarder_delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain'].'&emaildest=|'.$_SERVER['DOCUMENT_ROOT'].'/pipe.php');
 
 			// delete email accounts
 			/*
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=delete&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
-			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.Yii::app()->params['cp.emailAccountManager-key'].'&action=delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.urlencode(Yii::app()->params['cp.emailAccountManager-key']).'&action=delete&email=replier.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
+			file_get_contents(Yii::app()->params['cp.emailAccountManager-url'].'?key='.urlencode(Yii::app()->params['cp.emailAccountManager-key']).'&action=delete&email=poster.'.$this->item_id.'.'.base_convert($this->id,10,36).'&domain='.Yii::app()->params['usersEmailDomain']);
 			*/
 		}
 		return true;
