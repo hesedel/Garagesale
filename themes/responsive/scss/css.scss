@@ -111,12 +111,16 @@ body {
 	position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 2;
+		z-index: 1050;
 
 		> div {
 			display: table-cell;
 			vertical-align: middle;
 		}
+
+	img {
+		height: $line-height * 4;
+	}
 
 	h2 {
 		color: $color_customYellow;
@@ -124,6 +128,23 @@ body {
 
 	p {
 		color: $color_white;
+	}
+
+}
+
+#alert {
+
+	.modal-content {
+		background-color: $color_customYellow;
+	}
+
+	.modal-body {
+		color: $color_customBrown;
+	}
+
+	.modal-footer {
+		text-align: center;
+		border-top-color: $color_customBrown;
 	}
 
 }

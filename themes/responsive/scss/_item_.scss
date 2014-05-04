@@ -2,20 +2,16 @@
 #item_update {
 
 	div.price {
-		max-width: 175px;
-		padding-left: 44px;
+		padding-left: $gutter-width * 3;
 
 		span.prepend {
 			color: blacken($custom_green, 25%, 2);
-			text-align: center;
 			position: absolute;
-				left: 9px;
-			height: 26px;
-				line-height: 26px;
+				left: $gutter-width * (2 / 3);
 		}
 
 		span.placeholder {
-			left: 45px;
+			left: $gutter-width * 3;
 		}
 
 	}

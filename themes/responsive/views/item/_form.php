@@ -86,16 +86,27 @@
 						foreach($images as $image)
 							$uploads[] = array('name' => $image['id'], 'tempName' => '', 'new' => false);
 					}
+					$i = 0;
 					if(strlen(strip_tags($form->error($model, 'images'))) == 0) {
 						$images = CUploadedFile::getInstances($model, 'images');
 						foreach($images as $image) {
-							$name = md5($image->name . time()) . '.' . strtolower($image->extensionName);
+							$name = md5($image->name . time() . $i) . '.' . strtolower($image->extensionName);
 							$image->saveAs(Yii::getPathOfAlias('webroot') . '/img/uploads/temp/' . $name);
 							$uploads[] = array('name' => $image->name, 'tempName' => $name, 'new' => true);
+							$i++;
 						}
 					}
-					if($uploads) :
+					if(strlen(strip_tags($form->error($model, 'photo'))) == 0) {
+						$photos = CUploadedFile::getInstances($model, 'photo');
+						foreach($photos as $photo) {
+							$name = md5($photo->name . time() . $i) . '.' . strtolower($photo->extensionName);
+							$photo->saveAs(Yii::getPathOfAlias('webroot') . '/img/uploads/temp/' . $name);
+							$uploads[] = array('name' => $photo->name, 'tempName' => $name, 'new' => true);
+							$i++;
+						}
+					}
 					?>
+					<?php if($uploads): ?>
 					<div class="images">
 						<?php foreach($uploads as $upload): ?>
 						<div class="image-container">
@@ -124,17 +135,35 @@
 						?>
 						<div class="clear"></div>
 					</div>
-					<?php
-					endif;
-					$this->widget('CMultiFileUpload', array(
+					<?php endif; ?>
+					<div class="label label-default">Select upto 5 images to upload</div>
+					<?php $this->widget('CMultiFileUpload', array(
 						'model' => $model,
 						'attribute' => 'images',
 						'accept' => 'gif|jpg|jpeg|png',
+						'options' => array(
+							'afterFileAppend' => file_get_contents(Yii::app()->theme->basePath . '/js/item/_form/_CMultiFileUpload-afterFileAppend.js'),
+						),
+						'htmlOptions' => array(
+							'accept' => 'image/*',
+							'multiple' => true,
+						),
 						'max' => 5,
 						'remove' => 'remove',
-					));
-					?>
+					)); ?>
 					<?php echo $form->error($model, 'images'); ?>
+					<div class="label label-default">or take a photo.</div>
+					<?php $this->widget('CMultiFileUpload', array(
+						'model' => $model,
+						'attribute' => 'photo',
+						'accept' => 'gif|jpg|jpeg|png',
+						'htmlOptions' => array(
+							'accept' => 'image/*',
+						),
+						'max' => 1,
+						'remove' => 'remove',
+					)); ?>
+					<?php echo $form->error($model, 'photo'); ?>
 					<div class="no-js">JavaScript required</div>
 				</td>
 			</tr>

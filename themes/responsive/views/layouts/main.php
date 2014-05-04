@@ -58,14 +58,25 @@
 <div id="menu-x"></div>
 <div id="menu-footer"></div>
 
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="g-button g-button--primary" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="not-mobile">
 	<div>
 		<?php echo CHtml::image(
-			'/img/vendor/slir/h72/img/logo-white.png',
+			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
 		<h2>Ooops!</h2>
-		<p>Stycle is not yet ready for the table or desktop.</p>
+		<p>Stycle is not yet ready for desktop.</p>
 		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
 	</div>
 </div>
@@ -85,17 +96,14 @@ Yii::app()->clientScript->registerPackage('form');
 Yii::app()->clientScript->registerPackage('main');
 ?>
 
-<?php /*
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-e.src='//www.google-analytics.com/analytics.js';
-r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-XXXXX-X');ga('send','pageview');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-50631477-1', 'pajaroncreative.com');
+ga('send', 'pageview');
 </script>
-*/ ?>
 
 </body>
 </html>

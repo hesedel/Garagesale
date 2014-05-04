@@ -43,13 +43,13 @@ if(isset($_REQUEST['key']) && $_REQUEST['key'] === $key) {
 		case 'delete_all':
 			$done = false;
 			while(!$done) {
-				$contents = file_get_contents(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . "?key=$key&action=index&domain=$domain");
+				$contents = file_get_contents(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . '?key=' . urlencode($key) . "&action=index&domain=$domain");
 				if(strlen($contents) == 0) {
 					$done = true;
 				}
 				$lines = explode("\n", $contents);
 				foreach($lines as $line) {
-					$f = fopen(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . "?key=$key&action=delete&email=$line&domain=$domain", 'r');
+					$f = fopen(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . '?key=' . urlencode($key) . "&action=delete&email=$line&domain=$domain", 'r');
 					fclose($f);
 				}
 			}
@@ -96,14 +96,14 @@ if(isset($_REQUEST['key']) && $_REQUEST['key'] === $key) {
 		case 'forwarder_delete_all':
 			$done = false;
 			while(!$done) {
-				$contents = file_get_contents(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . "?key=$key&action=forwarder_index&domain=$domain");
+				$contents = file_get_contents(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . '?key=' . urlencode($key) . "&action=forwarder_index&domain=$domain");
 				if(strlen($contents) == 0) {
 					$done = true;
 				}
 				$lines = explode("\n", $contents);
 				foreach($lines as $line) {
 					$debris = explode(' ', $line);
-					$f = fopen(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . "?key=$key&action=forwarder_delete&email=$debris[0]&domain=$domain&emaildest=$debris[1]", 'r');
+					$f = fopen(strtok('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], '?') . '?key=' . urlencode($key) . "&action=forwarder_delete&email=$debris[0]&domain=$domain&emaildest=$debris[1]", 'r');
 					fclose($f);
 				}
 			}
