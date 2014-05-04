@@ -32,33 +32,32 @@ $fromEmail = $decoded[0]['ExtractedAddresses']['from:'][0]['address'];
 //get the name and email of the recipient  
 $toEmail = $decoded[0]['ExtractedAddresses']['to:'][0]['address'];  
 $toName = $decoded[0]['ExtractedAddresses']['to:'][0]['name'];  
-  
+
 //get the subject  
 $subject = $decoded[0]['Headers']['subject:'];  
-  
+
 $removeChars = array('<','>');  
-  
+
 //get the message id  
 $messageID = str_replace($removeChars,'',$decoded[0]['Headers']['message-id:']);  
-  
+
 //get the reply id  
 $replyToID = str_replace($removeChars,'',$decoded[0]['Headers']['in-reply-to:']);  
-  
-  
+
 //---------------------- FIND THE BODY -----------------------//  
-  
+
 //get the message body  
 if(substr($decoded[0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Body'])){  
-      
-    $body = $decoded[0]['Body'];  
-  
+
+    $body = 'FIRST '.$decoded[0]['Body'];
+
 } elseif(substr($decoded[0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Body'])) {  
-      
-    $body = $decoded[0]['Parts'][0]['Body'];  
-  
+
+    $body = 'SECOND '.$decoded[0]['Parts'][0]['Body'];
+
 } elseif(substr($decoded[0]['Parts'][0]['Parts'][0]['Headers']['content-type:'],0,strlen('text/plain')) == 'text/plain' && isset($decoded[0]['Parts'][0]['Parts'][0]['Body'])) {  
-      
-    $body = $decoded[0]['Parts'][0]['Parts'][0]['Body'];  
+
+    $body = 'THIRD '.$decoded[0]['Parts'][0]['Parts'][0]['Body'];
   
 }
   
