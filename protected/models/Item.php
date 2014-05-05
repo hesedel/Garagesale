@@ -59,6 +59,7 @@ class Item extends CActiveRecord
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>5), // minSize 16KB, maxSize 3MB
 			array('photo', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>1), // minSize 16KB, maxSize 3MB
 			array('images, photo', 'ImageValidator', 'allowEmpty'=>true),
+			array('title, description', 'BadWord'),
 		);
 	}
 
