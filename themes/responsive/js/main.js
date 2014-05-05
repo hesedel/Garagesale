@@ -6,6 +6,13 @@ $(function() {
 	}
 
 	$('#menu-toggle').bind('touchend click', function() {
+
+		// needed by Android < 4.3
+		$(document).bind('click.menu', function() {
+			$(this).unbind('click.menu');
+			return false;
+		});
+
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
 			$('#menu').addClass('is-active');
@@ -14,6 +21,13 @@ $(function() {
 				.addClass('is-menuActive');
 			setTimeout(function() {
 				$('body').removeClass('is-animating');
+
+				// needed by Android < 4.3
+				$('body').hide();
+				setTimeout(function() {
+					$('body').show();
+				}, 0);
+
 			}, 125);
 		} else {
 			$(this).removeClass('is-active');
@@ -27,6 +41,7 @@ $(function() {
 				$('body').removeClass('is-animating');
 			}, 125);
 		}
+		return false;
 	});
 
 	$('#menu-x').bind( {
