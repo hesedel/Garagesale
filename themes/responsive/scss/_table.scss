@@ -264,8 +264,9 @@
 }
 
 #menu {
-	@extend .visible-xs;
+	//@extend .visible-xs;
 	background-color: $color_black;
+	display: none;
 	position: fixed;
 		top: 0;
 		right: 25%;
@@ -273,6 +274,7 @@
 		left: 0;
 		z-index: -1;
 	overflow: auto;
+		-webkit-overflow-scrolling: touch;
 
 		ul {
 			list-style: none;
@@ -290,7 +292,8 @@
 		}
 
 		&.is-active {
-			-webkit-overflow-scrolling: touch;
+			display: block;
+			//-webkit-overflow-scrolling: touch;
 		}
 
 }
