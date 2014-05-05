@@ -276,25 +276,25 @@
 	overflow: auto;
 		-webkit-overflow-scrolling: touch;
 
-		ul {
-			list-style: none;
-			padding-left: 0;
-			margin-bottom: 0;
-		}
+	ul {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
 
-		li {
+	li {
 
-		}
+	}
 
-		a {
-			padding: $line-height $gutter-width;
-			display: block;
-		}
+	a {
+		padding: $line-height $gutter-width;
+		display: block;
+	}
 
-		&.is-active {
-			display: block;
-			//-webkit-overflow-scrolling: touch;
-		}
+	&.is-active {
+		display: block;
+		//-webkit-overflow-scrolling: touch;
+	}
 
 }
 
