@@ -75,9 +75,8 @@
 			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
-		<h2>Ooops!</h2>
-		<p>Stycle is not yet ready for desktop.</p>
-		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
+		<h2>Welcome to Stycle!</h2>
+		<p>Please view this site on mobile device to receive the best experience,<br><br>or scale your browser window down.</p>
 	</div>
 </div>
 
