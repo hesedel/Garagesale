@@ -298,26 +298,41 @@
 
 }
 
+#xs {
+	position: relative;
+		left: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+	body.is-menuActive #xs {
+		width: 100%;
+		position: absolute;
+			left: 75%;
+	}
+
+	body.is-animating #xs {
+		@include transition(left .125s ease);
+	}
+}
+
 #menu-x {
-	@extend .visible-xs;
+	//@extend .visible-xs;
 	cursor: pointer;
 	background-color: $color_black;
+	display: none;
 	position: fixed;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: -1;
 	@include opacity(0);
 }
 
-body.is-menuActive {
-
-	#menu-x {
+@media (max-width: $screen-xs-max) {
+	body.is-menuActive #menu-x {
+		display: block;
 		left: 75%;
-		z-index: 0;
 	}
-
 }
 
 #menu-footer {
@@ -331,20 +346,12 @@ body.is-menuActive {
 		z-index: -1;
 }
 
-body.is-menuActive {
-
-	#menu-footer {
-		left: 75%;
-	}
-
+body.is-menuActive #menu-footer {
+	left: 75%;
 }
 
-body.is-animating {
-
-	#menu-footer {
-		@include transition(left .125s ease);
-	}
-
+body.is-animating #menu-footer {
+	@include transition(left .125s ease);
 }
 
 #header {

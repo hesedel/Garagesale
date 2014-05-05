@@ -31,6 +31,8 @@
 </head>
 <body>
 
+<div id="xs">
+
 <div id="body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
@@ -63,8 +65,9 @@
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
 </footer><!-- #footer -->
 
+</div><!-- #xs -->
+
 <div id="menu-x"></div>
-<div id="menu-footer"></div>
 
 <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
 	<div class="modal-dialog modal-sm">

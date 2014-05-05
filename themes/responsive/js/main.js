@@ -7,7 +7,7 @@ $(function() {
 
 	$('#menu-toggle').bind('touchend click', function() {
 
-		// needed by Android < 4.3
+		// needed by Android <= 4.3
 		$(document).bind('click.menu', function() {
 			$(this).unbind('click.menu');
 			return false;
@@ -21,13 +21,6 @@ $(function() {
 				.addClass('is-menuActive');
 			setTimeout(function() {
 				$('body').removeClass('is-animating');
-
-				// needed by Android < 4.3
-				$('body').hide();
-				setTimeout(function() {
-					$('body').show();
-				}, 0);
-
 			}, 125);
 		} else {
 			$(this).removeClass('is-active');
@@ -59,12 +52,19 @@ $(function() {
 			if(percent > 1) {
 				percent = 1;
 			}
-			$('body, #menu-x, #menu-footer').css( {
+			$('#xs, #menu-x, #menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
 			return false;
 		},
 		touchend: function(e) {
+
+			// needed by Android <= 4.1.2
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
+
 			var x = e.originalEvent.changedTouches[0].screenX;
 			if(x === $(this).data('x')) {
 				$('#menu-toggle').trigger('touchend');
@@ -72,14 +72,14 @@ $(function() {
 				var percent = $(this).offset().left / $(window).width();
 				$('body').addClass('is-animating');
 				if(percent > 0.5) {
-					$('body, #menu-x, #menu-footer').css( {
+					$('#xs, #menu-x, #menu-footer').css( {
 						left: '75%'
 					});
 					setTimeout(function() {
 						$('body').removeClass('is-animating');
 					}, 125);
 				} else {
-					$('body, #menu-x, #menu-footer').css( {
+					$('#xs, #menu-x, #menu-footer').css( {
 						left: '0'
 					});
 					setTimeout(function() {
@@ -87,7 +87,7 @@ $(function() {
 					}, 125);
 				}
 				setTimeout(function() {
-					$('body, #menu-x, #menu-footer').attr('style', '');
+					$('#xs, #menu-x, #menu-footer').attr('style', '');
 				}, 125);
 			}
 			return false;

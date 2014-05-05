@@ -28,17 +28,13 @@ body {
 @media (max-width: $screen-xs-max) {
 	body {
 		padding-top: 0;
-		position: relative;
-			left: 0;
 
 		&.is-menuActive {
-			width: 100%;
 			position: fixed;
-				left: 75%;
-		}
-
-		&.is-animating {
-			@include transition(left .125s ease);
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
 		}
 
 	}
