@@ -366,20 +366,17 @@
 		}
 		
 	}
-	.social-share{
-		@include clearfix;
-		padding-top: $line-height;
 
+	.social-share {
+		padding-top: $line-height;
+		@include clearfix;
 
 		> div, > a {
+			margin-right: $gutter-width * (2 / 3);
 			float: left;
-			padding-right: $gutter-width * (2 / 3);
-			
-
 		}
 
 	}
-
 
 }
 
