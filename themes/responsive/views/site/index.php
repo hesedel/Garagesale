@@ -6,6 +6,15 @@ $this->layout = 'column1';
 
 <div id="site_index">
 
+<div class="alert alert-warning alert-dismissable">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<h4>Buy, Sell or give-it-away</h4>
+	<p>Quickly buy or sell to students on your campus.</p>
+	<p>Save Money on your course materials<br>
+	Support your local student community<br>
+	<em>And find free stuff!</em></p>
+</div>
+
 <div class="h2"><h2>Latest freebies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 
 <?php $this->renderPartial('/item/_index', array(
