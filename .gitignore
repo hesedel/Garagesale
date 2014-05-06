@@ -14,5 +14,3 @@
 /protected/runtime/*
 !/protected/runtime/.empty
 /update.php
-
-protected/components/BadWord.php
