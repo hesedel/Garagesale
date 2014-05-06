@@ -69,6 +69,8 @@
 			</ul>
 		</div>
 
+		<div id="menu-footer"></div>
+
 		<?php #menu end ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
