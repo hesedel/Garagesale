@@ -76,7 +76,7 @@
 			CHtml::encode(Yii::app()->name)
 		); ?>
 		<h2>Welcome to Stycle!</h2>
-		<p>Please view this site on mobile device to receive the best experience,<br><br>or scale your browser window down.</p>
+		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
 	</div>
 </div>
 
