@@ -71,6 +71,7 @@ class User extends CActiveRecord
 			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
 			array('id, email', 'unique'),
 			array('email', 'email'),
+			array('email', 'match', 'pattern'=>'/^.+\.edu\.au$/', 'message'=>'Email needs to be from an educational account, like name@school.edu.au.'),
 			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
