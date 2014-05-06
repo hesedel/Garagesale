@@ -1,7 +1,9 @@
 <?php
-$conn = mysqli_connect("localhost","hes_janx","janzenzarzoso","hes_garagesale_int");
+$params=require(dirname(__FILE__).'/../protected/config/params.php');
+
+$mysqli = new mysqli($params['db.host'],$params['db.username'],$params['db.password'],$params['db.name']);
 
 // Check connection
-if (mysqli_connect_errno()){
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+if ($mysqli->connect_errno){
+	echo "Failed to connect to MySQL: " . $mysqli->connect_error;
 }

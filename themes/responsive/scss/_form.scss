@@ -19,7 +19,7 @@ input[type=submit] {
 	padding: 0 #{$gutter-width * (2 / 3)};
 	position: absolute;
 		right: 0;
-	visibility: hidden;
+	@include opacity(0);
 }
 
 .no-js {
@@ -30,7 +30,7 @@ input[type=submit] {
 
 	input[type=submit] {
 		position: static;
-		visibility: visible;
+		@include opacity(1);
 	}
 
 }
