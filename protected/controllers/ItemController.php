@@ -209,7 +209,7 @@ class ItemController extends Controller
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 					$i++;
 				}
-				$photos=CUploadedFile::getInstancess($model,'photo');
+				$photos=CUploadedFile::getInstances($model,'photo');
 				foreach($photos as $photo) {
 					$name=md5($photo->name.time().$i).'.'.strtolower($photo->extensionName);
 					$photo->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
