@@ -106,7 +106,7 @@ Yii::app()->clientScript->registerPackage('form');
 Yii::app()->clientScript->registerPackage('main');
 ?>
 
-<?php if(!env_is(array('dev'))): ?>
+<?php if(env_is(array('int', 'sta', 'pro'))): ?>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
