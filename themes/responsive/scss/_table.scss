@@ -360,7 +360,7 @@
 }
 
 #menu-footer {
-	@extend .visible-xs;
+	//@extend .visible-xs;
 	background-color: $color_footer-bg;
 	display: none;
 	position: fixed;

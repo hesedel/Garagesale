@@ -46,8 +46,10 @@
 
 		<div id="menu">
 			<ul>
-				<li><a href="#">Menu Item 1</a></li>
-				<li><a href="#">Menu Item 2</a></li>
+				<?php if(Yii::app()->user->isGuest): ?>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<?php endif; ?>
 				<li><a href="#">Menu Item 3</a></li>
 				<li><a href="#">Menu Item 4</a></li>
 				<li><a href="#">Menu Item 5</a></li>
@@ -119,7 +121,7 @@
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->image
 						? CHtml::image(
-							'/img/vendor/slir/w76-h68-c38x34-bfff' . Yii::app()->params['user']->getImage(),
+							'/img/vendor/slir/w76-h68-c38x34-bfff' . Yii::app()->params['user']->getImage() . '?' . time(),
 							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '

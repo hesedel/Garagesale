@@ -1364,14 +1364,6 @@
         "5a2d746f"
       ]
     },
-    "4a575d4b": {
-      "id": "4a575d4b",
-      "pid": "c6f102e3",
-      "path": "scss\\_g-tabs.scss",
-      "parents": [
-        "5a2d746f"
-      ]
-    },
     "ff755db7": {
       "id": "ff755db7",
       "pid": "c6f102e3",
@@ -1392,6 +1384,14 @@
       "id": "e146076d",
       "pid": "c6f102e3",
       "path": "scss\\_site_.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
+    "4a575d4b": {
+      "id": "4a575d4b",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-tabs.scss",
       "parents": [
         "5a2d746f"
       ]

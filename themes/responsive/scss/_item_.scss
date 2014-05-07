@@ -363,6 +363,21 @@
 		
 	}
 
+	.social-share {
+		padding-top: $line-height;
+		@include clearfix;
+
+		> div, > a {
+			margin-right: $gutter-width * (2 / 3);
+			float: left;
+		}
+
+		.fb-share-button {
+			width: auto !important;
+		}
+
+	}
+
 }
 
 @media (max-width: $screen-sm-max) {

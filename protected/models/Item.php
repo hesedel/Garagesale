@@ -46,16 +46,16 @@ class Item extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, price, description', 'required'),
-			array('price, category_id, condition_id', 'numerical', 'integerOnly'=>true),
+			array('price, category_id, location_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
 			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
-			array('category_id, condition_id, user_id', 'default', 'value'=>null),
+			array('category_id, location_id, condition_id, user_id', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, created, updated, title, price, description, category_id, condition_id, user_id', 'safe', 'on'=>'search'),
+			array('id, created, updated, title, price, description, category_id, location_id, condition_id, user_id', 'safe', 'on'=>'search'),
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>5), // minSize 16KB, maxSize 3MB
 			array('photo', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>1), // minSize 16KB, maxSize 3MB
 			array('images, photo', 'ImageValidator', 'allowEmpty'=>true),
