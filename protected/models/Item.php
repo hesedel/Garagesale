@@ -56,10 +56,16 @@ class Item extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, created, updated, title, price, description, category_id, location_id, condition_id, user_id', 'safe', 'on'=>'search'),
+<<<<<<< HEAD
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>5), // minSize 16KB, maxSize 3MB
 			array('photo', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>1), // minSize 16KB, maxSize 3MB
 			array('images, photo', 'ImageValidator', 'allowEmpty'=>true),
 			array('title, description', 'BadWord'),
+=======
+			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'safe'=>true, 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>5), // minSize 16KB, maxSize 3MB
+			array('photo', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'safe'=>true, 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>1), // minSize 16KB, maxSize 3MB
+			array('images, photo', 'ImageValidator', 'allowEmpty'=>true, 'safe'=>true),
+>>>>>>> origin/master
 		);
 	}
 
