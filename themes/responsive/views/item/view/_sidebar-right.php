@@ -16,7 +16,7 @@
 	<?php echo CHtml::link(
 		($user->image
 			? CHtml::image(
-				'/img/vendor/slir/w76-h68-c38x34-bfff' . $user->getImage(),
+				'/img/vendor/slir/w76-h68-c38x34-bfff' . $user->getImage() . '?' . time(),
 				$model->user_id . '\'s avatar'
 			)
 			: '<i class="fa fa-user"></i> '
