@@ -1,7 +1,7 @@
 .g-button {
 	cursor: pointer;
 	color: $color_white;
-	background-color: blacken($color_clouds, 25%);
+	background-color: $color;
 	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) - 1px};
 	border: none;
 	@include border-radius($border-radius);
@@ -9,7 +9,7 @@
 	&:hover, &:active, &:focus {
 		color: $color_white;
 		text-decoration: none;
-		background-color: blacken($color_clouds, 25%, 2);
+		background-color: blacken($color, 25%);
 	}
 
 	&:visited {
@@ -31,3 +31,13 @@
 	}
 
 } // .g-button
+
+.g-button--primary {
+	@extend .g-button;
+	background-color: $color_customBrown;
+
+	&:hover, &:active, &:focus {
+		background-color: blacken($color_customBrown, 25%);
+	}
+
+}

@@ -67,7 +67,7 @@ $clientScript_packages=array(
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Garagesale.ph',
+	'name'=>'Stycle',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -192,11 +192,11 @@ return array(
 		array(
 			// this is used in contact page
 			'adminEmail'=>'hes@pajaroncreative.com',
-			'noReplyEmail'=>'noreply@garagesale.ph',
+			'noReplyEmail'=>'noreply@stycle.ph',
 			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
 			'tagline'=>'Tagline',
 			'salt'=>'pepper',
-			'timeZone'=>'Asia/Manila',
+			'timeZone'=>'Australia/Sydney',
 			'item_expire'=>60,
 		)
 	),

@@ -20,6 +20,13 @@ a {
 
 }
 
+h1, h2,
+.h1, .h2 {
+	color: $color_headings;
+	font-family: $sans-serif-soft;
+	font-weight: 600;
+}
+
 /*
 label, th {
 	font-weight: 400;
@@ -42,6 +49,7 @@ th {
 		padding: 0;
 
 		.ui-menu-item a {
+			color: $color_customBrown;
 			line-height: $line-height;
 			padding: #{$line-height * (1 / 3)} #{$gutter-width * (2 / 3)};
 
@@ -59,7 +67,7 @@ th {
 	}
 
 	&.ui-widget-content {
-		background-color: $color_sunFlower-white;
+		background-color: $color_customYellow;
 		background-image: none;
 		border: none;
 
@@ -105,6 +113,69 @@ th {
 					color: blacken($color, 25%);
 				}
 
+			}
+
+		}
+
+	}
+
+}
+
+.nav {
+
+	> li {
+		padding-top: $line-height * (1 / 3);
+
+		> a {
+			padding: #{($line-height * (1 / 6)) - 1px} #{($gutter-width * (2 / 3)) - 1px}
+		}
+
+		&.active {
+			padding-top: 0;
+
+			a {
+				padding-top: ($line-height * .5) - 1px;
+				padding-bottom: ($line-height * .5) - 1px;
+			}
+
+		}
+
+	}
+
+}
+
+.nav-tabs {
+	border-bottom-color: blacken($color_body-bg, 25%);
+
+	> li {
+
+		> a {
+			color: $color_customBrown;
+			background-color: $color_customYellow;
+			line-height: $line-height;
+			border-color: blacken($color_body-bg, 25%);
+			@include border-radius($border-radius);
+			margin-right: $gutter-width * (1 / 3);
+
+			&:hover {
+				background-color: $color_customYellow;
+				border-color: blacken($color_body-bg, 25%);
+			}
+
+		}
+
+		&.active {
+
+			> a {
+				@include border-bottom-radius(0);
+			}
+
+			> a, a:hover, a:focus {
+				color: $color_customBrown;
+				background-color: $color_body-bg;
+				border-top-color: blacken($color_body-bg, 25%);
+				border-right-color: blacken($color_body-bg, 25%);
+				border-left-color: blacken($color_body-bg, 25%);
 			}
 
 		}
@@ -172,8 +243,6 @@ div.g-form {
 	padding-top: $line-height * 2;
 
 	h2 {
-		color: whiten($custom_orange, 25%, 3);
-		@include text-shadow(rgba(0, 0, 0, .25) 0 -1px);
 		margin-top: 0;
 		margin-bottom: 0;
 		position: absolute;
@@ -234,102 +303,7 @@ table.g-table {
 
 } // .g-table
 
-/*
-div.g-tabs {
-	font-family: ProximaNovaRegular;
-	font-size: 1em;
-	background-color: transparent;
-	background-image: none;
-	border: none;
-	@include border-radius(0);
-	padding: 18px 0 0;
-
-	ul.ui-tabs-nav {
-		background-color: transparent;
-		background-image: none;
-		border: none;
-		@include border-radius(0);
-		height: 27px;
-		margin-top: -1px;
-		padding: 1px 0 9px 10px;
-		overflow: hidden;
-
-		li {
-			background-color: whiten(blacken($beige, 25%), 25%, 3);
-			@include background-image(linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .1)));
-			border: none;
-			@include border-radius(3px);
-			@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
-			top: 0;
-			height: 27px;
-			margin-right: 10px;
-
-			a {
-				color: whiten(blacken($beige, 25%), 25%, 4);
-				color: blacken($beige, 25%, 3);
-				//font-size: $h4;
-				@include text-shadow(rgba(0, 0, 0, .5) 0 1px);
-				@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-				line-height: 27px;
-				padding: 0 10px;
-			}
-
-			&:hover {
-				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				background-image: none;
-
-				a {}
-
-			}
-
-			&.ui-tabs-selected {
-				background-color: whiten(blacken($beige, 25%), 25%, 4);
-				@include border-bottom-radius(0);
-				background-image: none;
-				padding-bottom: 9px;
-
-				a {
-					color: blacken($beige, 25%, 3);
-					@include text-shadow(rgba(255, 255, 255, 1) 0 1px);
-				}
-
-				&:hover {
-
-					a {
-						cursor: default;
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
-	div.tab-content {
-		background-color: whiten(blacken($beige, 25%), 25%, 4);
-		@include border-radius(3px);
-		@include box-shadow(rgba(0, 0, 0, .5) 0 0 1px);
-		padding: 18px 20px;
-	}
-
-} // .g-tabs
-*/
-
-/*
-.no-js div.g-tabs {
-
-	> ul {
-		display: none;
-	}
-
-	div.tab-content {
-		margin-bottom: 18px;
-	}
-
-}
-*/
+@import 'g-tabs';
 
 div.g-userItemView {
 	background-color: $light;

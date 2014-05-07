@@ -4,6 +4,7 @@ class AccountForm extends User
 {
 	public $password_old;
 	public $password_repeat;
+	
 
 	public function rules()
 	{

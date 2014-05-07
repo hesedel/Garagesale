@@ -35,11 +35,12 @@ class SiteController extends Controller
 	 */
 	public function actions()
 	{
+		Yii::app()->theme='responsive';
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
-				'backColor'=>0xEEEEEA,
+				'backColor'=>0xFFFFFF,
 				'foreColor'=>0x000000,
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
@@ -58,26 +59,47 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$dataProvider_featured=new CActiveDataProvider('Item',array(
+		$dataProvider_freebies=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
 				'order'=>'updated DESC',
+				'limit'=>3,
 			),
+			/*
 			'pagination'=>array(
-				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 3,
 			),
+			*/
+			'pagination'=>false,
 		));
-		$dataProvider_latest=new CActiveDataProvider('Item',array(
+		$dataProvider_course=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
 				'order'=>'created DESC',
+				'limit'=>3,
 			),
+			/*
 			'pagination'=>array(
-				'pageSize'=>5,
+				'pageSize'=>3,
 			),
+			*/
+			'pagination'=>false,
+		));
+		$dataProvider_classmates=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'order'=>'created DESC',
+				'limit'=>3,
+			),
+			/*
+			'pagination'=>array(
+				'pageSize'=>3,
+			),
+			*/
+			'pagination'=>false,
 		));
 		Yii::app()->theme='responsive';
 		$this->render('index',array(
-			'dataProvider_featured'=>$dataProvider_featured,
-			'dataProvider_latest'=>$dataProvider_latest,
+			'dataProvider_freebies'=>$dataProvider_freebies,
+			'dataProvider_course'=>$dataProvider_course,
+			'dataProvider_classmates'=>$dataProvider_classmates,
 		));
 	}
 
@@ -112,6 +134,7 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
+		Yii::app()->theme='responsive';
 		$this->render('contact',array('model'=>$model));
 	}
 

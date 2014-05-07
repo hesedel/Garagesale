@@ -199,7 +199,7 @@
 
 @media (max-width: $screen-xs-max) {
 	#table {
-		background-color: $color;
+		background-color: $color_turquoise;
 		margin-top: 0;
 		display: block;
 
@@ -250,22 +250,42 @@
 #menu-toggle {
 	@extend .visible-xs;
 	cursor: pointer;
-	background-color: $color_emerald;
-	padding: $line-height $gutter-width;
+	background-color: $color_greenSea;
+	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
+	padding-right: $gutter-width;
+	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
+	padding-left: $gutter-width;
 	float: left;
 
 	i {
 		color: $color_white;
 		font-size: 1.25em;
-		line-height: $line-height;
+		height: ($line-height * 2) - ($line-height * (1 / 3));
+			line-height: ($line-height * 2) - ($line-height * (1 / 3));
+		padding-right: $gutter-width * (2 / 3);
+		padding-left: $gutter-width * (2 / 3);
+		@include border-radius($border-radius);
 		display: block;
+	}
+
+	&.is-active {
+		background-color: $color_wetAsphalt;
+
+		i {
+			background-color: $color_wetAsphalt;
+			height: ($line-height * 2) - ($line-height * (1 / 3)) + ($line-height * .5) + ($line-height * (1 / 6));
+			@include border-bottom-radius(0);
+			margin-bottom: -(($line-height * .5) + ($line-height * (1 / 6)));
+		}
+
 	}
 
 }
 
 #menu {
 	//@extend .visible-xs;
-	background-color: $color_black;
+	background-color: $color_wetAsphalt;
+	@include background-image(linear-gradient(rgba($color_black, 0), rgba($color_black, .25)));
 	display: none;
 	position: fixed;
 		top: 0;
@@ -278,17 +298,58 @@
 
 	ul {
 		list-style: none;
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height;
 		padding-left: 0;
 		margin-bottom: 0;
 	}
 
 	li {
+		position: relative;
+
+		&.heading {
+			color: whiten($color_wetAsphalt, 25%);
+			padding-top: $line-height - 1px;
+			padding-right: $gutter-width;
+			padding-bottom: $line-height * .5;
+			padding-left: $gutter-width;
+			border-top: 1px solid whiten($color_wetAsphalt, 5%);
+			margin-top: $line-height * .5;
+
+			&:first-child {
+				padding-top: $line-height * .5;
+				border-top: none;
+				margin-top: 0;
+			}
+
+		}
+
+		&.divider {
+			background-color: whiten($color_wetAsphalt, 5%);
+			height: 1px;
+			margin-top: $line-height * .5;
+			margin-right: $gutter-width;
+			margin-bottom: ($line-height * .5) - 1px;
+			margin-left: $gutter-width;
+		}
 
 	}
 
 	a {
-		padding: $line-height $gutter-width;
+		color: $color_white;
+		padding-top: $line-height * .5;
+		padding-right: $gutter-width;
+		padding-bottom: $line-height * .5;
+		padding-left: $gutter-width;
 		display: block;
+	}
+
+	.badge {
+		color: $color_wetAsphalt;
+		background-color: whiten($color_wetAsphalt, 25%, 2);
+		position: absolute;
+			top: $line-height * .5;
+			right: $gutter-width;
 	}
 
 	&.is-active {
@@ -370,6 +431,7 @@ body.is-animating #menu-footer {
 		font-size: .75em;
 		padding-right: $gutter-width * (1 / 3);
 		margin-top: -$line-height;
+		display: none;
 		float: right;
 	}
 
@@ -399,16 +461,21 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#header {
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
+		border-left: 1px solid $color_body_bg;
 		float: left;
 	}
 }
 
 #logo {
 	color: $color_white;
+	font-family: $sans-serif-soft;
 	font-size: 1.25em;
 	font-weight: 700;
+	text-transform: uppercase;
 	white-space: nowrap;
-	background-color: $color;
+	background-color: $color_greenSea;
 	height: $line-height * 3;
 		line-height: $line-height * 3;
 	padding-right: $gutter-width;
@@ -417,7 +484,7 @@ body.is-animating #menu-footer {
 	display: block;
 
 	span {
-		color: $color_emerald;
+		//color: $color_white;
 	}
 
 	&:hover, &:active, &:focus {
@@ -437,10 +504,20 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#logo {
+		font-size: 2em;
 		background-color: transparent;
 		//height: $line-height * 1.5;
+		height: $line-height * 2;
 			//line-height: $line-height * 1.5;
+			line-height: $line-height * 2;
 		@include border-radius(0);
+
+		img {
+			height: 100%;
+			margin-right: $gutter-width * (2 / 3);
+			float: left;
+		}
+
 	}
 }
 
@@ -454,9 +531,9 @@ body.is-animating #menu-footer {
 	> a,
 	div.a > a,
 	span.a {
-		color: $color_white;
+		color: $color_greenSea;
 		white-space: nowrap;
-		background-color: $color_header_bg;
+		background-color: whiten($color_turquoise, 25%, 4);
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);
@@ -466,7 +543,7 @@ body.is-animating #menu-footer {
 		&:hover {
 			//color: blacken($color, 25%);
 			text-decoration: none;
-			background-color: blacken($color_header_bg, 25%);
+			//background-color: blacken($color_header_bg, 25%);
 		}
 
 		&:focus {
@@ -479,7 +556,6 @@ body.is-animating #menu-footer {
 
 #register,
 #user {
-	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	> a,
@@ -508,6 +584,10 @@ body.is-animating #menu-footer {
 		}
 
 	}
+}
+
+#register {
+	@extend .hidden-xs;
 }
 
 @media (max-width: $screen-xs-max) {
@@ -576,14 +656,39 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#user {
-		width: 85%;
-		width: (2 / 3) * 100%;
+		//width: 85%;
+		//width: (2 / 3) * 100%;
+		padding-top: ($line-height * .5) + ($line-height * (1 / 6));
+		padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
+		margin-right: $gutter-width;
+		float: right;
 
 		div.a {
-			margin-right: $gutter-width * (1 / 3);
+			//margin-right: $gutter-width * (1 / 3);
 
 			> a {
+				height: ($line-height * 2) - ($line-height * (1 / 3));
+					line-height: ($line-height * 2) - ($line-height * (1 / 3));
 				padding-left: $gutter-width;
+				@include border-radius($border-radius);
+
+				img {
+					width: auto;
+					height: ($line-height * 2) - ($line-height * (1 / 3));
+					border-color: $color_turquoise;
+					border-top: none;
+					border-bottom: none;
+					border-left: none;
+					@include border-left-radius($border-radius);
+					margin-left: -$gutter-width;
+					float: left;
+				}
+
+			}
+
+			.dropdown-menu {
+				right: -1px;
+				left: auto;
 			}
 
 		}
@@ -593,7 +698,6 @@ body.is-animating #menu-footer {
 
 #login,
 #logout {
-	@extend .hidden-xs;
 	padding-left: 1px;
 
 	a {
@@ -618,26 +722,28 @@ body.is-animating #menu-footer {
 }
 
 #login {
+	@extend .hidden-xs;
 
 	a .fa-sign-in {
 		@extend .hidden-sm;
+		@extend .hidden-xs;
 	}
 
 }
 
 @media (max-width: $screen-xs-max) {
 	#login {
-		width: 50%;
-		width: (1 / 3) * 100%; //
-		padding-top: $line-height * .5; //
-		padding-bottom: $line-height * .5; //
+		//width: 50%;
+		//width: (1 / 3) * 100%; //
+		padding-top: ($line-height * .5) + ($line-height * (1 / 6)); //
+		padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));//
+		float: right;
 
 		a {
-			height: $line-height * 2;
-				line-height: $line-height * 2;
+			height: ($line-height * 2) - ($line-height * (1 / 3));
+				line-height: ($line-height * 2) - ($line-height * (1 / 3));
 			@include border-radius($border-radius);
-			margin-right: $gutter-width * (1 / 3);
-			margin-left: $gutter-width * (1 / 3);
+			margin-right: $gutter-width;
 		}
 
 	}
@@ -766,8 +872,8 @@ body.is-animating #menu-footer {
 		display: table;
 
 		.td {
-			padding-top: 12px;
-			padding-bottom: 12px;
+			padding-top: $line-height * .5;
+			padding-bottom: $line-height * .5;
 
 			&.left {
 				width: 100%;
@@ -776,38 +882,63 @@ body.is-animating #menu-footer {
 
 			&.right {
 				padding-right: $gutter-width * (2 / 3);
-				padding-left: $gutter-width * (1 / 3);
+				//padding-left: $gutter-width * (1 / 3);
+				padding-left: 1px;
 			}
 
 			.input-text {
+				padding-top: $line-height * .5;
+				padding-bottom: $line-height * .5;
+				@include border-right-radius(0);
+				@include box-shadow(none);
 				margin-top: 0;
 				margin-bottom: 0;
+
+				.placeholder {
+					top: $line-height * .5;
+				}
+
 			}
 
 			.g-button,
 			input[type=submit] {
-				color: $color;
-				background-color: $color_body_bg;
+				//color: $color_white;
+				font-family: $sans-serif-soft;
+				font-size: 1.25em;
+				font-weight: 700;
+				background-color: $color_turquoise;
+				@include border-left-radius(0);
 
+				/*
 				&:hover {
 					background-color: whiten($color_body_bg, 25%);
 				}
+				*/
 
 			}
 
 			.g-button {
 				white-space: nowrap;
 				display: block;
-				height: 30px;
-					line-height: 30px;
+				height: $line-height * 2;
+					line-height: $line-height * 2;
 				padding-top: 0;
 				padding-bottom: 0;
+				position: relative;
 
-				span {
-					@extend .hidden-sm;
+				i {
 					@extend .hidden-xs;
 				}
 
+				span {
+					@extend .hidden-sm;
+					//@extend .hidden-xs;
+				}
+
+			}
+
+			input[type=submit] {
+				position: absolute;
 			}
 
 		}
@@ -845,13 +976,12 @@ body.is-animating #menu-footer {
 }
 
 #post {
-	//@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	a {
-		color: $color_white;
+		//color: $color_white;
 		text-align: center;
-		background-color: $color_emerald;
+		//background-color: $color_nephritis;
 		@include box-sizing(content-box);
 		height: $line-height * 2;
 			line-height: $line-height;
@@ -859,10 +989,12 @@ body.is-animating #menu-footer {
 		padding-bottom: $line-height * .5;
 		@include border-radius(3px);
 
+		/*
 		&:hover {
 			color: $color_white;
 			background-color: blacken($color_emerald, 25%);
 		}
+		*/
 
 	}
 
@@ -870,26 +1002,23 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#post {
-		width: (1 / 3) * 100%;
-		padding-top: $line-height * .5;
-		padding-bottom: $line-height * .5;
+		//width: (1 / 3) * 100%;
+		padding-top: ($line-height * .5) + ($line-height * (1 / 6));
+		padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
 		padding-left: 0;
-		position: absolute;
-			top: 0;
-			right: 0;
+		float: right;
+		//position: absolute;
+			//top: $line-height * 1.5;
+			//right: 0;
 
 		a {
-			height: $line-height * 2;
+			height: ($line-height * 2) - ($line-height * (1 / 3));
+				line-height: ($line-height * 2) - ($line-height * (1 / 3));
 			padding-top: 0;
 			padding-bottom: 0;
 			@include border-radius($border-radius);
 			margin-right: $gutter-width;
 			margin-left: $gutter-width * (1 / 3);
-
-			&:hover {
-				background-color: $color_emerald;
-			}
-
 		}
 
 	}

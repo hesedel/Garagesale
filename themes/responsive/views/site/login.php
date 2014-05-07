@@ -4,10 +4,10 @@ $this->breadcrumbs = array(
 	'Login',
 );
 
-$this->layout = '/layouts/transition';
+$this->layout = '/layouts/column1';
 ?>
 
-<div id="site_login">
+<div class="g-form" id="site_login">
 	<h2>Login</h2>
 	<div class="form">
 		<?php $form = $this->beginWidget('CActiveForm', array(
@@ -28,7 +28,7 @@ $this->layout = '/layouts/transition';
 					<th><?php echo $form->labelEx($model, 'username'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'username'); ?>
+							<?php echo $form->textField($model, 'username', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Your username or email address</span>
 						</div>
 						<?php echo $form->error($model, 'username'); ?>
@@ -57,14 +57,17 @@ $this->layout = '/layouts/transition';
 					<td colspan="2">
 						<?php echo $form->checkBox($model, 'rememberMe'); ?>
 						<?php echo $form->label($model, 'rememberMe'); ?>
+						<br>
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
-						<?php echo CHtml::linkButton('Login', array('class' => 'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Login', array('class' => 'submit g-button orange')); ?>
+						<?php echo CHtml::linkButton('Login', array('class' => 'submit g-button--primary')); ?>
+						<?php echo CHtml::submitButton('Login', array('class' => 'submit g-button--primary')); ?>
 					</td>
 				</tr>
 
 			</tfoot>
 		</table>
 		<?php $this->endWidget(); ?>
+
+		<p>Not yet a member? <?php echo CHtml::link('Register', array('/site/register')); ?></p>
 	</div>
 </div>

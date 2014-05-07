@@ -26,7 +26,11 @@
 
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : ''; ?>
 				<?php echo CHtml::link(
-					'Garagesale<span>.ph</span>',
+					CHtml::image(
+						'/img/vendor/slir/h72/img/logo-white.png',
+						CHtml::encode(Yii::app()->name)
+					) .
+						'St<span>ycle</span>',
 					'/',
 					array('id' => 'logo')
 				); ?>
@@ -42,8 +46,10 @@
 
 		<div id="menu">
 			<ul>
-				<li><a href="#">Menu Item 1</a></li>
-				<li><a href="#">Menu Item 2</a></li>
+				<?php if(Yii::app()->user->isGuest): ?>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<?php endif; ?>
 				<li><a href="#">Menu Item 3</a></li>
 				<li><a href="#">Menu Item 4</a></li>
 				<li><a href="#">Menu Item 5</a></li>
@@ -71,13 +77,13 @@
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
-		<?php #register ?>
+		<?php /* #register ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
 			<?php echo CHtml::link('Register', array('/site/register')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #register end ?>
+		<?php #register end */ ?>
 
 		<?php #login ?>
 
@@ -86,6 +92,25 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #login end ?>
+
+		<?php /* #user ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
+			<div class="a">
+				<?php echo CHtml::link(
+					'<i class="fa fa-user"></i> ' .
+						Yii::app()->user->id .
+							'<i class="fa fa-angle-down"></i>',
+					array('#')
+				); ?>
+				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i>Login', array('/site/login')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i>Register', array('/site/register')); ?></li>
+				</ul>
+			</div>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php #user end */ ?>
 
 		<?php else: ?>
 
@@ -100,15 +125,14 @@
 							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '
-					) .
-						Yii::app()->user->id .
-							'<i class="fa fa-angle-down"></i>',
+					) . '<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
 						'id' => Yii::app()->user->id,
 					)
 				); ?>
 				<ul class="dropdown-menu">
+					<li><?php echo CHtml::link('<i class="fa fa-usd"></i>Sell', array('/item/create')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
@@ -139,53 +163,40 @@
 
 		<?php #filters end */ ?>
 
-		<?php #search ?>
+		<?php /* if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 
-			<?php echo !isset($lt_ie_8) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
-
-				<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
-
-					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
-						<div class="input-text">
-							<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-								'model' => $this->model_itemSearchForm,
-								'attribute' => 'keywords',
-								'sourceUrl' => array('/item/search_autocomplete'),
-								'options' => array(
-									'appendTo' => '#search .input-text',
-									'minLength' => 2,
-									'position' => array(
-										'of' => '.input-text',
-										'collision' => 'fit',
-									),
-								),
-							)); ?>
-							<span class="placeholder"><?php echo $this->model_itemSearchForm->getAttributeLabel('keywords'); ?></span>
-						</div>
-					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-					<?php echo !isset($lt_ie_8) ? '<div class="td right">' : '<td class="td right">'; ?>
-						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button submit')); ?>
-						<?php echo CHtml::submitButton('Search'); ?>
-					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-				<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
-
-			<?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
+			<?php $this->renderPartial('/layouts/_search'); ?>
 
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #search end ?>
+		<?php endif; #search end */ ?>
+
+		<?php if(Yii::app()->user->isGuest): ?>
 
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('Post a<br>FREE Ad', array('/item/create')); ?>
+			<?php echo CHtml::link('<i class="fa fa-usd"></i>ell', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
+
+		<?php endif; ?>
+
+		<?php if(
+			$this->getRoute() == 'item/search' ||
+			$this->getRoute() == 'item/view'
+		): #search ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+
+			<?php $this->renderPartial('/layouts/_search'); ?>
+
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #search end ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 

@@ -53,6 +53,9 @@ $color_turquoise   : #1abc9c;
 $color_wetAsphalt  : #34495e;
 $color_wisteria    : #8e44ad;
 
+$color_customBrown : #9c5720;
+$color_customYellow: #feed6f;
+
 $dark : blacken(whiten($beige, 25%), 25%, 3); // deprecated
 $light: whiten(blacken($beige, 25%), 25%, 4); // deprecated
 
@@ -70,9 +73,10 @@ $color_anchor   : $color_peterRiver;
 	$color_anchor-hover: $color_belizeHole;
 	$color_anchor-visited: $color_amethyst;
 		$color_anchor-visited-hover: $color_wisteria;
-$color_header_bg: blacken($color_clouds, 25%);
+$color_header_bg: blacken($color_clouds, 5%);
 $color_body_bg  : blacken($color_clouds, 5%);
-$color_footer_bg: $color;
+$color_footer_bg: $color_greenSea;
+$color_headings : $color_customBrown;
 
 /* fonts */
 
@@ -80,6 +84,7 @@ $color_footer_bg: $color;
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 
 $sans-serif: proxima-nova, Lato, sans-serif;
+$sans-serif-soft: proxima-nova-soft, $sans-serif;
 
 /**/
 

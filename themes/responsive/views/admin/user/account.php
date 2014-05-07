@@ -17,13 +17,21 @@ $this->layout = 'column1';
 		'htmlOptions' => array('enctype' => 'multipart/form-data'),
 		'focus' => array($model, 'title'),
 	)); ?>
-	<div class="row">
-		<div class="col-md-6 col-sm-6">
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#user_account-user" data-toggle="tab">User</a></li>
+		<li><a href="#user_account-community" data-toggle="tab">Community</a></li>
+		<li><a href="#user_account-password" data-toggle="tab">Password</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="user_account-user">
+
 			<table class="form">
-				<caption>User Info</caption>
+				<caption>User</caption>
 				<tbody>
 
-					<tr>
+					<tr class="avatar">
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
@@ -97,6 +105,16 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
+				</tbody>
+			</table>
+
+		</div>
+		<div class="tab-pane" id="user_account-community">
+
+			<table class="form">
+				<caption>Community</caption>
+				<tbody>
+
 					<tr>
 						<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 						<td>
@@ -105,12 +123,22 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
+					<tr>
+						<th><?php echo $form->labelEx($model, 'course'); ?></th>
+						<td>
+							<?php echo $model->getCourseDropDownList(); ?>
+							<?php echo $form->error($model, 'course'); ?>
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
+
 		</div>
-		<div class="col-md-6 col-sm-6">
+		<div class="tab-pane" id="user_account-password">
+
 			<table class="form">
-				<caption>Password Change</caption>
+				<caption>Password</caption>
 				<tbody>
 
 					<tr>
@@ -148,6 +176,7 @@ $this->layout = 'column1';
 
 				</tbody>
 			</table>
+
 		</div>
 	</div>
 
@@ -156,9 +185,9 @@ $this->layout = 'column1';
 			<tr>
 				<?php //<th>&#160;</th> ?>
 				<td>
-					<?php echo CHtml::link('Cancel', array('view', 'id' => $model->id), array('class' => 'g-button cancel')); ?>
-					<?php echo CHtml::linkButton('Save', array('class' => 'submit g-button orange')); ?>
-					<?php echo CHtml::submitButton('Save', array('class' => 'submit g-button orange')); ?>
+					<?php echo CHtml::link('Cancel', array('view', 'id'=>$model->id), array('class'=>'g-button cancel')); ?>
+					<?php echo CHtml::linkButton('Save', array('class'=>'submit g-button--primary')); ?>
+					<?php echo CHtml::submitButton('Save', array('class'=>'submit g-button--primary')); ?>
 				</td>
 			</tr>
 		</tfoot>
