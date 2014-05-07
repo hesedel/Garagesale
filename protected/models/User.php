@@ -72,8 +72,8 @@ class User extends CActiveRecord
 			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
-			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024)), // minSize 16KB, maxSize 3MB
-			array('image_temp', 'ImageValidator', 'allowEmpty'=>true),
+			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'safe'=>true, 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024)), // minSize 16KB, maxSize 3MB
+			array('image_temp', 'ImageValidator', 'allowEmpty'=>true, 'safe'=>true),
 		);
 	}
 
@@ -172,7 +172,7 @@ class User extends CActiveRecord
 		$options=array_merge($defaults, $options);
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
-		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
+		if($this->image && (!file_exists(Yii::getPathOfAlias('webroot').$image)) || filesize(Yii::getPathOfAlias('webroot').$image) !== strlen($this->image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			return $image;
@@ -200,7 +200,7 @@ class User extends CActiveRecord
 			'image_size'=>null,
 		), 'id=:id', array(':id'=>$id));
 
-		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			unlink(Yii::getPathOfAlias('webroot').$image);
 
@@ -212,6 +212,7 @@ class User extends CActiveRecord
 		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);
 
 		if($this->image_temp) {
+			image_autoOrient($this->image_temp);
 			$this->image=file_get_contents($this->image_temp->tempName);
 			$this->image_type=basename($this->image_temp->type);
 			$this->image_size=$this->image_temp->size;
@@ -228,6 +229,7 @@ class User extends CActiveRecord
 			->queryAll();
 		foreach($items as $item)
 			Item::model()->findByPk($item['id'])->delete();
+		$this->deleteImage($this->id);
 		return true;
 	}
 
