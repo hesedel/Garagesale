@@ -25,6 +25,7 @@ $this->layout = 'column1';
 			<caption class="hide">Register</caption>
 			<tbody>
 
+				<?php /*
 				<tr>
 					<th><?php echo $form->labelEx($model, 'id'); ?></th>
 					<td>
@@ -35,6 +36,7 @@ $this->layout = 'column1';
 						<?php echo $form->error($model, 'id'); ?>
 					</td>
 				</tr>
+				*/ ?>
 
 				<tr>
 					<th><?php echo $form->labelEx($model, 'email'); ?></th>
