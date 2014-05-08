@@ -30,6 +30,68 @@ $this->menu=array(
 
 <div id="item_view">
 
+<?php if($images = $model->getImages()): ?>
+
+<div class="hes-slider img">
+	<div class="hes-slider-scroll">
+		<div class="hes-slider-slides"><!--
+
+			<?php foreach($images as $image): ?>
+			--><div class="hes-slider-slide"><div>
+				<?php echo CHtml::link(
+					CHtml::image(
+						'/img/vendor/slir/w1234-h774-c1234x774-bfff' . $image['path'],
+						$image['id'] . '.' . $image['type'],
+						array(
+							'title' => 'click to enlarge photo',
+						)
+					),
+					'/img/vendor/slir/w510-bfff' . $image['path'],
+					array('class' => 'lightbox')
+				); ?>
+			</div></div><!--
+			<?php endforeach; ?>
+
+		--></div>
+	</div>
+
+	<?php if(count($images) > 1): ?>
+	<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+	<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
+	<?php endif; ?>
+
+</div>
+
+<div class="hes-slider imgs">
+	<div class="hes-slider-scroll">
+		<div class="hes-slider-slides"><!--
+
+			<?php foreach($images as $image): ?>
+			--><div class="hes-slider-slide"><div>
+				<?php echo CHtml::link(
+					CHtml::image(
+						'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
+						$image['id'] . '.' . $image['type'],
+						array(
+							'title' => 'click to enlarge photo',
+						)
+					),
+					'/img/vendor/slir/w510-bfff' . $image['path'],
+					array('class' => 'lightbox')
+				); ?>
+			</div></div><!--
+			<?php endforeach; ?>
+
+		--></div>
+	</div>
+
+	<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+	<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
+
+</div>
+
+<?php endif; ?>
+
 <table class="header" cellspacing="0">
 	<thead>
 		<tr>
@@ -65,65 +127,7 @@ $this->menu=array(
 <div class="row">
 	<div class="col-md-8">
 
-		<?php if($images = $model->getImages()): ?>
-
-		<div class="hes-slider img">
-			<div class="hes-slider-scroll">
-				<div class="hes-slider-slides"><!--
-
-					<?php foreach($images as $image): ?>
-					--><div class="hes-slider-slide"><div>
-						<?php echo CHtml::link(
-							CHtml::image(
-								'/img/vendor/slir/w1234-h774-c1234x774-bfff' . $image['path'],
-								$image['id'] . '.' . $image['type'],
-								array(
-									'title' => 'click to enlarge photo',
-								)
-							),
-							'/img/vendor/slir/w510-bfff' . $image['path'],
-							array('class' => 'lightbox')
-						); ?>
-					</div></div><!--
-					<?php endforeach; ?>
-
-				--></div>
-			</div>
-
-			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
-			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
-
-		</div>
-
-		<div class="hes-slider imgs">
-			<div class="hes-slider-scroll">
-				<div class="hes-slider-slides"><!--
-
-					<?php foreach($images as $image): ?>
-					--><div class="hes-slider-slide"><div>
-						<?php echo CHtml::link(
-							CHtml::image(
-								'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
-								$image['id'] . '.' . $image['type'],
-								array(
-									'title' => 'click to enlarge photo',
-								)
-							),
-							'/img/vendor/slir/w510-bfff' . $image['path'],
-							array('class' => 'lightbox')
-						); ?>
-					</div></div><!--
-					<?php endforeach; ?>
-
-				--></div>
-			</div>
-
-			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
-			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
-
-		</div>
-
-		<?php endif; ?>
+		
 
 	</div>
 	<div class="col-sm-6 col-md-8">
