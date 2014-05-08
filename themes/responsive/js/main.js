@@ -5,13 +5,18 @@ $(function() {
 		$('#alert').modal();
 	}
 
-	$('#menu-toggle').bind('touchend click', function() {
+	$('#menu-toggle').bind('touchend click', function(e) {
 
 		// needed by Android <= 4.3
-		$(document).bind('click.menu', function() {
-			$(this).unbind('click.menu');
-			return false;
-		});
+		if(e.type === 'touchend') {
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
+			setTimeout(function() {
+				$(document).unbind('click.menu');
+			}, 500);
+		}
 
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
@@ -64,6 +69,9 @@ $(function() {
 				$(this).unbind('click.menu');
 				return false;
 			});
+			setTimeout(function() {
+				$(document).unbind('click.menu');
+			}, 500);
 
 			var x = e.originalEvent.changedTouches[0].screenX;
 			if(x === $(this).data('x')) {
@@ -95,6 +103,17 @@ $(function() {
 		click: function() {
 			$('#menu-toggle').trigger('click');
 		}
+	});
+
+	$('#search-toggle').bind('touchend click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#search').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#search').removeClass('is-active');
+		}
+		return false;
 	});
 
 	$('.a', '#user').data('hover', false);
