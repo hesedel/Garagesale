@@ -105,6 +105,17 @@ $(function() {
 		}
 	});
 
+	$('#search-toggle').bind('touchend click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#search').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#search').removeClass('is-active');
+		}
+		return false;
+	});
+
 	$('.a', '#user').data('hover', false);
 	$('.a > a', '#user').bind( {
 		touchstart: function() {

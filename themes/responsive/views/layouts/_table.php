@@ -75,6 +75,12 @@
 
 		<?php #menu end ?>
 
+		<?php if($this->getRoute() !== 'site/index'): #search-toggle ?>
+
+		<div id="search-toggle"><i class="fa fa-search"></i></div>
+
+		<?php endif; #search-toggle end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
 		<?php /* #register ?>
@@ -185,10 +191,7 @@
 
 		<?php endif; ?>
 
-		<?php if(
-			$this->getRoute() == 'item/search' ||
-			$this->getRoute() == 'item/view'
-		): #search ?>
+		<?php if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 
