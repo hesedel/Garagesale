@@ -50,8 +50,8 @@
 
 		<tr>
 			<td>
-				<?php echo CHtml::linkButton('Send', array('class' => 'submit g-button', 'id' => 'item-contact-form-linkButton')); ?>
-				<?php echo CHtml::submitButton('Send', array('class' => 'submit g-button', 'id' => 'item-contact-form-submitButton')); ?>
+				<?php echo CHtml::linkButton('Send', array('class' => 'submit g-button g-button--primary', 'id' => 'item-contact-form-linkButton')); ?>
+				<?php echo CHtml::submitButton('Send', array('class' => 'submit g-button g-button--primary', 'id' => 'item-contact-form-submitButton')); ?>
 			</td>
 		</tr>
 

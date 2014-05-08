@@ -30,176 +30,72 @@ $this->menu=array(
 
 <div id="item_view">
 
-<table class="header" cellspacing="0">
-	<thead>
-		<tr>
+<?php if($images = $model->getImages()): ?>
 
-			<td><h1><?php echo CHtml::encode($model->title); ?></h1></td>
+<div class="hes-slider img">
+	<div class="hes-slider-scroll">
+		<div class="hes-slider-slides"><!--
 
-			<td><span class="price">AUD$ <?php echo number_format($model->price); ?></span></td>
+			<?php foreach($images as $image): ?>
+			--><div class="hes-slider-slide"><div>
+				<?php echo CHtml::link(
+					CHtml::image(
+						'/img/vendor/slir/w1234-h774-c1234x774-bfff' . $image['path'],
+						$image['id'] . '.' . $image['type'],
+						array(
+							'title' => 'click to enlarge photo',
+						)
+					),
+					'/img/vendor/slir/w510-bfff' . $image['path'],
+					array('class' => 'lightbox')
+				); ?>
+			</div></div><!--
+			<?php endforeach; ?>
 
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-
-				<span class="time"><i class="fa fa-clock-o"></i> <time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo('updated'); ?></time></span>
-
-				<?php if($model->user->location): ?>
-				<span class="location"><i class="fa fa-map-marker"></i> <?php echo $model->user->location->name; ?></span>
-				<?php endif; ?>
-
-			</td>
-			<td>
-
-				<?php if($model->condition_id != null): ?>
-				<span class="condition <?php echo $model->getConditionClass(); ?>"><?php echo $model->condition->title; ?></span>
-				<?php endif; ?>
-
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<div class="row">
-	<div class="col-md-8">
-
-		<?php if($images = $model->getImages()): ?>
-
-		<div class="hes-slider img">
-			<div class="hes-slider-scroll">
-				<div class="hes-slider-slides"><!--
-
-					<?php foreach($images as $image): ?>
-					--><div class="hes-slider-slide"><div>
-						<?php echo CHtml::link(
-							CHtml::image(
-								'/img/vendor/slir/w1234-h774-c1234x774-bfff' . $image['path'],
-								$image['id'] . '.' . $image['type'],
-								array(
-									'title' => 'click to enlarge photo',
-								)
-							),
-							'/img/vendor/slir/w510-bfff' . $image['path'],
-							array('class' => 'lightbox')
-						); ?>
-					</div></div><!--
-					<?php endforeach; ?>
-
-				--></div>
-			</div>
-
-			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
-			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
-
-		</div>
-
-		<div class="hes-slider imgs">
-			<div class="hes-slider-scroll">
-				<div class="hes-slider-slides"><!--
-
-					<?php foreach($images as $image): ?>
-					--><div class="hes-slider-slide"><div>
-						<?php echo CHtml::link(
-							CHtml::image(
-								'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
-								$image['id'] . '.' . $image['type'],
-								array(
-									'title' => 'click to enlarge photo',
-								)
-							),
-							'/img/vendor/slir/w510-bfff' . $image['path'],
-							array('class' => 'lightbox')
-						); ?>
-					</div></div><!--
-					<?php endforeach; ?>
-
-				--></div>
-			</div>
-
-			<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
-			<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
-
-		</div>
-
-		<?php endif; ?>
-
-	</div>
-	<div class="col-sm-6 col-md-8">
-
-		<?php /*
-		<?php
-		$info = array();
-		$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
-		$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
-		$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
-		?>
-		<table class="info" cellspacing="0">
-			<?php $i = 0; foreach($info as $key => $value) { ?>
-			<?php if($i % 2 == 0): ?><tr><?php endif; ?>
-				<th><?php echo $key; ?></th>
-				<td><?php echo $value; ?></td>
-			<?php $i++; ?>
-			<?php if($i % 2 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
-			<?php } ?>
-		</table>
-		*/ ?>
-
-		<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
-
+		--></div>
 	</div>
 
-	<div class="col-sm-6 col-md-8">
+	<?php if(count($images) > 1): ?>
+	<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+	<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
+	<?php endif; ?>
 
-	<div id="item-info-tabs">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#collection-details-pane" data-toggle="tab">Collection Details</a></li>
-			<li><a href="#seller-info-pane" data-toggle="tab">Seller Info</a></li>
-		</ul>
-
-		<div class="tab-content">
-			<div class="tab-pane active" id="collection-details-pane">
-				<p>Location</p>
-				<p>Time</p>
-				<p>Day</p>
-			</div>
-			<div class="tab-pane" id="seller-info-pane">
-				<p>University</p>
-				<p>Area of Study</p>
-				<p>Rating *****</p>
-				<p>Follow Seller Button / All Seller Items Button</p>
-			</div>
-		</div>
-	</div>
-
-	</div>
-
-	<style>
-	#item-info-tabs {
-		padding: 20px 0;	
-	}
-
-	#item-info-tabs .tab-pane {
-		background-color: white;
-		padding: 20px;
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-		border: 1px solid #ddd;
-		border-top: none;
-	}
-	</style>
-
-	<aside class="col-sm-6 col-md-4">
-
-		<?php $this->renderPartial('view/_sidebar-right', array(
-			'model' => $model,
-			'model_contactForm' => $model_contactForm,
-			'model_contactForm_success' => $model_contactForm_success,
-		)); ?>
-
-	</aside>
 </div>
+
+<div class="hes-slider imgs">
+	<div class="hes-slider-scroll">
+		<div class="hes-slider-slides"><!--
+
+			<?php foreach($images as $image): ?>
+			--><div class="hes-slider-slide"><div>
+				<?php echo CHtml::link(
+					CHtml::image(
+						'/img/vendor/slir/w246-h246-c246x246-bfff' . $image['path'],
+						$image['id'] . '.' . $image['type'],
+						array(
+							'title' => 'click to enlarge photo',
+						)
+					),
+					'/img/vendor/slir/w510-bfff' . $image['path'],
+					array('class' => 'lightbox')
+				); ?>
+			</div></div><!--
+			<?php endforeach; ?>
+
+		--></div>
+	</div>
+
+	<div class="hes-slider-prev"><span>&lsaquo;</span><div></div></div>
+	<div class="hes-slider-next"><span>&rsaquo;</span><div></div></div>
+
+</div>
+
+<?php endif; ?>
+
+<header class="header">
+	<h1><?php echo CHtml::encode($model->title); ?></h1>
+	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
+</header>
 
 <div class="social-share">
 
@@ -217,6 +113,66 @@ $this->menu=array(
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 </div>
+
+<?php
+$info = array();
+//$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
+//$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
+//$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
+if($model->condition_id)
+	$info[$model->getAttributeLabel('condition')] = $model->condition->title;
+if($model->user->location_id)
+	$info['Collection'] = $model->user->location->name;
+$info['Seller'] = $model->user->name_first;
+?>
+<table class="info" cellspacing="0">
+	<tbody>
+		<?php $i = 0; foreach($info as $key => $value) { ?>
+		<?php if($i % 2 == 0): ?><tr><?php endif; ?>
+			<th><?php echo $key; ?></th>
+			<td colspan="3"><?php echo $value; ?></td>
+		<?php $i++; ?>
+		<?php if($i % 1 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
+		<?php } ?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Listed</th>
+			<td><?php echo time_local($model->created); ?></td>
+			<th>Views</th>
+			<td>...</td>
+		</tr>
+	</tfoot>
+</table>
+
+<p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
+
+<div class="tabs">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#item_view-collection" data-toggle="tab">Collection Details</a></li>
+		<li><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="item_view-collection">
+			<p>Location</p>
+			<p>Time</p>
+			<p>Day</p>
+		</div>
+		<div class="tab-pane" id="item_view-user">
+			<p>University</p>
+			<p>Area of Study</p>
+			<p>Rating *****</p>
+			<p>Follow Seller Button / All Seller Items Button</p>
+		</div>
+	</div>
+</div>
+
+<?php $this->renderPartial('view/_sidebar-right', array(
+	'model' => $model,
+	'model_contactForm' => $model_contactForm,
+	'model_contactForm_success' => $model_contactForm_success,
+)); ?>
 
 </div><!-- #item_view -->
 

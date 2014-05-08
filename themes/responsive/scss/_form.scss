@@ -39,6 +39,12 @@ input[type=text], input[type=password], textarea {
 	outline: none;
 }
 
+input[type=text]:disabled {
+	color: $color_customBrown;
+		-webkit-text-fill-color: $color_customBrown;
+	@include opacity(1);
+}
+
 textarea {
 	line-height: $line-height;
 }
