@@ -5,36 +5,33 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 	public function safeUp()
 	{
 		$this->update('item_category', array(
-			'title'=>'Bikes',
+			'title'=>'Automotive',
 		), 'id=1');
 		$this->update('item_category', array(
-			'title'=>'Trikes',
-		), 'id=2');
-		$this->update('item_category', array(
-			'title'=>'Scooters',
-		), 'id=3');
+			'title'=>'Bikes',
+			'id=2',
+			'parent_id'=>1,
+		));
 		$this->update('item_category', array(
 			'title'=>'Cars',
-		), 'id=4');
+			'id=3'
+			'parent_id'=>1,
+		));
+		$this->update('item_category', array(
+			'title'=>'Motorbikes', 
+			'id=4'
+			'parent_id'=>1,
+		));
 		$this->insert('item_category', array(
 			'id'=>5,
-			'title'=>'Motorbikes',
+			'title'=>'Trikes',
+			'parent_id'=>1,
 		));
 		$this->insert('item_category', array(
 			'id'=>6,
-			'title'=>'Automotive',
+			'title'=>'Scooters',
+			'parent_id'=>1,
 		));
-		/*
-		WHY ARE THESE REPEATED?
-		$this->insert('item_category', array(
-			'id'=>7,
-			'title'=>'Bikes',
-		));
-		$this->insert('item_category', array(
-			'id'=>8,
-			'title'=>'Bikes',
-		));
-		*/
 		$this->insert('item_category', array(
 			'id'=>9,
 			'title'=>'Electronics',
@@ -46,12 +43,12 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>11,
-			'title'=>'Video Cameras',
+			'title'=>'Computers',
 			'parent_id'=>9,
 		));
 		$this->insert('item_category', array(
 			'id'=>12,
-			'title'=>'Computers',
+			'title'=>'Game Consoles',
 			'parent_id'=>9,
 		));
 		$this->insert('item_category', array(
@@ -61,51 +58,51 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>14,
-			'title'=>'Tablets',
-			'parent_id'=>9,
-		));
-		$this->insert('item_category', array(
-			'id'=>15,
-			'title'=>'Video Games',
-			'parent_id'=>9,
-		));
-		$this->insert('item_category', array(
-			'id'=>16,
-			'title'=>'Game Consoles',
-			'parent_id'=>9,
-		));
-		$this->insert('item_category', array(
-			'id'=>17,
 			'title'=>'Phones',
 			'parent_id'=>9,
 		));
 		$this->insert('item_category', array(
+			'id'=>15,
+			'title'=>'Tablets',
+			'parent_id'=>9,
+		));
+		$this->insert('item_category', array(
+			'id'=>16,
+			'title'=>'Video Cameras',
+			'parent_id'=>9,
+		));
+		$this->insert('item_category', array(
+			'id'=>17,
+			'title'=>'Video Games',
+			'parent_id'=>9,
+		));
+		$this->insert('item_category', array(
 			'id'=>18,
-			'title'=>'Home',
+			'title'=>'Home and Garden',
 		));
 		$this->insert('item_category', array(
 			'id'=>19,
-			'title'=>'Furniture',
+			'title'=>'Appliances',
 			'parent_id'=>18,
 		));
 		$this->insert('item_category', array(
 			'id'=>20,
-			'title'=>'Furniture',
-			'parent_id'=>18,
-		));
-		$this->insert('item_category', array(
-			'id'=>21,
-			'title'=>'Kitchenware',
-			'parent_id'=>18,
-		));
-		$this->insert('item_category', array(
-			'id'=>22,
 			'title'=>'Garden',
 			'parent_id'=>18,
 		));
 		$this->insert('item_category', array(
+			'id'=>21,
+			'title'=>'Furniture',
+			'parent_id'=>18,
+		));
+		$this->insert('item_category', array(
+			'id'=>22,
+			'title'=>'Kitchenware',
+			'parent_id'=>18,
+		));
+		$this->insert('item_category', array(
 			'id'=>23,
-			'title'=>'Appliances',
+			'title'=>'Other Home and Garden',
 			'parent_id'=>18,
 		));
 		$this->insert('item_category', array(
@@ -148,26 +145,26 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>32,
-			'title'=>'CDs and DVDs',
+			'title'=>'CDs',
 			'parent_id'=>31,
 		));
 		$this->insert('item_category', array(
 			'id'=>33,
-			'title'=>'Musical Instruments',
+			'title'=>'DVDs',
 			'parent_id'=>31,
 		));
 		$this->insert('item_category', array(
 			'id'=>34,
-			'title'=>'Sport and Hobbies',
+			'title'=>'Musical Instruments',
+			'parent_id'=>31,
 		));
 		$this->insert('item_category', array(
 			'id'=>35,
-			'title'=>'Gym and Fitness',
-			'parent_id'=>34,
+			'title'=>'Sport and Hobbies',
 		));
 		$this->insert('item_category', array(
 			'id'=>36,
-			'title'=>'Golf',
+			'title'=>'Gym and Fitness',
 			'parent_id'=>34,
 		));
 		$this->insert('item_category', array(
@@ -177,14 +174,17 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>38,
-			'title'=>'Snow Sports',
+			'title'=>'Toys',
 			'parent_id'=>34,
 		));
 		$this->insert('item_category', array(
 			'id'=>39,
-			'title'=>'Fishing',
+			'title'=>'Other Hobbies',
 			'parent_id'=>34,
 		));
+		/* For phase 1, I don't think we need to go to this granular level 
+
+
 		$this->insert('item_category', array(
 			'id'=>40,
 			'title'=>'Skateboards and Rollerblades',
@@ -194,7 +194,7 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'id'=>41,
 			'title'=>'Water Sports',
 			'parent_id'=>34,
-		));
+		)); */
 		$this->insert('item_category', array(
 			'id'=>42,
 			'title'=>'Gigs and Entertainment',
@@ -206,19 +206,22 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>44,
-			'title'=>'Theatre/Film',
+			'title'=>'Theatre',
 			'parent_id'=>42,
 		));
 		$this->insert('item_category', array(
 			'id'=>45,
-			'title'=>'Tranportation Tickets',
+			'title'=>'Other Entertainment',
 			'parent_id'=>42,
 		));
+
+		/* We already have Sports and Hobbies above
+
 		$this->insert('item_category', array(
 			'id'=>46,
 			'title'=>'Sport',
 			'parent_id'=>42,
-		));
+		)); */
 		$this->insert('item_category', array(
 			'id'=>47,
 			'title'=>'Art, Craft, Made by Me',
@@ -230,12 +233,12 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>49,
-			'title'=>'Collectables',
+			'title'=>'Made by Me',
 			'parent_id'=>47,
 		));
 		$this->insert('item_category', array(
 			'id'=>50,
-			'title'=>'Bizarro',
+			'title'=>'Antiques, Collectables',
 			'parent_id'=>47,
 		));
 		$this->insert('item_category', array(
@@ -247,6 +250,8 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'title'=>'Free Stuff',
 			'parent_id'=>51,
 		));
+		/* Commnuity Noticeboards removed for Phase 1
+
 		$this->insert('item_category', array(
 			'id'=>53,
 			'title'=>'Garage Sale Listing',
@@ -259,12 +264,13 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		$this->insert('item_category', array(
 			'id'=>55,
 			'title'=>'Community Noticeboard',
-			'parent_id'=>54,
+			'parent_id'=>54,*/
 		));
 		$this->insert('item_category', array(
 			'id'=>56,
 			'title'=>'Health and Beauty',
 		));
+		/* No select level for Phase 1
 		$this->insert('item_category', array(
 			'id'=>57,
 			'title'=>'Health',
@@ -274,7 +280,10 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'id'=>58,
 			'title'=>'Beauty',
 			'parent_id'=>56,
-		));
+		)); */
+
+		/* Employment Section Removed for Phase 1
+
 		$this->insert('item_category', array(
 			'id'=>59,
 			'title'=>'Employment',
@@ -293,7 +302,7 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'id'=>62,
 			'title'=>'Part Time Jobs',
 			'parent_id'=>59,
-		));
+		)); */
 		$this->insert('item_category', array(
 			'id'=>63,
 			'title'=>'Books and Stationery',
@@ -303,17 +312,9 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'title'=>'Books',
 			'parent_id'=>63,
 		));
-		/*
-		IS THIS STILL SUPPOSED TO BE HERE? IF SO, IT SHOULD HAVE ID 65 AND PUSH ALL THE FOLLOWING IDS UP
-		$this->insert('item_category', array(
-			'id'=>64,
-			'title'=>'Textbooks',
-			'parent_id'=>63,
-		));
-		*/
 		$this->insert('item_category', array(
 			'id'=>65,
-			'title'=>'Magazines',
+			'title'=>'Textbooks',
 			'parent_id'=>63,
 		));
 		$this->insert('item_category', array(
