@@ -174,9 +174,10 @@ class SiteController extends Controller
 			{
 				if(Yii::app()->user->hasState('user'))
 				{
+					$user=Yii::app()->user->getState('user');
 					User::model()->updateByPk(Yii::app()->user->id,array(
-						'location_id'=>Yii::app()->user->getState('user')['location'],
-						'phone'=>Yii::app()->user->getState('user')['phone'],
+						'location_id'=>$user['location'],
+						'phone'=>$user['phone'],
 					));
 					Yii::app()->user->setState('user',null);
 				}
@@ -219,9 +220,10 @@ class SiteController extends Controller
 
 				if(Yii::app()->user->hasState('user'))
 				{
+					$user=Yii::app()->user->getState('user');
 					User::model()->updateByPk(Yii::app()->user->id,array(
-						'location_id'=>Yii::app()->user->getState('user')['location'],
-						'phone'=>Yii::app()->user->getState('user')['phone'],
+						'location_id'=>$user['location'],
+						'phone'=>$user['phone'],
 					));
 					Yii::app()->user->setState('user',null);
 				}
