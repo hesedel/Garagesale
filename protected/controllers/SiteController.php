@@ -61,6 +61,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider_freebies=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT null',
 				'order'=>'updated DESC',
 				'limit'=>3,
 			),
@@ -73,6 +74,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_course=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT null',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -85,6 +87,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_classmates=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT null',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -168,7 +171,17 @@ class SiteController extends Controller
 				$this->redirect(array('/admin/user/unverified','email'=>$email));
 			}
 			if($model->validate() && $model->login())
+			{
+				if(Yii::app()->user->hasState('user'))
+				{
+					User::model()->updateByPk(Yii::app()->user->id,array(
+						'location_id'=>Yii::app()->user->getState('user')['location'],
+						'phone'=>Yii::app()->user->getState('user')['phone'],
+					));
+					Yii::app()->user->setState('user',null);
+				}
 				$this->redirect(Yii::app()->user->getReturnUrl());
+			}
 		}
 		if(isset($_REQUEST['username']))
 			$model->username=$_REQUEST['username'];
@@ -203,6 +216,15 @@ class SiteController extends Controller
 			if($model->validate() && $model->save())
 			{
 				user_login($model->id);
+
+				if(Yii::app()->user->hasState('user'))
+				{
+					User::model()->updateByPk(Yii::app()->user->id,array(
+						'location_id'=>Yii::app()->user->getState('user')['location'],
+						'phone'=>Yii::app()->user->getState('user')['phone'],
+					));
+					Yii::app()->user->setState('user',null);
+				}
 
 				email_sendVerification($model->id,'Registration successful!');
 

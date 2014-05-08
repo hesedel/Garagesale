@@ -15,11 +15,11 @@ class ItemController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','view','search','search_autoComplete'),
+				'actions'=>array('create','index','view','search','search_autoComplete'),
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','update','delete','ajaxRemoveImage'),
+				'actions'=>array('update','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -34,6 +34,11 @@ class ItemController extends Controller
 
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasState('item') && Yii::app()->user->getState('item')===$id)
+		{
+			Item::model()->updateByPk($id,array('user_id'=>Yii::app()->user->id));
+			Yii::app()->user->setState('item',null);
+		}
 		$model=$this->loadModel($id);
 		$model_contactForm=new ItemContactForm;
 		$model_contactForm_success=false;
@@ -157,7 +162,18 @@ class ItemController extends Controller
 					}
 				}
 
-				$this->redirect(array('view','id'=>$model->id));
+				if(Yii::app()->user->isGuest)
+				{
+					Yii::app()->user->setState('user',array(
+						'location'=>$model->location_id,
+						'phone'=>$model->phone,
+					));
+					Yii::app()->user->setState('item',$model->id);
+					Yii::app()->user->setReturnUrl(array('/item/view','id'=>$model->id));
+					$this->redirect(array('/site/login'));
+				}
+				else
+					$this->redirect(array('view','id'=>$model->id));
 			}
 		}
 
@@ -307,6 +323,9 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id IS NOT null',
+			),
 			'pagination'=>array('pageSize'=>12),
 		));
 		Yii::app()->theme='responsive';
@@ -336,7 +355,7 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\' AND user_id IS NOT null',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,

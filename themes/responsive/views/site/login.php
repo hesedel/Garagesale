@@ -9,6 +9,14 @@ $this->layout = '/layouts/column1';
 
 <div class="g-form" id="site_login">
 	<h2>Login</h2>
+
+	<?php if(Yii::app()->user->hasState('item')): ?>
+	<div class="alert alert-warning alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		Before you can post an item message...
+	</div>
+	<?php endif; ?>
+
 	<div class="form">
 		<?php $form = $this->beginWidget('CActiveForm', array(
 			'id' => 'login-form',
