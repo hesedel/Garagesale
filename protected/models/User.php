@@ -53,8 +53,8 @@ class User extends CActiveRecord
 		return array(
 			array('id, email, name_first', 'required'),
 			array('verified, location_id, course_id', 'numerical', 'integerOnly'=>true),
-			array('id, password, name_first, name_last', 'length', 'max'=>32),
-			array('email', 'length', 'max'=>64),
+			array('password, name_first, name_last', 'length', 'max'=>32),
+			array('id, email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
 			array('image_type', 'length', 'max'=>4),
 			array('image_size', 'length', 'max'=>10),
@@ -65,12 +65,12 @@ class User extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, email, created, updated, name_first, name_last, phone, verified, location_id, course_id', 'safe', 'on'=>'search'),
-			array('id', 'length', 'min'=>4),
-			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
-			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
-			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
+			//array('id', 'length', 'min'=>4),
+			//array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
+			//array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
+			//array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
 			array('id, email', 'unique'),
-			array('email', 'email'),
+			array('id, email', 'email'),
 			array('email', 'match', 'pattern'=>'/^.+\.edu\.au$/', 'message'=>'Email needs to be from an educational account, like name@school.edu.au.'),
 			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
