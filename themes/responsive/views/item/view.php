@@ -116,9 +116,14 @@ $this->menu=array(
 
 <?php
 $info = array();
-$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
+//$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
 //$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
 //$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
+if($model->condition_id)
+	$info[$model->getAttributeLabel('condition')] = $model->condition->title;
+if($model->user->location_id)
+	$info['Collection'] = $model->user->location->name;
+$info['Seller'] = $model->user->name_first;
 ?>
 <table class="info" cellspacing="0">
 	<tbody>
@@ -133,7 +138,7 @@ $info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created
 	<tfoot>
 		<tr>
 			<th>Listed</th>
-			<td>...</td>
+			<td><?php echo time_local($model->created); ?></td>
 			<th>Views</th>
 			<td>...</td>
 		</tr>
