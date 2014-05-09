@@ -34,7 +34,7 @@
 	<?php if(Yii::app()->user->isGuest): ?>
 	<div class="guest">
 		<p>Sorry, but you must <?php echo CHtml::link('<i class="fa fa-sign-in"></i> login', array('/site/login'), array('class' => 'g-button small')); ?> to contact this seller.</p>
-		<p>Don't have an account yet? <?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> sign-up', array('/site/register'), array('class' => 'g-button small')); ?></p>
+		<p>Don't have an account yet? <?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> register', array('/site/register'), array('class' => 'g-button small')); ?></p>
 	</div>
 	<?php else: ?>
 	<div class="form">
