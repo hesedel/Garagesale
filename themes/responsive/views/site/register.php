@@ -8,7 +8,7 @@ $this->layout = 'column1';
 ?>
 
 <div class="g-form" id="site_register">
-	<h2>Register</h2>
+	<!--<h2>Register</h2>-->
 	<div class="form">
 		<?php $form = $this->beginWidget('CActiveForm', array(
 			'id' => 'register-form',
