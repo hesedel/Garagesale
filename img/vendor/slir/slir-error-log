@@ -1,0 +1,79 @@
+
+[Fri May 09 03:32:47 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}
+[Fri May 09 03:33:22 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}
+[Fri May 09 03:37:16 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}
+[Fri May 09 03:37:36 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}
+[Fri May 09 03:37:43 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}
+[Fri May 09 03:37:55 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.3; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+REFERRER: http://localhost:8000/user/view/hesedel.pajaron%40student.uts.edu.au/
+
+REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a2dd1b5a5645a06e508f01daf75ef93.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}

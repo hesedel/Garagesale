@@ -191,7 +191,7 @@
 				padding: $line-height $gutter-width;
 
 				&:hover {
-					color: $color_customYellow;
+					color: $color_white;
 					background-color: $color_customBrown;
 				}
 
@@ -267,6 +267,12 @@
 
 	}
 
+	.actions {
+		text-align: center;
+		line-height: $line-height * 2;
+		margin-top: $line-height;
+	}
+
 	.social-share {
 		margin-top: $line-height;
 		@include clearfix;
@@ -297,6 +303,7 @@
 
 		th {
 			color: $color_customBrown;
+			font-size: .75em;
 			white-space: nowrap;
 			padding-right: $gutter-width * .5;
 			padding-left: $gutter-width;
@@ -325,8 +332,27 @@
 
 		}
 
-		tfoot td {
-			width: 50%;
+		tfoot {
+
+			th {
+
+				&.views {
+					padding-left: $gutter-width * .5;
+				}
+
+			}
+
+			td {
+				font-size: .75em;
+				white-space: nowrap;
+				width: 50%;
+
+				&.created {
+					padding-right: $gutter-width * .5;
+				}
+
+			}
+
 		}
 
 	}
@@ -379,6 +405,48 @@
 
 		}
 
+		table {
+			width: 100%;
+
+			th, td {
+				padding-top: $line-height * .5;
+			}
+
+			tbody {
+
+				tr:first-child {
+
+					th, td {
+						padding-top: 0;
+					}
+
+				}
+
+				th {
+					color: $color_customBrown;
+					white-space: nowrap;
+					padding-right: $gutter-width * .5;
+				}
+
+				td {
+					font-weight: 600;
+					width: 100%;
+					padding-left: $gutter-width * .5;
+				}
+
+			}
+
+			tfoot {
+
+				td {
+					text-align: center;
+					line-height: $line-height * 2;
+				}
+
+			}
+
+		}
+
 	}
 
 	> .row {
@@ -423,9 +491,9 @@
 
 	.user {
 		color: $color_white;
-		background-color: $color_asbestos;
+		background-color: $color_customBrown;
 		padding: #{$line-height * .5} $gutter-width;
-		@include border-top-radius($border-radius * 2);
+		@include border-top-radius($border-radius);
 
 		.user-img {
 			color: $color_white;
@@ -449,18 +517,20 @@
 		}
 
 		.user-created {
+			@extend .hidden-xs;
 			display: block;
 		}
 
 	}
 
 	.contact {
-		background-color: $color_clouds;
+		background-color: $color_customYellow;
 		padding: $line-height $gutter-width #{$line-height * 1.5};
-		@include border-bottom-radius($border-radius * 2);
+		@include border-bottom-radius($border-radius);
 
 		.phone,
 		.email {
+			color: $color_customBrown;
 			font-size: 1.25em;
 			margin-bottom: $line-height * .5;
 			display: block;
@@ -468,6 +538,24 @@
 			i {
 				text-align: center;
 				width: $gutter-width * 2;
+			}
+
+		}
+
+		.guest {
+
+			p {
+				color: $color_customBrown;
+				font-size: 1.25em;
+				text-align: center;
+				line-height: 1.25;
+				margin-top: $line-height * .5;
+				margin-bottom: 0;
+
+				a {
+					white-space: nowrap;
+				}
+
 			}
 
 		}
