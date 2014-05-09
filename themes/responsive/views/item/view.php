@@ -97,6 +97,16 @@ $this->menu=array(
 	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
 </header>
 
+<?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
+<div class="actions">
+
+	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'g-button')) : ''; ?>
+
+	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class' => 'g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
+
+</div>
+<?php endif; ?>
+
 <div class="social-share">
 
 	<div id="fb-root"></div>
@@ -123,7 +133,13 @@ if($model->condition_id)
 	$info[$model->getAttributeLabel('condition')] = $model->condition->title;
 if($model->user->location_id)
 	$info['Collection'] = $model->user->location->name;
-$info['Seller'] = $model->user->name_first;
+$info['Seller'] = CHtml::link(
+	$model->user->name_first,
+	array(
+		'/admin/user/view',
+		'id' => $model->user_id,
+	)
+);
 ?>
 <table class="info" cellspacing="0">
 	<tbody>
@@ -137,10 +153,10 @@ $info['Seller'] = $model->user->name_first;
 	</tbody>
 	<tfoot>
 		<tr>
-			<th>Listed</th>
-			<td><?php echo time_local($model->created); ?></td>
-			<th>Views</th>
-			<td>...</td>
+			<th class="created">Listed</th>
+			<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
+			<th class="views">Views</th>
+			<td class="views">...</td>
 		</tr>
 	</tfoot>
 </table>
@@ -155,15 +171,56 @@ $info['Seller'] = $model->user->name_first;
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="item_view-collection">
-			<p>Location</p>
-			<p>Time</p>
-			<p>Day</p>
+			<table>
+				<?php if($model->user->location_id): ?>
+				<tr>
+					<th>Location</th>
+					<td><?php echo $model->user->location->name; ?></td>
+				</tr>
+				<?php endif; ?>
+				<tr>
+					<th>Time</th>
+					<td>...</td>
+				</tr>
+				<tr>
+					<th>Day</th>
+					<td>...</td>
+				</tr>
+			</table>
 		</div>
 		<div class="tab-pane" id="item_view-user">
-			<p>University</p>
-			<p>Area of Study</p>
-			<p>Rating *****</p>
-			<p>Follow Seller Button / All Seller Items Button</p>
+			<table>
+				<tbody>
+					<tr>
+						<th>University</th>
+						<td>...</td>
+					</tr>
+					<?php if($model->user->course_id): ?>
+					<tr>
+						<th>Area of Study</th>
+						<td><?php echo $model->user->course->title; ?></td>
+					</tr>
+					<?php endif; ?>
+					<tr>
+						<th>Rating</th>
+						<td>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-half-o"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">
+							<?php echo CHtml::link('Follow Seller', array('#'), array('class' => 'g-button')); ?>
+							<?php echo CHtml::link('All Seller Items', array('#'), array('class' => 'g-button')); ?>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	</div>
 </div>

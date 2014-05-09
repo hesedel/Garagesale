@@ -1,15 +1,5 @@
 <div id="item_view-sidebar">
 
-<?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
-<div class="actions">
-
-	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'g-button')) : ''; ?>
-
-	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class' => 'g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
-
-</div>
-<?php endif; ?>
-
 <?php $user = User::model()->findByPk($model->user_id); ?>
 <div class="user">
 
@@ -17,11 +7,11 @@
 		($user->image
 			? CHtml::image(
 				'/img/vendor/slir/w76-h68-c38x34-bfff' . $user->getImage() . '?' . time(),
-				$model->user_id . '\'s avatar'
+				$model->user->name_first . '\'s avatar'
 			)
 			: '<i class="fa fa-user"></i> '
 		) .
-			$model->user_id,
+			$model->user->name_first,
 		array(
 			'/admin/user/view',
 			'id' => $model->user_id,
@@ -35,18 +25,25 @@
 
 <div class="contact">
 
-	<?php if(strlen($model->user->phone) != 0): ?>
+	<?php /* if(strlen($model->user->phone) != 0): ?>
 	<span class="phone"><i class="fa fa-phone"></i> <?php echo $model->user->phone; ?></span>
-	<?php endif; ?>
+	<?php endif; */ ?>
 
-	<span class="email"><i class="fa fa-envelope"></i> Email seller:</span>
+	<span class="email"><i class="fa fa-envelope"></i> Email seller</span>
 
+	<?php if(Yii::app()->user->isGuest): ?>
+	<div class="guest">
+		<p>Sorry, but you must <?php echo CHtml::link('<i class="fa fa-sign-in"></i> login', array('/site/login'), array('class' => 'g-button small')); ?> to contact this seller.</p>
+		<p>Don't have an account yet? <?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> sign-up', array('/site/register'), array('class' => 'g-button small')); ?></p>
+	</div>
+	<?php else: ?>
 	<div class="form">
 		<?php $this->renderPartial('view/_contact', array(
 			'model' => $model_contactForm,
 			'model_success' => $model_contactForm_success,
 		)); ?>
 	</div>
+	<?php endif; ?>
 
 </div>
 
