@@ -15,7 +15,7 @@ $this->layout = 'column1';
 	<em>And find free stuff!</em></p>
 </div>
 
-<div class="h2"><h2>Latest freebies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Latest give-aways</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_freebies,
@@ -43,7 +43,11 @@ $this->layout = 'column1';
 
 <?php $this->endWidget(); ?>
 
+<?php if(Yii::app()->user->isGuest): ?>
+<div class="h2"><h2>Course materials and supplies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<?php else: ?>
 <div class="h2"><h2>Latest from your course</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_course,
 	'options' => array(
@@ -57,9 +61,10 @@ $this->layout = 'column1';
 	),
 )); ?>
 
-<div class="h2"><h2>Recently viewed by your classmates</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<?php if(Yii::app()->user->isGuest): ?>
+<div class="h2"><h2>Popular items</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 <?php $this->renderPartial('/item/_index', array(
-	'dataProvider' => $dataProvider_classmates,
+	'dataProvider' => $dataProvider_popular,
 	'options' => array(
 		'toolbox' => array(
 			'viewButton' => false,
@@ -70,5 +75,20 @@ $this->layout = 'column1';
 		),
 	),
 )); ?>
+<?php else: ?>
+<div class="h2"><h2>Something a little odd...</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<?php $this->renderPartial('/item/_index', array(
+'dataProvider' => $dataProvider_odd,
+'options' => array(
+	'toolbox' => array(
+		'viewButton' => false,
+		'sortButton' => false,
+	),
+	'grid' => array(
+		'itemsPerRow' => 3,
+	),
+),
+)); ?>
+<?php endif; ?>
 
 </div><!-- #site_index -->
