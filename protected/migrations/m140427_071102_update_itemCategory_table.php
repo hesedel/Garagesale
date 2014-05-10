@@ -52,6 +52,10 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 			'id'=>10,
 			'title'=>'Sport and Hobbies',
 		));
+		$this->insert('item_category', array(
+			'id'=>11,
+			'title'=>'Other',
+		));
 
 		{
 			$this->insert('item_category', array(
