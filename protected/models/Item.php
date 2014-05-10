@@ -212,7 +212,7 @@ class Item extends CActiveRecord
 		$categories = Yii::app()->db->createCommand()
 			->select('*')
 			->from('item_category')
-			->order('title')
+			//->order('title')
 			->queryAll();
 
 		// store the categories in a real array
