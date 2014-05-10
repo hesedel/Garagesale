@@ -91,14 +91,6 @@
 
 		<?php #register end */ ?>
 
-		<?php #login ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php #login end ?>
-
 		<?php /* #user ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
@@ -188,6 +180,14 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
+
+		<?php if($this->getRoute() === 'site/index'): #login ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #login end ?>
 
 		<?php endif; ?>
 

@@ -722,7 +722,7 @@ body.is-animating #menu-footer {
 }
 
 #login {
-	@extend .hidden-xs;
+	//@extend .hidden-xs;
 
 	a .fa-sign-in {
 		@extend .hidden-sm;
@@ -743,7 +743,7 @@ body.is-animating #menu-footer {
 			height: ($line-height * 2) - ($line-height * (1 / 3));
 				line-height: ($line-height * 2) - ($line-height * (1 / 3));
 			@include border-radius($border-radius);
-			margin-right: $gutter-width;
+			//margin-right: $gutter-width;
 		}
 
 	}
@@ -1103,7 +1103,8 @@ body.is-animating #menu-footer {
 			padding-bottom: 0;
 			@include border-radius($border-radius);
 			margin-right: $gutter-width;
-			margin-left: $gutter-width * (1 / 3);
+			//margin-left: $gutter-width * (1 / 3);
+			margin-left: $gutter-width * .5;
 		}
 
 	}
