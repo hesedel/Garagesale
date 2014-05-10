@@ -50,24 +50,25 @@
 				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
 				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
 				<?php endif; ?>
-				<li><a href="#">Menu Item 3</a></li>
-				<li><a href="#">Menu Item 4</a></li>
-				<li><a href="#">Menu Item 5</a></li>
-				<li><a href="#">Menu Item 6</a></li>
-				<li><a href="#">Menu Item 7</a></li>
-				<li><a href="#">Menu Item 8</a></li>
-				<li><a href="#">Menu Item 9</a></li>
-				<li><a href="#">Menu Item 10</a></li>
-				<li><a href="#">Menu Item 11</a></li>
-				<li><a href="#">Menu Item 12</a></li>
-				<li><a href="#">Menu Item 13</a></li>
-				<li><a href="#">Menu Item 14</a></li>
-				<li><a href="#">Menu Item 15</a></li>
-				<li><a href="#">Menu Item 16</a></li>
-				<li><a href="#">Menu Item 17</a></li>
-				<li><a href="#">Menu Item 18</a></li>
-				<li><a href="#">Menu Item 19</a></li>
-				<li><a href="#">Menu Item 20</a></li>
+				<li><?php echo CHtml::link('Post an item to Sell', array('/item/create')); ?></li>
+				<li><a href="#">From your course area</a></li>
+				<li><a href="#">All course related items</a></li>
+				<li><a href="#">Viewed by your classmates</a></li>
+				<li><a href="#">Items with the most views</a></li>
+
+
+				<li class="heading">Categories</li>
+
+		
+   		
+
+
+				
+
+
+				
+			
+				
 			</ul>
 		</div>
 

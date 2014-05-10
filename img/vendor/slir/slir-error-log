@@ -77,3 +77,16 @@ REQUEST: local.garagesale.ph/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/3a
 #4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
 #5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
 #6 {main}
+[Sat May 10 08:48:36 2014] [127.0.0.1 Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36] getimagesize failed (source file may not be an image): C:\xampp\htdocs\hesedel\Garagesale/img/uploads/cache/ecba6350893c14a631c578931f7ba895.
+
+REFERRER: http://local.stycle.com/login/
+
+REQUEST: local.stycle.com/img/vendor/slir/w20-h18-c20.18/img/uploads/cache/ecba6350893c14a631c578931f7ba895.
+
+#0 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\libs\slirimage.class.php(421): SLIRGDImage->getInfo('width')
+#1 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(305): SLIRImage->getWidth()
+#2 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(717): SLIR->getSource()
+#3 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(702): SLIR->isWidthDifferent()
+#4 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\core\slir.class.php(262): SLIR->isSourceImageDesired()
+#5 C:\xampp\htdocs\hesedel\Garagesale\img\vendor\slir\index.php(30): SLIR->processRequestFromURL()
+#6 {main}

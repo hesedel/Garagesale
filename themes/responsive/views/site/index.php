@@ -6,14 +6,17 @@ $this->layout = 'column1';
 
 <div id="site_index">
 
-<div class="alert alert-warning alert-dismissable">
+<?php if(Yii::app()->user->isGuest): ?>
+<div class="alert alert-warning alert-dismissable alert-intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	<h4>Buy, Sell or give-it-away</h4>
-	<p>Quickly buy or sell to students on your campus.</p>
+	<p>Quickly buy or sell to students and staff on your campus.</p>
 	<p>Save Money on your course materials<br>
 	Support your local student community<br>
 	<em>And find free stuff!</em></p>
+	<p class="alert-button"><a href="/register" class="btn btn-default">Join our Community</a></p>
 </div>
+<?php endif; ?>
 
 <div class="h2"><h2>Latest give-aways</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 
