@@ -15,8 +15,8 @@
  * @property string $user_id
  *
  * The followings are the available model relations:
- * @property ItemCondition $condition
  * @property ItemCategory $category
+ * @property ItemCondition $condition
  * @property User $user
  * @property ItemContact[] $itemContacts
  * @property ItemImage[] $itemImages
@@ -49,6 +49,7 @@ class Item extends CActiveRecord
 			array('price, category_id, location_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
+			array('price', 'length', 'max'=>10),
 			array('created, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
@@ -71,8 +72,8 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
+			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
 			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
