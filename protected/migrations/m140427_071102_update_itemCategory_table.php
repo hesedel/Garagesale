@@ -54,7 +54,7 @@ class m140427_071102_update_itemCategory_table extends CDbMigration
 		));
 		$this->insert('item_category', array(
 			'id'=>11,
-			'title'=>'Other',
+			'title'=>'Others',
 		));
 
 		{
