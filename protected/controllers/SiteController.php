@@ -83,7 +83,19 @@ class SiteController extends Controller
 			*/
 			'pagination'=>false,
 		));
-		$dataProvider_classmates=new CActiveDataProvider('Item',array(
+		$dataProvider_popular=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'order'=>'created DESC',
+				'limit'=>3,
+			),
+			/*
+			'pagination'=>array(
+				'pageSize'=>3,
+			),
+			*/
+			'pagination'=>false,
+		));
+		$dataProvider_odd=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
 				'order'=>'created DESC',
 				'limit'=>3,
@@ -99,7 +111,8 @@ class SiteController extends Controller
 		$this->render('index',array(
 			'dataProvider_freebies'=>$dataProvider_freebies,
 			'dataProvider_course'=>$dataProvider_course,
-			'dataProvider_classmates'=>$dataProvider_classmates,
+			'dataProvider_popular'=>$dataProvider_popular,
+			'dataProvider_odd'=>$dataProvider_odd,
 		));
 	}
 
