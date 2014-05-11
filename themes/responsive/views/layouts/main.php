@@ -31,6 +31,8 @@
 </head>
 <body>
 
+<div id="wrapper">
+
 <div id="xs">
 
 <div id="body">
@@ -58,8 +60,9 @@
 		<ul>
 			<li><?php echo CHtml::link('About', array('/site/page', 'view' => 'about')); ?></li>
 			<li><?php echo CHtml::link('FAQs', array('/site/page', 'view' => 'faqs')); ?></li>
-			<li><?php echo CHtml::link('Policy', array('/site/page', 'view' => 'policy')); ?></li>
+			<li><?php echo CHtml::link('Privacy', array('/site/page', 'view' => 'policy')); ?></li>
 			<li><?php echo CHtml::link('Terms', array('/site/page', 'view' => 'terms')); ?></li>
+			<li><?php echo CHtml::link('Contact Us', array('/site/contact')); ?></li>
 		</ul>
 	</nav>
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
@@ -77,17 +80,6 @@
 				<button type="button" class="g-button g-button--primary" data-dismiss="modal">OK</button>
 			</div>
 		</div>
-	</div>
-</div>
-
-<div id="not-mobile">
-	<div>
-		<?php echo CHtml::image(
-			'/img/vendor/slir/h144/img/logo-white.png',
-			CHtml::encode(Yii::app()->name)
-		); ?>
-		<h2>Welcome to Stycle!</h2>
-		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
 	</div>
 </div>
 
@@ -116,6 +108,7 @@ ga('create', 'UA-50631477-1', 'pajaroncreative.com');
 ga('send', 'pageview');
 </script>
 <?php endif; ?>
+</div> <!-- End of "wrapper" -->
 
 </body>
 </html>
