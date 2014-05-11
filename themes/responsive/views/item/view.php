@@ -28,8 +28,10 @@ $this->menu=array(
 */
 ?>
 
+<div id="item_view">
+
 <?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
-<div class="actions text-right" style="margin-bottom: 10px;">
+<div class="actions">
 
 	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'btn g-button')) : ''; ?>
 
@@ -37,8 +39,6 @@ $this->menu=array(
 
 </div>
 <?php endif; ?>
-
-<div id="item_view">
 
 <?php if($images = $model->getImages()): ?>
 
@@ -101,6 +101,7 @@ $this->menu=array(
 </div>
 
 <?php endif; ?>
+
 <div class="social-share">
 
 	<div id="fb-root"></div>
@@ -111,18 +112,17 @@ $this->menu=array(
 		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<div class="fb-share-button pull-right" data-href="http://int-stycle.pajaroncreative.com/item/<?php echo $model->id; ?>" data-type="button_count"></div>
+	<div class="fb-share-button" data-type="button_count"></div>
 
-	<a href="https://twitter.com/share" class="twitter-share-button pull-right">Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 </div>
+
 <header class="header">
 	<h1><?php echo CHtml::encode($model->title); ?></h1>
 	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
 </header>
-
-
 
 <?php
 $info = array();

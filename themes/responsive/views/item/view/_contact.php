@@ -61,6 +61,6 @@
 
 <?php else: ?>
 
-<p><i class="fa fa-check"></i>Your message has been sent to the seller! </p>
+<p><i class="fa fa-check"></i> Your message has been sent to the seller!</p>
 
 <?php endif; ?>

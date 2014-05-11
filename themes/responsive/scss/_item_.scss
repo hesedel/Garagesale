@@ -268,9 +268,10 @@
 	}
 
 	.actions {
-		text-align: center;
+		text-align: right;
 		line-height: $line-height * 2;
 		margin-top: $line-height;
+		margin-bottom: $line-height;
 	}
 
 	.social-share {
@@ -542,7 +543,7 @@
 
 		}
 
-		.guest {
+		//.guest {
 
 			p {
 				color: $color_customBrown;
@@ -560,7 +561,7 @@
 
 		}
 
-	}
+	//}
 
 }
 
