@@ -9,7 +9,7 @@
 				'/img/vendor/slir/w76-h68-c38x34-bfff' . $user->getImage() . '?' . time(),
 				$model->user->name_first . '\'s avatar'
 			)
-			: '<i class="fa fa-user"></i> '
+			: '<i class="fa fa-user"></i> Message '
 		) .
 			$model->user->name_first,
 		array(
@@ -29,7 +29,6 @@
 	<span class="phone"><i class="fa fa-phone"></i> <?php echo $model->user->phone; ?></span>
 	<?php endif; */ ?>
 
-	<span class="email"><i class="fa fa-envelope"></i> Email seller</span>
 
 	<?php if(Yii::app()->user->isGuest): ?>
 	<div class="guest">
