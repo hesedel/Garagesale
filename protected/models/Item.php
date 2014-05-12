@@ -10,13 +10,14 @@
  * @property string $title
  * @property string $price
  * @property string $description
+ * @property string $pickup
  * @property integer $category_id
  * @property integer $condition_id
  * @property string $user_id
  *
  * The followings are the available model relations:
- * @property ItemCondition $condition
  * @property ItemCategory $category
+ * @property ItemCondition $condition
  * @property User $user
  * @property ItemContact[] $itemContacts
  * @property ItemImage[] $itemImages
@@ -49,7 +50,8 @@ class Item extends CActiveRecord
 			array('price, category_id, location_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
-			array('created, uploads', 'safe'),
+			array('price', 'length', 'max'=>10),
+			array('created, pickup, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('category_id, location_id, condition_id, user_id', 'default', 'value'=>null),
@@ -71,8 +73,8 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'category' => array(self::BELONGS_TO, 'ItemCategory', 'category_id'),
+			'condition' => array(self::BELONGS_TO, 'ItemCondition', 'condition_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'itemContacts' => array(self::HAS_MANY, 'ItemContact', 'item_id'),
 			'itemImages' => array(self::HAS_MANY, 'ItemImage', 'item_id'),
@@ -88,9 +90,10 @@ class Item extends CActiveRecord
 			'id' => 'ID',
 			'created' => 'Posted',
 			'updated' => 'Updated',
-			'title' => 'Title',
+			'title' => 'Item Title',
 			'price' => 'Price',
 			'description' => 'Description',
+			'pickup' => 'Pickup Details',
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',
@@ -211,7 +214,7 @@ class Item extends CActiveRecord
 		$categories = Yii::app()->db->createCommand()
 			->select('*')
 			->from('item_category')
-			->order('title')
+			//->order('title')
 			->queryAll();
 
 		// store the categories in a real array
