@@ -31,8 +31,6 @@
 </head>
 <body>
 
-<div id="wrapper">
-
 <div id="xs">
 
 <div id="body">
@@ -82,8 +80,6 @@
 		</div>
 	</div>
 </div>
-
-</div><!-- #wrapper -->
 
 <div id="not-mobile">
 	<div>
