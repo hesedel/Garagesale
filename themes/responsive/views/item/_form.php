@@ -42,12 +42,10 @@
 				<td><?php echo $model->getCategoryDropDownList(); ?></td>
 			</tr>
 
-			<?php /*
-			<tr>
+			<tr class="hidden">
 				<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 				<td><?php echo $model->getLocationDropDownList(); ?> Changing this will update your account and this will reflect on all your other ads.</td>
 			</tr>
-			*/ ?>
 
 			<tr>
 				<th>Condition</th>
