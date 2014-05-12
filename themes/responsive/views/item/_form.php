@@ -28,11 +28,20 @@
 			<tr>
 				<th><?php echo $form->labelEx($model, 'price'); ?>
 				<td>
-					<div class="price input-text">
-						<span class="prepend">AU$</span>
-						<?php echo $form->numberField($model, 'price'); ?>
-						<span class="placeholder">How much does it cost?</span>
-					</div>
+
+					<table class="price"><tr>
+						<th>
+						<div class="price input-text">
+							<span class="prepend">AU$</span>
+							<?php echo $form->numberField($model, 'price'); ?>
+							<span class="placeholder">How much does it cost?</span>
+						</div>
+						</th>
+						<td>
+							<label class="g-button--primary small free"><input type="checkbox"> Free!</label>
+						</td>
+					</tr></table>
+
 					<?php echo $form->error($model, 'price'); ?>
 				</td>
 			</tr>
@@ -206,6 +215,19 @@
 Yii::app()->clientScript->registerScript(
 	'_form',
 	"
+	$('input[type=checkbox]', $('label.free', '#item_create, #item_update')).bind('change', function() {
+		if($(this).is(':checked')) {
+			$('#Item_price')
+				.val(0)
+				.attr('readonly', true);
+		} else {
+			$('#Item_price')
+				.attr('readonly', false)
+				.trigger('focus')
+				.trigger('select');
+		}
+	});
+
 	var uploadIndex_from = 0;
 	$('div.images', '#item_create, #item_update').sortable( {
 		handle: '.image',

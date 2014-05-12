@@ -1,6 +1,33 @@
 #item_create,
 #item_update {
 
+	table.price {
+		width: 100%;
+
+		tbody {
+			display: table-row-group;
+		}
+
+		tr {
+			padding-top: 0;
+			padding-bottom: 0;
+			display: table-row;
+		}
+
+		th, td {
+			display: table-cell;
+		}
+
+		th {
+			width: 100%;
+		}
+
+		td {
+			padding-left: $gutter-width * (1 / 3);
+		}
+
+	}
+
 	div.price {
 		padding-left: $gutter-width * 3;
 
@@ -12,6 +39,22 @@
 
 		span.placeholder {
 			left: $gutter-width * 3;
+		}
+
+	}
+
+	label.free {
+		font-size: 1.25em;
+		font-weight: 400;
+		white-space: nowrap;
+		//margin-top: $line-height * (1 / 6);
+		//margin-bottom: $line-height * (1 / 6);
+		margin-bottom: 0;
+
+		input[type=checkbox] {
+			margin-top: -($line-height * (1 / 9));
+			outline: none;
+			vertical-align: middle;
 		}
 
 	}
