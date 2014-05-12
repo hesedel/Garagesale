@@ -89,7 +89,7 @@ class Item extends CActiveRecord
 			'id' => 'ID',
 			'created' => 'Posted',
 			'updated' => 'Updated',
-			'title' => 'Title',
+			'title' => 'Item Title',
 			'price' => 'Price',
 			'description' => 'Description',
 			'category_id' => 'Category',

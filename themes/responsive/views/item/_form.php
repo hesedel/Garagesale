@@ -42,10 +42,12 @@
 				<td><?php echo $model->getCategoryDropDownList(); ?></td>
 			</tr>
 
+			<?php /*
 			<tr>
 				<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 				<td><?php echo $model->getLocationDropDownList(); ?> Changing this will update your account and this will reflect on all your other ads.</td>
 			</tr>
+			*/ ?>
 
 			<tr>
 				<th>Condition</th>
@@ -53,7 +55,7 @@
 					<fieldset>
 						<legend>Condition</legend>
 						<?php
-							echo $form->radioButtonList($model, 'condition_id', array('' => 'N/A', '0' => 'Brand New', '1' => 'Used'), array('separator' => ' &#160; '));
+							echo $form->radioButtonList($model, 'condition_id', array('0' => 'Totally New', '1' => 'Almost New', '2' => 'Not New'), array('separator' => ' &#160; '));
 							echo $form->error($model, 'condition_id');
 						?>
 					</fieldset>
@@ -168,6 +170,7 @@
 				</td>
 			</tr>
 
+			<?php /*
 			<tr>
 				<th><?php echo $form->labelEx($model, 'phone'); ?>
 				<td>
@@ -178,6 +181,7 @@
 					Changing this will update your account and this will reflect on all your other ads.
 				</td>
 			</tr>
+			*/ ?>
 
 		</tbody>
 

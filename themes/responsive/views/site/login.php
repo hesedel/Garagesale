@@ -8,7 +8,7 @@ $this->layout = '/layouts/column1';
 ?>
 
 <div class="g-form" id="site_login">
-	<!--<h2>Login</h2>-->
+	<h2>Login</h2>
 
 	<div class="alert alert-warning alert-dismissable">
 		<!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->

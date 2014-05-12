@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Post a FREE Ad';
 $this->breadcrumbs = array(
-	'Ads' => array('index'),
+	'Ads',
 	'Post',
 );
 
