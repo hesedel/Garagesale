@@ -133,23 +133,16 @@ $info = array();
 //$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
 //$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
 //$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
+/*
 if($model->condition_id)
 	$info[$model->getAttributeLabel('condition')] = $model->condition->title;
-if($model->user->location_id)
-	$info['University'] = $model->user->location->name;
-$info['Seller'] = CHtml::link(
-	$model->user->name_first,
-	array(
-		'/admin/user/view',
-		'id' => $model->user_id,
-	)
-);
+*/
 ?>
 <p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 <div class="tabs">
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
-		<li><a href="#item_view-collection" data-toggle="tab">Pick Up Details</a></li>
+		<li><a href="#item_view-collection" data-toggle="tab">Pickup Details</a></li>
 		<li><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>
 	</ul>
 
@@ -157,13 +150,19 @@ $info['Seller'] = CHtml::link(
 		<div class="tab-pane active" id="item_view-user">
 			<table>
 				<tbody>
-					<?php $i = 0; foreach($info as $key => $value) { ?>
-					<?php if($i % 2 == 0): ?><tr><?php endif; ?>
-					<th><?php echo $key; ?></th>
-					<td colspan="3"><?php echo $value; ?></td>
-					<?php $i++; ?>
-					<?php if($i % 1 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
-					<?php } ?>
+					<tr>
+						<th>Seller</th>
+						<td><?php echo CHtml::link(
+							$model->user->name_first,
+							array(
+								'/admin/user/view',
+								'id' => $model->user_id,
+							)
+						); ?></td>
+					</tr>
+					<tr>
+						<th>University</th>
+						<td>...</td>
 					</tr>
 					<?php if($model->user->course_id): ?>
 					<tr>
@@ -196,7 +195,7 @@ $info['Seller'] = CHtml::link(
 			<table>
 				<?php if($model->user->location_id): ?>
 				<tr>
-					<th>Uni Pick Up Location</th>
+					<th>Location</th>
 					<td><?php echo $model->user->location->name; ?></td>
 				</tr>
 				<?php endif; ?>
@@ -205,20 +204,20 @@ $info['Seller'] = CHtml::link(
 		</div>
 		<div class="tab-pane" id="item_view-more-info">
 			<table>
-				<tbody>
-					<tr>
-						<th class="created">Listed</th>
-						<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
-					</tr>
-					<tr>
-						<th>Condition</th>
-						<td>...</td>
-					</tr>
-					<tr>
-						<th>Item Views</th>
-						<td>...</td>
-					</tr>
-				</tbody>
+				<?php if($model->condition_id): ?>
+				<tr>
+					<th>Condition</th>
+					<td><?php echo $model->condition->title; ?></td>
+				</tr>
+				<?php endif; ?>
+				<tr>
+					<th class="created">Listed</th>
+					<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
+				</tr>
+				<tr>
+					<th>Item Views</th>
+					<td>...</td>
+				</tr>
 			</table>
 		</div>
 	</div>

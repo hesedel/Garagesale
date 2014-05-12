@@ -93,7 +93,7 @@ class Item extends CActiveRecord
 			'title' => 'Item Title',
 			'price' => 'Price',
 			'description' => 'Description',
-			'pickup' => 'Pick Up Details',
+			'pickup' => 'Pickup Details',
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',

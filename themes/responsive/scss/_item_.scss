@@ -541,21 +541,39 @@
 	.user {
 		color: $color_white;
 		background-color: $color_customBrown;
+		line-height: $line-height * 1.5;
 		padding: #{$line-height * .5} $gutter-width;
 		@include border-top-radius($border-radius);
+		@include clearfix;
+
+		strong {
+			font-size: 1.25em;
+			margin-right: $gutter-width * (2 / 3);
+			float: left;
+		}
 
 		.user-img {
-			color: $color_white;
-			font-size: 1.5em;
-			display: block;
+			color: $color_customBrown;
+			background-color: whiten($color_customBrown, 25%, 4);
+			height: $line-height * 1.5;
+				line-height: $line-height * 1.5;
+			padding-right: $gutter-width * (1 / 3);
+			@include border-radius($border-radius);
+			float: left;
 
 			img {
 				@include box-sizing(content-box);
-				width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
-				height: ($line-height * 2) - 2px;
-				border: 1px solid $color_body-bg;
+				height: $line-height * 1.5;
+				border-right: 1px solid $color_customBrown;
+				@include border-left-radius($border-radius);
 				margin-right: $gutter-width * (1 / 3);
 				display: inline-block;
+				vertical-align: top;
+
+				&:hover {
+					text-decoration: none;
+				}
+
 			}
 
 			i {
