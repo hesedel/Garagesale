@@ -13,7 +13,7 @@ if($model->category_id != null) {
 	$this->breadcrumbs = array_merge($this->breadcrumbs, $model->getCategories());
 }
 
-$this->breadcrumbs[] = 'Ad ID ' . $model->id;
+$this->breadcrumbs[] = $model->id;
 
 $this->layout = 'column1';
 
@@ -29,6 +29,16 @@ $this->menu=array(
 ?>
 
 <div id="item_view">
+
+<?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
+<div class="actions">
+
+	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'btn g-button')) : ''; ?>
+
+	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class' => 'btn g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
+
+</div>
+<?php endif; ?>
 
 <?php if($images = $model->getImages()): ?>
 
@@ -92,21 +102,6 @@ $this->menu=array(
 
 <?php endif; ?>
 
-<header class="header">
-	<h1><?php echo CHtml::encode($model->title); ?></h1>
-	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
-</header>
-
-<?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
-<div class="actions">
-
-	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'g-button')) : ''; ?>
-
-	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class' => 'g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
-
-</div>
-<?php endif; ?>
-
 <div class="social-share">
 
 	<div id="fb-root"></div>
@@ -117,80 +112,54 @@ $this->menu=array(
 		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
+	<div class="fb-share-button" data-type="button_count"></div>
 
 	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 </div>
 
+<header class="header">
+	<h1><?php echo CHtml::encode($model->title); ?></h1>
+	<?php if($model->price == 0): ?>
+	<span class="price">FREE!</span>
+	<?php else: ?>
+	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
+	<?php endif; ?>
+</header>
+
 <?php
 $info = array();
 //$info[$model->getAttributeLabel('created') . ' on'] = time_local($model->created);
 //$info[$model->getAttributeLabel('updated') . ' on'] = time_local($model->updated);
 //$info['Expires on'] = time_local($model->updated, array('offset' => 60*24*60*60)); // 60 days
+/*
 if($model->condition_id)
 	$info[$model->getAttributeLabel('condition')] = $model->condition->title;
-if($model->user->location_id)
-	$info['Collection'] = $model->user->location->name;
-$info['Seller'] = CHtml::link(
-	$model->user->name_first,
-	array(
-		'/admin/user/view',
-		'id' => $model->user_id,
-	)
-);
+*/
 ?>
-<table class="info" cellspacing="0">
-	<tbody>
-		<?php $i = 0; foreach($info as $key => $value) { ?>
-		<?php if($i % 2 == 0): ?><tr><?php endif; ?>
-			<th><?php echo $key; ?></th>
-			<td colspan="3"><?php echo $value; ?></td>
-		<?php $i++; ?>
-		<?php if($i % 1 == 0 || $i == sizeof($info)): ?></tr><?php endif; ?>
-		<?php } ?>
-	</tbody>
-	<tfoot>
-		<tr>
-			<th class="created">Listed</th>
-			<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
-			<th class="views">Views</th>
-			<td class="views">...</td>
-		</tr>
-	</tfoot>
-</table>
-
 <p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
-
 <div class="tabs">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#item_view-collection" data-toggle="tab">Collection Details</a></li>
-		<li><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
+		<li class="active"><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
+		<li><a href="#item_view-collection" data-toggle="tab">Pickup Details</a></li>
+		<li><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="item_view-collection">
-			<table>
-				<?php if($model->user->location_id): ?>
-				<tr>
-					<th>Location</th>
-					<td><?php echo $model->user->location->name; ?></td>
-				</tr>
-				<?php endif; ?>
-				<tr>
-					<th>Time</th>
-					<td>...</td>
-				</tr>
-				<tr>
-					<th>Day</th>
-					<td>...</td>
-				</tr>
-			</table>
-		</div>
-		<div class="tab-pane" id="item_view-user">
+		<div class="tab-pane active" id="item_view-user">
 			<table>
 				<tbody>
+					<tr>
+						<th>Seller</th>
+						<td><?php echo CHtml::link(
+							$model->user->name_first,
+							array(
+								'/admin/user/view',
+								'id' => $model->user_id,
+							)
+						); ?></td>
+					</tr>
 					<tr>
 						<th>University</th>
 						<td>...</td>
@@ -220,6 +189,35 @@ $info['Seller'] = CHtml::link(
 						</td>
 					</tr>
 				</tfoot>
+			</table>
+		</div>
+		<div class="tab-pane" id="item_view-collection">
+			<table>
+				<?php if($model->user->location_id): ?>
+				<tr>
+					<th>Location</th>
+					<td><?php echo $model->user->location->name; ?></td>
+				</tr>
+				<?php endif; ?>
+			</table>
+			<p class="pickup"><?php echo Yii::app()->format->formatNtext($model->pickup); ?></p>
+		</div>
+		<div class="tab-pane" id="item_view-more-info">
+			<table>
+				<?php if($model->condition_id): ?>
+				<tr>
+					<th>Condition</th>
+					<td><?php echo $model->condition->title; ?></td>
+				</tr>
+				<?php endif; ?>
+				<tr>
+					<th class="created">Listed</th>
+					<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
+				</tr>
+				<tr>
+					<th>Item Views</th>
+					<td>...</td>
+				</tr>
 			</table>
 		</div>
 	</div>

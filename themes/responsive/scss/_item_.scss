@@ -1,6 +1,33 @@
 #item_create,
 #item_update {
 
+	table.price {
+		width: 100%;
+
+		tbody {
+			display: table-row-group;
+		}
+
+		tr {
+			padding-top: 0;
+			padding-bottom: 0;
+			display: table-row;
+		}
+
+		th, td {
+			display: table-cell;
+		}
+
+		th {
+			width: 100%;
+		}
+
+		td {
+			padding-left: $gutter-width * (1 / 3);
+		}
+
+	}
+
 	div.price {
 		padding-left: $gutter-width * 3;
 
@@ -12,6 +39,22 @@
 
 		span.placeholder {
 			left: $gutter-width * 3;
+		}
+
+	}
+
+	label.free {
+		font-size: 1.25em;
+		font-weight: 400;
+		white-space: nowrap;
+		//margin-top: $line-height * (1 / 6);
+		//margin-bottom: $line-height * (1 / 6);
+		margin-bottom: 0;
+
+		input[type=checkbox] {
+			margin-top: -($line-height * (1 / 9));
+			outline: none;
+			vertical-align: middle;
 		}
 
 	}
@@ -268,9 +311,10 @@
 	}
 
 	.actions {
-		text-align: center;
+		text-align: right;
 		line-height: $line-height * 2;
 		margin-top: $line-height;
+		margin-bottom: $line-height;
 	}
 
 	.social-share {
@@ -447,6 +491,11 @@
 
 		}
 
+		.pickup {
+			margin-top: $line-height;
+			margin-bottom: 0;
+		}
+
 	}
 
 	> .row {
@@ -492,21 +541,39 @@
 	.user {
 		color: $color_white;
 		background-color: $color_customBrown;
+		line-height: $line-height * 1.5;
 		padding: #{$line-height * .5} $gutter-width;
 		@include border-top-radius($border-radius);
+		@include clearfix;
+
+		strong {
+			font-size: 1.25em;
+			margin-right: $gutter-width * (2 / 3);
+			float: left;
+		}
 
 		.user-img {
-			color: $color_white;
-			font-size: 1.5em;
-			display: block;
+			color: $color_customBrown;
+			background-color: whiten($color_customBrown, 25%, 4);
+			height: $line-height * 1.5;
+				line-height: $line-height * 1.5;
+			padding-right: $gutter-width * (1 / 3);
+			@include border-radius($border-radius);
+			float: left;
 
 			img {
 				@include box-sizing(content-box);
-				width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
-				height: ($line-height * 2) - 2px;
-				border: 1px solid $color_body-bg;
+				height: $line-height * 1.5;
+				border-right: 1px solid $color_customBrown;
+				@include border-left-radius($border-radius);
 				margin-right: $gutter-width * (1 / 3);
 				display: inline-block;
+				vertical-align: top;
+
+				&:hover {
+					text-decoration: none;
+				}
+
 			}
 
 			i {
@@ -542,7 +609,7 @@
 
 		}
 
-		.guest {
+		//.guest {
 
 			p {
 				color: $color_customBrown;
@@ -560,7 +627,7 @@
 
 		}
 
-	}
+	//}
 
 }
 
