@@ -177,7 +177,7 @@ class Item extends CActiveRecord
 			}
 			return $categories;
 		} else
-			return 'Nothing!';
+			return false;
 	}
 
 	public function getCategoriesString($options=array())

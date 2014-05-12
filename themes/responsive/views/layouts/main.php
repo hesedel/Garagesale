@@ -83,6 +83,19 @@
 	</div>
 </div>
 
+</div><!-- #wrapper -->
+
+<div id="not-mobile">
+	<div>
+		<?php echo CHtml::image(
+			'/img/vendor/slir/h144/img/logo-white.png',
+			CHtml::encode(Yii::app()->name)
+		); ?>
+		<h2>Welcome to Stycle!</h2>
+		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
+	</div>
+</div>
+
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
@@ -108,7 +121,6 @@ ga('create', 'UA-50631477-1', 'pajaroncreative.com');
 ga('send', 'pageview');
 </script>
 <?php endif; ?>
-</div> <!-- End of "wrapper" -->
 
 </body>
 </html>

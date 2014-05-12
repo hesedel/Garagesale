@@ -308,9 +308,9 @@
 		position: relative;
 
 		&.heading {
-			font-weight: bold;
-			color: whiten($color_wetAsphalt, 50%);
-			padding-top: $line-height - 1px;
+			color: whiten($color_wetAsphalt, 25%, 2);
+			font-weight: 600;
+			padding-top: $line-height - 2px;
 			padding-right: $gutter-width;
 			padding-bottom: $line-height * .5;
 			padding-left: $gutter-width;
