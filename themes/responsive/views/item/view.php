@@ -13,7 +13,7 @@ if($model->category_id != null) {
 	$this->breadcrumbs = array_merge($this->breadcrumbs, $model->getCategories());
 }
 
-$this->breadcrumbs[] = 'Ad ID ' . $model->id;
+$this->breadcrumbs[] = $model->id;
 
 $this->layout = 'column1';
 
@@ -121,7 +121,11 @@ $this->menu=array(
 
 <header class="header">
 	<h1><?php echo CHtml::encode($model->title); ?></h1>
+	<?php if($model->price == 0): ?>
+	<span class="price">FREE!</span>
+	<?php else: ?>
 	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
+	<?php endif; ?>
 </header>
 
 <?php
@@ -192,15 +196,12 @@ $info['Seller'] = CHtml::link(
 			<table>
 				<?php if($model->user->location_id): ?>
 				<tr>
-					<th>Uni Pick Up Location:</th>
+					<th>Uni Pick Up Location</th>
 					<td><?php echo $model->user->location->name; ?></td>
 				</tr>
 				<?php endif; ?>
-				<tr>
-					<th>Specific collection details:</th>
-					<td>...</td>
-				</tr>
 			</table>
+			<p class="pickup"><?php echo Yii::app()->format->formatNtext($model->pickup); ?></p>
 		</div>
 		<div class="tab-pane" id="item_view-more-info">
 			<table>

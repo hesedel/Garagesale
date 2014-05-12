@@ -10,6 +10,7 @@
  * @property string $title
  * @property string $price
  * @property string $description
+ * @property string $pickup
  * @property integer $category_id
  * @property integer $condition_id
  * @property string $user_id
@@ -50,7 +51,7 @@ class Item extends CActiveRecord
 			array('title, user_id', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
 			array('price', 'length', 'max'=>10),
-			array('created, uploads', 'safe'),
+			array('created, pickup, uploads', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('category_id, location_id, condition_id, user_id', 'default', 'value'=>null),
@@ -92,6 +93,7 @@ class Item extends CActiveRecord
 			'title' => 'Item Title',
 			'price' => 'Price',
 			'description' => 'Description',
+			'pickup' => 'Pick Up Details',
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',

@@ -190,6 +190,17 @@
 			</tr>
 			*/ ?>
 
+			<tr>
+				<th><?php echo $form->labelEx($model, 'pickup'); ?>
+				<td>
+					<div class="textarea">
+						<?php echo $form->textArea($model, 'pickup', array('rows' => 6, 'cols' => 50)); ?>
+						<span class="placeholder">Pick details</span>
+					</div>
+					<?php echo $form->error($model, 'pickup'); ?>
+				</td>
+			</tr>
+
 		</tbody>
 
 		<tfoot>
