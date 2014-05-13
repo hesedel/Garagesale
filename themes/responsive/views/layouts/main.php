@@ -58,8 +58,9 @@
 		<ul>
 			<li><?php echo CHtml::link('About', array('/site/page', 'view' => 'about')); ?></li>
 			<li><?php echo CHtml::link('FAQs', array('/site/page', 'view' => 'faqs')); ?></li>
-			<li><?php echo CHtml::link('Policy', array('/site/page', 'view' => 'policy')); ?></li>
+			<li><?php echo CHtml::link('Privacy', array('/site/page', 'view' => 'policy')); ?></li>
 			<li><?php echo CHtml::link('Terms', array('/site/page', 'view' => 'terms')); ?></li>
+			<li><?php echo CHtml::link('Contact Us', array('/site/contact')); ?></li>
 		</ul>
 	</nav>
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>

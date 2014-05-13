@@ -87,7 +87,8 @@ body {
 
 @media (max-width: $screen-xs-max) {
 	#footer {
-		padding-top: $line-height * .5;
+		//padding-top: $line-height * .5;
+		padding-top: 0;
 		padding-bottom: $line-height * .5;
 	}
 }
@@ -100,17 +101,22 @@ body {
 	}
 
 	li {
-		text-align: center;
-		width: 25%;
-		float: left;
+		//text-align: center;
+		//width: 25%;
+		//float: left;
 	}
 
 	a {
 		color: $color_greenSea;
+		font-size: 1.25em;
 		background-color: whiten($color_turquoise, 25%, 2);
-		padding: #{$line-height * (1 / 6)} #{$gutter-width * (1 / 3)};
-		@include border-radius($border-radius);
-		display: inline-block;
+		//padding: #{$line-height * (1 / 6)} #{$gutter-width * (1 / 3)};
+		padding: #{$line-height * .5} $gutter-width;
+		//@include border-radius($border-radius);
+		margin-right: -$gutter-width;
+		margin-left: -$gutter-width;
+		//display: inline-block;
+		display: block;
 
 		&:hover {
 			text-decoration: none;
@@ -126,12 +132,13 @@ body {
 }
 
 #not-mobile {
-	@extend .hidden-xs;
+	//@extend .hidden-xs;
 	text-align: center;
 	background-color: rgba($color_black, .7);
 	width: 100%;
 	height: 100%;
-	display: table;
+	//display: table;
+	display: none;
 	position: fixed;
 		top: 0;
 		left: 0;

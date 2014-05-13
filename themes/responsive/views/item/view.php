@@ -186,6 +186,7 @@ if($model->condition_id)
 						<td colspan="2">
 							<?php echo CHtml::link('Follow Seller', array('#'), array('class' => 'g-button')); ?>
 							<?php echo CHtml::link('All Seller Items', array('#'), array('class' => 'g-button')); ?>
+							<?php echo CHtml::link('Report Seller', array('#'), array('class' => 'g-button')); ?>
 						</td>
 					</tr>
 				</tfoot>

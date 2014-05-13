@@ -1,5 +1,26 @@
 #site_index {
 
+	.intro{
+		text-align: center;
+		padding-right: $gutter-width;
+
+		&.alert-dismissable .close {
+			right: 0;
+		}
+
+		h2{ 
+			font-size: 1.5em;
+			margin-top: 0;
+		}
+
+		.call-to-action {
+			height: $line-height * 2;
+				line-height: $line-height * 2;
+			margin-top: $line-height * .5;
+		}
+
+	}
+
 	.h2 {
 		font-size: 1em;
 		line-height: $line-height;
