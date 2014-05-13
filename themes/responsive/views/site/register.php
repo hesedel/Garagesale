@@ -110,6 +110,28 @@ $this->layout = 'column1';
 				</tr>
 				*/ ?>
 
+				<tr>
+					<th>University</th>
+					<td>
+						...
+					</td>
+				</tr>
+
+				<tr>
+					<th>Campus</th>
+					<td>
+						...
+					</td>
+				</tr>
+
+				<tr>
+					<th><?php echo $form->labelEx($model, 'course_id'); ?></th>
+					<td>
+						<?php echo $model->getCourseDropDownList(); ?>
+						<?php echo $form->error($model, 'course_id'); ?>
+					</td>
+				</tr>
+
 				<?php /*
 				<tr>
 					<th><?php echo $form->labelEx($model, 'phone'); ?></th>
@@ -136,6 +158,14 @@ $this->layout = 'column1';
 					</td>
 				</tr>
 				<?php endif; ?>
+
+				<tr>
+					<td colspan="2">
+						<?php echo $form->checkBox($model, 'agree'); ?>
+						<?php echo $form->label($model, 'agree'); ?>
+						<?php echo $form->error($model, 'agree'); ?>
+					</td>
+				</tr>
 
 			</tbody>
 			<tfoot>

@@ -120,7 +120,7 @@ class User extends CActiveRecord
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
 			'location_id' => 'Location',
-			'course_id' => 'Course',
+			'course_id' => 'Area of Study',
 		);
 	}
 
@@ -279,7 +279,7 @@ class User extends CActiveRecord
 		foreach($courses as $course)
 			$listData[] = array('id'=>$course['id'], 'title'=>CHtml::encode($course['title']));
 
-		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a course'));
+		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select an area of study'));
 	}
 
 	/**
