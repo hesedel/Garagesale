@@ -7,6 +7,7 @@ class m140503_023237_create_userUniversity_table extends CDbMigration
 		$this->createTable('user_university', array(
 			'id'=>'mediumint UNSIGNED PRIMARY KEY',
 			'title'=>'varchar(64) NOT NULL',
+			'parent_id'=>'mediumint UNSIGNED',
 		), 'ENGINE InnoDB');
 		$this->addColumn('user', 'university_id', 'mediumint UNSIGNED');
 		$this->addForeignKey('university', 'user', 'university_id', 'user_university', 'id', 'SET NULL', 'CASCADE');
