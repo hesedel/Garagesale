@@ -13,7 +13,7 @@ class BadWord extends CValidator
 
 	protected function validateAttribute($object,$attribute)
 	{
-		$words=explode(' ',$object->$attribute);
+		$words=explode("' ', '@', '.'",$object->$attribute);
 		foreach($words as $word)
 		{
 			$word=strtolower($word);
