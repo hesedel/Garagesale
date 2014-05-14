@@ -324,7 +324,7 @@ class ItemController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT null',
+				'condition'=>'user_id IS NOT NULL',
 			),
 			'pagination'=>array('pageSize'=>12),
 		));
@@ -355,7 +355,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\' AND user_id IS NOT null',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
+					' AND user_id IS NOT NULL',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
@@ -377,7 +378,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
+					' AND user_id IS NOT NULL',
 				//'limit'=>5,
 			),
 			'pagination'=>false,
