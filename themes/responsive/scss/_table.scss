@@ -511,6 +511,7 @@ body.is-animating #menu-footer {
 		height: $line-height * 2;
 			//line-height: $line-height * 1.5;
 			line-height: $line-height * 2;
+		padding-right: 0;
 		@include border-radius(0);
 
 		img {

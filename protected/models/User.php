@@ -80,6 +80,7 @@ class User extends CActiveRecord
 			array('password', 'length', 'min'=>8),
 			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'safe'=>true, 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024)), // minSize 16KB, maxSize 3MB
 			array('image_temp', 'ImageValidator', 'allowEmpty'=>true, 'safe'=>true),
+			array('name_first, name_last', 'BadWord'),
 		);
 	}
 
