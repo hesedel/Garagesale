@@ -61,7 +61,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider_freebies=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT null',
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'updated DESC',
 				'limit'=>3,
 			),
@@ -74,7 +74,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_course=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT null',
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -87,6 +87,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_popular=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -99,7 +100,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_odd=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT null',
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
