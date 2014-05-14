@@ -17,20 +17,6 @@
         "sourcemaps": false
       }
     },
-    "50ef0fa9": {
-      "id": "50ef0fa9",
-      "pid": "c6f102e3",
-      "name": "main.js",
-      "input": "js\\main.js",
-      "customOutput": false,
-      "type": "Js",
-      "config": {
-        "autoCompile": false,
-        "uglify": true,
-        "mangle": true,
-        "sourcemaps": false
-      }
-    },
     "d6dc2db1": {
       "id": "d6dc2db1",
       "pid": "c6f102e3",
@@ -120,25 +106,6 @@
         "autoprefixer": false
       }
     },
-    "5a2d746f": {
-      "id": "5a2d746f",
-      "pid": "c6f102e3",
-      "name": "css.scss",
-      "input": "scss\\css.scss",
-      "customOutput": false,
-      "type": "Scss",
-      "config": {
-        "autoCompile": true,
-        "lineNumbers": false,
-        "unixNewlines": false,
-        "sourcemaps": false,
-        "debug": false,
-        "compass": true,
-        "fullCompass": true,
-        "outputStyle": "expanded",
-        "autoprefixer": false
-      }
-    },
     "6424f8e0": {
       "id": "6424f8e0",
       "pid": "c6f102e3",
@@ -147,7 +114,7 @@
       "customOutput": false,
       "type": "Scss",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "lineNumbers": false,
         "unixNewlines": false,
         "sourcemaps": false,
@@ -166,7 +133,7 @@
       "customOutput": false,
       "type": "Scss",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "lineNumbers": false,
         "unixNewlines": false,
         "sourcemaps": false,
@@ -185,7 +152,7 @@
       "customOutput": false,
       "type": "Scss",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "lineNumbers": false,
         "unixNewlines": false,
         "sourcemaps": false,
@@ -204,7 +171,7 @@
       "customOutput": false,
       "type": "Scss",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "lineNumbers": false,
         "unixNewlines": false,
         "sourcemaps": false,
@@ -223,7 +190,7 @@
       "customOutput": false,
       "type": "Scss",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "lineNumbers": false,
         "unixNewlines": false,
         "sourcemaps": false,
@@ -253,6 +220,39 @@
       "pid": "c6f102e3",
       "name": "bootstrap.codekit.js",
       "input": "js\\vendor\\bootstrap.codekit.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
+    "5a2d746f": {
+      "id": "5a2d746f",
+      "pid": "c6f102e3",
+      "name": "css.scss",
+      "input": "scss\\css.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "50ef0fa9": {
+      "id": "50ef0fa9",
+      "pid": "c6f102e3",
+      "name": "main.js",
+      "input": "js\\main.js",
       "customOutput": false,
       "type": "Js",
       "config": {

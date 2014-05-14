@@ -28,11 +28,20 @@
 			<tr>
 				<th><?php echo $form->labelEx($model, 'price'); ?>
 				<td>
-					<div class="price input-text">
-						<span class="prepend">AU$</span>
-						<?php echo $form->textField($model, 'price'); ?>
-						<span class="placeholder">How much does it cost?</span>
-					</div>
+
+					<table class="price"><tr>
+						<th>
+						<div class="price input-text">
+							<span class="prepend">AU$</span>
+							<?php echo $form->numberField($model, 'price'); ?>
+							<span class="placeholder">How much does it cost?</span>
+						</div>
+						</th>
+						<td>
+							<label class="g-button--primary small free"><input type="checkbox"> Free!</label>
+						</td>
+					</tr></table>
+
 					<?php echo $form->error($model, 'price'); ?>
 				</td>
 			</tr>
@@ -42,7 +51,7 @@
 				<td><?php echo $model->getCategoryDropDownList(); ?></td>
 			</tr>
 
-			<tr>
+			<tr class="hidden">
 				<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 				<td><?php echo $model->getLocationDropDownList(); ?> Changing this will update your account and this will reflect on all your other ads.</td>
 			</tr>
@@ -53,7 +62,7 @@
 					<fieldset>
 						<legend>Condition</legend>
 						<?php
-							echo $form->radioButtonList($model, 'condition_id', array('' => 'N/A', '0' => 'Brand New', '1' => 'Used'), array('separator' => ' &#160; '));
+							echo $form->radioButtonList($model, 'condition_id', array('0' => 'Totally New', '1' => 'Almost New', '2' => 'Not New'), array('separator' => ' &#160; '));
 							echo $form->error($model, 'condition_id');
 						?>
 					</fieldset>
@@ -86,16 +95,27 @@
 						foreach($images as $image)
 							$uploads[] = array('name' => $image['id'], 'tempName' => '', 'new' => false);
 					}
+					$i = 0;
 					if(strlen(strip_tags($form->error($model, 'images'))) == 0) {
 						$images = CUploadedFile::getInstances($model, 'images');
 						foreach($images as $image) {
-							$name = md5($image->name . time()) . '.' . strtolower($image->extensionName);
+							$name = md5($image->name . time() . $i) . '.' . strtolower($image->extensionName);
 							$image->saveAs(Yii::getPathOfAlias('webroot') . '/img/uploads/temp/' . $name);
 							$uploads[] = array('name' => $image->name, 'tempName' => $name, 'new' => true);
+							$i++;
 						}
 					}
-					if($uploads) :
+					if(strlen(strip_tags($form->error($model, 'photo'))) == 0) {
+						$photos = CUploadedFile::getInstances($model, 'photo');
+						foreach($photos as $photo) {
+							$name = md5($photo->name . time() . $i) . '.' . strtolower($photo->extensionName);
+							$photo->saveAs(Yii::getPathOfAlias('webroot') . '/img/uploads/temp/' . $name);
+							$uploads[] = array('name' => $photo->name, 'tempName' => $name, 'new' => true);
+							$i++;
+						}
+					}
 					?>
+					<?php if($uploads): ?>
 					<div class="images">
 						<?php foreach($uploads as $upload): ?>
 						<div class="image-container">
@@ -124,21 +144,40 @@
 						?>
 						<div class="clear"></div>
 					</div>
-					<?php
-					endif;
-					$this->widget('CMultiFileUpload', array(
+					<?php endif; ?>
+					<div class="label label-default">Select upto 5 images to upload</div>
+					<?php $this->widget('CMultiFileUpload', array(
 						'model' => $model,
 						'attribute' => 'images',
 						'accept' => 'gif|jpg|jpeg|png',
+						'options' => array(
+							'afterFileAppend' => file_get_contents(Yii::app()->theme->basePath . '/js/item/_form/_CMultiFileUpload-afterFileAppend.js'),
+						),
+						'htmlOptions' => array(
+							'accept' => 'image/*',
+							'multiple' => true,
+						),
 						'max' => 5,
 						'remove' => 'remove',
-					));
-					?>
+					)); ?>
 					<?php echo $form->error($model, 'images'); ?>
+					<div class="label label-default">or take a photo.</div>
+					<?php $this->widget('CMultiFileUpload', array(
+						'model' => $model,
+						'attribute' => 'photo',
+						'accept' => 'gif|jpg|jpeg|png',
+						'htmlOptions' => array(
+							'accept' => 'image/*',
+						),
+						'max' => 1,
+						'remove' => 'remove',
+					)); ?>
+					<?php echo $form->error($model, 'photo'); ?>
 					<div class="no-js">JavaScript required</div>
 				</td>
 			</tr>
 
+			<?php /*
 			<tr>
 				<th><?php echo $form->labelEx($model, 'phone'); ?>
 				<td>
@@ -147,6 +186,18 @@
 						<span class="placeholder">Phone</span>
 					</div>
 					Changing this will update your account and this will reflect on all your other ads.
+				</td>
+			</tr>
+			*/ ?>
+
+			<tr>
+				<th><?php echo $form->labelEx($model, 'pickup'); ?>
+				<td>
+					<div class="textarea">
+						<?php echo $form->textArea($model, 'pickup', array('rows' => 6, 'cols' => 50)); ?>
+						<span class="placeholder">Pick details</span>
+					</div>
+					<?php echo $form->error($model, 'pickup'); ?>
 				</td>
 			</tr>
 
@@ -175,6 +226,19 @@
 Yii::app()->clientScript->registerScript(
 	'_form',
 	"
+	$('input[type=checkbox]', $('label.free', '#item_create, #item_update')).bind('change', function() {
+		if($(this).is(':checked')) {
+			$('#Item_price')
+				.val(0)
+				.attr('readonly', true);
+		} else {
+			$('#Item_price')
+				.attr('readonly', false)
+				.trigger('focus')
+				.trigger('select');
+		}
+	});
+
 	var uploadIndex_from = 0;
 	$('div.images', '#item_create, #item_update').sortable( {
 		handle: '.image',

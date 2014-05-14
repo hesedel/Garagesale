@@ -35,8 +35,8 @@ $this->layout = 'column1';
 						<th>
 							<?php if($model->image): ?>
 							<div class="image">
-								<?php echo CHtml::image('/img/vendor/slir/w73-h70-c73x70-be8e8e3' . $model->getImage(), $model->id); ?>
-								<?php echo CHtml::link('<i class="fa fa-times"></i>', array('image_delete'), array('title' => 'remove profile picture')); ?>
+								<?php echo CHtml::image('/img/vendor/slir/w73-h70-c73x70-be8e8e3' . $model->getImage() . '?' . time(), $model->id); ?>
+								<?php echo CHtml::link('<i class="fa fa-times"></i>', array('/admin/user/image_delete'), array('title' => 'remove profile picture')); ?>
 							</div>
 							<?php else:
 								echo $this->renderPartial('_noImage', array('model' => $model));
@@ -124,10 +124,10 @@ $this->layout = 'column1';
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model, 'course'); ?></th>
+						<th><?php echo $form->labelEx($model, 'course_id'); ?></th>
 						<td>
 							<?php echo $model->getCourseDropDownList(); ?>
-							<?php echo $form->error($model, 'course'); ?>
+							<?php echo $form->error($model, 'course_id'); ?>
 						</td>
 					</tr>
 

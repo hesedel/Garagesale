@@ -1,21 +1,60 @@
 #item_create,
 #item_update {
 
+	table.price {
+		width: 100%;
+
+		tbody {
+			display: table-row-group;
+		}
+
+		tr {
+			padding-top: 0;
+			padding-bottom: 0;
+			display: table-row;
+		}
+
+		th, td {
+			display: table-cell;
+		}
+
+		th {
+			width: 100%;
+		}
+
+		td {
+			padding-left: $gutter-width * (1 / 3);
+		}
+
+	}
+
 	div.price {
-		max-width: 175px;
-		padding-left: 44px;
+		padding-left: $gutter-width * 3;
 
 		span.prepend {
 			color: blacken($custom_green, 25%, 2);
-			text-align: center;
 			position: absolute;
-				left: 9px;
-			height: 26px;
-				line-height: 26px;
+				left: $gutter-width * (2 / 3);
 		}
 
 		span.placeholder {
-			left: 45px;
+			left: $gutter-width * 3;
+		}
+
+	}
+
+	label.free {
+		font-size: 1.25em;
+		font-weight: 400;
+		white-space: nowrap;
+		//margin-top: $line-height * (1 / 6);
+		//margin-bottom: $line-height * (1 / 6);
+		margin-bottom: 0;
+
+		input[type=checkbox] {
+			margin-top: -($line-height * (1 / 9));
+			outline: none;
+			vertical-align: middle;
 		}
 
 	}
@@ -168,82 +207,6 @@
 
 #item_view {
 
-	.header {
-		background-color: $color_clouds;
-		width: 100%;
-		@include border-radius($border-radius * 2);
-		margin-bottom: $line-height * 2;
-
-		td {
-			padding-right: $gutter-width;
-			padding-left: $gutter-width * .5;
-
-			&:first-child {
-				width: 100%;
-				padding-right: $gutter-width * .5;
-				padding-left: $gutter-width;
-			}
-
-		}
-
-		thead {
-
-			td {
-				padding-top: $line-height;
-
-				h1 {
-					color: $color_black;
-					font-size: 2em;
-					word-break: break-all;
-					margin-top: 0;
-					margin-bottom: $line-height * .5;
-				}
-
-				.price {
-					color: $color_nephritis;
-					font-size: 1.5em;
-					white-space: nowrap;
-				}
-
-			}
-
-		}
-
-		tbody {
-
-			td {
-				padding-bottom: $line-height;
-
-				.time,
-				.location {
-					padding-right: $gutter-width * (2 / 3);
-					padding-left: $gutter-width * (2 / 3);
-					float: left;
-				}
-
-				.condition {
-					color: $color_white;
-					white-space: nowrap;
-					padding-right: $gutter-width * (1 / 3);
-					padding-left: $gutter-width * (1 / 3);
-					@include border-radius($border-radius);
-
-					&.new {
-						background-color: $color_nephritis;
-					}
-
-					&.old {
-						background-color: $color_alizarin;
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
 	.img {
 		background-color: $color_white;
 
@@ -266,12 +229,13 @@
 		.hes-slider-next {
 
 			span {
-				color: $color_white;
-				background-color: $color_asbestos;
+				color: $color_customBrown;
+				background-color: $color_customYellow;
 				padding: $line-height $gutter-width;
 
 				&:hover {
-					background-color: whiten($color_asbestos, 25%);
+					color: $color_white;
+					background-color: $color_customBrown;
 				}
 
 			}
@@ -323,17 +287,67 @@
 
 	}
 
+	.header {
+		background-color: $color_white;
+		padding: #{$line-height * .5} $gutter-width $line-height;
+		@include border-radius($border-radius);
+		margin-top: $line-height;
+
+		h1 {
+			font-size: 1.5em;
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.price {
+			color: $color_greenSea;
+			font-size: 1.25em;
+			text-align: center;
+			margin-top: $line-height * .5;
+			display: block;
+		}
+
+	}
+
+	.actions {
+		text-align: right;
+		line-height: $line-height * 2;
+		margin-top: $line-height;
+		margin-bottom: $line-height;
+	}
+
+	.social-share {
+		margin-top: $line-height;
+		@include clearfix;
+
+		> div, > a, > iframe {
+			margin-right: $gutter-width * (2 / 3);
+			//margin-left: $gutter-width * (1 / 3);
+			float: left;
+		}
+
+		.fb-share-button {
+			width: auto !important;
+		}
+
+	}
+
 	.info {
 		background-color: $color_white;
 		width: 100%;
+		@include border-top-radius($border-radius);
+		margin-top: $line-height;
 
 		th, td {
-			padding-top: $line-height * .5;
-			padding-bottom: ($line-height * .5) - 1px;
-			border-bottom: 1px solid $color_body-bg;
+			padding-top: ($line-height * .5) - 1px;
+			padding-bottom: $line-height * .5;
+			border-top: 1px solid $color_body-bg;
 		}
 
 		th {
+			color: $color_customBrown;
+			font-size: .75em;
 			white-space: nowrap;
 			padding-right: $gutter-width * .5;
 			padding-left: $gutter-width;
@@ -341,9 +355,48 @@
 
 		td {
 			font-weight: 600;
-			width: 50%;
 			padding-right: $gutter-width;
 			padding-left: $gutter-width * .5;
+		}
+
+		tbody {
+
+			tr:first-child {
+
+				th, td {
+					padding-top: $line-height * .5;
+					border-top: none;
+				}
+
+			}
+
+			td {
+				width: 100%;
+			}
+
+		}
+
+		tfoot {
+
+			th {
+
+				&.views {
+					padding-left: $gutter-width * .5;
+				}
+
+			}
+
+			td {
+				font-size: .75em;
+				white-space: nowrap;
+				width: 50%;
+
+				&.created {
+					padding-right: $gutter-width * .5;
+				}
+
+			}
+
 		}
 
 	}
@@ -351,9 +404,98 @@
 	.description {
 		color: $color-black;
 		background-color: $color_white;
-		padding: $line-height $gutter-width #{$line-height * 1.5};
-		@include border-bottom-radius($border-radius * 2);
+		padding: #{$line-height - 1px} $gutter-width #{$line-height * 1.5};
+		@include border-bottom-radius($border-radius);
+		margin-top: 1px;
 		margin-bottom: 0;
+	}
+
+	.tabs {
+		margin-top: $line-height;
+
+		.nav-tabs {
+			border-bottom-color: transparent;
+
+			> li {
+
+				&.active {
+
+					> a, a:hover, a:focus {
+						background-color: $color_white;
+						border-top-color: $color_white;
+						border-right-color: $color_white;
+						border-left-color: $color_white;
+					}
+
+				}
+
+			}
+
+		}
+
+		.tab-content {
+
+			.tab-pane {
+				background-color: $color_white;
+				padding: $line-height $gutter-width;
+				@include border-bottom-radius($border-radius);
+				@include border-radius($border-radius);
+
+				&:first-child {
+					@include border-top-left-radius(0);
+				}
+
+			}
+
+		}
+
+		table {
+			width: 100%;
+
+			th, td {
+				padding-top: $line-height * .5;
+			}
+
+			tbody {
+
+				tr:first-child {
+
+					th, td {
+						padding-top: 0;
+					}
+
+				}
+
+				th {
+					color: $color_customBrown;
+					white-space: nowrap;
+					padding-right: $gutter-width * .5;
+				}
+
+				td {
+					font-weight: 600;
+					width: 100%;
+					padding-left: $gutter-width * .5;
+				}
+
+			}
+
+			tfoot {
+
+				td {
+					text-align: center;
+					line-height: $line-height * 2;
+				}
+
+			}
+
+		}
+
+		.pickup {
+			margin-top: $line-height;
+			margin-bottom: 0;
+		}
+
 	}
 
 	> .row {
@@ -372,6 +514,11 @@
 @media (max-width: $screen-sm-max) {
 	#item_view {
 
+		.img {
+			margin-right: -$gutter-width;
+			margin-left: -$gutter-width;
+		}
+
 		> .row {
 			position: static;
 
@@ -385,6 +532,7 @@
 }
 
 #item_view-sidebar {
+	margin-top: $line-height;
 
 	.actions {
 		margin-bottom: $line-height;
@@ -392,22 +540,40 @@
 
 	.user {
 		color: $color_white;
-		background-color: $color_asbestos;
+		background-color: $color_customBrown;
+		line-height: $line-height * 1.5;
 		padding: #{$line-height * .5} $gutter-width;
-		@include border-top-radius($border-radius * 2);
+		@include border-top-radius($border-radius);
+		@include clearfix;
+
+		strong {
+			font-size: 1.25em;
+			margin-right: $gutter-width * (2 / 3);
+			float: left;
+		}
 
 		.user-img {
-			color: $color_white;
-			font-size: 1.5em;
-			display: block;
+			color: $color_customBrown;
+			background-color: whiten($color_customBrown, 25%, 4);
+			height: $line-height * 1.5;
+				line-height: $line-height * 1.5;
+			padding-right: $gutter-width * (1 / 3);
+			@include border-radius($border-radius);
+			float: left;
 
 			img {
 				@include box-sizing(content-box);
-				width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
-				height: ($line-height * 2) - 2px;
-				border: 1px solid $color_body-bg;
+				height: $line-height * 1.5;
+				border-right: 1px solid $color_customBrown;
+				@include border-left-radius($border-radius);
 				margin-right: $gutter-width * (1 / 3);
 				display: inline-block;
+				vertical-align: top;
+
+				&:hover {
+					text-decoration: none;
+				}
+
 			}
 
 			i {
@@ -418,18 +584,20 @@
 		}
 
 		.user-created {
+			@extend .hidden-xs;
 			display: block;
 		}
 
 	}
 
 	.contact {
-		background-color: $color_clouds;
+		background-color: $color_customYellow;
 		padding: $line-height $gutter-width #{$line-height * 1.5};
-		@include border-bottom-radius($border-radius * 2);
+		@include border-bottom-radius($border-radius);
 
 		.phone,
 		.email {
+			color: $color_customBrown;
 			font-size: 1.25em;
 			margin-bottom: $line-height * .5;
 			display: block;
@@ -441,7 +609,25 @@
 
 		}
 
-	}
+		//.guest {
+
+			p {
+				color: $color_customBrown;
+				font-size: 1.25em;
+				text-align: center;
+				line-height: 1.25;
+				margin-top: $line-height * .5;
+				margin-bottom: 0;
+
+				a {
+					white-space: nowrap;
+				}
+
+			}
+
+		}
+
+	//}
 
 }
 

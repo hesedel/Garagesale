@@ -53,8 +53,8 @@ class User extends CActiveRecord
 		return array(
 			array('id, email, name_first', 'required'),
 			array('verified, location_id, course_id', 'numerical', 'integerOnly'=>true),
-			array('id, password, name_first, name_last', 'length', 'max'=>32),
-			array('email', 'length', 'max'=>64),
+			array('password, name_first, name_last', 'length', 'max'=>32),
+			array('id, email', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
 			array('image_type', 'length', 'max'=>4),
 			array('image_size', 'length', 'max'=>10),
@@ -65,17 +65,18 @@ class User extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, email, created, updated, name_first, name_last, phone, verified, location_id, course_id', 'safe', 'on'=>'search'),
-			array('id', 'length', 'min'=>4),
-			array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
-			array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
-			array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
+			//array('id', 'length', 'min'=>4),
+			//array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
+			//array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
+			//array('id', 'match', 'pattern'=>'/^[a-z]+(_?[^_])+$/', 'message'=>'Username cannot consist of consecutive underscores or end with it.'),
 			array('id, email', 'unique'),
-			array('email', 'email'),
+			array('id, email', 'email'),
+			array('email', 'match', 'pattern'=>'/^.+\.edu\.au$/', 'message'=>'Email needs to be from an educational account, like name@school.edu.au.'),
 			array('email', 'authenticateEmail'),
 			array('password', 'required', 'on'=>'insert'),
 			array('password', 'length', 'min'=>8),
-			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>1024, 'maxSize'=>2.5*(1024*1024)), // minSize 1KB, maxSize 2.5MB
-			array('image_temp', 'ImageValidator', 'allowEmpty'=>true, 'minWidth'=>190, 'minHeight'=>190),
+			array('image_temp', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'safe'=>true, 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024)), // minSize 16KB, maxSize 3MB
+			array('image_temp', 'ImageValidator', 'allowEmpty'=>true, 'safe'=>true),
 		);
 	}
 
@@ -119,7 +120,7 @@ class User extends CActiveRecord
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
 			'location_id' => 'Location',
-			'course_id' => 'Course',
+			'course_id' => 'Area of Study',
 		);
 	}
 
@@ -177,7 +178,7 @@ class User extends CActiveRecord
 		$options=array_merge($defaults, $options);
 
 		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
-		if($this->image && !file_exists(Yii::getPathOfAlias('webroot').$image))
+		if($this->image && (!file_exists(Yii::getPathOfAlias('webroot').$image)) || filesize(Yii::getPathOfAlias('webroot').$image) !== strlen($this->image))
 			file_put_contents(Yii::getPathOfAlias('webroot').$image, $this->image);
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			return $image;
@@ -205,7 +206,7 @@ class User extends CActiveRecord
 			'image_size'=>null,
 		), 'id=:id', array(':id'=>$id));
 
-		$image='/img/uploads/cache/'.md5('user'.$this->id).'.'.$this->image_type;
+		$image='/img/uploads/cache/'.md5('user'.$id).'.'.$this->image_type;
 		if(file_exists(Yii::getPathOfAlias('webroot').$image))
 			unlink(Yii::getPathOfAlias('webroot').$image);
 
@@ -217,6 +218,7 @@ class User extends CActiveRecord
 		$this->password = strlen($this->password) == 0 ? $this->password_old() : md5(md5($this->password).Yii::app()->params['salt']);
 
 		if($this->image_temp) {
+			image_autoOrient($this->image_temp);
 			$this->image=file_get_contents($this->image_temp->tempName);
 			$this->image_type=basename($this->image_temp->type);
 			$this->image_size=$this->image_temp->size;
@@ -233,6 +235,7 @@ class User extends CActiveRecord
 			->queryAll();
 		foreach($items as $item)
 			Item::model()->findByPk($item['id'])->delete();
+		$this->deleteImage($this->id);
 		return true;
 	}
 
@@ -276,7 +279,7 @@ class User extends CActiveRecord
 		foreach($courses as $course)
 			$listData[] = array('id'=>$course['id'], 'title'=>CHtml::encode($course['title']));
 
-		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a course'));
+		return CHtml::activeDropDownList($this, 'course_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select an area of study'));
 	}
 
 	/**

@@ -9,6 +9,12 @@ $this->layout = '/layouts/column1';
 
 <div class="g-form" id="site_login">
 	<h2>Login</h2>
+
+	<div class="alert alert-warning alert-dismissable">
+		<!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+		Not yet a member? <?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> register', array('/site/register'), array('class' => 'g-button small')); ?>
+	</div>
+
 	<div class="form">
 		<?php $form = $this->beginWidget('CActiveForm', array(
 			'id' => 'login-form',
@@ -28,7 +34,7 @@ $this->layout = '/layouts/column1';
 					<th><?php echo $form->labelEx($model, 'username'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'username'); ?>
+							<?php echo $form->textField($model, 'username', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Your username or email address</span>
 						</div>
 						<?php echo $form->error($model, 'username'); ?>

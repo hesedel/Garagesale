@@ -25,22 +25,24 @@ $this->layout = 'column1';
 			<caption class="hide">Register</caption>
 			<tbody>
 
+				<?php /*
 				<tr>
 					<th><?php echo $form->labelEx($model, 'id'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'id'); ?>
+							<?php echo $form->textField($model, 'id', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Only small letters, numbers, and underscores are allowed.</span>
 						</div>
 						<?php echo $form->error($model, 'id'); ?>
 					</td>
 				</tr>
+				*/ ?>
 
 				<tr>
 					<th><?php echo $form->labelEx($model, 'email'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'email'); ?>
+							<?php echo $form->emailField($model, 'email'); ?>
 							<span class="placeholder">Your email address</span>
 						</div>
 						<?php echo $form->error($model, 'email'); ?>
@@ -108,6 +110,28 @@ $this->layout = 'column1';
 				</tr>
 				*/ ?>
 
+				<tr>
+					<th>University</th>
+					<td>
+						...
+					</td>
+				</tr>
+
+				<tr>
+					<th>Campus</th>
+					<td>
+						...
+					</td>
+				</tr>
+
+				<tr>
+					<th><?php echo $form->labelEx($model, 'course_id'); ?></th>
+					<td>
+						<?php echo $model->getCourseDropDownList(); ?>
+						<?php echo $form->error($model, 'course_id'); ?>
+					</td>
+				</tr>
+
 				<?php /*
 				<tr>
 					<th><?php echo $form->labelEx($model, 'phone'); ?></th>
@@ -127,13 +151,21 @@ $this->layout = 'column1';
 					<td>
 						<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?></div>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'verifyCode'); ?>
+							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Please enter the letters as they are shown in the image above.</span>
 						</div>
 						<?php echo $form->error($model, 'verifyCode'); ?>
 					</td>
 				</tr>
 				<?php endif; ?>
+
+				<tr>
+					<td colspan="2">
+						<?php echo $form->checkBox($model, 'agree'); ?>
+						<?php echo $form->label($model, 'agree'); ?>
+						<?php echo $form->error($model, 'agree'); ?>
+					</td>
+				</tr>
 
 			</tbody>
 			<tfoot>

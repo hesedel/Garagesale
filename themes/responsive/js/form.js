@@ -1,11 +1,5 @@
 $(function() {
 
-$('input').bind('keypress', function(e) {
-	if(e.which === 13) {
-		$('a.submit', $(this).parents('form')).trigger('click');
-	}
-});
-
 /*
 $('textarea')
 	.css( {
@@ -46,7 +40,7 @@ $('form').bind('submit', function() {
 	$('a.submit', $(this)).addClass('is-disabled');
 });
 
-$('form.ajax').bind('submit', function() {
+$('form.ajax').bind('submit', function(e) {
 	var $this = $(this);
 
 	var yiiactiveform = '';

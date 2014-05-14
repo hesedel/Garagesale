@@ -1,93 +1,119 @@
 $(function() {
 
-	$('i', '#menu-toggle').bind('click', function() {
-		if(!$(this).parents('#menu-toggle').hasClass('is-active')) {
-			$(this).parents('#menu-toggle').addClass('is-active');
+	window.alert = function(message) {
+		$('.modal-body', '#alert').text(message);
+		$('#alert').modal();
+	}
+
+	$('#menu-toggle').bind('touchend click', function(e) {
+
+		// needed by Android <= 4.3
+		if(e.type === 'touchend') {
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
+			setTimeout(function() {
+				$(document).unbind('click.menu');
+			}, 500);
+		}
+
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
 			$('#menu').addClass('is-active');
-			$('body').addClass('is-animating');
+			$('body')
+				.addClass('is-animating')
+				.addClass('is-menuActive');
 			setTimeout(function() {
 				$('body').removeClass('is-animating');
 			}, 125);
-			$('html, body').addClass('is-menu');
 		} else {
-			$(this).parents('#menu-toggle').removeClass('is-active');
+			$(this).removeClass('is-active');
 			setTimeout(function() {
 				$('#menu').removeClass('is-active');
 			}, 125);
-			$('body').addClass('is-animating');
+			$('body')
+				.addClass('is-animating')
+				.removeClass('is-menuActive');
 			setTimeout(function() {
 				$('body').removeClass('is-animating');
 			}, 125);
-			$('html, body').removeClass('is-menu');
 		}
+		return false;
 	});
 
-	$('.x', '#menu').bind('click', function() {
-		$('i', '#menu-toggle').trigger('click');
-	});
-
-	/*
-	$(window).bind('touchend', function() {
-		if($('html').hasClass('is-menu')) {
-			if($(window).scrollLeft() > $(window).width() * .25) {
-				$('html, body').animate( {
-					scrollLeft:  $(window).width() * .75
-				}, 125, function() {
-					$('body')
-						.css( {
-							left: 0
-						})
-						.removeClass('is-menu')
-						.attr('style', '');
-					//$('i', '#menu-toggle').trigger('click');
-				});
-			} else {
-				$('html, body').animate( {
-					scrollLeft: 0
-				}, 125);
-			}
-		}
-	});
-	*/
-
-	$('#is-menu-before').bind( {
-		click: function() {
-			$('i', '#menu-toggle').trigger('click');
-		},
+	$('#menu-x').bind( {
 		touchstart: function(e) {
 			$(this).data('x', e.originalEvent.touches[0].screenX);
 		},
 		touchmove: function(e) {
-			e.preventDefault();
 			var x = e.originalEvent.touches[0].screenX;
-			var percent = 1 - (($(this).data('x') - x) / $(window).width());
-			$('body, #is-menu-before, #is-menu-after').css( {
+			var distance = $(this).data('x') - x;
+			distance *= 2; // acceleration
+			var percent = 1 - (distance / $(window).width());
+			if(percent < 0) {
+				percent = 0;
+			}
+			if(percent > 1) {
+				percent = 1;
+			}
+			$('#xs, #menu-x, #menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
+			return false;
 		},
 		touchend: function(e) {
-			$('body').addClass('is-animating');
+
+			// needed by Android <= 4.1.2
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
 			setTimeout(function() {
-				$('body').removeClass('is-animating');
-			}, 125);
-			var percent = $(this).offset().left / $(window).width()
-			if(percent > .5) {
-				$('body, #is-menu-before, #is-menu-after').css( {
-					left: '75%'
-				});
+				$(document).unbind('click.menu');
+			}, 500);
+
+			var x = e.originalEvent.changedTouches[0].screenX;
+			if(x === $(this).data('x')) {
+				$('#menu-toggle').trigger('touchend');
+			}	else {
+				var percent = $(this).offset().left / $(window).width();
+				$('body').addClass('is-animating');
+				if(percent > 0.5) {
+					$('#xs, #menu-x, #menu-footer').css( {
+						left: '75%'
+					});
+					setTimeout(function() {
+						$('body').removeClass('is-animating');
+					}, 125);
+				} else {
+					$('#xs, #menu-x, #menu-footer').css( {
+						left: '0'
+					});
+					setTimeout(function() {
+						$('#menu-toggle').trigger('touchend');
+					}, 125);
+				}
 				setTimeout(function() {
-					$('body, #is-menu-before, #is-menu-after').attr('style', '');
-				}, 125);
-			} else {
-				$('body, #is-menu-before, #is-menu-after').css( {
-					left: '0%'
-				});
-				setTimeout(function() {
-					$('body, #is-menu-before, #is-menu-after').attr('style', '');
-					$('i', '#menu-toggle').trigger('click');
+					$('#xs, #menu-x, #menu-footer').attr('style', '');
 				}, 125);
 			}
+			return false;
+		},
+		click: function() {
+			$('#menu-toggle').trigger('click');
 		}
+	});
+
+	$('#search-toggle').bind('touchend click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#search').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#search').removeClass('is-active');
+		}
+		return false;
 	});
 
 	$('.a', '#user').data('hover', false);

@@ -110,8 +110,8 @@ return array(
 				'item/<action:\w+>/<id:\d+>'=>'item/<action>',
 				'item/<action:\w+>'=>'item/<action>',
 
-				'user/items'=>'admin/user/items',
-				'user/<action:\w+>/<id:\w+>'=>'admin/user/<action>',
+				//'user/items'=>'admin/user/items',
+				//'user/<action:\w+>/<id:\w+>'=>'admin/user/<action>',
 				'user/<action:\w+>'=>'admin/user/<action>',
 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
@@ -151,11 +151,10 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
 				array(
 					'class'=>'CWebLogRoute',
+					'categories'=>'application',
 				),
-				*/
 			),
 		),
 		'viewRenderer'=>array(

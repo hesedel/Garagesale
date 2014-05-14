@@ -1,7 +1,7 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Update Ad ' . $model->id;
+$this->pageTitle = Yii::app()->name . ' - Update Item ' . $model->id;
 $this->breadcrumbs = array(
-	'Ads' => array('index'),
+	'Items' => array('index'),
 	$model->id => array('view', 'id' => $model->id),
 	'Update',
 );
