@@ -111,16 +111,18 @@ $this->layout = 'column1';
 				*/ ?>
 
 				<tr>
-					<th>University</th>
+					<th><?php echo $form->labelEx($model, 'university_id'); ?></th>
 					<td>
-						...
+						<?php echo $model->getUniversityDropDownList(); ?>
+						<?php echo $form->error($model, 'university_id'); ?>
 					</td>
 				</tr>
 
-				<tr>
-					<th>Campus</th>
+				<tr class="campus">
+					<th><?php echo $form->labelEx($model, 'campus_id'); ?></th>
 					<td>
-						...
+						<?php echo $model->getCampusDropDownList(); ?>
+						<?php echo $form->error($model, 'campus_id'); ?>
 					</td>
 				</tr>
 
@@ -184,3 +186,58 @@ $this->layout = 'column1';
 		<?php $this->endWidget(); ?>
 	</div>
 </div>
+
+<?php Yii::app()->clientScript->registerScript('site_register',
+	"
+	$('#RegisterForm_email').bind('keyup', function() {
+		var \$this = $(this);
+		$('option', '#RegisterForm_university_id').each(function() {
+			if($(this).attr('data-domain')) {
+				var string = $(this).attr('data-domain').replace(/\./g, '\\\.');
+				var re = new RegExp(string, 'i');
+				if(\$this.val().match(re)) {
+					$('#RegisterForm_university_id')
+						.val($(this).val())
+						.trigger('change');
+					//$(this).attr('selected', true);
+				}
+			}
+		});
+	});
+
+	var campuses = [];
+	$('option:not(:first-child)', '#RegisterForm_campus_id').each(function() {
+		campuses.push({'val': $(this).val(), 'text': $(this).text(), 'data-parent_id': $(this).attr('data-parent_id')});
+	});
+
+	$('#RegisterForm_university_id')
+		.bind('change', function() {
+			var \$this = $(this);
+			var campuses_filtered = campuses.filter(function(campuses) {
+				return campuses['data-parent_id'] === \$this.val();
+			});
+
+			if(campuses_filtered.length > 0) {
+				$('option:not(:first-child)', '#RegisterForm_campus_id')
+					.remove();
+				$.each(campuses_filtered, function(i, campus) {
+					var \$option = $('<option>');
+					\$option
+						.val(campus.val)
+						.text(campus.text)
+						.attr('data-parent_id', campus['data-parent_id']);
+					console.log(\$option);
+					$('#RegisterForm_campus_id').append(\$option);
+				});
+				$('#RegisterForm_campus_id')
+					.val('')
+					.attr('disabled', false);
+				$('.campus', '#site_register').removeClass('hidden');
+			} else {
+				$('.campus', '#site_register').addClass('hidden');
+				$('#RegisterForm_campus_id').attr('disabled', true);
+			}
+		})
+		.trigger('change');
+	",
+CClientScript::POS_READY);

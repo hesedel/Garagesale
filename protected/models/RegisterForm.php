@@ -12,12 +12,12 @@ class RegisterForm extends User
 		$rules = parent::rules();
 		//$rules[] = array('email_repeat, password, password_repeat', 'required');
 		$rules[] = array('password', 'required');
-		$rules[] = array('agree', 'required', 'message'=>'You must agree to '.Yii::app()->name.'\'s Terms and Privacy Policy.');
 		//$rules[] = array('email_repeat', 'length', 'max'=>64);
 		//$rules[] = array('email_repeat', 'compare', 'compareAttribute'=>'email');
 		//$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
 		//$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password');
 		$rules[] = array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements());
+		$rules[] = array('agree', 'compare', 'compareValue'=>true, 'message'=>'You must agree to '.Yii::app()->name.'\'s Terms and Privacy Policy.');
 		return $rules;
 	}
 

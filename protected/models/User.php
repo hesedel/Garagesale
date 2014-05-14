@@ -17,6 +17,7 @@
  * @property string $image_size
  * @property integer $verified
  * @property integer $location_id
+ * @property integer $university_id
  * @property integer $course_id
  *
  * The followings are the available model relations:
@@ -25,6 +26,7 @@
  * @property ItemContact[] $itemContacts1
  * @property UserCourse $course
  * @property UserLocation $location
+ * @property UserUniversity $university
  * @property UserEmailChange[] $userEmailChanges
  * @property UserMessage[] $userMessages
  * @property UserMessage[] $userMessages1
@@ -34,6 +36,7 @@
 class User extends CActiveRecord
 {
 	public $image_temp;
+	public $campus_id;
 
 	/**
 	 * @return string the associated database table name
@@ -52,9 +55,9 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, email, name_first', 'required'),
-			array('verified, location_id, course_id', 'numerical', 'integerOnly'=>true),
-			array('password, name_first, name_last', 'length', 'max'=>32),
+			array('verified, location_id, university_id, campus_id, course_id', 'numerical', 'integerOnly'=>true),
 			array('id, email', 'length', 'max'=>64),
+			array('password, name_first, name_last', 'length', 'max'=>32),
 			array('phone', 'length', 'max'=>16),
 			array('image_type', 'length', 'max'=>4),
 			array('image_size', 'length', 'max'=>10),
@@ -64,7 +67,7 @@ class User extends CActiveRecord
 			array('name_last', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, created, updated, name_first, name_last, phone, verified, location_id, course_id', 'safe', 'on'=>'search'),
+			array('id, email, created, updated, name_first, name_last, phone, verified, location_id, university_id, course_id', 'safe', 'on'=>'search'),
 			//array('id', 'length', 'min'=>4),
 			//array('id', 'match', 'pattern'=>'/^[\d_a-z]+$/', 'message'=>'Only small letters, numbers, and underscores are allowed.'),
 			//array('id', 'match', 'pattern'=>'/^[a-z].*$/', 'message'=>'Username must begin with a small letter.'),
@@ -93,6 +96,7 @@ class User extends CActiveRecord
 			'itemContacts1' => array(self::HAS_MANY, 'ItemContact', 'user_id_poster'),
 			'course' => array(self::BELONGS_TO, 'UserCourse', 'course_id'),
 			'location' => array(self::BELONGS_TO, 'UserLocation', 'location_id'),
+			'university' => array(self::BELONGS_TO, 'UserUniversity', 'university_id'),
 			'userEmailChanges' => array(self::HAS_MANY, 'UserEmailChange', 'user_id'),
 			'userMessages' => array(self::HAS_MANY, 'UserMessage', 'user_id_from'),
 			'userMessages1' => array(self::HAS_MANY, 'UserMessage', 'user_id_to'),
@@ -120,6 +124,8 @@ class User extends CActiveRecord
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
 			'location_id' => 'Location',
+			'university_id' => 'University',
+			'campus_id' => 'Campus',
 			'course_id' => 'Area of Study',
 		);
 	}
@@ -152,6 +158,7 @@ class User extends CActiveRecord
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('verified',$this->verified);
 		$criteria->compare('location_id',$this->location_id);
+		$criteria->compare('university_id',$this->university_id);
 		$criteria->compare('course_id',$this->course_id);
 
 		return new CActiveDataProvider($this, array(
@@ -224,6 +231,9 @@ class User extends CActiveRecord
 			$this->image_size=$this->image_temp->size;
 		}
 
+		if($this->campus_id)
+			$this->university_id=$this->campus_id;
+
 		return true;
 	}
 
@@ -263,6 +273,59 @@ class User extends CActiveRecord
 			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
 
 		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
+	}
+
+	public function getUniversityDropDownList()
+	{
+		// get the universities
+		$universities = Yii::app()->db->createCommand()
+			->select('id, title, domain')
+			->from('user_university')
+			->where('parent_id IS NULL')
+			->order('title')
+			->queryAll();
+
+		// store the universities in a real array
+		$listData = array();
+		$listData_options = array();
+		foreach($universities as $university)
+		{
+			$listData[] = array(
+				'id'=>$university['id'],
+				'title'=>CHtml::encode($university['title']),
+			);
+			$listData_options[$university['id']] = array(
+				'data-domain'=>$university['domain'],
+			);
+		}
+
+		return CHtml::activeDropDownList($this, 'university_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a university', 'options'=>$listData_options));
+	}
+
+	public function getCampusDropDownList()
+	{
+		// get the campuses
+		$campuses = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_university')
+			->where('parent_id IS NOT NULL')
+			->order('title')
+			->queryAll();
+
+		// store the campuses in a real array
+		$listData = array();
+		$listData_options = array();
+		foreach($campuses as $campus) {
+			$listData[] = array(
+				'id'=>$campus['id'],
+				'title'=>CHtml::encode($campus['title']),
+			);
+			$listData_options[$campus['id']] = array(
+				'data-parent_id'=>$campus['parent_id'],
+			);
+		}
+
+		return CHtml::activeDropDownList($this, 'campus_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a campus', 'options'=>$listData_options));
 	}
 
 	public function getCourseDropDownList()
