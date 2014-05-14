@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'user_university':
  * @property integer $id
  * @property string $title
+ * @property string $domain
  * @property integer $parent_id
  *
  * The followings are the available model relations:
@@ -34,9 +35,10 @@ class UserUniversity extends CActiveRecord
 			array('id, title', 'required'),
 			array('id, parent_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>64),
+			array('domain', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, parent_id', 'safe', 'on'=>'search'),
+			array('id, title, domain, parent_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class UserUniversity extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
+			'domain' => 'Domain',
 			'parent_id' => 'Parent',
 		);
 	}
@@ -86,6 +89,7 @@ class UserUniversity extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
+		$criteria->compare('domain',$this->domain,true);
 		$criteria->compare('parent_id',$this->parent_id);
 
 		return new CActiveDataProvider($this, array(
