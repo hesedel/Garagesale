@@ -59,31 +59,18 @@
 
 				<li class="heading">Categories</li>
 
-				<?php /* COMMENTING THIS OUT FOR NOW AS IT IS CAUSING ERROR
+				<?php
 				$categories = Yii::app()->db->createCommand()
 					->select('*')
 					->from('item_category')
-					->order('title')
+					->where('parent_id IS NULL')
+					//->order('title')
 					->queryAll();
-
-				// store the categories in a real array
-				$listData = array();
-				foreach($categories as $category)
-					$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
-
-				foreach($listData as $i=>$data)
-				{
-					$parent_id = $data['parent_id'];
-					while($parent_id) {
-						$parent = Yii::app()->db->createCommand()
-							->select('*')
-							->from('item_category')
-							->where('id=:parent_id', array(':parent_id'=>$parent_id))
-							->queryRow();
-
-				}
-							return $listData;
-				*/ ?>
+				//print_r($categories);
+				foreach($categories as $category):
+				?>
+				<li><?php echo CHtml::link($category['title'], array('/site/search')); ?></li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 
