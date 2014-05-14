@@ -36,6 +36,7 @@
 class User extends CActiveRecord
 {
 	public $image_temp;
+	public $campus_id;
 
 	/**
 	 * @return string the associated database table name
@@ -54,7 +55,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, email, name_first', 'required'),
-			array('verified, location_id, university_id, course_id', 'numerical', 'integerOnly'=>true),
+			array('verified, location_id, university_id, campus_id, course_id', 'numerical', 'integerOnly'=>true),
 			array('id, email', 'length', 'max'=>64),
 			array('password, name_first, name_last', 'length', 'max'=>32),
 			array('phone', 'length', 'max'=>16),
@@ -124,6 +125,7 @@ class User extends CActiveRecord
 			'verified' => 'Verified',
 			'location_id' => 'Location',
 			'university_id' => 'University',
+			'campus_id' => 'Campus',
 			'course_id' => 'Area of Study',
 		);
 	}
@@ -229,6 +231,9 @@ class User extends CActiveRecord
 			$this->image_size=$this->image_temp->size;
 		}
 
+		if($this->campus_id)
+			$this->university_id=$this->campus_id;
+
 		return true;
 	}
 
@@ -268,6 +273,59 @@ class User extends CActiveRecord
 			$listData[] = array('id'=>$location['id'], 'name'=>CHtml::encode($location['name']));
 
 		return CHtml::activeDropDownList($this, 'location_id', CHtml::listData($listData, 'id', 'name'), array('encode'=>false, 'empty'=>'select a location'));
+	}
+
+	public function getUniversityDropDownList()
+	{
+		// get the universities
+		$universities = Yii::app()->db->createCommand()
+			->select('id, title, domain')
+			->from('user_university')
+			->where('parent_id IS NULL')
+			->order('title')
+			->queryAll();
+
+		// store the universities in a real array
+		$listData = array();
+		$listData_options = array();
+		foreach($universities as $university)
+		{
+			$listData[] = array(
+				'id'=>$university['id'],
+				'title'=>CHtml::encode($university['title']),
+			);
+			$listData_options[$university['id']] = array(
+				'data-domain'=>$university['domain'],
+			);
+		}
+
+		return CHtml::activeDropDownList($this, 'university_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a university', 'options'=>$listData_options));
+	}
+
+	public function getCampusDropDownList()
+	{
+		// get the campuses
+		$campuses = Yii::app()->db->createCommand()
+			->select('*')
+			->from('user_university')
+			->where('parent_id IS NOT NULL')
+			->order('title')
+			->queryAll();
+
+		// store the campuses in a real array
+		$listData = array();
+		$listData_options = array();
+		foreach($campuses as $campus) {
+			$listData[] = array(
+				'id'=>$campus['id'],
+				'title'=>CHtml::encode($campus['title']),
+			);
+			$listData_options[$campus['id']] = array(
+				'data-parent_id'=>$campus['parent_id'],
+			);
+		}
+
+		return CHtml::activeDropDownList($this, 'campus_id', CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a campus', 'options'=>$listData_options));
 	}
 
 	public function getCourseDropDownList()

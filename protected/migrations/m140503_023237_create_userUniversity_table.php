@@ -7,6 +7,7 @@ class m140503_023237_create_userUniversity_table extends CDbMigration
 		$this->createTable('user_university', array(
 			'id'=>'mediumint UNSIGNED PRIMARY KEY',
 			'title'=>'varchar(64) NOT NULL',
+			'domain'=>'varchar(32) DEFAULT NULL',
 			'parent_id'=>'mediumint UNSIGNED DEFAULT NULL',
 		), 'ENGINE InnoDB');
 		$this->addForeignKey('parentUniversity', 'user_university', 'parent_id', 'user_university', 'id', 'SET NULL', 'CASCADE');
@@ -153,6 +154,7 @@ class m140503_023237_create_userUniversity_table extends CDbMigration
 		$this->insert('user_university', array(
 			'id'=>35,
 			'title'=>'University of Technology Sydney',
+			'domain'=>'uts.edu.au',
 		));
 		$this->insert('user_university', array(
 			'id'=>36,
