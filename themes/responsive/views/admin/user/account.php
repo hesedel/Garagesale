@@ -124,10 +124,10 @@ $this->layout = 'column1';
 					</tr>
 
 					<tr>
-						<th><?php echo $form->labelEx($model, 'course'); ?></th>
+						<th><?php echo $form->labelEx($model, 'course_id'); ?></th>
 						<td>
 							<?php echo $model->getCourseDropDownList(); ?>
-							<?php echo $form->error($model, 'course'); ?>
+							<?php echo $form->error($model, 'course_id'); ?>
 						</td>
 					</tr>
 

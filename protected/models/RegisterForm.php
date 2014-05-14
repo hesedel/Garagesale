@@ -5,6 +5,7 @@ class RegisterForm extends User
 	public $email_repeat;
 	public $password_repeat;
 	public $verifyCode;
+	public $agree;
 
 	public function rules()
 	{
@@ -16,6 +17,7 @@ class RegisterForm extends User
 		//$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
 		//$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password');
 		$rules[] = array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements());
+		$rules[] = array('agree', 'compare', 'compareValue'=>true, 'message'=>'You must agree to '.Yii::app()->name.'\'s Terms and Privacy Policy.');
 		return $rules;
 	}
 
@@ -25,6 +27,7 @@ class RegisterForm extends User
 		//$attributeLabels['email_repeat'] = 'Repeat Email';
 		//$attributeLabels['password_repeat'] = 'Repeat Password';
 		$attributeLabels['verifyCode'] = 'Verification Code';
+		$attributeLabels['agree'] = 'I agree to '.Yii::app()->name.'\'s '.CHtml::link('Terms',array('/site/page','view'=>'terms')).' and '.CHtml::link('Privacy Policy',array('/site/page','view'=>'policy')).'.';
 		return $attributeLabels;
 	}
 
