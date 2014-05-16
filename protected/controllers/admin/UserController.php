@@ -358,6 +358,12 @@ class UserController extends Controller
 			}
 		}
 
+		if($model->university->parent_id)
+		{
+			$model->campus_id=$model->university_id;
+			$model->university_id=$model->university->parent_id;
+		}
+
 		if($success)
 			Yii::app()->user->setFlash('success','You\'ve successfully updated your account.');
 

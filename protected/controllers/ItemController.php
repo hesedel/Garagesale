@@ -128,6 +128,7 @@ class ItemController extends Controller
 				$i=0;
 				foreach($images as $image) {
 					$name=md5($image->name.time().$i).'.'.strtolower($image->extensionName);
+					image_autoOrient($image);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 					$i++;
@@ -135,6 +136,7 @@ class ItemController extends Controller
 				$photos=CUploadedFile::getInstances($model,'photo');
 				foreach($photos as $photo) {
 					$name=md5($photo->name.time().$i).'.'.strtolower($photo->extensionName);
+					image_autoOrient($photo);
 					$photo->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$photo->name,'tempName'=>$name,'new'=>true);
 					$i++;
@@ -205,13 +207,15 @@ class ItemController extends Controller
 				$i=0;
 				foreach($images as $image) {
 					$name=md5($image->name.time().$i).'.'.strtolower($image->extensionName);
+					image_autoOrient($image);
 					$image->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$image->name,'tempName'=>$name,'new'=>true);
 					$i++;
 				}
-				$photos=CUploadedFile::getInstancess($model,'photo');
+				$photos=CUploadedFile::getInstances($model,'photo');
 				foreach($photos as $photo) {
 					$name=md5($photo->name.time().$i).'.'.strtolower($photo->extensionName);
+					image_autoOrient($photo);
 					$photo->saveAs(Yii::getPathOfAlias('webroot').'/img/uploads/temp/'.$name);
 					$uploads[]=array('name'=>$photo->name,'tempName'=>$name,'new'=>true);
 					$i++;
@@ -303,6 +307,9 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
+			),
 			'pagination'=>array('pageSize'=>12),
 		));
 		Yii::app()->theme='responsive';
@@ -332,7 +339,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
+					' AND user_id IS NOT NULL',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
@@ -354,7 +362,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
+					' AND user_id IS NOT NULL',
 				//'limit'=>5,
 			),
 			'pagination'=>false,

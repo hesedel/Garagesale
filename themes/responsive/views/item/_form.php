@@ -28,11 +28,20 @@
 			<tr>
 				<th><?php echo $form->labelEx($model, 'price'); ?>
 				<td>
-					<div class="price input-text">
-						<span class="prepend">AU$</span>
-						<?php echo $form->numberField($model, 'price'); ?>
-						<span class="placeholder">How much does it cost?</span>
-					</div>
+
+					<table class="price"><tr>
+						<th>
+						<div class="price input-text">
+							<span class="prepend">AU$</span>
+							<?php echo $form->numberField($model, 'price'); ?>
+							<span class="placeholder">How much does it cost?</span>
+						</div>
+						</th>
+						<td>
+							<label class="g-button--primary small free"><input type="checkbox"> Free!</label>
+						</td>
+					</tr></table>
+
 					<?php echo $form->error($model, 'price'); ?>
 				</td>
 			</tr>
@@ -42,7 +51,7 @@
 				<td><?php echo $model->getCategoryDropDownList(); ?></td>
 			</tr>
 
-			<tr>
+			<tr class="hidden">
 				<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 				<td><?php echo $model->getLocationDropDownList(); ?> Changing this will update your account and this will reflect on all your other ads.</td>
 			</tr>
@@ -53,7 +62,7 @@
 					<fieldset>
 						<legend>Condition</legend>
 						<?php
-							echo $form->radioButtonList($model, 'condition_id', array('' => 'N/A', '0' => 'Brand New', '1' => 'Used'), array('separator' => ' &#160; '));
+							echo $form->radioButtonList($model, 'condition_id', array('0' => 'Totally New', '1' => 'Almost New', '2' => 'Not New'), array('separator' => ' &#160; '));
 							echo $form->error($model, 'condition_id');
 						?>
 					</fieldset>
@@ -168,6 +177,7 @@
 				</td>
 			</tr>
 
+			<?php /*
 			<tr>
 				<th><?php echo $form->labelEx($model, 'phone'); ?>
 				<td>
@@ -176,6 +186,18 @@
 						<span class="placeholder">Phone</span>
 					</div>
 					Changing this will update your account and this will reflect on all your other ads.
+				</td>
+			</tr>
+			*/ ?>
+
+			<tr>
+				<th><?php echo $form->labelEx($model, 'pickup'); ?>
+				<td>
+					<div class="textarea">
+						<?php echo $form->textArea($model, 'pickup', array('rows' => 6, 'cols' => 50)); ?>
+						<span class="placeholder">Pick details</span>
+					</div>
+					<?php echo $form->error($model, 'pickup'); ?>
 				</td>
 			</tr>
 
@@ -204,6 +226,19 @@
 Yii::app()->clientScript->registerScript(
 	'_form',
 	"
+	$('input[type=checkbox]', $('label.free', '#item_create, #item_update')).bind('change', function() {
+		if($(this).is(':checked')) {
+			$('#Item_price')
+				.val(0)
+				.attr('readonly', true);
+		} else {
+			$('#Item_price')
+				.attr('readonly', false)
+				.trigger('focus')
+				.trigger('select');
+		}
+	});
+
 	var uploadIndex_from = 0;
 	$('div.images', '#item_create, #item_update').sortable( {
 		handle: '.image',

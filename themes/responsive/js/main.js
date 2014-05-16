@@ -5,7 +5,19 @@ $(function() {
 		$('#alert').modal();
 	}
 
-	$('#menu-toggle').bind('touchend click', function() {
+	$('#menu-toggle').bind('touchend click', function(e) {
+
+		// needed by Android <= 4.3
+		if(e.type === 'touchend') {
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
+			setTimeout(function() {
+				$(document).unbind('click.menu');
+			}, 500);
+		}
+
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
 			$('#menu').addClass('is-active');
@@ -27,6 +39,7 @@ $(function() {
 				$('body').removeClass('is-animating');
 			}, 125);
 		}
+		return false;
 	});
 
 	$('#menu-x').bind( {
@@ -44,12 +57,22 @@ $(function() {
 			if(percent > 1) {
 				percent = 1;
 			}
-			$('body, #menu-x, #menu-footer').css( {
+			$('#xs, #menu-x, #menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
 			return false;
 		},
 		touchend: function(e) {
+
+			// needed by Android <= 4.1.2
+			$(document).bind('click.menu', function() {
+				$(this).unbind('click.menu');
+				return false;
+			});
+			setTimeout(function() {
+				$(document).unbind('click.menu');
+			}, 500);
+
 			var x = e.originalEvent.changedTouches[0].screenX;
 			if(x === $(this).data('x')) {
 				$('#menu-toggle').trigger('touchend');
@@ -57,14 +80,14 @@ $(function() {
 				var percent = $(this).offset().left / $(window).width();
 				$('body').addClass('is-animating');
 				if(percent > 0.5) {
-					$('body, #menu-x, #menu-footer').css( {
+					$('#xs, #menu-x, #menu-footer').css( {
 						left: '75%'
 					});
 					setTimeout(function() {
 						$('body').removeClass('is-animating');
 					}, 125);
 				} else {
-					$('body, #menu-x, #menu-footer').css( {
+					$('#xs, #menu-x, #menu-footer').css( {
 						left: '0'
 					});
 					setTimeout(function() {
@@ -72,7 +95,7 @@ $(function() {
 					}, 125);
 				}
 				setTimeout(function() {
-					$('body, #menu-x, #menu-footer').attr('style', '');
+					$('#xs, #menu-x, #menu-footer').attr('style', '');
 				}, 125);
 			}
 			return false;
@@ -80,6 +103,17 @@ $(function() {
 		click: function() {
 			$('#menu-toggle').trigger('click');
 		}
+	});
+
+	$('#search-toggle').bind('touchend click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#search').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#search').removeClass('is-active');
+		}
+		return false;
 	});
 
 	$('.a', '#user').data('hover', false);

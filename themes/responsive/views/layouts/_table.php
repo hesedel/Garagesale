@@ -46,30 +46,56 @@
 
 		<div id="menu">
 			<ul>
-				<li><a href="#">Menu Item 1</a></li>
-				<li><a href="#">Menu Item 2</a></li>
-				<li><a href="#">Menu Item 3</a></li>
-				<li><a href="#">Menu Item 4</a></li>
-				<li><a href="#">Menu Item 5</a></li>
-				<li><a href="#">Menu Item 6</a></li>
-				<li><a href="#">Menu Item 7</a></li>
-				<li><a href="#">Menu Item 8</a></li>
-				<li><a href="#">Menu Item 9</a></li>
-				<li><a href="#">Menu Item 10</a></li>
-				<li><a href="#">Menu Item 11</a></li>
-				<li><a href="#">Menu Item 12</a></li>
-				<li><a href="#">Menu Item 13</a></li>
-				<li><a href="#">Menu Item 14</a></li>
-				<li><a href="#">Menu Item 15</a></li>
-				<li><a href="#">Menu Item 16</a></li>
-				<li><a href="#">Menu Item 17</a></li>
-				<li><a href="#">Menu Item 18</a></li>
-				<li><a href="#">Menu Item 19</a></li>
-				<li><a href="#">Menu Item 20</a></li>
+				<?php if(Yii::app()->user->isGuest): ?>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<?php endif; ?>
+				<li><?php echo CHtml::link('Post an item to Sell', array('/item/create')); ?></li>
+				<li><a href="#">From your course area</a></li>
+				<li><a href="#">All course related items</a></li>
+				<li><a href="#">Viewed by your classmates</a></li>
+				<li><a href="#">Items with the most views</a></li>
+				<li><a href="#">Post a wanted ad</a></li>
+
+				<li class="heading">Categories</li>
+
+				<?php /* COMMENTING THIS OUT FOR NOW AS IT IS CAUSING ERROR
+				$categories = Yii::app()->db->createCommand()
+					->select('*')
+					->from('item_category')
+					->order('title')
+					->queryAll();
+
+				// store the categories in a real array
+				$listData = array();
+				foreach($categories as $category)
+					$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
+
+				foreach($listData as $i=>$data)
+				{
+					$parent_id = $data['parent_id'];
+					while($parent_id) {
+						$parent = Yii::app()->db->createCommand()
+							->select('*')
+							->from('item_category')
+							->where('id=:parent_id', array(':parent_id'=>$parent_id))
+							->queryRow();
+
+				}
+							return $listData;
+				*/ ?>
 			</ul>
 		</div>
 
+		<div id="menu-footer"></div>
+
 		<?php #menu end ?>
+
+		<?php if($this->getRoute() !== 'site/index'): #search-toggle ?>
+
+		<div id="search-toggle"><i class="fa fa-search"></i></div>
+
+		<?php endif; #search-toggle end ?>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
@@ -80,14 +106,6 @@
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #register end */ ?>
-
-		<?php #login ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php #login end ?>
 
 		<?php /* #user ?>
 
@@ -117,7 +135,7 @@
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->image
 						? CHtml::image(
-							'/img/vendor/slir/w76-h68-c38x34-bfff' . Yii::app()->params['user']->getImage(),
+							'/img/vendor/slir/w76-h68-c38x34-bfff' . Yii::app()->params['user']->getImage() . '?' . time(),
 							Yii::app()->user->id . '\'s avatar'
 						)
 						: '<i class="fa fa-user"></i> '
@@ -179,12 +197,17 @@
 
 		<?php #post end ?>
 
+		<?php if($this->getRoute() === 'site/index'): #login ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #login end ?>
+
 		<?php endif; ?>
 
-		<?php if(
-			$this->getRoute() == 'item/search' ||
-			$this->getRoute() == 'item/view'
-		): #search ?>
+		<?php if($this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 

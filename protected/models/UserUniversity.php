@@ -1,26 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "item_category".
+ * This is the model class for table "user_university".
  *
- * The followings are the available columns in table 'item_category':
+ * The followings are the available columns in table 'user_university':
  * @property integer $id
  * @property string $title
+ * @property string $domain
  * @property integer $parent_id
  *
  * The followings are the available model relations:
- * @property Item[] $items
- * @property ItemCategory $parent
- * @property ItemCategory[] $itemCategories
+ * @property User[] $users
+ * @property UserUniversity $parent
+ * @property UserUniversity[] $userUniversities
  */
-class ItemCategory extends CActiveRecord
+class UserUniversity extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'item_category';
+		return 'user_university';
 	}
 
 	/**
@@ -33,10 +34,11 @@ class ItemCategory extends CActiveRecord
 		return array(
 			array('id, title', 'required'),
 			array('id, parent_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>32),
+			array('title', 'length', 'max'=>64),
+			array('domain', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, parent_id', 'safe', 'on'=>'search'),
+			array('id, title, domain, parent_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,9 +50,9 @@ class ItemCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'items' => array(self::HAS_MANY, 'Item', 'category_id'),
-			'parent' => array(self::BELONGS_TO, 'ItemCategory', 'parent_id'),
-			'itemCategories' => array(self::HAS_MANY, 'ItemCategory', 'parent_id'),
+			'users' => array(self::HAS_MANY, 'User', 'university_id'),
+			'parent' => array(self::BELONGS_TO, 'UserUniversity', 'parent_id'),
+			'userUniversities' => array(self::HAS_MANY, 'UserUniversity', 'parent_id'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class ItemCategory extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
+			'domain' => 'Domain',
 			'parent_id' => 'Parent',
 		);
 	}
@@ -86,6 +89,7 @@ class ItemCategory extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
+		$criteria->compare('domain',$this->domain,true);
 		$criteria->compare('parent_id',$this->parent_id);
 
 		return new CActiveDataProvider($this, array(
@@ -97,7 +101,7 @@ class ItemCategory extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ItemCategory the static model class
+	 * @return UserUniversity the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
