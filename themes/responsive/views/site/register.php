@@ -226,7 +226,6 @@ $this->layout = 'column1';
 						.val(campus.val)
 						.text(campus.text)
 						.attr('data-parent_id', campus['data-parent_id']);
-					console.log(\$option);
 					$('#RegisterForm_campus_id').append(\$option);
 				});
 				$('#RegisterForm_campus_id')
