@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle=Yii::app()->name . ' - ' . $model->id;
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
+	//'Users'=>array('index'),
 	$model->id,
 );
 
@@ -77,7 +77,7 @@ $this->layout='column3';
   	</tr>
   	<tr>
   		<th>University</th>
-  		<td>Input</td>
+  		<td><?php echo $model->university->parent_id ? $model->university->parent->title : $model->university->title; ?></td>
   	</tr>
   	<tr>
   		<th>Joined</th>
