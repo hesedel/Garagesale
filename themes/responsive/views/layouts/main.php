@@ -31,6 +31,8 @@
 </head>
 <body>
 
+<div id="xs">
+
 <div id="body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
@@ -56,15 +58,17 @@
 		<ul>
 			<li><?php echo CHtml::link('About', array('/site/page', 'view' => 'about')); ?></li>
 			<li><?php echo CHtml::link('FAQs', array('/site/page', 'view' => 'faqs')); ?></li>
-			<li><?php echo CHtml::link('Policy', array('/site/page', 'view' => 'policy')); ?></li>
+			<li><?php echo CHtml::link('Privacy', array('/site/page', 'view' => 'policy')); ?></li>
 			<li><?php echo CHtml::link('Terms', array('/site/page', 'view' => 'terms')); ?></li>
+			<li><?php echo CHtml::link('Contact Us', array('/site/contact')); ?></li>
 		</ul>
 	</nav>
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
 </footer><!-- #footer -->
 
+</div><!-- #xs -->
+
 <div id="menu-x"></div>
-<div id="menu-footer"></div>
 
 <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -83,9 +87,8 @@
 			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
-		<h2>Ooops!</h2>
-		<p>Stycle is not yet ready for desktop.</p>
-		<p>Please view this site on mobile phone,<br>or scale your browser window down.</p>
+		<h2>Welcome to Stycle!</h2>
+		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
 	</div>
 </div>
 
@@ -104,6 +107,7 @@ Yii::app()->clientScript->registerPackage('form');
 Yii::app()->clientScript->registerPackage('main');
 ?>
 
+<?php if(env_is(array('int', 'sta', 'pro'))): ?>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -112,6 +116,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-50631477-1', 'pajaroncreative.com');
 ga('send', 'pageview');
 </script>
+<?php endif; ?>
 
 </body>
 </html>

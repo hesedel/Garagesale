@@ -61,6 +61,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$dataProvider_freebies=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'updated DESC',
 				'limit'=>3,
 			),
@@ -73,6 +74,7 @@ class SiteController extends Controller
 		));
 		$dataProvider_course=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -83,8 +85,22 @@ class SiteController extends Controller
 			*/
 			'pagination'=>false,
 		));
-		$dataProvider_classmates=new CActiveDataProvider('Item',array(
+		$dataProvider_popular=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
+				'order'=>'created DESC',
+				'limit'=>3,
+			),
+			/*
+			'pagination'=>array(
+				'pageSize'=>3,
+			),
+			*/
+			'pagination'=>false,
+		));
+		$dataProvider_odd=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -99,7 +115,8 @@ class SiteController extends Controller
 		$this->render('index',array(
 			'dataProvider_freebies'=>$dataProvider_freebies,
 			'dataProvider_course'=>$dataProvider_course,
-			'dataProvider_classmates'=>$dataProvider_classmates,
+			'dataProvider_popular'=>$dataProvider_popular,
+			'dataProvider_odd'=>$dataProvider_odd,
 		));
 	}
 
@@ -112,8 +129,10 @@ class SiteController extends Controller
 	    {
 	    	if(Yii::app()->request->isAjaxRequest)
 	    		echo $error['message'];
-	    	else
+	    	else {
+	    			Yii::app()->theme='responsive';
 	        	$this->render('error',$error);
+	      }
 	    }
 	}
 
@@ -200,6 +219,7 @@ class SiteController extends Controller
 		if(isset($_POST['RegisterForm']))
 		{
 			$model->attributes=$_POST['RegisterForm'];
+			$model->id=$model->email;
 			if($model->validate() && $model->save())
 			{
 				user_login($model->id);

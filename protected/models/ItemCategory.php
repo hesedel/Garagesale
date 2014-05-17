@@ -33,7 +33,7 @@ class ItemCategory extends CActiveRecord
 		return array(
 			array('id, title', 'required'),
 			array('id, parent_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>16),
+			array('title', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, parent_id', 'safe', 'on'=>'search'),
