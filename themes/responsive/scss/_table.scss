@@ -936,6 +936,10 @@ body.is-animating #menu-footer {
 				margin-top: 0;
 				margin-bottom: 0;
 
+				input {line-height: $line-height;
+					height: $line-height;
+				}
+
 				.placeholder {
 					top: $line-height * .5;
 				}
