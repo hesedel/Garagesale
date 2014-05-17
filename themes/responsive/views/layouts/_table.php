@@ -47,17 +47,30 @@
 		<div id="menu">
 			<ul>
 				<?php if(Yii::app()->user->isGuest): ?>
-				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
-				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i>Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i>Register', array('/site/register')); ?></li>
+				<?php else: ?>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-out"></i>Logout', array('/site/logout')); ?></li>
 				<?php endif; ?>
-				<li><?php echo CHtml::link('Post an item to Sell', array('/item/create')); ?></li>
+
+				<li class="divider"></li>
+
+				<li><?php echo CHtml::link('<i class="fa fa-plus"></i>Post an item to Sell', array('/item/create')); ?></li>
+
+				<li class="divider"></li>
+
 				<li><a href="#">From your course area</a></li>
 				<li><a href="#">All course related items</a></li>
 				<li><a href="#">Viewed by your classmates</a></li>
 				<li><a href="#">Items with the most views</a></li>
-				<li><a href="#">Post a wanted ad</a></li>
+
+				<li class="divider"></li>
+
+				<li><?php echo CHtml::link('<i class="fa fa-plus"></i>Post a wanted ad', array('#')); ?></li>
 
 				<li class="heading">Categories</li>
+
+				<li><?php echo CHtml::link('FREE', array('/item/search')); ?></li>
 
 				<?php
 				$categories = Yii::app()->db->createCommand()
@@ -68,7 +81,7 @@
 					->queryAll();
 				foreach($categories as $category):
 				?>
-				<li><?php echo CHtml::link($category['title'], array('/site/search')); ?></li>
+				<li><?php echo CHtml::link(($category['icon'] ? '<i class="icon-' . $category['icon'] . '"></i>' : '') . $category['title'], array('/item/search', 'category' => $category['id'])); ?></li>
 				<?php
 				endforeach;
 				?>

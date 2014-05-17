@@ -337,11 +337,38 @@ class ItemController extends Controller
 		$keywords=str_replace('\\','\\\\',$keywords);
 		$keywords=str_replace('\\\\\'','\\\'',$keywords);
 
+		$criteria=new CDbCriteria;
+		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
+			' AND user_id IS NOT NULL';
+
+		$categories = [];
+		if(isset($_GET['category'])) {
+			$model_category=ItemCategory::model()->findByPk($_GET['category']);
+
+			$condition='(category_id='.$model_category->id;
+			$children=Yii::app()->db->createCommand()
+				->select('id')
+				->from('item_category')
+				->where('parent_id=:cat',array(':cat'=>$model_category->id))
+				//->order('title')
+				->queryAll();
+			foreach($children as $child) {
+				$condition.=' || category_id='.$child['id'];
+			}
+			$condition.=')';
+			$criteria->addCondition($condition,'&');
+
+			// for breadcrumbs
+			$categories=array($model_category->title=>array('/item/search','category'=>$model_category->id));
+			while($model_category->parent_id)
+			{
+				$model_category=ItemCategory::model()->findByPk($model_category->parent_id);
+				$categories=array($model_category->title=>array('/item/search','category'=>$model_category->id))+$categories;
+			}
+		}
+
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
-					' AND user_id IS NOT NULL',
-			),
+			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
 			),
@@ -349,6 +376,7 @@ class ItemController extends Controller
 
 		Yii::app()->theme='responsive';
 		$this->render('search',array(
+			'categories'=>$categories,
 			'dataProvider'=>$dataProvider,
 		));
 	}

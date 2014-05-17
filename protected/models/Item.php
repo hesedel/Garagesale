@@ -167,7 +167,7 @@ class Item extends CActiveRecord
 	{
 		if($this->category_id != null)
 		{
-			$categories = array($this->category->title);
+			$categories = array($this->category->title=>array('/item/search', 'category'=>$this->category->id));
 			$category_parent = $this->category->parent_id;
 			while($category_parent != null) {
 				$category_parent = Yii::app()->db->createCommand()
@@ -175,7 +175,7 @@ class Item extends CActiveRecord
 					->from('item_category')
 					->where('id=:id', array(':id'=>$category_parent))
 					->queryRow();
-				array_unshift($categories, $category_parent['title']);
+				$categories = array($category_parent['title']=>array('/item/search', 'category'=>$category_parent['id'])) + $categories;
 				$category_parent = $category_parent['parent_id'];
 			}
 			return $categories;
