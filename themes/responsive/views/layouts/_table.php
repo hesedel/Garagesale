@@ -66,11 +66,12 @@
 					->where('parent_id IS NULL')
 					//->order('title')
 					->queryAll();
-				//print_r($categories);
 				foreach($categories as $category):
 				?>
 				<li><?php echo CHtml::link($category['title'], array('/site/search')); ?></li>
-				<?php endforeach; ?>
+				<?php
+				endforeach;
+				?>
 			</ul>
 		</div>
 
