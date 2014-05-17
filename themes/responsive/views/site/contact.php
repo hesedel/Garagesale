@@ -41,9 +41,7 @@ $this->layout = 'column1';
 					),
 				)); ?>
 
-		<p class="note">All fields are required.</p>
-
-				<?php echo $form->errorSummary($model); ?>
+				<?php //echo $form->errorSummary($model); ?>
 				
 				<table class="form" summary="contact">
 					<caption class="hide">contact us</caption>
@@ -80,6 +78,7 @@ $this->layout = 'column1';
 						<td>
 							<div class="input-text">
 						<?php echo $form->textArea($model, 'body', array('rows' => 6, 'cols' => 50)); ?>
+					</div>
 							<?php echo $form->error($model, 'body'); ?>
 						</td>
 					</tr>					
@@ -87,14 +86,14 @@ $this->layout = 'column1';
 					<tr>
 						<th><?php echo $form->labelEx($model, 'verifyCode'); ?></th>
 						<td>
-							<div class="captcha"><?php $this->widget('CCaptcha'); ?>
+							<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?>
 							</div>
+							<div class="hint">Please enter the letters as they are shown in the image above.
+						<br/>Letters are not case-sensitive.
+						</div>
 							<div class="input-text">
 							<?php echo $form->textField($model, 'verifyCode'); ?>
 							</div>
-						<div class="hint">Please enter the letters as they are shown in the image above.
-						<br/>Letters are not case-sensitive.
-						</div>
 						<?php echo $form->error($model, 'verifyCode'); ?>
 						</td>
 					</tr>
@@ -104,17 +103,9 @@ $this->layout = 'column1';
 						<tr>
 							<?php //<th>&#160;</th> ?>
 							<td colspan="2">
-								<div class="submit g-button--primary">
-									<?php echo CHtml::linkButton('Submit', array('class' => 'submit g-button--primary')); ?>
-									<?php echo CHtml::submitButton('Submit', array('class' => 'submit g-button--primary')); ?>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div>
-									<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => '')); ?>
-								</div>
+								<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
+								<?php echo CHtml::linkButton('Send', array('class' => 'submit g-button--primary')); ?>
+								<?php echo CHtml::submitButton('Send', array('class' => 'submit g-button--primary')); ?>
 							</td>
 						</tr>
 					</tfoot>
