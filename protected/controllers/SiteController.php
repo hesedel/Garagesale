@@ -129,8 +129,10 @@ class SiteController extends Controller
 	    {
 	    	if(Yii::app()->request->isAjaxRequest)
 	    		echo $error['message'];
-	    	else
+	    	else {
+	    			Yii::app()->theme='responsive';
 	        	$this->render('error',$error);
+	      }
 	    }
 	}
 

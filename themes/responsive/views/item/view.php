@@ -1,10 +1,6 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . $model->title;
 
-$this->breadcrumbs = array(
-	'Items' => array('index'),
-);
-
 if($model->user->location) {
 	$this->breadcrumbs[] = $model->user->location->name;
 }
