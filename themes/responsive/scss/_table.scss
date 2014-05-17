@@ -308,12 +308,13 @@
 		position: relative;
 
 		&.heading {
-			color: whiten($color_wetAsphalt, 25%);
-			padding-top: $line-height - 1px;
+			color: whiten($color_wetAsphalt, 25%, 2);
+			font-weight: 600;
+			padding-top: $line-height - 2px;
 			padding-right: $gutter-width;
 			padding-bottom: $line-height * .5;
 			padding-left: $gutter-width;
-			border-top: 1px solid whiten($color_wetAsphalt, 5%);
+			border-top: 2px solid whiten($color_wetAsphalt, 5%);
 			margin-top: $line-height * .5;
 
 			&:first-child {
@@ -510,6 +511,7 @@ body.is-animating #menu-footer {
 		height: $line-height * 2;
 			//line-height: $line-height * 1.5;
 			line-height: $line-height * 2;
+		padding-right: 0;
 		@include border-radius(0);
 
 		img {

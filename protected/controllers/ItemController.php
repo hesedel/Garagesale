@@ -307,6 +307,9 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
+			),
 			'pagination'=>array('pageSize'=>12),
 		));
 		Yii::app()->theme='responsive';
@@ -336,7 +339,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
+					' AND user_id IS NOT NULL',
 			),
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
@@ -358,7 +362,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
+					' AND user_id IS NOT NULL',
 				//'limit'=>5,
 			),
 			'pagination'=>false,
