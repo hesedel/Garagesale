@@ -193,9 +193,10 @@
 			<tr>
 				<th><?php echo $form->labelEx($model, 'pickup'); ?>
 				<td>
+
 					<div class="textarea">
 						<?php echo $form->textArea($model, 'pickup', array('rows' => 6, 'cols' => 50)); ?>
-						<span class="placeholder">Pick details</span>
+						<span class="placeholder">Please enter the location to pickup the item, for example, on Campus?</span>
 					</div>
 					<?php echo $form->error($model, 'pickup'); ?>
 				</td>
