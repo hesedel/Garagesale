@@ -9,14 +9,12 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="alert alert-warning alert-dismissable intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h2>Buy, Sell or give-it-away</h2>
-	<p>Quickly buy or sell to students and staff on your campus.</p>
-	<p>Save Money on your course materials<br>
-	Support your local student community<br>
-	<em>And find free stuff!</em></p>
+	<h2>Buy, sell or give away!</h2>
+	<p>University student and staff classifieds.</p>
 	<div class="call-to-action">
 	<?php echo CHtml::link('Join our Community', array('/site/register'), array('class' => 'g-button--primary')); ?>
 	</div>
+	<p><span class="small">Already a member? <?php echo CHtml::link('Login', array('/login')); ?></span></p> 
 </div>
 <?php endif; ?>
 
