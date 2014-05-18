@@ -16,8 +16,8 @@ $this->layout = 'column1';
 	<div class="flash-success">
 		<?php echo Yii::app()->user->getFlash('reported'); ?>
 	</div>
-	<h3>User Reported</h3>
-	<h4>What happens next?</h4>
+	<h4>User Reported</h4>
+	<h3>What happens next?</h3>
 	<p>We will contact you within 48 hrs regarding your enquiry</p>
 
 	<?php else: ?>
