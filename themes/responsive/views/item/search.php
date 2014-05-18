@@ -21,6 +21,8 @@ foreach($categories as $key => $value) {
 }
 ?>
 
+<?php echo count($subcategories) > 1 ? CHtml::dropDownList('subcategories', '', $subcategories) : ''; ?>
+
 <div class="row">
 	<div class="col-md-12 col-lg-8">
 
@@ -40,3 +42,22 @@ foreach($categories as $key => $value) {
 </div>
 
 </div><!-- #item_search -->
+
+<?php Yii::app()->clientScript->registerScript('item_search',
+	"
+	$('option:not(:first-child)', '#subcategories').each(function() {
+		$(this).attr('data-uri', '" . (
+			!isset($_GET['category']) ? (
+				!strpos($uri, '?') ?
+					preg_replace('/(\/item\/search\/)/', '$1?category=\' + $(this).val()', $uri)
+				:
+					$uri . '&category=\' + $(this).val()'
+			) :
+				preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '$1category=\' + $(this).val()', $uri)
+		) . ");
+	});
+	$('#subcategories').bind('change', function() {
+		window.location.href = $('option:selected', $(this)).attr('data-uri');
+	});
+	",
+CClientScript::POS_READY);

@@ -71,6 +71,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/form.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/form.min.js",
+		"outputAbbreviatedPath": "\/js\/form.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/item\/_form\/_CMultiFileUpload-afterFileAppend.js": {
 		"fileType": 64,
 		"ignore": 1,
