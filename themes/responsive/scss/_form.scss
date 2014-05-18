@@ -45,6 +45,10 @@ input[type=text]:disabled {
 	@include opacity(1);
 }
 
+input[type=email] {
+	@include box-shadow(none);
+}
+
 select {
 	max-width: 100%;
 }
