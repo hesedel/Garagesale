@@ -56,7 +56,7 @@ foreach($categories as $key => $value) {
 				preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '$1category=\' + $(this).val()', $uri)
 		) . ");
 	});
-	$('#subcategories').bind('change', function() {
+	$('#subcategories').bind('change blur', function() {
 		window.location.href = $('option:selected', $(this)).attr('data-uri');
 	});
 	",
