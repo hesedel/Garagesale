@@ -23,18 +23,19 @@ $this->breadcrumbs=array(
 
 <h3>Collection</h3>
 
-<p>You may search and browse Stycle without providing any personal information. However, to list an item, comment, purchase an item through the site or request information, we may collect the following information:</p>
+<p>You may search and browse Stycle without providing any personal information. However, to list an item, message a user, or request information, we may collect the following information:</p>
 
 <ul>
-	<li>email address</li>
+	<li>university email address</li>
+	<li>full name</li>
 	<li>contact phone number</li>
-	<li>study institution</li>
-	<li>course area of study</li>
+	<li>univeristy</li>
+	<li>area of study or interest</li>
 	<li>page views, traffic to and from the site</li>
 	<li>other information, including IP addresses and web log information</li>
 </ul>
 
-<p>If you choose to provide Stycle with personal information, you are consenting to Stycle’s collection, use, publication, disclosure and to the transfer and storage of that information on our servers. Stycle servers are located globally.</p>
+<p>If you choose to provide Stycle with personal information, you are consenting to Stycle’s collection, use, publication, disclosure and to the transfer and storage of that information on our servers. Stycle servers are located worldwide.</p>
 
 <h3>Use</h3>
 
@@ -44,7 +45,8 @@ $this->breadcrumbs=array(
 	<li>provide you with the services you request</li>
 	<li>resolve disputes and troubleshoot problems</li>
 	<li>communicate with you and inform you about our services</li>
-	<li>encourage safe trading and enforce our policies</li>
+	<li>encourage safe trading</li>
+	<li>enforce our policies</li>
 	<li>customise your experience</li>
 	<li>deliver targeted marketing</li>
 	<li>do other things for users as described when Stycle collects the information</li>
@@ -80,7 +82,7 @@ $this->breadcrumbs=array(
 
 <p>Stycle may automatically scan and manually filter email messages sent via our communication tools for malicious activity or prohibited content, but Stycle does not permanently store such messages.</p>
 
-<p>Your message will be emailed to the buyer/seller and not made public. If you use our tools to send content to a friend, Stycle doesn't permanently store your friends addresses or use or disclose them for marketing purposes.</p>
+<p>Your message will be emailed to the buyer/seller and not made public.</p>
 
 <h3>Access, Modification, and Deletion</h3>
 <p>You can see, modify or erase most of your personal information by reviewing and modifying your comments, items or profile.<p>
