@@ -41,7 +41,6 @@ body {
 }
 
 #page {
-	@extend .container;
 	padding-top: $line-height * 3.5;
 	padding-bottom: $line-height * 4;
 	position: relative;
@@ -84,16 +83,12 @@ body {
 	span {
 		color: whiten($custom_magenta, 25%, 6);
 	}
+	height: $line-height * 1.5;
+	line-height: $line-height * 1.5;
+	@include border-radius(0);
 
 }
 
-@media (max-width: $screen-xs-max) {
-	#logo {
-		height: $line-height * 1.5;
-			line-height: $line-height * 1.5;
-		@include border-radius(0);
-	}
-}
 
 h2 {
 	color: whiten($custom_cyan, 25%);

@@ -31,6 +31,11 @@
 </head>
 <body>
 
+<div class="alert alert-info alert-dismissable hidden-xs"> 
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<p>Stycle is best viewed on a mobile or tablet! Use Stycle on the go!</p>
+</div>
+
 <div id="wrapper">
 
 <div id="xs">
@@ -84,17 +89,6 @@
 </div>
 
 </div><!-- #wrapper -->
-
-<div id="not-mobile">
-	<div>
-		<?php echo CHtml::image(
-			'/img/vendor/slir/h144/img/logo-white.png',
-			CHtml::encode(Yii::app()->name)
-		); ?>
-		<h2>Welcome to Stycle!</h2>
-		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
-	</div>
-</div>
 
 <?php /*
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

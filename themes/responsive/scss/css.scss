@@ -6,38 +6,35 @@
 @import 'compass', 'vendor/bourbon/bourbon';
 @import 'variables', 'global', 'form';
 
+#wrapper {
+	max-width: $app-max-width;
+	margin: 0 auto;
+}
+
 body {
 	cursor: default;
 	color: $color;
+	background: #e4e4e4;
 	font-family: $sans-serif;
-	background-color: $color_footer_bg;
 	line-height: $line-height;
-	padding-top: $line-height * 5;
+	padding-top: 0;
 }
 
 .no-js body {
 	padding-top: 0;
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-	body {
-		padding-top: $line-height * 7;
+body {
+	padding-top: 0;
+
+	&.is-menuActive {
+		position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
 	}
-}
 
-@media (max-width: $screen-xs-max) {
-	body {
-		padding-top: 0;
-
-		&.is-menuActive {
-			position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-		}
-
-	}
 }
 
 #body {
@@ -45,11 +42,6 @@ body {
 }
 
 @import 'table';
-
-#page {
-	@extend .container;
-
-}
 
 #alert {
 	text-align: center;
@@ -80,17 +72,14 @@ body {
 }
 
 #footer {
-	@extend .container;
 	padding-top: $line-height * 2;
 	padding-bottom: $line-height * 2;
 }
 
-@media (max-width: $screen-xs-max) {
-	#footer {
-		//padding-top: $line-height * .5;
-		padding-top: 0;
-		padding-bottom: $line-height * .5;
-	}
+#footer {
+	//padding-top: $line-height * .5;
+	padding-top: 0;
+	padding-bottom: $line-height * .5;
 }
 
 #utility {
@@ -165,6 +154,18 @@ body {
 
 }
 
+@media (min-width: 992px) {
+	.container, #page, #footer {
+		width: 100%;
+	}
+}
+
+@media (min-width: 768px) {
+	.container, #page, #footer {
+		width: 100%;
+	}
+}
+
 #alert {
 
 	.modal-content {
@@ -181,5 +182,8 @@ body {
 	}
 
 }
+
+
+
 
 @import 'site_', 'item_';

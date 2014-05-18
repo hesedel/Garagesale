@@ -20,24 +20,21 @@
 	position: static;
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
 	#table-container {
 		height: $line-height * 7;
 	}
-}
 
-@media (max-width: $screen-xs-max) {
 	#table-container {
 		height: auto;
 		position: static;
 
 		.container {
+			max-width: $app-max-width;
 			padding-right: 0;
 			padding-left: 0;
 		}
 
 	}
-}
 
 #table {
 	width: 100%;
@@ -191,13 +188,10 @@
 
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
 	#table {
 		margin-top: $line-height * 3;
 	}
-}
 
-@media (max-width: $screen-xs-max) {
 	#table {
 		background-color: $color_turquoise;
 		margin-top: 0;
@@ -244,8 +238,6 @@
 		}
 
 	}
-
-}
 
 #menu-toggle {
 	@extend .visible-xs;
@@ -438,35 +430,11 @@ body.is-animating #menu-footer {
 
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-	#header {
-		position: absolute;
-			top: 0;
-
-		h1 {
-			float: left;
-		}
-
-		.alpha {
-			color: $color_nephritis;
-			height: $line-height * 2;
-				line-height: $line-height * 2;
-			padding-right: 0;
-			margin-top: 0;
-			padding-left: $gutter-width * .5;
-			float: left;
-		}
-
-	}
-}
-
-@media (max-width: $screen-xs-max) {
-	#header {
-		padding-top: $line-height * .5;
-		padding-bottom: $line-height * .5;
-		border-left: 1px solid $color_body_bg;
-		float: left;
-	}
+#header {
+	padding-top: $line-height * .5;
+	padding-bottom: $line-height * .5;
+	border-left: 1px solid $color_body_bg;
+	float: left;
 }
 
 #logo {
@@ -476,7 +444,6 @@ body.is-animating #menu-footer {
 	font-weight: 700;
 	text-transform: uppercase;
 	white-space: nowrap;
-	background-color: $color_greenSea;
 	height: $line-height * 3;
 		line-height: $line-height * 3;
 	padding-right: $gutter-width;
@@ -494,32 +461,21 @@ body.is-animating #menu-footer {
 
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-	#logo {
-		height: $line-height * 2;
-			line-height: $line-height * 2;
-		@include border-top-radius(0);
+
+#logo {
+	font-size: 1.5em;
+	//height: $line-height * 1.5;
+	height: $line-height * 2;
+		//line-height: $line-height * 1.5;
+		line-height: $line-height * 2;
+	@include border-radius(0);
+
+	img {
+		height: 100%;
+		margin-right: $gutter-width * (2 / 3);
 		float: left;
 	}
-}
 
-@media (max-width: $screen-xs-max) {
-	#logo {
-		font-size: 1.5em;
-		background-color: transparent;
-		//height: $line-height * 1.5;
-		height: $line-height * 2;
-			//line-height: $line-height * 1.5;
-			line-height: $line-height * 2;
-		@include border-radius(0);
-
-		img {
-			height: 100%;
-			margin-right: $gutter-width * (2 / 3);
-			float: left;
-		}
-
-	}
 }
 
 #register,
@@ -573,18 +529,16 @@ body.is-animating #menu-footer {
 	}
 }
 
-@media (max-width: $screen-xs-max) {
-	#register,
-	#user {
-		padding-left: 0;
-		float: left;
+#register,
+#user {
+	padding-left: 0;
+	float: left;
 
-		> a,
-		.a > a {
-			@include border-left-radius(0);
-		}
-
+	> a,
+	.a > a {
+		@include border-left-radius(0);
 	}
+
 }
 
 #register {
@@ -655,7 +609,6 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#user {
 		//width: 85%;
 		//width: (2 / 3) * 100%;
@@ -695,7 +648,6 @@ body.is-animating #menu-footer {
 		}
 
 	}
-}
 
 #login,
 #logout {
@@ -707,7 +659,6 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#login,
 	#logout {
 		text-align: center;
@@ -720,7 +671,7 @@ body.is-animating #menu-footer {
 		}
 
 	}
-}
+
 
 #login {
 	//@extend .hidden-xs;
@@ -732,7 +683,6 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#login {
 		//width: 50%;
 		//width: (1 / 3) * 100%; //
@@ -748,7 +698,7 @@ body.is-animating #menu-footer {
 		}
 
 	}
-}
+
 
 #logout {
 	@extend .hidden-xs; //
@@ -760,12 +710,10 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#logout {
 		width: 15%;
 		width: (1 / 3) * 100%; //
 	}
-}
 
 #filters {
 	padding-left: $gutter-width * (1 / 3);
@@ -845,7 +793,6 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#filters {
 		text-align: center;
 		width: 15%;
@@ -858,7 +805,6 @@ body.is-animating #menu-footer {
 		}
 
 	}
-}
 
 #search-toggle {
 	@extend .visible-xs;
@@ -1086,7 +1032,6 @@ body.is-animating #menu-footer {
 
 }
 
-@media (max-width: $screen-xs-max) {
 	#post {
 		//width: (1 / 3) * 100%;
 		padding-top: ($line-height * .5) + ($line-height * (1 / 6));
@@ -1109,4 +1054,3 @@ body.is-animating #menu-footer {
 		}
 
 	}
-}
