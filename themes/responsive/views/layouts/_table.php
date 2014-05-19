@@ -66,7 +66,7 @@
 
 				<li class="divider"></li>
 
-				<li><?php echo CHtml::link('<i class="fa fa-plus"></i>Post a wanted ad', array('#')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-plus"></i>Post a wanted ad', array('/item/createWanted')); ?></li>
 
 				<li class="heading">Categories</li>
 
