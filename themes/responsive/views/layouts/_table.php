@@ -47,15 +47,15 @@
 		<div id="menu">
 			<ul>
 				<?php if(Yii::app()->user->isGuest): ?>
-				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
-				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in fa-lg"></i> Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up fa-lg"></i> Register', array('/site/register')); ?></li>
 				<?php endif; ?>
-				<li><?php echo CHtml::link('Post an item to Sell', array('/item/create')); ?></li>
-				<li><a href="#">From your course area</a></li>
-				<li><a href="#">All course related items</a></li>
-				<li><a href="#">Viewed by your classmates</a></li>
-				<li><a href="#">Items with the most views</a></li>
-				<li><a href="#">Post a wanted ad</a></li>
+				<li><?php echo CHtml::link('<i class="fa fa-tags fa-lg"></i> Post an item to Sell', array('/item/create')); ?></li>
+				<li><a href="#"><i class="fa fa-graduation-cap fa-lg"></i> From your course area</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> All course related items</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Viewed by your classmates</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Items with the most views</a></li>
+				<li><a href="#"><i class="fa fa-thumb-tack fa-lg"></i> Post a wanted ad</a></li>
 
 				<li class="heading">Categories</li>
 
