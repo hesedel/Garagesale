@@ -534,9 +534,10 @@ body.is-animating #menu-footer {
 	> a,
 	div.a > a,
 	span.a {
-		color: $color_greenSea;
+		color: $color_white;
+		font-size: 2em;
 		white-space: nowrap;
-		background-color: whiten($color_turquoise, 25%, 4);
+/* 		background-color: whiten($color_turquoise, 25%, 4); */
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);

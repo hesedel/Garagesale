@@ -133,7 +133,7 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
-					<li><?php echo CHtml::link('<i class="fa fa-usd"></i>Sell', array('/item/create')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
@@ -179,7 +179,7 @@
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-usd"></i>ell', array('/item/create')); ?>
+			<?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>
