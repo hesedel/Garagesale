@@ -9,17 +9,30 @@
 		}
 
 		h2{ 
-			font-size: 1.5em;
+			font-size: 1.75em;
+			font-weight: 300;
 			margin-top: 0;
+			color: $color_wetAsphalt;
+		}
+		p {
+			font-size: 1.2em;
+			font-weight: 300;
+			color: $color_headings;
 		}
 
 		.call-to-action {
-			height: $line-height * 2;
-				line-height: $line-height * 2;
-			margin-top: $line-height * .5;
+			height: $line-height * 2.5;
+				line-height: $line-height * 2.5;
+			margin: $line-height * .5;
+			
+				.g-button--primary {
+					font-size: $line-height;
+					font-weight: 300;
+					background-color: $color_wetAsphalt;
+				}
 		}
-
 	}
+
 
 	.h2 {
 		font-size: 1.2em;

@@ -1,10 +1,13 @@
 .g-button {
+	font-size: 1em;
+	font-family: $sans-serif-soft;
+	font-weight: 400;
 	cursor: pointer;
 	color: $color_white;
-	background-color: $color;
+	background-color: blacken($color_customGray, 25%);
 	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) + 10px};
 	border: none;
-	@include border-radius($border-radius * 5);
+	@include border-radius($border-radius * 3);
 
 	&:hover, &:active, &:focus {
 		color: $color_white;
@@ -34,10 +37,11 @@
 
 .g-button--primary {
 	@extend .g-button;
+	font-weight: 700;
 	background-color: $color_greenSea;
-
 	&:hover, &:active, &:focus {
 		background-color: blacken($color_greenSea, 25%);
 	}
 
 }
+
