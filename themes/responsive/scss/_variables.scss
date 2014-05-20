@@ -55,6 +55,8 @@ $color_wisteria    : #8e44ad;
 
 $color_customBrown : #9c5720;
 $color_customYellow: #feed6f;
+$color_customCharcoal: #333333;
+$color_customGray: #f5f5f5;
 
 $dark : blacken(whiten($beige, 25%), 25%, 3); // deprecated
 $light: whiten(blacken($beige, 25%), 25%, 4); // deprecated
@@ -74,9 +76,10 @@ $color_anchor   : $color_peterRiver;
 	$color_anchor-visited: $color_amethyst;
 		$color_anchor-visited-hover: $color_wisteria;
 $color_header_bg: blacken($color_clouds, 5%);
-$color_body_bg  : blacken($color_clouds, 5%);
+/* $color_body_bg  : blacken($color_clouds, 5%); */
+$color_body_bg  : $color_customGray;
 $color_footer_bg: $color_greenSea;
-$color_headings : $color_customBrown;
+$color_headings : $color_customCharcoal;
 
 /* fonts */
 
@@ -88,6 +91,6 @@ $sans-serif-soft: proxima-nova-soft, $sans-serif;
 
 /**/
 
-$border-radius: 3px;
+$border-radius: 1px;
 $gutter-width: $grid-gutter-width * .5;
 $line-height: 18px;

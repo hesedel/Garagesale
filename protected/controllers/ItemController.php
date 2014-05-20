@@ -396,9 +396,6 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'condition'=>'user_id IS NOT NULL',
-			),
 			'pagination'=>array('pageSize'=>12),
 		));
 		Yii::app()->theme='responsive';
@@ -496,8 +493,7 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
-					' AND user_id IS NOT NULL',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
 				//'limit'=>5,
 			),
 			'pagination'=>false,

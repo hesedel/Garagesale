@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Account';
 $this->breadcrumbs = array(
-	//$model->id => array('view', 'id' => $model->id),
+	$model->id => array('view', 'id' => $model->id),
 	'Account',
 );
 
@@ -115,29 +115,11 @@ $this->layout = 'column1';
 				<caption>Community</caption>
 				<tbody>
 
-					<?php /*
 					<tr>
 						<th><?php echo $form->labelEx($model, 'location_id'); ?></th>
 						<td>
 							<?php echo $model->getLocationDropDownList(); ?>
 							<?php echo $form->error($model, 'location_id'); ?>
-						</td>
-					</tr>
-					*/ ?>
-
-					<tr>
-						<th><?php echo $form->labelEx($model, 'university_id'); ?></th>
-						<td>
-							<?php echo $model->getUniversityDropDownList(); ?>
-							<?php echo $form->error($model, 'university_id'); ?>
-						</td>
-					</tr>
-
-					<tr class="campus">
-						<th><?php echo $form->labelEx($model, 'campus_id'); ?></th>
-						<td>
-							<?php echo $model->getCampusDropDownList(); ?>
-							<?php echo $form->error($model, 'campus_id'); ?>
 						</td>
 					</tr>
 
@@ -234,42 +216,6 @@ $this->layout = 'column1';
 		}
 		return false;
 	});
-
-	var campuses = [];
-	$('option:not(:first-child)', '#AccountForm_campus_id').each(function() {
-		campuses.push({'val': $(this).val(), 'text': $(this).text(), 'data-parent_id': $(this).attr('data-parent_id')});
-	});
-
-	$('#AccountForm_university_id')
-		.bind('change', function() {
-			var \$this = $(this);
-			var campuses_filtered = campuses.filter(function(campuses) {
-				return campuses['data-parent_id'] === \$this.val();
-			});
-
-			if(campuses_filtered.length > 0) {
-				$('option:not(:first-child)', '#AccountForm_campus_id')
-					.remove();
-				$.each(campuses_filtered, function(i, campus) {
-					var \$option = $('<option>');
-					\$option
-						.val(campus.val)
-						.text(campus.text)
-						.attr('data-parent_id', campus['data-parent_id']);
-					$('#AccountForm_campus_id').append(\$option);
-				});
-				$('#AccountForm_campus_id').val('');
-				if($('#AccountForm_university_id').val() === '$model->university_id') {
-					$('#AccountForm_campus_id').val($model->campus_id);
-				}
-				$('#AccountForm_campus_id').attr('disabled', false);
-				$('.campus', '#user_account').removeClass('hidden');
-			} else {
-				$('.campus', '#user_account').addClass('hidden');
-				$('#AccountForm_campus_id').attr('disabled', true);
-			}
-		})
-		.trigger('change');
 	",
 	CClientScript::POS_READY
 );

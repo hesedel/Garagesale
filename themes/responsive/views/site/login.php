@@ -64,11 +64,17 @@ $this->layout = '/layouts/column1';
 						<?php echo $form->checkBox($model, 'rememberMe'); ?>
 						<?php echo $form->label($model, 'rememberMe'); ?>
 						<br>
-						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
+
 						<?php echo CHtml::linkButton('Login', array('class' => 'submit g-button--primary')); ?>
 						<?php echo CHtml::submitButton('Login', array('class' => 'submit g-button--primary')); ?>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
+					</td>
+				</tr>
+				
 
 			</tfoot>
 		</table>

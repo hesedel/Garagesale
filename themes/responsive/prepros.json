@@ -248,25 +248,6 @@
         "autoprefixer": false
       }
     },
-    "79debb14": {
-      "id": "79debb14",
-      "pid": "c6f102e3",
-      "name": "item_categories.scss",
-      "input": "scss\\vendor\\fontello\\item_categories.scss",
-      "customOutput": false,
-      "type": "Scss",
-      "config": {
-        "autoCompile": false,
-        "lineNumbers": false,
-        "unixNewlines": false,
-        "sourcemaps": false,
-        "debug": false,
-        "compass": true,
-        "fullCompass": true,
-        "outputStyle": "expanded",
-        "autoprefixer": false
-      }
-    },
     "50ef0fa9": {
       "id": "50ef0fa9",
       "pid": "c6f102e3",
@@ -1411,14 +1392,6 @@
       "id": "4a575d4b",
       "pid": "c6f102e3",
       "path": "scss\\_g-tabs.scss",
-      "parents": [
-        "5a2d746f"
-      ]
-    },
-    "79debb14": {
-      "id": "79debb14",
-      "pid": "c6f102e3",
-      "path": "scss\\vendor\\fontello\\item_categories.scss",
       "parents": [
         "5a2d746f"
       ]
