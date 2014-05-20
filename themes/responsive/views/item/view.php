@@ -1,6 +1,10 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . $model->title;
 
+$this->breadcrumbs = array(
+	'Items' => array('index'),
+);
+
 if($model->user->location) {
 	$this->breadcrumbs[] = $model->user->location->name;
 }
@@ -137,31 +141,13 @@ if($model->condition_id)
 <p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 <div class="tabs">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>
-		<li><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
+		<li class="active"><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
 		<li><a href="#item_view-collection" data-toggle="tab">Pickup Details</a></li>
+		<li><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="item_view-more-info">
-			<table>
-				<?php if($model->condition_id): ?>
-				<tr>
-					<th>Condition</th>
-					<td><?php echo $model->condition->title; ?></td>
-				</tr>
-				<?php endif; ?>
-				<tr>
-					<th class="created">Listed</th>
-					<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
-				</tr>
-				<tr>
-					<th>Item Views</th>
-					<td>...</td>
-				</tr>
-			</table>
-		</div>
-		<div class="tab-pane" id="item_view-user">
+		<div class="tab-pane active" id="item_view-user">
 			<table>
 				<tbody>
 					<tr>
@@ -174,12 +160,10 @@ if($model->condition_id)
 							)
 						); ?></td>
 					</tr>
-					<?php if($model->user->university_id): ?>
 					<tr>
 						<th>University</th>
-						<td><?php echo $model->user->university->parent_id ? $model->user->university->parent->title : $model->user->university->title; ?></td>
+						<td>...</td>
 					</tr>
-					<?php endif; ?>
 					<?php if($model->user->course_id): ?>
 					<tr>
 						<th>Area of Study</th>
@@ -202,7 +186,12 @@ if($model->condition_id)
 						<td colspan="2">
 							<?php echo CHtml::link('Follow Seller', array('#'), array('class' => 'g-button')); ?>
 							<?php echo CHtml::link('All Seller Items', array('#'), array('class' => 'g-button')); ?>
-							<?php echo CHtml::link('Report Seller', array('#'), array('class' => 'g-button')); ?>
+							
+							<?php
+								Yii::app()->user->setState('report_user',$model->user->id); 
+							?>
+
+							<?php echo CHtml::link('Report Seller', array('/admin/user/report'), array('class' => 'g-button')); ?>
 						</td>
 					</tr>
 				</tfoot>
@@ -210,16 +199,32 @@ if($model->condition_id)
 		</div>
 		<div class="tab-pane" id="item_view-collection">
 			<table>
-				<?php if($model->user->university->parent_id): ?>
+				<?php if($model->user->location_id): ?>
 				<tr>
-					<th>Campus</th>
-					<td><?php echo $model->user->university->title; ?></td>
+					<th>Location</th>
+					<td><?php echo $model->user->location->name; ?></td>
 				</tr>
 				<?php endif; ?>
 			</table>
-			<?php if(strlen(trim($model->pickup)) > 0): ?>
 			<p class="pickup"><?php echo Yii::app()->format->formatNtext($model->pickup); ?></p>
-			<?php endif; ?>
+		</div>
+		<div class="tab-pane" id="item_view-more-info">
+			<table>
+				<?php if($model->condition_id): ?>
+				<tr>
+					<th>Condition</th>
+					<td><?php echo $model->condition->title; ?></td>
+				</tr>
+				<?php endif; ?>
+				<tr>
+					<th class="created">Listed</th>
+					<td class="created"><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>"><?php echo $model->getTimeAgo(); ?></time></td>
+				</tr>
+				<tr>
+					<th>Item Views</th>
+					<td>...</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>
