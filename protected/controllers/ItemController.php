@@ -415,18 +415,21 @@ class ItemController extends Controller
 			' AND user_id IS NOT NULL';
 
 		$categories = [];
+		$subcategories = [];
 		if(isset($_GET['category'])) {
 			$model_category=ItemCategory::model()->findByPk($_GET['category']);
 
 			$condition='(category_id='.$model_category->id;
 			$children=Yii::app()->db->createCommand()
-				->select('id')
+				->select('id,title')
 				->from('item_category')
 				->where('parent_id=:cat',array(':cat'=>$model_category->id))
 				//->order('title')
 				->queryAll();
+			$subcategories+=array(''=>'select a subcategory');
 			foreach($children as $child) {
 				$condition.=' || category_id='.$child['id'];
+				$subcategories+=array($child['id']=>$child['title']);
 			}
 			$condition.=')';
 			$criteria->addCondition($condition,'&');
@@ -437,6 +440,19 @@ class ItemController extends Controller
 			{
 				$model_category=ItemCategory::model()->findByPk($model_category->parent_id);
 				$categories=array($model_category->title=>array('/item/search','category'=>$model_category->id))+$categories;
+			}
+		}
+		else
+		{
+			$children=Yii::app()->db->createCommand()
+				->select('id,title')
+				->from('item_category')
+				->where('parent_id IS NULL')
+				//->order('title')
+				->queryAll();
+			$subcategories+=array(''=>'select a category');
+			foreach($children as $child) {
+				$subcategories+=array($child['id']=>$child['title']);
 			}
 		}
 
@@ -450,6 +466,7 @@ class ItemController extends Controller
 		Yii::app()->theme='responsive';
 		$this->render('search',array(
 			'categories'=>$categories,
+			'subcategories'=>$subcategories,
 			'dataProvider'=>$dataProvider,
 		));
 	}
