@@ -247,6 +247,20 @@
         "outputStyle": "expanded",
         "autoprefixer": false
       }
+    },
+    "50ef0fa9": {
+      "id": "50ef0fa9",
+      "pid": "c6f102e3",
+      "name": "main.js",
+      "input": "js\\main.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
     }
   },
   "imports": {

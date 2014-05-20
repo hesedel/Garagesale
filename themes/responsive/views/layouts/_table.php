@@ -47,43 +47,44 @@
 		<div id="menu">
 			<ul>
 				<?php if(Yii::app()->user->isGuest): ?>
-				<li><?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?></li>
-				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in fa-lg"></i> Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up fa-lg"></i> Register', array('/site/register')); ?></li>
+				<?php else: ?>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-out fa-lg"></i>Logout', array('/site/logout')); ?></li>
 				<?php endif; ?>
-				<li><?php echo CHtml::link('Post an item to Sell', array('/item/create')); ?></li>
-				<li><a href="#">From your course area</a></li>
-				<li><a href="#">All course related items</a></li>
-				<li><a href="#">Viewed by your classmates</a></li>
-				<li><a href="#">Items with the most views</a></li>
-				<li><a href="#">Post a wanted ad</a></li>
+
+				<li class="divider"></li>
+
+				<li><?php echo CHtml::link('<i class="fa fa-tags fa-lg"></i> Post an item to Sell', array('/item/create')); ?></li>
+
+				<li class="divider"></li>
+
+				<li><a href="#"><i class="fa fa-graduation-cap fa-lg"></i> From your course area</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> All course related items</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Viewed by your classmates</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Items with the most views</a></li>
+
+				<li class="divider"></li>
+
+				<li><?php echo CHtml::link('<i class="fa fa-thumb-tack fa-lg"></i>Post a wanted ad', array('/item/createWanted')); ?></li>
 
 				<li class="heading">Categories</li>
 
-				<?php /* COMMENTING THIS OUT FOR NOW AS IT IS CAUSING ERROR
+				<li><?php echo CHtml::link('FREE', array('/item/search')); ?></li>
+
+				<?php
 				$categories = Yii::app()->db->createCommand()
 					->select('*')
 					->from('item_category')
-					->order('title')
+					->where('parent_id IS NULL')
+					//->order('title')
 					->queryAll();
-
-				// store the categories in a real array
-				$listData = array();
-				foreach($categories as $category)
-					$listData[] = array('id'=>$category['id'], 'title'=>CHtml::encode($category['title']), 'parent_id'=>$category['parent_id']);
-
-				foreach($listData as $i=>$data)
-				{
-					$parent_id = $data['parent_id'];
-					while($parent_id) {
-						$parent = Yii::app()->db->createCommand()
-							->select('*')
-							->from('item_category')
-							->where('id=:parent_id', array(':parent_id'=>$parent_id))
-							->queryRow();
-
-				}
-							return $listData;
-				*/ ?>
+				foreach($categories as $category):
+				?>
+				<li><?php echo CHtml::link(($category['icon'] ? '<i class="icon-' . $category['icon'] . '"></i>' : '') . $category['title'], array('/item/search', 'category' => $category['id'])); ?></li>
+				<?php
+				endforeach;
+				?>
 			</ul>
 		</div>
 
@@ -146,7 +147,7 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
-					<li><?php echo CHtml::link('<i class="fa fa-usd"></i>Sell', array('/item/create')); ?></li>
+					<li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
@@ -192,7 +193,7 @@
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-usd"></i>ell', array('/item/create')); ?>
+			<?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #post end ?>

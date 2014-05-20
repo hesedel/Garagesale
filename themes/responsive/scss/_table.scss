@@ -199,7 +199,8 @@
 
 @media (max-width: $screen-xs-max) {
 	#table {
-		background-color: $color_turquoise;
+		background-color: $color_footer-bg;
+		border-bottom: 1px solid rgba(0,0,0,0.08);
 		margin-top: 0;
 		display: block;
 
@@ -250,7 +251,7 @@
 #menu-toggle {
 	@extend .visible-xs;
 	cursor: pointer;
-	background-color: $color_greenSea;
+/* 	background-color: $color_greenSea; */
 	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
@@ -258,8 +259,8 @@
 	float: left;
 
 	i {
-		color: $color_white;
-		font-size: 1.25em;
+/* 		color: $color_white; */
+		font-size: 2em;
 		height: ($line-height * 2) - ($line-height * (1 / 3));
 			line-height: ($line-height * 2) - ($line-height * (1 / 3));
 		//padding-right: $gutter-width * (2 / 3);
@@ -307,6 +308,13 @@
 	li {
 		position: relative;
 
+		&.divider {
+			background-color: whiten($color_wetAsphalt, 5%);
+			height: 2px;
+			margin-top: $line-height * .5;
+			margin-bottom: ($line-height * .5) - 2px;
+		}
+
 		&.heading {
 			color: whiten($color_wetAsphalt, 25%, 2);
 			font-weight: 600;
@@ -325,15 +333,6 @@
 
 		}
 
-		&.divider {
-			background-color: whiten($color_wetAsphalt, 5%);
-			height: 1px;
-			margin-top: $line-height * .5;
-			margin-right: $gutter-width;
-			margin-bottom: ($line-height * .5) - 1px;
-			margin-left: $gutter-width;
-		}
-
 	}
 
 	a {
@@ -343,6 +342,13 @@
 		padding-bottom: $line-height * .5;
 		padding-left: $gutter-width;
 		display: block;
+	}
+
+	i {
+		color: $color_customYellow;
+		text-align: center;
+		width: $gutter-width;
+		margin-right: $gutter-width * (2 / 3);
 	}
 
 	.badge {
@@ -371,6 +377,7 @@
 		left: 0;
 		z-index: -1;
 }
+
 
 @media (max-width: $screen-xs-max) {
 	#xs {
@@ -464,7 +471,7 @@ body.is-animating #menu-footer {
 	#header {
 		padding-top: $line-height * .5;
 		padding-bottom: $line-height * .5;
-		border-left: 1px solid $color_body_bg;
+/* 		border-left: 1px solid $color_body_bg; */
 		float: left;
 	}
 }
@@ -533,9 +540,10 @@ body.is-animating #menu-footer {
 	> a,
 	div.a > a,
 	span.a {
-		color: $color_greenSea;
+		color: $color_white;
+		font-size: 2em;
 		white-space: nowrap;
-		background-color: whiten($color_turquoise, 25%, 4);
+/* 		background-color: whiten($color_turquoise, 25%, 4); */
 		height: $line-height * 3;
 			line-height: $line-height * 3;
 		padding-right: $gutter-width * (2 / 3);
@@ -864,20 +872,20 @@ body.is-animating #menu-footer {
 #search-toggle {
 	@extend .visible-xs;
 	cursor: pointer;
-	background-color: $color_greenSea;
+/* 	background-color: $color_greenSea; */
 	padding-top: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-right: $gutter-width;
 	padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
 	padding-left: $gutter-width;
-	border-left: 1px solid $color_body_bg;
+/* 	border-left: 1px solid $color_body_bg; */
 	float: right;
 	position: relative;
-		z-index: 1;
+		z-index: 2;
 	@include transition(all 0s ease .25s);
 
 	i {
 		color: $color_white;
-		font-size: 1.25em;
+		font-size: 2em;
 		height: ($line-height * 2) - ($line-height * (1 / 3));
 			line-height: ($line-height * 2) - ($line-height * (1 / 3));
 		@include border-radius($border-radius);
@@ -936,6 +944,10 @@ body.is-animating #menu-footer {
 				margin-top: 0;
 				margin-bottom: 0;
 
+				input {line-height: $line-height;
+					height: $line-height;
+				}
+
 				.placeholder {
 					top: $line-height * .5;
 				}
@@ -948,7 +960,7 @@ body.is-animating #menu-footer {
 				font-family: $sans-serif-soft;
 				font-size: 1.25em;
 				font-weight: 700;
-				background-color: $color_turquoise;
+				background-color: $color_footer-bg;
 				@include border-left-radius(0);
 
 				/*
@@ -1044,9 +1056,10 @@ body.is-animating #menu-footer {
 			max-height: ($line-height * 4) - 1px;
 			border-top-width: 1px;
 			@include transition(max-height .25s cubic-bezier(0, 1.25, 1, 1.25));
-			z-index: 0;
+			z-index: 1;
 
 			.table {
+				//position: relative;
 
 				.td {
 					padding-top: $line-height - 1px;

@@ -152,6 +152,8 @@ $this->layout = 'column1';
 					<th><?php echo $form->labelEx($model, 'verifyCode'); ?></th>
 					<td>
 						<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?></div>
+						<div class="hint">Please enter the letters as they are shown in the image above.
+						<br>Letters are not case-sensitive.</div>
 						<div class="input-text">
 							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'none')); ?>
 							<span class="placeholder">Please enter the letters as they are shown in the image above.</span>
