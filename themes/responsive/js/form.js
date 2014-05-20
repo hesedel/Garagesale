@@ -9,10 +9,10 @@ $('textarea')
 */
 
 $('div.input-text, div.textarea').bind('click', function() {
-	$('input[type=text], input[type=password], textarea', $(this)).trigger('focus');
+	$('input[type=text], input[type=email], input[type=password], textarea', $(this)).trigger('focus');
 });
 
-$('input[type=text], input[type=password], textarea', 'div.input-text, div.textarea').each(function() {
+$('input[type=text], input[type=email], input[type=password], textarea', 'div.input-text, div.textarea').each(function() {
 	$(this)
 		.bind('keydown keyup', function() {
 			if($(this).val().length > 0) {

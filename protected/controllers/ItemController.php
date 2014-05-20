@@ -19,7 +19,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','update','delete','ajaxRemoveImage'),
+				'actions'=>array('create','wanted','update','updateWanted','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -276,6 +276,79 @@ class ItemController extends Controller
 		));
 	}
 
+	public function actionCreateWanted()
+	{
+		$model=new WantedForm;
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
+
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['WantedForm']))
+		{
+			$model->attributes=$_POST['WantedForm'];
+			$model->location_id=$_POST['WantedForm']['location_id'];
+			if($model->save())
+			{
+
+				$this->redirect(array('view','id'=>$model->id));
+			}
+		}
+
+		Yii::app()->theme='responsive';
+		$this->render('wanted',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionUpdateWanted($id)
+	{
+		$model=$this->loadModel($id);
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
+
+		$params=array('WantedForm'=>$model);
+		if(
+			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['WantedForm']))
+		{
+				$this->redirect(array('view','id'=>$model->id));
+			}
+
+		Yii::app()->theme='responsive';
+		$this->render('updateWanted',array(
+			'model'=>$model,
+		));
+	}
+
 	public function actionDelete($id)
 	{
 		$model=$this->loadModel($id);
@@ -334,10 +407,54 @@ class ItemController extends Controller
 		$keywords=str_replace('\\','\\\\',$keywords);
 		$keywords=str_replace('\\\\\'','\\\'',$keywords);
 
+		$criteria=new CDbCriteria;
+		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
+			' AND user_id IS NOT NULL';
+
+		$categories = [];
+		$subcategories = [];
+		if(isset($_GET['category'])) {
+			$model_category=ItemCategory::model()->findByPk($_GET['category']);
+
+			$condition='(category_id='.$model_category->id;
+			$children=Yii::app()->db->createCommand()
+				->select('id,title')
+				->from('item_category')
+				->where('parent_id=:cat',array(':cat'=>$model_category->id))
+				//->order('title')
+				->queryAll();
+			$subcategories+=array(''=>'select a subcategory');
+			foreach($children as $child) {
+				$condition.=' || category_id='.$child['id'];
+				$subcategories+=array($child['id']=>$child['title']);
+			}
+			$condition.=')';
+			$criteria->addCondition($condition,'&');
+
+			// for breadcrumbs
+			$categories=array($model_category->title=>array('/item/search','category'=>$model_category->id));
+			while($model_category->parent_id)
+			{
+				$model_category=ItemCategory::model()->findByPk($model_category->parent_id);
+				$categories=array($model_category->title=>array('/item/search','category'=>$model_category->id))+$categories;
+			}
+		}
+		else
+		{
+			$children=Yii::app()->db->createCommand()
+				->select('id,title')
+				->from('item_category')
+				->where('parent_id IS NULL')
+				//->order('title')
+				->queryAll();
+			$subcategories+=array(''=>'select a category');
+			foreach($children as $child) {
+				$subcategories+=array($child['id']=>$child['title']);
+			}
+		}
+
 		$dataProvider=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$keywords).'%\'',
-			),
+			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
 			),
@@ -345,6 +462,8 @@ class ItemController extends Controller
 
 		Yii::app()->theme='responsive';
 		$this->render('search',array(
+			'categories'=>$categories,
+			'subcategories'=>$subcategories,
 			'dataProvider'=>$dataProvider,
 		));
 	}

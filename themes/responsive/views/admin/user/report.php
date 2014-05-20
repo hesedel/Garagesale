@@ -1,23 +1,23 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Contact Us';
+$this->pageTitle = Yii::app()->name . ' - Report Seller';
 
 $this->breadcrumbs = array(
-	'Contact',
+	'Report Seller',
 );
 
 $this->layout = 'column1';
 ?>
 
 <div class="g-form" id="site_contact">
-	<h2>Contact Us</h2>
+	<h2>Report Seller</h2>
 
-	<?php if(Yii::app()->user->hasFlash('contact')): ?>
+	<?php if(Yii::app()->user->hasFlash('reported')): ?>
 
 	<div class="flash-success">
-		<?php echo Yii::app()->user->getFlash('contact'); ?>
+		<?php echo Yii::app()->user->getFlash('reported'); ?>
 	</div>
-	<h3>Message sent</h3>
-	<h4>What happens next?</h4>
+	<h4>User Reported</h4>
+	<h3>What happens next?</h3>
 	<p>We will contact you within 48 hrs regarding your enquiry</p>
 
 	<?php else: ?>
@@ -36,47 +36,60 @@ $this->layout = 'column1';
 
 		<?php //echo $form->errorSummary($model); ?>
 
-		<table class="form" summary="contact">
+		<table class="form" summary="report">
 			<caption class="hide">Contact</caption>
 			<tbody>
 
 				<tr>
-					<th><?php echo $form->labelEx($model, 'name'); ?></th>
+					<th><?php echo $form->labelEx($model, 'reporterUserID'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'name'); ?>
+							<?php echo Yii::app()->params['user']->name_first; ?>
 						</div>
-						<?php echo $form->error($model, 'name'); ?>
+						<?php echo $form->error($model, 'reporterUserID'); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th><?php echo $form->labelEx($model, 'email'); ?></th>
+					<th><?php echo $form->labelEx($model, 'reportedUserID'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'email'); ?>
+							<?php 
+								if (Yii::app()->user->hasState('report_user')) {
+									echo Yii::app()->user->getState('report_user');
+									Yii::app()->user->setState('report_user',Yii::app()->user->getState('report_user'));
+								}
+							?>
 						</div>
-						<?php echo $form->error($model, 'email'); ?>
+						<?php echo $form->error($model, 'reportedUserID'); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th><?php echo $form->labelEx($model, 'subject'); ?></th>
+					<th><?php echo $form->labelEx($model, 'reportType'); ?></th>
 					<td>
-						<div class="input-text">
-							<?php echo $form->textField($model, 'subject', array('size' => 60, 'maxlength' => 128)); ?>
-						</div>
-						<?php echo $form->error($model, 'subject'); ?>
+						
+							<?php echo CHtml::activeDropDownList($model,'reportType', array(
+								1 => 'Content is offensive',
+								2 => 'User is being abusive',
+								3 => 'Sexually explicit content',
+								4 => 'Spam or a scam',
+								5 => 'Violates Stycle\'s policy and terms and conditions',
+
+							), array(
+								'multiple'=>'multiple',
+							)); ?>
+						
+						<?php echo $form->error($model, 'reportType'); ?>
 					</td>
 				</tr>
-
 				<tr>
-					<th><?php echo $form->labelEx($model, 'body'); ?></th>
+					<th><?php echo $form->labelEx($model, 'reportDescription'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textArea($model, 'body', array('rows' => 6, 'cols' => 50)); ?>
+							<?php echo $form->textArea($model, 'reportDescription', array('rows' => 6, 'cols' => 50)); ?>
 						</div>
-						<?php echo $form->error($model, 'body'); ?>
+						<?php echo $form->error($model, 'reportDescription'); ?>
 					</td>
 				</tr>
 
@@ -102,8 +115,8 @@ $this->layout = 'column1';
 					<?php //<th>&#160;</th> ?>
 					<td colspan="2">
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
-						<?php echo CHtml::linkButton('Send', array('class' => 'submit g-button--primary')); ?>
-						<?php echo CHtml::submitButton('Send', array('class' => 'submit g-button--primary')); ?>
+						<?php echo CHtml::linkButton('Submit', array('class' => 'submit g-button--primary')); ?>
+						<?php echo CHtml::submitButton('Submit', array('class' => 'submit g-button--primary')); ?>
 					</td>
 				</tr>
 
