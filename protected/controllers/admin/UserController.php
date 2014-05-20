@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('account','image_delete','email_change','email_change_cancel','email_change_reverify','dashboard'),
+				'actions'=>array('captcha', 'account','image_delete','email_change','email_change_cancel','email_change_reverify','dashboard','report'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -358,6 +358,12 @@ class UserController extends Controller
 			}
 		}
 
+		if($model->university->parent_id)
+		{
+			$model->campus_id=$model->university_id;
+			$model->university_id=$model->university->parent_id;
+		}
+
 		if($success)
 			Yii::app()->user->setFlash('success','You\'ve successfully updated your account.');
 
@@ -498,6 +504,54 @@ class UserController extends Controller
 		Yii::app()->theme='responsive';
 		$this->render('dashboard', array('dataProvider'=>$dataProvider));
 	}
+
+	/**
+	 * Declares class-based actions.
+	 */
+	public function actions()
+	{
+		Yii::app()->theme='responsive';
+		return array(
+			// captcha action renders the CAPTCHA image displayed on the contact page
+			'captcha'=>array(
+				'class'=>'CCaptchaAction',
+				'backColor'=>0xFFFFFF,
+				'foreColor'=>0x000000,
+			),
+			// page action renders "static" pages stored under 'protected/views/site/pages'
+			// They can be accessed via: index.php?r=site/page&view=FileName
+			'page'=>array(
+				'class'=>'CViewAction',
+			),
+		);
+	}
+
+	public function actionReport()
+	{
+
+
+		$model=new ReportForm;
+		if(isset($_POST['ReportForm']))
+		{
+
+			$emailBody = 'User reported: '.$model->reportedUserID.'<br /> Report type: '.$model->reportType.
+			'<br /> Report type: '.$model->reportDescription;
+
+
+			$model->attributes=$_POST['ReportForm'];
+			if($model->validate())
+			{
+				$headers="From: {Yii::app()->params['user']->email}\r\nReply-To: {Yii::app()->params['user']->email}";
+				mail(Yii::app()->params['adminEmail'],'User Report', $emailBody,$headers);
+				Yii::app()->user->setFlash('reported','Thank you for contacting the Stycle team. We take reports very seriously and we will respond to you as soon as possible.');
+				$this->refresh();
+			}
+		}
+		Yii::app()->theme='responsive';
+		$this->render('report',array('model'=>$model));
+	}
+
+
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

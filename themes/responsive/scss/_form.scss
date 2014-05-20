@@ -45,6 +45,14 @@ input[type=text]:disabled {
 	@include opacity(1);
 }
 
+input[type=email] {
+	@include box-shadow(none);
+}
+
+select {
+	max-width: 100%;
+}
+
 textarea {
 	line-height: $line-height;
 }
@@ -142,7 +150,7 @@ div.textarea {
 }
 
 div.form.success {
-	color: $black;
+	//color: $black;
 	padding: 0;
 	border: none;
 	margin-bottom: 0;
@@ -304,7 +312,7 @@ table.form {
 				padding-left: $gutter-width * (1 / 3);
 
 				label {
-					//@include text-shadow(rgba($white, 1) 0 1px);
+					font-weight: 400;
 				}
 
 				input[type=file] {
@@ -610,7 +618,7 @@ table.form {
 					div.textarea {
 
 						span.placeholder {
-							display: none;
+							//display: none;
 						}
 
 					}
