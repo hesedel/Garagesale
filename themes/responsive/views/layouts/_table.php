@@ -47,22 +47,25 @@
 		<div id="menu">
 			<ul>
 				<?php if(Yii::app()->user->isGuest): ?>
-				<li><?php echo CHtml::link('<i class="fa fa-sign-in fa-lg"></i> Login', array('/site/login')); ?></li>
-				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up fa-lg"></i> Register', array('/site/register')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-sign-in fa-lg"></i>Login', array('/site/login')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-thumbs-up fa-lg"></i>Register', array('/site/register')); ?></li>
 				<?php else: ?>
 				<li><?php echo CHtml::link('<i class="fa fa-sign-out fa-lg"></i>Logout', array('/site/logout')); ?></li>
 				<?php endif; ?>
 
 				<li class="divider"></li>
 
-				<li><?php echo CHtml::link('<i class="fa fa-tags fa-lg"></i> Post an item to Sell', array('/item/create')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-tags fa-lg"></i>Post an item to Sell', array('/item/create')); ?></li>
 
 				<li class="divider"></li>
 
-				<li><a href="#"><i class="fa fa-graduation-cap fa-lg"></i> From your course area</a></li>
-				<li><a href="#"><i class="fa fa-eye fa-lg"></i> All course related items</a></li>
-				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Viewed by your classmates</a></li>
-				<li><a href="#"><i class="fa fa-eye fa-lg"></i> Items with the most views</a></li>
+				<?php if(!Yii::app()->user->isGuest): ?>
+				<li><?php echo CHtml::link('<i class="fa fa-graduation-cap fa-lg"></i>From your course area', array('/item/search', 'course' => Yii::app()->params['user']->course_id)); ?></li>
+				<?php endif; ?>
+
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i>All course related items</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Viewed by your classmates</a></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Items with the most views</a></li>
 
 				<li class="divider"></li>
 
@@ -70,7 +73,7 @@
 
 				<li class="heading">Categories</li>
 
-				<li><?php echo CHtml::link('FREE', array('/item/search')); ?></li>
+				<li><?php echo CHtml::link('FREE', array('/item/search', 'price-max' => 0)); ?></li>
 
 				<?php
 				$categories = Yii::app()->db->createCommand()
