@@ -11,14 +11,6 @@ $this->layout = 'column1';
 <div class="g-form" id="site_contact">
 	<h2>Post a Wanted Ad</h2>
 
-	<?php if(Yii::app()->user->hasFlash('reported')): ?>
-
-	<div class="flash-success">
-		<?php echo Yii::app()->user->getFlash('reported'); ?>
-	</div>
-	<h3>Your item has been posted successfully!</h3>
-
-	<?php else: ?>
 
 	<div class="form">
 		<p>If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.</p>
@@ -97,21 +89,6 @@ $this->layout = 'column1';
 					</td>
 				</tr>
 
-			<?php if(CCaptcha::checkRequirements()): ?>
-			<tr>
-				<th><?php echo $form->labelEx($model, 'verifyCode'); ?></th>
-				<td>
-					<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?>
-					</div>
-					<div class="hint">Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.</div>
-					<div class="input-text">
-					<?php echo $form->textField($model, 'verifyCode'); ?>
-					</div>
-					<?php echo $form->error($model, 'verifyCode'); ?>
-				</td>
-			</tr>
-			<?php endif; ?>
-
 			</tbody>
 			<tfoot>
 
@@ -129,5 +106,4 @@ $this->layout = 'column1';
 		<?php $this->endWidget(); ?>			
 	</div>
 
-	<?php endif; ?>
 </div>
