@@ -396,6 +396,9 @@ class ItemController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id IS NOT NULL',
+			),
 			'pagination'=>array('pageSize'=>12),
 		));
 		Yii::app()->theme='responsive';
@@ -427,6 +430,7 @@ class ItemController extends Controller
 		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
 			' AND user_id IS NOT NULL';
 
+		// categories
 		$categories = [];
 		$subcategories = [];
 		if(isset($_GET['category'])) {
@@ -469,6 +473,17 @@ class ItemController extends Controller
 			}
 		}
 
+		// price
+		if(isset($_GET['price-max'])) {
+			$criteria->addCondition('price<='.$_GET['price-max'],'AND');
+		}
+
+		// course
+		if(isset($_GET['course'])) {
+			$criteria->join='LEFT JOIN user ON user_id=user.id';
+			$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
+		}
+
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>$criteria,
 			'pagination'=>array(
@@ -493,7 +508,8 @@ class ItemController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\'',
+				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
+					' AND user_id IS NOT NULL',
 				//'limit'=>5,
 			),
 			'pagination'=>false,
