@@ -200,7 +200,7 @@ if($model->condition_id)
 				<tfoot>
 					<tr>
 						<td colspan="2">
-							<?php echo CHtml::link('Follow Seller', array('#'), array('class' => 'g-button')); ?>
+							
 							<?php echo CHtml::link('All Seller Items', array('#'), array('class' => 'g-button')); ?>
 							<?php Yii::app()->user->setState('report_user',$model->user->id); ?>
  							<?php echo CHtml::link('Report Seller', array('/admin/user/report'), array('class' => 'g-button')); ?>
