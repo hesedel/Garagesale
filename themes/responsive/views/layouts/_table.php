@@ -59,7 +59,10 @@
 
 				<li class="divider"></li>
 
-				<li><a href="#">From your course area</a></li>
+				<?php if(!Yii::app()->user->isGuest): ?>
+				<li><?php echo CHtml::link('From your course area', array('/item/search', 'course' => Yii::app()->params['user']->course_id)); ?></li>
+				<?php endif; ?>
+
 				<li><a href="#">All course related items</a></li>
 				<li><a href="#">Viewed by your classmates</a></li>
 				<li><a href="#">Items with the most views</a></li>
@@ -70,7 +73,7 @@
 
 				<li class="heading">Categories</li>
 
-				<li><?php echo CHtml::link('FREE', array('/item/search')); ?></li>
+				<li><?php echo CHtml::link('FREE', array('/item/search', 'price-max' => 0)); ?></li>
 
 				<?php
 				$categories = Yii::app()->db->createCommand()

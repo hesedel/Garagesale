@@ -341,6 +341,7 @@ class ItemController extends Controller
 		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
 			' AND user_id IS NOT NULL';
 
+		// categories
 		$categories = [];
 		$subcategories = [];
 		if(isset($_GET['category'])) {
@@ -381,6 +382,17 @@ class ItemController extends Controller
 			foreach($children as $child) {
 				$subcategories+=array($child['id']=>$child['title']);
 			}
+		}
+
+		// price
+		if(isset($_GET['price-max'])) {
+			$criteria->addCondition('price<='.$_GET['price-max'],'AND');
+		}
+
+		// course
+		if(isset($_GET['course'])) {
+			$criteria->join='LEFT JOIN user ON user_id=user.id';
+			$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
 		}
 
 		$dataProvider=new CActiveDataProvider('Item',array(
