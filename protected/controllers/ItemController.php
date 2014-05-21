@@ -19,7 +19,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','update','delete','ajaxRemoveImage'),
+				'actions'=>array('create','wanted','update','updateWanted','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -272,6 +272,79 @@ class ItemController extends Controller
 
 		Yii::app()->theme='responsive';
 		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionCreateWanted()
+	{
+		$model=new WantedForm;
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
+			->queryScalar();
+
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['WantedForm']))
+		{
+			$model->attributes=$_POST['WantedForm'];
+			$model->location_id=$_POST['WantedForm']['location_id'];
+			if($model->save())
+			{
+
+				$this->redirect(array('view','id'=>$model->id));
+			}
+		}
+
+		Yii::app()->theme='responsive';
+		$this->render('wanted',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionUpdateWanted($id)
+	{
+		$model=$this->loadModel($id);
+		$model->location_id=Yii::app()->db->createCommand()
+			->select('location_id')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
+		$model->phone=Yii::app()->db->createCommand()
+			->select('phone')
+			->from('user')
+			->where('id=:user_id',array(':user_id'=>$model->user_id))
+			->queryScalar();
+
+		$params=array('WantedForm'=>$model);
+		if(
+			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			(
+				Yii::app()->user->checkAccess('admin') &&
+				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
+			) ||
+			Yii::app()->user->checkAccess('super')
+		) {
+			// do nothing
+		} else
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['WantedForm']))
+		{
+				$this->redirect(array('view','id'=>$model->id));
+			}
+
+		Yii::app()->theme='responsive';
+		$this->render('updateWanted',array(
 			'model'=>$model,
 		));
 	}
