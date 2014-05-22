@@ -457,6 +457,12 @@ class ItemController extends Controller
 			}
 		}
 
+		// university
+		if(!Yii::app()->user->isGuest) {
+			$criteria->join='LEFT JOIN user ON user_id=user.id';
+			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id);
+		}
+
 		// price
 		if(isset($_GET['price-max'])) {
 			$criteria->addCondition('price<='.$_GET['price-max'],'AND');
@@ -464,8 +470,11 @@ class ItemController extends Controller
 
 		// course
 		if(isset($_GET['course'])) {
-			$criteria->join='LEFT JOIN user ON user_id=user.id';
-			$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
+			$criteria->addCondition('course=true', 'AND');
+			if($_GET['course'] > 0) {
+				$criteria->join='LEFT JOIN user ON user_id=user.id';
+				$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
+			}
 		}
 
 		$dataProvider=new CActiveDataProvider('Item',array(
