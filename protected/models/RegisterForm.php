@@ -11,7 +11,7 @@ class RegisterForm extends User
 	{
 		$rules = parent::rules();
 		//$rules[] = array('email_repeat, password, password_repeat', 'required');
-		$rules[] = array('password', 'required');
+		$rules[] = array('password, verifyCode', 'required');
 		//$rules[] = array('email_repeat', 'length', 'max'=>64);
 		//$rules[] = array('email_repeat', 'compare', 'compareAttribute'=>'email');
 		//$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
