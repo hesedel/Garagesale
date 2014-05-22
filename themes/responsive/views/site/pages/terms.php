@@ -1,9 +1,5 @@
-<?php
-$this->pageTitle=Yii::app()->name . ' - Terms';
-$this->breadcrumbs=array(
-	'Terms',
-);
-?>
+<?php $this->pageTitle=Yii::app()->name . ' - Terms';
+$this->breadcrumbs=array(     'Terms', ); ?>
 
 <h2>Terms</h2>
 
@@ -15,7 +11,7 @@ $this->breadcrumbs=array(
 
 <ol type="a">
 	<li>These Terms</li>
-	<li>AllSorts's Privacy Policy, found at http://www.stycle.com.au/privacypolicy</li>
+	<li>AllSorts's <a href="http://sta-stycle.pajaroncreative.com/site/page/?view=policy">Privacy Policy</a></li>
 	<li>Other rules and requirements specified in Stycle</li>
 </ol>
 
@@ -27,6 +23,8 @@ $this->breadcrumbs=array(
 
 <p>You are solely responsible for the activity that occurs on your profile, and you must keep your password safe and secure. You must notify AllSorts immediately of any breach of security on your profile.</p>
 
+<p>Stycle is only available to University staff and students. On registration a University email address required.</p>
+
 <h3>3. Display Names</h3>
 
 <p>If you wish to register as member of Stycle, you need to use your first name and family name. 
@@ -36,7 +34,7 @@ AllSorts may refuse to register, or may block, display names it considers inappr
 
 <p>AllSorts may change information on and access to this Site, without notice.</p>
 
-<p>AllSorts may, in its sole discretion, change these Terms, privacy notice and policies at any time. Changes are publicised at http://stycle.con.au/terms.</p>
+<p>AllSorts may, in its sole discretion, change these Terms, privacy notice and policies at any time. Changes are publicised at <a href="http://sta-stycle.pajaroncreative.com/site/page/?view=terms">Stycle Terms</a>.</p>
 
 <h3>5. Uploading of items for sale</h3>
 
@@ -45,23 +43,23 @@ AllSorts may refuse to register, or may block, display names it considers inappr
 <p>In uploading content to this Site you represent and warrant to AllSorts that:</p>
 
 <ol type="a">
-	<li>you own all of the intellectual property rights</li>
+	<li>you own the item/s you list</li>
 	<li>the content does not breach any contract or any legal or equitable obligation</li>
 	<li>the content is not defamatory, obscene, abusive, invasive of another person's privacy or illegal</li>
 	<li>the content is not advertising content other than the item for sale and does not endorse any commercial goods or services or solicit custom for any business enterprise, and is not being licenced for any commercial purpose</li>
-	<li>you agree to indemnify and keep indemnified AllSorts and any such licensee of AllSorts against any liability, costs (including legal costs), claims, actions and damages arising from a breach by you or from any representation or warranty made by you being untrue or from use of the content uploaded to Stycle.</li>
+	<li>you agree to indemnify and keep indemnified AllSorts and any such licensee of AllSorts against any liability, costs (including legal costs), claims, actions and damages arising from a breach by you or from any representation or warranty made by you being untrue or from use of the content uploaded to Stycle</li>
 	<li>you shall be solely responsible for your own content and the consequences of posting or publishing it</li>
 </ol>
 
-<h3>6. User Comments</h3>
+<h3>6. User Messages</h3>
 
-<p>AllSorts allows registered users on Stycle to post comments. The opinions expressed in the user comments are not necessarily those of AllSorts. AllSorts is not responsible for, and cannot warrant the accuracy of, any information contained in any user comments.</p>
+<p>AllSorts allows registered users on Stycle to message other users via a secure email service. The opinions expressed in the user messages are not necessarily those of AllSorts. AllSorts is not responsible for, and cannot warrant the accuracy of, any information contained in any user messages.</p>
 
-<h3>7. Moderation of Uploaded Content and User Comments by AllSorts</h3>
+<h3>7. Moderation of Uploaded Content and User Messages</h3>
 
-<p>AllSorts reserves the right to assess the quality of and to moderate, and at its sole discretion, to accept, modify or reject content or user comments. There may be some delay in posting your User-Created content while it is assessed and moderated and AllSorts reserves the right not to post it at all.</p>
+<p>AllSorts reserves the right to assess the quality of and to moderate, and at its sole discretion, to accept, modify or reject content. There may be some delay in posting your User-Created content while it is assessed and moderated and AllSorts reserves the right not to post it at all.</p>
 
-<p>Your content, user comments may be edited, removed or not published if AllSorts considers them to be:</p>
+<p>Your content, may be edited, removed or not published if AllSorts considers them to be:</p>
 
 <ol type="a">
 	<li>defamatory or otherwise unlawful, or violating any laws regarding harassment, discrimination, racial vilification, privacy or contempt</li>
@@ -74,7 +72,7 @@ AllSorts may refuse to register, or may block, display names it considers inappr
 	<li>a posting made on behalf of a User whose registration has been terminated or suspended. This may lead to you also having your registration terminated</li>
 </ol>
 
-<p>If you wish to report a comment, item or user that is breaching the above Terms, report the problem through www.stycle.com/report</p>
+<p>If you wish to report an item, message or user who breaches the above Terms, report the problem through http://sta-stycle.pajaroncreative.com/site/report</p>
 
 <h3>8. Removal of Content</h3>
 
@@ -85,7 +83,7 @@ Content will be removed from Stycle if it infringes these Terms.</p>
 
 <p>9.1 You may access and use content, user comments and other content only as permitted under these Terms.</p>
 
-<p>9.2 Content you upload to the Stycle site will be stored on servers not managed by Stycle as described in the AllSorts Privacy Policy accessible through www.stycle.com.au/privacypolicy</p>
+<p>9.2 Content you upload to the Stycle site will be stored on servers not managed by Stycle as described in the AllSorts <a href="http://sta-stycle.pajaroncreative.com/site/page/?view=policy">Privacy Policy</a></p>
 
 <h3>10. No Warranty</h3>
 
@@ -122,4 +120,4 @@ Content will be removed from Stycle if it infringes these Terms.</p>
 
 <h3>14. Privacy</h3>
 
-<p>AllSorts Privacy Policy is accessbile through www.stycle.com.au/privacypolicy. Please contact the AllSorts Privacy Officer for access, correction and any further privacy information by email at privacy@stycle.com.au or by phoning AllSorts Reception on (02) 0000 0000.</p>
+<p>Access AllSorts <a href="http://sta-stycle.pajaroncreative.com/site/page/?view=policy">Privacy Policy</a>. Contact the AllSorts Privacy Officer if you have any questions about the Privacy Policy.</p>
