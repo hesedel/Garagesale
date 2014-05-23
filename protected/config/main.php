@@ -191,7 +191,7 @@ return array(
 		$params,
 		array(
 			// this is used in contact page
-			'adminEmail'=>'hes@pajaroncreative.com',
+			'adminEmail'=>'styclereport@gmail.com',
 			'noReplyEmail'=>'noreply@stycle.ph',
 			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
 			'tagline'=>'Tagline',
