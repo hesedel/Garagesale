@@ -414,6 +414,26 @@ class ItemController extends Controller
 		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
 			' AND user_id IS NOT NULL';
 
+		// university
+		if(!Yii::app()->user->isGuest) {
+			$criteria->join='LEFT JOIN user ON user_id=user.id';
+			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id);
+		}
+
+		// course
+		if(isset($_GET['course'])) {
+			$criteria->addCondition('course=true', 'AND');
+			if($_GET['course'] > 0) {
+				$criteria->join='LEFT JOIN user ON user_id=user.id';
+				$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
+			}
+		}
+
+		// price
+		if(isset($_GET['price-max'])) {
+			$criteria->addCondition('price<='.$_GET['price-max'],'AND');
+		}
+
 		// categories
 		$categories = [];
 		$subcategories = [];
@@ -457,25 +477,20 @@ class ItemController extends Controller
 			}
 		}
 
-		// university
-		if(!Yii::app()->user->isGuest) {
-			$criteria->join='LEFT JOIN user ON user_id=user.id';
-			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id);
-		}
-
-		// price
-		if(isset($_GET['price-max'])) {
-			$criteria->addCondition('price<='.$_GET['price-max'],'AND');
-		}
-
-		// course
-		if(isset($_GET['course'])) {
-			$criteria->addCondition('course=true', 'AND');
-			if($_GET['course'] > 0) {
-				$criteria->join='LEFT JOIN user ON user_id=user.id';
-				$criteria->addCondition('user.course_id='.$_GET['course'],'AND');
+		// sort
+		if(isset($_GET['sort'])) {
+			switch($_GET['sort']) {
+				case 'price-low':
+					$criteria->order='price';
+					break;
+				case 'price-high':
+					$criteria->order='price DESC';
+					break;
+				default:
+					$criteria->order='updated DESC';
 			}
-		}
+		} else
+			$criteria->order='updated DESC';
 
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>$criteria,
