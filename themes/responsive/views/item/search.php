@@ -39,7 +39,45 @@ $uri = Yii::app()->request->requestUri;
 	--><?php echo count($subcategories) > 1 ? '<div class="dropDownList">' . CHtml::dropDownList('subcategories', '', $subcategories) . '</div>' : ''; ?><!--
 
 	--><?php
-	echo '<div class="dropDownList">' . CHtml::dropDownList('sort', '', array('' => 'Sort', 0 => 'Price Low - High', 1 => 'Price High - Low')) . '</div>';
+	echo '<div class="dropDownList">' . CHtml::dropDownList('sort', (isset($_GET['sort']) ? $_GET['sort'] : ''), array(
+		'' => 'sort by',
+		'price-low' => 'Price: Low - High',
+		'price-high' => 'Price: High - Low'
+		), array('options' => array(
+			'' => array(
+				'data-uri' => (
+					!isset($_GET['sort']) ? (
+						!strpos($uri, '?') ?
+							preg_replace('/(\/item\/search\/)/', '$1', $uri)
+						:
+							$uri
+					) :
+						preg_replace('/(\?|\&)sort=' . $_GET['sort'] . '/', '', $uri)
+				)
+			),
+			'price-low' => array(
+				'data-uri' => (
+					!isset($_GET['sort']) ? (
+						!strpos($uri, '?') ?
+							preg_replace('/(\/item\/search\/)/', '$1?sort=price-low', $uri)
+						:
+							$uri . '&sort=price-low'
+					) :
+						preg_replace('/(\?|\&)sort=' . $_GET['sort'] . '/', '$1sort=price-low', $uri)
+				)
+			),
+			'price-high' => array(
+				'data-uri' => (
+					!isset($_GET['sort']) ? (
+						!strpos($uri, '?') ?
+							preg_replace('/(\/item\/search\/)/', '$1?sort=price-high', $uri)
+						:
+							$uri . '&sort=price-high'
+					) :
+						preg_replace('/(\?|\&)sort=' . $_GET['sort'] . '/', '$1sort=price-high', $uri)
+				)
+			),
+		))) . '</div>';
 	?>
 
 </div>
@@ -66,11 +104,15 @@ $uri = Yii::app()->request->requestUri;
 				:
 					$uri . '&category=\' + $(this).val()'
 			) :
-				preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '$1category=\' + $(this).val()', $uri)
+				preg_replace('/(\?|\&)category=' . $_GET['category'] . '(.*)/', '$1category=\' + $(this).val() + \'$2\'', $uri)
 		) . ");
 	});
 	$('#subcategories').bind('change blur', function() {
 		if($('option:selected', $(this)).index() > 0)
+			window.location.href = $('option:selected', $(this)).attr('data-uri');
+	});
+	$('#sort').bind('change blur', function() {
+		//if($('option:selected', $(this)).index() > 0)
 			window.location.href = $('option:selected', $(this)).attr('data-uri');
 	});
 	",
