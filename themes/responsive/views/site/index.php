@@ -50,7 +50,7 @@ $this->layout = 'column1';
 <?php $this->endWidget(); ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Course materials and supplies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Course materials and supplies</h2> <?php echo CHtml::link('See all', array('/item/search', 'course' => ''), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
 <div class="h2"><h2>Latest from your area of study</h2> <?php echo CHtml::link('See all', array('/item/search', 'course' => Yii::app()->params['user']->course_id), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
