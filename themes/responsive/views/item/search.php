@@ -4,42 +4,51 @@ $this->pageTitle=Yii::app()->name . ' - Search Results for ' . ucwords($this->mo
 //$this->breadcrumbs = array_merge($this->breadcrumbs, $categories);
 
 $this->layout = 'column1';
+
+$uri = Yii::app()->request->requestUri;
 ?>
 
 <div id="item_search">
 
-<?php
-$uri = Yii::app()->request->requestUri;
-$value_prev = array('/item/search', 'category' => false);
-foreach($categories as $key => $value) {
-	if($value_prev['category'])
-		$link = preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '$1category=' . $value_prev['category'], $uri);
-	else
-		$link = preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '', $uri);
-	echo CHtml::link($key . ' <i class="fa fa-times"></i>', $link);
-	$value_prev = $value;
-}
-?>
+<?php if(strlen($this->model_itemSearchForm->keywords) > 0): ?>
+<h2>Search Results for "<span><?php echo ucwords(CHTML::encode($this->model_itemSearchForm->keywords)); ?></span>"</h2>
+<?php endif; ?>
 
-<?php echo count($subcategories) > 1 ? CHtml::dropDownList('subcategories', '', $subcategories) : ''; ?>
+<div class="filters">
 
-<div class="row">
-	<div class="col-md-12 col-lg-8">
+	<?php
+	$value_prev = array('/item/search', 'category' => false);
+	foreach($categories as $key => $value) {
+		if($value_prev['category'])
+			$link = preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '$1category=' . $value_prev['category'], $uri);
+		else
+			$link = preg_replace('/(\?|\&)category=' . $_GET['category'] . '/', '', $uri);
+		echo CHtml::link('<span>' . $key . '</span><i class="fa fa-times"></i>', $link);
+		$value_prev = $value;
+	}
+	?><!--
 
-		<h2>Search Results for <?php echo ucwords(CHTML::encode($this->model_itemSearchForm->keywords)); ?></h2>
+	--><?php echo count($subcategories) > 1 ? CHtml::dropDownList('subcategories', '', $subcategories) : ''; ?><!--
 
-		<?php $this->renderPartial('/item/_index', array(
-			'dataProvider' => $dataProvider,
-			'options' => array(
-				'toolbox' => array(
-					'viewButton' => false,
-					'sortButton' => false,
-				),
-			),
-		)); ?>
+	--><?php if(isset($_GET['price-max']) && $_GET['price-max'] == 0):
+		echo CHtml::link('<span>FREE</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)price-max=0(\&)?/', '$1', $uri));
+	endif; ?><!--
 
-	</div>
+	--><?php if(isset($_GET['course'])):
+		echo CHtml::link('<span>' . (strlen($_GET['course']) > 0 ? 'From your course' : 'Course-related') . '</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)course=\d*(\&)?/', '$1', $uri));
+	endif; ?>
+
 </div>
+
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+	),
+)); ?>
 
 </div><!-- #item_search -->
 
