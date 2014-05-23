@@ -59,25 +59,48 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$dataProvider_freebies=new CActiveDataProvider('Item',array(
-			'criteria'=>array(
-				'condition'=>'user_id IS NOT NULL' .
-					' && price=0',
-				'order'=>'updated DESC',
-				'limit'=>3,
-			),
-			/*
-			'pagination'=>array(
-				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 3,
-			),
-			*/
-			'pagination'=>false,
-		));
+		if(Yii::app()->user->isGuest)
+		{
+			$dataProvider_freebies=new CActiveDataProvider('Item',array(
+				'criteria'=>array(
+					'condition'=>'user_id IS NOT NULL'.
+						' && price=0',
+					'order'=>'updated DESC',
+					'limit'=>3,
+				),
+				/*
+				'pagination'=>array(
+					'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 3,
+				),
+				*/
+				'pagination'=>false,
+			));
+		}
+		else
+		{
+			$dataProvider_freebies=new CActiveDataProvider('Item',array(
+				'criteria'=>array(
+					'join'=>'LEFT JOIN user ON user_id=user.id',
+					'condition'=>'user_id IS NOT NULL'.
+						' && price=0'.
+						' && user.university_id='.Yii::app()->params['user']->university_id,
+					'order'=>'updated DESC',
+					'limit'=>3,
+				),
+				/*
+				'pagination'=>array(
+					'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 3,
+				),
+				*/
+				'pagination'=>false,
+			));
+		}
 		if(Yii::app()->user->isGuest)
 		{
 			$dataProvider_course=new CActiveDataProvider('Item',array(
 				'criteria'=>array(
-					'condition'=>'user_id IS NOT NULL',
+					'condition'=>'user_id IS NOT NULL'.
+						' && course=true',
 					'order'=>'created DESC',
 					'limit'=>3,
 				),
@@ -94,8 +117,10 @@ class SiteController extends Controller
 			$dataProvider_course=new CActiveDataProvider('Item',array(
 				'criteria'=>array(
 					'join'=>'LEFT JOIN user ON user_id=user.id',
-					'condition'=>'user_id IS NOT NULL' .
-						' && user.course_id=' . Yii::app()->params['user']->course_id,
+					'condition'=>'user_id IS NOT NULL'.
+						' && course=true'.
+						' && user.university_id='.Yii::app()->params['user']->university_id.
+						' && user.course_id='.Yii::app()->params['user']->course_id,
 					'order'=>'created DESC',
 					'limit'=>3,
 				),

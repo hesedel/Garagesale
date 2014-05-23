@@ -1020,6 +1020,11 @@ body.is-animating #menu-footer {
 
 				&.right {
 					padding-right: $gutter-width;
+
+					input[type=submit] {
+						display: none;
+					}
+
 				}
 
 			}
