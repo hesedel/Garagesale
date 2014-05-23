@@ -16,7 +16,15 @@ $uri = Yii::app()->request->requestUri;
 
 <div class="filters">
 
-	<?php
+	<?php if(isset($_GET['course'])):
+		echo CHtml::link('<span>' . (strlen($_GET['course']) > 0 ? 'From your course' : 'Course-related') . '</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)course=\d*(\&)?/', '$1', $uri));
+	endif; ?><!--
+
+	--><?php if(isset($_GET['price-max']) && $_GET['price-max'] == 0):
+		echo CHtml::link('<span>FREE</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)price-max=0(\&)?/', '$1', $uri));
+	endif; ?><!--
+
+	--><?php
 	$value_prev = array('/item/search', 'category' => false);
 	foreach($categories as $key => $value) {
 		if($value_prev['category'])
@@ -28,15 +36,11 @@ $uri = Yii::app()->request->requestUri;
 	}
 	?><!--
 
-	--><?php echo count($subcategories) > 1 ? CHtml::dropDownList('subcategories', '', $subcategories) : ''; ?><!--
+	--><?php echo count($subcategories) > 1 ? '<div class="dropDownList">' . CHtml::dropDownList('subcategories', '', $subcategories) . '</div>' : ''; ?><!--
 
-	--><?php if(isset($_GET['price-max']) && $_GET['price-max'] == 0):
-		echo CHtml::link('<span>FREE</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)price-max=0(\&)?/', '$1', $uri));
-	endif; ?><!--
-
-	--><?php if(isset($_GET['course'])):
-		echo CHtml::link('<span>' . (strlen($_GET['course']) > 0 ? 'From your course' : 'Course-related') . '</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)course=\d*(\&)?/', '$1', $uri));
-	endif; ?>
+	--><?php
+	echo '<div class="dropDownList">' . CHtml::dropDownList('sort', '', array('' => 'Sort', 0 => 'Price Low - High', 1 => 'Price High - Low')) . '</div>';
+	?>
 
 </div>
 
@@ -66,7 +70,8 @@ $uri = Yii::app()->request->requestUri;
 		) . ");
 	});
 	$('#subcategories').bind('change blur', function() {
-		window.location.href = $('option:selected', $(this)).attr('data-uri');
+		if($('option:selected', $(this)).index() > 0)
+			window.location.href = $('option:selected', $(this)).attr('data-uri');
 	});
 	",
 CClientScript::POS_READY);
