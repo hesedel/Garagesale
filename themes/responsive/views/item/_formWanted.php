@@ -74,15 +74,12 @@ $this->layout = 'column1';
 				<tr>
 					<th><?php echo $form->labelEx($model, 'itemCondition'); ?></th>
 					<td>
-						
-							<?php echo CHtml::activeDropDownList($model,'itemCondition', array(
+						<?php echo CHtml::activeDropDownList($model,'itemCondition', array(
 								1 => 'Brand New',
 								2 => 'Newish',
 								3 => 'Used',
-
-							), 
-
-							)); ?>
+							)
+						); ?>
 						
 						<?php echo $form->error($model, 'itemCondition'); ?>
 					</td>
@@ -96,21 +93,6 @@ $this->layout = 'column1';
 						<?php echo $form->error($model, 'collectionLocation'); ?>
 					</td>
 				</tr>
-
-			<?php if(CCaptcha::checkRequirements()): ?>
-			<tr>
-				<th><?php echo $form->labelEx($model, 'verifyCode'); ?></th>
-				<td>
-					<div class="captcha"><?php $this->widget('CCaptcha', array('showRefreshButton' => false)); ?>
-					</div>
-					<div class="hint">Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.</div>
-					<div class="input-text">
-					<?php echo $form->textField($model, 'verifyCode'); ?>
-					</div>
-					<?php echo $form->error($model, 'verifyCode'); ?>
-				</td>
-			</tr>
-			<?php endif; ?>
 
 			</tbody>
 			<tfoot>

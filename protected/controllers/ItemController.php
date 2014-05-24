@@ -19,7 +19,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','wanted','update','updateWanted','delete','ajaxRemoveImage'),
+				'actions'=>array('create','createWanted','update','updateWanted','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -304,7 +304,7 @@ class ItemController extends Controller
 		}
 
 		Yii::app()->theme='responsive';
-		$this->render('wanted',array(
+		$this->render('createWanted',array(
 			'model'=>$model,
 		));
 	}
