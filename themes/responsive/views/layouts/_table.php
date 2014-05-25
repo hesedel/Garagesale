@@ -95,7 +95,7 @@
 
 		<?php #menu end ?>
 
-		<?php if($this->getRoute() !== 'site/index'): #search-toggle ?>
+		<?php if(true || $this->getRoute() !== 'site/index'): #search-toggle ?>
 
 		<div id="search-toggle"><i class="fa fa-search"></i></div>
 
@@ -193,6 +193,16 @@
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
+		<?php if(true || $this->getRoute() === 'site/index'): #login ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+			<?php echo CHtml::link('<i class="fa fa-user"></i>', array('/site/login')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #login end ?>
+
+		<?php endif; ?>
+
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
@@ -201,17 +211,7 @@
 
 		<?php #post end ?>
 
-		<?php if($this->getRoute() === 'site/index'): #login ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php endif; #login end ?>
-
-		<?php endif; ?>
-
-		<?php if($this->getRoute() !== 'site/index'): #search ?>
+		<?php if(true || $this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 
