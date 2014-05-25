@@ -73,8 +73,8 @@ $this->layout = 'column1';
 					</td>
 				</tr>
 
-				<?php /*
-				<tr class="repeat">
+				 
+				<tr>
 					<th><?php echo $form->labelEx($model, 'password_repeat'); ?></th>
 					<td>
 						<div class="input-text">
@@ -84,7 +84,7 @@ $this->layout = 'column1';
 						<?php echo $form->error($model, 'password_repeat'); ?>
 					</td>
 				</tr>
-				*/ ?>
+				
 
 				<tr>
 					<th><?php echo $form->labelEx($model, 'name_first'); ?></th>
@@ -97,7 +97,7 @@ $this->layout = 'column1';
 					</td>
 				</tr>
 
-				<?php /*
+				 
 				<tr>
 					<th><?php echo $form->labelEx($model, 'name_last'); ?></th>
 					<td>
@@ -108,7 +108,7 @@ $this->layout = 'column1';
 						<?php echo $form->error($model, 'name_last'); ?>
 					</td>
 				</tr>
-				*/ ?>
+				
 
 				<tr>
 					<th><?php echo $form->labelEx($model, 'university_id'); ?></th>
@@ -156,7 +156,8 @@ $this->layout = 'column1';
 						<br>Letters are not case-sensitive.</div>
 						<div class="input-text">
 							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'none')); ?>
-							<span class="placeholder">Please enter the letters as they are shown in the image above.</span>
+							<?php /* 
+								<span class="placeholder">Please enter the letters as they are shown in the image above.</span>*/ ?>
 						</div>
 						<?php echo $form->error($model, 'verifyCode'); ?>
 					</td>
