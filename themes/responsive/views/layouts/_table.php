@@ -150,10 +150,10 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
-					<li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li>
-					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
-					<li class="divider"></li>
-					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
+					<?php /* <li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li> */ ?>
+					<?php /* <li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li> */ ?>
+					<?php /* <li class="divider"></li> */ ?>
+					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Profile', array('/admin/user/account')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
 					<li class="divider visible-xs"></li>
 					<li class="visible-xs"><?php echo CHtml::link('<i class="fa fa-sign-out"></i>Logout', array('/site/logout')); ?></li>
