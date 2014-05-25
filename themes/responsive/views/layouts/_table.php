@@ -26,11 +26,7 @@
 
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : ''; ?>
 				<?php echo CHtml::link(
-					CHtml::image(
-						'/img/vendor/slir/h72/img/logo-white.png',
-						CHtml::encode(Yii::app()->name)
-					) .
-						'St<span>ycle</span>',
+						'stycle',
 					'/',
 					array('id' => 'logo')
 				); ?>
