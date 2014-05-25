@@ -100,14 +100,14 @@ $this->layout = 'column1';
 
 
 				<tr>
-				<th><?php echo $form->labelEx($model, 'querky_facts'); ?>
+				<th><?php echo $form->labelEx($model, 'quirky'); ?>
 				<td>
 
 					<div class="textarea">
-						<?php echo $form->textArea($model, 'querky_facts', array('rows' => 6, 'cols' => 50)); ?>
-						<span class="placeholder">Please enter the location to pickup the item, for example, on Campus?</span>
+						<?php echo $form->textArea($model, 'quirky', array('rows' => 6, 'cols' => 50)); ?>
+						<span class="placeholder">Tell fellow students a little bit about yourself!</span>
 					</div>
-					<?php echo $form->error($model, 'querky_facts'); ?>
+					<?php echo $form->error($model, 'querky'); ?>
 				</td>
 			</tr>
 

@@ -125,7 +125,7 @@ class User extends CActiveRecord
 			'image_type' => 'Image Type',
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
-			'quirky' => 'Quirky',
+			'quirky' => 'Quirky facts about me',
 			'location_id' => 'Location',
 			'university_id' => 'University',
 			'campus_id' => 'Campus',
