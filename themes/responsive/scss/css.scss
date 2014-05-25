@@ -81,29 +81,8 @@ body {
 
 }
 
-hr {
-	border-top: 1px solid #ccc;
-}
-
 i {
-	color: rgba(255,255,255,0.8) !important;
-}
-
-#user-view-header {
-	@extend .clearfix;
-
-	.profileImg, #user-view-header-content {
-	float: left;
-	}
-
-	.profileImg {
-	width: 100px;
-	height: 100px;
-	border: 5px solid #ddd;
-	margin: 0 15px 0 0;
-	}
-
-
+	//color: rgba(255,255,255,0.8) !important;
 }
 
 #footer {
@@ -212,4 +191,4 @@ i {
 
 }
 
-@import 'site_', 'item_';
+@import 'site_', 'user_', 'item_';
