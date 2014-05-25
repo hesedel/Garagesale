@@ -5,14 +5,15 @@
 		<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
 			<div class="input-text">
 				<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+					'id' => 'ItemSearchForm_keywords_b',
 					'model' => $this->model_itemSearchForm,
 					'attribute' => 'keywords',
 					'sourceUrl' => array('/item/search_autocomplete'),
 					'options' => array(
-						'appendTo' => '#search .input-text',
+						'appendTo' => '#site_index-search .input-text',
 						'minLength' => 2,
 						'position' => array(
-							'of' => '#search .input-text',
+							'of' => '#site_index-search .input-text',
 							'collision' => 'fit',
 						),
 					),

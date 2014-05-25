@@ -1422,6 +1422,14 @@
       "parents": [
         "5a2d746f"
       ]
+    },
+    "d41cecdb": {
+      "id": "d41cecdb",
+      "pid": "c6f102e3",
+      "path": "scss\\_user_.scss",
+      "parents": [
+        "5a2d746f"
+      ]
     }
   },
   "images": {},

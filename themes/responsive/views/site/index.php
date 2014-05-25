@@ -45,7 +45,7 @@ $this->layout = 'column1';
 	'method'=>'get',
 )); ?>
 
-<div id="search"><?php $this->renderPartial('/layouts/_search'); ?></div>
+<div id="site_index-search"><?php $this->renderPartial('/layouts/_site_index-search'); ?></div>
 
 <?php $this->endWidget(); ?>
 

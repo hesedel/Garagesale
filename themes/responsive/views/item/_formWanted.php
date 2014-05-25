@@ -11,14 +11,6 @@ $this->layout = 'column1';
 <div class="g-form" id="site_contact">
 	<h2>Post a Wanted Ad</h2>
 
-	<?php if(Yii::app()->user->hasFlash('reported')): ?>
-
-	<div class="flash-success">
-		<?php echo Yii::app()->user->getFlash('reported'); ?>
-	</div>
-	<h3>Your item has been posted successfully!</h3>
-
-	<?php else: ?>
 
 	<div class="form">
 		<p>If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.</p>
@@ -111,5 +103,4 @@ $this->layout = 'column1';
 		<?php $this->endWidget(); ?>			
 	</div>
 
-	<?php endif; ?>
 </div>

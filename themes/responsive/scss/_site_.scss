@@ -35,7 +35,8 @@
 
 
 	.h2 {
-		font-size: 1.2em;
+		font-size: 1.14285714285714em;
+		text-align: center;
 		line-height: $line-height;
 		margin-top: $line-height;
 
@@ -49,7 +50,7 @@
 		}
 
 		.seeAll {
-			font-size: .75em;
+			font-size: 1em;
 			color: $color_headings;
 			font-family: $sans-serif;
 			font-weight: 700;
@@ -126,7 +127,7 @@
 
 	}
 
-	#search {
+	#site_index-search {
 		margin-top: $line-height;
 
 		.table {
