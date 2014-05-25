@@ -9,8 +9,10 @@
  * @property string $updated
  * @property string $title
  * @property string $price
+ * @property integer $course
  * @property string $description
  * @property string $pickup
+ * @property integer $wanted
  * @property integer $category_id
  * @property integer $condition_id
  * @property string $user_id
@@ -47,7 +49,7 @@ class Item extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, price, description', 'required'),
-			array('price, category_id, location_id, condition_id', 'numerical', 'integerOnly'=>true),
+			array('price, course, wanted, category_id, location_id, condition_id', 'numerical', 'integerOnly'=>true),
 			array('title, user_id', 'length', 'max'=>64),
 			array('phone', 'length', 'max'=>16),
 			array('price', 'length', 'max'=>10),
@@ -57,7 +59,7 @@ class Item extends CActiveRecord
 			array('category_id, location_id, condition_id, user_id', 'default', 'value'=>null),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, created, updated, title, price, description, category_id, location_id, condition_id, user_id', 'safe', 'on'=>'search'),
+			array('id, created, updated, title, price, course, description, wanted, category_id, location_id, condition_id, user_id', 'safe', 'on'=>'search'),
 			array('images', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>5), // minSize 16KB, maxSize 3MB
 			array('photo', 'file', 'allowEmpty'=>true, 'types'=>'gif, jpg, jpeg, png', 'minSize'=>16*1024, 'maxSize'=>3*(1024*1024), 'maxFiles'=>1), // minSize 16KB, maxSize 3MB
 			array('images, photo', 'ImageValidator', 'allowEmpty'=>true),
@@ -92,8 +94,10 @@ class Item extends CActiveRecord
 			'updated' => 'Updated',
 			'title' => 'Item Title',
 			'price' => 'Price',
+			'course' => 'Course Area Related',
 			'description' => 'Description',
 			'pickup' => 'Pickup Details',
+			'wanted' => 'Wanted',
 			'category_id' => 'Category',
 			'condition_id' => 'Condition',
 			'user_id' => 'User',
@@ -126,8 +130,10 @@ class Item extends CActiveRecord
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('updated',$this->updated,true);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('price',$this->price);
+		$criteria->compare('price',$this->price,true);
+		$criteria->compare('course',$this->course);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('wanted',$this->wanted);
 		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('condition_id',$this->condition_id);
 		$criteria->compare('user_id',$this->user_id,true);
@@ -167,7 +173,7 @@ class Item extends CActiveRecord
 	{
 		if($this->category_id != null)
 		{
-			$categories = array($this->category->title);
+			$categories = array($this->category->title=>array('/item/search', 'category'=>$this->category->id));
 			$category_parent = $this->category->parent_id;
 			while($category_parent != null) {
 				$category_parent = Yii::app()->db->createCommand()
@@ -175,7 +181,7 @@ class Item extends CActiveRecord
 					->from('item_category')
 					->where('id=:id', array(':id'=>$category_parent))
 					->queryRow();
-				array_unshift($categories, $category_parent['title']);
+				$categories = array($category_parent['title']=>array('/item/search', 'category'=>$category_parent['id'])) + $categories;
 				$category_parent = $category_parent['parent_id'];
 			}
 			return $categories;

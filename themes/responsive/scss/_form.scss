@@ -45,6 +45,10 @@ input[type=text]:disabled {
 	@include opacity(1);
 }
 
+input[type=email] {
+	@include box-shadow(none);
+}
+
 select {
 	max-width: 100%;
 }
@@ -99,7 +103,8 @@ div.input-text {
 	}
 
 	span.placeholder {
-		top: $line-height * (1 / 3);
+		//top: $line-height * (1 / 3);
+		top: $line-height * .5;
 	}
 
 }
@@ -615,7 +620,7 @@ table.form {
 					div.textarea {
 
 						span.placeholder {
-							display: none;
+							//display: none;
 						}
 
 					}

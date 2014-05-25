@@ -78,10 +78,11 @@ function image_autoOrient($CUploadedFile)
 {
 	if(exif_imagetype($CUploadedFile->tempName) === IMAGETYPE_JPEG)
 	{
-		$exif = exif_read_data($CUploadedFile->tempName);
+		$exif = @exif_read_data($CUploadedFile->tempName);
 		if(!empty($exif['Orientation']))
 		{
-			$image = imagecreatefromjpeg($CUploadedFile->tempName);
+			ini_set('gd.jpeg_ignore_warning', 1);
+			$image = @imagecreatefromjpeg($CUploadedFile->tempName);
 			switch($exif['Orientation'])
 			{
 				case 3:

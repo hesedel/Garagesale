@@ -19,9 +19,9 @@ $this->layout = 'column1';
 <?php endif; ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Stycle freebies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Stycle freebies</h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
-<div class="h2">Latest freebies from your Uni<h2></h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2">Latest freebies from your Uni<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_freebies,
@@ -50,9 +50,9 @@ $this->layout = 'column1';
 <?php $this->endWidget(); ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Course materials and supplies</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Course materials and supplies</h2> <?php echo CHtml::link('See all', array('/item/search', 'course' => ''), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
-<div class="h2"><h2>Latest from your area of study</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Latest from your area of study</h2> <?php echo CHtml::link('See all', array('/item/search', 'course' => Yii::app()->params['user']->course_id), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_course,
