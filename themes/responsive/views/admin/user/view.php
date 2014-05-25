@@ -51,49 +51,44 @@ $this->layout='column3';
 <?php $this->endWidget(); ?>
 
 <div class="g-position-relative" id="user_view">
-	<h2> 
-		<!-- Needs to be inline span (or change div to display:inline-block; --><?php
-			if($model->image)
-				echo CHtml::image('/img/vendor/slir/w263-be8e8e3'.$model->getImage(), $model->id, array('class'=>'image'));
-			else
-				$this->renderPartial('_noImage');
-		?>
-		<?php echo $model->id; ?>
-	</h2>
+	<!-- Needs to be inline span (or change div to display:inline-block; -->
+
+<div id="user-view-header">
+	<?php
+		if($model->image)
+			echo CHtml::image('/img/vendor/slir/w263-be8e8e3'.$model->getImage(), $model->id, array('class'=>'image profileImg'));
+		else
+			$this->renderPartial('_noImage');
+	?>
+	<div id="user-view-header-content">
+		<h3> 
+			<?php echo $model->name_first; ?>
+		</h3>
+		<p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+		<p>Joined: <?php echo time_local($model->created); ?></p>
+	</div>
+</div>
+<div>
+	<hr />
 	<?php $params = array('User'=>$model); ?>
 
-	<div class="g-actions text-right"><?php
+	<p><?php echo $model->university->parent_id ? $model->university->parent->title : $model->university->title; ?></p>
+	<p>Insert Campus</p> 
+	<p>Insert Area of Study</p> 	
+	<p>Insert quirky fact details</p>
+	<p><?php if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')): ?><?php echo $model->getAttributeLabel('email'); ?>: <?php echo $model->email; ?></p>
+	<?php echo $model->getAttributeLabel('phone'); ?>: <?php echo $model->phone; ?>
+</div>
+<hr />
+	<div class="g-actions btn-group"><?php echo CHtml::link('Reset password', array('account'), array('class' => 'btn btn-default'));?><?php
 		if(Yii::app()->user->checkAccess('updateSelf',$params) && !Yii::app()->user->checkAccess('super'))
-			echo CHtml::link('Update', array('account'), array('class' => 'btn btn-default'));
+			echo CHtml::link('Update profile', array('account'), array('class' => 'btn btn-default'));
 		if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super'))
-			echo CHtml::link('Update', array('update', 'id'=>$model->id), array('class' => 'btn btn-default'));
+			echo CHtml::link('Update profile', array('update', 'id'=>$model->id), array('class' => 'btn btn-default'));
 		if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super'))
 			echo CHtml::link('Delete', '#', array('class' => 'btn btn-default', 'submit'=>array('delete', 'id'=>$model->id), 'confirm'=>'Are you sure you want to delete this user?'));
-	?></div>
-	<table class="g-table" cellspacing="1">
-	<tr>
-  		<th>Name</th>
-  		<td><?php echo $model->name_first; ?></td>
-  	</tr>
-  	<tr>
-  		<th>University</th>
-  		<td><?php echo $model->university->parent_id ? $model->university->parent->title : $model->university->title; ?></td>
-  	</tr>
-  	<tr>
-  		<th>Joined</th>
-  		<td><?php echo time_local($model->created); ?></td>
-	</tr>
-	<?php if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')): ?>
-
-
-		<tr>
-			<th><?php echo $model->getAttributeLabel('email'); ?></th>
-			<td><?php echo $model->email; ?></td>
-		</tr>
-		<tr>
-			<th><?php echo $model->getAttributeLabel('phone'); ?></th>
-			<td><?php echo $model->phone; ?></td>
-		</tr>
-		</table>
-	<?php endif; ?>
+	?>
+	<?php endif; ?></div>
+<hr />
+<h4>Items for sale</h4>
 </div>
