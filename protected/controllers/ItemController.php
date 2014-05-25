@@ -19,7 +19,7 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow',
-				'actions'=>array('create','wanted','update','updateWanted','delete','ajaxRemoveImage'),
+				'actions'=>array('create','createWanted','update','updateWanted','delete','ajaxRemoveImage'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -279,32 +279,23 @@ class ItemController extends Controller
 	public function actionCreateWanted()
 	{
 		$model=new WantedForm;
-		$model->location_id=Yii::app()->db->createCommand()
-			->select('location_id')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
-			->queryScalar();
-		$model->phone=Yii::app()->db->createCommand()
-			->select('phone')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>Yii::app()->user->id))
-			->queryScalar();
+		$model->wanted=true;
 
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['WantedForm']))
 		{
 			$model->attributes=$_POST['WantedForm'];
-			$model->location_id=$_POST['WantedForm']['location_id'];
+			
 			if($model->save())
 			{
-
+				Yii::app()->user->setFlash('success','Your wanted item has been posted successfully');
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
 
 		Yii::app()->theme='responsive';
-		$this->render('wanted',array(
+		$this->render('createWanted',array(
 			'model'=>$model,
 		));
 	}
@@ -312,16 +303,7 @@ class ItemController extends Controller
 	public function actionUpdateWanted($id)
 	{
 		$model=$this->loadModel($id);
-		$model->location_id=Yii::app()->db->createCommand()
-			->select('location_id')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>$model->user_id))
-			->queryScalar();
-		$model->phone=Yii::app()->db->createCommand()
-			->select('phone')
-			->from('user')
-			->where('id=:user_id',array(':user_id'=>$model->user_id))
-			->queryScalar();
+			
 
 		$params=array('WantedForm'=>$model);
 		if(
@@ -340,7 +322,8 @@ class ItemController extends Controller
 
 		if(isset($_POST['WantedForm']))
 		{
-				$this->redirect(array('view','id'=>$model->id));
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
 			}
 
 		Yii::app()->theme='responsive';

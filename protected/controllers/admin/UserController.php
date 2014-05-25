@@ -541,7 +541,7 @@ class UserController extends Controller
 			$model->attributes=$_POST['ReportForm'];
 			if($model->validate())
 			{
-				$headers="From: {Yii::app()->params['user']->email}\r\nReply-To: {Yii::app()->params['user']->email}";
+				$headers="From: ".Yii::app()->params['user']->email."\r\nReply-To: ".Yii::app()->params['user']->email."\r\nContent-Type: text/html";
 				mail(Yii::app()->params['adminEmail'],'User Report', $emailBody,$headers);
 				Yii::app()->user->setFlash('reported','Thank you for contacting the Stycle team. We take reports very seriously and we will respond to you as soon as possible.');
 				$this->refresh();
