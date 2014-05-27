@@ -66,15 +66,12 @@ $this->layout = 'column1';
 				<tr>
 					<th><?php echo $form->labelEx($model, 'itemCondition'); ?></th>
 					<td>
-						
-							<?php echo CHtml::activeDropDownList($model,'itemCondition', array(
+						<?php echo CHtml::activeDropDownList($model,'itemCondition', array(
 								1 => 'Brand New',
 								2 => 'Newish',
 								3 => 'Used',
-
-							), 
-
-							)); ?>
+							)
+						); ?>
 						
 						<?php echo $form->error($model, 'itemCondition'); ?>
 					</td>

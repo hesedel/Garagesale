@@ -1,6 +1,6 @@
 <?php
 
-class WantedForm extends CFormModel
+class WantedForm extends Item
 {
 	public $title;
 	public $description;

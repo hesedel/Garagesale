@@ -30,7 +30,7 @@
 						'/img/vendor/slir/h72/img/logo-white.png',
 						CHtml::encode(Yii::app()->name)
 					) .
-						'St<span>ycle</span>',
+						'st<span>ycle</span>',
 					'/',
 					array('id' => 'logo')
 				); ?>
