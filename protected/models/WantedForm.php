@@ -1,6 +1,6 @@
 <?php
 
-class WantedForm extends CFormModel
+class WantedForm extends Item
 {
 	public $title;
 	public $description;
@@ -26,7 +26,7 @@ class WantedForm extends CFormModel
 			'price'=>'Price prepared to pay',
 			'freebieCheckbox'=>'Free!',
 			'itemCondition'=>'Item Condition',
-			'collectionLocation'=>'What location can the item be collected form?'
+			'collectionLocation'=>'What location can the item be collected from?'
 		);
 	}
 

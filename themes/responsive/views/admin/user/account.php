@@ -217,6 +217,10 @@ $this->layout = 'column1';
 <?php Yii::app()->clientScript->registerScript(
 	'user_account',
 	"
+	if(location.hash === '#user_account-password' || location.hash === '#user_account-password/') {
+		$('a[href=#user_account-password]').trigger('click');
+	}
+
 	$('a', '#user_account div.image').bind('click', function() {
 		var \$this = $(this);
 		if(confirm('Are you sure you want to delete your profile picture?')) {

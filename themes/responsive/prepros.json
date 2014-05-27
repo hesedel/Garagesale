@@ -248,6 +248,20 @@
         "autoprefixer": false
       }
     },
+    "50ef0fa9": {
+      "id": "50ef0fa9",
+      "pid": "c6f102e3",
+      "name": "main.js",
+      "input": "js\\main.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": false,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    },
     "79debb14": {
       "id": "79debb14",
       "pid": "c6f102e3",
@@ -267,18 +281,18 @@
         "autoprefixer": false
       }
     },
-    "50ef0fa9": {
-      "id": "50ef0fa9",
+    "a22e3e7c": {
+      "id": "a22e3e7c",
       "pid": "c6f102e3",
-      "name": "main.js",
-      "input": "js\\main.js",
+      "name": "password-change.haml",
+      "input": "views\\admin\\user\\password-change.haml",
       "customOutput": false,
-      "type": "Js",
+      "type": "Haml",
       "config": {
         "autoCompile": false,
-        "uglify": true,
-        "mangle": true,
-        "sourcemaps": false
+        "format": "html5",
+        "outputStyle": "indented",
+        "doubleQuotes": false
       }
     }
   },
@@ -919,6 +933,14 @@
         "5a2d746f"
       ]
     },
+    "79debb14": {
+      "id": "79debb14",
+      "pid": "c6f102e3",
+      "path": "scss\\vendor\\fontello\\item_categories.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
     "7636350e": {
       "id": "7636350e",
       "pid": "c6f102e3",
@@ -1383,6 +1405,14 @@
         "5a2d746f"
       ]
     },
+    "4a575d4b": {
+      "id": "4a575d4b",
+      "pid": "c6f102e3",
+      "path": "scss\\_g-tabs.scss",
+      "parents": [
+        "5a2d746f"
+      ]
+    },
     "ff755db7": {
       "id": "ff755db7",
       "pid": "c6f102e3",
@@ -1407,18 +1437,10 @@
         "5a2d746f"
       ]
     },
-    "4a575d4b": {
-      "id": "4a575d4b",
+    "d41cecdb": {
+      "id": "d41cecdb",
       "pid": "c6f102e3",
-      "path": "scss\\_g-tabs.scss",
-      "parents": [
-        "5a2d746f"
-      ]
-    },
-    "79debb14": {
-      "id": "79debb14",
-      "pid": "c6f102e3",
-      "path": "scss\\vendor\\fontello\\item_categories.scss",
+      "path": "scss\\_user_.scss",
       "parents": [
         "5a2d746f"
       ]

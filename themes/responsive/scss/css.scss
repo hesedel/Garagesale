@@ -82,7 +82,7 @@ body {
 }
 
 i {
-	color: rgba(255,255,255,0.8) !important;
+	//color: rgba(255,255,255,0.8) !important;
 }
 
 #footer {
@@ -191,4 +191,4 @@ i {
 
 }
 
-@import 'site_', 'item_';
+@import 'site_', 'user_', 'item_';

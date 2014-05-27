@@ -16,6 +16,7 @@
  * @property string $image_type
  * @property string $image_size
  * @property integer $verified
+ * @property string $quirky
  * @property integer $location_id
  * @property integer $university_id
  * @property integer $course_id
@@ -54,14 +55,14 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, email, name_first, university_id, course_id', 'required'),
+			array('id, email, name_first, name_last, university_id, course_id', 'required'),
 			array('verified, location_id, university_id, campus_id, course_id', 'numerical', 'integerOnly'=>true),
 			array('id, email', 'length', 'max'=>64),
 			array('password, name_first, name_last', 'length', 'max'=>32),
 			array('phone', 'length', 'max'=>16),
 			array('image_type', 'length', 'max'=>4),
 			array('image_size', 'length', 'max'=>10),
-			array('created, image', 'safe'),
+			array('quirky, created, image', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
@@ -124,6 +125,7 @@ class User extends CActiveRecord
 			'image_type' => 'Image Type',
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
+			'quirky' => 'Quirky facts about me',
 			'location_id' => 'Location',
 			'university_id' => 'University',
 			'campus_id' => 'Campus',

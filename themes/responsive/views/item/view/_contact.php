@@ -14,17 +14,6 @@
 )); ?>
 <table class="form--partial">
 	<tbody>
-
-		<tr>
-			<td>
-				<div class="textarea">
-					<?php echo $form->textArea($model, 'body'); ?>
-					<span class="placeholder">Your message</span>
-				</div>
-				<?php echo $form->error($model,'body'); ?>
-			</td>
-		</tr>
-
 		<tr>
 			<td>
 				<div class="input-text">
@@ -37,6 +26,18 @@
 
 		<tr>
 			<td>
+				<div class="textarea">
+					<?php echo $form->textArea($model, 'body'); ?>
+					<span class="placeholder">Your message</span>
+				</div>
+				<?php echo $form->error($model,'body'); ?>
+			</td>
+		</tr>
+
+		
+<?php /*
+		<tr>
+			<td>
 				<div class="input-text">
 					<?php echo $form->textField($model, 'name', array('disabled' => Yii::app()->user->isGuest ? false : true)); ?>
 					<span class="placeholder">Your name</span>
@@ -44,6 +45,8 @@
 				<?php echo $form->error($model,'name'); ?>
 				</td>
 		</tr>
+
+		*/?>
 
 	</tbody>
 	<tfoot>
