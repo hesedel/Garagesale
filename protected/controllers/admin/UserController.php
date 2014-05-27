@@ -230,7 +230,6 @@ class UserController extends Controller
 
 	public function actionPassword_change()
 	{
-		/*
 		$model_passwordChangeForm=new PasswordChangeForm;
 
 		if(isset($_POST['ajax']) && $_POST['ajax']==='user-passwordChange-form')
@@ -247,6 +246,7 @@ class UserController extends Controller
 			->from('user_password_change')
 			->where('id=:id',array(':id'=>$_GET['id']))
 			->queryScalar();
+		/*
 		if($id)
 		{
 			$model_passwordChangeForm=PasswordChangeForm::model()->findByPk($id);
@@ -268,9 +268,9 @@ class UserController extends Controller
 
 			$this->render('password_change',array('model'=>$model_passwordChangeForm));
 		}
+		*/
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-		*/
 	}
 
 	public function actionUnverified()
