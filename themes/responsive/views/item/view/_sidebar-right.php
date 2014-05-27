@@ -3,7 +3,7 @@
 <?php $user = User::model()->findByPk($model->user_id); ?>
 <div class="user">
 
-	<strong>Message Seller</strong>
+	<strong>Email Seller</strong>
 
 
 	<?php echo CHtml::link(
@@ -36,7 +36,7 @@
 
 	<?php if(Yii::app()->user->isGuest): ?>
 	<div class="guest">
-		<p>Sorry, but you must <?php echo CHtml::link('login', array('/site/login')); ?> to contact this seller.</p>
+		<p>Interested in this item? <?php echo CHtml::link('Login', array('/site/login')); ?> to contact this seller.</p>
 		<p>Don't have an account yet? Click here to <?php echo CHtml::link('register', array('/site/register')); ?> now</p>
 	</div>
 	<?php else: ?>
