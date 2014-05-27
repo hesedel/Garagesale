@@ -9,9 +9,9 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="alert alert-warning alert-dismissable intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h4>Student and staff classifieds.</h4>
+	<h4>Uni student and staff marketplace.</h4>
 	<div class="call-to-action">
-	<?php echo CHtml::link('Join our Community', array('/site/register'), array('class' => 'g-button--primary')); ?>
+	<?php echo CHtml::link('Post an item to sell', array('/post/'), array('class' => 'g-button--primary')); ?>
 	</div>
 	<p><span class="small">Already a member? <?php echo CHtml::link('Login', array('/login')); ?></span></p> 
 </div>
