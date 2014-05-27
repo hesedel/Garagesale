@@ -260,9 +260,9 @@ class UserController extends Controller
 
 			Yii::app()->user->logout();
 
-			$identity=new UserIdentity('','');
-			$identity->setId($id);
-			Yii::app()->user->login($identity,60); // one minute
+			//$identity=new UserIdentity('','');
+			//$identity->setId($id);
+			//Yii::app()->user->login($identity,60); // one minute
 
 			//$this->redirect(array('/admin/user/account'));
 
