@@ -58,6 +58,6 @@ $this->pageTitle=Yii::app()->name . ' - Change Password';
 		$this->endWidget();
 		?>
 
-	</form>
+	</div>
 
 </div>
