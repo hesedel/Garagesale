@@ -254,8 +254,10 @@ class UserController extends Controller
 			if(isset($_POST['PasswordChangeForm']))
 			{
 				$model_passwordChangeForm->attributes=$_POST['PasswordChangeForm'];
-				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
+				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save()) {
+					Yii::app()->user->setFlash('success','You\'ve successfully changed your password.');
 					$this->redirect(array('/site/login','username'=>$id));
+				}
 			}
 
 			Yii::app()->user->logout();
