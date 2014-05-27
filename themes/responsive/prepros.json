@@ -289,7 +289,7 @@
       "customOutput": false,
       "type": "Haml",
       "config": {
-        "autoCompile": true,
+        "autoCompile": false,
         "format": "html5",
         "outputStyle": "indented",
         "doubleQuotes": false
