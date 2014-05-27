@@ -91,4 +91,15 @@ $this->layout='column3';
 	<?php endif; ?></div>
 <hr />
 <h4>Items for sale</h4>
+
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+	),
+)); ?>
+
 </div>
