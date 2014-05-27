@@ -72,10 +72,14 @@ $this->layout='column3';
 	<hr />
 	<?php $params = array('User'=>$model); ?>
 
-	<p><?php echo $model->university->parent_id ? $model->university->parent->title : $model->university->title; ?></p>
-	<p>Insert Campus</p> 
-	<p>Insert Area of Study</p> 	
-	<p>Insert quirky fact details</p>
+	<?php if($model->university_id): ?>
+	<p>University: <?php echo $model->university->parent_id ? $model->university->parent->title : $model->university->title; ?></p>
+	<?php endif; ?>
+	<?php if($model->university->parent_id): ?>
+	<p>Campus: <?php echo $model->university->title; ?></p>
+	<?php endif; ?>
+	<p>Course: <?php echo $model->course->title; ?></p>
+	<p>Quirky facts: <?php echo $model->quirky; ?></p>
 	<p><?php if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')): ?><?php echo $model->getAttributeLabel('email'); ?>: <?php echo $model->email; ?></p>
 	<?php echo $model->getAttributeLabel('phone'); ?>: <?php echo $model->phone; ?>
 </div>

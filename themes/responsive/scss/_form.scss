@@ -46,6 +46,7 @@ input[type=text]:disabled {
 }
 
 input[type=email] {
+	outline: none;
 	@include box-shadow(none);
 }
 
