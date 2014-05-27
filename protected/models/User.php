@@ -62,7 +62,7 @@ class User extends CActiveRecord
 			array('phone', 'length', 'max'=>16),
 			array('image_type', 'length', 'max'=>4),
 			array('image_size', 'length', 'max'=>10),
-			array('created, image', 'safe'),
+			array('quirky, created, image', 'safe'),
 			array('created', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'insert'),
 			array('updated', 'default', 'value'=>new CDbExpression('now()'), 'setOnEmpty'=>false, 'on'=>'update'),
 			array('name_last', 'default', 'value'=>null),
