@@ -18,9 +18,9 @@ $this->layout = 'column1';
 <?php endif; ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Freebies from stycle</h2><?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Freebies</h2><?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
-<div class="h2">Latest freebies from your Uni<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
+<div class="h2">Latest freebies<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_freebies,
