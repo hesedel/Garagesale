@@ -280,6 +280,20 @@
         "outputStyle": "expanded",
         "autoprefixer": false
       }
+    },
+    "a22e3e7c": {
+      "id": "a22e3e7c",
+      "pid": "c6f102e3",
+      "name": "password-change.haml",
+      "input": "views\\admin\\user\\password-change.haml",
+      "customOutput": false,
+      "type": "Haml",
+      "config": {
+        "autoCompile": true,
+        "format": "html5",
+        "outputStyle": "indented",
+        "doubleQuotes": false
+      }
     }
   },
   "imports": {
