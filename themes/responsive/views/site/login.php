@@ -49,7 +49,7 @@ $this->layout = '/layouts/column1';
 							<span class="placeholder">Your password</span>
 						</div>
 						<?php echo $form->error($model, 'password'); ?>
-						<?php if($model->getErrorCode() == 1 || $model->getErrorCode() == 2):
+						<?php if($model->getErrorCode() == 2):
 							echo CHtml::link('Forgot password?', array('/admin/user/password_forgot', 'id' => $model->username), array('class' => 'forgotPassword'));
 						endif; ?>
 					</td>
