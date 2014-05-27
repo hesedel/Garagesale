@@ -266,7 +266,8 @@ class UserController extends Controller
 
 			//$this->redirect(array('/admin/user/account'));
 
-			$this->render('password_change',array('model'=>$model_passwordChangeForm));
+			Yii::app()->theme='responsive';
+			$this->render('password-change',array('model'=>$model_passwordChangeForm));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
