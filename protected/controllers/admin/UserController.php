@@ -249,7 +249,7 @@ class UserController extends Controller
 		if($id)
 		{
 			$model_passwordChangeForm=PasswordChangeForm::model()->findByPk($id);
-			/*
+
 			$model_passwordChangeForm->password='';
 			if(isset($_POST['PasswordChangeForm']))
 			{
@@ -263,11 +263,10 @@ class UserController extends Controller
 			$identity=new UserIdentity('','');
 			$identity->setId($id);
 			Yii::app()->user->login($identity,60); // one minute
-			*/
 
 			//$this->redirect(array('/admin/user/account'));
 
-			//$this->render('password_change',array('model'=>$model_passwordChangeForm));
+			$this->render('password_change',array('model'=>$model_passwordChangeForm));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
