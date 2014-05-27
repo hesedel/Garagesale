@@ -230,6 +230,7 @@ class UserController extends Controller
 
 	public function actionPassword_change()
 	{
+		/*
 		$model_passwordChangeForm=new PasswordChangeForm;
 
 		if(isset($_POST['ajax']) && $_POST['ajax']==='user-passwordChange-form')
@@ -266,9 +267,10 @@ class UserController extends Controller
 			//$this->redirect(array('/admin/user/account'));
 
 			$this->render('password_change',array('model'=>$model_passwordChangeForm));
-		}	
+		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		*/
 	}
 
 	public function actionUnverified()
