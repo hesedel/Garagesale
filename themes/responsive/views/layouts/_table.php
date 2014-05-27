@@ -63,8 +63,8 @@
 				<li><?php echo CHtml::link('<i class="fa fa-graduation-cap fa-lg"></i>From your course area', array('/item/search', 'course' => Yii::app()->params['user']->course_id)); ?></li>
 				<?php endif; ?>
 
-				<li><?php echo CHtml::link('<i class="fa fa-university fa-lg"></i>All course related items', array('/item/search', 'course' => '')); ?></li>
-				<li><a href="#"><i class="fa fa-users fa-lg"></i>Viewed by your classmates</a></li>
+				<li><?php echo CHtml::link('<i class="fa fa-graduation-cap fa-lg"></i>All course related items', array('/item/search', 'course' => '')); ?></li>
+				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Viewed by your classmates</a></li>
 				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Items with the most views</a></li>
 
 				<li class="divider"></li>
