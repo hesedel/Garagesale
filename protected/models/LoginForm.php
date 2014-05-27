@@ -35,10 +35,10 @@ class LoginForm extends CFormModel
 				switch($this->_identity->errorCode)
 				{
 					case 1:
-						//$this->addError('username','Incorrect username.');
-						//break;
+						$this->addError('username','Email is not yet registered with us.');
+						break;
 					case 2:
-						$this->addError('password','Incorrect username or password.');
+						$this->addError('password','Incorrect password.');
 						break;
 					case 3:
 						$this->addError('username','Unverified email.');
