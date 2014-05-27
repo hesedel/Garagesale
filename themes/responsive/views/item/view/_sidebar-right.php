@@ -3,7 +3,8 @@
 <?php $user = User::model()->findByPk($model->user_id); ?>
 <div class="user">
 
-	<strong>Message</strong>
+	<strong>Message Seller</strong>
+
 
 	<?php echo CHtml::link(
 		($user->image
@@ -35,11 +36,12 @@
 
 	<?php if(Yii::app()->user->isGuest): ?>
 	<div class="guest">
-		<p>Sorry, but you must <?php echo CHtml::link('<i class="fa fa-sign-in"></i> login', array('/site/login'), array('class' => 'g-button small')); ?> to contact this seller.</p>
-		<p>Don't have an account yet? <?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> register', array('/site/register'), array('class' => 'g-button small')); ?></p>
+		<p>Sorry, but you must <?php echo CHtml::link('login', array('/site/login')); ?> to contact this seller.</p>
+		<p>Don't have an account yet? Click here to <?php echo CHtml::link('register', array('/site/register')); ?> now</p>
 	</div>
 	<?php else: ?>
 	<div class="form">
+		<p>Your email address will not be visible to the seller</p>
 		<?php $this->renderPartial('view/_contact', array(
 			'model' => $model_contactForm,
 			'model_success' => $model_contactForm_success,

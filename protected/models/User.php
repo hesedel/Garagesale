@@ -16,6 +16,7 @@
  * @property string $image_type
  * @property string $image_size
  * @property integer $verified
+ * @property string $quirky
  * @property integer $location_id
  * @property integer $university_id
  * @property integer $course_id
@@ -124,6 +125,7 @@ class User extends CActiveRecord
 			'image_type' => 'Image Type',
 			'image_size' => 'Image Size',
 			'verified' => 'Verified',
+			'quirky' => 'Quirky facts about me',
 			'location_id' => 'Location',
 			'university_id' => 'University',
 			'campus_id' => 'Campus',

@@ -479,9 +479,8 @@ body.is-animating #menu-footer {
 #logo {
 	color: $color_white;
 	font-family: $sans-serif-soft;
-	font-size: 1.25em;
+	font-size: 2em;
 	font-weight: 700;
-	text-transform: uppercase;
 	white-space: nowrap;
 	background-color: $color_greenSea;
 	height: $line-height * 3;
@@ -519,11 +518,13 @@ body.is-animating #menu-footer {
 			//line-height: $line-height * 1.5;
 			line-height: $line-height * 2;
 		padding-right: 0;
+		padding-left: 0;
 		@include border-radius(0);
 
 		img {
 			height: 100%;
 			margin-right: $gutter-width * (2 / 3);
+			display: none;
 			float: left;
 		}
 
@@ -670,7 +671,7 @@ body.is-animating #menu-footer {
 		//width: (2 / 3) * 100%;
 		padding-top: ($line-height * .5) + ($line-height * (1 / 6));
 		padding-bottom: ($line-height * .5) + ($line-height * (1 / 6));
-		margin-right: $gutter-width;
+		//margin-right: $gutter-width;
 		float: right;
 
 		div.a {
@@ -909,7 +910,8 @@ body.is-animating #menu-footer {
 
 }
 
-#search {
+#search,
+#site_index-search {
 	width: 100%;
 	padding-left: 1px;
 	padding-left: $gutter-width * (1 / 3); //
@@ -1002,7 +1004,8 @@ body.is-animating #menu-footer {
 }
 
 @media (max-width: $screen-xs-max) {
-	#search {
+	#search,
+	#site_index-search {
 		padding-left: 0;
 
 		.table {
@@ -1122,9 +1125,9 @@ body.is-animating #menu-footer {
 			padding-top: 0;
 			padding-bottom: 0;
 			@include border-radius($border-radius);
-			margin-right: $gutter-width;
+			//margin-right: $gutter-width;
 			//margin-left: $gutter-width * (1 / 3);
-			margin-left: $gutter-width * .5;
+			//margin-left: $gutter-width * .5;
 		}
 
 	}

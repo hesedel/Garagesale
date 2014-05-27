@@ -368,6 +368,13 @@
 			display: block;
 		}
 
+
+		.conditionListed{
+		margin-top: $line-height;
+		margin-bottom: $line-height;
+
+		}
+
 	}
 
 	.actions {
@@ -378,6 +385,7 @@
 	}
 
 	.social-share {
+		overflow:hidden;
 		margin-top: $line-height;
 		@include clearfix;
 
@@ -388,7 +396,7 @@
 		}
 
 		.fb-share-button {
-			width: auto !important;
+			//width: auto !important;
 		}
 
 	}
@@ -672,12 +680,13 @@
 		//.guest {
 
 			p {
+				
 				color: $color_customBrown;
-				font-size: 1.25em;
-				text-align: center;
+				font-size: 1em;
+				//text-align: center;
 				line-height: 1.25;
-				margin-top: $line-height * .5;
-				margin-bottom: 0;
+				margin-top: 0;
+				margin-bottom: $line-height * .5;
 
 				a {
 					white-space: nowrap;

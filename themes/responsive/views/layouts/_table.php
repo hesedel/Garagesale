@@ -30,7 +30,7 @@
 						'/img/vendor/slir/h72/img/logo-white.png',
 						CHtml::encode(Yii::app()->name)
 					) .
-						'St<span>ycle</span>',
+						'st<span>ycle</span>',
 					'/',
 					array('id' => 'logo')
 				); ?>
@@ -95,7 +95,7 @@
 
 		<?php #menu end ?>
 
-		<?php if($this->getRoute() !== 'site/index'): #search-toggle ?>
+		<?php if(true || $this->getRoute() !== 'site/index'): #search-toggle ?>
 
 		<div id="search-toggle"><i class="fa fa-search"></i></div>
 
@@ -150,10 +150,10 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
-					<li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li>
-					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
-					<li class="divider"></li>
-					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
+					<?php /* <li><?php echo CHtml::link('<i class="fa fa-tags"></i>', array('/item/create')); ?></li> */ ?>
+					<?php /* <li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li> */ ?>
+					<?php /* <li class="divider"></li> */ ?>
+					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Profile', array('/admin/user/account')); ?></li>
 					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
 					<li class="divider visible-xs"></li>
 					<li class="visible-xs"><?php echo CHtml::link('<i class="fa fa-sign-out"></i>Logout', array('/site/logout')); ?></li>
@@ -193,6 +193,16 @@
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
+		<?php if(true || $this->getRoute() === 'site/index'): #login ?>
+
+		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+			<?php echo CHtml::link('<i class="fa fa-user"></i>', array('/site/login')); ?>
+		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
+
+		<?php endif; #login end ?>
+
+		<?php endif; ?>
+
 		<?php #post ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
@@ -201,17 +211,7 @@
 
 		<?php #post end ?>
 
-		<?php if($this->getRoute() === 'site/index'): #login ?>
-
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
-		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
-
-		<?php endif; #login end ?>
-
-		<?php endif; ?>
-
-		<?php if($this->getRoute() !== 'site/index'): #search ?>
+		<?php if(true || $this->getRoute() !== 'site/index'): #search ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
 

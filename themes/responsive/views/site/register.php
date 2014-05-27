@@ -97,7 +97,18 @@ $this->layout = 'column1';
 					</td>
 				</tr>
 
-				 
+				<tr>
+					<th><?php echo $form->labelEx($model, 'quirky'); ?>
+					<td>
+					<div class="textarea">
+						<?php echo $form->textArea($model, 'quirky', array('rows' => 6, 'cols' => 50)); ?>
+						<span class="placeholder">Tell fellow students a little bit about yourself!</span>
+					</div>
+					<?php echo $form->error($model, 'querky'); ?>
+					</td>
+				</tr>
+
+				<?php /*
 				<tr>
 					<th><?php echo $form->labelEx($model, 'name_last'); ?></th>
 					<td>
