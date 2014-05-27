@@ -46,8 +46,8 @@ $this->pageTitle=Yii::app()->name . ' - Change Password';
 				<tr>
 					<th>\\&#160;</th>
 					<td>
-						<?php echo CHtml::linkButton('Change Password', array('class'=>'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Change Password', array('class'=>'submit g-button orange')); ?>
+						<?php echo CHtml::linkButton('Change Password', array('class'=>'submit g-button--pirmary')); ?>
+						<?php echo CHtml::submitButton('Change Password', array('class'=>'submit g-button--primary')); ?>
 					</td>
 				</tr>
 
