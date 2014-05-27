@@ -34,6 +34,6 @@ class PasswordChangeForm extends CFormModel
 
 	public static function model($className=__CLASS__)
 	{
-		return parent::model($className);
+		return model($className);
 	}
 }
