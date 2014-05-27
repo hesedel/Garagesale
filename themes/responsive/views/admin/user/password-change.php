@@ -17,17 +17,6 @@ $this->pageTitle=Yii::app()->name . ' - Change Password';
 		<table class="form" summary="Password Change">
 			<caption class="hide">Password Change</cation>
 
-			<tfoot>
-
-				<tr>
-					<th>\\&#160;</th>
-					<td>
-						<?php echo CHtml::linkButton('Change Password', array('class'=>'submit g-button orange')); ?>
-						<?php echo CHtml::submitButton('Change Password', array('class'=>'submit g-button orange')); ?>
-					</td>
-				</tr>
-
-			</tfoot>
 			<tbody>
 
 				<tr>
@@ -52,6 +41,17 @@ $this->pageTitle=Yii::app()->name . ' - Change Password';
 				</tr>
 
 			</tbody>
+			<tfoot>
+
+				<tr>
+					<th>\\&#160;</th>
+					<td>
+						<?php echo CHtml::linkButton('Change Password', array('class'=>'submit g-button orange')); ?>
+						<?php echo CHtml::submitButton('Change Password', array('class'=>'submit g-button orange')); ?>
+					</td>
+				</tr>
+
+			</tfoot>
 		</table>
 
 		<?php
