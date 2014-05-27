@@ -80,9 +80,9 @@ $this->layout='column3';
 	<?php echo $model->getAttributeLabel('phone'); ?>: <?php echo $model->phone; ?>
 </div>
 <hr />
-	<div class="g-actions btn-group"><?php echo CHtml::link('Reset password', array('account'), array('class' => 'btn btn-default'));?><?php
+	<div class="g-actions btn-group"><?php echo CHtml::link('Reset password', array('/admin/user/account#user_account-password'), array('class' => 'btn btn-default'));?><?php
 		if(Yii::app()->user->checkAccess('updateSelf',$params) && !Yii::app()->user->checkAccess('super'))
-			echo CHtml::link('Update profile', array('account'), array('class' => 'btn btn-default'));
+			echo CHtml::link('Update profile', array('/admin/user/account'), array('class' => 'btn btn-default'));
 		if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super'))
 			echo CHtml::link('Update profile', array('update', 'id'=>$model->id), array('class' => 'btn btn-default'));
 		if((Yii::app()->user->checkAccess('admin') && !sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->id))))) || Yii::app()->user->checkAccess('super'))
@@ -91,4 +91,15 @@ $this->layout='column3';
 	<?php endif; ?></div>
 <hr />
 <h4>Items for sale</h4>
+
+<?php $this->renderPartial('/item/_index', array(
+	'dataProvider' => $dataProvider,
+	'options' => array(
+		'toolbox' => array(
+			'viewButton' => false,
+			'sortButton' => false,
+		),
+	),
+)); ?>
+
 </div>

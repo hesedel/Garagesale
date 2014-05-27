@@ -55,9 +55,23 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
+
+		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id="'.$model->id.'"',
+				'order'=>'updated DESC',
+			),
+			'pagination'=>array(
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
+			),
+			'pagination'=>false,
+		));
+
 		Yii::app()->theme='responsive';
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
