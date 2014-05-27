@@ -268,9 +268,9 @@ class UserController extends Controller
 
 			$this->render('password_change',array('model'=>$model_passwordChangeForm));
 		}
-		*/
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		*/
 	}
 
 	public function actionUnverified()
