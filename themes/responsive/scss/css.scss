@@ -109,7 +109,7 @@ i {
 	li {
 		border-top: 1px solid rgba(255,255,255,0.1);
 		border-bottom: 1px solid rgba(0,0,0,0.08);
-		margin: 0 -15px;
+		margin: 0 -#{$gutter-width};
 		//text-align: center;
 		//width: 25%;
 		//float: left;
@@ -122,8 +122,8 @@ i {
 		//padding: #{$line-height * (1 / 6)} #{$gutter-width * (1 / 3)};
 		padding: #{$line-height * .5} $gutter-width;
 		//@include border-radius($border-radius);
-		margin-right: -$gutter-width;
-		margin-left: $gutter-width;
+		//margin-right: -$gutter-width;
+		//margin-left: $gutter-width;
 		//display: inline-block;
 		display: block;
 
