@@ -194,7 +194,7 @@ return array(
 			'adminEmail'=>'styclereport@gmail.com',
 			'noReplyEmail'=>'noreply@stycle.ph',
 			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
-			'tagline'=>'Tagline',
+			'tagline'=>'Student and staff buy and sell.',
 			'salt'=>'pepper',
 			'timeZone'=>'Australia/Sydney',
 			'item_expire'=>60,
