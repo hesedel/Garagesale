@@ -50,6 +50,18 @@ body {
 	}
 }
 
+#not-xs {
+	@include border-radius(0);
+	margin-bottom: 0;
+	display: none;
+}
+
+@media (min-width: 768px) {
+	#not-xs {
+		display: block;
+	}
+}
+
 #body {
 	background-color: $color_body_bg;
 }
