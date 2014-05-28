@@ -7,6 +7,14 @@
 @import 'compass', 'vendor/bourbon/bourbon';
 @import 'variables', 'global', 'form';
 
+@media (min-width: 768px) {
+	html {
+		background-color: $color_headings;
+		width: 320px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
 
 body {
 	cursor: default;
