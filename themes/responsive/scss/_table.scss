@@ -378,6 +378,12 @@
 		z-index: -1;
 }
 
+@media (min-width: 768px) {
+	#menu-footer {
+		display: none !important;
+	}
+}
+
 @media (max-width: $screen-xs-max) {
 	#xs {
 		position: relative;
