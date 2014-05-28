@@ -548,11 +548,10 @@ class UserController extends Controller
 		if(isset($_POST['ReportForm']))
 		{
 
-			$emailBody = 'User reported: '.$model->reportedUserID.'<br /> Report type: '.$model->reportType.
-			'<br /> Report type: '.$model->reportDescription;
-
-
 			$model->attributes=$_POST['ReportForm'];
+			$emailBody = 'User reported: '.$model->reportedUserID.'<br /> Report type: '.$model->reportType.
+			'<br /> Report descrption: '.$model->reportDescription;
+
 			if($model->validate())
 			{
 				$headers="From: ".Yii::app()->params['user']->email."\r\nReply-To: ".Yii::app()->params['user']->email."\r\nContent-Type: text/html";
