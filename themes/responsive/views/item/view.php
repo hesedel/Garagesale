@@ -127,7 +127,7 @@ $this->menu=array(
 <div class="row conditionListed">
 <div class="col-xs-6"> 
 	<?php if($model->condition_id): ?>
-	Item Condition:
+	Condition:
 	<strong><?php echo $model->condition->title; ?></strong>
 	<?php endif; ?></div>
 
@@ -155,8 +155,8 @@ if($model->condition_id)
 <div class="tabs">
 	<ul class="nav nav-tabs">
 		<?php /*<li class="active"><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>*/?>
-		<li class="active"><a href="#item_view-collection" data-toggle="tab">Item Collection Details</a></li>
-		<li><a href="#item_view-user" data-toggle="tab">Seller Details</a></li>
+		<li class="active"><a href="#item_view-collection" data-toggle="tab">Collection details</a></li>
+		<li><a href="#item_view-user" data-toggle="tab">Seller details</a></li>
 		
 	</ul>
 
@@ -199,6 +199,14 @@ if($model->condition_id)
 						<td><?php echo $model->user->university->parent_id ? $model->user->university->parent->title : $model->user->university->title; ?></td>
 					</tr>
 					<?php endif; ?>
+
+					<?php if($model->user->university->parent_id): ?>
+					<tr>
+						<th>Campus</th>
+						<td><?php echo $model->user->university->title; ?></td>
+					</tr>
+					<?php endif; ?>
+
 					<?php if($model->user->course_id): ?>
 					<tr>
 						<th>Area of Study</th>
@@ -210,8 +218,8 @@ if($model->condition_id)
 						<td>
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
 							<i class="fa fa-star-half-o"></i>
-							<i class="fa fa-star-o"></i>
 							<i class="fa fa-star-o"></i>
 						</td>
 					</tr>
@@ -236,14 +244,6 @@ if($model->condition_id)
 			</table>
 		</div>
 		<div class="tab-pane active" id="item_view-collection">
-			<table>
-				<?php if($model->user->university->parent_id): ?>
-				<tr>
-					<th>Campus</th>
-					<td><?php echo $model->user->university->title; ?></td>
-				</tr>
-				<?php endif; ?>
-			</table>
 			<?php if(strlen(trim($model->pickup)) > 0): ?>
 			<p class="pickup"><?php echo Yii::app()->format->formatNtext($model->pickup); ?></p>
 			<?php endif; ?>
