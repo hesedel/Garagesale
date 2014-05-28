@@ -115,7 +115,7 @@ $this->layout = 'column1';
 						<?php echo $form->textArea($model, 'quirky', array('rows' => 6, 'cols' => 50)); ?>
 						<span class="placeholder">Tell fellow students a little bit about yourself!</span>
 					</div>
-					<?php echo $form->error($model, 'querky'); ?>
+					<?php echo $form->error($model, 'quirky'); ?>
 					</td>
 				</tr>
 
