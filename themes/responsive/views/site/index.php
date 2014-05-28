@@ -9,18 +9,18 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="alert alert-warning alert-dismissable intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h4>Student and staff classifieds.</h4>
+	<h4>Uni student and staff marketplace.</h4>
 	<div class="call-to-action">
-	<?php echo CHtml::link('Join our Community', array('/site/register'), array('class' => 'g-button--primary')); ?>
+	<?php echo CHtml::link('Post an item to sell', array('/post/'), array('class' => 'g-button--primary')); ?>
 	</div>
 	<p><span class="small">Already a member? <?php echo CHtml::link('Login', array('/login')); ?></span></p> 
 </div>
 <?php endif; ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Freebies from stycle</h2><?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Freebies</h2><?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
-<div class="h2">Latest freebies from your Uni<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
+<div class="h2">Latest freebies<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_freebies,

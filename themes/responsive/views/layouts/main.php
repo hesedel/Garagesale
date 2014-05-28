@@ -31,6 +31,11 @@
 </head>
 <body>
 
+<div class="alert alert-info alert-dismissable" id="not-xs"> 
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<p>Stycle is best viewed on a mobile or tablet! Use Stycle on the go!</p>
+</div>
+
 <div id="xs">
 
 <div id="body">
