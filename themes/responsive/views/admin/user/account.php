@@ -105,6 +105,17 @@ $this->layout = 'column1';
 						</td>
 					</tr>
 
+					<tr>
+						<th><?php echo $form->labelEx($model, 'quirky'); ?>
+						<td>
+						<div class="textarea">
+							<?php echo $form->textArea($model, 'quirky', array('rows' => 6, 'cols' => 50)); ?>
+							<span class="placeholder">Tell fellow students a little bit about yourself!</span>
+						</div>
+						<?php echo $form->error($model, 'querky'); ?>
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
 
@@ -217,6 +228,10 @@ $this->layout = 'column1';
 <?php Yii::app()->clientScript->registerScript(
 	'user_account',
 	"
+	if(location.hash === '#user_account-password' || location.hash === '#user_account-password/') {
+		$('a[href=#user_account-password]').trigger('click');
+	}
+
 	$('a', '#user_account div.image').bind('click', function() {
 		var \$this = $(this);
 		if(confirm('Are you sure you want to delete your profile picture?')) {

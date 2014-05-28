@@ -55,9 +55,23 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
+
+		$dataProvider=new CActiveDataProvider('Item',array(
+			'criteria'=>array(
+				'condition'=>'user_id="'.$model->id.'"',
+				'order'=>'updated DESC',
+			),
+			'pagination'=>array(
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
+			),
+			'pagination'=>false,
+		));
+
 		Yii::app()->theme='responsive';
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -230,7 +244,6 @@ class UserController extends Controller
 
 	public function actionPassword_change()
 	{
-		/*
 		$model_passwordChangeForm=new PasswordChangeForm;
 
 		if(isset($_POST['ajax']) && $_POST['ajax']==='user-passwordChange-form')
@@ -238,7 +251,6 @@ class UserController extends Controller
 			echo CActiveForm::validate($model_passwordChangeForm);
 			Yii::app()->end();
 		}
-		*/
 
 		if(!isset($_GET['id']))
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -250,27 +262,29 @@ class UserController extends Controller
 			->queryScalar();
 		if($id)
 		{
-			/*
 			$model_passwordChangeForm=PasswordChangeForm::model()->findByPk($id);
+
 			$model_passwordChangeForm->password='';
 			if(isset($_POST['PasswordChangeForm']))
 			{
 				$model_passwordChangeForm->attributes=$_POST['PasswordChangeForm'];
-				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save())
+				if($model_passwordChangeForm->validate() && $model_passwordChangeForm->save()) {
+					Yii::app()->user->setFlash('success','You\'ve successfully changed your password.');
 					$this->redirect(array('/site/login','username'=>$id));
+				}
 			}
-			*/
 
 			Yii::app()->user->logout();
 
-			$identity=new UserIdentity('','');
-			$identity->setId($id);
-			Yii::app()->user->login($identity,60); // one minute
+			//$identity=new UserIdentity('','');
+			//$identity->setId($id);
+			//Yii::app()->user->login($identity,60); // one minute
 
-			$this->redirect(array('/admin/user/account'));
+			//$this->redirect(array('/admin/user/account'));
 
-			//$this->render('password_change',array('model'=>$model_passwordChangeForm));
-		}	
+			Yii::app()->theme='responsive';
+			$this->render('password-change',array('model'=>$model_passwordChangeForm));
+		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
