@@ -99,6 +99,8 @@ $this->menu=array(
 <?php endif; ?>
 
 <div class="social-share">
+	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
@@ -110,8 +112,6 @@ $this->menu=array(
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="fb-share-button" data-type="button_count"></div>
 
-	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 </div>
 
@@ -122,6 +122,23 @@ $this->menu=array(
 	<?php else: ?>
 	<span class="price">AU$ <?php echo number_format($model->price); ?></span>
 	<?php endif; ?>
+
+
+<div class="row conditionListed">
+<div class="col-xs-6"> 
+	<?php if($model->condition_id): ?>
+	Condition:
+	<strong><?php echo $model->condition->title; ?></strong>
+	<?php endif; ?></div>
+
+<div class="col-xs-6 text-right"> 
+Listed:
+<strong><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->updated)); ?>">
+<?php echo $model->getTimeAgo(); ?></time></strong>
+</div>
+
+
+</div>
 </header>
 
 <?php
@@ -137,13 +154,14 @@ if($model->condition_id)
 <p class="description"><?php echo Yii::app()->format->formatNtext($model->description); ?></p>
 <div class="tabs">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>
-		<li><a href="#item_view-user" data-toggle="tab">Seller Info</a></li>
-		<li><a href="#item_view-collection" data-toggle="tab">Pickup Details</a></li>
+		<?php /*<li class="active"><a href="#item_view-more-info" data-toggle="tab">More Info</a></li>*/?>
+		<li class="active"><a href="#item_view-collection" data-toggle="tab">Collection details</a></li>
+		<li><a href="#item_view-user" data-toggle="tab">Seller details</a></li>
+		
 	</ul>
 
 	<div class="tab-content">
-		<div class="tab-pane active" id="item_view-more-info">
+		<?php /*<div class="tab-pane active" id="item_view-more-info">
 			<table>
 				<?php if($model->condition_id): ?>
 				<tr>
@@ -161,6 +179,7 @@ if($model->condition_id)
 				</tr>
 			</table>
 		</div>
+		*/?>
 		<div class="tab-pane" id="item_view-user">
 			<table>
 				<tbody>
@@ -180,6 +199,14 @@ if($model->condition_id)
 						<td><?php echo $model->user->university->parent_id ? $model->user->university->parent->title : $model->user->university->title; ?></td>
 					</tr>
 					<?php endif; ?>
+
+					<?php if($model->user->university->parent_id): ?>
+					<tr>
+						<th>Campus</th>
+						<td><?php echo $model->user->university->title; ?></td>
+					</tr>
+					<?php endif; ?>
+
 					<?php if($model->user->course_id): ?>
 					<tr>
 						<th>Area of Study</th>
@@ -191,8 +218,8 @@ if($model->condition_id)
 						<td>
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
 							<i class="fa fa-star-half-o"></i>
-							<i class="fa fa-star-o"></i>
 							<i class="fa fa-star-o"></i>
 						</td>
 					</tr>
@@ -200,8 +227,15 @@ if($model->condition_id)
 				<tfoot>
 					<tr>
 						<td colspan="2">
-							<?php echo CHtml::link('Follow Seller', array('#'), array('class' => 'g-button')); ?>
-							<?php echo CHtml::link('All Seller Items', array('#'), array('class' => 'g-button')); ?>
+							<?php /*echo CHtml::link(
+							$model->user->name_first,
+							array(
+								'/admin/user/view',
+								'id' => $model->user_id,
+							)
+						); */?>
+							<?php echo CHtml::link('All Seller Items', array('/admin/user/view',
+								'id' => $model->user_id,), array('class' => 'g-button')); ?>
 							<?php Yii::app()->user->setState('report_user',$model->user->id); ?>
  							<?php echo CHtml::link('Report Seller', array('/admin/user/report'), array('class' => 'g-button')); ?>
 						</td>
@@ -209,15 +243,7 @@ if($model->condition_id)
 				</tfoot>
 			</table>
 		</div>
-		<div class="tab-pane" id="item_view-collection">
-			<table>
-				<?php if($model->user->university->parent_id): ?>
-				<tr>
-					<th>Campus</th>
-					<td><?php echo $model->user->university->title; ?></td>
-				</tr>
-				<?php endif; ?>
-			</table>
+		<div class="tab-pane active" id="item_view-collection">
 			<?php if(strlen(trim($model->pickup)) > 0): ?>
 			<p class="pickup"><?php echo Yii::app()->format->formatNtext($model->pickup); ?></p>
 			<?php endif; ?>

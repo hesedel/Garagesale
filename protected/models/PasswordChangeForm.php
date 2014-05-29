@@ -1,6 +1,6 @@
 <?php
 
-class PasswordChangeForm extends CFormModel
+class PasswordChangeForm extends CActiveRecord
 {
 	public $password_repeat;
 

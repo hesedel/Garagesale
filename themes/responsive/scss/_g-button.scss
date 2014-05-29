@@ -4,6 +4,7 @@
 	font-weight: 400;
 	cursor: pointer;
 	color: $color_white;
+	white-space: nowrap;
 	background-color: blacken($color_customGray, 25%);
 	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) + 10px};
 	border: none;
@@ -44,4 +45,4 @@
 	}
 
 }
-
+/* Test */

@@ -12,7 +12,7 @@
 						'appendTo' => '#search .input-text',
 						'minLength' => 2,
 						'position' => array(
-							'of' => '.input-text',
+							'of' => '#search .input-text',
 							'collision' => 'fit',
 						),
 					),
@@ -21,14 +21,17 @@
 			</div>
 
 			<?php
-			if(isset($_GET['category'])) {
-				echo CHtml::hiddenField('category', $_GET['category'], array('id' => false));
+			if(isset($_GET['course'])) {
+				echo CHtml::hiddenField('course', $_GET['course'], array('id' => false));
 			}
 			if(isset($_GET['price-max'])) {
 				echo CHtml::hiddenField('price-max', $_GET['price-max'], array('id' => false));
 			}
-			if(isset($_GET['course'])) {
-				echo CHtml::hiddenField('course', $_GET['course'], array('id' => false));
+			if(isset($_GET['category'])) {
+				echo CHtml::hiddenField('category', $_GET['category'], array('id' => false));
+			}
+			if(isset($_GET['sort'])) {
+				echo CHtml::hiddenField('sort', $_GET['sort'], array('id' => false));
 			}
 			?>
 
