@@ -408,13 +408,23 @@ class ItemController extends Controller
 		if(!Yii::app()->user->isGuest) {
 			if(!isset($_GET['university'])) {
 				$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id,'AND');
-			} else {
-				$criteria->addCondition('user.university_id='.$_GET['university'],'AND');
 			}
-		} else {
-			if(isset($_GET['university'])) {
-				$criteria->addCondition('university_id='.$_GET['university'],'AND');
+		}
+		if(isset($_GET['university'])) {
+			$model_university=UserUniversity::model()->findByPk($_GET['university']);
+
+			$condition='(university_id='.$model_university->id;
+			$children=Yii::app()->db->createCommand()
+				->select('id,title')
+				->from('user_university')
+				->where('parent_id=:uni',array(':uni'=>$model_university->id))
+				//->order('title')
+				->queryAll();
+			foreach($children as $child) {
+				$condition.=' || university_id='.$child['id'];
 			}
+			$condition.=')';
+			$criteria->addCondition($condition,'&');
 		}
 
 		// course
