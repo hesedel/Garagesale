@@ -69,11 +69,11 @@ $this->layout = 'column1';
 					<td>
 						
 							<?php echo CHtml::activeDropDownList($model,'reportType', array(
-								1 => 'Content is offensive',
-								2 => 'User is being abusive',
-								3 => 'Sexually explicit content',
-								4 => 'Spam or a scam',
-								5 => 'Violates Stycle\'s policy and terms and conditions',
+								'Content is offensive' => 'Content is offensive',
+								'User is being abusive' => 'User is being abusive',
+								'Sexually explicit content' => 'Sexually explicit content',
+								'Spam or a scam' => 'Spam or a scam',
+								'Violates Stycle\'s policy and terms and conditions' => 'Violates Stycle\'s policy and terms and conditions',
 
 							), array(
 								'multiple'=>'multiple',

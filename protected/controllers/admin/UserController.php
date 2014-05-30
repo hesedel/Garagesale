@@ -551,8 +551,8 @@ class UserController extends Controller
 			if($model->validate())
 			{
 				$link = false;
-				if($model->item_id) {
-					$link = Yii::app()->params['serverName'] . 'item/' . $model->item_id . '/';
+				if($_GET['item_id']) {
+					$link = Yii::app()->params['serverName'] . 'item/' .$_GET['item_id'] . '/';
 				}
 				$body = new CSSToInlineStyles(
 					Yii::app()->controller->renderPartial(
