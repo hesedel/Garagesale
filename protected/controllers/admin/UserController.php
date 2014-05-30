@@ -542,20 +542,38 @@ class UserController extends Controller
 
 	public function actionReport()
 	{
-
-
 		$model=new ReportForm;
+
 		if(isset($_POST['ReportForm']))
 		{
-
 			$model->attributes=$_POST['ReportForm'];
-			$emailBody = 'User reported: '.$model->reportedUserID.'<br /> Report type: '.$model->reportType.
-			'<br /> Report descrption: '.$model->reportDescription;
 
 			if($model->validate())
 			{
-				$headers="From: ".Yii::app()->params['user']->email."\r\nReply-To: ".Yii::app()->params['user']->email."\r\nContent-Type: text/html";
-				mail(Yii::app()->params['adminEmail'],'User Report', $emailBody,$headers);
+				$link = false;
+				if($model->item_id) {
+					$link = Yii::app()->params['serverName'] . 'item/' . $model->item_id . '/';
+				}
+				$body = new CSSToInlineStyles(
+					Yii::app()->controller->renderPartial(
+						'/site/_emailWrapper',
+						array(
+							'data' => Yii::app()->controller->renderPartial(
+								'/admin/user/_sendReport-email',
+								array(
+									'model' => $model,
+									'link' => CHtml::link(
+										$link,
+										$link
+									)
+								), true
+							)
+						), true
+					), file_get_contents(Yii::getPathOfAlias('webroot') . Yii::app()->theme->baseUrl . '/css/emailWrapper.css')
+				);
+				$headers = "From: " . Yii::app()->params['user']->name_first . " <" . Yii::app()->params['user']->email . ">\r\nContent-Type: text/html";
+				mail(Yii::app()->params['adminEmail'], Yii::app()->name . ' User Report', $body->convert(), $headers);
+
 				Yii::app()->user->setFlash('reported','Thank you for contacting the Stycle team. We take reports very seriously and we will respond to you as soon as possible.');
 				$this->refresh();
 			}

@@ -9,23 +9,27 @@ $this->layout = 'column1';
 ?>
 
 <div class="g-form" id="site_contact">
-	<h2>Report Seller</h2>
 
 	<?php if(Yii::app()->user->hasFlash('reported')): ?>
 
-	<div class="flash-success">
-		<?php echo Yii::app()->user->getFlash('reported'); ?>
-	</div>
-	<h4>User Reported</h4>
+	<h2 class="alert alert-success">User Reported</h2>
+
+	<p class="alert alert-info"><?php echo Yii::app()->user->getFlash('reported'); ?></p>
+
 	<h3>What happens next?</h3>
 	<p>We will contact you within 48 hrs regarding your enquiry</p>
 
+	<br>
+	<?php echo CHtml::link('← return to where you left off', Yii::app()->user->getReturnUrl(), array('class'=>'g-button small')); ?>
+
 	<?php else: ?>
+
+	<h2>Report Seller</h2>
 
 	<div class="form">
 		<p>If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.</p>
 		<?php $form = $this->beginWidget('CActiveForm', array(
-			'id' => 'contact-form',
+			'id' => 'report-form',
 			'enableClientValidation' => true,
 			/*
 			'clientOptions' => array(
@@ -54,12 +58,7 @@ $this->layout = 'column1';
 					<th><?php echo $form->labelEx($model, 'reportedUserID'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php 
-								if (Yii::app()->user->hasState('report_user')) {
-									echo Yii::app()->user->getState('report_user');
-									Yii::app()->user->setState('report_user',Yii::app()->user->getState('report_user'));
-								}
-							?>
+							<?php echo isset($_GET['item_id']) ? Item::model()->findByPk($_GET['item_id'])->user->name_first : ''; ?>
 						</div>
 						<?php echo $form->error($model, 'reportedUserID'); ?>
 					</td>
@@ -114,6 +113,10 @@ $this->layout = 'column1';
 				<tr>
 					<?php //<th>&#160;</th> ?>
 					<td colspan="2">
+						<?php
+						if(isset($_GET['item']))
+							echo $form->hiddenField('item_id', $_GET['item']);
+						?>
 						<?php echo CHtml::link('Cancel', Yii::app()->user->getReturnUrl(), array('class' => 'g-button')); ?>
 						<?php echo CHtml::linkButton('Submit', array('class' => 'submit g-button--primary')); ?>
 						<?php echo CHtml::submitButton('Submit', array('class' => 'submit g-button--primary')); ?>

@@ -239,8 +239,7 @@ if($model->condition_id)
 						); */?>
 							<?php echo CHtml::link('All Seller Items', array('/admin/user/view',
 								'id' => $model->user_id,), array('class' => 'g-button')); ?>
-							<?php Yii::app()->user->setState('report_user',$model->user->id); ?>
- 							<?php echo CHtml::link('Report Seller', array('/admin/user/report'), array('class' => 'g-button')); ?>
+ 							<?php echo CHtml::link('Report Seller', array('/admin/user/report', 'item_id' => $model->id), array('class' => 'g-button')); ?>
 						</td>
 					</tr>
 				</tfoot>
