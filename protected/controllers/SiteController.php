@@ -64,7 +64,8 @@ class SiteController extends Controller
 			$dataProvider_freebies=new CActiveDataProvider('Item',array(
 				'criteria'=>array(
 					'condition'=>'user_id IS NOT NULL'.
-						' && price=0',
+						' && price=0'.
+						' && wanted=false',
 					'order'=>'updated DESC',
 					'limit'=>3,
 				),
@@ -82,6 +83,7 @@ class SiteController extends Controller
 				'criteria'=>array(
 					'join'=>'LEFT JOIN user ON user_id=user.id',
 					'condition'=>'user_id IS NOT NULL'.
+						' && wanted=false'.
 						' && price=0'.
 						' && user.university_id='.Yii::app()->params['user']->university_id,
 					'order'=>'updated DESC',
@@ -100,6 +102,7 @@ class SiteController extends Controller
 			$dataProvider_course=new CActiveDataProvider('Item',array(
 				'criteria'=>array(
 					'condition'=>'user_id IS NOT NULL'.
+						' && wanted=false'.
 						' && course=true',
 					'order'=>'created DESC',
 					'limit'=>3,
@@ -118,6 +121,7 @@ class SiteController extends Controller
 				'criteria'=>array(
 					'join'=>'LEFT JOIN user ON user_id=user.id',
 					'condition'=>'user_id IS NOT NULL'.
+						' && wanted=false'.
 						' && course=true'.
 						' && user.university_id='.Yii::app()->params['user']->university_id.
 						' && user.course_id='.Yii::app()->params['user']->course_id,
@@ -134,7 +138,8 @@ class SiteController extends Controller
 		}
 		$dataProvider_popular=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT NULL',
+				'condition'=>'user_id IS NOT NULL'.
+					' && wanted=false',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),
@@ -147,7 +152,8 @@ class SiteController extends Controller
 		));
 		$dataProvider_odd=new CActiveDataProvider('Item',array(
 			'criteria'=>array(
-				'condition'=>'user_id IS NOT NULL',
+				'condition'=>'user_id IS NOT NULL'.
+					' && wanted=false',
 				'order'=>'created DESC',
 				'limit'=>3,
 			),

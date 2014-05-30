@@ -1,8 +1,8 @@
 <?php
 $this->pageTitle=Yii::app()->name . ' - ' . $model->id;
 $this->breadcrumbs=array(
-	//'Users'=>array('index'),
-	$model->id,
+	'Users',
+	$model->name_first,
 );
 
 $this->layout='column3';

@@ -129,7 +129,7 @@ $this->menu=array(
 
 <div class="row conditionListed">
 <div class="col-xs-6"> 
-	<?php if($model->condition_id): ?>
+	<?php if($model->condition_id != null): ?>
 	Condition:
 	<strong><?php echo $model->condition->title; ?></strong>
 	<?php endif; ?></div>
