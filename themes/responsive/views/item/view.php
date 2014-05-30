@@ -1,5 +1,9 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . $model->title;
+Yii::app()->clientScript->registerMetaTag($model->title, null, null, array('property' => 'og:title'));
+Yii::app()->clientScript->registerMetaTag($model->description, 'description');
+Yii::app()->clientScript->registerMetaTag($model->description, null, null, array('property' => 'og:description'));
+//Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true) . '/img/vendor/slir/w1200-h630-c1200x630-bfff' . $model->getImage(), null, null, array('property' => 'og:image'));
 
 if($model->user->location) {
 	$this->breadcrumbs[] = $model->user->location->name;
@@ -111,7 +115,6 @@ $this->menu=array(
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="fb-share-button" data-type="button_count"></div>
-
 
 </div>
 
