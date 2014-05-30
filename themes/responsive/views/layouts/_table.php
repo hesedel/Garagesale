@@ -73,7 +73,7 @@
 
 				<li class="heading">Categories</li>
 
-				<li><?php echo CHtml::link('FREE', array('/item/search', 'price-max' => 0)); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-gift fa-lg"></i>FREE', array('/item/search', 'price-max' => 0)); ?></li>
 
 				<?php
 				$categories = Yii::app()->db->createCommand()

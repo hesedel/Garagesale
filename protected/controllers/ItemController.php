@@ -295,14 +295,14 @@ class ItemController extends Controller
 	public function actionCreateWanted()
 	{
 		$model=new WantedForm;
-		$model->wanted=true;
 
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['WantedForm']))
 		{
 			$model->attributes=$_POST['WantedForm'];
-			
+			$model->wanted=1;
+
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success','Your wanted item has been posted successfully');
@@ -318,12 +318,11 @@ class ItemController extends Controller
 
 	public function actionUpdateWanted($id)
 	{
-		$model=$this->loadModel($id);
-			
+		$model=WantedForm::model()->findByPk($id);
 
 		$params=array('WantedForm'=>$model);
 		if(
-			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			Yii::app()->user->checkAccess('updateOwnWantedItem',$params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
