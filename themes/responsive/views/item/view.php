@@ -1,5 +1,9 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . $model->title;
+Yii::app()->clientScript->registerMetaTag($model->title, null, null, array('property' => 'og:title'));
+Yii::app()->clientScript->registerMetaTag($model->description, 'description');
+Yii::app()->clientScript->registerMetaTag($model->description, null, null, array('property' => 'og:description'));
+//Yii::app()->clientScript->registerMetaTag(Yii::app()->getBaseUrl(true) . '/img/vendor/slir/w1200-h630-c1200x630-bfff' . $model->getImage(), null, null, array('property' => 'og:image'));
 
 if($model->user->location) {
 	$this->breadcrumbs[] = $model->user->location->name;
@@ -29,7 +33,7 @@ $this->menu=array(
 <?php if($model->userCanUpdate() || $model->userCanDelete()): ?>
 <div class="actions">
 
-	<?php echo $model->userCanUpdate() ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'btn g-button')) : ''; ?>
+	<?php echo $model->userCanUpdate() ? (!$model->wanted ? CHtml::link('<i class="fa fa-pencil"></i> Edit', array('update', 'id' => $model->id), array('class' => 'btn g-button')) : CHtml::link('<i class="fa fa-pencil"></i> Edit', array('updateWanted', 'id' => $model->id), array('class' => 'btn g-button'))) : ''; ?>
 
 	<?php echo $model->userCanDelete() ? CHtml::link('<i class="fa fa-trash-o"></i> Delete', '#', array('class' => 'btn g-button', 'submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')) : ''; ?>
 
@@ -112,7 +116,6 @@ $this->menu=array(
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="fb-share-button" data-type="button_count"></div>
 
-
 </div>
 
 <header class="header">
@@ -126,7 +129,7 @@ $this->menu=array(
 
 <div class="row conditionListed">
 <div class="col-xs-6"> 
-	<?php if($model->condition_id): ?>
+	<?php if($model->condition_id != null): ?>
 	Condition:
 	<strong><?php echo $model->condition->title; ?></strong>
 	<?php endif; ?></div>
@@ -236,8 +239,7 @@ if($model->condition_id)
 						); */?>
 							<?php echo CHtml::link('All Seller Items', array('/admin/user/view',
 								'id' => $model->user_id,), array('class' => 'g-button')); ?>
-							<?php Yii::app()->user->setState('report_user',$model->user->id); ?>
- 							<?php echo CHtml::link('Report Seller', array('/admin/user/report'), array('class' => 'g-button')); ?>
+ 							<?php echo CHtml::link('Report Seller', array('/admin/user/report', 'item_id' => $model->id), array('class' => 'g-button')); ?>
 						</td>
 					</tr>
 				</tfoot>

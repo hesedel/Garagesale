@@ -1,0 +1,99 @@
+@import 'normalize', 'main';
+@import 'vendor/bootstrap';
+@import 'compass', 'vendor/bourbon/bourbon';
+@import 'variables', 'global', 'form';
+
+* {
+	font-family: sans-serif;
+}
+
+#html {
+	width: 100%;
+	height: 100%;
+
+	> tr > td,
+	> tbody > tr > td {
+		vertical-align: top;
+		background-color: $color_body_bg;
+		padding: $line-height #{$gutter-width * (4 / 3)};
+	}
+
+}
+
+#body {
+	max-width: 560px;
+	margin-right: auto;
+	margin-left: auto;
+
+	> tr,
+	> tbody > tr,
+	> thead > tr,
+	> tfoot > tr {
+
+		th, td {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+	}
+
+	> tr > td,
+	> tbody > tr > td {
+		border-top: 1px solid white;
+		padding-top: $line-height;
+		padding-bottom: $line-height;
+	}
+
+	> thead > tr {
+
+		> th,
+		> td {
+			padding-top: 0;
+		}
+
+		> th {
+			font-family: sans-serif;
+			text-align: left;
+			padding-bottom: 0;
+		}
+
+		> td {
+			color: $color;
+			font-size: 1.5em;
+			padding-bottom: $line-height;
+		}
+
+	}
+
+	> tfoot > tr > td {
+		color: $color;
+		text-align: right;
+		border-top: 1px solid white;
+		padding-top: $line-height;
+		padding-bottom: 0;
+
+		a {
+			color: $color_greenSea;
+		}
+
+	}
+
+}
+
+#logo {
+	color: $color_greenSea;
+	font-size: 2em;
+	text-decoration: none;
+	word-break: normal;
+
+	&:hover {
+		color: blacken($color_greenSea, 25%);
+	}
+
+}
+
+#message {
+	color: $color_customBrown;
+	background-color: $color_customYellow;
+	padding: #{$line-height * .5} #{$gutter-width * (2 / 3)};
+}

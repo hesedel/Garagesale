@@ -280,6 +280,25 @@
         "outputStyle": "expanded",
         "autoprefixer": false
       }
+    },
+    "f0298485": {
+      "id": "f0298485",
+      "pid": "c6f102e3",
+      "name": "emailWrapper.scss",
+      "input": "scss\\emailWrapper.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": true,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
     }
   },
   "imports": {
@@ -419,7 +438,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "5812ca59": {
@@ -430,7 +450,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "13f33a68": {
@@ -441,7 +462,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "0ecc3b38": {
@@ -452,7 +474,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "1b125256": {
@@ -463,7 +486,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "c70dbc42": {
@@ -474,7 +498,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "930b71e2": {
@@ -485,7 +510,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "7e1956c6": {
@@ -496,7 +522,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "853ebd60": {
@@ -507,7 +534,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "867b9548": {
@@ -518,7 +546,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "db9ece49": {
@@ -529,7 +558,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "541948c6": {
@@ -540,7 +570,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "faaba38a": {
@@ -551,7 +582,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "bf80f0ef": {
@@ -562,7 +594,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f18b0e24": {
@@ -573,7 +606,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f03f68ee": {
@@ -584,7 +618,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "00c04e8b": {
@@ -595,7 +630,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "3686a97e": {
@@ -606,7 +642,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "fc6a04b6": {
@@ -617,7 +654,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "d4d61a84": {
@@ -628,7 +666,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "cf90c34b": {
@@ -639,7 +678,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "47545bbf": {
@@ -650,7 +690,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "ddc88fbc": {
@@ -661,7 +702,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "90d562af": {
@@ -672,7 +714,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "569ecdea": {
@@ -683,7 +726,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "0a8aef8c": {
@@ -694,7 +738,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "755f305e": {
@@ -705,7 +750,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "6228afd5": {
@@ -716,7 +762,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "6763a2bc": {
@@ -727,7 +774,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "630ca3d6": {
@@ -738,7 +786,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "11de3378": {
@@ -749,7 +798,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "e32ad051": {
@@ -760,7 +810,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "7dd4b687": {
@@ -771,7 +822,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f9435e86": {
@@ -782,7 +834,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "eea3e8cd": {
@@ -793,7 +846,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "a24baab8": {
@@ -804,7 +858,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "20bd40e1": {
@@ -815,7 +870,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "82b61130": {
@@ -826,7 +882,8 @@
         "6424f8e0",
         "5d155a20",
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "eda02cab": {
@@ -943,7 +1000,8 @@
       "path": "scss\\_normalize.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "0e368b66": {
@@ -952,7 +1010,8 @@
       "path": "scss\\_main.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "5d155a20": {
@@ -961,7 +1020,8 @@
       "path": "scss\\vendor\\bootstrap.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "16ad29e9": {
@@ -1003,7 +1063,8 @@
       "path": "scss\\vendor\\bourbon\\_bourbon.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "e1970aa2": {
@@ -1012,7 +1073,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_deprecated-webkit-gradient.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "02693bd0": {
@@ -1021,7 +1083,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_gradient-positions-parser.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "68e35128": {
@@ -1030,7 +1093,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_linear-positions-parser.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "c4b6cf12": {
@@ -1039,7 +1103,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_radial-arg-parser.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "0f6b9ba5": {
@@ -1048,7 +1113,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_radial-positions-parser.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "7fd09ad6": {
@@ -1057,7 +1123,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_render-gradients.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "e78329c3": {
@@ -1066,7 +1133,8 @@
       "path": "scss\\vendor\\bourbon\\helpers\\_shape-size-stripper.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "843df9f5": {
@@ -1075,7 +1143,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_compact.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f937e74b": {
@@ -1084,7 +1153,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_flex-grid.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "bd328ff1": {
@@ -1093,7 +1163,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_grid-width.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "31dae941": {
@@ -1102,7 +1173,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_linear-gradient.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "45f1e9ab": {
@@ -1111,7 +1183,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_modular-scale.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "7c51cc33": {
@@ -1120,7 +1193,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_px-to-em.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "789985fb": {
@@ -1129,7 +1203,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_radial-gradient.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "a0722d57": {
@@ -1138,7 +1213,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_tint-shade.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "020f3416": {
@@ -1147,7 +1223,8 @@
       "path": "scss\\vendor\\bourbon\\functions\\_transition-property-name.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "4c4aa552": {
@@ -1156,7 +1233,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_animation.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "ce5fb3d1": {
@@ -1165,7 +1243,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_appearance.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f1e5bb88": {
@@ -1174,7 +1253,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_backface-visibility.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "e68c3460": {
@@ -1183,7 +1263,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_background.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "fd784310": {
@@ -1192,7 +1273,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_background-image.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "2cc9bfc8": {
@@ -1201,7 +1283,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_border-image.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "c840edf0": {
@@ -1210,7 +1293,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_border-radius.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "28970f33": {
@@ -1219,7 +1303,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_box-sizing.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "cf8891a1": {
@@ -1228,7 +1313,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_columns.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "018b9376": {
@@ -1237,7 +1323,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_flex-box.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "b9ffcbea": {
@@ -1246,7 +1333,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_font-face.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "0a39f0ba": {
@@ -1255,7 +1343,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_hidpi-media-query.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "98a7a839": {
@@ -1264,7 +1353,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_image-rendering.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "bca6cfbf": {
@@ -1273,7 +1363,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_inline-block.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "55dea6b1": {
@@ -1282,7 +1373,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_keyframes.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "8a12093b": {
@@ -1291,7 +1383,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_linear-gradient.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "4aa9bbe6": {
@@ -1300,7 +1393,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_perspective.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "914dc0fc": {
@@ -1309,7 +1403,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_radial-gradient.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "99eaf8e7": {
@@ -1318,7 +1413,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_transform.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f0c8fedd": {
@@ -1327,7 +1423,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_transition.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "fb96cd53": {
@@ -1336,7 +1433,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_user-select.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "a19de86d": {
@@ -1345,7 +1443,8 @@
       "path": "scss\\vendor\\bourbon\\css3\\_placeholder.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "739a383a": {
@@ -1354,7 +1453,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_button.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "fe94b8fe": {
@@ -1363,7 +1463,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_clearfix.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "b9861a00": {
@@ -1372,7 +1473,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_font-family.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "daf54251": {
@@ -1381,7 +1483,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_hide-text.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "8a9a2bce": {
@@ -1390,7 +1493,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_html5-input-types.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "68da3cab": {
@@ -1399,7 +1503,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_position.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "564f6ec7": {
@@ -1408,7 +1513,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_prefixer.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "4275c90b": {
@@ -1417,7 +1523,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_retina-image.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "fdf58a95": {
@@ -1426,7 +1533,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_size.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "4423a36d": {
@@ -1435,7 +1543,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_timing-functions.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "f78a9160": {
@@ -1444,7 +1553,8 @@
       "path": "scss\\vendor\\bourbon\\addons\\_triangle.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "af24f109": {
@@ -1453,7 +1563,8 @@
       "path": "scss\\vendor\\bourbon\\_bourbon-deprecated-upcoming.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "461718bf": {
@@ -1462,7 +1573,8 @@
       "path": "scss\\_variables.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "c36e40dc": {
@@ -1471,7 +1583,8 @@
       "path": "scss\\_global.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "9e180818": {
@@ -1480,7 +1593,8 @@
       "path": "scss\\_g-button.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "a9731b11": {
@@ -1489,7 +1603,8 @@
       "path": "scss\\_g-items.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "db8c9ad8": {
@@ -1498,7 +1613,8 @@
       "path": "scss\\_g-pager.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "4a575d4b": {
@@ -1507,7 +1623,8 @@
       "path": "scss\\_g-tabs.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "ff755db7": {
@@ -1516,7 +1633,8 @@
       "path": "scss\\_form.scss",
       "parents": [
         "5a2d746f",
-        "9b33c5e5"
+        "9b33c5e5",
+        "f0298485"
       ]
     },
     "05abb1ec": {

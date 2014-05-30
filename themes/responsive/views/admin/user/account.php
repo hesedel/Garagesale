@@ -15,7 +15,7 @@ $this->layout = 'column1';
 		'enableAjaxValidation' => true,
 		'enableClientValidation' => true,
 		'htmlOptions' => array('enctype' => 'multipart/form-data'),
-		'focus' => array($model, 'title'),
+		'focus' => array($model, 'name_first'),
 	)); ?>
 
 	<ul class="nav nav-tabs">
@@ -228,6 +228,21 @@ $this->layout = 'column1';
 <?php Yii::app()->clientScript->registerScript(
 	'user_account',
 	"
+	$('a', '.nav-tabs').bind('touchend click', function() {
+		var \$this = $(this);
+		window.location.hash = \$this.attr('href');
+		var action = $('#user-account-form').attr('action');
+		if(action.indexOf('#') < 0) {
+			$('#user-account-form').attr('action', action + \$this.attr('href'));
+		} else {
+			$('#user-account-form').attr('action', action.replace(/#.*/, \$this.attr('href')));
+		}
+	});
+
+	if(location.hash === '#user_account-community' || location.hash === '#user_account-community/') {
+		$('a[href=#user_account-community]').trigger('click');
+	}
+
 	if(location.hash === '#user_account-password' || location.hash === '#user_account-password/') {
 		$('a[href=#user_account-password]').trigger('click');
 	}

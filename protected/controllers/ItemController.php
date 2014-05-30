@@ -78,10 +78,11 @@ class ItemController extends Controller
 										'name_replier'=>$model_contact->replier_name,
 										'name_poster'=>$model->user->name_first,
 										'message'=>$model_contactForm->body,
+										'link'=>Yii::app()->params['serverName'] . 'item/' . $model_contact->item_id . '/',
 									),true
 								)
 							),true
-						),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+						),file_get_contents(Yii::getPathOfAlias('webroot').'/themes/responsive/css/emailWrapper.css')
 					);
 					$headers="From: ".$model_contact->replier_name." <".$model_contact->getReplierEmail().">\r\nContent-Type: text/html";
 
@@ -295,14 +296,14 @@ class ItemController extends Controller
 	public function actionCreateWanted()
 	{
 		$model=new WantedForm;
-		$model->wanted=true;
 
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['WantedForm']))
 		{
 			$model->attributes=$_POST['WantedForm'];
-			
+			$model->wanted=1;
+
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success','Your wanted item has been posted successfully');
@@ -318,12 +319,11 @@ class ItemController extends Controller
 
 	public function actionUpdateWanted($id)
 	{
-		$model=$this->loadModel($id);
-			
+		$model=WantedForm::model()->findByPk($id);
 
 		$params=array('WantedForm'=>$model);
 		if(
-			Yii::app()->user->checkAccess('updateOwnItem',$params) ||
+			Yii::app()->user->checkAccess('updateOwnWantedItem',$params) ||
 			(
 				Yii::app()->user->checkAccess('admin') &&
 				!sizeof(preg_grep('/admin|super/', array_keys(Yii::app()->authManager->getRoles($model->user_id))))
@@ -338,9 +338,10 @@ class ItemController extends Controller
 
 		if(isset($_POST['WantedForm']))
 		{
-				if($model->save())
-					$this->redirect(array('view','id'=>$model->id));
-			}
+			$model->attributes=$_POST['WantedForm'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
 
 		Yii::app()->theme='responsive';
 		$this->render('updateWanted',array(
@@ -370,7 +371,7 @@ class ItemController extends Controller
 			$model->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(Yii::app()->homeUrl);
+				$this->redirect(array('/admin/user/view', 'id'=>$model->user_id));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -413,10 +414,34 @@ class ItemController extends Controller
 		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
 			' AND user_id IS NOT NULL';
 
+		if(!isset($_GET['wanted'])) {
+			$criteria->addCondition('wanted=false','AND');
+		} else {
+			$criteria->addCondition('wanted=true','AND');
+		}
+
 		// university
+		$criteria->join='LEFT JOIN user ON user_id=user.id';
 		if(!Yii::app()->user->isGuest) {
-			$criteria->join='LEFT JOIN user ON user_id=user.id';
-			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id);
+			if(!isset($_GET['university'])) {
+				$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id,'AND');
+			}
+		}
+		if(isset($_GET['university'])) {
+			$model_university=UserUniversity::model()->findByPk($_GET['university']);
+
+			$condition='(university_id='.$model_university->id;
+			$children=Yii::app()->db->createCommand()
+				->select('id,title')
+				->from('user_university')
+				->where('parent_id=:uni',array(':uni'=>$model_university->id))
+				//->order('title')
+				->queryAll();
+			foreach($children as $child) {
+				$condition.=' || university_id='.$child['id'];
+			}
+			$condition.=')';
+			$criteria->addCondition($condition,'&');
 		}
 
 		// course

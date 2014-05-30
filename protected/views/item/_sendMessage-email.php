@@ -4,7 +4,9 @@ Dear <?php echo $name_poster; ?>,
 You've received this email because you've just recently received a message
 from <?php echo $name_replier; ?>.
 
-<?php echo $message; ?>
+<div id="message"><?php echo $message; ?></div>
+
+<strong>Link to item:</strong> <?php echo $link; ?>
 
 
 Cheers,

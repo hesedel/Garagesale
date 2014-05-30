@@ -9,7 +9,7 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="alert alert-warning alert-dismissable intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h4>Uni student and staff marketplace.</h4>
+	<h4><?php echo Yii::app()->params['tagline']; ?></h4>
 	<div class="call-to-action">
 	<?php echo CHtml::link('Post an item to sell', array('/post/'), array('class' => 'g-button--primary')); ?>
 	</div>
@@ -20,7 +20,7 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="h2"><h2>Freebies</h2><?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php else: ?>
-<div class="h2">Latest freebies<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
+<div class="h2">Freebies from your uni<h2></h2> <?php echo CHtml::link('See all', array('/item/search', 'price-max' => 0), array('class' => 'seeAll')); ?></div>
 <?php endif; ?>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_freebies,
@@ -67,7 +67,7 @@ $this->layout = 'column1';
 )); ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Popular items</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Recent items</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_popular,
 	'options' => array(

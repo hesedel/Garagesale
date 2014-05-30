@@ -67,7 +67,7 @@ $clientScript_packages=array(
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Stycle',
+	'name'=>'stycle',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -194,7 +194,7 @@ return array(
 			'adminEmail'=>'styclereport@gmail.com',
 			'noReplyEmail'=>'noreply@stycle.ph',
 			'serverName'=>'http://'.$_SERVER['HTTP_HOST'].'/',
-			'tagline'=>'Student and staff buy and sell.',
+			'tagline'=>'Uni community buy and sell',
 			'salt'=>'pepper',
 			'timeZone'=>'Australia/Sydney',
 			'item_expire'=>60,
