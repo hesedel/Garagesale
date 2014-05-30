@@ -57,7 +57,7 @@ function email_sendVerification($id, $message)
 					), true
 				)
 			), true
-		), file_get_contents(Yii::getPathOfAlias('webroot') . '/css/emailWrapper.css')
+		), file_get_contents(Yii::getPathOfAlias('webroot') . Yii::app()->theme->baseUrl . '/css/emailWrapper.css')
 	);
 	$headers = "From: " . Yii::app()->name . " <" . Yii::app()->params['noReplyEmail'] . ">\r\nContent-Type: text/html";
 	mail($user['email'], Yii::app()->name . ' Email Verification', $body->convert(), $headers);
