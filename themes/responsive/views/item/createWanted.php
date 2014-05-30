@@ -2,7 +2,7 @@
 $this->pageTitle = Yii::app()->name . ' - Post a FREE Wanted Ad';
 $this->breadcrumbs = array(
 	'Items',
-	'Post',
+	'Post Wanted',
 );
 
 $this->menu = array(
