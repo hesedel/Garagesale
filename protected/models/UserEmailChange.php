@@ -143,7 +143,7 @@ class UserEmailChange extends CActiveRecord
 						),true
 					)
 				),true
-			),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+			),file_get_contents(Yii::getPathOfAlias('webroot').Yii::app()->theme->baseUrl.'/css/emailWrapper.css')
 		);
 		$headers="From: ".Yii::app()->name." <".Yii::app()->params['noReplyEmail'].">\r\nContent-Type: text/html";
 		mail($this->email, Yii::app()->name.' Email Change Verification', $body->convert(), $headers);
