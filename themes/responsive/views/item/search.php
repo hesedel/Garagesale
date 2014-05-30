@@ -16,7 +16,47 @@ $uri = Yii::app()->request->requestUri;
 
 <div class="filters">
 
-	<?php if(isset($_GET['wanted'])):
+	<div class="dropDownList">
+	<?php
+	if(!Yii::app()->user->isGuest && !isset($_GET['university']))
+		$_GET['university'] = Yii::app()->params['user']->university->parent_id ? Yii::app()->params['user']->university->parent_id : Yii::app()->params['user']->university_id;
+
+	// get the universities
+	$universities = Yii::app()->db->createCommand()
+		->select('id, title')
+		->from('user_university')
+		->where('parent_id IS NULL')
+		->order('title')
+		->queryAll();
+
+	// store the universities in a real array
+	$listData = array();
+	$listData_options = array();
+	foreach($universities as $university)
+	{
+		$listData[] = array(
+			'id'=>$university['id'],
+			'title'=>CHtml::encode($university['title']),
+		);
+		$listData_options[$university['id']] = array(
+			'selected'=>(isset($_GET['university']) && $_GET['university'] == $university['id']),
+			'data-uri'=>(
+				!isset($_GET['university']) || (!Yii::app()->user->isGuest && !strpos($uri, 'university')) ? (
+					!strpos($uri, '?') ?
+						$uri . '?university=' . $university['id']
+					:
+						$uri . '&university=' . $university['id']
+				) :
+					preg_replace('/(\?|\&)university=' . $_GET['university'] . '/', '$1university=' . $university['id'], $uri)
+			),
+		);
+	}
+
+	echo CHtml::dropDownList('university', false, CHtml::listData($listData, 'id', 'title'), array('encode'=>false, 'empty'=>'select a university', 'options'=>$listData_options));
+		?>
+	</div><!--
+
+	--><?php if(isset($_GET['wanted'])):
 		echo CHtml::link('<span>Wanted ads</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)wanted=?/', '', $uri));
 	endif; ?><!--
 
@@ -42,7 +82,7 @@ $uri = Yii::app()->request->requestUri;
 
 	--><?php echo count($subcategories) > 1 ? '<div class="dropDownList">' . CHtml::dropDownList('subcategories', '', $subcategories) . '</div>' : ''; ?><!--
 
-	--><?php
+	--><?php if(!isset($_GET['price-max']) || (isset($_GET['price-max']) && $_GET['price-max'] != 0)):
 	echo '<div class="dropDownList">' . CHtml::dropDownList('sort', (isset($_GET['sort']) ? $_GET['sort'] : ''), array(
 		'' => 'sort by',
 		'price-low' => 'Price: Low - High',
@@ -82,7 +122,7 @@ $uri = Yii::app()->request->requestUri;
 				)
 			),
 		))) . '</div>';
-	?>
+	endif; ?>
 
 </div>
 
@@ -100,6 +140,10 @@ $uri = Yii::app()->request->requestUri;
 
 <?php Yii::app()->clientScript->registerScript('item_search',
 	"
+	$('#university').bind('change blur', function() {
+		if($('option:selected', $(this)).index() > 0)
+			window.location.href = $('option:selected', $(this)).attr('data-uri');
+	});
 	$('option:not(:first-child)', '#subcategories').each(function() {
 		$(this).attr('data-uri', '" . (
 			!isset($_GET['category']) ? (

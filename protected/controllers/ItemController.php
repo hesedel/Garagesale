@@ -404,9 +404,17 @@ class ItemController extends Controller
 		}
 
 		// university
+		$criteria->join='LEFT JOIN user ON user_id=user.id';
 		if(!Yii::app()->user->isGuest) {
-			$criteria->join='LEFT JOIN user ON user_id=user.id';
-			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id,'AND');
+			if(!isset($_GET['university'])) {
+				$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id,'AND');
+			} else {
+				$criteria->addCondition('user.university_id='.$_GET['university'],'AND');
+			}
+		} else {
+			if(isset($_GET['university'])) {
+				$criteria->addCondition('university_id='.$_GET['university'],'AND');
+			}
 		}
 
 		// course
