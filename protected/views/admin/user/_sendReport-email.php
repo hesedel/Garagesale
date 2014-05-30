@@ -1,7 +1,7 @@
-User reported: <?php echo Item::model()->findByPk($_GET['item_id'])->user->name_first; ?>
+<strong>User reported:</strong> <?php echo Item::model()->findByPk($_GET['item_id'])->user->name_first; ?>
 
 
-Report type:
+<strong>Report type:</strong>
 <?php foreach($model->reportType as $report): ?>
 <?php echo $report; ?>
 
@@ -9,4 +9,4 @@ Report type:
 
 <div id="message"><?php echo $model->reportDescription; ?></div>
 
-Link to item: <?php echo $link; ?>
+<strong>Link to item:</strong> <?php echo $link; ?>
