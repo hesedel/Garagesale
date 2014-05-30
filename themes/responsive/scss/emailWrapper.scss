@@ -42,13 +42,6 @@
 		border-top: 1px solid white;
 		padding-top: $line-height;
 		padding-bottom: $line-height;
-
-		.message {
-			color: $color_customBrown;
-			background-color: $color_customYellow;
-			padding: #{$line-height * .5} #{$gutter-width * (2 / 3)};
-		}
-
 	}
 
 	> thead > tr {
@@ -97,4 +90,10 @@
 		color: blacken($color_greenSea, 25%);
 	}
 
+}
+
+#message {
+	color: $color_customBrown;
+	background-color: $color_customYellow;
+	padding: #{$line-height * .5} #{$gutter-width * (2 / 3)};
 }
