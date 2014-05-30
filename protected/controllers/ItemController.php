@@ -73,7 +73,7 @@ class ItemController extends Controller
 										'name_replier'=>$model_contact->replier_name,
 										'name_poster'=>$model->user->name_first,
 										'message'=>$model_contactForm->body,
-										'link'=>Yii::app()->params['serverName'] . 'item/' . $model_contact->item_id . '/';,
+										'link'=>Yii::app()->params['serverName'] . 'item/' . $model_contact->item_id . '/',
 									),true
 								)
 							),true
