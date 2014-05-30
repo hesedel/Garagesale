@@ -76,7 +76,7 @@ class ItemController extends Controller
 									),true
 								)
 							),true
-						),file_get_contents(Yii::getPathOfAlias('webroot').'/css/emailWrapper.css')
+						),file_get_contents(Yii::getPathOfAlias('webroot').Yii::app()->theme->baseUrl.'/css/emailWrapper.css')
 					);
 					$headers="From: ".$model_contact->replier_name." <".$model_contact->getReplierEmail().">\r\nContent-Type: text/html";
 
