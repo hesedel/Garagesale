@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Update Item ' . $model->id;
 $this->breadcrumbs = array(
-	'Items' => array('index'),
+	'Items',
 	$model->id => array('view', 'id' => $model->id),
 	'Update',
 );

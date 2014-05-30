@@ -321,9 +321,10 @@ class ItemController extends Controller
 
 		if(isset($_POST['WantedForm']))
 		{
-				if($model->save())
-					$this->redirect(array('view','id'=>$model->id));
-			}
+			$model->attributes=$_POST['WantedForm'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
 
 		Yii::app()->theme='responsive';
 		$this->render('updateWanted',array(
@@ -353,7 +354,7 @@ class ItemController extends Controller
 			$model->delete();
 
 			if(!isset($_GET['ajax']))
-				$this->redirect(Yii::app()->homeUrl);
+				$this->redirect(array('/admin/user/view', 'id'=>$model->user_id));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');

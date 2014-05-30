@@ -67,11 +67,9 @@
 				<li><a href="#"><i class="fa fa-users fa-lg"></i>Viewed by your classmates</a></li>
 				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Items with the most views</a></li>
 
-				<?php /* 
 				<li class="divider"></li>
 
 				<li><?php echo CHtml::link('<i class="fa fa-thumb-tack fa-lg"></i>Post a wanted ad', array('/item/createWanted')); ?></li>
-				*/ ?>
 
 				<li class="heading">Categories</li>
 

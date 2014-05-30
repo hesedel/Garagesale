@@ -123,75 +123,21 @@
 
 <?php
 Yii::app()->clientScript->registerScript(
-	'_form',
+	'_formWanted',
 	"
 	$('input[type=checkbox]', $('label.free', '#item_create, #item_update')).bind('change', function() {
 		if($(this).is(':checked')) {
-			$('#Item_price')
+			$('#WantedForm_price')
 				.val(0)
 				.attr('readonly', true);
 		} else {
-			$('#Item_price')
+			$('#WantedForm_price')
 				.val('')
 				.attr('readonly', false)
 				.trigger('focus')
 				.trigger('select');
 		}
 		$('#Item_price').trigger('keyup');
-	});
-
-	var uploadIndex_from = 0;
-	$('div.images', '#item_create, #item_update').sortable( {
-		handle: '.image',
-		opacity: .75,
-		revert: true,
-		start: function(event, ui) {
-			uploadIndex_from = ui.item.index();
-		},
-		update: function(event, ui) {
-			var uploadIndex_to = ui.item.index();
-			var input = unserialize(base64_decode($('#Item_uploads').val()));
-			var output = [];
-			output[uploadIndex_to] = input[uploadIndex_from];
-			for(var i in input) {
-				if((i < uploadIndex_from && i < uploadIndex_to) || (i > uploadIndex_from && i > uploadIndex_to))
-					output[i] = input[i];
-				else if(i != uploadIndex_to) {
-					if(uploadIndex_from < uploadIndex_to)
-						output[i] = input[parseInt(i) + 1];
-					else
-						output[i] = input[i - 1];
-				}
-			}
-			$('#Item_uploads').val(base64_encode(serialize(output)));
-		}
-	});
-	$('a', '#item_create .images .image, #item_update .images .image').click(function() {
-		var \$this = $(this);
-		var input = unserialize(base64_decode($('#Item_uploads').val()));
-		var output = [];
-		for(var i in input) {
-			if(i < \$this.parents('.image-container').index())
-				output[i] = input[i];
-			else if(i > \$this.parents('.image-container').index())
-				output[i - 1] = input[i];
-		}
-		$('#Item_uploads').val(base64_encode(serialize(output)));
-		if(\$this.parent().hasClass('new')) {
-			var image = \$this.siblings('img').attr('src');
-			$.post(
-				'/item/ajaxRemoveImage/',
-				{
-					image: '" . Yii::getPathOfAlias('webroot') . "/img/uploads/temp/' + image.substring(image.lastIndexOf('/') + 1, image.length)
-				},
-				function() {
-					if($('.images', '#item_create, #item_update').children('.image-container').size() == 0)
-						$('.images', '#item_create, #item_update').remove();
-				}
-			);
-		}
-		\$this.parents('.image-container').remove();
-		return false;
 	});
 	",
 	CClientScript::POS_READY
