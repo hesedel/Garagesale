@@ -54,7 +54,7 @@ $this->layout = 'column1';
 					<th><?php echo $form->labelEx($model, 'email'); ?></th>
 					<td>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'email'); ?>
+							<?php echo $form->emailField($model, 'email'); ?>
 						</div>
 						<?php echo $form->error($model, 'email'); ?>
 					</td>
@@ -88,7 +88,7 @@ $this->layout = 'column1';
 					</div>
 					<div class="hint">Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.</div>
 					<div class="input-text">
-					<?php echo $form->textField($model, 'verifyCode'); ?>
+					<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'off', 'autocorrect' => 'off')); ?>
 					</div>
 					<?php echo $form->error($model, 'verifyCode'); ?>
 				</td>

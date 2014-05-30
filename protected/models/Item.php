@@ -286,7 +286,15 @@ class Item extends CActiveRecord
 			}
 		}
 
-		return CHtml::activeDropDownList($this, 'category_id', CHtml::listData($listData_sorted, 'id', 'title'), array('encode'=>false, 'empty'=>'select a category'));
+		// group categories
+		$listData_grouped = array();
+		foreach($listData_sorted as $i=>$data) {
+			if(!$data['parent_id'])
+				$group = $data['title'];
+			$listData_grouped[$group][$data['id']] = $data['title'];
+		}
+
+		return CHtml::activeDropDownList($this, 'category_id', $listData_grouped, array('encode'=>false, 'empty'=>'select a category'));
 	}
 
 	public function getConditionClass()
