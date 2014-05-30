@@ -347,8 +347,9 @@
 	i {
 		color: $color_customYellow;
 		text-align: center;
-		width: $gutter-width;
+		width: $gutter-width * (4 / 3);
 		margin-right: $gutter-width * (2 / 3);
+		display: inline-block;
 	}
 
 	.badge {

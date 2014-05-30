@@ -91,3 +91,9 @@
 	}
 
 }
+
+#message {
+	color: $color_customBrown;
+	background-color: $color_customYellow;
+	padding: #{$line-height * .5} #{$gutter-width * (2 / 3)};
+}

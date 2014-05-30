@@ -7,6 +7,7 @@ class ReportForm extends CFormModel
 	public $reportType;
 	public $reportDescription;
 	public $verifyCode;
+	public $item_id;
 
 	public function rules()
 	{
