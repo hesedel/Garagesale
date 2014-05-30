@@ -397,10 +397,16 @@ class ItemController extends Controller
 		$criteria->condition='title LIKE \'%'.str_replace(' ','%',$keywords).'%\''.
 			' AND user_id IS NOT NULL';
 
+		if(!isset($_GET['wanted'])) {
+			$criteria->addCondition('wanted=false','AND');
+		} else {
+			$criteria->addCondition('wanted=true','AND');
+		}
+
 		// university
 		if(!Yii::app()->user->isGuest) {
 			$criteria->join='LEFT JOIN user ON user_id=user.id';
-			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id);
+			$criteria->addCondition('user.university_id='.Yii::app()->params['user']->university_id,'AND');
 		}
 
 		// course

@@ -70,6 +70,7 @@
 				<li class="divider"></li>
 
 				<li><?php echo CHtml::link('<i class="fa fa-thumb-tack fa-lg"></i>Post a wanted ad', array('/item/createWanted')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-exclamation fa-lg"></i>Wanted ads', array('/item/search', 'wanted' => false)); ?></li>
 
 				<li class="heading">Categories</li>
 

@@ -16,7 +16,11 @@ $uri = Yii::app()->request->requestUri;
 
 <div class="filters">
 
-	<?php if(isset($_GET['course'])):
+	<?php if(isset($_GET['wanted'])):
+		echo CHtml::link('<span>Wanted ads</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)wanted=?/', '', $uri));
+	endif; ?><!--
+
+	--><?php if(isset($_GET['course'])):
 		echo CHtml::link('<span>' . (strlen($_GET['course']) > 0 ? 'From your course' : 'Course-related') . '</span><i class="fa fa-times"></i>', preg_replace('/(\?|\&)course=\d*(\&)?/', '$1', $uri));
 	endif; ?><!--
 

@@ -21,6 +21,9 @@
 			</div>
 
 			<?php
+			if(isset($_GET['wanted'])) {
+				echo CHtml::hiddenField('wanted', false, array('id' => false));
+			}
 			if(isset($_GET['course'])) {
 				echo CHtml::hiddenField('course', $_GET['course'], array('id' => false));
 			}
