@@ -4,6 +4,7 @@
 @import 'variables', 'global', 'form';
 
 #html {
+	font-family: sans-serif;
 	width: 100%;
 	height: 100%;
 
@@ -55,7 +56,7 @@
 
 		> td {
 			color: $color;
-			font-size: 2em;
+			font-size: 1.5em;
 			padding-bottom: $line-height;
 		}
 
@@ -67,13 +68,18 @@
 		border-top: 1px solid white;
 		padding-top: $line-height;
 		padding-bottom: 0;
+
+		a {
+			color: $color_greenSea;
+		}
+
 	}
 
 }
 
 #logo {
 	color: $color_greenSea;
-	font-size: 3em;
+	font-size: 2em;
 	text-decoration: none;
 	word-break: normal;
 
