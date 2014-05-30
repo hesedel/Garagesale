@@ -9,7 +9,7 @@ $this->layout = 'column1';
 <?php if(Yii::app()->user->isGuest): ?>
 <div class="alert alert-warning alert-dismissable intro">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<h4>Uni community buy and sell!</h4>
+	<h4><?php echo Yii::app()->params['tagline']; ?></h4>
 	<div class="call-to-action">
 	<?php echo CHtml::link('Post an item to sell', array('/post/'), array('class' => 'g-button--primary')); ?>
 	</div>
