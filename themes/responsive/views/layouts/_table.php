@@ -64,12 +64,15 @@
 				<?php endif; ?>
 
 				<li><?php echo CHtml::link('<i class="fa fa-university fa-lg"></i>All course related items', array('/item/search', 'course' => '')); ?></li>
+				<?php /*
 				<li><a href="#"><i class="fa fa-users fa-lg"></i>Viewed by your classmates</a></li>
 				<li><a href="#"><i class="fa fa-eye fa-lg"></i>Items with the most views</a></li>
+				*/ ?>
 
 				<li class="divider"></li>
 
 				<li><?php echo CHtml::link('<i class="fa fa-thumb-tack fa-lg"></i>Post a wanted ad', array('/item/createWanted')); ?></li>
+				<li><?php echo CHtml::link('<i class="fa fa-exclamation fa-lg"></i>Wanted ads', array('/item/search', 'wanted' => false)); ?></li>
 
 				<li class="heading">Categories</li>
 
