@@ -6,7 +6,7 @@ from <?php echo $name_replier; ?>.
 
 <div id="message"><?php echo $message; ?></div>
 
-Link to item: <?php echo $link; ?>
+<strong>Link to item:</strong> <?php echo $link; ?>
 
 
 Cheers,
