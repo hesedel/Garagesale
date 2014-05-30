@@ -65,7 +65,7 @@ $this->layout='column3';
 			<?php echo $model->name_first; ?>
 		</h3>
 		<p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
-		<p>Joined: <?php echo time_local($model->created); ?></p>
+		<p>Joined: <time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($model->created)); ?>"><?php echo time_local($model->created); ?></time></p>
 	</div>
 </div>
 <div>
