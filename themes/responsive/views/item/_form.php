@@ -169,6 +169,7 @@
 						'remove' => 'remove',
 					)); ?>
 					<?php echo $form->error($model, 'images'); ?>
+					<br>
 					<div class="label label-default">or take a photo.</div>
 					<?php $this->widget('CMultiFileUpload', array(
 						'model' => $model,
