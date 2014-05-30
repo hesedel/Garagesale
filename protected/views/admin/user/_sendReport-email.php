@@ -7,8 +7,6 @@ Report type:
 
 <?php endforeach; ?>
 
-Report descrption:
-<?php echo $model->reportDescription; ?>
-
+<div id="message"><?php echo $model->reportDescription; ?></div>
 
 Link to item: <?php echo $link; ?>
