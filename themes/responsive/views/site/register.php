@@ -164,7 +164,7 @@ $this->layout = 'column1';
 						<div class="hint">Please enter the letters as they are shown in the image above.
 						<br>Letters are not case-sensitive.</div>
 						<div class="input-text">
-							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'none')); ?>
+							<?php echo $form->textField($model, 'verifyCode', array('autocapitalize' => 'off', 'autocorrect' => 'off')); ?>
 							<?php /* 
 								<span class="placeholder">Please enter the letters as they are shown in the image above.</span>*/ ?>
 						</div>
