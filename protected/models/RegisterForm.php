@@ -25,7 +25,7 @@ class RegisterForm extends User
 	{
 		$attributeLabels = parent::attributeLabels();
 		//$attributeLabels['email_repeat'] = 'Repeat Email';
-		$attributeLabels['password_repeat'] ='Repeat Password';
+		$attributeLabels['password_repeat'] ='Re-enter Password';
 		$attributeLabels['verifyCode'] = 'Verification Code';
 		$attributeLabels['agree'] = 'I agree to '.Yii::app()->name.'\'s '.CHtml::link('Terms',array('/site/page','view'=>'terms')).' and '.CHtml::link('Privacy Policy',array('/site/page','view'=>'policy')).'.';
 		return $attributeLabels;
