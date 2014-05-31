@@ -33,7 +33,7 @@
 
 <div class="alert alert-info alert-dismissable" id="not-xs"> 
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<p>Stycle is best viewed on a mobile or tablet! Use Stycle on the go!</p>
+	<p>stycle is best viewed on a mobile or tablet! Use stycle on the go!</p>
 </div>
 
 <div id="xs">
@@ -65,7 +65,7 @@
 			<li><?php echo CHtml::link('<i class="fa fa-arrow-circle-right"></i> FAQs', array('/site/page', 'view' => 'faqs')); ?></li>
 			<li><?php echo CHtml::link('<i class="fa fa-arrow-circle-right"></i> Privacy', array('/site/page', 'view' => 'policy')); ?></li>
 			<li><?php echo CHtml::link('<i class=" fa fa-arrow-circle-right"></i> Terms', array('/site/page', 'view' => 'terms')); ?></li>
-			<li><?php echo CHtml::link('<i class="fa fa-arrow-circle-right"></i> Contact Us', array('/site/contact')); ?></li>
+			<li><?php echo CHtml::link('<i class="fa fa-arrow-circle-right"></i> Contact us', array('/site/contact')); ?></li>
 		</ul>
 	</nav>
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
@@ -92,7 +92,7 @@
 			'/img/vendor/slir/h144/img/logo-white.png',
 			CHtml::encode(Yii::app()->name)
 		); ?>
-		<h2>Welcome to Stycle!</h2>
+		<h2>Welcome to stycle!</h2>
 		<p>Please view this site on mobile device to receive the best experience,<br>or scale your browser window down.</p>
 	</div>
 </div>
