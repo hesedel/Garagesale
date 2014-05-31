@@ -205,7 +205,7 @@
 
 					<div class="textarea">
 						<?php echo $form->textArea($model, 'pickup', array('rows' => 6, 'cols' => 50)); ?>
-						<span class="placeholder">Please enter the location to pickup the item, for example, on Campus?</span>
+						<span class="placeholder">Please enter the preferred pick up location, and what days and times you will be available. For example on campus, Monday and Wednesday, between 5.00pm-6.00pm.</span>
 					</div>
 					<?php echo $form->error($model, 'pickup'); ?>
 				</td>
