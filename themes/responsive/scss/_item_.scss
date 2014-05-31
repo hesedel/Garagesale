@@ -363,7 +363,8 @@
 
 		.price {
 			color: $color_greenSea;
-			font-size: 1.25em;
+			font-size: 1.5em;
+			font-weight: 700;
 			text-align: left;
 			margin-top: $line-height * .5;
 			display: block;
@@ -372,8 +373,8 @@
 
 		.conditionListed{
 		margin-top: $line-height;
-		margin-bottom: $line-height;
-
+/* 		margin-bottom: $line-height; */
+		color: $color_body_copy;
 		}
 
 	}
@@ -471,7 +472,7 @@
 	}
 
 	.description {
-		color: $color-black;
+		color: $color_body_copy;
 		background-color: $color_white;
 		padding: #{$line-height - 1px} $gutter-width #{$line-height * 1.5};
 		@include border-bottom-radius($border-radius);
@@ -531,6 +532,7 @@
 
 					th, td {
 						padding-top: 0;
+						
 					}
 
 				}
@@ -542,6 +544,7 @@
 				}
 
 				td {
+					color: $color_body_copy;
 					font-weight: 600;
 					width: 100%;
 					padding-left: $gutter-width * .5;
@@ -561,6 +564,7 @@
 		}
 
 		.pickup {
+			color: $color_body_copy;
 			margin-top: $line-height;
 			margin-bottom: 0;
 		}
