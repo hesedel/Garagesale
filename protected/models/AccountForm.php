@@ -21,7 +21,7 @@ class AccountForm extends User
 		$attributeLabels = parent::attributeLabels();
 		$attributeLabels['password_old'] = 'Old Password';
 		$attributeLabels['password'] = 'New Password';
-		$attributeLabels['password_repeat'] = 'Repeat New Password';
+		$attributeLabels['password_repeat'] = 'Re-enter New Password';
 		return $attributeLabels;
 	}
 
