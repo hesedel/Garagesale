@@ -15,7 +15,7 @@ class RegisterForm extends User
 		//$rules[] = array('email_repeat', 'length', 'max'=>64);
 		//$rules[] = array('email_repeat', 'compare', 'compareAttribute'=>'email');
 		//$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
-		$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password');
+		$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>'Passwords do not match, please re-enter');
 		$rules[] = array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements());
 		$rules[] = array('agree', 'compare', 'compareValue'=>true, 'message'=>'You must agree to '.Yii::app()->name.'\'s Terms and Privacy Policy.');
 		return $rules;
