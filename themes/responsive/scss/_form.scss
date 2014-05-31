@@ -40,8 +40,8 @@ input[type=text], input[type=password], textarea {
 }
 
 input[type=text]:disabled {
-	color: $color_customBrown;
-		-webkit-text-fill-color: $color_customBrown;
+	color: $color_body_copy;
+		-webkit-text-fill-color: $color_body_copy;
 	@include opacity(1);
 }
 
