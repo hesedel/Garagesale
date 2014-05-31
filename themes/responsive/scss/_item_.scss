@@ -633,7 +633,7 @@
 			img {
 				@include box-sizing(content-box);
 				height: $line-height * 1.5;
-				border-right: 1px solid $color_customBrown;
+/* 				border-right: 1px solid $color_customBrown; */
 				@include border-left-radius($border-radius);
 				margin-right: $gutter-width * (1 / 3);
 				display: inline-block;
