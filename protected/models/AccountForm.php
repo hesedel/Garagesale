@@ -12,7 +12,7 @@ class AccountForm extends User
 		//$rules[] = array('email_repeat, password, password_repeat', 'required');
 		$rules[] = array('password_old', 'authenticatePassword');
 		$rules[] = array('password_repeat', 'length', 'min'=>8, 'max'=>32);
-		$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password');
+		$rules[] = array('password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>'Passwords do not match, please re-enter');
 		return $rules;
 	}
 
@@ -21,7 +21,7 @@ class AccountForm extends User
 		$attributeLabels = parent::attributeLabels();
 		$attributeLabels['password_old'] = 'Old Password';
 		$attributeLabels['password'] = 'New Password';
-		$attributeLabels['password_repeat'] = 'Repeat New Password';
+		$attributeLabels['password_repeat'] = 'Re-enter New Password';
 		return $attributeLabels;
 	}
 

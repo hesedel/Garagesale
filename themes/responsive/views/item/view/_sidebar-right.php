@@ -3,7 +3,7 @@
 <?php $user = User::model()->findByPk($model->user_id); ?>
 <div class="user">
 
-	<strong>Email Seller</strong>
+	<strong>Email seller</strong>
 
 
 	<?php echo CHtml::link(
