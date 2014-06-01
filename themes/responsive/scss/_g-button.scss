@@ -1,11 +1,11 @@
 .g-button {
 	font-size: 1em;
 	font-family: $sans-serif-soft;
-	font-weight: 400;
+	font-weight: 700;
 	cursor: pointer;
 	color: $color_white;
 	white-space: nowrap;
-	background-color: blacken($color_customGray, 25%);
+	background-color: $color_btn_secondary;
 	padding: #{($line-height * .5) - 1px} #{($gutter-width * (2 / 3)) + 10px};
 	border: none;
 	@include border-radius($border-radius * 3);
@@ -26,14 +26,14 @@
 	}
 
 	&.small {
-		padding: #{($line-height * (1 / 6))} #{($gutter-width * (1 / 3))};
+		padding: #{($line-height * (1 / 3))} #{($gutter-width * (1 / 3))};
 	}
 
 	&.is-disabled {
 		cursor: default;
 		background-color: whiten($color, 25%);
 	}
-
+	
 } // .g-button
 
 .g-button--primary {
@@ -45,4 +45,5 @@
 	}
 
 }
+
 /* Test */

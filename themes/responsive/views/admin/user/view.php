@@ -81,7 +81,7 @@ $this->layout='column3';
 	<p>Course: <?php echo $model->course->title; ?></p>
 	<p>Quirky facts: <?php echo $model->quirky; ?></p>
 	<p><?php if($model->id === Yii::app()->user->id || Yii::app()->user->checkAccess('admin') || Yii::app()->user->checkAccess('super')): ?><?php echo $model->getAttributeLabel('email'); ?>: <?php echo $model->email; ?></p>
-	<?php echo $model->getAttributeLabel('phone'); ?>: <?php echo $model->phone; ?>
+	<p><?php echo $model->getAttributeLabel('phone'); ?>: <?php echo $model->phone; ?></p>
 </div>
 <hr />
 	<div class="g-actions btn-group"><?php echo CHtml::link('Reset password', array('/admin/user/account#user_account-password'), array('class' => 'btn btn-default'));?><?php
