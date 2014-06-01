@@ -945,8 +945,8 @@ body.is-animating #menu-footer {
 			}
 
 			.input-text {
-				padding-top: $line-height * .5;
-				padding-bottom: $line-height * .5;
+				padding-top: ($line-height * .5) - 1px;
+				padding-bottom: ($line-height * .5) - 1px;
 				@include border-right-radius(0);
 				@include box-shadow(none);
 				margin-top: 0;
@@ -957,7 +957,7 @@ body.is-animating #menu-footer {
 				}
 
 				.placeholder {
-					top: $line-height * .5;
+					top: ($line-height * .5) - 1px;
 				}
 
 			}
