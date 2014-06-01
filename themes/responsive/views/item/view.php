@@ -229,7 +229,7 @@ if($model->condition_id)
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="2">
+						<td colspan="1">
 							<?php /*echo CHtml::link(
 							$model->user->name_first,
 							array(
@@ -238,8 +238,17 @@ if($model->condition_id)
 							)
 						); */?>
 							<?php echo CHtml::link('All seller items', array('/admin/user/view',
-								'id' => $model->user_id,), array('class' => 'g-button')); ?>
- 							<?php echo CHtml::link('Report seller', array('/admin/user/report', 'item_id' => $model->id), array('class' => 'g-button')); ?>
+								'id' => $model->user_id,), array('class' => 'g-button--primary small')); ?>
+ 						</td>
+						<td colspan="1">
+							<?php /*echo CHtml::link(
+							$model->user->name_first,
+							array(
+								'/admin/user/view',
+								'id' => $model->user_id,
+							)
+						); */?>
+ 							<?php echo CHtml::link('Report seller', array('/admin/user/report', 'item_id' => $model->id), array('class' => 'g-button small')); ?>
 						</td>
 					</tr>
 				</tfoot>
