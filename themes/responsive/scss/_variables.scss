@@ -71,7 +71,7 @@ $light_magenta: $custom_magenta; // deprecated
 $light_orange : whiten($custom_orange, 25%, 3); // deprecated
 
 $color          : blacken($color_clouds, 25%, 2);
-$color_anchor   : $color_peterRiver;
+$color_anchor   : $color_greenSea;
 	$color_anchor-hover: $color_belizeHole;
 	$color_anchor-visited: $color_amethyst;
 		$color_anchor-visited-hover: $color_wisteria;
@@ -79,7 +79,9 @@ $color_header_bg: blacken($color_clouds, 5%);
 /* $color_body_bg  : blacken($color_clouds, 5%); */
 $color_body_bg  : $color_customGray;
 $color_footer_bg: $color_greenSea;
+$color_green : $color_greenSea;
 $color_headings : $color_customCharcoal;
+$color_body_copy : $color_customCharcoal;
 
 /* fonts */
 

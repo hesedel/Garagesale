@@ -90,7 +90,7 @@ body {
 	margin-bottom: $line-height;
 
 	a {
-		color: $color_customBrown;
+		color: $color_body_copy;
 
 		&:hover {
 			color: blacken($color_customBrown, 25%);

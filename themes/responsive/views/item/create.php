@@ -13,7 +13,7 @@ $this->menu = array(
 
 <div class="g-form" id="item_create">
 
-	<h2>Post a FREE Ad</h2>
+	<h2>List an item</h2>
 
 	<?php echo $this->renderPartial('_form', array('model' => $model)); ?>
 </div>
