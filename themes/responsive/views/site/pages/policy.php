@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle=Yii::app()->name . ' - Policy';
 $this->breadcrumbs=array(
-	'Policy',
+	'Privacy',
 );
 ?>
 
