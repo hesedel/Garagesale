@@ -17,8 +17,8 @@ $this->breadcrumbs=array(
 		</div>
 		<div id="collapse1" class="panel-collapse collapse in">
 			<div class="panel-body">
-				<p>From the Stycle home page, select "Sell".</p>
-				<p>Complete the form and list your item for sale.</p>
+				<p>In the header above, select the tag icon.</p>
+				<p>Complete the form to list your item.</p>
 			</div>
 		</div>
 	</div>
@@ -27,17 +27,18 @@ $this->breadcrumbs=array(
 		<div class="panel-heading">
 			<h4 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-					How do I contact a buyer or seller?
+					How do I contact a seller?
 				</a>
 			</h4>
 		</div>
 		<div id="collapse2" class="panel-collapse collapse">
 			<div class="panel-body">
-				<p>There are two ways to contact a buyer or seller:</p>
-				<ol>
-					<li>Go to the profile page of the buyer or seller and message them</li>
-					<li>If you are a buyer, go to the item you are interested in buying and message the seller</li>
-				</ol>
+				<p>To contact a seller:</p>
+				<ul>
+					<li>Go to the item you are interested in buying and complete the details within the email section.</li>
+					<li>You need to be logged in to email a seller.</li>
+					<li>All emails are secure. Your email address will not be provided to the seller unless you provide it to them.</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -52,7 +53,7 @@ $this->breadcrumbs=array(
 		</div>
 		<div id="collapse3" class="panel-collapse collapse">
 			<div class="panel-body">
-				<p>The Prime Minister of course! But in the case of our site, a pm means a private message. Check your inbox if someone tells you they have sent you a pm.</p>
+				<p>The Prime Minister of course! But in the case of stycle, a pm means a private message. Check your inbox if someone tells you they have sent you a pm.</p>
 			</div>
 		</div>
 	</div>
@@ -67,7 +68,7 @@ $this->breadcrumbs=array(
 		</div>
 		<div id="collapse4" class="panel-collapse collapse">
 			<div class="panel-body">
-				<p>Report an item online through Stycle's <a href="http://www.">report an item form</a>.</p>
+				<p>Report an item online through stycle's report an item form. Go to the item you want to report. Under the seller tab, click the report seller button and complete the form.</p>
 			</div>
 		</div>
 	</div>
@@ -82,7 +83,7 @@ $this->breadcrumbs=array(
 		</div>
 		<div id="collapse5" class="panel-collapse collapse">
 			<div class="panel-body">
-				<p>Report a user online through Stycle's <a href="http://www.">report a user form</a>.</p>
+				<p>Report a user online through stycle's report a user form. Access the form by going to the user profile of the person you want to report. Click on the 'report seller' button and complete the form. A stycle admin will contact you within 48hours of making the report.</p>
 			</div>
 		</div>
 	</div>
