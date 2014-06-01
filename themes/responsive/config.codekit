@@ -20,15 +20,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/css\/css.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/css\/css.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/css\/emailWrapper.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -2776,7 +2767,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Adam Walker",
+"lastSavedByUser": "Hesedel",
 "manualImportLinks": {
 	},
 "projectAttributes": {
