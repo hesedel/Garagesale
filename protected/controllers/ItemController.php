@@ -542,7 +542,7 @@ class ItemController extends Controller
 			'criteria'=>array(
 				'condition'=>'title LIKE \'%'.str_replace(' ','%',$term).'%\''.
 					' AND user_id IS NOT NULL',
-				//'limit'=>5,
+				'limit'=>5,
 			),
 			'pagination'=>false,
 		));
