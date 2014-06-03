@@ -519,7 +519,7 @@ class ItemController extends Controller
 		$dataProvider=new CActiveDataProvider('Item',array(
 			'criteria'=>$criteria,
 			'pagination'=>array(
-				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
+				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 10,
 			),
 		));
 
