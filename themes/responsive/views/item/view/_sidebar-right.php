@@ -41,7 +41,7 @@
 	</div>
 	<?php else: ?>
 	<div class="form">
-		<p>Your email address will not be visible to the seller</p>
+		<p><i class="fa fa-shield"></i> Your email address will not be visible to the seller</p>
 		<?php $this->renderPartial('view/_contact', array(
 			'model' => $model_contactForm,
 			'model_success' => $model_contactForm_success,
