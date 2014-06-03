@@ -65,7 +65,6 @@ class UserController extends Controller
 			'pagination'=>array(
 				'pageSize'=>isset($_GET['ajax_pageSize']) ? $_GET['ajax_pageSize'] : 5,
 			),
-			'pagination'=>false,
 		));
 
 		Yii::app()->theme='responsive';
