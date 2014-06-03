@@ -33,6 +33,7 @@
 
 			a {
 				@extend .g-button:active;
+				background-color: $color_green;
 				cursor: default;
 			}
 
