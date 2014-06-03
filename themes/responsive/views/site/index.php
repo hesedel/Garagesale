@@ -67,7 +67,7 @@ $this->layout = 'column1';
 )); ?>
 
 <?php if(Yii::app()->user->isGuest): ?>
-<div class="h2"><h2>Recent items</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
+<div class="h2"><h2>Latest items</h2> <?php echo CHtml::link('See all', array('#'), array('class' => 'seeAll')); ?></div>
 <?php $this->renderPartial('/item/_index', array(
 	'dataProvider' => $dataProvider_popular,
 	'options' => array(
