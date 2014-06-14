@@ -3,7 +3,7 @@ $(function() {
 	window.alert = function(message) {
 		$('.modal-body', '#alert').text(message);
 		$('#alert').modal();
-	}
+	};
 
 	$('#menu-toggle').bind('touchend click', function(e) {
 
@@ -103,6 +103,17 @@ $(function() {
 		click: function() {
 			$('#menu-toggle').trigger('click');
 		}
+	});
+
+	$('#search-toggle').bind('touchend click', function() {
+		if(!$(this).hasClass('is-active')) {
+			$(this).addClass('is-active');
+			$('#search').addClass('is-active');
+		} else {
+			$(this).removeClass('is-active');
+			$('#search').removeClass('is-active');
+		}
+		return false;
 	});
 
 	$('.a', '#user').data('hover', false);

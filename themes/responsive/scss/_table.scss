@@ -256,7 +256,7 @@
 
 	i {
 		color: $color_white;
-		font-size: 1.25em;
+		font-size: 1.5em;
 		line-height: $line-height;
 		display: block;
 	}
@@ -264,8 +264,7 @@
 }
 
 #menu {
-	//@extend .visible-xs;
-	background-color: $color_black;
+	background-color: $color_nephritis;
 	display: none;
 	position: fixed;
 		top: 0;
@@ -287,13 +286,13 @@
 	}
 
 	a {
+		color: $color_white;
 		padding: $line-height $gutter-width;
 		display: block;
 	}
 
 	&.is-active {
-		display: block;
-		//-webkit-overflow-scrolling: touch;
+		@extend .visible-xs;
 	}
 
 }
@@ -479,7 +478,6 @@ body.is-animating #menu-footer {
 
 #register,
 #user {
-	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	> a,
@@ -508,6 +506,10 @@ body.is-animating #menu-footer {
 		}
 
 	}
+}
+
+#register {
+	@extend .hidden-xs;
 }
 
 @media (max-width: $screen-xs-max) {
@@ -546,8 +548,20 @@ body.is-animating #menu-footer {
 				display: inline-block;
 			}
 
+			span {
+				@extend .hidden-xs;
+			}
+
 			.fa-angle-down {
 				margin-left: $gutter-width * (1 / 3);
+			}
+
+			&:hover {
+
+				img {
+					border-color: $color_emerald;
+				}
+
 			}
 
 		}
@@ -555,6 +569,12 @@ body.is-animating #menu-footer {
 		.dropdown-menu {
 			margin-top: 0;
 			left: -1px;
+
+			.username {
+				@extend .visible-xs;
+				font-weight: 600;
+				text-align: center;
+			}
 
 			i {
 				margin-right: $gutter-width * (2 / 3);
@@ -576,14 +596,43 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#user {
-		width: 85%;
-		width: (2 / 3) * 100%;
+		padding-right: $gutter-width * (2 / 3);
+		float: right;
 
 		div.a {
-			margin-right: $gutter-width * (1 / 3);
+			padding-top: $line-height * .5;
+			padding-bottom: $line-height * .5;
+			
 
 			> a {
-				padding-left: $gutter-width;
+				background-color: $color_emerald;
+				height: $line-height * 2;
+					line-height: $line-height * 2;
+				padding: 0 #{$gutter-width * (1 / 3)} 0 0;
+				@include border-radius($border-radius);
+
+				.fa-user {
+					font-size: 1.25em;
+					padding-left: $gutter-width * (2 / 3);
+					vertical-align: middle;
+				}
+
+				img {
+					border-color: $color_emerald;
+					margin-right: 0;
+					vertical-align: top;
+				}
+
+				&:hover {
+					background-color: $color_emerald;
+				}
+
+			}
+
+			.dropdown-menu {
+				top: $line-height * 2.5;
+				right: -1px;
+				left: auto;
 			}
 
 		}
@@ -593,7 +642,6 @@ body.is-animating #menu-footer {
 
 #login,
 #logout {
-	@extend .hidden-xs;
 	padding-left: 1px;
 
 	a {
@@ -619,25 +667,35 @@ body.is-animating #menu-footer {
 
 #login {
 
-	a .fa-sign-in {
-		@extend .hidden-sm;
+	a {
+
+		i {
+			@extend .hidden-sm;
+		}
+
+		span {
+			@extend .hidden-xs;
+		}
+
 	}
 
 }
 
 @media (max-width: $screen-xs-max) {
 	#login {
-		width: 50%;
-		width: (1 / 3) * 100%; //
-		padding-top: $line-height * .5; //
-		padding-bottom: $line-height * .5; //
+		float: right;
 
 		a {
-			height: $line-height * 2;
-				line-height: $line-height * 2;
-			@include border-radius($border-radius);
-			margin-right: $gutter-width * (1 / 3);
-			margin-left: $gutter-width * (1 / 3);
+			background-color: transparent;
+			padding: $line-height $gutter-width;
+			float: right;
+
+			i {
+				font-size: 1.5em;
+				line-height: $line-height;
+				display: block;
+			}
+
 		}
 
 	}
@@ -753,6 +811,27 @@ body.is-animating #menu-footer {
 	}
 }
 
+#search-toggle {
+	@extend .visible-xs;
+	cursor: pointer;
+	padding: $line-height $gutter-width;
+	float: right;
+	@include transition(background-color 0s ease .25s);
+
+	i {
+		color: $color_white;
+		font-size: 1.5em;
+		line-height: $line-height;
+		display: block;
+	}
+
+	&.is-active {
+		background-color: $color_header_bg;
+		@include transition(none);
+	}
+
+}
+
 #search {
 	width: 100%;
 	padding-left: 1px;
@@ -760,14 +839,14 @@ body.is-animating #menu-footer {
 
 	.table {
 		background-color: $color_header_bg;
-		@include border-right-radius(3px);
-		@include border-left-radius(3px); //
+		@include border-right-radius($border-radius);
+		@include border-left-radius($border-radius); //
 		margin-bottom: 0;
 		display: table;
 
 		.td {
-			padding-top: 12px;
-			padding-bottom: 12px;
+			padding-top: $line-height * (2 / 3);
+			padding-bottom: $line-height * (2 / 3);
 
 			&.left {
 				width: 100%;
@@ -803,9 +882,12 @@ body.is-animating #menu-footer {
 				padding-top: 0;
 				padding-bottom: 0;
 
+				i {
+					@extend .hidden-xs;
+				}
+
 				span {
 					@extend .hidden-sm;
-					@extend .hidden-xs;
 				}
 
 			}
@@ -818,7 +900,15 @@ body.is-animating #menu-footer {
 
 @media (max-width: $screen-xs-max) {
 	#search {
+		max-height: 0;
 		padding-left: 0;
+		clear: both;
+		position: relative;
+			z-index: -1;
+		@include transition(
+			max-height .25s cubic-bezier(0, -.25, 1, -.25),
+			z-index 0s ease .25s
+		);
 
 		.table {
 			//width: 85%;
@@ -828,6 +918,9 @@ body.is-animating #menu-footer {
 			//float: right;
 
 			.td {
+				padding-top: 0;
+				padding-bottom: 0;
+				@include transition(all .25s cubic-bezier(0, -.25, 1, -.25));
 
 				&.left {
 					padding-left: $gutter-width;
@@ -841,11 +934,28 @@ body.is-animating #menu-footer {
 
 		}
 
+		&.is-active {
+			max-height: $line-height * 3;
+			z-index: 1;
+			@include transition(max-height .25s cubic-bezier(0, 1.25, 1, 1.25));
+
+			.table {
+
+				.td {
+					padding-top: $line-height * (2 / 3);
+					padding-bottom: $line-height * (2 / 3);
+					@include transition(all .25s cubic-bezier(0, 1.25, 1, 1.25));
+				}
+
+			}
+
+		}
+
 	}
 }
 
 #post {
-	//@extend .hidden-xs;
+	@extend .hidden-xs;
 	padding-left: $gutter-width * (1 / 3);
 
 	a {

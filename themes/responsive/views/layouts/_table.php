@@ -69,6 +69,12 @@
 
 		<?php #menu end ?>
 
+		<?php #search-toggle ?>
+
+		<div id="search-toggle"><i class="fa fa-search"></i></div>
+
+		<?php #search-toggle end ?>
+
 		<?php if(Yii::app()->user->isGuest): ?>
 
 		<?php #register ?>
@@ -82,7 +88,7 @@
 		<?php #login ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-in"></i> Login', array('/site/login')); ?>
+			<?php echo CHtml::link('<i class="fa fa-user"></i> <span>Login</span>', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #login end ?>
@@ -101,7 +107,7 @@
 						)
 						: '<i class="fa fa-user"></i> '
 					) .
-						Yii::app()->user->id .
+						'<span>' . Yii::app()->user->id . '</span>' .
 							'<i class="fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
@@ -109,6 +115,8 @@
 					)
 				); ?>
 				<ul class="dropdown-menu">
+					<li class="username"><?php echo Yii::app()->user->id; ?></li>
+					<li class="divider visible-xs"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
 					<li class="divider"></li>
 					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
