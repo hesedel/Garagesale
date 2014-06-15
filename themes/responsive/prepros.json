@@ -1391,7 +1391,7 @@
   },
   "images": {},
   "config": {
-    "watch": true,
+    "watch": false,
     "liveRefresh": true,
     "liveRefreshDelay": 0,
     "filterPatterns": "",
