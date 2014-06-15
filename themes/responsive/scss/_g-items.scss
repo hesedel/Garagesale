@@ -116,7 +116,7 @@
 						strong {
 							font-weight: 600;
 							white-space: normal; //
-							word-break: break-all;
+							@include hyphenation;
 							width: 100%;
 							border-left: 1px solid $color_body_bg;
 

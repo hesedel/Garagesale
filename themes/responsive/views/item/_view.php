@@ -19,7 +19,7 @@
 		<strong>
 			<?php echo CHtml::link(CHtml::encode($data->title), array('/item/view', 'id' => $data->id), array('title' => $data->title)); ?>
 
-			<span class="price-xs visible-xs">P <?php echo number_format($data->price); ?></span>
+			<span class="price-xs visible-xs">₱ <?php echo number_format($data->price); ?></span>
 
 			<span class="time-xs visible-xs"><i class="fa fa-clock-o"></i><time class="timeago" datetime="<?php echo date('Y-m-d H:i:sO', strtotime($data->updated)); ?>"><?php echo $data->getTimeAgo(); ?></time></span>
 
