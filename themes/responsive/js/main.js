@@ -105,7 +105,13 @@ $(function() {
 		}
 	});
 
-	$('#search-toggle').bind('touchend click', function() {
+	$('#search-toggle').bind('touchend click', function(e) {
+
+		// needed by Android <= 4.3
+		if(e.type === 'touchend') {
+			$(this).unbind('click');
+		}
+
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
 			$('#search').addClass('is-active');
@@ -113,6 +119,7 @@ $(function() {
 			$(this).removeClass('is-active');
 			$('#search').removeClass('is-active');
 		}
+
 		return false;
 	});
 
