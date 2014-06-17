@@ -31,7 +31,7 @@
 </head>
 <body>
 
-<div id="xs">
+<div class="XS">
 
 <div id="body">
 
@@ -57,9 +57,9 @@
 	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
 </footer><!-- #footer -->
 
-</div><!-- #xs -->
+</div><!-- .XS -->
 
-<div id="menu-x"></div>
+<div class="XS-menu-x"></div>
 
 <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
 	<div class="modal-dialog modal-sm">

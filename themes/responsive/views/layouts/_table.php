@@ -14,11 +14,7 @@
 
 	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
 
-		<?php #menu-toggle ?>
-
-		<div id="menu-toggle"><i class="fa fa-bars"></i></div>
-
-		<?php #menu-toggle end ?>
+		<div class="XS-menu-toggle"><i class="XS-menu-toggle__icon fa fa-bars"></i></div>
 
 		<?php #header ?>
 
@@ -38,36 +34,104 @@
 
 		<?php #header end ?>
 
-		<?php #menu ?>
+		<?php // .XS-menu ?>
 
-		<div id="menu">
-			<ul>
-				<li><a href="#">Menu Item 1</a></li>
-				<li><a href="#">Menu Item 2</a></li>
-				<li><a href="#">Menu Item 3</a></li>
-				<li><a href="#">Menu Item 4</a></li>
-				<li><a href="#">Menu Item 5</a></li>
-				<li><a href="#">Menu Item 6</a></li>
-				<li><a href="#">Menu Item 7</a></li>
-				<li><a href="#">Menu Item 8</a></li>
-				<li><a href="#">Menu Item 9</a></li>
-				<li><a href="#">Menu Item 10</a></li>
-				<li><a href="#">Menu Item 11</a></li>
-				<li><a href="#">Menu Item 12</a></li>
-				<li><a href="#">Menu Item 13</a></li>
-				<li><a href="#">Menu Item 14</a></li>
-				<li><a href="#">Menu Item 15</a></li>
-				<li><a href="#">Menu Item 16</a></li>
-				<li><a href="#">Menu Item 17</a></li>
-				<li><a href="#">Menu Item 18</a></li>
-				<li><a href="#">Menu Item 19</a></li>
-				<li><a href="#">Menu Item 20</a></li>
+		<div class="XS-menu">
+			<ul class="XS-menu__ul">
+				<li class="XS-menu__li">
+					<?php echo CHtml::link(
+						'<i class="XS-menu__a-icon fa fa-thumb-tack"></i>' .
+						'<span class="XS-menu__a-text">Post a FREE Ad</span>',
+						array('/item/create'),
+						array('class' => 'XS-menu__a')
+					); ?>
+				</li>
+				<?php if(Yii::app()->user->isGuest): ?>
+				<li class="XS-menu__li">
+					<?php echo CHtml::link(
+						'<i class="XS-menu__a-icon fa fa-thumbs-up"></i>' .
+						'<span class="XS-menu__a-text">Register</span>',
+						array('/site/register'),
+						array('class' => 'XS-menu__a')
+					); ?>
+				</li>
+				<li class="XS-menu__li">
+					<?php echo CHtml::link(
+						'<i class="XS-menu__a-icon fa fa-user"></i>' .
+						'<span class="XS-menu__a-text">Login</span>',
+						array('/site/login'),
+						array('class' => 'XS-menu__a')
+					); ?>
+				</li>
+				<?php else: ?>
+				<li class="XS-menu__li">
+					<?php echo CHtml::link(
+						'<i class="XS-menu__a-icon fa fa-sign-out"></i>' .
+						'<span class="XS-menu__a-text">Logout</span>',
+						array('/site/logout'),
+						array('class' => 'XS-menu__a')
+					); ?>
+				</li>
+				<?php endif; ?>
+			</ul>
+			<ul class="XS-menu__ul">
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 4</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 5</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 6</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 7</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 8</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 9</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 10</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 11</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 12</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 13</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 14</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 15</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 16</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 17</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 18</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 19</a>
+				</li>
+				<li class="XS-menu__li">
+					<a class="XS-menu__a" href="#">Menu Item 20</a>
+				</li>
 			</ul>
 		</div>
 
-		<div id="menu-footer"></div>
+		<div class="XS-menu-footer"></div>
 
-		<?php #menu end ?>
+		<?php // .XS-menu end ?>
 
 		<?php #search-toggle ?>
 

@@ -247,23 +247,40 @@
 
 }
 
-#menu-toggle {
+@media (max-width: $screen-xs-max) {
+	.XS {
+		position: relative;
+			left: 0;
+			z-index: 1;
+	}
+
+	body.is-menuActive .XS {
+		width: 100%;
+		position: absolute;
+			left: 75%;
+	}
+
+	body.is-animating .XS {
+		@include transition(left .125s ease);
+	}
+}
+
+.XS-menu-toggle {
 	@extend .visible-xs;
 	cursor: pointer;
 	background-color: $color_emerald;
 	padding: $line-height $gutter-width;
 	float: left;
+}
 
-	i {
+	.XS-menu-toggle__icon {
 		color: $color_white;
 		font-size: 1.5em;
 		line-height: $line-height;
 		display: block;
 	}
 
-}
-
-#menu {
+.XS-menu {
 	background-color: $color_nephritis;
 	display: none;
 	position: fixed;
@@ -275,32 +292,59 @@
 	overflow: auto;
 		-webkit-overflow-scrolling: touch;
 
-	ul {
-		list-style: none;
-		padding-left: 0;
-		margin-bottom: 0;
-	}
-
-	li {
-
-	}
-
-	a {
-		color: $color_white;
-		padding: $line-height $gutter-width;
-		display: block;
-	}
-
-	&.is-active {
+	&.XS-menu--is-active {
 		@extend .visible-xs;
 	}
 
 }
 
-#menu-footer {
-	//@extend .visible-xs;
+	.XS-menu__ul {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	.XS-menu__li {
+		border-top: 1px solid $color_emerald;
+	}
+
+	.XS-menu__ul:first-child .XS-menu__li:first-child {
+		border-top: none;
+	}
+
+	.XS-menu__a {
+		color: $color_white;
+		padding: #{$line-height - 1px} $gutter-width $line-height;
+		display: block;
+
+		&:hover,
+		&:visited,
+		&:visited:hover {
+			color: $color_white;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
+
+	}
+
+		.XS-menu__ul:first-child .XS-menu__li:first-child .XS-menu__a {
+			padding-top: $line-height;
+		}
+
+		.XS-menu__a-icon {
+			text-align: center;
+			width: $gutter-width;
+		}
+
+		.XS-menu__a-text {
+			margin-left: $gutter-width * (2 / 3);
+		}
+
+.XS-menu-footer {
+	@extend .visible-xs;
 	background-color: $color_footer-bg;
-	display: none;
 	position: fixed;
 		top: 0;
 		right: 0;
@@ -309,26 +353,15 @@
 		z-index: -1;
 }
 
-@media (max-width: $screen-xs-max) {
-	#xs {
-		position: relative;
-			left: 0;
-			z-index: 1;
-	}
-
-	body.is-menuActive #xs {
-		width: 100%;
-		position: absolute;
-			left: 75%;
-	}
-
-	body.is-animating #xs {
-		@include transition(left .125s ease);
-	}
+body.is-menuActive .XS-menu-footer {
+	left: 75%;
 }
 
-#menu-x {
-	//@extend .visible-xs;
+body.is-animating .XS-menu-footer {
+	@include transition(left .125s ease);
+}
+
+.XS-menu-x {
 	cursor: pointer;
 	background-color: $color_black;
 	display: none;
@@ -342,18 +375,10 @@
 }
 
 @media (max-width: $screen-xs-max) {
-	body.is-menuActive #menu-x {
+	body.is-menuActive .XS-menu-x {
 		display: block;
 		left: 75%;
 	}
-}
-
-body.is-menuActive #menu-footer {
-	left: 75%;
-}
-
-body.is-animating #menu-footer {
-	@include transition(left .125s ease);
 }
 
 #header {

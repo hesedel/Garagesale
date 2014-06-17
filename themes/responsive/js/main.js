@@ -5,7 +5,7 @@ $(function() {
 		$('#alert').modal();
 	};
 
-	$('#menu-toggle').bind('touchend click', function(e) {
+	$('.XS-menu-toggle').bind('touchend click', function(e) {
 
 		// needed by Android <= 4.3
 		if(e.type === 'touchend') {
@@ -20,7 +20,7 @@ $(function() {
 
 		if(!$(this).hasClass('is-active')) {
 			$(this).addClass('is-active');
-			$('#menu').addClass('is-active');
+			$('.XS-menu').addClass('XS-menu--is-active');
 			$('body')
 				.addClass('is-animating')
 				.addClass('is-menuActive');
@@ -30,7 +30,7 @@ $(function() {
 		} else {
 			$(this).removeClass('is-active');
 			setTimeout(function() {
-				$('#menu').removeClass('is-active');
+				$('.XS-menu').removeClass('XS-menu--is-active');
 			}, 125);
 			$('body')
 				.addClass('is-animating')
@@ -42,7 +42,7 @@ $(function() {
 		return false;
 	});
 
-	$('#menu-x').bind( {
+	$('.XS-menu-x').bind( {
 		touchstart: function(e) {
 			$(this).data('x', e.originalEvent.touches[0].screenX);
 		},
@@ -57,7 +57,7 @@ $(function() {
 			if(percent > 1) {
 				percent = 1;
 			}
-			$('#xs, #menu-x, #menu-footer').css( {
+			$('.XS, .XS-menu-x, .XS-menu-footer').css( {
 				left: (75 * percent) + '%'
 			});
 			return false;
@@ -75,33 +75,33 @@ $(function() {
 
 			var x = e.originalEvent.changedTouches[0].screenX;
 			if(x === $(this).data('x')) {
-				$('#menu-toggle').trigger('touchend');
+				$('.XS-menu-toggle').trigger('touchend');
 			}	else {
 				var percent = $(this).offset().left / $(window).width();
 				$('body').addClass('is-animating');
 				if(percent > 0.5) {
-					$('#xs, #menu-x, #menu-footer').css( {
+					$('.XS, .XS-menu-x, .XS-menu-footer').css( {
 						left: '75%'
 					});
 					setTimeout(function() {
 						$('body').removeClass('is-animating');
 					}, 125);
 				} else {
-					$('#xs, #menu-x, #menu-footer').css( {
+					$('.XS, .XS-menu-x, .XS-menu-footer').css( {
 						left: '0'
 					});
 					setTimeout(function() {
-						$('#menu-toggle').trigger('touchend');
+						$('.XS-menu-toggle').trigger('touchend');
 					}, 125);
 				}
 				setTimeout(function() {
-					$('#xs, #menu-x, #menu-footer').attr('style', '');
+					$('.XS, .XS-menu-x, .XS-menu-footer').attr('style', '');
 				}, 125);
 			}
 			return false;
 		},
 		click: function() {
-			$('#menu-toggle').trigger('click');
+			$('.XS-menu-toggle').trigger('click');
 		}
 	});
 
