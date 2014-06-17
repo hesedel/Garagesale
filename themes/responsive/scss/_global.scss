@@ -96,6 +96,7 @@ th {
 				color: $color;
 				text-align: center;
 				width: $gutter-width;
+				margin-right: $gutter-width * (2 / 3);
 			}
 
 			&:hover {

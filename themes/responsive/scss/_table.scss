@@ -171,6 +171,30 @@
 		vertical-align: top;
 	}
 
+	.Table__a {
+		color: $color_white;
+		white-space: nowrap;
+		background-color: $color_header_bg;
+		height: $line-height * 3;
+			line-height: $line-height * 3;
+		padding-right: $gutter-width * (2 / 3);
+		padding-left: $gutter-width * (2 / 3);
+		display: block;
+
+		&:hover, &:focus, &:visited, &:visited:hover {
+			color: $color_white;
+		}
+
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+
+		&:hover {
+			background-color: blacken($color_header_bg, 25%);
+		}
+
+	}
+
 /*
 .no-js .Table .tr.filters.is-hidden {
 	visibility: visible;
@@ -319,20 +343,20 @@
 		border-top: 1px solid $color_emerald;
 	}
 
-	.XS-menu__ul:first-child .XS-menu__li:first-child {
-		border-top: none;
-	}
+		.XS-menu__ul:first-child .XS-menu__li:first-child {
+			border-top: none;
+		}
 
 	.XS-menu__a {
 		color: $color_white;
 		padding: #{$line-height - 1px} $gutter-width $line-height;
 		display: block;
 
-		&:hover, &:visited, &:visited:hover {
+		&:hover, &:focus, &:visited, &:visited:hover {
 			color: $color_white;
 		}
 
-		&:hover {
+		&:hover, &:focus {
 			text-decoration: none;
 		}
 
@@ -411,12 +435,12 @@ body.is-animating .XS-menu-footer {
 		@include border-radius($border-radius);
 		display: block;
 
-		&:hover, &:active, &:focus {
-			text-decoration: none;
+		&:hover, &:focus, &:visited, &:visited:hover {
+			color: $color_white;
 		}
 
-		&:hover, &:visited, &:visited:hover {
-			color: $color_white;
+		&:hover, &:focus {
+			text-decoration: none;
 		}
 
 	}
@@ -476,10 +500,6 @@ body.is-animating .XS-menu-footer {
 	}
 }
 
-#register,
-.User,
-#login,
-#logout,
 #filters,
 #post {
 
@@ -508,132 +528,74 @@ body.is-animating .XS-menu-footer {
 
 }
 
-#register,
+.Register,
 .User {
 	padding-left: $gutter-width * (1 / 3);
 
-	> a,
-	.a > a {
+	.Table__a {
 		@include border-left-radius($border-radius);
 	}
 
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-	#register,
+	.Register,
 	.User {
 		padding-left: 0;
 	}
 }
 
-@media (max-width: $screen-xs-max) {
-	#register,
-	.User {
-		padding-left: 0;
-		float: left;
-
-		> a,
-		.a > a {
-			@include border-left-radius(0);
-		}
-
-	}
-}
-
-#register {
+.Register {
 	@extend .hidden-xs;
 
-	a {
-
-		i {
-			@extend .hidden-sm;
-		}
-
+	.Table__a-icon {
+		@extend .hidden-sm;
 	}
 
 }
 
-@media (max-width: $screen-xs-max) {
-	#register {
+.User {}
+
+	.User__div {
+		position: relative;
+	}
+
+	.User__a-img {
+		@include box-sizing(content-box);
+		width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
+		height: ($line-height * 2) - 2px;
+		border: 1px solid $color_nephritis;
+		margin-right: $gutter-width * (1 / 3);
+		display: inline-block;
+	}
+
+		.User__a:hover .User__a-img {
+			border-color: $color_emerald;
+		}
+
+	.Table__a-text {
+		@extend .hidden-xs;
+	}
+
+	.User__a-caret {
+		margin-left: $gutter-width * (1 / 3);
+	}
+
+	.User__ul {
+		margin-top: 0;
+		left: -1px;
+	}
+
+		.User:hover .User__ul {
+			display: block;
+		}
+
+	.User__li--username {
+		@extend .visible-xs;
+		color: $color_nephritis;
+		font-weight: 600;
 		text-align: center;
-		width: 50%;
-		width: (1 / 3) * 100%; //
-		padding-top: $line-height * .5; //
-		padding-bottom: $line-height * .5; //
-		position: relative;
-
-		> a {
-			height: $line-height * 2;
-				line-height: $line-height * 2;
-			@include border-radius($border-radius);
-			margin-right: $gutter-width * (1 / 3);
-			margin-left: $gutter-width;
-		}
-
 	}
-}
-
-.User {
-
-	.a {
-		position: relative;
-
-		> a {
-
-			img {
-				@include box-sizing(content-box);
-				width: ($gutter-width * 2) + ($gutter-width * (2 / 3)) - 2px;
-				height: ($line-height * 2) - 2px;
-				border: 1px solid $color_nephritis;
-				margin-right: $gutter-width * (1 / 3);
-				display: inline-block;
-			}
-
-			span {
-				@extend .hidden-xs;
-			}
-
-			.fa-angle-down {
-				margin-left: $gutter-width * (1 / 3);
-			}
-
-			&:hover {
-
-				img {
-					border-color: $color_emerald;
-				}
-
-			}
-
-		}
-
-		.dropdown-menu {
-			margin-top: 0;
-			left: -1px;
-
-			.username {
-				@extend .visible-xs;
-				font-weight: 600;
-				text-align: center;
-			}
-
-			i {
-				margin-right: $gutter-width * (2 / 3);
-			}
-
-		}
-
-		&:hover {
-
-			.dropdown-menu {
-				display: block;
-			}
-
-		}
-
-	}
-
-}
 
 @media (max-width: $screen-xs-max) {
 	.User {
@@ -653,126 +615,98 @@ body.is-animating .XS-menu-footer {
 				left: -($gutter-width * (2 / 3));
 		}
 
-		div.a {
-			padding-top: $line-height * .5;
-			padding-bottom: $line-height * .5;
-			
+	}
 
-			> a {
-				background-color: $color_emerald;
-				height: $line-height * 2;
-					line-height: $line-height * 2;
-				padding: 0 #{$gutter-width * (1 / 3)} 0 0;
-				@include border-radius($border-radius);
+	.User__div {
+		padding-top: $line-height * .5;
+		padding-bottom: $line-height * .5;
+	}
 
-				.fa-user {
-					font-size: 1.25em;
-					padding-left: $gutter-width * (2 / 3);
-					vertical-align: middle;
-				}
+	.Table__a {
+		background-color: $color_emerald;
+		height: $line-height * 2;
+			line-height: $line-height * 2;
+		padding: 0 #{$gutter-width * (1 / 3)} 0 0;
+		@include border-radius($border-radius);
 
-				img {
-					border-color: $color_emerald;
-					@include border-left-radius($border-radius);
-					margin-right: 0;
-					vertical-align: top;
-				}
-
-				&:hover {
-					background-color: $color_emerald;
-				}
-
-			}
-
-			.dropdown-menu {
-				top: $line-height * 2.5;
-				right: -1px;
-				left: auto;
-			}
-
+		&:hover {
+			background-color: $color_emerald;
 		}
 
 	}
+
+	.Table__a-icon {
+		font-size: 1.25em;
+		padding-left: $gutter-width * (2 / 3);
+		vertical-align: middle;
+	}
+
+	.User__a-img {
+		border-color: $color_emerald;
+		@include border-left-radius($border-radius);
+		margin-right: 0;
+		vertical-align: top;
+	}
+
+	.User__ul {
+		top: $line-height * 2.5;
+		right: -1px;
+		left: auto;
+	}
 }
 
-#login,
-#logout {
+.Login,
+.Logout {
 	padding-left: 1px;
 
-	a {
+	.Table__a {
 		@include border-right-radius(3px);
 	}
 
 }
 
-@media (max-width: $screen-xs-max) {
-	#login,
-	#logout {
-		text-align: center;
-		padding-left: 0;
-		float: right;
-		float: left; //
+.Login {
 
-		a {
-			@include border-right-radius(0);
-		}
-
-	}
-}
-
-#login {
-
-	a {
-
-		i {
-			@extend .hidden-sm;
-		}
-
-		span {
-			@extend .hidden-xs;
-		}
-
-	}
-
-}
-
-@media (max-width: $screen-xs-max) {
-	#login {
-		float: right;
-
-		a {
-			background-color: transparent;
-			padding: $line-height $gutter-width;
-			float: right;
-
-			i {
-				font-size: 1.5em;
-				line-height: $line-height;
-				display: block;
-			}
-
-		}
-
-	}
-}
-
-#logout {
-	@extend .hidden-xs; //
-
-	a span {
+	.Table__a-icon {
 		@extend .hidden-sm;
+	}
+
+	.Table__a-text {
 		@extend .hidden-xs;
 	}
 
 }
 
 @media (max-width: $screen-xs-max) {
-	#logout {
-		width: 15%;
-		width: (1 / 3) * 100%; //
+	.Login {
+		float: right;
+
+		.Table__a {
+			background-color: transparent;
+			padding: $line-height $gutter-width;
+			@include border-right-radius(0);
+			float: right;
+		}
+
+		.Table__a-icon {
+			font-size: 1.5em;
+			line-height: $line-height;
+			display: block;
+		}
+
 	}
 }
 
+.Logout {
+	@extend .hidden-xs;
+
+	.Table__a-text {
+		@extend .hidden-sm;
+	}
+
+}
+
+/*
 #filters {
 	padding-left: $gutter-width * (1 / 3);
 	position: relative;
@@ -865,8 +799,9 @@ body.is-animating .XS-menu-footer {
 
 	}
 }
+*/
 
-#search-toggle {
+.Search-toggle {
 	@extend .visible-xs;
 	cursor: pointer;
 	background-color: $color;
@@ -874,19 +809,19 @@ body.is-animating .XS-menu-footer {
 	float: right;
 	@include transition(background-color 0s ease .25s);
 
-	i {
-		color: $color_white;
-		font-size: 1.5em;
-		line-height: $line-height;
-		display: block;
-	}
-
-	&.is-active {
+	&.Search-toggle--is-active {
 		background-color: $color_header_bg;
 		@include transition(none);
 	}
 
 }
+
+	.Search-toggle__icon {
+		color: $color_white;
+		font-size: 1.5em;
+		line-height: $line-height;
+		display: block;
+	}
 
 #search {
 	width: 100%;

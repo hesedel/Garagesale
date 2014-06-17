@@ -105,18 +105,18 @@ $(function() {
 		}
 	});
 
-	$('#search-toggle').bind('touchend click', function(e) {
+	$('.Search-toggle').bind('touchend click', function(e) {
 
 		// needed by Android <= 4.3
 		if(e.type === 'touchend') {
 			$(this).unbind('click');
 		}
 
-		if(!$(this).hasClass('is-active')) {
-			$(this).addClass('is-active');
+		if(!$(this).hasClass('Search-toggle--is-active')) {
+			$(this).addClass('Search-toggle--is-active');
 			$('#search').addClass('is-active');
 		} else {
-			$(this).removeClass('is-active');
+			$(this).removeClass('Search-toggle--is-active');
 			$('#search').removeClass('is-active');
 		}
 
@@ -140,6 +140,7 @@ $(function() {
 		}
 	});
 
+	/*
 	$('.a', '#filters').bind( {
 		mouseover: function() {
 			$(this).removeClass('is-inactive');
@@ -167,6 +168,7 @@ $(function() {
 			$('.a.is-active', '#filters').trigger('click');
 		}
 	});
+	*/
 
 	$('.hes-slider').hesSlider();
 	$('time.timeago').timeago();

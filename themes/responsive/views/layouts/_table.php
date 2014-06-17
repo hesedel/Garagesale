@@ -129,73 +129,101 @@
 
 		<?php // .XS-menu end ?>
 
-		<?php #search-toggle ?>
-
-		<div id="search-toggle"><i class="fa fa-search"></i></div>
-
-		<?php #search-toggle end ?>
+		<div class="Search-toggle"><i class="Search-toggle__icon fa fa-search"></i></div>
 
 		<?php if(Yii::app()->user->isGuest): ?>
 
-		<?php #register ?>
+		<?php // .Register ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="register">' : '<td class="Table__td" id="register">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td Register">' : '<td class="Table__td Register">'; ?>
+			<?php echo CHtml::link(
+				'<i class="Table__a-icon fa fa-thumbs-up"></i> ' .
+				'<span class="Table__a-text">Register</span>',
+				array('/site/register'),
+				array('class' => 'Table__a')
+			); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #register end ?>
+		<?php // .Register end ?>
 
-		<?php #login ?>
+		<?php // .Login ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="login">' : '<td class="Table__td" id="login">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-user"></i> <span>Login</span>', array('/site/login')); ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td Login">' : '<td class="Table__td Login">'; ?>
+			<?php echo CHtml::link(
+				'<i class="Table__a-icon fa fa-user"></i> ' .
+				'<span class="Table__a-text">Login</span>',
+				array('/site/login'),
+				array('class' => 'Table__a')
+			); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #login end ?>
+		<?php // .Login end ?>
 
 		<?php else: ?>
 
 		<?php // .User ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="Table__td User">' : '<td class="Table__td User">'; ?>
-			<div class="a">
+			<div class="User__div">
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->image
 						? CHtml::image(
 							'/img/vendor/slir/w76-h68-c38x34-bfff' . Yii::app()->params['user']->getImage() . '?' . time(),
-							Yii::app()->user->id . '\'s avatar'
+							Yii::app()->user->id . '\'s avatar',
+							array('class' => 'User__a-img')
 						)
-						: '<i class="fa fa-user"></i> '
+						: '<i class="Table__a-icon fa fa-user"></i> '
 					) .
-						'<span>' . Yii::app()->user->id . '</span>' .
-							'<i class="fa fa-angle-down"></i>',
+					'<span class="Table__a-text">' . Yii::app()->user->id . '</span>' .
+					'<i class="User__a-caret fa fa-angle-down"></i>',
 					array(
 						'/admin/user/view',
 						'id' => Yii::app()->user->id,
-					)
+					),
+					array('class' => 'Table__a User__a')
 				); ?>
-				<ul class="dropdown-menu">
-					<li class="username"><?php echo Yii::app()->user->id; ?></li>
+				<ul class="User__ul dropdown-menu">
+					<li class="User__li--username"><?php echo Yii::app()->user->id; ?></li>
 					<li class="divider visible-xs"></li>
-					<li><?php echo CHtml::link('<i class="fa fa-tachometer"></i>Dashboard', array('/admin/user/dashboard')); ?></li>
+					<li><?php echo CHtml::link(
+						'<i class="fa fa-tachometer"></i>Dashboard',
+						array('/admin/user/dashboard')
+					); ?></li>
 					<li class="divider"></li>
-					<li><?php echo CHtml::link('<i class="fa fa-wrench"></i>Edit Account', array('/admin/user/account')); ?></li>
-					<li><?php echo CHtml::link('<i class="fa fa-user"></i>View Profile', array('/admin/user/view', 'id' => Yii::app()->user->id)); ?></li>
+					<li><?php echo CHtml::link(
+						'<i class="fa fa-wrench"></i>Edit Account',
+						array('/admin/user/account')
+					); ?></li>
+					<li><?php echo CHtml::link(
+						'<i class="fa fa-user"></i>View Profile',
+						array(
+							'/admin/user/view',
+							'id' => Yii::app()->user->id,
+						)
+					); ?></li>
 					<li class="divider visible-xs"></li>
-					<li class="visible-xs"><?php echo CHtml::link('<i class="fa fa-sign-out"></i>Logout', array('/site/logout')); ?></li>
+					<li class="visible-xs"><?php echo CHtml::link(
+						'<i class="fa fa-sign-out"></i>Logout',
+						array('/site/logout')
+					); ?></li>
 				</ul>
 			</div>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php // .User end ?>
 
-		<?php #logout ?>
+		<?php // .Logout ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="logout">' : '<td class="Table__td" id="logout">'; ?>
-			<?php echo CHtml::link('<i class="fa fa-sign-out"></i> <span>Logout</span>', array('/site/logout')); ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td Logout">' : '<td class="Table__td Logout">'; ?>
+			<?php echo CHtml::link(
+				'<i class="Table__a-icon fa fa-sign-out"></i> ' .
+				'<span class="Table__a-text">Logout</span>',
+				array('/site/logout'),
+				array('class' => 'Table__a')
+			); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #logout end ?>
+		<?php // .Logout end ?>
 
 		<?php endif; ?>
 
