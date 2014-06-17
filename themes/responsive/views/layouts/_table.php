@@ -1,24 +1,20 @@
-<div id="table-container"><div class="container">
+<div class="Table-container"><div class="container">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'item-search-form',
-	//'enableClientValidation'=>true,
-	//'clientOptions'=>array(
-	//	'validateOnSubmit'=>true,
-	//),
 	'action'=>array('/item/search'),
 	'method'=>'get',
 )); ?>
 
-<?php echo !isset($lt_ie_8) ? '<div id="table">' : '<table id="table" cellspacing="0">'; ?>
+<?php echo !isset($lt_ie_8) ? '<div class="Table">' : '<table class="Table" cellspacing="0">'; ?>
 
-	<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
+	<?php echo !isset($lt_ie_8) ? '<div class="Table__tr">' : '<tr class="Table__tr">'; ?>
 
 		<div class="XS-menu-toggle"><i class="XS-menu-toggle__icon fa fa-bars"></i></div>
 
 		<?php // .Header ?>
 
-		<?php echo !isset($lt_ie_8) ? '<header class="td Header">' : '<td class="td Header">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<header class="Table__td Header">' : '<td class="Table__td Header">'; ?>
 
 			<?php echo $this->getRoute() !== 'item/view' ? '<h1 class="Header__h1">' : ''; ?>
 				<?php echo CHtml::link(
@@ -143,7 +139,7 @@
 
 		<?php #register ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="register">' : '<td class="Table__td" id="register">'; ?>
 			<?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
@@ -151,7 +147,7 @@
 
 		<?php #login ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="login">' : '<td class="td" id="login">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="login">' : '<td class="Table__td" id="login">'; ?>
 			<?php echo CHtml::link('<i class="fa fa-user"></i> <span>Login</span>', array('/site/login')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
@@ -159,9 +155,9 @@
 
 		<?php else: ?>
 
-		<?php #user ?>
+		<?php // .User ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="user">' : '<td class="td" id="user">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td User">' : '<td class="Table__td User">'; ?>
 			<div class="a">
 				<?php echo CHtml::link(
 					(Yii::app()->params['user']->image
@@ -191,11 +187,11 @@
 			</div>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #user end ?>
+		<?php // .User end ?>
 
 		<?php #logout ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="logout">' : '<td class="td" id="logout">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="logout">' : '<td class="Table__td" id="logout">'; ?>
 			<?php echo CHtml::link('<i class="fa fa-sign-out"></i> <span>Logout</span>', array('/site/logout')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
@@ -213,7 +209,7 @@
 
 		<?php #search ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="search">' : '<td class="td" id="search">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="search">' : '<td class="Table__td" id="search">'; ?>
 
 			<?php echo !isset($lt_ie_8) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
 
@@ -253,7 +249,7 @@
 
 		<?php #post ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="td" id="post">' : '<td class="td" id="post">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="post">' : '<td class="Table__td" id="post">'; ?>
 			<?php echo CHtml::link('Post a<br>FREE Ad', array('/item/create')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
@@ -262,8 +258,7 @@
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
 	<?php /*
-
-	<?php echo !isset($lt_ie_8) ? '<div class="tr filters is-hidden">' : '<tr class="tr filters is-hidden">'; ?>
+	<?php echo !isset($lt_ie_8) ? '<div class="Table__tr filters is-hidden">' : '<tr class="tr filters is-hidden">'; ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
@@ -286,11 +281,10 @@
 		<?php echo !isset($lt_ie_8) ? '<div class="td">&#160;</div>' : '<td class="td">&#160;</td>'; ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
-
 	*/ ?>
 
 <?php echo !isset($lt_ie_8) ? '</div>' : '</table>'; ?>
 
 <?php $this->endWidget(); ?>
 
-</div></div><?php #table-container ?>
+</div></div><!-- .Table-container -->

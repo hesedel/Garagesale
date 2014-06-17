@@ -1,8 +1,8 @@
 $(function() {
 
 	window.alert = function(message) {
-		$('.modal-body', '#alert').text(message);
-		$('#alert').modal();
+		$('.modal-body', '.Alert').text(message);
+		$('.Alert').modal();
 	};
 
 	$('.XS-menu-toggle').bind('touchend click', function(e) {
@@ -176,7 +176,7 @@ $(function() {
 $(window).load(function() {
 
 	setTimeout(function() {
-		$('.alert-success.timeout').slideUp();
+		$('.Flash--timeout').slideUp();
 	}, 10000);
 
 });

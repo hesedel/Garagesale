@@ -1,11 +1,11 @@
 <?php $this->beginContent('//layouts/main') ?>
 
-<div id="column3">
+<div class="Column3">
 
 <div class="row">
 	<div class="col-md-6 col-md-push-3">
 
-		<div id="content">
+		<div class="Content">
 
 			<?php if(isset($this->breadcrumbs)) {
 				$this->widget('zii.widgets.CBreadcrumbs', array(
@@ -16,12 +16,12 @@
 
 			<?php echo $content ?>
 
-		</div><!-- #content -->
+		</div><!-- .Content -->
 
 	</div>
 	<div class="col-md-3 col-md-pull-6">
 
-		<aside id="sidebar-left">
+		<aside class="Sidebar-left">
 
 			<?php echo $this->clips['sidebar-left']; ?>
 
@@ -36,20 +36,20 @@
 
 			<?php $this->endWidget(); ?>
 
-		</aside><!-- #sidebar-left -->
+		</aside><!-- .Sidebar-left -->
 
 	</div>
 	<div class="col-md-3">
 
-		<aside id="sidebar-right">
+		<aside class="Sidebar-right">
 
 			<?php echo $this->clips['sidebar-right'] ?>
 
-		</aside><!-- #sidebar-right -->
+		</aside><!-- .Sidebar-right -->
 
 	</div>
 </div>
 
-</div><!-- #column3 -->
+</div><!-- .Column3 -->
 
 <?php $this->endContent(); ?>

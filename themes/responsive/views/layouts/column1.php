@@ -1,20 +1,20 @@
 <?php $this->beginContent('//layouts/main'); ?>
 
-<div id="column1">
+<div class="Column1">
 
-	<div id="content">
+<div class="Content">
 
-		<?php if(isset($this->breadcrumbs)) {
-			$this->widget('zii.widgets.CBreadcrumbs', array(
-				'links' => $this->breadcrumbs,
-				'separator' => ' &#160; / &#160; ',
-			));
-		}; ?>
+	<?php if(isset($this->breadcrumbs)) {
+		$this->widget('zii.widgets.CBreadcrumbs', array(
+			'links' => $this->breadcrumbs,
+			'separator' => ' &#160; / &#160; ',
+		));
+	}; ?>
 
-		<?php echo $content; ?>
+	<?php echo $content; ?>
 
-	</div><!-- #content -->
+</div><!-- .Content -->
 
-</div><!-- #column1 -->
+</div><!-- .Column1 -->
 
 <?php $this->endContent(); ?>

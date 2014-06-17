@@ -33,15 +33,15 @@
 
 <div class="XS">
 
-<div id="body">
+<div class="Body">
 
 	<!--[if (gt IE 7)|!(IE)]><!--><?php $this->renderPartial('/layouts/_table'); ?><!--<![endif]-->
 	<!--[if lt IE 8]><?php $this->renderPartial('/layouts/_table', array('lt_ie_8' => true)); ?><![endif]-->
 
-	<div id="page">
+	<div class="Page">
 
 		<?php if(Yii::app()->user->hasFlash('success')): ?>
-		<div class="alert alert-success alert-dismissable timeout" id="alert">
+		<div class="Flash--timeout alert alert-success alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
 			<?php echo Yii::app()->user->getFlash('success'); ?>
 		</div>
@@ -49,19 +49,19 @@
 
 		<?php echo $content; ?>
 
-	</div><!-- #page -->
+	</div><!-- .Page -->
 
-</div><!-- #body -->
+</div><!-- .Body -->
 
-<footer id="footer">
-	<div id="copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
-</footer><!-- #footer -->
+<footer class="Footer">
+	<div class="Footer__copyright"><?php echo Yii::app()->name; ?> &#169; <?php echo time_local(date('Y-m-d H:i:s'), array('format' => 'Y')); ?></div>
+</footer><!-- .Footer -->
 
 </div><!-- .XS -->
 
 <div class="XS-menu-x"></div>
 
-<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
+<div class="Alert modal fade" tabindex="-1" role="dialog" aria-labelledby="Alert" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-body"></div>
