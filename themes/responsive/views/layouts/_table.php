@@ -16,23 +16,23 @@
 
 		<div class="XS-menu-toggle"><i class="XS-menu-toggle__icon fa fa-bars"></i></div>
 
-		<?php #header ?>
+		<?php // .Header ?>
 
-		<?php echo !isset($lt_ie_8) ? '<header class="td" id="header">' : '<td class="td" id="header">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<header class="td Header">' : '<td class="td Header">'; ?>
 
-			<?php echo $this->getRoute() !== 'item/view' ? '<h1>' : ''; ?>
+			<?php echo $this->getRoute() !== 'item/view' ? '<h1 class="Header__h1">' : ''; ?>
 				<?php echo CHtml::link(
-					'Garagesale<span>.ph</span>',
+					'Garagesale<span class="Header__a__tld">.ph</span>',
 					'/',
-					array('id' => 'logo')
+					array('class' => 'Header__a')
 				); ?>
 			<?php echo $this->getRoute() !== 'item/view' ? '</h1>' : ''; ?>
 
-			<span class="alpha">alpha</span>
+			<span class="Header__version">alpha</span>
 
 		<?php echo !isset($lt_ie_8) ? '</header>' : '</td>'; ?>
 
-		<?php #header end ?>
+		<?php // .Header end ?>
 
 		<?php // .XS-menu ?>
 
@@ -144,7 +144,7 @@
 		<?php #register ?>
 
 		<?php echo !isset($lt_ie_8) ? '<div class="td" id="register">' : '<td class="td" id="register">'; ?>
-			<?php echo CHtml::link('Register', array('/site/register')); ?>
+			<?php echo CHtml::link('<i class="fa fa-thumbs-up"></i> Register', array('/site/register')); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 		<?php #register end ?>
