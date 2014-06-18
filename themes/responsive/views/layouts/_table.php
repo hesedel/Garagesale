@@ -275,13 +275,18 @@
 
 		<?php #search end ?>
 
-		<?php #post ?>
+		<?php // .Post ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="post">' : '<td class="Table__td" id="post">'; ?>
-			<?php echo CHtml::link('Post a<br>FREE Ad', array('/item/create')); ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td Post">' : '<td class="Table__td Post">'; ?>
+			<?php echo CHtml::link(
+				'<i class="Table__a-icon fa fa-thumb-tack"></i> ' .
+				'<span class="Table__a-text">Post a<br>FREE Ad</span>',
+				array('/item/create'),
+				array('class' => 'Table__a Post__a')
+			); ?>
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #post end ?>
+		<?php // .Post end ?>
 
 	<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
 
