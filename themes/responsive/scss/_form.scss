@@ -13,7 +13,7 @@ fieldset {
 
 }
 
-input[type=submit] {
+[type=submit] {
 	@extend .g-button;
 	height: 30px;
 	padding: 0 #{$gutter-width * (2 / 3)};
@@ -28,7 +28,7 @@ input[type=submit] {
 		display: none !important;
 	}
 
-	input[type=submit] {
+	[type=submit] {
 		position: static;
 		@include opacity(1);
 	}
@@ -439,7 +439,7 @@ table.form {
 		padding-left: $gutter-width;
 
 		a.g-button,
-		input[type=submit] {
+		[type=submit] {
 			border-color: blacken($whitesmoke, 25%);
 			border-bottom-color: blacken($whitesmoke, 25%, 2);
 
@@ -479,7 +479,7 @@ table.form {
 
 		}
 
-		input[type=submit] {
+		[type=submit] {
 			//@extend .g-button.orangered;
 			position: absolute;
 				right: 0;
@@ -527,7 +527,7 @@ table.form {
 			display: none;
 		}
 
-		input[type=submit] {
+		[type=submit] {
 			position: static;
 			visibility: visible;
 		}
