@@ -16,7 +16,7 @@
 
 .no-js .Table-container {
 	height: auto;
-	padding-bottom: ($line-height * 1.5) - ($gutter-width * (1 / 3));
+	padding-bottom: $line-height;
 	position: static;
 }
 
@@ -36,6 +36,10 @@
 			padding-left: 0;
 		}
 
+	}
+
+	.no-js .Table-container {
+		padding-bottom: 0;
 	}
 }
 
@@ -866,7 +870,7 @@ body.is-animating .XS-menu-footer {
 	}
 
 	.Search__a-submit,
-	.Search__input-submit {
+	input.Search__input-submit {
 		color: $color;
 		background-color: $color_body_bg;
 
