@@ -9,17 +9,17 @@ $(function() {
 
 		// needed by Android <= 4.3
 		if(e.type === 'touchend') {
-			$(document).bind('click.menu', function() {
-				$(this).unbind('click.menu');
+			$(document).bind('click.XS-menu', function() {
+				$(this).unbind('click.XS-menu');
 				return false;
 			});
 			setTimeout(function() {
-				$(document).unbind('click.menu');
+				$(document).unbind('click.XS-menu');
 			}, 500);
 		}
 
-		if(!$(this).hasClass('is-active')) {
-			$(this).addClass('is-active');
+		if(!$(this).hasClass('XS-menu-toggle--is-active')) {
+			$(this).addClass('XS-menu-toggle--is-active');
 			$('.XS-menu').addClass('XS-menu--is-active');
 			$('body')
 				.addClass('is-animating')
@@ -28,7 +28,7 @@ $(function() {
 				$('body').removeClass('is-animating');
 			}, 125);
 		} else {
-			$(this).removeClass('is-active');
+			$(this).removeClass('XS-menu-toggle--is-active');
 			setTimeout(function() {
 				$('.XS-menu').removeClass('XS-menu--is-active');
 			}, 125);
@@ -65,12 +65,12 @@ $(function() {
 		touchend: function(e) {
 
 			// needed by Android <= 4.1.2
-			$(document).bind('click.menu', function() {
-				$(this).unbind('click.menu');
+			$(document).bind('click.XS-menu', function() {
+				$(this).unbind('click.XS-menu');
 				return false;
 			});
 			setTimeout(function() {
-				$(document).unbind('click.menu');
+				$(document).unbind('click.XS-menu');
 			}, 500);
 
 			var x = e.originalEvent.changedTouches[0].screenX;
@@ -114,24 +114,24 @@ $(function() {
 
 		if(!$(this).hasClass('Search-toggle--is-active')) {
 			$(this).addClass('Search-toggle--is-active');
-			$('#search').addClass('is-active');
+			$('.Search').addClass('Search--is-active');
 		} else {
 			$(this).removeClass('Search-toggle--is-active');
-			$('#search').removeClass('is-active');
+			$('.Search').removeClass('Search--is-active');
 		}
 
 		return false;
 	});
 
-	$('.a', '#user').data('hover', false);
-	$('.a > a', '#user').bind( {
+	$('.User__div').data('hover', false);
+	$('.User__a').bind( {
 		touchstart: function() {
-			if(!$(this).parent().data('hover')) {
-				$(this).parent().data('hover', true);
-				$('.dropdown-menu', $(this).parent()).removeClass('hidden');
+			if(!$('.User__div').data('hover')) {
+				$('.User__div').data('hover', true);
+				$('.User__ul').removeClass('hidden');
 			} else {
-				$(this).parent().data('hover', false);
-				$('.dropdown-menu', $(this).parent()).addClass('hidden');
+				$('.User__div').data('hover', false);
+				$('.User__ul').addClass('hidden');
 				return false;
 			}
 		},

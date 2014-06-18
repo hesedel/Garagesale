@@ -235,25 +235,25 @@
 
 		<?php #filters end */ ?>
 
-		<?php #search ?>
+		<?php // .Search ?>
 
-		<?php echo !isset($lt_ie_8) ? '<div class="Table__td" id="search">' : '<td class="Table__td" id="search">'; ?>
+		<?php echo !isset($lt_ie_8) ? '<div class="Table__td Search">' : '<td class="Table__td Search">'; ?>
 
-			<?php echo !isset($lt_ie_8) ? '<div class="table">' : '<table class="table" cellspacing="0">'; ?>
+			<?php echo !isset($lt_ie_8) ? '<div class="Search__table">' : '<table class="Search__table" cellspacing="0">'; ?>
 
-				<?php echo !isset($lt_ie_8) ? '<div class="tr">' : '<tr class="tr">'; ?>
+				<?php echo !isset($lt_ie_8) ? '<div class="Search__tr">' : '<tr class="Search__tr">'; ?>
 
-					<?php echo !isset($lt_ie_8) ? '<div class="td left">' : '<td class="td left">'; ?>
-						<div class="input-text">
+					<?php echo !isset($lt_ie_8) ? '<div class="Search__td--left">' : '<td class="Search__td--left">'; ?>
+						<div class="Search__input-text input-text">
 							<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 								'model' => $this->model_itemSearchForm,
 								'attribute' => 'keywords',
 								'sourceUrl' => array('/item/search_autocomplete'),
 								'options' => array(
-									'appendTo' => '#search .input-text',
+									'appendTo' => '.Search__input-text',
 									'minLength' => 2,
 									'position' => array(
-										'of' => '.input-text',
+										'of' => '.Search__input-text',
 										'collision' => 'fit',
 									),
 								),
@@ -262,9 +262,16 @@
 						</div>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-					<?php echo !isset($lt_ie_8) ? '<div class="td right">' : '<td class="td right">'; ?>
-						<?php echo CHtml::linkButton('<i class="fa fa-search"></i> <span>Search</span>', array('class' => 'g-button submit')); ?>
-						<?php echo CHtml::submitButton('Search'); ?>
+					<?php echo !isset($lt_ie_8) ? '<div class="Search__td--right">' : '<td class="Search__td--right">'; ?>
+						<?php echo CHtml::linkButton(
+							'<i class="Search__a-submit-icon fa fa-search"></i> ' .
+							'<span class="Search__a-submit-text">Search</span>',
+							array('class' => 'Search__a-submit g-button submit')
+						); ?>
+						<?php echo CHtml::submitButton(
+							'Search',
+							array('class' => 'Search__input-submit')
+						); ?>
 					<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
 				<?php echo !isset($lt_ie_8) ? '</div>' : '</tr>'; ?>
@@ -273,7 +280,7 @@
 
 		<?php echo !isset($lt_ie_8) ? '</div>' : '</td>'; ?>
 
-		<?php #search end ?>
+		<?php // .Search end ?>
 
 		<?php // .Post ?>
 
