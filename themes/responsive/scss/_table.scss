@@ -14,11 +14,11 @@
 
 }
 
-.no-js .Table-container {
-	height: auto;
-	padding-bottom: $line-height;
-	position: static;
-}
+	.no-js .Table-container {
+		height: auto;
+		padding-bottom: $line-height;
+		position: static;
+	}
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
 	.Table-container {
@@ -38,9 +38,9 @@
 
 	}
 
-	.no-js .Table-container {
-		padding-bottom: 0;
-	}
+		.no-js .Table-container {
+			padding-bottom: 0;
+		}
 }
 
 .Table {
@@ -276,14 +276,14 @@
 
 	}
 
-	.Table__tr {
-		@include clearfix;
-		display: block;
-	}
+		.Table__tr {
+			@include clearfix;
+			display: block;
+		}
 
-	.Table__td {
-		display: block;
-	}
+		.Table__td {
+			display: block;
+		}
 }
 
 @media (max-width: $screen-xs-max) {
@@ -293,15 +293,15 @@
 			z-index: 1;
 	}
 
-	body.is-menuActive .XS {
-		width: 100%;
-		position: absolute;
-			left: 75%;
-	}
+		body.is-menuActive .XS {
+			width: 100%;
+			position: absolute;
+				left: 75%;
+		}
 
-	body.is-animating .XS {
-		@include transition(left .125s ease);
-	}
+		body.is-animating .XS {
+			@include transition(left .125s ease);
+		}
 }
 
 .XS-menu-toggle {
@@ -390,13 +390,13 @@
 		z-index: -1;
 }
 
-body.is-menuActive .XS-menu-footer {
-	left: 75%;
-}
+	body.is-menuActive .XS-menu-footer {
+		left: 75%;
+	}
 
-body.is-animating .XS-menu-footer {
-	@include transition(left .125s ease);
-}
+	body.is-animating .XS-menu-footer {
+		@include transition(left .125s ease);
+	}
 
 .XS-menu-x {
 	cursor: pointer;
@@ -468,26 +468,26 @@ body.is-animating .XS-menu-footer {
 			top: 0;
 	}
 
-	.Header__h1 {
-		float: left;
-	}
+		.Header__h1 {
+			float: left;
+		}
 
-	.Header__a {
-		height: $line-height * 2;
-			line-height: $line-height * 2;
-		@include border-top-radius(0);
-		float: left;
-	}
+		.Header__a {
+			height: $line-height * 2;
+				line-height: $line-height * 2;
+			@include border-top-radius(0);
+			float: left;
+		}
 
-	.Header__version {
-		color: $color_nephritis;
-		height: $line-height * 2;
-			line-height: $line-height * 2;
-		padding-right: 0;
-		padding-left: $gutter-width * .5;
-		margin-top: 0;
-		float: left;
-	}
+		.Header__version {
+			color: $color_nephritis;
+			height: $line-height * 2;
+				line-height: $line-height * 2;
+			padding-right: 0;
+			padding-left: $gutter-width * .5;
+			margin-top: 0;
+			float: left;
+		}
 }
 
 @media (max-width: $screen-xs-max) {
@@ -495,13 +495,13 @@ body.is-animating .XS-menu-footer {
 		float: left;
 	}
 
-	.Header__a {
-		background-color: transparent;
-		width: 0;
-		padding-right: 0;
-		padding-left: $gutter-width * (2 / 3);
-		@include border-radius(0);
-	}
+		.Header__a {
+			background-color: transparent;
+			width: 0;
+			padding-right: 0;
+			padding-left: $gutter-width * (2 / 3);
+			@include border-radius(0);
+		}
 }
 
 /*
@@ -835,8 +835,7 @@ body.is-animating .XS-menu-footer {
 
 	.Search__table {
 		background-color: $color_header_bg;
-		@include border-right-radius($border-radius);
-		@include border-left-radius($border-radius); //
+		@include border-radius($border-radius);
 		margin-bottom: 0;
 		display: table;
 	}

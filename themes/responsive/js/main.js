@@ -137,6 +137,9 @@ $(function() {
 		},
 		touchend: function() {
 			return false;
+		},
+		click: function() {
+			return false;
 		}
 	});
 
