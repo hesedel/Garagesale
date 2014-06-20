@@ -82,6 +82,11 @@ body {
 
 }
 
+	.breadcrumbs__separator {
+		margin-right: $gutter-width * (2 / 3);
+		margin-left: $gutter-width * (2 / 3);
+	}
+
 .Footer {
 	@extend .container;
 	padding-top: $line-height * 2;

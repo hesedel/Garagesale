@@ -143,9 +143,9 @@ div.form.success {
 }
 
 table.form {
-	background-color: whiten(blacken($beige, 25%), 25%, 4);
+	background-color: blacken($color_clouds, 5%);
 	border-collapse: collapse;
-	border-color: whiten(blacken($beige, 25%), 25%, 4);
+	border-color: blacken($color_clouds, 5%);
 	border-spacing: 0;
 	border-style: solid;
 	border-top-width: $line-height;

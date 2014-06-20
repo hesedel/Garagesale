@@ -92,7 +92,7 @@
 
 						> * {
 							vertical-align: top;
-							background-color: $color_sunFlower-white;
+							background-color: $color_white;
 							padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{$line-height * .5};
 							border-top: 1px solid $color_body_bg;
 							display: table-cell !important;
@@ -253,13 +253,13 @@
 					}
 
 					.view {
-						background-color: $color_sunFlower-white;
+						background-color: $color_white;
 						padding: #{($line-height * .5) - 1px} #{$gutter-width * (2 / 3)} #{($line-height * .5) + ($line-height * (1 / 6))};
 						position: relative;
 
 						&:before {
 							content: '';
-							background-color: $color_sunFlower-white;
+							background-color: $color_white;
 							display: block;
 							position: absolute;
 								top: 0;
@@ -382,7 +382,7 @@
 						.view {
 
 							> * {
-								background-color: $color_sunFlower-white;
+								background-color: $color_white;
 							}
 
 						}
@@ -412,7 +412,7 @@
 						.view {
 
 							> * {
-								background-color: $color_sunFlower-white;
+								background-color: $color_white;
 							}
 
 						}

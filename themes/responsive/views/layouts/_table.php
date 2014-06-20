@@ -1,7 +1,6 @@
 <div class="Table-container"><div class="container">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'item-search-form',
 	'action'=>array('/item/search'),
 	'method'=>'get',
 )); ?>
